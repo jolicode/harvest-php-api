@@ -52,5 +52,5 @@ missing, inexactly documented or incomplete.
 If you miss an option in a method, please:
 
  * open a pull request to add it to the [OpenAPI specification itself](https://github.com/jolicode/harvest-openapi-generator);
- * once the OpenAPI specification is up-to-date, [regenerate the SDK](./upgrading-sdk.md);
+ * once the OpenAPI specification is up-to-date, [regenerate the SDK](./updating-sdk.md);
  * open a pull request in this library to submit your changes.

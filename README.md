@@ -2,7 +2,7 @@
 
 [Harvest](https://www.getharvest.com/) is a time tracking and invoicing tool.
 
-This PHP SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp) using a [Harvest OpenAPI specification](https://github.com/jolicode/harvest-openapi-generator/) generated from the HTMl documentation.
+This PHP SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp) using a [Harvest OpenAPI specification](https://github.com/jolicode/harvest-openapi-generator/) generated from the HTML documentation.
 
 
 ## Installation

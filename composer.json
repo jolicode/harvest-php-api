@@ -1,0 +1,31 @@
+{
+    "name": "jolicode/harvest-php-api",
+    "description": "An up to date PHP client for Harvest's API",
+    "keywords": ["harvest", "harvest api", "harvestapp", "client", "openapi", "swagger", "sdk"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xavier Lacot",
+            "email": "xlacot@jolicode.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "JoliCode\\Harvest\\Api\\": "generated/",
+          "JoliCode\\Harvest\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">= 7.1",
+        "jane-php/open-api-runtime": "^4.0",
+        "php-http/client-implementation": "*",
+        "php-http/client-common": "^1.7"
+    },
+    "require-dev": {
+        "jane-php/open-api": "^4.0",
+        "php-http/curl-client": "^1.7",
+        "guzzlehttp/psr7": "^1.4",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    }
+}

@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class DeleteTimeEntryByTimeEntryId extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     protected $TimeEntryId;
 
     /**
-     * Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.
+     * Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.
      *
      * @param string $timeEntryId
      */
@@ -33,7 +33,7 @@ class DeleteTimeEntryByTimeEntryId extends \Jane\OpenApiRuntime\Client\BaseEndpo
 
     public function getUri(): string
     {
-        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}');
+        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}/external_reference');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

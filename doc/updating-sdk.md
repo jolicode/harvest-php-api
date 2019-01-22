@@ -5,7 +5,7 @@
 Run the following command to retrieve the latest API spec:
 
 ```bash
-curl https://raw.githubusercontent.com/jolicode/harvest-openapi-generator/master/generated/harvest-openapi.yaml -o Resources/harvest-openapi.json
+curl https://raw.githubusercontent.com/jolicode/harvest-openapi-generator/master/generated/harvest-openapi.yaml -o Resources/harvest-openapi.yaml
 ```
 
 ## Regenerate the SDk

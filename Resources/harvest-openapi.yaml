@@ -2541,7 +2541,7 @@ paths:
   '/time_entries/{TimeEntryId}/external_reference':
     delete:
       summary: 'Delete a time entry’s external reference'
-      operationId: deleteTimeEntry’sExternalReference
+      operationId: deleteTimeEntryExternalReference
       description: 'Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.'
       security:
         -

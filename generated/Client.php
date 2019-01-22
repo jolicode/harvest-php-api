@@ -948,9 +948,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteTimeEntry’sExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
+    public function deleteTimeEntryExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntry’sExternalReference($timeEntryId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntryExternalReference($timeEntryId), $fetch);
     }
 
     /**

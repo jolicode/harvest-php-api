@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class UpdateInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
+    protected $invoiceId;
 
     /**
      * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
@@ -35,7 +35,7 @@ class UpdateInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}'], [$this->InvoiceId], '/invoices/{InvoiceId}');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

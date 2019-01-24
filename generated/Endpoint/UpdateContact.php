@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class UpdateContact extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ContactId;
+    protected $contactId;
 
     /**
      * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
@@ -35,7 +35,7 @@ class UpdateContact extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
 
     public function getUri(): string
     {
-        return str_replace(['{ContactId}'], [$this->ContactId], '/contacts/{ContactId}');
+        return str_replace(['{contactId}'], [$this->contactId], '/contacts/{contactId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

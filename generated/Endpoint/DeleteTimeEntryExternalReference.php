@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $TimeEntryId;
+    protected $timeEntryId;
 
     /**
      * Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseE
 
     public function getUri(): string
     {
-        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}/external_reference');
+        return str_replace(['{timeEntryId}'], [$this->timeEntryId], '/time_entries/{timeEntryId}/external_reference');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

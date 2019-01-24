@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,22 +36,22 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\PaginationLinks();
-        if (property_exists($data, 'first')) {
+        if (property_exists($data, 'first') && $data->{'first'} !== null) {
             $object->setFirst($data->{'first'});
         }
-        if (property_exists($data, 'last')) {
+        if (property_exists($data, 'last') && $data->{'last'} !== null) {
             $object->setLast($data->{'last'});
         }
-        if (property_exists($data, 'previous')) {
+        if (property_exists($data, 'previous') && $data->{'previous'} !== null) {
             $object->setPrevious($data->{'previous'});
         }
-        if (property_exists($data, 'next')) {
+        if (property_exists($data, 'next') && $data->{'next'} !== null) {
             $object->setNext($data->{'next'});
         }
 

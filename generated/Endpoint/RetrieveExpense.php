@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveExpense extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ExpenseId;
+    protected $expenseId;
 
     /**
      * Retrieves the expense with the given ID. Returns an expense object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveExpense extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
 
     public function getUri(): string
     {
-        return str_replace(['{ExpenseId}'], [$this->ExpenseId], '/expenses/{ExpenseId}');
+        return str_replace(['{expenseId}'], [$this->expenseId], '/expenses/{expenseId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

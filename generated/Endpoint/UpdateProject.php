@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class UpdateProject extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
+    protected $projectId;
 
     /**
      * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
@@ -35,7 +35,7 @@ class UpdateProject extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}'], [$this->ProjectId], '/projects/{ProjectId}');
+        return str_replace(['{projectId}'], [$this->projectId], '/projects/{projectId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

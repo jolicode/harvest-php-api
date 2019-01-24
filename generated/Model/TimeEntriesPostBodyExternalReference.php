@@ -13,6 +13,10 @@ namespace JoliCode\Harvest\Api\Model;
 class TimeEntriesPostBodyExternalReference
 {
     /**
+     * @var int
+     */
+    protected $id;
+    /**
      * @var string
      */
     protected $groupId;
@@ -20,6 +24,26 @@ class TimeEntriesPostBodyExternalReference
      * @var string
      */
     protected $permalink;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * @return string

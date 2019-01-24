@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ListMessagesForInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
+    protected $invoiceId;
 
     /**
      * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -42,7 +42,7 @@ class ListMessagesForInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}'], [$this->InvoiceId], '/invoices/{InvoiceId}/messages');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}/messages');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

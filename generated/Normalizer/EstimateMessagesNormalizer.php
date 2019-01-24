@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,38 +36,38 @@ class EstimateMessagesNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimateMessages();
-        if (property_exists($data, 'estimatemessages')) {
+        if (property_exists($data, 'estimate_messages') && $data->{'estimate_messages'} !== null) {
             $values = [];
-            foreach ($data->{'estimatemessages'} as $value) {
+            foreach ($data->{'estimate_messages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage', 'json', $context);
             }
-            $object->setEstimatemessages($values);
+            $object->setEstimateMessages($values);
         }
-        if (property_exists($data, 'per_page')) {
+        if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
             $object->setPerPage($data->{'per_page'});
         }
-        if (property_exists($data, 'total_pages')) {
+        if (property_exists($data, 'total_pages') && $data->{'total_pages'} !== null) {
             $object->setTotalPages($data->{'total_pages'});
         }
-        if (property_exists($data, 'total_entries')) {
+        if (property_exists($data, 'total_entries') && $data->{'total_entries'} !== null) {
             $object->setTotalEntries($data->{'total_entries'});
         }
-        if (property_exists($data, 'next_page')) {
+        if (property_exists($data, 'next_page') && $data->{'next_page'} !== null) {
             $object->setNextPage($data->{'next_page'});
         }
-        if (property_exists($data, 'previous_page')) {
+        if (property_exists($data, 'previous_page') && $data->{'previous_page'} !== null) {
             $object->setPreviousPage($data->{'previous_page'});
         }
-        if (property_exists($data, 'page')) {
+        if (property_exists($data, 'page') && $data->{'page'} !== null) {
             $object->setPage($data->{'page'});
         }
-        if (property_exists($data, 'links')) {
+        if (property_exists($data, 'links') && $data->{'links'} !== null) {
             $object->setLinks($this->denormalizer->denormalize($data->{'links'}, 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
         }
 
@@ -78,12 +77,12 @@ class EstimateMessagesNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getEstimatemessages()) {
+        if (null !== $object->getEstimateMessages()) {
             $values = [];
-            foreach ($object->getEstimatemessages() as $value) {
+            foreach ($object->getEstimateMessages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'estimatemessages'} = $values;
+            $data->{'estimate_messages'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

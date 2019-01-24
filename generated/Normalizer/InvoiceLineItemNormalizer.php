@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,37 +36,37 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceLineItem();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'project')) {
+        if (property_exists($data, 'project') && $data->{'project'} !== null) {
             $object->setProject($this->denormalizer->denormalize($data->{'project'}, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject', 'json', $context));
         }
-        if (property_exists($data, 'kind')) {
+        if (property_exists($data, 'kind') && $data->{'kind'} !== null) {
             $object->setKind($data->{'kind'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
         }
-        if (property_exists($data, 'quantity')) {
+        if (property_exists($data, 'quantity') && $data->{'quantity'} !== null) {
             $object->setQuantity($data->{'quantity'});
         }
-        if (property_exists($data, 'unit_price')) {
+        if (property_exists($data, 'unit_price') && $data->{'unit_price'} !== null) {
             $object->setUnitPrice($data->{'unit_price'});
         }
-        if (property_exists($data, 'amount')) {
+        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
             $object->setAmount($data->{'amount'});
         }
-        if (property_exists($data, 'taxed')) {
+        if (property_exists($data, 'taxed') && $data->{'taxed'} !== null) {
             $object->setTaxed($data->{'taxed'});
         }
-        if (property_exists($data, 'taxed2')) {
+        if (property_exists($data, 'taxed2') && $data->{'taxed2'} !== null) {
             $object->setTaxed2($data->{'taxed2'});
         }
 

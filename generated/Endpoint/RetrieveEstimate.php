@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateId;
+    protected $estimateId;
 
     /**
      * Retrieves the estimate with the given ID. Returns an estimate object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateId}'], [$this->EstimateId], '/estimates/{EstimateId}');
+        return str_replace(['{estimateId}'], [$this->estimateId], '/estimates/{estimateId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

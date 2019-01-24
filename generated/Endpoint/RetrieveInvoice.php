@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
+    protected $invoiceId;
 
     /**
      * Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}'], [$this->InvoiceId], '/invoices/{InvoiceId}');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

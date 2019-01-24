@@ -15,7 +15,7 @@ class EstimateMessages
     /**
      * @var EstimateMessage[]
      */
-    protected $estimatemessages;
+    protected $estimateMessages;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class EstimateMessages
     /**
      * @return EstimateMessage[]
      */
-    public function getEstimatemessages(): ?array
+    public function getEstimateMessages(): ?array
     {
-        return $this->estimatemessages;
+        return $this->estimateMessages;
     }
 
     /**
-     * @param EstimateMessage[] $estimatemessages
+     * @param EstimateMessage[] $estimateMessages
      *
      * @return self
      */
-    public function setEstimatemessages(?array $estimatemessages): self
+    public function setEstimateMessages(?array $estimateMessages): self
     {
-        $this->estimatemessages = $estimatemessages;
+        $this->estimateMessages = $estimateMessages;
 
         return $this;
     }

@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateItemCategoryId;
+    protected $estimateItemCategoryId;
 
     /**
      * Retrieves the estimate item category with the given ID. Returns an estimate item category object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpo
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateItemCategoryId}'], [$this->EstimateItemCategoryId], '/estimate_item_categories/{EstimateItemCategoryId}');
+        return str_replace(['{estimateItemCategoryId}'], [$this->estimateItemCategoryId], '/estimate_item_categories/{estimateItemCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

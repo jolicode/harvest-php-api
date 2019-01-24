@@ -15,7 +15,7 @@ class InvoiceLineItems
     /**
      * @var InvoiceLineItem[]
      */
-    protected $invoicelineitems;
+    protected $invoiceLineItems;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class InvoiceLineItems
     /**
      * @return InvoiceLineItem[]
      */
-    public function getInvoicelineitems(): ?array
+    public function getInvoiceLineItems(): ?array
     {
-        return $this->invoicelineitems;
+        return $this->invoiceLineItems;
     }
 
     /**
-     * @param InvoiceLineItem[] $invoicelineitems
+     * @param InvoiceLineItem[] $invoiceLineItems
      *
      * @return self
      */
-    public function setInvoicelineitems(?array $invoicelineitems): self
+    public function setInvoiceLineItems(?array $invoiceLineItems): self
     {
-        $this->invoicelineitems = $invoicelineitems;
+        $this->invoiceLineItems = $invoiceLineItems;
 
         return $this;
     }

@@ -15,7 +15,7 @@ class ProjectAssignments
     /**
      * @var ProjectAssignment[]
      */
-    protected $projectassignments;
+    protected $projectAssignments;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class ProjectAssignments
     /**
      * @return ProjectAssignment[]
      */
-    public function getProjectassignments(): ?array
+    public function getProjectAssignments(): ?array
     {
-        return $this->projectassignments;
+        return $this->projectAssignments;
     }
 
     /**
-     * @param ProjectAssignment[] $projectassignments
+     * @param ProjectAssignment[] $projectAssignments
      *
      * @return self
      */
-    public function setProjectassignments(?array $projectassignments): self
+    public function setProjectAssignments(?array $projectAssignments): self
     {
-        $this->projectassignments = $projectassignments;
+        $this->projectAssignments = $projectAssignments;
 
         return $this;
     }

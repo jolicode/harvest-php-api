@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteInvoiceMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
-    protected $MessageId;
+    protected $invoiceId;
+    protected $messageId;
 
     /**
      * Delete an invoice message. Returns a 200 OK response code if the call succeeded.
@@ -36,7 +36,7 @@ class DeleteInvoiceMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}', '{MessageId}'], [$this->InvoiceId, $this->MessageId], '/invoices/{InvoiceId}/messages/{MessageId}');
+        return str_replace(['{invoiceId}', '{messageId}'], [$this->invoiceId, $this->messageId], '/invoices/{invoiceId}/messages/{messageId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

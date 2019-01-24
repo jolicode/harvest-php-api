@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteContact extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ContactId;
+    protected $contactId;
 
     /**
      * Delete a contact. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class DeleteContact extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
 
     public function getUri(): string
     {
-        return str_replace(['{ContactId}'], [$this->ContactId], '/contacts/{ContactId}');
+        return str_replace(['{contactId}'], [$this->contactId], '/contacts/{contactId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

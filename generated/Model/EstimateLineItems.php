@@ -15,7 +15,7 @@ class EstimateLineItems
     /**
      * @var EstimateLineItem[]
      */
-    protected $estimatelineitems;
+    protected $estimateLineItems;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class EstimateLineItems
     /**
      * @return EstimateLineItem[]
      */
-    public function getEstimatelineitems(): ?array
+    public function getEstimateLineItems(): ?array
     {
-        return $this->estimatelineitems;
+        return $this->estimateLineItems;
     }
 
     /**
-     * @param EstimateLineItem[] $estimatelineitems
+     * @param EstimateLineItem[] $estimateLineItems
      *
      * @return self
      */
-    public function setEstimatelineitems(?array $estimatelineitems): self
+    public function setEstimateLineItems(?array $estimateLineItems): self
     {
-        $this->estimatelineitems = $estimatelineitems;
+        $this->estimateLineItems = $estimateLineItems;
 
         return $this;
     }

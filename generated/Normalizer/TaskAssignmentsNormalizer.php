@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,38 +36,38 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TaskAssignments();
-        if (property_exists($data, 'taskassignments')) {
+        if (property_exists($data, 'task_assignments') && $data->{'task_assignments'} !== null) {
             $values = [];
-            foreach ($data->{'taskassignments'} as $value) {
+            foreach ($data->{'task_assignments'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
             }
-            $object->setTaskassignments($values);
+            $object->setTaskAssignments($values);
         }
-        if (property_exists($data, 'per_page')) {
+        if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
             $object->setPerPage($data->{'per_page'});
         }
-        if (property_exists($data, 'total_pages')) {
+        if (property_exists($data, 'total_pages') && $data->{'total_pages'} !== null) {
             $object->setTotalPages($data->{'total_pages'});
         }
-        if (property_exists($data, 'total_entries')) {
+        if (property_exists($data, 'total_entries') && $data->{'total_entries'} !== null) {
             $object->setTotalEntries($data->{'total_entries'});
         }
-        if (property_exists($data, 'next_page')) {
+        if (property_exists($data, 'next_page') && $data->{'next_page'} !== null) {
             $object->setNextPage($data->{'next_page'});
         }
-        if (property_exists($data, 'previous_page')) {
+        if (property_exists($data, 'previous_page') && $data->{'previous_page'} !== null) {
             $object->setPreviousPage($data->{'previous_page'});
         }
-        if (property_exists($data, 'page')) {
+        if (property_exists($data, 'page') && $data->{'page'} !== null) {
             $object->setPage($data->{'page'});
         }
-        if (property_exists($data, 'links')) {
+        if (property_exists($data, 'links') && $data->{'links'} !== null) {
             $object->setLinks($this->denormalizer->denormalize($data->{'links'}, 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
         }
 
@@ -78,12 +77,12 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getTaskassignments()) {
+        if (null !== $object->getTaskAssignments()) {
             $values = [];
-            foreach ($object->getTaskassignments() as $value) {
+            foreach ($object->getTaskAssignments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'taskassignments'} = $values;
+            $data->{'task_assignments'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

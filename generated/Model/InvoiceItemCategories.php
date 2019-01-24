@@ -15,7 +15,7 @@ class InvoiceItemCategories
     /**
      * @var InvoiceItemCategory[]
      */
-    protected $invoiceitemcategories;
+    protected $invoiceItemCategories;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class InvoiceItemCategories
     /**
      * @return InvoiceItemCategory[]
      */
-    public function getInvoiceitemcategories(): ?array
+    public function getInvoiceItemCategories(): ?array
     {
-        return $this->invoiceitemcategories;
+        return $this->invoiceItemCategories;
     }
 
     /**
-     * @param InvoiceItemCategory[] $invoiceitemcategories
+     * @param InvoiceItemCategory[] $invoiceItemCategories
      *
      * @return self
      */
-    public function setInvoiceitemcategories(?array $invoiceitemcategories): self
+    public function setInvoiceItemCategories(?array $invoiceItemCategories): self
     {
-        $this->invoiceitemcategories = $invoiceitemcategories;
+        $this->invoiceItemCategories = $invoiceItemCategories;
 
         return $this;
     }

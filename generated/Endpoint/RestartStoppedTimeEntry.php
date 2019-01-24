@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RestartStoppedTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $TimeEntryId;
+    protected $timeEntryId;
 
     /**
      * Restarting a time entry is only possible if it isn’t currently running. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class RestartStoppedTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
 
     public function getUri(): string
     {
-        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}/restart');
+        return str_replace(['{timeEntryId}'], [$this->timeEntryId], '/time_entries/{timeEntryId}/restart');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

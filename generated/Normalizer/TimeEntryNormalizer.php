@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,88 +36,88 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntry();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'spent_date')) {
+        if (property_exists($data, 'spent_date') && $data->{'spent_date'} !== null) {
             $object->setSpentDate($data->{'spent_date'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryUser', 'json', $context));
         }
-        if (property_exists($data, 'user_assignment')) {
+        if (property_exists($data, 'user_assignment') && $data->{'user_assignment'} !== null) {
             $object->setUserAssignment($this->denormalizer->denormalize($data->{'user_assignment'}, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context));
         }
-        if (property_exists($data, 'client')) {
+        if (property_exists($data, 'client') && $data->{'client'} !== null) {
             $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient', 'json', $context));
         }
-        if (property_exists($data, 'project')) {
+        if (property_exists($data, 'project') && $data->{'project'} !== null) {
             $object->setProject($this->denormalizer->denormalize($data->{'project'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryProject', 'json', $context));
         }
-        if (property_exists($data, 'task')) {
+        if (property_exists($data, 'task') && $data->{'task'} !== null) {
             $object->setTask($this->denormalizer->denormalize($data->{'task'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryTask', 'json', $context));
         }
-        if (property_exists($data, 'task_assignment')) {
+        if (property_exists($data, 'task_assignment') && $data->{'task_assignment'} !== null) {
             $object->setTaskAssignment($this->denormalizer->denormalize($data->{'task_assignment'}, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context));
         }
-        if (property_exists($data, 'external_reference')) {
+        if (property_exists($data, 'external_reference') && $data->{'external_reference'} !== null) {
             $object->setExternalReference($this->denormalizer->denormalize($data->{'external_reference'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference', 'json', $context));
         }
-        if (property_exists($data, 'invoice')) {
+        if (property_exists($data, 'invoice') && $data->{'invoice'} !== null) {
             $object->setInvoice($this->denormalizer->denormalize($data->{'invoice'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryInvoice', 'json', $context));
         }
-        if (property_exists($data, 'hours')) {
+        if (property_exists($data, 'hours') && $data->{'hours'} !== null) {
             $object->setHours($data->{'hours'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'is_locked')) {
+        if (property_exists($data, 'is_locked') && $data->{'is_locked'} !== null) {
             $object->setIsLocked($data->{'is_locked'});
         }
-        if (property_exists($data, 'locked_reason')) {
+        if (property_exists($data, 'locked_reason') && $data->{'locked_reason'} !== null) {
             $object->setLockedReason($data->{'locked_reason'});
         }
-        if (property_exists($data, 'is_closed')) {
+        if (property_exists($data, 'is_closed') && $data->{'is_closed'} !== null) {
             $object->setIsClosed($data->{'is_closed'});
         }
-        if (property_exists($data, 'is_billed')) {
+        if (property_exists($data, 'is_billed') && $data->{'is_billed'} !== null) {
             $object->setIsBilled($data->{'is_billed'});
         }
-        if (property_exists($data, 'timer_started_at')) {
+        if (property_exists($data, 'timer_started_at') && $data->{'timer_started_at'} !== null) {
             $object->setTimerStartedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'timer_started_at'}));
         }
-        if (property_exists($data, 'started_time')) {
+        if (property_exists($data, 'started_time') && $data->{'started_time'} !== null) {
             $object->setStartedTime($data->{'started_time'});
         }
-        if (property_exists($data, 'ended_time')) {
+        if (property_exists($data, 'ended_time') && $data->{'ended_time'} !== null) {
             $object->setEndedTime($data->{'ended_time'});
         }
-        if (property_exists($data, 'is_running')) {
+        if (property_exists($data, 'is_running') && $data->{'is_running'} !== null) {
             $object->setIsRunning($data->{'is_running'});
         }
-        if (property_exists($data, 'billable')) {
+        if (property_exists($data, 'billable') && $data->{'billable'} !== null) {
             $object->setBillable($data->{'billable'});
         }
-        if (property_exists($data, 'budgeted')) {
+        if (property_exists($data, 'budgeted') && $data->{'budgeted'} !== null) {
             $object->setBudgeted($data->{'budgeted'});
         }
-        if (property_exists($data, 'billable_rate')) {
+        if (property_exists($data, 'billable_rate') && $data->{'billable_rate'} !== null) {
             $object->setBillableRate($data->{'billable_rate'});
         }
-        if (property_exists($data, 'cost_rate')) {
+        if (property_exists($data, 'cost_rate') && $data->{'cost_rate'} !== null) {
             $object->setCostRate($data->{'cost_rate'});
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

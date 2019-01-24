@@ -15,7 +15,7 @@ class InvoicePayments
     /**
      * @var InvoicePayment[]
      */
-    protected $invoicepayments;
+    protected $invoicePayments;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class InvoicePayments
     /**
      * @return InvoicePayment[]
      */
-    public function getInvoicepayments(): ?array
+    public function getInvoicePayments(): ?array
     {
-        return $this->invoicepayments;
+        return $this->invoicePayments;
     }
 
     /**
-     * @param InvoicePayment[] $invoicepayments
+     * @param InvoicePayment[] $invoicePayments
      *
      * @return self
      */
-    public function setInvoicepayments(?array $invoicepayments): self
+    public function setInvoicePayments(?array $invoicePayments): self
     {
-        $this->invoicepayments = $invoicepayments;
+        $this->invoicePayments = $invoicePayments;
 
         return $this;
     }

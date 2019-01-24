@@ -13,6 +13,10 @@ namespace JoliCode\Harvest\Api\Model;
 class ExpenseClient
 {
     /**
+     * @var int
+     */
+    protected $id;
+    /**
      * @var string
      */
     protected $name;
@@ -20,6 +24,26 @@ class ExpenseClient
      * @var string
      */
     protected $currency;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * @return string

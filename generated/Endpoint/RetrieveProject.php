@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveProject extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
+    protected $projectId;
 
     /**
      * Retrieves the project with the given ID. Returns a project object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveProject extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}'], [$this->ProjectId], '/projects/{ProjectId}');
+        return str_replace(['{projectId}'], [$this->projectId], '/projects/{projectId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

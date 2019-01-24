@@ -15,7 +15,7 @@ class ExpenseCategories
     /**
      * @var ExpenseCategory[]
      */
-    protected $expensecategories;
+    protected $expenseCategories;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class ExpenseCategories
     /**
      * @return ExpenseCategory[]
      */
-    public function getExpensecategories(): ?array
+    public function getExpenseCategories(): ?array
     {
-        return $this->expensecategories;
+        return $this->expenseCategories;
     }
 
     /**
-     * @param ExpenseCategory[] $expensecategories
+     * @param ExpenseCategory[] $expenseCategories
      *
      * @return self
      */
-    public function setExpensecategories(?array $expensecategories): self
+    public function setExpenseCategories(?array $expenseCategories): self
     {
-        $this->expensecategories = $expensecategories;
+        $this->expenseCategories = $expenseCategories;
 
         return $this;
     }

@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteEstimateMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateId;
-    protected $MessageId;
+    protected $estimateId;
+    protected $messageId;
 
     /**
      * Delete an estimate message. Returns a 200 OK response code if the call succeeded.
@@ -36,7 +36,7 @@ class DeleteEstimateMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateId}', '{MessageId}'], [$this->EstimateId, $this->MessageId], '/estimates/{EstimateId}/messages/{MessageId}');
+        return str_replace(['{estimateId}', '{messageId}'], [$this->estimateId, $this->messageId], '/estimates/{estimateId}/messages/{messageId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

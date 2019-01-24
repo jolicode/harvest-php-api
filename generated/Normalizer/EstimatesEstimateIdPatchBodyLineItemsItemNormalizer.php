@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,23 +36,23 @@ class EstimatesEstimateIdPatchBodyLineItemsItemNormalizer implements Denormalize
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem();
-        if (property_exists($data, 'project_ids')) {
+        if (property_exists($data, 'project_ids') && $data->{'project_ids'} !== null) {
             $values = [];
             foreach ($data->{'project_ids'} as $value) {
                 $values[] = $value;
             }
             $object->setProjectIds($values);
         }
-        if (property_exists($data, 'time')) {
+        if (property_exists($data, 'time') && $data->{'time'} !== null) {
             $object->setTime($this->denormalizer->denormalize($data->{'time'}, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItemTime', 'json', $context));
         }
-        if (property_exists($data, 'expenses')) {
+        if (property_exists($data, 'expenses') && $data->{'expenses'} !== null) {
             $object->setExpenses($this->denormalizer->denormalize($data->{'expenses'}, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItemExpenses', 'json', $context));
         }
 

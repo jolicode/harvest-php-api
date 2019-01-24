@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,86 +36,86 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Estimate();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'client')) {
+        if (property_exists($data, 'client') && $data->{'client'} !== null) {
             $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\EstimateClient', 'json', $context));
         }
-        if (property_exists($data, 'line_items')) {
+        if (property_exists($data, 'line_items') && $data->{'line_items'} !== null) {
             $values = [];
             foreach ($data->{'line_items'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem', 'json', $context);
             }
             $object->setLineItems($values);
         }
-        if (property_exists($data, 'creator')) {
+        if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($this->denormalizer->denormalize($data->{'creator'}, 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator', 'json', $context));
         }
-        if (property_exists($data, 'client_key')) {
+        if (property_exists($data, 'client_key') && $data->{'client_key'} !== null) {
             $object->setClientKey($data->{'client_key'});
         }
-        if (property_exists($data, 'number')) {
+        if (property_exists($data, 'number') && $data->{'number'} !== null) {
             $object->setNumber($data->{'number'});
         }
-        if (property_exists($data, 'purchase_order')) {
+        if (property_exists($data, 'purchase_order') && $data->{'purchase_order'} !== null) {
             $object->setPurchaseOrder($data->{'purchase_order'});
         }
-        if (property_exists($data, 'amount')) {
+        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
             $object->setAmount($data->{'amount'});
         }
-        if (property_exists($data, 'tax')) {
+        if (property_exists($data, 'tax') && $data->{'tax'} !== null) {
             $object->setTax($data->{'tax'});
         }
-        if (property_exists($data, 'tax_amount')) {
+        if (property_exists($data, 'tax_amount') && $data->{'tax_amount'} !== null) {
             $object->setTaxAmount($data->{'tax_amount'});
         }
-        if (property_exists($data, 'tax2')) {
+        if (property_exists($data, 'tax2') && $data->{'tax2'} !== null) {
             $object->setTax2($data->{'tax2'});
         }
-        if (property_exists($data, 'tax2_amount')) {
+        if (property_exists($data, 'tax2_amount') && $data->{'tax2_amount'} !== null) {
             $object->setTax2Amount($data->{'tax2_amount'});
         }
-        if (property_exists($data, 'discount')) {
+        if (property_exists($data, 'discount') && $data->{'discount'} !== null) {
             $object->setDiscount($data->{'discount'});
         }
-        if (property_exists($data, 'discount_amount')) {
+        if (property_exists($data, 'discount_amount') && $data->{'discount_amount'} !== null) {
             $object->setDiscountAmount($data->{'discount_amount'});
         }
-        if (property_exists($data, 'subject')) {
+        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
             $object->setSubject($data->{'subject'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'currency')) {
+        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
             $object->setCurrency($data->{'currency'});
         }
-        if (property_exists($data, 'state')) {
+        if (property_exists($data, 'state') && $data->{'state'} !== null) {
             $object->setState($data->{'state'});
         }
-        if (property_exists($data, 'issue_date')) {
+        if (property_exists($data, 'issue_date') && $data->{'issue_date'} !== null) {
             $object->setIssueDate($data->{'issue_date'});
         }
-        if (property_exists($data, 'sent_at')) {
+        if (property_exists($data, 'sent_at') && $data->{'sent_at'} !== null) {
             $object->setSentAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'sent_at'}));
         }
-        if (property_exists($data, 'accepted_at')) {
+        if (property_exists($data, 'accepted_at') && $data->{'accepted_at'} !== null) {
             $object->setAcceptedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'accepted_at'}));
         }
-        if (property_exists($data, 'declined_at')) {
+        if (property_exists($data, 'declined_at') && $data->{'declined_at'} !== null) {
             $object->setDeclinedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'declined_at'}));
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveRole extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $RoleId;
+    protected $roleId;
 
     /**
      * Retrieves the role with the given ID. Returns a role object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveRole extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 
     public function getUri(): string
     {
-        return str_replace(['{RoleId}'], [$this->RoleId], '/roles/{RoleId}');
+        return str_replace(['{roleId}'], [$this->roleId], '/roles/{roleId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

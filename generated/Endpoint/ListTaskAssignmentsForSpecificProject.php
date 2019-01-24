@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ListTaskAssignmentsForSpecificProject extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
+    protected $projectId;
 
     /**
      * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
@@ -43,7 +43,7 @@ class ListTaskAssignmentsForSpecificProject extends \Jane\OpenApiRuntime\Client\
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}'], [$this->ProjectId], '/projects/{ProjectId}/task_assignments');
+        return str_replace(['{projectId}'], [$this->projectId], '/projects/{projectId}/task_assignments');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

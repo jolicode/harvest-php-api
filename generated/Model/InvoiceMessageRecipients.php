@@ -15,7 +15,7 @@ class InvoiceMessageRecipients
     /**
      * @var InvoiceMessageRecipient[]
      */
-    protected $invoicemessagerecipients;
+    protected $invoiceMessageRecipients;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class InvoiceMessageRecipients
     /**
      * @return InvoiceMessageRecipient[]
      */
-    public function getInvoicemessagerecipients(): ?array
+    public function getInvoiceMessageRecipients(): ?array
     {
-        return $this->invoicemessagerecipients;
+        return $this->invoiceMessageRecipients;
     }
 
     /**
-     * @param InvoiceMessageRecipient[] $invoicemessagerecipients
+     * @param InvoiceMessageRecipient[] $invoiceMessageRecipients
      *
      * @return self
      */
-    public function setInvoicemessagerecipients(?array $invoicemessagerecipients): self
+    public function setInvoiceMessageRecipients(?array $invoiceMessageRecipients): self
     {
-        $this->invoicemessagerecipients = $invoicemessagerecipients;
+        $this->invoiceMessageRecipients = $invoiceMessageRecipients;
 
         return $this;
     }

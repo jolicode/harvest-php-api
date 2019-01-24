@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,70 +36,70 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ProjectsPostBody();
-        if (property_exists($data, 'client_id')) {
+        if (property_exists($data, 'client_id') && $data->{'client_id'} !== null) {
             $object->setClientId($data->{'client_id'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'code')) {
+        if (property_exists($data, 'code') && $data->{'code'} !== null) {
             $object->setCode($data->{'code'});
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
         }
-        if (property_exists($data, 'is_billable')) {
+        if (property_exists($data, 'is_billable') && $data->{'is_billable'} !== null) {
             $object->setIsBillable($data->{'is_billable'});
         }
-        if (property_exists($data, 'is_fixed_fee')) {
+        if (property_exists($data, 'is_fixed_fee') && $data->{'is_fixed_fee'} !== null) {
             $object->setIsFixedFee($data->{'is_fixed_fee'});
         }
-        if (property_exists($data, 'bill_by')) {
+        if (property_exists($data, 'bill_by') && $data->{'bill_by'} !== null) {
             $object->setBillBy($data->{'bill_by'});
         }
-        if (property_exists($data, 'hourly_rate')) {
+        if (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} !== null) {
             $object->setHourlyRate($data->{'hourly_rate'});
         }
-        if (property_exists($data, 'budget')) {
+        if (property_exists($data, 'budget') && $data->{'budget'} !== null) {
             $object->setBudget($data->{'budget'});
         }
-        if (property_exists($data, 'budget_by')) {
+        if (property_exists($data, 'budget_by') && $data->{'budget_by'} !== null) {
             $object->setBudgetBy($data->{'budget_by'});
         }
-        if (property_exists($data, 'budget_is_monthly')) {
+        if (property_exists($data, 'budget_is_monthly') && $data->{'budget_is_monthly'} !== null) {
             $object->setBudgetIsMonthly($data->{'budget_is_monthly'});
         }
-        if (property_exists($data, 'notify_when_over_budget')) {
+        if (property_exists($data, 'notify_when_over_budget') && $data->{'notify_when_over_budget'} !== null) {
             $object->setNotifyWhenOverBudget($data->{'notify_when_over_budget'});
         }
-        if (property_exists($data, 'over_budget_notification_percentage')) {
+        if (property_exists($data, 'over_budget_notification_percentage') && $data->{'over_budget_notification_percentage'} !== null) {
             $object->setOverBudgetNotificationPercentage($data->{'over_budget_notification_percentage'});
         }
-        if (property_exists($data, 'show_budget_to_all')) {
+        if (property_exists($data, 'show_budget_to_all') && $data->{'show_budget_to_all'} !== null) {
             $object->setShowBudgetToAll($data->{'show_budget_to_all'});
         }
-        if (property_exists($data, 'cost_budget')) {
+        if (property_exists($data, 'cost_budget') && $data->{'cost_budget'} !== null) {
             $object->setCostBudget($data->{'cost_budget'});
         }
-        if (property_exists($data, 'cost_budget_include_expenses')) {
+        if (property_exists($data, 'cost_budget_include_expenses') && $data->{'cost_budget_include_expenses'} !== null) {
             $object->setCostBudgetIncludeExpenses($data->{'cost_budget_include_expenses'});
         }
-        if (property_exists($data, 'fee')) {
+        if (property_exists($data, 'fee') && $data->{'fee'} !== null) {
             $object->setFee($data->{'fee'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'starts_on')) {
+        if (property_exists($data, 'starts_on') && $data->{'starts_on'} !== null) {
             $object->setStartsOn($data->{'starts_on'});
         }
-        if (property_exists($data, 'ends_on')) {
+        if (property_exists($data, 'ends_on') && $data->{'ends_on'} !== null) {
             $object->setEndsOn($data->{'ends_on'});
         }
 

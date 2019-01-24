@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,25 +36,25 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody();
-        if (property_exists($data, 'user_id')) {
+        if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
             $object->setUserId($data->{'user_id'});
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
         }
-        if (property_exists($data, 'is_project_manager')) {
+        if (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} !== null) {
             $object->setIsProjectManager($data->{'is_project_manager'});
         }
-        if (property_exists($data, 'hourly_rate')) {
+        if (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} !== null) {
             $object->setHourlyRate($data->{'hourly_rate'});
         }
-        if (property_exists($data, 'budget')) {
+        if (property_exists($data, 'budget') && $data->{'budget'} !== null) {
             $object->setBudget($data->{'budget'});
         }
 

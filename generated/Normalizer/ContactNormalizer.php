@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,43 +36,43 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Contact();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'client')) {
+        if (property_exists($data, 'client') && $data->{'client'} !== null) {
             $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\ContactClient', 'json', $context));
         }
-        if (property_exists($data, 'title')) {
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
         }
-        if (property_exists($data, 'first_name')) {
+        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
         }
-        if (property_exists($data, 'last_name')) {
+        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
             $object->setLastName($data->{'last_name'});
         }
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
         }
-        if (property_exists($data, 'phone_office')) {
+        if (property_exists($data, 'phone_office') && $data->{'phone_office'} !== null) {
             $object->setPhoneOffice($data->{'phone_office'});
         }
-        if (property_exists($data, 'phone_mobile')) {
+        if (property_exists($data, 'phone_mobile') && $data->{'phone_mobile'} !== null) {
             $object->setPhoneMobile($data->{'phone_mobile'});
         }
-        if (property_exists($data, 'fax')) {
+        if (property_exists($data, 'fax') && $data->{'fax'} !== null) {
             $object->setFax($data->{'fax'});
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
+    protected $invoiceId;
 
     /**
      * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
@@ -35,7 +35,7 @@ class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}'], [$this->InvoiceId], '/invoices/{InvoiceId}/payments');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}/payments');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

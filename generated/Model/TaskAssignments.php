@@ -15,7 +15,7 @@ class TaskAssignments
     /**
      * @var TaskAssignment[]
      */
-    protected $taskassignments;
+    protected $taskAssignments;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class TaskAssignments
     /**
      * @return TaskAssignment[]
      */
-    public function getTaskassignments(): ?array
+    public function getTaskAssignments(): ?array
     {
-        return $this->taskassignments;
+        return $this->taskAssignments;
     }
 
     /**
-     * @param TaskAssignment[] $taskassignments
+     * @param TaskAssignment[] $taskAssignments
      *
      * @return self
      */
-    public function setTaskassignments(?array $taskassignments): self
+    public function setTaskAssignments(?array $taskAssignments): self
     {
-        $this->taskassignments = $taskassignments;
+        $this->taskAssignments = $taskAssignments;
 
         return $this;
     }

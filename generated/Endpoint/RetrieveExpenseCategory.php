@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ExpenseCategoryId;
+    protected $expenseCategoryId;
 
     /**
      * Retrieves the expense category with the given ID. Returns an expense category object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
 
     public function getUri(): string
     {
-        return str_replace(['{ExpenseCategoryId}'], [$this->ExpenseCategoryId], '/expense_categories/{ExpenseCategoryId}');
+        return str_replace(['{expenseCategoryId}'], [$this->expenseCategoryId], '/expense_categories/{expenseCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

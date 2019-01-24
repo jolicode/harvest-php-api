@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ReOpenClosedEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateId;
+    protected $estimateId;
 
     /**
      * Creates a new estimate message object and re-opens a closed estimate. Returns an estimate message object and a 201 Created response code if the call succeeded.
@@ -35,7 +35,7 @@ class ReOpenClosedEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateId}'], [$this->EstimateId], '/estimates/{EstimateId}/messages');
+        return str_replace(['{estimateId}'], [$this->estimateId], '/estimates/{estimateId}/messages');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

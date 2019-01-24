@@ -43,12 +43,12 @@ class TimeEntriesNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntries();
-        if (property_exists($data, 'timeentries')) {
+        if (property_exists($data, 'time_entries')) {
             $values = [];
-            foreach ($data->{'timeentries'} as $value) {
+            foreach ($data->{'time_entries'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TimeEntry', 'json', $context);
             }
-            $object->setTimeentries($values);
+            $object->setTimeEntries($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class TimeEntriesNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getTimeentries()) {
+        if (null !== $object->getTimeEntries()) {
             $values = [];
-            foreach ($object->getTimeentries() as $value) {
+            foreach ($object->getTimeEntries() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'timeentries'} = $values;
+            $data->{'time_entries'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

@@ -43,12 +43,12 @@ class EstimateItemCategoriesNormalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimateItemCategories();
-        if (property_exists($data, 'estimateitemcategories')) {
+        if (property_exists($data, 'estimate_item_categories')) {
             $values = [];
-            foreach ($data->{'estimateitemcategories'} as $value) {
+            foreach ($data->{'estimate_item_categories'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategory', 'json', $context);
             }
-            $object->setEstimateitemcategories($values);
+            $object->setEstimateItemCategories($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class EstimateItemCategoriesNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getEstimateitemcategories()) {
+        if (null !== $object->getEstimateItemCategories()) {
             $values = [];
-            foreach ($object->getEstimateitemcategories() as $value) {
+            foreach ($object->getEstimateItemCategories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'estimateitemcategories'} = $values;
+            $data->{'estimate_item_categories'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

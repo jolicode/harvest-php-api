@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ExpenseCategoryId;
+    protected $expenseCategoryId;
 
     /**
      * Delete an expense category. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
 
     public function getUri(): string
     {
-        return str_replace(['{ExpenseCategoryId}'], [$this->ExpenseCategoryId], '/expense_categories/{ExpenseCategoryId}');
+        return str_replace(['{expenseCategoryId}'], [$this->expenseCategoryId], '/expense_categories/{expenseCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

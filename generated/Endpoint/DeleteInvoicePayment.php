@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
-    protected $PaymentId;
+    protected $invoiceId;
+    protected $paymentId;
 
     /**
      * Delete an invoice payment. Returns a 200 OK response code if the call succeeded.
@@ -36,7 +36,7 @@ class DeleteInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}', '{PaymentId}'], [$this->InvoiceId, $this->PaymentId], '/invoices/{InvoiceId}/payments/{PaymentId}');
+        return str_replace(['{invoiceId}', '{paymentId}'], [$this->invoiceId, $this->paymentId], '/invoices/{invoiceId}/payments/{paymentId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

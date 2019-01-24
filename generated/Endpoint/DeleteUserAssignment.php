@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
-    protected $UserAssignmentId;
+    protected $projectId;
+    protected $userAssignmentId;
 
     /**
      * Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.
@@ -36,7 +36,7 @@ class DeleteUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}', '{UserAssignmentId}'], [$this->ProjectId, $this->UserAssignmentId], '/projects/{ProjectId}/user_assignments/{UserAssignmentId}');
+        return str_replace(['{projectId}', '{userAssignmentId}'], [$this->projectId, $this->userAssignmentId], '/projects/{projectId}/user_assignments/{userAssignmentId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

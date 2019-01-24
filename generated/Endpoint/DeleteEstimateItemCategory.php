@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateItemCategoryId;
+    protected $estimateItemCategoryId;
 
     /**
      * Delete an estimate item category. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class DeleteEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoin
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateItemCategoryId}'], [$this->EstimateItemCategoryId], '/estimate_item_categories/{EstimateItemCategoryId}');
+        return str_replace(['{estimateItemCategoryId}'], [$this->estimateItemCategoryId], '/estimate_item_categories/{estimateItemCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

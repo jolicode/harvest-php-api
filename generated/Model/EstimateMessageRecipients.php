@@ -15,7 +15,7 @@ class EstimateMessageRecipients
     /**
      * @var EstimateMessageRecipient[]
      */
-    protected $estimatemessagerecipients;
+    protected $estimateMessageRecipients;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class EstimateMessageRecipients
     /**
      * @return EstimateMessageRecipient[]
      */
-    public function getEstimatemessagerecipients(): ?array
+    public function getEstimateMessageRecipients(): ?array
     {
-        return $this->estimatemessagerecipients;
+        return $this->estimateMessageRecipients;
     }
 
     /**
-     * @param EstimateMessageRecipient[] $estimatemessagerecipients
+     * @param EstimateMessageRecipient[] $estimateMessageRecipients
      *
      * @return self
      */
-    public function setEstimatemessagerecipients(?array $estimatemessagerecipients): self
+    public function setEstimateMessageRecipients(?array $estimateMessageRecipients): self
     {
-        $this->estimatemessagerecipients = $estimatemessagerecipients;
+        $this->estimateMessageRecipients = $estimateMessageRecipients;
 
         return $this;
     }

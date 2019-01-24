@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $TimeEntryId;
+    protected $timeEntryId;
 
     /**
      * Retrieves the time entry with the given ID. Returns a time entry object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
 
     public function getUri(): string
     {
-        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}');
+        return str_replace(['{timeEntryId}'], [$this->timeEntryId], '/time_entries/{timeEntryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

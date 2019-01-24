@@ -15,7 +15,7 @@ class UserAssignments
     /**
      * @var UserAssignment[]
      */
-    protected $userassignments;
+    protected $userAssignments;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class UserAssignments
     /**
      * @return UserAssignment[]
      */
-    public function getUserassignments(): ?array
+    public function getUserAssignments(): ?array
     {
-        return $this->userassignments;
+        return $this->userAssignments;
     }
 
     /**
-     * @param UserAssignment[] $userassignments
+     * @param UserAssignment[] $userAssignments
      *
      * @return self
      */
-    public function setUserassignments(?array $userassignments): self
+    public function setUserAssignments(?array $userAssignments): self
     {
-        $this->userassignments = $userassignments;
+        $this->userAssignments = $userAssignments;
 
         return $this;
     }

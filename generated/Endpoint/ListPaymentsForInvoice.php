@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ListPaymentsForInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceId;
+    protected $invoiceId;
 
     /**
      * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
@@ -42,7 +42,7 @@ class ListPaymentsForInvoice extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceId}'], [$this->InvoiceId], '/invoices/{InvoiceId}/payments');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}/payments');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

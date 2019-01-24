@@ -43,6 +43,15 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntryExternalReference();
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+        }
+        if (property_exists($data, 'group_id')) {
+            $object->setGroupId($data->{'group_id'});
+        }
+        if (property_exists($data, 'permalink')) {
+            $object->setPermalink($data->{'permalink'});
+        }
         if (property_exists($data, 'service')) {
             $object->setService($data->{'service'});
         }
@@ -56,6 +65,15 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
+        if (null !== $object->getGroupId()) {
+            $data->{'group_id'} = $object->getGroupId();
+        }
+        if (null !== $object->getPermalink()) {
+            $data->{'permalink'} = $object->getPermalink();
+        }
         if (null !== $object->getService()) {
             $data->{'service'} = $object->getService();
         }

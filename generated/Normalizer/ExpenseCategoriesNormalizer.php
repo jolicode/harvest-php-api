@@ -43,12 +43,12 @@ class ExpenseCategoriesNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpenseCategories();
-        if (property_exists($data, 'expensecategories')) {
+        if (property_exists($data, 'expense_categories')) {
             $values = [];
-            foreach ($data->{'expensecategories'} as $value) {
+            foreach ($data->{'expense_categories'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory', 'json', $context);
             }
-            $object->setExpensecategories($values);
+            $object->setExpenseCategories($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class ExpenseCategoriesNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getExpensecategories()) {
+        if (null !== $object->getExpenseCategories()) {
             $values = [];
-            foreach ($object->getExpensecategories() as $value) {
+            foreach ($object->getExpenseCategories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'expensecategories'} = $values;
+            $data->{'expense_categories'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

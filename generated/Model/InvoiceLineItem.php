@@ -39,7 +39,7 @@ class InvoiceLineItem
     /**
      * The unit quantity of the item.
      *
-     * @var int
+     * @var float
      */
     protected $quantity;
     /**
@@ -166,9 +166,9 @@ class InvoiceLineItem
     /**
      * The unit quantity of the item.
      *
-     * @return int
+     * @return float
      */
-    public function getQuantity(): ?int
+    public function getQuantity(): ?float
     {
         return $this->quantity;
     }
@@ -176,11 +176,11 @@ class InvoiceLineItem
     /**
      * The unit quantity of the item.
      *
-     * @param int $quantity
+     * @param float $quantity
      *
      * @return self
      */
-    public function setQuantity(?int $quantity): self
+    public function setQuantity(?float $quantity): self
     {
         $this->quantity = $quantity;
 

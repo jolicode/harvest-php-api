@@ -43,6 +43,9 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference();
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+        }
         if (property_exists($data, 'group_id')) {
             $object->setGroupId($data->{'group_id'});
         }
@@ -56,6 +59,9 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
         if (null !== $object->getGroupId()) {
             $data->{'group_id'} = $object->getGroupId();
         }

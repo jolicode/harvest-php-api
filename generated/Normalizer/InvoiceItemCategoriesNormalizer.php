@@ -43,12 +43,12 @@ class InvoiceItemCategoriesNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceItemCategories();
-        if (property_exists($data, 'invoiceitemcategories')) {
+        if (property_exists($data, 'invoice_item_categories')) {
             $values = [];
-            foreach ($data->{'invoiceitemcategories'} as $value) {
+            foreach ($data->{'invoice_item_categories'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory', 'json', $context);
             }
-            $object->setInvoiceitemcategories($values);
+            $object->setInvoiceItemCategories($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class InvoiceItemCategoriesNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getInvoiceitemcategories()) {
+        if (null !== $object->getInvoiceItemCategories()) {
             $values = [];
-            foreach ($object->getInvoiceitemcategories() as $value) {
+            foreach ($object->getInvoiceItemCategories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'invoiceitemcategories'} = $values;
+            $data->{'invoice_item_categories'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

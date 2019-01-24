@@ -43,12 +43,12 @@ class InvoiceMessageRecipientsNormalizer implements DenormalizerInterface, Norma
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageRecipients();
-        if (property_exists($data, 'invoicemessagerecipients')) {
+        if (property_exists($data, 'invoice_message_recipients')) {
             $values = [];
-            foreach ($data->{'invoicemessagerecipients'} as $value) {
+            foreach ($data->{'invoice_message_recipients'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient', 'json', $context);
             }
-            $object->setInvoicemessagerecipients($values);
+            $object->setInvoiceMessageRecipients($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class InvoiceMessageRecipientsNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getInvoicemessagerecipients()) {
+        if (null !== $object->getInvoiceMessageRecipients()) {
             $values = [];
-            foreach ($object->getInvoicemessagerecipients() as $value) {
+            foreach ($object->getInvoiceMessageRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'invoicemessagerecipients'} = $values;
+            $data->{'invoice_message_recipients'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

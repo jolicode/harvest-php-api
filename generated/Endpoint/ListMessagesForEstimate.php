@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ListMessagesForEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $EstimateId;
+    protected $estimateId;
 
     /**
      * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -42,7 +42,7 @@ class ListMessagesForEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
 
     public function getUri(): string
     {
-        return str_replace(['{EstimateId}'], [$this->EstimateId], '/estimates/{EstimateId}/messages');
+        return str_replace(['{estimateId}'], [$this->estimateId], '/estimates/{estimateId}/messages');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

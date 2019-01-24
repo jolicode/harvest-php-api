@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class UpdateTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
-    protected $TaskAssignmentId;
+    protected $projectId;
+    protected $taskAssignmentId;
 
     /**
      * Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.
@@ -38,7 +38,7 @@ class UpdateTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}', '{TaskAssignmentId}'], [$this->ProjectId, $this->TaskAssignmentId], '/projects/{ProjectId}/task_assignments/{TaskAssignmentId}');
+        return str_replace(['{projectId}', '{taskAssignmentId}'], [$this->projectId, $this->taskAssignmentId], '/projects/{projectId}/task_assignments/{taskAssignmentId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

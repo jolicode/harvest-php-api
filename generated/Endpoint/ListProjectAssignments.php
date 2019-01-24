@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class ListProjectAssignments extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $UserId;
+    protected $userId;
 
     /**
      * Returns a list of your project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
@@ -42,7 +42,7 @@ class ListProjectAssignments extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getUri(): string
     {
-        return str_replace(['{UserId}'], [$this->UserId], '/users/{UserId}/project_assignments');
+        return str_replace(['{userId}'], [$this->userId], '/users/{userId}/project_assignments');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

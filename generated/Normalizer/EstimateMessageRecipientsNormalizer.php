@@ -43,12 +43,12 @@ class EstimateMessageRecipientsNormalizer implements DenormalizerInterface, Norm
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimateMessageRecipients();
-        if (property_exists($data, 'estimatemessagerecipients')) {
+        if (property_exists($data, 'estimate_message_recipients')) {
             $values = [];
-            foreach ($data->{'estimatemessagerecipients'} as $value) {
+            foreach ($data->{'estimate_message_recipients'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient', 'json', $context);
             }
-            $object->setEstimatemessagerecipients($values);
+            $object->setEstimateMessageRecipients($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class EstimateMessageRecipientsNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getEstimatemessagerecipients()) {
+        if (null !== $object->getEstimateMessageRecipients()) {
             $values = [];
-            foreach ($object->getEstimatemessagerecipients() as $value) {
+            foreach ($object->getEstimateMessageRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'estimatemessagerecipients'} = $values;
+            $data->{'estimate_message_recipients'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

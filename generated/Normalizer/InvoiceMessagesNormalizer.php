@@ -43,12 +43,12 @@ class InvoiceMessagesNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceMessages();
-        if (property_exists($data, 'invoicemessages')) {
+        if (property_exists($data, 'invoice_messages')) {
             $values = [];
-            foreach ($data->{'invoicemessages'} as $value) {
+            foreach ($data->{'invoice_messages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage', 'json', $context);
             }
-            $object->setInvoicemessages($values);
+            $object->setInvoiceMessages($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class InvoiceMessagesNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getInvoicemessages()) {
+        if (null !== $object->getInvoiceMessages()) {
             $values = [];
-            foreach ($object->getInvoicemessages() as $value) {
+            foreach ($object->getInvoiceMessages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'invoicemessages'} = $values;
+            $data->{'invoice_messages'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

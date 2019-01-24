@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class UpdateInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceItemCategoryId;
+    protected $invoiceItemCategoryId;
 
     /**
      * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
@@ -35,7 +35,7 @@ class UpdateInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceItemCategoryId}'], [$this->InvoiceItemCategoryId], '/invoice_item_categories/{InvoiceItemCategoryId}');
+        return str_replace(['{invoiceItemCategoryId}'], [$this->invoiceItemCategoryId], '/invoice_item_categories/{invoiceItemCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

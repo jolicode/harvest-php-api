@@ -43,12 +43,12 @@ class UserAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\UserAssignments();
-        if (property_exists($data, 'userassignments')) {
+        if (property_exists($data, 'user_assignments')) {
             $values = [];
-            foreach ($data->{'userassignments'} as $value) {
+            foreach ($data->{'user_assignments'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context);
             }
-            $object->setUserassignments($values);
+            $object->setUserAssignments($values);
         }
         if (property_exists($data, 'per_page')) {
             $object->setPerPage($data->{'per_page'});
@@ -78,12 +78,12 @@ class UserAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getUserassignments()) {
+        if (null !== $object->getUserAssignments()) {
             $values = [];
-            foreach ($object->getUserassignments() as $value) {
+            foreach ($object->getUserAssignments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'userassignments'} = $values;
+            $data->{'user_assignments'} = $values;
         }
         if (null !== $object->getPerPage()) {
             $data->{'per_page'} = $object->getPerPage();

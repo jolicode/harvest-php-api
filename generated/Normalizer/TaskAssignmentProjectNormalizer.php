@@ -43,6 +43,9 @@ class TaskAssignmentProjectNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TaskAssignmentProject();
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+        }
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }
@@ -56,6 +59,9 @@ class TaskAssignmentProjectNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }

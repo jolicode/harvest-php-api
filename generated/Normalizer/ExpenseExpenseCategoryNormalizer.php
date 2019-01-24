@@ -43,6 +43,12 @@ class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory();
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+        }
+        if (property_exists($data, 'name')) {
+            $object->setName($data->{'name'});
+        }
         if (property_exists($data, 'unit_price')) {
             $object->setUnitPrice($data->{'unit_price'});
         }
@@ -56,6 +62,12 @@ class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
+        }
         if (null !== $object->getUnitPrice()) {
             $data->{'unit_price'} = $object->getUnitPrice();
         }

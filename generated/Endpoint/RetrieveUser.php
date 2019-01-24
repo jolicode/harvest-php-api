@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $UserId;
+    protected $userId;
 
     /**
      * Retrieves the user with the given ID. Returns a user object and a 200 OK response code if a valid identifier was provided.
@@ -33,7 +33,7 @@ class RetrieveUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 
     public function getUri(): string
     {
-        return str_replace(['{UserId}'], [$this->UserId], '/users/{UserId}');
+        return str_replace(['{userId}'], [$this->userId], '/users/{userId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

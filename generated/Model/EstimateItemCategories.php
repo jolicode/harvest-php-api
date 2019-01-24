@@ -15,7 +15,7 @@ class EstimateItemCategories
     /**
      * @var EstimateItemCategory[]
      */
-    protected $estimateitemcategories;
+    protected $estimateItemCategories;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class EstimateItemCategories
     /**
      * @return EstimateItemCategory[]
      */
-    public function getEstimateitemcategories(): ?array
+    public function getEstimateItemCategories(): ?array
     {
-        return $this->estimateitemcategories;
+        return $this->estimateItemCategories;
     }
 
     /**
-     * @param EstimateItemCategory[] $estimateitemcategories
+     * @param EstimateItemCategory[] $estimateItemCategories
      *
      * @return self
      */
-    public function setEstimateitemcategories(?array $estimateitemcategories): self
+    public function setEstimateItemCategories(?array $estimateItemCategories): self
     {
-        $this->estimateitemcategories = $estimateitemcategories;
+        $this->estimateItemCategories = $estimateItemCategories;
 
         return $this;
     }

@@ -15,7 +15,7 @@ class TimeEntries
     /**
      * @var TimeEntry[]
      */
-    protected $timeentries;
+    protected $timeEntries;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class TimeEntries
     /**
      * @return TimeEntry[]
      */
-    public function getTimeentries(): ?array
+    public function getTimeEntries(): ?array
     {
-        return $this->timeentries;
+        return $this->timeEntries;
     }
 
     /**
-     * @param TimeEntry[] $timeentries
+     * @param TimeEntry[] $timeEntries
      *
      * @return self
      */
-    public function setTimeentries(?array $timeentries): self
+    public function setTimeEntries(?array $timeEntries): self
     {
-        $this->timeentries = $timeentries;
+        $this->timeEntries = $timeEntries;
 
         return $this;
     }

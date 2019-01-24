@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class DeleteInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $InvoiceItemCategoryId;
+    protected $invoiceItemCategoryId;
 
     /**
      * Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class DeleteInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint
 
     public function getUri(): string
     {
-        return str_replace(['{InvoiceItemCategoryId}'], [$this->InvoiceItemCategoryId], '/invoice_item_categories/{InvoiceItemCategoryId}');
+        return str_replace(['{invoiceItemCategoryId}'], [$this->invoiceItemCategoryId], '/invoice_item_categories/{invoiceItemCategoryId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

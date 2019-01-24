@@ -15,7 +15,7 @@ class InvoiceMessages
     /**
      * @var InvoiceMessage[]
      */
-    protected $invoicemessages;
+    protected $invoiceMessages;
     /**
      * @var int
      */
@@ -48,19 +48,19 @@ class InvoiceMessages
     /**
      * @return InvoiceMessage[]
      */
-    public function getInvoicemessages(): ?array
+    public function getInvoiceMessages(): ?array
     {
-        return $this->invoicemessages;
+        return $this->invoiceMessages;
     }
 
     /**
-     * @param InvoiceMessage[] $invoicemessages
+     * @param InvoiceMessage[] $invoiceMessages
      *
      * @return self
      */
-    public function setInvoicemessages(?array $invoicemessages): self
+    public function setInvoiceMessages(?array $invoiceMessages): self
     {
-        $this->invoicemessages = $invoicemessages;
+        $this->invoiceMessages = $invoiceMessages;
 
         return $this;
     }

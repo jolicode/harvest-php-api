@@ -12,8 +12,8 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $ProjectId;
-    protected $UserAssignmentId;
+    protected $projectId;
+    protected $userAssignmentId;
 
     /**
      * Retrieves the user assignment with the given ID. Returns a user assignment object and a 200 OK response code if a valid identifier was provided.
@@ -36,7 +36,7 @@ class RetrieveUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getUri(): string
     {
-        return str_replace(['{ProjectId}', '{UserAssignmentId}'], [$this->ProjectId, $this->UserAssignmentId], '/projects/{ProjectId}/user_assignments/{UserAssignmentId}');
+        return str_replace(['{projectId}', '{userAssignmentId}'], [$this->projectId, $this->userAssignmentId], '/projects/{projectId}/user_assignments/{userAssignmentId}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

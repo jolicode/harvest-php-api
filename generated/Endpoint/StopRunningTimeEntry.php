@@ -12,7 +12,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 
 class StopRunningTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $TimeEntryId;
+    protected $timeEntryId;
 
     /**
      * Stopping a time entry is only possible if it’s currently running. Returns a 200 OK response code if the call succeeded.
@@ -33,7 +33,7 @@ class StopRunningTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     public function getUri(): string
     {
-        return str_replace(['{TimeEntryId}'], [$this->TimeEntryId], '/time_entries/{TimeEntryId}/stop');
+        return str_replace(['{timeEntryId}'], [$this->timeEntryId], '/time_entries/{timeEntryId}/stop');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array

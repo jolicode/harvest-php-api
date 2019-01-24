@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,16 +36,16 @@ class InvoiceMessageRecipientNormalizer implements DenormalizerInterface, Normal
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient();
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
         }
 

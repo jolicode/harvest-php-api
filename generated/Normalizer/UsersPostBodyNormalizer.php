@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,61 +36,61 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\UsersPostBody();
-        if (property_exists($data, 'first_name')) {
+        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
         }
-        if (property_exists($data, 'last_name')) {
+        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
             $object->setLastName($data->{'last_name'});
         }
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
         }
-        if (property_exists($data, 'telephone')) {
+        if (property_exists($data, 'telephone') && $data->{'telephone'} !== null) {
             $object->setTelephone($data->{'telephone'});
         }
-        if (property_exists($data, 'timezone')) {
+        if (property_exists($data, 'timezone') && $data->{'timezone'} !== null) {
             $object->setTimezone($data->{'timezone'});
         }
-        if (property_exists($data, 'has_access_to_all_future_projects')) {
+        if (property_exists($data, 'has_access_to_all_future_projects') && $data->{'has_access_to_all_future_projects'} !== null) {
             $object->setHasAccessToAllFutureProjects($data->{'has_access_to_all_future_projects'});
         }
-        if (property_exists($data, 'is_contractor')) {
+        if (property_exists($data, 'is_contractor') && $data->{'is_contractor'} !== null) {
             $object->setIsContractor($data->{'is_contractor'});
         }
-        if (property_exists($data, 'is_admin')) {
+        if (property_exists($data, 'is_admin') && $data->{'is_admin'} !== null) {
             $object->setIsAdmin($data->{'is_admin'});
         }
-        if (property_exists($data, 'is_project_manager')) {
+        if (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} !== null) {
             $object->setIsProjectManager($data->{'is_project_manager'});
         }
-        if (property_exists($data, 'can_see_rates')) {
+        if (property_exists($data, 'can_see_rates') && $data->{'can_see_rates'} !== null) {
             $object->setCanSeeRates($data->{'can_see_rates'});
         }
-        if (property_exists($data, 'can_create_projects')) {
+        if (property_exists($data, 'can_create_projects') && $data->{'can_create_projects'} !== null) {
             $object->setCanCreateProjects($data->{'can_create_projects'});
         }
-        if (property_exists($data, 'can_create_invoices')) {
+        if (property_exists($data, 'can_create_invoices') && $data->{'can_create_invoices'} !== null) {
             $object->setCanCreateInvoices($data->{'can_create_invoices'});
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
         }
-        if (property_exists($data, 'weekly_capacity')) {
+        if (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} !== null) {
             $object->setWeeklyCapacity($data->{'weekly_capacity'});
         }
-        if (property_exists($data, 'default_hourly_rate')) {
+        if (property_exists($data, 'default_hourly_rate') && $data->{'default_hourly_rate'} !== null) {
             $object->setDefaultHourlyRate($data->{'default_hourly_rate'});
         }
-        if (property_exists($data, 'cost_rate')) {
+        if (property_exists($data, 'cost_rate') && $data->{'cost_rate'} !== null) {
             $object->setCostRate($data->{'cost_rate'});
         }
-        if (property_exists($data, 'roles')) {
+        if (property_exists($data, 'roles') && $data->{'roles'} !== null) {
             $values = [];
             foreach ($data->{'roles'} as $value) {
                 $values[] = $value;

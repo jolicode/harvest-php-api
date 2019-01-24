@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,55 +36,55 @@ class InvoicesInvoiceIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody();
-        if (property_exists($data, 'client_id')) {
+        if (property_exists($data, 'client_id') && $data->{'client_id'} !== null) {
             $object->setClientId($data->{'client_id'});
         }
-        if (property_exists($data, 'retainer_id')) {
+        if (property_exists($data, 'retainer_id') && $data->{'retainer_id'} !== null) {
             $object->setRetainerId($data->{'retainer_id'});
         }
-        if (property_exists($data, 'estimate_id')) {
+        if (property_exists($data, 'estimate_id') && $data->{'estimate_id'} !== null) {
             $object->setEstimateId($data->{'estimate_id'});
         }
-        if (property_exists($data, 'number')) {
+        if (property_exists($data, 'number') && $data->{'number'} !== null) {
             $object->setNumber($data->{'number'});
         }
-        if (property_exists($data, 'purchase_order')) {
+        if (property_exists($data, 'purchase_order') && $data->{'purchase_order'} !== null) {
             $object->setPurchaseOrder($data->{'purchase_order'});
         }
-        if (property_exists($data, 'tax')) {
+        if (property_exists($data, 'tax') && $data->{'tax'} !== null) {
             $object->setTax($data->{'tax'});
         }
-        if (property_exists($data, 'tax2')) {
+        if (property_exists($data, 'tax2') && $data->{'tax2'} !== null) {
             $object->setTax2($data->{'tax2'});
         }
-        if (property_exists($data, 'discount')) {
+        if (property_exists($data, 'discount') && $data->{'discount'} !== null) {
             $object->setDiscount($data->{'discount'});
         }
-        if (property_exists($data, 'subject')) {
+        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
             $object->setSubject($data->{'subject'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'currency')) {
+        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
             $object->setCurrency($data->{'currency'});
         }
-        if (property_exists($data, 'issue_date')) {
+        if (property_exists($data, 'issue_date') && $data->{'issue_date'} !== null) {
             $object->setIssueDate($data->{'issue_date'});
         }
-        if (property_exists($data, 'due_date')) {
+        if (property_exists($data, 'due_date') && $data->{'due_date'} !== null) {
             $object->setDueDate($data->{'due_date'});
         }
-        if (property_exists($data, 'payment_term')) {
+        if (property_exists($data, 'payment_term') && $data->{'payment_term'} !== null) {
             $object->setPaymentTerm($data->{'payment_term'});
         }
-        if (property_exists($data, 'line_items')) {
+        if (property_exists($data, 'line_items') && $data->{'line_items'} !== null) {
             $values = [];
             foreach ($data->{'line_items'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem', 'json', $context);

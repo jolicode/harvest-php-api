@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,58 +36,58 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Company();
-        if (property_exists($data, 'base_uri')) {
+        if (property_exists($data, 'base_uri') && $data->{'base_uri'} !== null) {
             $object->setBaseUri($data->{'base_uri'});
         }
-        if (property_exists($data, 'full_domain')) {
+        if (property_exists($data, 'full_domain') && $data->{'full_domain'} !== null) {
             $object->setFullDomain($data->{'full_domain'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
         }
-        if (property_exists($data, 'week_start_day')) {
+        if (property_exists($data, 'week_start_day') && $data->{'week_start_day'} !== null) {
             $object->setWeekStartDay($data->{'week_start_day'});
         }
-        if (property_exists($data, 'wants_timestamp_timers')) {
+        if (property_exists($data, 'wants_timestamp_timers') && $data->{'wants_timestamp_timers'} !== null) {
             $object->setWantsTimestampTimers($data->{'wants_timestamp_timers'});
         }
-        if (property_exists($data, 'time_format')) {
+        if (property_exists($data, 'time_format') && $data->{'time_format'} !== null) {
             $object->setTimeFormat($data->{'time_format'});
         }
-        if (property_exists($data, 'plan_type')) {
+        if (property_exists($data, 'plan_type') && $data->{'plan_type'} !== null) {
             $object->setPlanType($data->{'plan_type'});
         }
-        if (property_exists($data, 'clock')) {
+        if (property_exists($data, 'clock') && $data->{'clock'} !== null) {
             $object->setClock($data->{'clock'});
         }
-        if (property_exists($data, 'decimal_symbol')) {
+        if (property_exists($data, 'decimal_symbol') && $data->{'decimal_symbol'} !== null) {
             $object->setDecimalSymbol($data->{'decimal_symbol'});
         }
-        if (property_exists($data, 'thousands_separator')) {
+        if (property_exists($data, 'thousands_separator') && $data->{'thousands_separator'} !== null) {
             $object->setThousandsSeparator($data->{'thousands_separator'});
         }
-        if (property_exists($data, 'color_scheme')) {
+        if (property_exists($data, 'color_scheme') && $data->{'color_scheme'} !== null) {
             $object->setColorScheme($data->{'color_scheme'});
         }
-        if (property_exists($data, 'expense_feature')) {
+        if (property_exists($data, 'expense_feature') && $data->{'expense_feature'} !== null) {
             $object->setExpenseFeature($data->{'expense_feature'});
         }
-        if (property_exists($data, 'invoice_feature')) {
+        if (property_exists($data, 'invoice_feature') && $data->{'invoice_feature'} !== null) {
             $object->setInvoiceFeature($data->{'invoice_feature'});
         }
-        if (property_exists($data, 'estimate_feature')) {
+        if (property_exists($data, 'estimate_feature') && $data->{'estimate_feature'} !== null) {
             $object->setEstimateFeature($data->{'estimate_feature'});
         }
-        if (property_exists($data, 'approval_feature')) {
+        if (property_exists($data, 'approval_feature') && $data->{'approval_feature'} !== null) {
             $object->setApprovalFeature($data->{'approval_feature'});
         }
 

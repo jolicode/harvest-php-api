@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,22 +36,22 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody();
-        if (property_exists($data, 'amount')) {
+        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
             $object->setAmount($data->{'amount'});
         }
-        if (property_exists($data, 'paid_at')) {
+        if (property_exists($data, 'paid_at') && $data->{'paid_at'} !== null) {
             $object->setPaidAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'paid_at'}));
         }
-        if (property_exists($data, 'paid_date')) {
+        if (property_exists($data, 'paid_date') && $data->{'paid_date'} !== null) {
             $object->setPaidDate($data->{'paid_date'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
 

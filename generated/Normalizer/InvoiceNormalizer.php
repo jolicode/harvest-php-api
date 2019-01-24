@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,110 +36,110 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Invoice();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'client')) {
+        if (property_exists($data, 'client') && $data->{'client'} !== null) {
             $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient', 'json', $context));
         }
-        if (property_exists($data, 'line_items')) {
+        if (property_exists($data, 'line_items') && $data->{'line_items'} !== null) {
             $values = [];
             foreach ($data->{'line_items'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem', 'json', $context);
             }
             $object->setLineItems($values);
         }
-        if (property_exists($data, 'estimate')) {
+        if (property_exists($data, 'estimate') && $data->{'estimate'} !== null) {
             $object->setEstimate($this->denormalizer->denormalize($data->{'estimate'}, 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate', 'json', $context));
         }
-        if (property_exists($data, 'retainer')) {
+        if (property_exists($data, 'retainer') && $data->{'retainer'} !== null) {
             $object->setRetainer($this->denormalizer->denormalize($data->{'retainer'}, 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer', 'json', $context));
         }
-        if (property_exists($data, 'creator')) {
+        if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($this->denormalizer->denormalize($data->{'creator'}, 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator', 'json', $context));
         }
-        if (property_exists($data, 'client_key')) {
+        if (property_exists($data, 'client_key') && $data->{'client_key'} !== null) {
             $object->setClientKey($data->{'client_key'});
         }
-        if (property_exists($data, 'number')) {
+        if (property_exists($data, 'number') && $data->{'number'} !== null) {
             $object->setNumber($data->{'number'});
         }
-        if (property_exists($data, 'purchase_order')) {
+        if (property_exists($data, 'purchase_order') && $data->{'purchase_order'} !== null) {
             $object->setPurchaseOrder($data->{'purchase_order'});
         }
-        if (property_exists($data, 'amount')) {
+        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
             $object->setAmount($data->{'amount'});
         }
-        if (property_exists($data, 'due_amount')) {
+        if (property_exists($data, 'due_amount') && $data->{'due_amount'} !== null) {
             $object->setDueAmount($data->{'due_amount'});
         }
-        if (property_exists($data, 'tax')) {
+        if (property_exists($data, 'tax') && $data->{'tax'} !== null) {
             $object->setTax($data->{'tax'});
         }
-        if (property_exists($data, 'tax_amount')) {
+        if (property_exists($data, 'tax_amount') && $data->{'tax_amount'} !== null) {
             $object->setTaxAmount($data->{'tax_amount'});
         }
-        if (property_exists($data, 'tax2')) {
+        if (property_exists($data, 'tax2') && $data->{'tax2'} !== null) {
             $object->setTax2($data->{'tax2'});
         }
-        if (property_exists($data, 'tax2_amount')) {
+        if (property_exists($data, 'tax2_amount') && $data->{'tax2_amount'} !== null) {
             $object->setTax2Amount($data->{'tax2_amount'});
         }
-        if (property_exists($data, 'discount')) {
+        if (property_exists($data, 'discount') && $data->{'discount'} !== null) {
             $object->setDiscount($data->{'discount'});
         }
-        if (property_exists($data, 'discount_amount')) {
+        if (property_exists($data, 'discount_amount') && $data->{'discount_amount'} !== null) {
             $object->setDiscountAmount($data->{'discount_amount'});
         }
-        if (property_exists($data, 'subject')) {
+        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
             $object->setSubject($data->{'subject'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'currency')) {
+        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
             $object->setCurrency($data->{'currency'});
         }
-        if (property_exists($data, 'state')) {
+        if (property_exists($data, 'state') && $data->{'state'} !== null) {
             $object->setState($data->{'state'});
         }
-        if (property_exists($data, 'period_start')) {
+        if (property_exists($data, 'period_start') && $data->{'period_start'} !== null) {
             $object->setPeriodStart($data->{'period_start'});
         }
-        if (property_exists($data, 'period_end')) {
+        if (property_exists($data, 'period_end') && $data->{'period_end'} !== null) {
             $object->setPeriodEnd($data->{'period_end'});
         }
-        if (property_exists($data, 'issue_date')) {
+        if (property_exists($data, 'issue_date') && $data->{'issue_date'} !== null) {
             $object->setIssueDate($data->{'issue_date'});
         }
-        if (property_exists($data, 'due_date')) {
+        if (property_exists($data, 'due_date') && $data->{'due_date'} !== null) {
             $object->setDueDate($data->{'due_date'});
         }
-        if (property_exists($data, 'payment_term')) {
+        if (property_exists($data, 'payment_term') && $data->{'payment_term'} !== null) {
             $object->setPaymentTerm($data->{'payment_term'});
         }
-        if (property_exists($data, 'sent_at')) {
+        if (property_exists($data, 'sent_at') && $data->{'sent_at'} !== null) {
             $object->setSentAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'sent_at'}));
         }
-        if (property_exists($data, 'paid_at')) {
+        if (property_exists($data, 'paid_at') && $data->{'paid_at'} !== null) {
             $object->setPaidAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'paid_at'}));
         }
-        if (property_exists($data, 'paid_date')) {
+        if (property_exists($data, 'paid_date') && $data->{'paid_date'} !== null) {
             $object->setPaidDate($data->{'paid_date'});
         }
-        if (property_exists($data, 'closed_at')) {
+        if (property_exists($data, 'closed_at') && $data->{'closed_at'} !== null) {
             $object->setClosedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'closed_at'}));
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

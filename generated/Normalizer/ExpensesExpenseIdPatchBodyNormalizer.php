@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,37 +36,37 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody();
-        if (property_exists($data, 'project_id')) {
+        if (property_exists($data, 'project_id') && $data->{'project_id'} !== null) {
             $object->setProjectId($data->{'project_id'});
         }
-        if (property_exists($data, 'expense_category_id')) {
+        if (property_exists($data, 'expense_category_id') && $data->{'expense_category_id'} !== null) {
             $object->setExpenseCategoryId($data->{'expense_category_id'});
         }
-        if (property_exists($data, 'spent_date')) {
+        if (property_exists($data, 'spent_date') && $data->{'spent_date'} !== null) {
             $object->setSpentDate($data->{'spent_date'});
         }
-        if (property_exists($data, 'units')) {
+        if (property_exists($data, 'units') && $data->{'units'} !== null) {
             $object->setUnits($data->{'units'});
         }
-        if (property_exists($data, 'total_cost')) {
+        if (property_exists($data, 'total_cost') && $data->{'total_cost'} !== null) {
             $object->setTotalCost($data->{'total_cost'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'billable')) {
+        if (property_exists($data, 'billable') && $data->{'billable'} !== null) {
             $object->setBillable($data->{'billable'});
         }
-        if (property_exists($data, 'receipt')) {
+        if (property_exists($data, 'receipt') && $data->{'receipt'} !== null) {
             $object->setReceipt($data->{'receipt'});
         }
-        if (property_exists($data, 'delete_receipt')) {
+        if (property_exists($data, 'delete_receipt') && $data->{'delete_receipt'} !== null) {
             $object->setDeleteReceipt($data->{'delete_receipt'});
         }
 

@@ -5,4 +5,5 @@ return [
     'namespace' => 'JoliCode\Harvest\Api',
     'directory' => __DIR__ . '/generated',
     'reference' => true,
+    'strict' => false,
 ];

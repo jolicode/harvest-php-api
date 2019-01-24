@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,43 +36,43 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicePayment();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'amount')) {
+        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
             $object->setAmount($data->{'amount'});
         }
-        if (property_exists($data, 'paid_at')) {
+        if (property_exists($data, 'paid_at') && $data->{'paid_at'} !== null) {
             $object->setPaidAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'paid_at'}));
         }
-        if (property_exists($data, 'paid_date')) {
+        if (property_exists($data, 'paid_date') && $data->{'paid_date'} !== null) {
             $object->setPaidDate($data->{'paid_date'});
         }
-        if (property_exists($data, 'recorded_by')) {
+        if (property_exists($data, 'recorded_by') && $data->{'recorded_by'} !== null) {
             $object->setRecordedBy($data->{'recorded_by'});
         }
-        if (property_exists($data, 'recorded_by_email')) {
+        if (property_exists($data, 'recorded_by_email') && $data->{'recorded_by_email'} !== null) {
             $object->setRecordedByEmail($data->{'recorded_by_email'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'transaction_id')) {
+        if (property_exists($data, 'transaction_id') && $data->{'transaction_id'} !== null) {
             $object->setTransactionId($data->{'transaction_id'});
         }
-        if (property_exists($data, 'payment_gateway')) {
+        if (property_exists($data, 'payment_gateway') && $data->{'payment_gateway'} !== null) {
             $object->setPaymentGateway($this->denormalizer->denormalize($data->{'payment_gateway'}, 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway', 'json', $context));
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

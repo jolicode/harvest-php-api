@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,22 +36,22 @@ class EstimatesPostBodyLineItemsItemExpensesNormalizer implements DenormalizerIn
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItemExpenses();
-        if (property_exists($data, 'summary_type')) {
+        if (property_exists($data, 'summary_type') && $data->{'summary_type'} !== null) {
             $object->setSummaryType($data->{'summary_type'});
         }
-        if (property_exists($data, 'from')) {
+        if (property_exists($data, 'from') && $data->{'from'} !== null) {
             $object->setFrom($data->{'from'});
         }
-        if (property_exists($data, 'to')) {
+        if (property_exists($data, 'to') && $data->{'to'} !== null) {
             $object->setTo($data->{'to'});
         }
-        if (property_exists($data, 'attach_receipt')) {
+        if (property_exists($data, 'attach_receipt') && $data->{'attach_receipt'} !== null) {
             $object->setAttachReceipt($data->{'attach_receipt'});
         }
 

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,25 +36,25 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntryExternalReference();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'group_id')) {
+        if (property_exists($data, 'group_id') && $data->{'group_id'} !== null) {
             $object->setGroupId($data->{'group_id'});
         }
-        if (property_exists($data, 'permalink')) {
+        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
         }
-        if (property_exists($data, 'service')) {
+        if (property_exists($data, 'service') && $data->{'service'} !== null) {
             $object->setService($data->{'service'});
         }
-        if (property_exists($data, 'service_icon_url')) {
+        if (property_exists($data, 'service_icon_url') && $data->{'service_icon_url'} !== null) {
             $object->setServiceIconUrl($data->{'service_icon_url'});
         }
 

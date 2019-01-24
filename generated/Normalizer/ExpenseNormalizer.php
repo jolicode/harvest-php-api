@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,61 +36,61 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Expense();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'client')) {
+        if (property_exists($data, 'client') && $data->{'client'} !== null) {
             $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient', 'json', $context));
         }
-        if (property_exists($data, 'project')) {
+        if (property_exists($data, 'project') && $data->{'project'} !== null) {
             $object->setProject($this->denormalizer->denormalize($data->{'project'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject', 'json', $context));
         }
-        if (property_exists($data, 'expense_category')) {
+        if (property_exists($data, 'expense_category') && $data->{'expense_category'} !== null) {
             $object->setExpenseCategory($this->denormalizer->denormalize($data->{'expense_category'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory', 'json', $context));
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser', 'json', $context));
         }
-        if (property_exists($data, 'user_assignment')) {
+        if (property_exists($data, 'user_assignment') && $data->{'user_assignment'} !== null) {
             $object->setUserAssignment($this->denormalizer->denormalize($data->{'user_assignment'}, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context));
         }
-        if (property_exists($data, 'receipt')) {
+        if (property_exists($data, 'receipt') && $data->{'receipt'} !== null) {
             $object->setReceipt($this->denormalizer->denormalize($data->{'receipt'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt', 'json', $context));
         }
-        if (property_exists($data, 'invoice')) {
+        if (property_exists($data, 'invoice') && $data->{'invoice'} !== null) {
             $object->setInvoice($this->denormalizer->denormalize($data->{'invoice'}, 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice', 'json', $context));
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'billable')) {
+        if (property_exists($data, 'billable') && $data->{'billable'} !== null) {
             $object->setBillable($data->{'billable'});
         }
-        if (property_exists($data, 'is_closed')) {
+        if (property_exists($data, 'is_closed') && $data->{'is_closed'} !== null) {
             $object->setIsClosed($data->{'is_closed'});
         }
-        if (property_exists($data, 'is_locked')) {
+        if (property_exists($data, 'is_locked') && $data->{'is_locked'} !== null) {
             $object->setIsLocked($data->{'is_locked'});
         }
-        if (property_exists($data, 'is_billed')) {
+        if (property_exists($data, 'is_billed') && $data->{'is_billed'} !== null) {
             $object->setIsBilled($data->{'is_billed'});
         }
-        if (property_exists($data, 'locked_reason')) {
+        if (property_exists($data, 'locked_reason') && $data->{'locked_reason'} !== null) {
             $object->setLockedReason($data->{'locked_reason'});
         }
-        if (property_exists($data, 'spent_date')) {
+        if (property_exists($data, 'spent_date') && $data->{'spent_date'} !== null) {
             $object->setSpentDate($data->{'spent_date'});
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

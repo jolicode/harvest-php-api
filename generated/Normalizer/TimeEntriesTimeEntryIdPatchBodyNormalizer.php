@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,34 +36,34 @@ class TimeEntriesTimeEntryIdPatchBodyNormalizer implements DenormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody();
-        if (property_exists($data, 'project_id')) {
+        if (property_exists($data, 'project_id') && $data->{'project_id'} !== null) {
             $object->setProjectId($data->{'project_id'});
         }
-        if (property_exists($data, 'task_id')) {
+        if (property_exists($data, 'task_id') && $data->{'task_id'} !== null) {
             $object->setTaskId($data->{'task_id'});
         }
-        if (property_exists($data, 'spent_date')) {
+        if (property_exists($data, 'spent_date') && $data->{'spent_date'} !== null) {
             $object->setSpentDate($data->{'spent_date'});
         }
-        if (property_exists($data, 'started_time')) {
+        if (property_exists($data, 'started_time') && $data->{'started_time'} !== null) {
             $object->setStartedTime($data->{'started_time'});
         }
-        if (property_exists($data, 'ended_time')) {
+        if (property_exists($data, 'ended_time') && $data->{'ended_time'} !== null) {
             $object->setEndedTime($data->{'ended_time'});
         }
-        if (property_exists($data, 'hours')) {
+        if (property_exists($data, 'hours') && $data->{'hours'} !== null) {
             $object->setHours($data->{'hours'});
         }
-        if (property_exists($data, 'notes')) {
+        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
-        if (property_exists($data, 'external_reference')) {
+        if (property_exists($data, 'external_reference') && $data->{'external_reference'} !== null) {
             $object->setExternalReference($this->denormalizer->denormalize($data->{'external_reference'}, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference', 'json', $context));
         }
 

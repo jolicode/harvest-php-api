@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,65 +36,65 @@ class InvoiceMessageNormalizer implements DenormalizerInterface, NormalizerInter
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceMessage();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, 'sent_by')) {
+        if (property_exists($data, 'sent_by') && $data->{'sent_by'} !== null) {
             $object->setSentBy($data->{'sent_by'});
         }
-        if (property_exists($data, 'sent_by_email')) {
+        if (property_exists($data, 'sent_by_email') && $data->{'sent_by_email'} !== null) {
             $object->setSentByEmail($data->{'sent_by_email'});
         }
-        if (property_exists($data, 'sent_from')) {
+        if (property_exists($data, 'sent_from') && $data->{'sent_from'} !== null) {
             $object->setSentFrom($data->{'sent_from'});
         }
-        if (property_exists($data, 'sent_from_email')) {
+        if (property_exists($data, 'sent_from_email') && $data->{'sent_from_email'} !== null) {
             $object->setSentFromEmail($data->{'sent_from_email'});
         }
-        if (property_exists($data, 'recipients')) {
+        if (property_exists($data, 'recipients') && $data->{'recipients'} !== null) {
             $values = [];
             foreach ($data->{'recipients'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient', 'json', $context);
             }
             $object->setRecipients($values);
         }
-        if (property_exists($data, 'subject')) {
+        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
             $object->setSubject($data->{'subject'});
         }
-        if (property_exists($data, 'body')) {
+        if (property_exists($data, 'body') && $data->{'body'} !== null) {
             $object->setBody($data->{'body'});
         }
-        if (property_exists($data, 'include_link_to_client_invoice')) {
+        if (property_exists($data, 'include_link_to_client_invoice') && $data->{'include_link_to_client_invoice'} !== null) {
             $object->setIncludeLinkToClientInvoice($data->{'include_link_to_client_invoice'});
         }
-        if (property_exists($data, 'attach_pdf')) {
+        if (property_exists($data, 'attach_pdf') && $data->{'attach_pdf'} !== null) {
             $object->setAttachPdf($data->{'attach_pdf'});
         }
-        if (property_exists($data, 'send_me_a_copy')) {
+        if (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} !== null) {
             $object->setSendMeACopy($data->{'send_me_a_copy'});
         }
-        if (property_exists($data, 'thank_you')) {
+        if (property_exists($data, 'thank_you') && $data->{'thank_you'} !== null) {
             $object->setThankYou($data->{'thank_you'});
         }
-        if (property_exists($data, 'event_type')) {
+        if (property_exists($data, 'event_type') && $data->{'event_type'} !== null) {
             $object->setEventType($data->{'event_type'});
         }
-        if (property_exists($data, 'reminder')) {
+        if (property_exists($data, 'reminder') && $data->{'reminder'} !== null) {
             $object->setReminder($data->{'reminder'});
         }
-        if (property_exists($data, 'send_reminder_on')) {
+        if (property_exists($data, 'send_reminder_on') && $data->{'send_reminder_on'} !== null) {
             $object->setSendReminderOn($data->{'send_reminder_on'});
         }
-        if (property_exists($data, 'created_at')) {
+        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
-        if (property_exists($data, 'updated_at')) {
+        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
         }
 

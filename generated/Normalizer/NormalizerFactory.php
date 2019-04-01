@@ -65,6 +65,8 @@ class NormalizerFactory
         $normalizers[] = new ProjectNormalizer();
         $normalizers[] = new ProjectClientNormalizer();
         $normalizers[] = new RoleNormalizer();
+        $normalizers[] = new BillableRateNormalizer();
+        $normalizers[] = new CostRateNormalizer();
         $normalizers[] = new ProjectAssignmentNormalizer();
         $normalizers[] = new ProjectAssignmentProjectNormalizer();
         $normalizers[] = new ProjectAssignmentClientNormalizer();
@@ -91,6 +93,8 @@ class NormalizerFactory
         $normalizers[] = new TaskAssignmentsNormalizer();
         $normalizers[] = new ProjectsNormalizer();
         $normalizers[] = new RolesNormalizer();
+        $normalizers[] = new BillableRatesNormalizer();
+        $normalizers[] = new CostRatesNormalizer();
         $normalizers[] = new ProjectAssignmentsNormalizer();
         $normalizers[] = new UsersNormalizer();
         $normalizers[] = new ErrorNormalizer();
@@ -137,6 +141,8 @@ class NormalizerFactory
         $normalizers[] = new ProjectsProjectIdPatchBodyNormalizer();
         $normalizers[] = new RolesPostBodyNormalizer();
         $normalizers[] = new RolesRoleIdPatchBodyNormalizer();
+        $normalizers[] = new UsersUserIdBillableRatesPostBodyNormalizer();
+        $normalizers[] = new UsersUserIdCostRatesPostBodyNormalizer();
         $normalizers[] = new UsersPostBodyNormalizer();
         $normalizers[] = new UsersUserIdPatchBodyNormalizer();
 

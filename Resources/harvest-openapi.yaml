@@ -2731,9 +2731,12 @@ paths:
               is_project_manager:
                 type: boolean
                 description: 'Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.'
+              use_default_rates:
+                type: boolean
+                description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment. Defaults to true.'
               hourly_rate:
                 type: number
-                description: 'Rate used when the project’s bill_by is People. Defaults to 0.'
+                description: 'Custom rate used when the project’s bill_by is People and use_default_rates is false. Defaults to 0.'
                 format: float
               budget:
                 type: number
@@ -2812,9 +2815,12 @@ paths:
               is_project_manager:
                 type: boolean
                 description: 'Determines if the user has project manager permissions for the project.'
+              use_default_rates:
+                type: boolean
+                description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
               hourly_rate:
                 type: number
-                description: 'Rate used when the project’s bill_by is People.'
+                description: 'Custom rate used when the project’s bill_by is People and use_default_rates is false.'
                 format: float
               budget:
                 type: number
@@ -3544,6 +3550,218 @@ paths:
       responses:
         200:
           description: 'Delete a role'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  '/users/{userId}/billable_rates':
+    get:
+      summary: 'List all billable rates for a specific user'
+      operationId: listBillableRatesForSpecificUser
+      description: "Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.\n\nThe response contains an object with a billable_rates property that contains an array of up to per_page billable rates. Each entry in the array is a separate billable rate object. If no more billable rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your billable rates."
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          required: false
+          in: query
+          type: integer
+      responses:
+        200:
+          description: 'List all billable rates for a specific user'
+          schema:
+            $ref: '#/definitions/BillableRates'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: 'Create a billable rate'
+      operationId: createBillableRate
+      description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              amount:
+                type: number
+                description: 'The amount of the billable rate.'
+                format: float
+              start_date:
+                type: string
+                description: 'The date the billable rate is effective. Cannot be a date in the future.'
+                format: date
+            required:
+              - amount
+      responses:
+        201:
+          description: 'Create a billable rate'
+          schema:
+            $ref: '#/definitions/BillableRate'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  '/users/{userId}/billable_rates/{billableRateId}':
+    get:
+      summary: 'Retrieve a billable rate'
+      operationId: retrieveBillableRate
+      description: 'Retrieves the billable rate with the given ID. Returns a billable rate object and a 200 OK response code if a valid identifier was provided.'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: billableRateId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Retrieve a billable rate'
+          schema:
+            $ref: '#/definitions/BillableRate'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  '/users/{userId}/cost_rates':
+    get:
+      summary: 'List all cost rates for a specific user'
+      operationId: listCostRatesForSpecificUser
+      description: "Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.\n\nThe response contains an object with a cost_rates property that contains an array of up to per_page cost rates. Each entry in the array is a separate cost rate object. If no more cost rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your cost rates."
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          required: false
+          in: query
+          type: integer
+      responses:
+        200:
+          description: 'List all cost rates for a specific user'
+          schema:
+            $ref: '#/definitions/CostRates'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: 'Create a cost rate'
+      operationId: createCostRate
+      description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              amount:
+                type: number
+                description: 'The amount of the cost rate.'
+                format: float
+              start_date:
+                type: string
+                description: 'The date the cost rate is effective. Cannot be a date in the future.'
+                format: date
+            required:
+              - amount
+      responses:
+        201:
+          description: 'Create a cost rate'
+          schema:
+            $ref: '#/definitions/CostRate'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  '/users/{userId}/cost_rates/{costRateId}':
+    get:
+      summary: 'Retrieve a cost rate'
+      operationId: retrieveCostRate
+      description: 'Retrieves the cost rate with the given ID. Returns a cost rate object and a 200 OK response code if a valid identifier was provided.'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+        -
+          name: costRateId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Retrieve a cost rate'
+          schema:
+            $ref: '#/definitions/CostRate'
         default:
           description: 'error payload'
           schema:
@@ -4861,9 +5079,12 @@ definitions:
       is_project_manager:
         type: boolean
         description: 'Determines if the user has project manager permissions for the project.'
+      use_default_rates:
+        type: boolean
+        description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
       hourly_rate:
         type: number
-        description: 'Rate used when the project’s bill_by is People.'
+        description: 'Custom rate used when the project’s bill_by is People and use_default_rates is false.'
         format: float
       budget:
         type: number
@@ -5040,6 +5261,60 @@ definitions:
         type: string
         description: 'Date and time the role was last updated.'
         format: date-time
+  BillableRate:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 'Unique ID for the billable rate.'
+        format: int32
+      amount:
+        type: number
+        description: 'The amount of the billable rate.'
+        format: float
+      start_date:
+        type: string
+        description: 'The date the billable rate is effective.'
+        format: date
+      end_date:
+        type: string
+        description: 'The date the billable rate is no longer effective. This date is calculated by Harvest.'
+        format: date
+      created_at:
+        type: string
+        description: 'Date and time the billable rate was created.'
+        format: date-time
+      updated_at:
+        type: string
+        description: 'Date and time the billable rate was last updated.'
+        format: date-time
+  CostRate:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 'Unique ID for the cost rate.'
+        format: int32
+      amount:
+        type: number
+        description: 'The amount of the cost rate.'
+        format: float
+      start_date:
+        type: string
+        description: 'The date the cost rate is effective.'
+        format: date
+      end_date:
+        type: string
+        description: 'The date the cost rate is no longer effective. This date is calculated by Harvest.'
+        format: date
+      created_at:
+        type: string
+        description: 'Date and time the cost rate was created.'
+        format: date-time
+      updated_at:
+        type: string
+        description: 'Date and time the cost rate was last updated.'
+        format: date-time
   ProjectAssignment:
     type: object
     properties:
@@ -5053,9 +5328,12 @@ definitions:
       is_project_manager:
         type: boolean
         description: 'Determines if the user has project manager permissions for the project.'
+      use_default_rates:
+        type: boolean
+        description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
       hourly_rate:
         type: number
-        description: 'Rate used when the project’s bill_by is People.'
+        description: 'Custom rate used when the project’s bill_by is People and use_default_rates is false.'
         format: float
       budget:
         type: number
@@ -5939,6 +6217,78 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Role'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  BillableRates:
+    type: object
+    required:
+      - billable_rates
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      billable_rates:
+        type: array
+        items:
+          $ref: '#/definitions/BillableRate'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  CostRates:
+    type: object
+    required:
+      - cost_rates
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      cost_rates:
+        type: array
+        items:
+          $ref: '#/definitions/CostRate'
       per_page:
         type: integer
         format: int64

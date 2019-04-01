@@ -1335,6 +1335,114 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
+
+    The response contains an object with a billable_rates property that contains an array of up to per_page billable rates. Each entry in the array is a separate billable rate object. If no more billable rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your billable rates.
+     *
+     * @param string $userId
+     * @param array  $queryParameters {
+     *
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\BillableRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function listBillableRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListBillableRatesForSpecificUser($userId, $queryParameters), $fetch);
+    }
+
+    /**
+     * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
+
+
+     Creating a billable rate with no start_date will replace a user’s existing rate(s).
+     Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
+
+     *
+     * @param string                                                       $userId
+     * @param \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload json payload
+     * @param string                                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createBillableRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $payload), $fetch);
+    }
+
+    /**
+     * Retrieves the billable rate with the given ID. Returns a billable rate object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $userId
+     * @param string $billableRateId
+     * @param string $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveBillableRate(string $userId, string $billableRateId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveBillableRate($userId, $billableRateId), $fetch);
+    }
+
+    /**
+     * Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.
+
+    The response contains an object with a cost_rates property that contains an array of up to per_page cost rates. Each entry in the array is a separate cost rate object. If no more cost rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your cost rates.
+     *
+     * @param string $userId
+     * @param array  $queryParameters {
+     *
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\CostRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function listCostRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListCostRatesForSpecificUser($userId, $queryParameters), $fetch);
+    }
+
+    /**
+     * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
+
+
+     Creating a cost rate with no start_date will replace a user’s existing rate(s).
+     Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
+
+     *
+     * @param string                                                   $userId
+     * @param \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload json payload
+     * @param string                                                   $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createCostRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $payload), $fetch);
+    }
+
+    /**
+     * Retrieves the cost rate with the given ID. Returns a cost rate object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $userId
+     * @param string $costRateId
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveCostRate(string $userId, string $costRateId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCostRate($userId, $costRateId), $fetch);
+    }
+
+    /**
      * Returns a list of your project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
 
     The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.

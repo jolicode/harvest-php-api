@@ -57,6 +57,9 @@ class UserAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
         if (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} !== null) {
             $object->setIsProjectManager($data->{'is_project_manager'});
         }
+        if (property_exists($data, 'use_default_rates') && $data->{'use_default_rates'} !== null) {
+            $object->setUseDefaultRates($data->{'use_default_rates'});
+        }
         if (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} !== null) {
             $object->setHourlyRate($data->{'hourly_rate'});
         }
@@ -90,6 +93,9 @@ class UserAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getIsProjectManager()) {
             $data->{'is_project_manager'} = $object->getIsProjectManager();
+        }
+        if (null !== $object->getUseDefaultRates()) {
+            $data->{'use_default_rates'} = $object->getUseDefaultRates();
         }
         if (null !== $object->getHourlyRate()) {
             $data->{'hourly_rate'} = $object->getHourlyRate();

@@ -31,7 +31,13 @@ class ProjectAssignment
      */
     protected $isProjectManager;
     /**
-     * Rate used when the project’s bill_by is People.
+     * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
+     *
+     * @var bool
+     */
+    protected $useDefaultRates;
+    /**
+     * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
      * @var float
      */
@@ -146,7 +152,31 @@ class ProjectAssignment
     }
 
     /**
-     * Rate used when the project’s bill_by is People.
+     * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
+     *
+     * @return bool
+     */
+    public function getUseDefaultRates(): ?bool
+    {
+        return $this->useDefaultRates;
+    }
+
+    /**
+     * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
+     *
+     * @param bool $useDefaultRates
+     *
+     * @return self
+     */
+    public function setUseDefaultRates(?bool $useDefaultRates): self
+    {
+        $this->useDefaultRates = $useDefaultRates;
+
+        return $this;
+    }
+
+    /**
+     * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
      * @return float
      */
@@ -156,7 +186,7 @@ class ProjectAssignment
     }
 
     /**
-     * Rate used when the project’s bill_by is People.
+     * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
      * @param float $hourlyRate
      *

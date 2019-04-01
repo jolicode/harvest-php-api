@@ -1,5 +1,9 @@
 # Changes between versions
 
+## unreleased
+
+* Support for cost and billable rates
+
 ## 1.1.0 (2019-04-01)
 
 * Support HTTPlug 2

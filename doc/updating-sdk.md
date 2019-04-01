@@ -8,7 +8,7 @@ Run the following command to retrieve the latest API spec:
 curl https://raw.githubusercontent.com/jolicode/harvest-openapi-generator/master/generated/harvest-openapi.yaml -o Resources/harvest-openapi.yaml
 ```
 
-## Regenerate the SDk
+## Regenerate the SDK
 
 When the versioned spec has been updated, simply run Jane to regenerate the
 SDK:

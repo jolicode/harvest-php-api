@@ -10,21 +10,26 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListProjectAssignmentsForTheCurrentlyAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ListActiveProjectAssignments extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    protected $userId;
+
     /**
-     * Returns a list of your project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
+     * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
 
     The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
-     * @param array $queryParameters {
+     * @param string $userId
+     * @param array  $queryParameters {
      *
+     *     @var string $updated_since only return project assignments that have been updated since the given date and time
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
      * }
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(string $userId, array $queryParameters = [])
     {
+        $this->userId = $userId;
         $this->queryParameters = $queryParameters;
     }
 
@@ -37,7 +42,7 @@ class ListProjectAssignmentsForTheCurrentlyAuthenticatedUser extends \Jane\OpenA
 
     public function getUri(): string
     {
-        return '/users/me/project_assignments';
+        return str_replace(['{userId}'], [$this->userId], '/users/{userId}/project_assignments');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
@@ -48,9 +53,10 @@ class ListProjectAssignmentsForTheCurrentlyAuthenticatedUser extends \Jane\OpenA
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['page', 'per_page']);
+        $optionsResolver->setDefined(['updated_since', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('updated_since', ['string']);
         $optionsResolver->setAllowedTypes('page', ['int']);
         $optionsResolver->setAllowedTypes('per_page', ['int']);
 

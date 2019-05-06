@@ -980,12 +980,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Returns a list of your user assignments. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
+     * Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
 
     The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
      *
      * @param array $queryParameters {
      *
+     *     @var int $user_id only return user assignments belonging to the user with the given ID
      *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
      *     @var string $updated_since only return user assignments that have been updated since the given date and time
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
@@ -1002,13 +1003,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Returns a list of your user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
+     * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
 
     The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
      *
      * @param string $projectId
      * @param array  $queryParameters {
      *
+     *     @var int $user_id only return user assignments belonging to the user with the given ID
      *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
      *     @var string $updated_since only return user assignments that have been updated since the given date and time
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
@@ -1443,7 +1445,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Returns a list of your project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
+     * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
 
     The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
@@ -1459,13 +1461,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function listProjectAssignments(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listActiveProjectAssignments(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjectAssignments($userId, $queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
     }
 
     /**
-     * Returns a list of your project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
+     * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
 
     The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
@@ -1479,9 +1481,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function listProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
     }
 
     /**

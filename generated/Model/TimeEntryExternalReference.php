@@ -13,7 +13,7 @@ namespace JoliCode\Harvest\Api\Model;
 class TimeEntryExternalReference
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
     /**
@@ -34,19 +34,19 @@ class TimeEntryExternalReference
     protected $serviceIconUrl;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return self
      */
-    public function setId(?int $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 

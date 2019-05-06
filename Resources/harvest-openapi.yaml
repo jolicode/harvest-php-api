@@ -30,6 +30,9 @@ paths:
       summary: 'List all contacts'
       operationId: listContacts
       description: "Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.\n\nThe response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts."
+      externalDocs:
+        description: 'List all contacts'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#list-all-contacts'
       security:
         -
           BearerAuth: []
@@ -72,6 +75,9 @@ paths:
       summary: 'Create a contact'
       operationId: createContact
       description: 'Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a contact'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#create-a-contact'
       security:
         -
           BearerAuth: []
@@ -128,6 +134,9 @@ paths:
       summary: 'Retrieve a contact'
       operationId: retrieveContact
       description: 'Retrieves the contact with the given ID. Returns a contact object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a contact'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#retrieve-a-contact'
       security:
         -
           BearerAuth: []
@@ -151,6 +160,9 @@ paths:
       summary: 'Update a contact'
       operationId: updateContact
       description: 'Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a contact'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#update-a-contact'
       security:
         -
           BearerAuth: []
@@ -208,6 +220,9 @@ paths:
       summary: 'Delete a contact'
       operationId: deleteContact
       description: 'Delete a contact. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a contact'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#delete-a-contact'
       security:
         -
           BearerAuth: []
@@ -230,6 +245,9 @@ paths:
       summary: 'List all clients'
       operationId: listClients
       description: "Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.\n\nThe response contains an object with a clients property that contains an array of up to per_page clients. Each entry in the array is a separate client object. If no more clients are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your clients."
+      externalDocs:
+        description: 'List all clients'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#list-all-clients'
       security:
         -
           BearerAuth: []
@@ -272,6 +290,9 @@ paths:
       summary: 'Create a client'
       operationId: createClient
       description: 'Creates a new client object. Returns a client object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a client'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#create-a-client'
       security:
         -
           BearerAuth: []
@@ -313,6 +334,9 @@ paths:
       summary: 'Retrieve a client'
       operationId: retrieveClient
       description: 'Retrieves the client with the given ID. Returns a client object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a client'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#retrieve-a-client'
       security:
         -
           BearerAuth: []
@@ -336,6 +360,9 @@ paths:
       summary: 'Update a client'
       operationId: updateClient
       description: 'Updates the specific client by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a client object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a client'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#update-a-client'
       security:
         -
           BearerAuth: []
@@ -379,6 +406,9 @@ paths:
       summary: 'Delete a client'
       operationId: deleteClient
       description: 'Delete a client. Deleting a client is only possible if it has no projects, invoices, or estimates associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a client'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#delete-a-client'
       security:
         -
           BearerAuth: []
@@ -401,6 +431,9 @@ paths:
       summary: 'Retrieve a company'
       operationId: retrieveCompany
       description: "Retrieves the company for the currently authenticated user. Returns a\ncompany object and a 200 OK response code."
+      externalDocs:
+        description: 'Retrieve a company'
+        url: 'https://help.getharvest.com/api-v2/company-api/company/company/#retrieve-a-company'
       security:
         -
           BearerAuth: []
@@ -420,6 +453,9 @@ paths:
       summary: 'List all messages for an invoice'
       operationId: listMessagesForInvoice
       description: "Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.\n\nThe response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages."
+      externalDocs:
+        description: 'List all messages for an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#list-all-messages-for-an-invoice'
       security:
         -
           BearerAuth: []
@@ -461,6 +497,9 @@ paths:
       summary: 'Mark an open invoice as a draft'
       operationId: markOpenInvoiceAsDraft
       description: 'Creates a new invoice message object and marks an open invoice as a draft. Returns an invoice message object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Mark an open invoice as a draft'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#mark-an-open-invoice-as-a-draft'
       security:
         -
           BearerAuth: []
@@ -496,6 +535,9 @@ paths:
       summary: 'Delete an invoice message'
       operationId: deleteInvoiceMessage
       description: 'Delete an invoice message. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice message'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#delete-an-invoice-message'
       security:
         -
           BearerAuth: []
@@ -523,6 +565,9 @@ paths:
       summary: 'List all payments for an invoice'
       operationId: listPaymentsForInvoice
       description: "Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.\n\nThe response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments."
+      externalDocs:
+        description: 'List all payments for an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#list-all-payments-for-an-invoice'
       security:
         -
           BearerAuth: []
@@ -564,6 +609,9 @@ paths:
       summary: 'Create an invoice payment'
       operationId: createInvoicePayment
       description: 'Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an invoice payment'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#create-an-invoice-payment'
       security:
         -
           BearerAuth: []
@@ -613,6 +661,9 @@ paths:
       summary: 'Delete an invoice payment'
       operationId: deleteInvoicePayment
       description: 'Delete an invoice payment. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice payment'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#delete-an-invoice-payment'
       security:
         -
           BearerAuth: []
@@ -640,6 +691,9 @@ paths:
       summary: 'List all invoices'
       operationId: listInvoices
       description: "Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.\n\nThe response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices."
+      externalDocs:
+        description: 'List all invoices'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#list-all-invoices'
       security:
         -
           BearerAuth: []
@@ -706,6 +760,9 @@ paths:
       summary: 'Create an invoice based on tracked time and expenses'
       operationId: createInvoiceBasedOnTrackedTimeAndExpenses
       description: 'Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an invoice based on tracked time and expenses'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#create-an-invoice-based-on-tracked-time-and-expenses'
       security:
         -
           BearerAuth: []
@@ -788,6 +845,9 @@ paths:
       summary: 'Retrieve an invoice'
       operationId: retrieveInvoice
       description: 'Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#retrieve-an-invoice'
       security:
         -
           BearerAuth: []
@@ -811,6 +871,9 @@ paths:
       summary: 'Update an invoice'
       operationId: updateInvoice
       description: 'Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#update-an-invoice'
       security:
         -
           BearerAuth: []
@@ -942,6 +1005,9 @@ paths:
       summary: 'Delete an invoice'
       operationId: deleteInvoice
       description: 'Delete an invoice. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice'
       security:
         -
           BearerAuth: []
@@ -964,6 +1030,9 @@ paths:
       summary: 'List all invoice item categories'
       operationId: listInvoiceItemCategories
       description: "Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.\n\nThe response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories."
+      externalDocs:
+        description: 'List all invoice item categories'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#list-all-invoice-item-categories'
       security:
         -
           BearerAuth: []
@@ -1000,6 +1069,9 @@ paths:
       summary: 'Create an invoice item category'
       operationId: createInvoiceItemCategory
       description: 'Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an invoice item category'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#create-an-invoice-item-category'
       security:
         -
           BearerAuth: []
@@ -1032,6 +1104,9 @@ paths:
       summary: 'Retrieve an invoice item category'
       operationId: retrieveInvoiceItemCategory
       description: 'Retrieves the invoice item category with the given ID. Returns an invoice item category object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an invoice item category'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#retrieve-an-invoice-item-category'
       security:
         -
           BearerAuth: []
@@ -1055,6 +1130,9 @@ paths:
       summary: 'Update an invoice item category'
       operationId: updateInvoiceItemCategory
       description: 'Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an invoice item category'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#update-an-invoice-item-category'
       security:
         -
           BearerAuth: []
@@ -1089,6 +1167,9 @@ paths:
       summary: 'Delete an invoice item category'
       operationId: deleteInvoiceItemCategory
       description: 'Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice item category'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#delete-an-invoice-item-category'
       security:
         -
           BearerAuth: []
@@ -1111,6 +1192,9 @@ paths:
       summary: 'List all messages for an estimate'
       operationId: listMessagesForEstimate
       description: "Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.\n\nThe response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages."
+      externalDocs:
+        description: 'List all messages for an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#list-all-messages-for-an-estimate'
       security:
         -
           BearerAuth: []
@@ -1152,6 +1236,9 @@ paths:
       summary: 'Re-open a closed estimate'
       operationId: reOpenClosedEstimate
       description: 'Creates a new estimate message object and re-opens a closed estimate. Returns an estimate message object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Re-open a closed estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#re-open-a-closed-estimate'
       security:
         -
           BearerAuth: []
@@ -1187,6 +1274,9 @@ paths:
       summary: 'Delete an estimate message'
       operationId: deleteEstimateMessage
       description: 'Delete an estimate message. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an estimate message'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#delete-an-estimate-message'
       security:
         -
           BearerAuth: []
@@ -1214,6 +1304,9 @@ paths:
       summary: 'List all estimates'
       operationId: listEstimates
       description: "Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.\n\nThe response contains an object with a estimates property that contains an array of up to per_page estimates. Each entry in the array is a separate estimate object. If no more estimates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimates."
+      externalDocs:
+        description: 'List all estimates'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#list-all-estimates'
       security:
         -
           BearerAuth: []
@@ -1274,6 +1367,9 @@ paths:
       summary: 'Create an estimate'
       operationId: createEstimate
       description: 'Creates a new estimate object. Returns an estimate object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#create-an-estimate'
       security:
         -
           BearerAuth: []
@@ -1388,6 +1484,9 @@ paths:
       summary: 'Retrieve an estimate'
       operationId: retrieveEstimate
       description: 'Retrieves the estimate with the given ID. Returns an estimate object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#retrieve-an-estimate'
       security:
         -
           BearerAuth: []
@@ -1411,6 +1510,9 @@ paths:
       summary: 'Update an estimate'
       operationId: updateEstimate
       description: 'Updates the specific estimate by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#update-an-estimate'
       security:
         -
           BearerAuth: []
@@ -1527,6 +1629,9 @@ paths:
       summary: 'Delete an estimate'
       operationId: deleteEstimate
       description: 'Delete an estimate. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate'
       security:
         -
           BearerAuth: []
@@ -1549,6 +1654,9 @@ paths:
       summary: 'List all estimate item categories'
       operationId: listEstimateItemCategories
       description: "Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.\n\nThe response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories."
+      externalDocs:
+        description: 'List all estimate item categories'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#list-all-estimate-item-categories'
       security:
         -
           BearerAuth: []
@@ -1585,6 +1693,9 @@ paths:
       summary: 'Create an estimate item category'
       operationId: createEstimateItemCategory
       description: 'Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an estimate item category'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#create-an-estimate-item-category'
       security:
         -
           BearerAuth: []
@@ -1617,6 +1728,9 @@ paths:
       summary: 'Retrieve an estimate item category'
       operationId: retrieveEstimateItemCategory
       description: 'Retrieves the estimate item category with the given ID. Returns an estimate item category object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an estimate item category'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#retrieve-an-estimate-item-category'
       security:
         -
           BearerAuth: []
@@ -1640,6 +1754,9 @@ paths:
       summary: 'Update an estimate item category'
       operationId: updateEstimateItemCategory
       description: 'Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an estimate item category'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#update-an-estimate-item-category'
       security:
         -
           BearerAuth: []
@@ -1674,6 +1791,9 @@ paths:
       summary: 'Delete an estimate item category'
       operationId: deleteEstimateItemCategory
       description: 'Delete an estimate item category. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an estimate item category'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#delete-an-estimate-item-category'
       security:
         -
           BearerAuth: []
@@ -1696,6 +1816,9 @@ paths:
       summary: 'List all expenses'
       operationId: listExpenses
       description: "Returns a list of your expenses. If accessing this endpoint as an Admin, all expenses in the account will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.\n\nThe response contains an object with a expenses property that contains an array of up to per_page expenses. Each entry in the array is a separate expense object. If no more expenses are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expenses."
+      externalDocs:
+        description: 'List all expenses'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#list-all-expenses'
       security:
         -
           BearerAuth: []
@@ -1768,6 +1891,9 @@ paths:
       summary: 'Create an expense'
       operationId: createExpense
       description: 'Creates a new expense object. Returns an expense object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an expense'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#create-an-expense'
       security:
         -
           BearerAuth: []
@@ -1832,6 +1958,9 @@ paths:
       summary: 'Retrieve an expense'
       operationId: retrieveExpense
       description: 'Retrieves the expense with the given ID. Returns an expense object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an expense'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#retrieve-an-expense'
       security:
         -
           BearerAuth: []
@@ -1855,6 +1984,9 @@ paths:
       summary: 'Update an expense'
       operationId: updateExpense
       description: 'Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an expense'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#update-an-expense'
       security:
         -
           BearerAuth: []
@@ -1918,6 +2050,9 @@ paths:
       summary: 'Delete an expense'
       operationId: deleteExpense
       description: 'Delete an expense. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an expense'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#delete-an-expense'
       security:
         -
           BearerAuth: []
@@ -1940,6 +2075,9 @@ paths:
       summary: 'List all expense categories'
       operationId: listExpenseCategories
       description: "Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.\n\nThe response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories."
+      externalDocs:
+        description: 'List all expense categories'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#list-all-expense-categories'
       security:
         -
           BearerAuth: []
@@ -1982,6 +2120,9 @@ paths:
       summary: 'Create an expense category'
       operationId: createExpenseCategory
       description: 'Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create an expense category'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#create-an-expense-category'
       security:
         -
           BearerAuth: []
@@ -2024,6 +2165,9 @@ paths:
       summary: 'Retrieve an expense category'
       operationId: retrieveExpenseCategory
       description: 'Retrieves the expense category with the given ID. Returns an expense category object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve an expense category'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#retrieve-an-expense-category'
       security:
         -
           BearerAuth: []
@@ -2047,6 +2191,9 @@ paths:
       summary: 'Update an expense category'
       operationId: updateExpenseCategory
       description: 'Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update an expense category'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#update-an-expense-category'
       security:
         -
           BearerAuth: []
@@ -2091,6 +2238,9 @@ paths:
       summary: 'Delete an expense category'
       operationId: deleteExpenseCategory
       description: 'Delete an expense category. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an expense category'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#delete-an-expense-category'
       security:
         -
           BearerAuth: []
@@ -2113,6 +2263,9 @@ paths:
       summary: 'List all tasks'
       operationId: listTasks
       description: "Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.\n\nThe response contains an object with a tasks property that contains an array of up to per_page tasks. Each entry in the array is a separate task object. If no more tasks are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your tasks."
+      externalDocs:
+        description: 'List all tasks'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#list-all-tasks'
       security:
         -
           BearerAuth: []
@@ -2155,6 +2308,9 @@ paths:
       summary: 'Create a task'
       operationId: createTask
       description: 'Creates a new task object. Returns a task object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a task'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#create-a-task'
       security:
         -
           BearerAuth: []
@@ -2200,6 +2356,9 @@ paths:
       summary: 'Retrieve a task'
       operationId: retrieveTask
       description: 'Retrieves the task with the given ID. Returns a task object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a task'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#retrieve-a-task'
       security:
         -
           BearerAuth: []
@@ -2223,6 +2382,9 @@ paths:
       summary: 'Update a task'
       operationId: updateTask
       description: 'Updates the specific task by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a task'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#update-a-task'
       security:
         -
           BearerAuth: []
@@ -2270,6 +2432,9 @@ paths:
       summary: 'Delete a task'
       operationId: deleteTask
       description: 'Delete a task. Deleting a task is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a task'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#delete-a-task'
       security:
         -
           BearerAuth: []
@@ -2292,6 +2457,9 @@ paths:
       summary: 'List all time entries'
       operationId: listTimeEntries
       description: "Returns a list of your time entries. The time entries are returned sorted by spent_at date. At this time, the sort option can’t be customized.\n\nThe response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries."
+      externalDocs:
+        description: 'List all time entries'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#list-all-time-entries'
       security:
         -
           BearerAuth: []
@@ -2370,6 +2538,9 @@ paths:
       summary: 'Create a time entry via start and end time'
       operationId: createTimeEntryViaStartAndEndTime
       description: "Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.\n\nYou should only use this method to create time entries when your account is configured to track time via start and end time. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is true in the Company API."
+      externalDocs:
+        description: 'Create a time entry via start and end time'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#create-a-time-entry-via-start-and-end-time'
       security:
         -
           BearerAuth: []
@@ -2413,7 +2584,7 @@ paths:
                 description: 'An object containing the id, group_id, and permalink of the external reference.'
                 properties:
                   id:
-                    type: integer
+                    type: string
                   group_id:
                     type: string
                   permalink:
@@ -2436,6 +2607,9 @@ paths:
       summary: 'Retrieve a time entry'
       operationId: retrieveTimeEntry
       description: 'Retrieves the time entry with the given ID. Returns a time entry object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#retrieve-a-time-entry'
       security:
         -
           BearerAuth: []
@@ -2459,6 +2633,9 @@ paths:
       summary: 'Update a time entry'
       operationId: updateTimeEntry
       description: 'Updates the specific time entry by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a time entry object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#update-a-time-entry'
       security:
         -
           BearerAuth: []
@@ -2507,7 +2684,7 @@ paths:
                 description: 'An object containing the id, group_id, and permalink of the external reference.'
                 properties:
                   id:
-                    type: integer
+                    type: string
                   group_id:
                     type: string
                   permalink:
@@ -2525,6 +2702,9 @@ paths:
       summary: 'Delete a time entry'
       operationId: deleteTimeEntry
       description: 'Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entry'
       security:
         -
           BearerAuth: []
@@ -2547,6 +2727,9 @@ paths:
       summary: 'Delete a time entry’s external reference'
       operationId: deleteTimeEntryExternalReference
       description: 'Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a time entry’s external reference'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entrys-external-reference'
       security:
         -
           BearerAuth: []
@@ -2569,6 +2752,9 @@ paths:
       summary: 'Restart a stopped time entry'
       operationId: restartStoppedTimeEntry
       description: 'Restarting a time entry is only possible if it isn’t currently running. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Restart a stopped time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#restart-a-stopped-time-entry'
       security:
         -
           BearerAuth: []
@@ -2591,6 +2777,9 @@ paths:
       summary: 'Stop a running time entry'
       operationId: stopRunningTimeEntry
       description: 'Stopping a time entry is only possible if it’s currently running. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Stop a running time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#stop-a-running-time-entry'
       security:
         -
           BearerAuth: []
@@ -2612,12 +2801,21 @@ paths:
     get:
       summary: 'List all user assignments'
       operationId: listUserAssignments
-      description: "Returns a list of your user assignments. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.\n\nThe response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments."
+      description: "Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.\n\nThe response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments."
+      externalDocs:
+        description: 'List all user assignments'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#list-all-user-assignments'
       security:
         -
           BearerAuth: []
           AccountAuth: []
       parameters:
+        -
+          name: user_id
+          description: 'Only return user assignments belonging to the user with the given ID.'
+          required: false
+          in: query
+          type: integer
         -
           name: is_active
           description: 'Pass true to only return active user assignments and false to return inactive user assignments.'
@@ -2655,7 +2853,10 @@ paths:
     get:
       summary: 'List all user assignments for a specific project'
       operationId: listUserAssignmentsForSpecificProject
-      description: "Returns a list of your user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.\n\nThe response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments."
+      description: "Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.\n\nThe response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments."
+      externalDocs:
+        description: 'List all user assignments for a specific project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#list-all-user-assignments-for-a-specific-project'
       security:
         -
           BearerAuth: []
@@ -2666,6 +2867,12 @@ paths:
           required: true
           in: path
           type: string
+        -
+          name: user_id
+          description: 'Only return user assignments belonging to the user with the given ID.'
+          required: false
+          in: query
+          type: integer
         -
           name: is_active
           description: 'Pass true to only return active user assignments and false to return inactive user assignments.'
@@ -2703,6 +2910,9 @@ paths:
       summary: 'Create a user assignment'
       operationId: createUserAssignment
       description: 'Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a user assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#create-a-user-assignment'
       security:
         -
           BearerAuth: []
@@ -2758,6 +2968,9 @@ paths:
       summary: 'Retrieve a user assignment'
       operationId: retrieveUserAssignment
       description: 'Retrieves the user assignment with the given ID. Returns a user assignment object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a user assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#retrieve-a-user-assignment'
       security:
         -
           BearerAuth: []
@@ -2786,6 +2999,9 @@ paths:
       summary: 'Update a user assignment'
       operationId: updateUserAssignment
       description: 'Updates the specific user assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user assignment object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a user assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#update-a-user-assignment'
       security:
         -
           BearerAuth: []
@@ -2839,6 +3055,9 @@ paths:
       summary: 'Delete a user assignment'
       operationId: deleteUserAssignment
       description: 'Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a user assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#delete-a-user-assignment'
       security:
         -
           BearerAuth: []
@@ -2866,6 +3085,9 @@ paths:
       summary: 'List all task assignments'
       operationId: listTaskAssignments
       description: "Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.\n\nThe response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments."
+      externalDocs:
+        description: 'List all task assignments'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#list-all-task-assignments'
       security:
         -
           BearerAuth: []
@@ -2909,6 +3131,9 @@ paths:
       summary: 'List all task assignments for a specific project'
       operationId: listTaskAssignmentsForSpecificProject
       description: "Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.\n\nThe response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments."
+      externalDocs:
+        description: 'List all task assignments for a specific project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#list-all-task-assignments-for-a-specific-project'
       security:
         -
           BearerAuth: []
@@ -2956,6 +3181,9 @@ paths:
       summary: 'Create a task assignment'
       operationId: createTaskAssignment
       description: 'Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a task assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#create-a-task-assignment'
       security:
         -
           BearerAuth: []
@@ -3008,6 +3236,9 @@ paths:
       summary: 'Retrieve a task assignment'
       operationId: retrieveTaskAssignment
       description: 'Retrieves the task assignment with the given ID. Returns a task assignment object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a task assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#retrieve-a-task-assignment'
       security:
         -
           BearerAuth: []
@@ -3036,6 +3267,9 @@ paths:
       summary: 'Update a task assignment'
       operationId: updateTaskAssignment
       description: 'Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a task assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#update-a-task-assignment'
       security:
         -
           BearerAuth: []
@@ -3086,6 +3320,9 @@ paths:
       summary: 'Delete a task assignment'
       operationId: deleteTaskAssignment
       description: 'Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a task assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#delete-a-task-assignment'
       security:
         -
           BearerAuth: []
@@ -3113,6 +3350,9 @@ paths:
       summary: 'List all projects'
       operationId: listProjects
       description: "Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.\n\nThe response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects."
+      externalDocs:
+        description: 'List all projects'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#list-all-projects'
       security:
         -
           BearerAuth: []
@@ -3161,6 +3401,9 @@ paths:
       summary: 'Create a project'
       operationId: createProject
       description: 'Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#create-a-project'
       security:
         -
           BearerAuth: []
@@ -3262,6 +3505,9 @@ paths:
       summary: 'Retrieve a project'
       operationId: retrieveProject
       description: 'Retrieves the project with the given ID. Returns a project object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#retrieve-a-project'
       security:
         -
           BearerAuth: []
@@ -3285,6 +3531,9 @@ paths:
       summary: 'Update a project'
       operationId: updateProject
       description: 'Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#update-a-project'
       security:
         -
           BearerAuth: []
@@ -3384,6 +3633,9 @@ paths:
       summary: 'Delete a project'
       operationId: deleteProject
       description: "Deletes a project and any time entries or expenses tracked to it.\nHowever, invoices associated with the project will not be deleted.\nIf you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead."
+      externalDocs:
+        description: 'Delete a project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#delete-a-project'
       security:
         -
           BearerAuth: []
@@ -3406,6 +3658,9 @@ paths:
       summary: 'List all roles'
       operationId: listRoles
       description: "Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.\n\nThe response contains an object with a roles property that contains an array of up to per_page roles. Each entry in the array is a separate role object. If no more roles are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your roles."
+      externalDocs:
+        description: 'List all roles'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#list-all-roles'
       security:
         -
           BearerAuth: []
@@ -3436,6 +3691,9 @@ paths:
       summary: 'Create a role'
       operationId: createRole
       description: 'Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a role'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#create-a-role'
       security:
         -
           BearerAuth: []
@@ -3473,6 +3731,9 @@ paths:
       summary: 'Retrieve a role'
       operationId: retrieveRole
       description: 'Retrieves the role with the given ID. Returns a role object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a role'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#retrieve-a-role'
       security:
         -
           BearerAuth: []
@@ -3496,6 +3757,9 @@ paths:
       summary: 'Update a role'
       operationId: updateRole
       description: 'Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a role'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#update-a-role'
       security:
         -
           BearerAuth: []
@@ -3537,6 +3801,9 @@ paths:
       summary: 'Delete a role'
       operationId: deleteRole
       description: 'Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a role'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#delete-a-role'
       security:
         -
           BearerAuth: []
@@ -3559,6 +3826,9 @@ paths:
       summary: 'List all billable rates for a specific user'
       operationId: listBillableRatesForSpecificUser
       description: "Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.\n\nThe response contains an object with a billable_rates property that contains an array of up to per_page billable rates. Each entry in the array is a separate billable rate object. If no more billable rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your billable rates."
+      externalDocs:
+        description: 'List all billable rates for a specific user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#list-all-billable-rates-for-a-specific-user'
       security:
         -
           BearerAuth: []
@@ -3594,6 +3864,9 @@ paths:
       summary: 'Create a billable rate'
       operationId: createBillableRate
       description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
+      externalDocs:
+        description: 'Create a billable rate'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#create-a-billable-rate'
       security:
         -
           BearerAuth: []
@@ -3636,6 +3909,9 @@ paths:
       summary: 'Retrieve a billable rate'
       operationId: retrieveBillableRate
       description: 'Retrieves the billable rate with the given ID. Returns a billable rate object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a billable rate'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#retrieve-a-billable-rate'
       security:
         -
           BearerAuth: []
@@ -3665,6 +3941,9 @@ paths:
       summary: 'List all cost rates for a specific user'
       operationId: listCostRatesForSpecificUser
       description: "Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.\n\nThe response contains an object with a cost_rates property that contains an array of up to per_page cost rates. Each entry in the array is a separate cost rate object. If no more cost rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your cost rates."
+      externalDocs:
+        description: 'List all cost rates for a specific user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#list-all-cost-rates-for-a-specific-user'
       security:
         -
           BearerAuth: []
@@ -3700,6 +3979,9 @@ paths:
       summary: 'Create a cost rate'
       operationId: createCostRate
       description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
+      externalDocs:
+        description: 'Create a cost rate'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#create-a-cost-rate'
       security:
         -
           BearerAuth: []
@@ -3742,6 +4024,9 @@ paths:
       summary: 'Retrieve a cost rate'
       operationId: retrieveCostRate
       description: 'Retrieves the cost rate with the given ID. Returns a cost rate object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a cost rate'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#retrieve-a-cost-rate'
       security:
         -
           BearerAuth: []
@@ -3768,9 +4053,12 @@ paths:
             $ref: '#/definitions/Error'
   '/users/{userId}/project_assignments':
     get:
-      summary: 'List all project assignments'
-      operationId: listProjectAssignments
-      description: "Returns a list of your project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.\n\nThe response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments."
+      summary: 'List active project assignments'
+      operationId: listActiveProjectAssignments
+      description: "Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.\n\nThe response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments."
+      externalDocs:
+        description: 'List active project assignments'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/project-assignments/#list-active-project-assignments'
       security:
         -
           BearerAuth: []
@@ -3801,7 +4089,7 @@ paths:
           type: integer
       responses:
         200:
-          description: 'List all project assignments'
+          description: 'List active project assignments'
           schema:
             $ref: '#/definitions/ProjectAssignments'
         default:
@@ -3810,9 +4098,12 @@ paths:
             $ref: '#/definitions/Error'
   /users/me/project_assignments:
     get:
-      summary: 'List all project assignments for the currently authenticated user'
-      operationId: listProjectAssignmentsForTheCurrentlyAuthenticatedUser
-      description: "Returns a list of your project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.\n\nThe response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments."
+      summary: 'List active project assignments for the currently authenticated user'
+      operationId: listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser
+      description: "Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.\n\nThe response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments."
+      externalDocs:
+        description: 'List active project assignments for the currently authenticated user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/project-assignments/#list-active-project-assignments-for-the-currently-authenticated-user'
       security:
         -
           BearerAuth: []
@@ -3832,7 +4123,7 @@ paths:
           type: integer
       responses:
         200:
-          description: 'List all project assignments for the currently authenticated user'
+          description: 'List active project assignments for the currently authenticated user'
           schema:
             $ref: '#/definitions/ProjectAssignments'
         default:
@@ -3844,6 +4135,9 @@ paths:
       summary: 'List all users'
       operationId: listUsers
       description: "Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.\n\nThe response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users."
+      externalDocs:
+        description: 'List all users'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#list-all-users'
       security:
         -
           BearerAuth: []
@@ -3886,6 +4180,9 @@ paths:
       summary: 'Create a user'
       operationId: createUser
       description: 'Creates a new user object. Returns a user object and a 201 Created response code if the call succeeded.'
+      externalDocs:
+        description: 'Create a user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#create-a-user'
       security:
         -
           BearerAuth: []
@@ -3974,6 +4271,9 @@ paths:
       summary: 'Retrieve the currently authenticated user'
       operationId: retrieveTheCurrentlyAuthenticatedUser
       description: 'Retrieves the currently authenticated user. Returns a user object and a 200 OK response code.'
+      externalDocs:
+        description: 'Retrieve the currently authenticated user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#retrieve-the-currently-authenticated-user'
       security:
         -
           BearerAuth: []
@@ -3991,6 +4291,9 @@ paths:
       summary: 'Retrieve a user'
       operationId: retrieveUser
       description: 'Retrieves the user with the given ID. Returns a user object and a 200 OK response code if a valid identifier was provided.'
+      externalDocs:
+        description: 'Retrieve a user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#retrieve-a-user'
       security:
         -
           BearerAuth: []
@@ -4014,6 +4317,9 @@ paths:
       summary: 'Update a user'
       operationId: updateUser
       description: 'Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#update-a-user'
       security:
         -
           BearerAuth: []
@@ -4102,6 +4408,9 @@ paths:
       summary: 'Delete a user'
       operationId: deleteUser
       description: 'Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#delete-a-user'
       security:
         -
           BearerAuth: []
@@ -4122,6 +4431,9 @@ paths:
 definitions:
   Contact:
     type: object
+    externalDocs:
+      description: contact
+      url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#the-contact-object'
     properties:
       id:
         type: integer
@@ -4167,6 +4479,9 @@ definitions:
         format: date-time
   Client:
     type: object
+    externalDocs:
+      description: client
+      url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#the-client-object'
     properties:
       id:
         type: integer
@@ -4194,6 +4509,9 @@ definitions:
         format: date-time
   Company:
     type: object
+    externalDocs:
+      description: company
+      url: 'https://help.getharvest.com/api-v2/company-api/company/company/#the-company-object'
     properties:
       base_uri:
         type: string
@@ -4245,6 +4563,9 @@ definitions:
         description: 'Whether the approval module is enabled.'
   InvoiceMessage:
     type: object
+    externalDocs:
+      description: invoice-message
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#the-invoice-message-object'
     properties:
       id:
         type: integer
@@ -4305,6 +4626,9 @@ definitions:
         format: date-time
   InvoiceMessageRecipient:
     type: object
+    externalDocs:
+      description: invoice-message-recipient
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#the-invoice-message-recipient-object'
     properties:
       name:
         type: string
@@ -4315,6 +4639,9 @@ definitions:
         format: email
   InvoicePayment:
     type: object
+    externalDocs:
+      description: invoice-payment
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-payments/#the-invoice-payment-object'
     properties:
       id:
         type: integer
@@ -4362,6 +4689,9 @@ definitions:
         format: date-time
   Invoice:
     type: object
+    externalDocs:
+      description: invoice
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#the-invoice-object'
     properties:
       id:
         type: integer
@@ -4498,6 +4828,9 @@ definitions:
         format: date-time
   InvoiceLineItem:
     type: object
+    externalDocs:
+      description: invoice-line-item
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#the-invoice-line-item-object'
     properties:
       id:
         type: integer
@@ -4539,6 +4872,9 @@ definitions:
         description: 'Whether the invoice’s tax2 percentage applies to this line item.'
   InvoiceItemCategory:
     type: object
+    externalDocs:
+      description: invoice-item-category
+      url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#the-invoice-item-category-object'
     properties:
       id:
         type: integer
@@ -4563,6 +4899,9 @@ definitions:
         format: date-time
   EstimateMessage:
     type: object
+    externalDocs:
+      description: estimate-message
+      url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#the-estimate-message-object'
     properties:
       id:
         type: integer
@@ -4607,6 +4946,9 @@ definitions:
         format: date-time
   EstimateMessageRecipient:
     type: object
+    externalDocs:
+      description: estimate-message-recipient
+      url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-messages/#the-estimate-message-recipient-object'
     properties:
       name:
         type: string
@@ -4617,6 +4959,9 @@ definitions:
         format: email
   Estimate:
     type: object
+    externalDocs:
+      description: estimate
+      url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#the-estimate-object'
     properties:
       id:
         type: integer
@@ -4718,6 +5063,9 @@ definitions:
         format: date-time
   EstimateLineItem:
     type: object
+    externalDocs:
+      description: estimate-line-item
+      url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#the-estimate-line-item-object'
     properties:
       id:
         type: integer
@@ -4749,6 +5097,9 @@ definitions:
         description: 'Whether the estimate’s tax2 percentage applies to this line item.'
   EstimateItemCategory:
     type: object
+    externalDocs:
+      description: estimate-item-category
+      url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#the-estimate-item-category-object'
     properties:
       id:
         type: integer
@@ -4767,6 +5118,9 @@ definitions:
         format: date-time
   Expense:
     type: object
+    externalDocs:
+      description: expense
+      url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#the-expense-object'
     properties:
       id:
         type: integer
@@ -4864,6 +5218,9 @@ definitions:
         format: date-time
   ExpenseCategory:
     type: object
+    externalDocs:
+      description: expense-category
+      url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#the-expense-category-object'
     properties:
       id:
         type: integer
@@ -4892,6 +5249,9 @@ definitions:
         format: date-time
   Task:
     type: object
+    externalDocs:
+      description: task
+      url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#the-task-object'
     properties:
       id:
         type: integer
@@ -4923,6 +5283,9 @@ definitions:
         format: date-time
   TimeEntry:
     type: object
+    externalDocs:
+      description: time-entry
+      url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#the-time-entry-object'
     properties:
       id:
         type: integer
@@ -4977,7 +5340,7 @@ definitions:
         description: 'An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.'
         properties:
           id:
-            type: integer
+            type: string
           group_id:
             type: string
           permalink:
@@ -5050,6 +5413,9 @@ definitions:
         format: date-time
   UserAssignment:
     type: object
+    externalDocs:
+      description: user-assignment
+      url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#the-user-assignment-object'
     properties:
       id:
         type: integer
@@ -5100,6 +5466,9 @@ definitions:
         format: date-time
   TaskAssignment:
     type: object
+    externalDocs:
+      description: task-assignment
+      url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#the-task-assignment-object'
     properties:
       id:
         type: integer
@@ -5147,6 +5516,9 @@ definitions:
         format: date-time
   Project:
     type: object
+    externalDocs:
+      description: project
+      url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#the-project-object'
     properties:
       id:
         type: integer
@@ -5240,6 +5612,9 @@ definitions:
         format: date-time
   Role:
     type: object
+    externalDocs:
+      description: role
+      url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#the-role-object'
     properties:
       id:
         type: integer
@@ -5263,6 +5638,9 @@ definitions:
         format: date-time
   BillableRate:
     type: object
+    externalDocs:
+      description: billable-rate
+      url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#the-billable-rate-object'
     properties:
       id:
         type: integer
@@ -5290,6 +5668,9 @@ definitions:
         format: date-time
   CostRate:
     type: object
+    externalDocs:
+      description: cost-rate
+      url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#the-cost-rate-object'
     properties:
       id:
         type: integer
@@ -5317,6 +5698,9 @@ definitions:
         format: date-time
   ProjectAssignment:
     type: object
+    externalDocs:
+      description: project-assignment
+      url: 'https://help.getharvest.com/api-v2/users-api/users/project-assignments/#the-project-assignment-object'
     properties:
       id:
         type: integer
@@ -5372,6 +5756,9 @@ definitions:
           $ref: '#/definitions/TaskAssignment'
   User:
     type: object
+    externalDocs:
+      description: user
+      url: 'https://help.getharvest.com/api-v2/users-api/users/users/#the-user-object'
     properties:
       id:
         type: integer

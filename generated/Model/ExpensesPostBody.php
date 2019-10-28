@@ -70,7 +70,7 @@ class ExpensesPostBody
     /**
      * The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.
      *
-     * @return int
+     * @return int|null
      */
     public function getUserId(): ?int
     {
@@ -80,7 +80,7 @@ class ExpensesPostBody
     /**
      * The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.
      *
-     * @param int $userId
+     * @param int|null $userId
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ExpensesPostBody
     /**
      * The ID of the project associated with this expense.
      *
-     * @return int
+     * @return int|null
      */
     public function getProjectId(): ?int
     {
@@ -104,7 +104,7 @@ class ExpensesPostBody
     /**
      * The ID of the project associated with this expense.
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ExpensesPostBody
     /**
      * The ID of the expense category this expense is being tracked against.
      *
-     * @return int
+     * @return int|null
      */
     public function getExpenseCategoryId(): ?int
     {
@@ -128,7 +128,7 @@ class ExpensesPostBody
     /**
      * The ID of the expense category this expense is being tracked against.
      *
-     * @param int $expenseCategoryId
+     * @param int|null $expenseCategoryId
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class ExpensesPostBody
     /**
      * Date the expense occurred.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -152,7 +152,7 @@ class ExpensesPostBody
     /**
      * Date the expense occurred.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class ExpensesPostBody
     /**
      * The quantity of units to use in calculating the total_cost of the expense.
      *
-     * @return int
+     * @return int|null
      */
     public function getUnits(): ?int
     {
@@ -176,7 +176,7 @@ class ExpensesPostBody
     /**
      * The quantity of units to use in calculating the total_cost of the expense.
      *
-     * @param int $units
+     * @param int|null $units
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ExpensesPostBody
     /**
      * The total amount of the expense.
      *
-     * @return float
+     * @return float|null
      */
     public function getTotalCost(): ?float
     {
@@ -200,7 +200,7 @@ class ExpensesPostBody
     /**
      * The total amount of the expense.
      *
-     * @param float $totalCost
+     * @param float|null $totalCost
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class ExpensesPostBody
     /**
      * Textual notes used to describe the expense.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -224,7 +224,7 @@ class ExpensesPostBody
     /**
      * Textual notes used to describe the expense.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class ExpensesPostBody
     /**
      * Whether this expense is billable or not. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -248,7 +248,7 @@ class ExpensesPostBody
     /**
      * Whether this expense is billable or not. Defaults to true.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class ExpensesPostBody
     /**
      * A receipt file to attach to the expense. If including a receipt, you must submit a multipart/form-data request.
      *
-     * @return string
+     * @return string|null
      */
     public function getReceipt(): ?string
     {
@@ -272,7 +272,7 @@ class ExpensesPostBody
     /**
      * A receipt file to attach to the expense. If including a receipt, you must submit a multipart/form-data request.
      *
-     * @param string $receipt
+     * @param string|null $receipt
      *
      * @return self
      */

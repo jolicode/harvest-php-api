@@ -30,7 +30,7 @@ class RoleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\Role;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Role';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

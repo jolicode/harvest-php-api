@@ -64,7 +64,7 @@ class Task
     /**
      * Unique ID for the task.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -74,7 +74,7 @@ class Task
     /**
      * Unique ID for the task.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class Task
     /**
      * The name of the task.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -98,7 +98,7 @@ class Task
     /**
      * The name of the task.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class Task
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillableByDefault(): ?bool
     {
@@ -122,7 +122,7 @@ class Task
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
      *
-     * @param bool $billableByDefault
+     * @param bool|null $billableByDefault
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class Task
     /**
      * The hourly rate to use for this task when it is added to a project.
      *
-     * @return float
+     * @return float|null
      */
     public function getDefaultHourlyRate(): ?float
     {
@@ -146,7 +146,7 @@ class Task
     /**
      * The hourly rate to use for this task when it is added to a project.
      *
-     * @param float $defaultHourlyRate
+     * @param float|null $defaultHourlyRate
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class Task
     /**
      * Whether this task should be automatically added to future projects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsDefault(): ?bool
     {
@@ -170,7 +170,7 @@ class Task
     /**
      * Whether this task should be automatically added to future projects.
      *
-     * @param bool $isDefault
+     * @param bool|null $isDefault
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class Task
     /**
      * Whether this task is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -194,7 +194,7 @@ class Task
     /**
      * Whether this task is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class Task
     /**
      * Date and time the task was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -218,7 +218,7 @@ class Task
     /**
      * Date and time the task was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class Task
     /**
      * Date and time the task was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -242,7 +242,7 @@ class Task
     /**
      * Date and time the task was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

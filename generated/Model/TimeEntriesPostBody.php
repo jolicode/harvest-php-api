@@ -64,7 +64,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the user to associate with the time entry. Defaults to the currently authenticated user’s ID.
      *
-     * @return int
+     * @return int|null
      */
     public function getUserId(): ?int
     {
@@ -74,7 +74,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the user to associate with the time entry. Defaults to the currently authenticated user’s ID.
      *
-     * @param int $userId
+     * @param int|null $userId
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the project to associate with the time entry.
      *
-     * @return int
+     * @return int|null
      */
     public function getProjectId(): ?int
     {
@@ -98,7 +98,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the project to associate with the time entry.
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the task to associate with the time entry.
      *
-     * @return int
+     * @return int|null
      */
     public function getTaskId(): ?int
     {
@@ -122,7 +122,7 @@ class TimeEntriesPostBody
     /**
      * The ID of the task to associate with the time entry.
      *
-     * @param int $taskId
+     * @param int|null $taskId
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class TimeEntriesPostBody
     /**
      * The ISO 8601 formatted date the time entry was spent.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -146,7 +146,7 @@ class TimeEntriesPostBody
     /**
      * The ISO 8601 formatted date the time entry was spent.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class TimeEntriesPostBody
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartedTime(): ?string
     {
@@ -170,7 +170,7 @@ class TimeEntriesPostBody
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
      *
-     * @param string $startedTime
+     * @param string|null $startedTime
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class TimeEntriesPostBody
     /**
      * The time the entry ended. If provided, is_running will be set to false. If not provided, is_running will be set to true.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndedTime(): ?string
     {
@@ -194,7 +194,7 @@ class TimeEntriesPostBody
     /**
      * The time the entry ended. If provided, is_running will be set to false. If not provided, is_running will be set to true.
      *
-     * @param string $endedTime
+     * @param string|null $endedTime
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class TimeEntriesPostBody
     /**
      * Any notes to be associated with the time entry.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -218,7 +218,7 @@ class TimeEntriesPostBody
     /**
      * Any notes to be associated with the time entry.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class TimeEntriesPostBody
     /**
      * An object containing the id, group_id, and permalink of the external reference.
      *
-     * @return TimeEntriesPostBodyExternalReference
+     * @return TimeEntriesPostBodyExternalReference|null
      */
     public function getExternalReference(): ?TimeEntriesPostBodyExternalReference
     {
@@ -242,7 +242,7 @@ class TimeEntriesPostBody
     /**
      * An object containing the id, group_id, and permalink of the external reference.
      *
-     * @param TimeEntriesPostBodyExternalReference $externalReference
+     * @param TimeEntriesPostBodyExternalReference|null $externalReference
      *
      * @return self
      */

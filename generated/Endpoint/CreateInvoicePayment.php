@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $invoiceId;
 
@@ -26,7 +26,7 @@ class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->body = $payload;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -38,7 +38,7 @@ class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}/payments');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -47,9 +47,9 @@ class CreateInvoicePayment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (201 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoicePayment', 'json');

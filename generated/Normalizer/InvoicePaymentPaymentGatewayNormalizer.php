@@ -30,7 +30,7 @@ class InvoicePaymentPaymentGatewayNormalizer implements DenormalizerInterface, N
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\InvoicePaymentPaymentGateway;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

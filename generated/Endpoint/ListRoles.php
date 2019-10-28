@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
@@ -28,7 +28,7 @@ class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -40,7 +40,7 @@ class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         return '/roles';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -61,9 +61,9 @@ class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Roles', 'json');

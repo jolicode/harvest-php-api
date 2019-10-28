@@ -22,7 +22,7 @@ class ExpenseUser
     protected $name;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -30,7 +30,7 @@ class ExpenseUser
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ExpenseUser
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class ExpenseUser
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

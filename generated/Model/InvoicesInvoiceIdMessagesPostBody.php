@@ -22,7 +22,7 @@ class InvoicesInvoiceIdMessagesPostBody
     /**
      * Pass “draft” to mark the invoice as a draft.
      *
-     * @return string
+     * @return string|null
      */
     public function getEventType(): ?string
     {
@@ -32,7 +32,7 @@ class InvoicesInvoiceIdMessagesPostBody
     /**
      * Pass “draft” to mark the invoice as a draft.
      *
-     * @param string $eventType
+     * @param string|null $eventType
      *
      * @return self
      */

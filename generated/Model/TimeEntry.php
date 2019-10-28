@@ -168,7 +168,7 @@ class TimeEntry
     /**
      * Unique ID for the time entry.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -178,7 +178,7 @@ class TimeEntry
     /**
      * Unique ID for the time entry.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -192,7 +192,7 @@ class TimeEntry
     /**
      * Date of the time entry.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -202,7 +202,7 @@ class TimeEntry
     /**
      * Date of the time entry.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -216,7 +216,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated user.
      *
-     * @return TimeEntryUser
+     * @return TimeEntryUser|null
      */
     public function getUser(): ?TimeEntryUser
     {
@@ -226,7 +226,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated user.
      *
-     * @param TimeEntryUser $user
+     * @param TimeEntryUser|null $user
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class TimeEntry
     }
 
     /**
-     * @return UserAssignment
+     * @return UserAssignment|null
      */
     public function getUserAssignment(): ?UserAssignment
     {
@@ -246,7 +246,7 @@ class TimeEntry
     }
 
     /**
-     * @param UserAssignment $userAssignment
+     * @param UserAssignment|null $userAssignment
      *
      * @return self
      */
@@ -260,7 +260,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated client.
      *
-     * @return TimeEntryClient
+     * @return TimeEntryClient|null
      */
     public function getClient(): ?TimeEntryClient
     {
@@ -270,7 +270,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated client.
      *
-     * @param TimeEntryClient $client
+     * @param TimeEntryClient|null $client
      *
      * @return self
      */
@@ -284,7 +284,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated project.
      *
-     * @return TimeEntryProject
+     * @return TimeEntryProject|null
      */
     public function getProject(): ?TimeEntryProject
     {
@@ -294,7 +294,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated project.
      *
-     * @param TimeEntryProject $project
+     * @param TimeEntryProject|null $project
      *
      * @return self
      */
@@ -308,7 +308,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated task.
      *
-     * @return TimeEntryTask
+     * @return TimeEntryTask|null
      */
     public function getTask(): ?TimeEntryTask
     {
@@ -318,7 +318,7 @@ class TimeEntry
     /**
      * An object containing the id and name of the associated task.
      *
-     * @param TimeEntryTask $task
+     * @param TimeEntryTask|null $task
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class TimeEntry
     }
 
     /**
-     * @return TaskAssignment
+     * @return TaskAssignment|null
      */
     public function getTaskAssignment(): ?TaskAssignment
     {
@@ -338,7 +338,7 @@ class TimeEntry
     }
 
     /**
-     * @param TaskAssignment $taskAssignment
+     * @param TaskAssignment|null $taskAssignment
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class TimeEntry
     /**
      * An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.
      *
-     * @return TimeEntryExternalReference
+     * @return TimeEntryExternalReference|null
      */
     public function getExternalReference(): ?TimeEntryExternalReference
     {
@@ -362,7 +362,7 @@ class TimeEntry
     /**
      * An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.
      *
-     * @param TimeEntryExternalReference $externalReference
+     * @param TimeEntryExternalReference|null $externalReference
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class TimeEntry
     /**
      * Once the time entry has been invoiced, this field will include the associated invoice’s id and number.
      *
-     * @return TimeEntryInvoice
+     * @return TimeEntryInvoice|null
      */
     public function getInvoice(): ?TimeEntryInvoice
     {
@@ -386,7 +386,7 @@ class TimeEntry
     /**
      * Once the time entry has been invoiced, this field will include the associated invoice’s id and number.
      *
-     * @param TimeEntryInvoice $invoice
+     * @param TimeEntryInvoice|null $invoice
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class TimeEntry
     /**
      * Number of (decimal time) hours tracked in this time entry.
      *
-     * @return float
+     * @return float|null
      */
     public function getHours(): ?float
     {
@@ -410,7 +410,7 @@ class TimeEntry
     /**
      * Number of (decimal time) hours tracked in this time entry.
      *
-     * @param float $hours
+     * @param float|null $hours
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class TimeEntry
     /**
      * Notes attached to the time entry.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -434,7 +434,7 @@ class TimeEntry
     /**
      * Notes attached to the time entry.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been locked.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsLocked(): ?bool
     {
@@ -458,7 +458,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been locked.
      *
-     * @param bool $isLocked
+     * @param bool|null $isLocked
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class TimeEntry
     /**
      * Why the time entry has been locked.
      *
-     * @return string
+     * @return string|null
      */
     public function getLockedReason(): ?string
     {
@@ -482,7 +482,7 @@ class TimeEntry
     /**
      * Why the time entry has been locked.
      *
-     * @param string $lockedReason
+     * @param string|null $lockedReason
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been approved via Timesheet Approval.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsClosed(): ?bool
     {
@@ -506,7 +506,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been approved via Timesheet Approval.
      *
-     * @param bool $isClosed
+     * @param bool|null $isClosed
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been marked as invoiced.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsBilled(): ?bool
     {
@@ -530,7 +530,7 @@ class TimeEntry
     /**
      * Whether or not the time entry has been marked as invoiced.
      *
-     * @param bool $isBilled
+     * @param bool|null $isBilled
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class TimeEntry
     /**
      * Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getTimerStartedAt(): ?\DateTime
     {
@@ -554,7 +554,7 @@ class TimeEntry
     /**
      * Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.
      *
-     * @param \DateTime $timerStartedAt
+     * @param \DateTime|null $timerStartedAt
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class TimeEntry
     /**
      * Time the time entry was started (if tracking by start/end times).
      *
-     * @return string
+     * @return string|null
      */
     public function getStartedTime(): ?string
     {
@@ -578,7 +578,7 @@ class TimeEntry
     /**
      * Time the time entry was started (if tracking by start/end times).
      *
-     * @param string $startedTime
+     * @param string|null $startedTime
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class TimeEntry
     /**
      * Time the time entry was ended (if tracking by start/end times).
      *
-     * @return string
+     * @return string|null
      */
     public function getEndedTime(): ?string
     {
@@ -602,7 +602,7 @@ class TimeEntry
     /**
      * Time the time entry was ended (if tracking by start/end times).
      *
-     * @param string $endedTime
+     * @param string|null $endedTime
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class TimeEntry
     /**
      * Whether or not the time entry is currently running.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsRunning(): ?bool
     {
@@ -626,7 +626,7 @@ class TimeEntry
     /**
      * Whether or not the time entry is currently running.
      *
-     * @param bool $isRunning
+     * @param bool|null $isRunning
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class TimeEntry
     /**
      * Whether or not the time entry is billable.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -650,7 +650,7 @@ class TimeEntry
     /**
      * Whether or not the time entry is billable.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class TimeEntry
     /**
      * Whether or not the time entry counts towards the project budget.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBudgeted(): ?bool
     {
@@ -674,7 +674,7 @@ class TimeEntry
     /**
      * Whether or not the time entry counts towards the project budget.
      *
-     * @param bool $budgeted
+     * @param bool|null $budgeted
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class TimeEntry
     /**
      * The billable rate for the time entry.
      *
-     * @return float
+     * @return float|null
      */
     public function getBillableRate(): ?float
     {
@@ -698,7 +698,7 @@ class TimeEntry
     /**
      * The billable rate for the time entry.
      *
-     * @param float $billableRate
+     * @param float|null $billableRate
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class TimeEntry
     /**
      * The cost rate for the time entry.
      *
-     * @return float
+     * @return float|null
      */
     public function getCostRate(): ?float
     {
@@ -722,7 +722,7 @@ class TimeEntry
     /**
      * The cost rate for the time entry.
      *
-     * @param float $costRate
+     * @param float|null $costRate
      *
      * @return self
      */
@@ -736,7 +736,7 @@ class TimeEntry
     /**
      * Date and time the time entry was created. Use the ISO 8601 Format.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -746,7 +746,7 @@ class TimeEntry
     /**
      * Date and time the time entry was created. Use the ISO 8601 Format.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class TimeEntry
     /**
      * Date and time the time entry was last updated. Use the ISO 8601 Format.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -770,7 +770,7 @@ class TimeEntry
     /**
      * Date and time the time entry was last updated. Use the ISO 8601 Format.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

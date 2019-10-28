@@ -88,7 +88,7 @@ class EstimateMessage
     /**
      * Unique ID for the message.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -98,7 +98,7 @@ class EstimateMessage
     /**
      * Unique ID for the message.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class EstimateMessage
     /**
      * Name of the user that created the message.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentBy(): ?string
     {
@@ -122,7 +122,7 @@ class EstimateMessage
     /**
      * Name of the user that created the message.
      *
-     * @param string $sentBy
+     * @param string|null $sentBy
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class EstimateMessage
     /**
      * Email of the user that created the message.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentByEmail(): ?string
     {
@@ -146,7 +146,7 @@ class EstimateMessage
     /**
      * Email of the user that created the message.
      *
-     * @param string $sentByEmail
+     * @param string|null $sentByEmail
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class EstimateMessage
     /**
      * Name of the user that the message was sent from.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentFrom(): ?string
     {
@@ -170,7 +170,7 @@ class EstimateMessage
     /**
      * Name of the user that the message was sent from.
      *
-     * @param string $sentFrom
+     * @param string|null $sentFrom
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class EstimateMessage
     /**
      * Email of the user that message was sent from.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentFromEmail(): ?string
     {
@@ -194,7 +194,7 @@ class EstimateMessage
     /**
      * Email of the user that message was sent from.
      *
-     * @param string $sentFromEmail
+     * @param string|null $sentFromEmail
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class EstimateMessage
     /**
      * Array of estimate message recipients.
      *
-     * @return EstimateMessageRecipient[]
+     * @return EstimateMessageRecipient[]|null
      */
     public function getRecipients(): ?array
     {
@@ -218,7 +218,7 @@ class EstimateMessage
     /**
      * Array of estimate message recipients.
      *
-     * @param EstimateMessageRecipient[] $recipients
+     * @param EstimateMessageRecipient[]|null $recipients
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class EstimateMessage
     /**
      * The message subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -242,7 +242,7 @@ class EstimateMessage
     /**
      * The message subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class EstimateMessage
     /**
      * The message body.
      *
-     * @return string
+     * @return string|null
      */
     public function getBody(): ?string
     {
@@ -266,7 +266,7 @@ class EstimateMessage
     /**
      * The message body.
      *
-     * @param string $body
+     * @param string|null $body
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class EstimateMessage
     /**
      * Whether to email a copy of the message to the current user.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getSendMeACopy(): ?bool
     {
@@ -290,7 +290,7 @@ class EstimateMessage
     /**
      * Whether to email a copy of the message to the current user.
      *
-     * @param bool $sendMeACopy
+     * @param bool|null $sendMeACopy
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class EstimateMessage
     /**
      * The type of estimate event that occurred with the message: send, accept, decline, re-open, view, or invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getEventType(): ?string
     {
@@ -314,7 +314,7 @@ class EstimateMessage
     /**
      * The type of estimate event that occurred with the message: send, accept, decline, re-open, view, or invoice.
      *
-     * @param string $eventType
+     * @param string|null $eventType
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class EstimateMessage
     /**
      * Date and time the message was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -338,7 +338,7 @@ class EstimateMessage
     /**
      * Date and time the message was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class EstimateMessage
     /**
      * Date and time the message was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -362,7 +362,7 @@ class EstimateMessage
     /**
      * Date and time the message was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

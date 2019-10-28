@@ -106,7 +106,7 @@ class InvoicesPostBody
     /**
      * The ID of the client this invoice belongs to.
      *
-     * @return int
+     * @return int|null
      */
     public function getClientId(): ?int
     {
@@ -116,7 +116,7 @@ class InvoicesPostBody
     /**
      * The ID of the client this invoice belongs to.
      *
-     * @param int $clientId
+     * @param int|null $clientId
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class InvoicesPostBody
     /**
      * The ID of the retainer associated with this invoice.
      *
-     * @return int
+     * @return int|null
      */
     public function getRetainerId(): ?int
     {
@@ -140,7 +140,7 @@ class InvoicesPostBody
     /**
      * The ID of the retainer associated with this invoice.
      *
-     * @param int $retainerId
+     * @param int|null $retainerId
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class InvoicesPostBody
     /**
      * The ID of the estimate associated with this invoice.
      *
-     * @return int
+     * @return int|null
      */
     public function getEstimateId(): ?int
     {
@@ -164,7 +164,7 @@ class InvoicesPostBody
     /**
      * The ID of the estimate associated with this invoice.
      *
-     * @param int $estimateId
+     * @param int|null $estimateId
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class InvoicesPostBody
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @return string
+     * @return string|null
      */
     public function getNumber(): ?string
     {
@@ -188,7 +188,7 @@ class InvoicesPostBody
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class InvoicesPostBody
     /**
      * The purchase order number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPurchaseOrder(): ?string
     {
@@ -212,7 +212,7 @@ class InvoicesPostBody
     /**
      * The purchase order number.
      *
-     * @param string $purchaseOrder
+     * @param string|null $purchaseOrder
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class InvoicesPostBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax(): ?float
     {
@@ -236,7 +236,7 @@ class InvoicesPostBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @param float $tax
+     * @param float|null $tax
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class InvoicesPostBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2(): ?float
     {
@@ -260,7 +260,7 @@ class InvoicesPostBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @param float $tax2
+     * @param float|null $tax2
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class InvoicesPostBody
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscount(): ?float
     {
@@ -284,7 +284,7 @@ class InvoicesPostBody
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
      *
-     * @param float $discount
+     * @param float|null $discount
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class InvoicesPostBody
     /**
      * The invoice subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -308,7 +308,7 @@ class InvoicesPostBody
     /**
      * The invoice subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class InvoicesPostBody
     /**
      * Any additional notes to include on the invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -332,7 +332,7 @@ class InvoicesPostBody
     /**
      * Any additional notes to include on the invoice.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -346,7 +346,7 @@ class InvoicesPostBody
     /**
      * The currency used by the invoice. If not provided, the client’s currency will be used. See a list of supported currencies.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -356,7 +356,7 @@ class InvoicesPostBody
     /**
      * The currency used by the invoice. If not provided, the client’s currency will be used. See a list of supported currencies.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class InvoicesPostBody
     /**
      * Date the invoice was issued. Defaults to today’s date.
      *
-     * @return string
+     * @return string|null
      */
     public function getIssueDate(): ?string
     {
@@ -380,7 +380,7 @@ class InvoicesPostBody
     /**
      * Date the invoice was issued. Defaults to today’s date.
      *
-     * @param string $issueDate
+     * @param string|null $issueDate
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class InvoicesPostBody
     /**
      * Date the invoice is due. Defaults to the issue_date if no payment_term is specified.
      *
-     * @return string
+     * @return string|null
      */
     public function getDueDate(): ?string
     {
@@ -404,7 +404,7 @@ class InvoicesPostBody
     /**
      * Date the invoice is due. Defaults to the issue_date if no payment_term is specified.
      *
-     * @param string $dueDate
+     * @param string|null $dueDate
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class InvoicesPostBody
     /**
      * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.
      *
-     * @return string
+     * @return string|null
      */
     public function getPaymentTerm(): ?string
     {
@@ -428,7 +428,7 @@ class InvoicesPostBody
     /**
      * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.
      *
-     * @param string $paymentTerm
+     * @param string|null $paymentTerm
      *
      * @return self
      */

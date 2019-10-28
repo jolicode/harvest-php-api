@@ -34,7 +34,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getProjectIds(): ?array
     {
@@ -44,7 +44,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @param int[] $projectIds
+     * @param int[]|null $projectIds
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An time import object.
      *
-     * @return EstimatesEstimateIdPatchBodyLineItemsItemTime
+     * @return EstimatesEstimateIdPatchBodyLineItemsItemTime|null
      */
     public function getTime(): ?EstimatesEstimateIdPatchBodyLineItemsItemTime
     {
@@ -68,7 +68,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An time import object.
      *
-     * @param EstimatesEstimateIdPatchBodyLineItemsItemTime $time
+     * @param EstimatesEstimateIdPatchBodyLineItemsItemTime|null $time
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An expense import object.
      *
-     * @return EstimatesEstimateIdPatchBodyLineItemsItemExpenses
+     * @return EstimatesEstimateIdPatchBodyLineItemsItemExpenses|null
      */
     public function getExpenses(): ?EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     {
@@ -92,7 +92,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * An expense import object.
      *
-     * @param EstimatesEstimateIdPatchBodyLineItemsItemExpenses $expenses
+     * @param EstimatesEstimateIdPatchBodyLineItemsItemExpenses|null $expenses
      *
      * @return self
      */

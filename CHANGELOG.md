@@ -1,8 +1,16 @@
 # Changes between versions
 
-## unreleased
+## Unreleased
 
+Nothing
+
+## 2.0.0 (2019-10-28)
+​
+* Upgrade Jane to 4.5 https://github.com/janephp/janephp/releases/tag/v4.5.3, the new generated classes have better PHPDoc​
+* Generate PSR-18 client instead of HttPlug client
 * Support for cost and billable rates
+* Removed the telephone property from the user model
+* Added statement_key in the Client properties
 
 ## 1.1.0 (2019-04-01)
 

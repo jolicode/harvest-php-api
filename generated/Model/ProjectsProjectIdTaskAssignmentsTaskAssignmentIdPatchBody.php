@@ -40,7 +40,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Whether the task assignment is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -50,7 +50,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Whether the task assignment is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Whether the task assignment is billable or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -74,7 +74,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Whether the task assignment is billable or not.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Rate used when the project’s bill_by is Tasks.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -98,7 +98,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Rate used when the project’s bill_by is Tasks.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -122,7 +122,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */

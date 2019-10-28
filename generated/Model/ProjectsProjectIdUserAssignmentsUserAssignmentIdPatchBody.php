@@ -46,7 +46,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Whether the user assignment is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -56,7 +56,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Whether the user assignment is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -80,7 +80,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseDefaultRates(): ?bool
     {
@@ -104,7 +104,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @param bool $useDefaultRates
+     * @param bool|null $useDefaultRates
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -128,7 +128,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -152,7 +152,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */

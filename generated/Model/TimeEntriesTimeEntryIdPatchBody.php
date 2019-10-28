@@ -64,7 +64,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ID of the project to associate with the time entry.
      *
-     * @return int
+     * @return int|null
      */
     public function getProjectId(): ?int
     {
@@ -74,7 +74,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ID of the project to associate with the time entry.
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ID of the task to associate with the time entry.
      *
-     * @return int
+     * @return int|null
      */
     public function getTaskId(): ?int
     {
@@ -98,7 +98,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ID of the task to associate with the time entry.
      *
-     * @param int $taskId
+     * @param int|null $taskId
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ISO 8601 formatted date the time entry was spent.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -122,7 +122,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The ISO 8601 formatted date the time entry was spent.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartedTime(): ?string
     {
@@ -146,7 +146,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
      *
-     * @param string $startedTime
+     * @param string|null $startedTime
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The time the entry ended.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndedTime(): ?string
     {
@@ -170,7 +170,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The time the entry ended.
      *
-     * @param string $endedTime
+     * @param string|null $endedTime
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The current amount of time tracked.
      *
-     * @return float
+     * @return float|null
      */
     public function getHours(): ?float
     {
@@ -194,7 +194,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * The current amount of time tracked.
      *
-     * @param float $hours
+     * @param float|null $hours
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * Any notes to be associated with the time entry.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -218,7 +218,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * Any notes to be associated with the time entry.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * An object containing the id, group_id, and permalink of the external reference.
      *
-     * @return TimeEntriesTimeEntryIdPatchBodyExternalReference
+     * @return TimeEntriesTimeEntryIdPatchBodyExternalReference|null
      */
     public function getExternalReference(): ?TimeEntriesTimeEntryIdPatchBodyExternalReference
     {
@@ -242,7 +242,7 @@ class TimeEntriesTimeEntryIdPatchBody
     /**
      * An object containing the id, group_id, and permalink of the external reference.
      *
-     * @param TimeEntriesTimeEntryIdPatchBodyExternalReference $externalReference
+     * @param TimeEntriesTimeEntryIdPatchBodyExternalReference|null $externalReference
      *
      * @return self
      */

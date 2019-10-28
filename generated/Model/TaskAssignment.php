@@ -70,7 +70,7 @@ class TaskAssignment
     /**
      * Unique ID for the task assignment.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -80,7 +80,7 @@ class TaskAssignment
     /**
      * Unique ID for the task assignment.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class TaskAssignment
     /**
      * An object containing the id, name, and code of the associated project.
      *
-     * @return TaskAssignmentProject
+     * @return TaskAssignmentProject|null
      */
     public function getProject(): ?TaskAssignmentProject
     {
@@ -104,7 +104,7 @@ class TaskAssignment
     /**
      * An object containing the id, name, and code of the associated project.
      *
-     * @param TaskAssignmentProject $project
+     * @param TaskAssignmentProject|null $project
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class TaskAssignment
     /**
      * An object containing the id and name of the associated task.
      *
-     * @return TaskAssignmentTask
+     * @return TaskAssignmentTask|null
      */
     public function getTask(): ?TaskAssignmentTask
     {
@@ -128,7 +128,7 @@ class TaskAssignment
     /**
      * An object containing the id and name of the associated task.
      *
-     * @param TaskAssignmentTask $task
+     * @param TaskAssignmentTask|null $task
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class TaskAssignment
     /**
      * Whether the task assignment is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -152,7 +152,7 @@ class TaskAssignment
     /**
      * Whether the task assignment is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class TaskAssignment
     /**
      * Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -176,7 +176,7 @@ class TaskAssignment
     /**
      * Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class TaskAssignment
     /**
      * Rate used when the project’s bill_by is Tasks.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -200,7 +200,7 @@ class TaskAssignment
     /**
      * Rate used when the project’s bill_by is Tasks.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class TaskAssignment
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -224,7 +224,7 @@ class TaskAssignment
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class TaskAssignment
     /**
      * Date and time the task assignment was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -248,7 +248,7 @@ class TaskAssignment
     /**
      * Date and time the task assignment was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class TaskAssignment
     /**
      * Date and time the task assignment was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -272,7 +272,7 @@ class TaskAssignment
     /**
      * Date and time the task assignment was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

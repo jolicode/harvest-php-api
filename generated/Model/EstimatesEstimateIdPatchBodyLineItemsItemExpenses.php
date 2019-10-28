@@ -40,7 +40,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * How to summarize the expenses per line item. Options: project, category, people, or detailed.
      *
-     * @return string
+     * @return string|null
      */
     public function getSummaryType(): ?string
     {
@@ -50,7 +50,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * How to summarize the expenses per line item. Options: project, category, people, or detailed.
      *
-     * @param string $summaryType
+     * @param string|null $summaryType
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * Start date for included expenses. Must be provided if to is present. If neither from or to are provided, all unbilled expenses will be included.
      *
-     * @return string
+     * @return string|null
      */
     public function getFrom(): ?string
     {
@@ -74,7 +74,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * Start date for included expenses. Must be provided if to is present. If neither from or to are provided, all unbilled expenses will be included.
      *
-     * @param string $from
+     * @param string|null $from
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * End date for included expenses. Must be provided if from is present. If neither from or to are provided, all unbilled expenses will be included.
      *
-     * @return string
+     * @return string|null
      */
     public function getTo(): ?string
     {
@@ -98,7 +98,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * End date for included expenses. Must be provided if from is present. If neither from or to are provided, all unbilled expenses will be included.
      *
-     * @param string $to
+     * @param string|null $to
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * If set to true, a PDF containing an expense report with receipts will be attached to the invoice. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachReceipt(): ?bool
     {
@@ -122,7 +122,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
     /**
      * If set to true, a PDF containing an expense report with receipts will be attached to the invoice. Defaults to false.
      *
-     * @param bool $attachReceipt
+     * @param bool|null $attachReceipt
      *
      * @return self
      */

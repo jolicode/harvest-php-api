@@ -30,7 +30,7 @@ class EstimateMessagesNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\EstimateMessages;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimateMessages';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

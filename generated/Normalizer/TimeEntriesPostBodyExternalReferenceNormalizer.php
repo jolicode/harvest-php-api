@@ -30,7 +30,7 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

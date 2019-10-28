@@ -28,7 +28,7 @@ class RolesPostBody
     /**
      * The  name of the role.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -38,7 +38,7 @@ class RolesPostBody
     /**
      * The  name of the role.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class RolesPostBody
     /**
      * The IDs of the users assigned to this role.
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getUserIds(): ?array
     {
@@ -62,7 +62,7 @@ class RolesPostBody
     /**
      * The IDs of the users assigned to this role.
      *
-     * @param int[] $userIds
+     * @param int[]|null $userIds
      *
      * @return self
      */

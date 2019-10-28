@@ -22,7 +22,7 @@ class ExpenseReceipt
     protected $fileName;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getURL(): ?string
     {
@@ -30,7 +30,7 @@ class ExpenseReceipt
     }
 
     /**
-     * @param string $uRL
+     * @param string|null $uRL
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ExpenseReceipt
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFileName(): ?string
     {
@@ -50,7 +50,7 @@ class ExpenseReceipt
     }
 
     /**
-     * @param string $fileName
+     * @param string|null $fileName
      *
      * @return self
      */

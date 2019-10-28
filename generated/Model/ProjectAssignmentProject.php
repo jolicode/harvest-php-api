@@ -26,7 +26,7 @@ class ProjectAssignmentProject
     protected $code;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -34,7 +34,7 @@ class ProjectAssignmentProject
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ProjectAssignmentProject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -54,7 +54,7 @@ class ProjectAssignmentProject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ProjectAssignmentProject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCode(): ?string
     {
@@ -74,7 +74,7 @@ class ProjectAssignmentProject
     }
 
     /**
-     * @param string $code
+     * @param string|null $code
      *
      * @return self
      */

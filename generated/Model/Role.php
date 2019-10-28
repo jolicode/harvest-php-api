@@ -46,7 +46,7 @@ class Role
     /**
      * Unique ID for the role.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -56,7 +56,7 @@ class Role
     /**
      * Unique ID for the role.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class Role
     /**
      * The name of the role.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -80,7 +80,7 @@ class Role
     /**
      * The name of the role.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class Role
     /**
      * The IDs of the users assigned to this role.
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getUserIds(): ?array
     {
@@ -104,7 +104,7 @@ class Role
     /**
      * The IDs of the users assigned to this role.
      *
-     * @param int[] $userIds
+     * @param int[]|null $userIds
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class Role
     /**
      * Date and time the role was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -128,7 +128,7 @@ class Role
     /**
      * Date and time the role was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class Role
     /**
      * Date and time the role was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -152,7 +152,7 @@ class Role
     /**
      * Date and time the role was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

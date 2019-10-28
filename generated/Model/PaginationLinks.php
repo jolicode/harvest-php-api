@@ -40,7 +40,7 @@ class PaginationLinks
     /**
      * First page.
      *
-     * @return string
+     * @return string|null
      */
     public function getFirst(): ?string
     {
@@ -50,7 +50,7 @@ class PaginationLinks
     /**
      * First page.
      *
-     * @param string $first
+     * @param string|null $first
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class PaginationLinks
     /**
      * Last page.
      *
-     * @return string
+     * @return string|null
      */
     public function getLast(): ?string
     {
@@ -74,7 +74,7 @@ class PaginationLinks
     /**
      * Last page.
      *
-     * @param string $last
+     * @param string|null $last
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class PaginationLinks
     /**
      * Previous page.
      *
-     * @return string
+     * @return string|null
      */
     public function getPrevious(): ?string
     {
@@ -98,7 +98,7 @@ class PaginationLinks
     /**
      * Previous page.
      *
-     * @param string $previous
+     * @param string|null $previous
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class PaginationLinks
     /**
      * Next page.
      *
-     * @return string
+     * @return string|null
      */
     public function getNext(): ?string
     {
@@ -122,7 +122,7 @@ class PaginationLinks
     /**
      * Next page.
      *
-     * @param string $next
+     * @param string|null $next
      *
      * @return self
      */

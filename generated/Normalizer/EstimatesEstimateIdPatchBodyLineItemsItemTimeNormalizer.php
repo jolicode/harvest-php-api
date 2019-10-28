@@ -30,7 +30,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemTimeNormalizer implements Denorma
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItemTime;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItemTime';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

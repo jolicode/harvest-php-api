@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class DeleteTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class DeleteTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $projectId;
     protected $taskAssignmentId;
@@ -27,7 +27,7 @@ class DeleteTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->taskAssignmentId = $taskAssignmentId;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -39,7 +39,7 @@ class DeleteTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         return str_replace(['{projectId}', '{taskAssignmentId}'], [$this->projectId, $this->taskAssignmentId], '/projects/{projectId}/task_assignments/{taskAssignmentId}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -48,9 +48,9 @@ class DeleteTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return null;

@@ -82,7 +82,7 @@ class ProjectAssignment
     /**
      * Unique ID for the project assignment.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -92,7 +92,7 @@ class ProjectAssignment
     /**
      * Unique ID for the project assignment.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class ProjectAssignment
     /**
      * Whether the project assignment is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -116,7 +116,7 @@ class ProjectAssignment
     /**
      * Whether the project assignment is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ProjectAssignment
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -140,7 +140,7 @@ class ProjectAssignment
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class ProjectAssignment
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseDefaultRates(): ?bool
     {
@@ -164,7 +164,7 @@ class ProjectAssignment
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @param bool $useDefaultRates
+     * @param bool|null $useDefaultRates
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ProjectAssignment
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -188,7 +188,7 @@ class ProjectAssignment
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class ProjectAssignment
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -212,7 +212,7 @@ class ProjectAssignment
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class ProjectAssignment
     /**
      * Date and time the project assignment was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -236,7 +236,7 @@ class ProjectAssignment
     /**
      * Date and time the project assignment was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class ProjectAssignment
     /**
      * Date and time the project assignment was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -260,7 +260,7 @@ class ProjectAssignment
     /**
      * Date and time the project assignment was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class ProjectAssignment
     /**
      * An object containing the assigned project id, name, and code.
      *
-     * @return ProjectAssignmentProject
+     * @return ProjectAssignmentProject|null
      */
     public function getProject(): ?ProjectAssignmentProject
     {
@@ -284,7 +284,7 @@ class ProjectAssignment
     /**
      * An object containing the assigned project id, name, and code.
      *
-     * @param ProjectAssignmentProject $project
+     * @param ProjectAssignmentProject|null $project
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class ProjectAssignment
     /**
      * An object containing the project’s client id and name.
      *
-     * @return ProjectAssignmentClient
+     * @return ProjectAssignmentClient|null
      */
     public function getClient(): ?ProjectAssignmentClient
     {
@@ -308,7 +308,7 @@ class ProjectAssignment
     /**
      * An object containing the project’s client id and name.
      *
-     * @param ProjectAssignmentClient $client
+     * @param ProjectAssignmentClient|null $client
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class ProjectAssignment
     /**
      * Array of task assignment objects associated with the project.
      *
-     * @return TaskAssignment[]
+     * @return TaskAssignment[]|null
      */
     public function getTaskAssignments(): ?array
     {
@@ -332,7 +332,7 @@ class ProjectAssignment
     /**
      * Array of task assignment objects associated with the project.
      *
-     * @param TaskAssignment[] $taskAssignments
+     * @param TaskAssignment[]|null $taskAssignments
      *
      * @return self
      */

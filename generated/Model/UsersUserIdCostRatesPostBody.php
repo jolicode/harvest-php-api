@@ -28,7 +28,7 @@ class UsersUserIdCostRatesPostBody
     /**
      * The amount of the cost rate.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -38,7 +38,7 @@ class UsersUserIdCostRatesPostBody
     /**
      * The amount of the cost rate.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class UsersUserIdCostRatesPostBody
     /**
      * The date the cost rate is effective. Cannot be a date in the future.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartDate(): ?string
     {
@@ -62,7 +62,7 @@ class UsersUserIdCostRatesPostBody
     /**
      * The date the cost rate is effective. Cannot be a date in the future.
      *
-     * @param string $startDate
+     * @param string|null $startDate
      *
      * @return self
      */

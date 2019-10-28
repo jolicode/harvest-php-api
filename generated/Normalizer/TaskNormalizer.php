@@ -30,7 +30,7 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\Task;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Task';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

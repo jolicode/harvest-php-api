@@ -37,12 +37,6 @@ class User
      */
     protected $email;
     /**
-     * The telephone number for the user.
-     *
-     * @var string
-     */
-    protected $telephone;
-    /**
      * The user’s timezone.
      *
      * @var string
@@ -142,7 +136,7 @@ class User
     /**
      * Unique ID for the user.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -152,7 +146,7 @@ class User
     /**
      * Unique ID for the user.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -166,7 +160,7 @@ class User
     /**
      * The first name of the user.
      *
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -176,7 +170,7 @@ class User
     /**
      * The first name of the user.
      *
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -190,7 +184,7 @@ class User
     /**
      * The last name of the user.
      *
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -200,7 +194,7 @@ class User
     /**
      * The last name of the user.
      *
-     * @param string $lastName
+     * @param string|null $lastName
      *
      * @return self
      */
@@ -214,7 +208,7 @@ class User
     /**
      * The email address of the user.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -224,7 +218,7 @@ class User
     /**
      * The email address of the user.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -236,33 +230,9 @@ class User
     }
 
     /**
-     * The telephone number for the user.
-     *
-     * @return string
-     */
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    /**
-     * The telephone number for the user.
-     *
-     * @param string $telephone
-     *
-     * @return self
-     */
-    public function setTelephone(?string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    /**
      * The user’s timezone.
      *
-     * @return string
+     * @return string|null
      */
     public function getTimezone(): ?string
     {
@@ -272,7 +242,7 @@ class User
     /**
      * The user’s timezone.
      *
-     * @param string $timezone
+     * @param string|null $timezone
      *
      * @return self
      */
@@ -286,7 +256,7 @@ class User
     /**
      * Whether the user should be automatically added to future projects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getHasAccessToAllFutureProjects(): ?bool
     {
@@ -296,7 +266,7 @@ class User
     /**
      * Whether the user should be automatically added to future projects.
      *
-     * @param bool $hasAccessToAllFutureProjects
+     * @param bool|null $hasAccessToAllFutureProjects
      *
      * @return self
      */
@@ -310,7 +280,7 @@ class User
     /**
      * Whether the user is a contractor or an employee.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsContractor(): ?bool
     {
@@ -320,7 +290,7 @@ class User
     /**
      * Whether the user is a contractor or an employee.
      *
-     * @param bool $isContractor
+     * @param bool|null $isContractor
      *
      * @return self
      */
@@ -334,7 +304,7 @@ class User
     /**
      * Whether the user has admin permissions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsAdmin(): ?bool
     {
@@ -344,7 +314,7 @@ class User
     /**
      * Whether the user has admin permissions.
      *
-     * @param bool $isAdmin
+     * @param bool|null $isAdmin
      *
      * @return self
      */
@@ -358,7 +328,7 @@ class User
     /**
      * Whether the user has project manager permissions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -368,7 +338,7 @@ class User
     /**
      * Whether the user has project manager permissions.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -382,7 +352,7 @@ class User
     /**
      * Whether the user can see billable rates on projects. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanSeeRates(): ?bool
     {
@@ -392,7 +362,7 @@ class User
     /**
      * Whether the user can see billable rates on projects. Only applicable to project managers.
      *
-     * @param bool $canSeeRates
+     * @param bool|null $canSeeRates
      *
      * @return self
      */
@@ -406,7 +376,7 @@ class User
     /**
      * Whether the user can create projects. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanCreateProjects(): ?bool
     {
@@ -416,7 +386,7 @@ class User
     /**
      * Whether the user can create projects. Only applicable to project managers.
      *
-     * @param bool $canCreateProjects
+     * @param bool|null $canCreateProjects
      *
      * @return self
      */
@@ -430,7 +400,7 @@ class User
     /**
      * Whether the user can create invoices. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanCreateInvoices(): ?bool
     {
@@ -440,7 +410,7 @@ class User
     /**
      * Whether the user can create invoices. Only applicable to project managers.
      *
-     * @param bool $canCreateInvoices
+     * @param bool|null $canCreateInvoices
      *
      * @return self
      */
@@ -454,7 +424,7 @@ class User
     /**
      * Whether the user is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -464,7 +434,7 @@ class User
     /**
      * Whether the user is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -478,7 +448,7 @@ class User
     /**
      * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds.
      *
-     * @return int
+     * @return int|null
      */
     public function getWeeklyCapacity(): ?int
     {
@@ -488,7 +458,7 @@ class User
     /**
      * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds.
      *
-     * @param int $weeklyCapacity
+     * @param int|null $weeklyCapacity
      *
      * @return self
      */
@@ -502,7 +472,7 @@ class User
     /**
      * The billable rate to use for this user when they are added to a project.
      *
-     * @return float
+     * @return float|null
      */
     public function getDefaultHourlyRate(): ?float
     {
@@ -512,7 +482,7 @@ class User
     /**
      * The billable rate to use for this user when they are added to a project.
      *
-     * @param float $defaultHourlyRate
+     * @param float|null $defaultHourlyRate
      *
      * @return self
      */
@@ -526,7 +496,7 @@ class User
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
      *
-     * @return float
+     * @return float|null
      */
     public function getCostRate(): ?float
     {
@@ -536,7 +506,7 @@ class User
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
      *
-     * @param float $costRate
+     * @param float|null $costRate
      *
      * @return self
      */
@@ -550,7 +520,7 @@ class User
     /**
      * The role names assigned to this person.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getRoles(): ?array
     {
@@ -560,7 +530,7 @@ class User
     /**
      * The role names assigned to this person.
      *
-     * @param string[] $roles
+     * @param string[]|null $roles
      *
      * @return self
      */
@@ -574,7 +544,7 @@ class User
     /**
      * The URL to the user’s avatar image.
      *
-     * @return string
+     * @return string|null
      */
     public function getAvatarUrl(): ?string
     {
@@ -584,7 +554,7 @@ class User
     /**
      * The URL to the user’s avatar image.
      *
-     * @param string $avatarUrl
+     * @param string|null $avatarUrl
      *
      * @return self
      */
@@ -598,7 +568,7 @@ class User
     /**
      * Date and time the user was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -608,7 +578,7 @@ class User
     /**
      * Date and time the user was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -622,7 +592,7 @@ class User
     /**
      * Date and time the user was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -632,7 +602,7 @@ class User
     /**
      * Date and time the user was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

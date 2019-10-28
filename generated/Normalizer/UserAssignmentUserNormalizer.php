@@ -30,7 +30,7 @@ class UserAssignmentUserNormalizer implements DenormalizerInterface, NormalizerI
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\UserAssignmentUser;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

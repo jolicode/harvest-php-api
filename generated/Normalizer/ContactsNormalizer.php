@@ -30,7 +30,7 @@ class ContactsNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\Contacts;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Contacts';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

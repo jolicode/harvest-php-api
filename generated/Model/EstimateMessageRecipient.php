@@ -28,7 +28,7 @@ class EstimateMessageRecipient
     /**
      * Name of the message recipient.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -38,7 +38,7 @@ class EstimateMessageRecipient
     /**
      * Name of the message recipient.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class EstimateMessageRecipient
     /**
      * Email of the message recipient.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -62,7 +62,7 @@ class EstimateMessageRecipient
     /**
      * Email of the message recipient.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */

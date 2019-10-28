@@ -118,7 +118,7 @@ class InvoiceMessage
     /**
      * Unique ID for the message.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -128,7 +128,7 @@ class InvoiceMessage
     /**
      * Unique ID for the message.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class InvoiceMessage
     /**
      * Name of the user that created the message.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentBy(): ?string
     {
@@ -152,7 +152,7 @@ class InvoiceMessage
     /**
      * Name of the user that created the message.
      *
-     * @param string $sentBy
+     * @param string|null $sentBy
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class InvoiceMessage
     /**
      * Email of the user that created the message.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentByEmail(): ?string
     {
@@ -176,7 +176,7 @@ class InvoiceMessage
     /**
      * Email of the user that created the message.
      *
-     * @param string $sentByEmail
+     * @param string|null $sentByEmail
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class InvoiceMessage
     /**
      * Name of the user that the message was sent from.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentFrom(): ?string
     {
@@ -200,7 +200,7 @@ class InvoiceMessage
     /**
      * Name of the user that the message was sent from.
      *
-     * @param string $sentFrom
+     * @param string|null $sentFrom
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class InvoiceMessage
     /**
      * Email of the user that message was sent from.
      *
-     * @return string
+     * @return string|null
      */
     public function getSentFromEmail(): ?string
     {
@@ -224,7 +224,7 @@ class InvoiceMessage
     /**
      * Email of the user that message was sent from.
      *
-     * @param string $sentFromEmail
+     * @param string|null $sentFromEmail
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class InvoiceMessage
     /**
      * Array of invoice message recipients.
      *
-     * @return InvoiceMessageRecipient[]
+     * @return InvoiceMessageRecipient[]|null
      */
     public function getRecipients(): ?array
     {
@@ -248,7 +248,7 @@ class InvoiceMessage
     /**
      * Array of invoice message recipients.
      *
-     * @param InvoiceMessageRecipient[] $recipients
+     * @param InvoiceMessageRecipient[]|null $recipients
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class InvoiceMessage
     /**
      * The message subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -272,7 +272,7 @@ class InvoiceMessage
     /**
      * The message subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class InvoiceMessage
     /**
      * The message body.
      *
-     * @return string
+     * @return string|null
      */
     public function getBody(): ?string
     {
@@ -296,7 +296,7 @@ class InvoiceMessage
     /**
      * The message body.
      *
-     * @param string $body
+     * @param string|null $body
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class InvoiceMessage
     /**
      * Whether to include a link to the client invoice in the message body. Not used when thank_you is true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIncludeLinkToClientInvoice(): ?bool
     {
@@ -320,7 +320,7 @@ class InvoiceMessage
     /**
      * Whether to include a link to the client invoice in the message body. Not used when thank_you is true.
      *
-     * @param bool $includeLinkToClientInvoice
+     * @param bool|null $includeLinkToClientInvoice
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class InvoiceMessage
     /**
      * Whether to attach the invoice PDF to the message email.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachPdf(): ?bool
     {
@@ -344,7 +344,7 @@ class InvoiceMessage
     /**
      * Whether to attach the invoice PDF to the message email.
      *
-     * @param bool $attachPdf
+     * @param bool|null $attachPdf
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class InvoiceMessage
     /**
      * Whether to email a copy of the message to the current user.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getSendMeACopy(): ?bool
     {
@@ -368,7 +368,7 @@ class InvoiceMessage
     /**
      * Whether to email a copy of the message to the current user.
      *
-     * @param bool $sendMeACopy
+     * @param bool|null $sendMeACopy
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class InvoiceMessage
     /**
      * Whether this is a thank you message.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getThankYou(): ?bool
     {
@@ -392,7 +392,7 @@ class InvoiceMessage
     /**
      * Whether this is a thank you message.
      *
-     * @param bool $thankYou
+     * @param bool|null $thankYou
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class InvoiceMessage
     /**
      * The type of invoice event that occurred with the message: send, close, draft, re-open, or view.
      *
-     * @return string
+     * @return string|null
      */
     public function getEventType(): ?string
     {
@@ -416,7 +416,7 @@ class InvoiceMessage
     /**
      * The type of invoice event that occurred with the message: send, close, draft, re-open, or view.
      *
-     * @param string $eventType
+     * @param string|null $eventType
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class InvoiceMessage
     /**
      * Whether this is a reminder message.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getReminder(): ?bool
     {
@@ -440,7 +440,7 @@ class InvoiceMessage
     /**
      * Whether this is a reminder message.
      *
-     * @param bool $reminder
+     * @param bool|null $reminder
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class InvoiceMessage
     /**
      * The date the reminder email will be sent.
      *
-     * @return string
+     * @return string|null
      */
     public function getSendReminderOn(): ?string
     {
@@ -464,7 +464,7 @@ class InvoiceMessage
     /**
      * The date the reminder email will be sent.
      *
-     * @param string $sendReminderOn
+     * @param string|null $sendReminderOn
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class InvoiceMessage
     /**
      * Date and time the message was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -488,7 +488,7 @@ class InvoiceMessage
     /**
      * Date and time the message was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class InvoiceMessage
     /**
      * Date and time the message was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -512,7 +512,7 @@ class InvoiceMessage
     /**
      * Date and time the message was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

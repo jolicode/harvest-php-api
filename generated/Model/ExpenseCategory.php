@@ -58,7 +58,7 @@ class ExpenseCategory
     /**
      * Unique ID for the expense category.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -68,7 +68,7 @@ class ExpenseCategory
     /**
      * Unique ID for the expense category.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class ExpenseCategory
     /**
      * The name of the expense category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -92,7 +92,7 @@ class ExpenseCategory
     /**
      * The name of the expense category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class ExpenseCategory
     /**
      * The unit name of the expense category.
      *
-     * @return string
+     * @return string|null
      */
     public function getUnitName(): ?string
     {
@@ -116,7 +116,7 @@ class ExpenseCategory
     /**
      * The unit name of the expense category.
      *
-     * @param string $unitName
+     * @param string|null $unitName
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ExpenseCategory
     /**
      * The unit price of the expense category.
      *
-     * @return float
+     * @return float|null
      */
     public function getUnitPrice(): ?float
     {
@@ -140,7 +140,7 @@ class ExpenseCategory
     /**
      * The unit price of the expense category.
      *
-     * @param float $unitPrice
+     * @param float|null $unitPrice
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class ExpenseCategory
     /**
      * Whether the expense category is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -164,7 +164,7 @@ class ExpenseCategory
     /**
      * Whether the expense category is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ExpenseCategory
     /**
      * Date and time the expense category was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -188,7 +188,7 @@ class ExpenseCategory
     /**
      * Date and time the expense category was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class ExpenseCategory
     /**
      * Date and time the expense category was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -212,7 +212,7 @@ class ExpenseCategory
     /**
      * Date and time the expense category was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

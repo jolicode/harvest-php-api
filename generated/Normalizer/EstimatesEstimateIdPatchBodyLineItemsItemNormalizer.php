@@ -30,7 +30,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemNormalizer implements Denormalize
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

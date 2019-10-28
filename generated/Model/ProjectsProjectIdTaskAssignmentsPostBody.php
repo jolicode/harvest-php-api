@@ -46,7 +46,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * The ID of the task to associate with the project.
      *
-     * @return int
+     * @return int|null
      */
     public function getTaskId(): ?int
     {
@@ -56,7 +56,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * The ID of the task to associate with the project.
      *
-     * @param int $taskId
+     * @param int|null $taskId
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Whether the task assignment is active or archived. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -80,7 +80,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Whether the task assignment is active or archived. Defaults to true.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Whether the task assignment is billable or not. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -104,7 +104,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Whether the task assignment is billable or not. Defaults to false.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Rate used when the project’s bill_by is Tasks. Defaults to null when billing by task hourly rate, otherwise 0.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -128,7 +128,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Rate used when the project’s bill_by is Tasks. Defaults to null when billing by task hourly rate, otherwise 0.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -152,7 +152,7 @@ class ProjectsProjectIdTaskAssignmentsPostBody
     /**
      * Budget used when the project’s budget_by is task or task_fees.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */

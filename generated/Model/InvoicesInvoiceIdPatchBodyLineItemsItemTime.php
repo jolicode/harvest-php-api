@@ -34,7 +34,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * How to summarize the time entries per line item. Options: project, task, people, or detailed.
      *
-     * @return string
+     * @return string|null
      */
     public function getSummaryType(): ?string
     {
@@ -44,7 +44,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * How to summarize the time entries per line item. Options: project, task, people, or detailed.
      *
-     * @param string $summaryType
+     * @param string|null $summaryType
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * Start date for included time entries. Must be provided if to is present. If neither from or to are provided, all unbilled time entries will be included.
      *
-     * @return string
+     * @return string|null
      */
     public function getFrom(): ?string
     {
@@ -68,7 +68,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * Start date for included time entries. Must be provided if to is present. If neither from or to are provided, all unbilled time entries will be included.
      *
-     * @param string $from
+     * @param string|null $from
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * End date for included time entries. Must be provided if from is present. If neither from or to are provided, all unbilled time entries will be included.
      *
-     * @return string
+     * @return string|null
      */
     public function getTo(): ?string
     {
@@ -92,7 +92,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemTime
     /**
      * End date for included time entries. Must be provided if from is present. If neither from or to are provided, all unbilled time entries will be included.
      *
-     * @param string $to
+     * @param string|null $to
      *
      * @return self
      */

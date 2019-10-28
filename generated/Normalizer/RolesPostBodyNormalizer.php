@@ -30,7 +30,7 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\RolesPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

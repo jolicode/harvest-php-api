@@ -30,7 +30,7 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\UsersPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -50,9 +50,6 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
-        }
-        if (property_exists($data, 'telephone') && $data->{'telephone'} !== null) {
-            $object->setTelephone($data->{'telephone'});
         }
         if (property_exists($data, 'timezone') && $data->{'timezone'} !== null) {
             $object->setTimezone($data->{'timezone'});
@@ -112,9 +109,6 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
-        }
-        if (null !== $object->getTelephone()) {
-            $data->{'telephone'} = $object->getTelephone();
         }
         if (null !== $object->getTimezone()) {
             $data->{'timezone'} = $object->getTimezone();

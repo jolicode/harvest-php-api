@@ -70,7 +70,7 @@ class InvoiceLineItem
     /**
      * Unique ID for the line item.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -80,7 +80,7 @@ class InvoiceLineItem
     /**
      * Unique ID for the line item.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class InvoiceLineItem
     /**
      * An object containing the associated project’s id, name, and code.
      *
-     * @return InvoiceLineItemProject
+     * @return InvoiceLineItemProject|null
      */
     public function getProject(): ?InvoiceLineItemProject
     {
@@ -104,7 +104,7 @@ class InvoiceLineItem
     /**
      * An object containing the associated project’s id, name, and code.
      *
-     * @param InvoiceLineItemProject $project
+     * @param InvoiceLineItemProject|null $project
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class InvoiceLineItem
     /**
      * The name of an invoice item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getKind(): ?string
     {
@@ -128,7 +128,7 @@ class InvoiceLineItem
     /**
      * The name of an invoice item category.
      *
-     * @param string $kind
+     * @param string|null $kind
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class InvoiceLineItem
     /**
      * Text description of the line item.
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -152,7 +152,7 @@ class InvoiceLineItem
     /**
      * Text description of the line item.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class InvoiceLineItem
     /**
      * The unit quantity of the item.
      *
-     * @return float
+     * @return float|null
      */
     public function getQuantity(): ?float
     {
@@ -176,7 +176,7 @@ class InvoiceLineItem
     /**
      * The unit quantity of the item.
      *
-     * @param float $quantity
+     * @param float|null $quantity
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class InvoiceLineItem
     /**
      * The individual price per unit.
      *
-     * @return float
+     * @return float|null
      */
     public function getUnitPrice(): ?float
     {
@@ -200,7 +200,7 @@ class InvoiceLineItem
     /**
      * The individual price per unit.
      *
-     * @param float $unitPrice
+     * @param float|null $unitPrice
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class InvoiceLineItem
     /**
      * The line item subtotal (quantity * unit_price).
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -224,7 +224,7 @@ class InvoiceLineItem
     /**
      * The line item subtotal (quantity * unit_price).
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class InvoiceLineItem
     /**
      * Whether the invoice’s tax percentage applies to this line item.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTaxed(): ?bool
     {
@@ -248,7 +248,7 @@ class InvoiceLineItem
     /**
      * Whether the invoice’s tax percentage applies to this line item.
      *
-     * @param bool $taxed
+     * @param bool|null $taxed
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class InvoiceLineItem
     /**
      * Whether the invoice’s tax2 percentage applies to this line item.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTaxed2(): ?bool
     {
@@ -272,7 +272,7 @@ class InvoiceLineItem
     /**
      * Whether the invoice’s tax2 percentage applies to this line item.
      *
-     * @param bool $taxed2
+     * @param bool|null $taxed2
      *
      * @return self
      */

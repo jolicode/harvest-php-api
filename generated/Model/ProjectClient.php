@@ -26,7 +26,7 @@ class ProjectClient
     protected $currency;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -34,7 +34,7 @@ class ProjectClient
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ProjectClient
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -54,7 +54,7 @@ class ProjectClient
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ProjectClient
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -74,7 +74,7 @@ class ProjectClient
     }
 
     /**
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */

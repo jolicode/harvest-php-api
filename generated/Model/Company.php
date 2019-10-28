@@ -112,7 +112,7 @@ class Company
     /**
      * The Harvest URL for the company.
      *
-     * @return string
+     * @return string|null
      */
     public function getBaseUri(): ?string
     {
@@ -122,7 +122,7 @@ class Company
     /**
      * The Harvest URL for the company.
      *
-     * @param string $baseUri
+     * @param string|null $baseUri
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class Company
     /**
      * The Harvest domain for the company.
      *
-     * @return string
+     * @return string|null
      */
     public function getFullDomain(): ?string
     {
@@ -146,7 +146,7 @@ class Company
     /**
      * The Harvest domain for the company.
      *
-     * @param string $fullDomain
+     * @param string|null $fullDomain
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class Company
     /**
      * The name of the company.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -170,7 +170,7 @@ class Company
     /**
      * The name of the company.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class Company
     /**
      * Whether the company is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -194,7 +194,7 @@ class Company
     /**
      * Whether the company is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class Company
     /**
      * The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
      *
-     * @return string
+     * @return string|null
      */
     public function getWeekStartDay(): ?string
     {
@@ -218,7 +218,7 @@ class Company
     /**
      * The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
      *
-     * @param string $weekStartDay
+     * @param string|null $weekStartDay
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class Company
     /**
      * Whether time is tracked via duration or start and end times.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getWantsTimestampTimers(): ?bool
     {
@@ -242,7 +242,7 @@ class Company
     /**
      * Whether time is tracked via duration or start and end times.
      *
-     * @param bool $wantsTimestampTimers
+     * @param bool|null $wantsTimestampTimers
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class Company
     /**
      * The format used to display time in Harvest. Returns either decimal or hours_minutes.
      *
-     * @return string
+     * @return string|null
      */
     public function getTimeFormat(): ?string
     {
@@ -266,7 +266,7 @@ class Company
     /**
      * The format used to display time in Harvest. Returns either decimal or hours_minutes.
      *
-     * @param string $timeFormat
+     * @param string|null $timeFormat
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Company
     /**
      * The type of plan the company is on. Examples: trial, free, or simple-v4.
      *
-     * @return string
+     * @return string|null
      */
     public function getPlanType(): ?string
     {
@@ -290,7 +290,7 @@ class Company
     /**
      * The type of plan the company is on. Examples: trial, free, or simple-v4.
      *
-     * @param string $planType
+     * @param string|null $planType
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class Company
     /**
      * Used to represent whether the company is using a 12-hour or 24-hour clock. Returns either 12h or 24h.
      *
-     * @return string
+     * @return string|null
      */
     public function getClock(): ?string
     {
@@ -314,7 +314,7 @@ class Company
     /**
      * Used to represent whether the company is using a 12-hour or 24-hour clock. Returns either 12h or 24h.
      *
-     * @param string $clock
+     * @param string|null $clock
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class Company
     /**
      * Symbol used when formatting decimals.
      *
-     * @return string
+     * @return string|null
      */
     public function getDecimalSymbol(): ?string
     {
@@ -338,7 +338,7 @@ class Company
     /**
      * Symbol used when formatting decimals.
      *
-     * @param string $decimalSymbol
+     * @param string|null $decimalSymbol
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class Company
     /**
      * Separator used when formatting numbers.
      *
-     * @return string
+     * @return string|null
      */
     public function getThousandsSeparator(): ?string
     {
@@ -362,7 +362,7 @@ class Company
     /**
      * Separator used when formatting numbers.
      *
-     * @param string $thousandsSeparator
+     * @param string|null $thousandsSeparator
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class Company
     /**
      * The color scheme being used in the Harvest web client.
      *
-     * @return string
+     * @return string|null
      */
     public function getColorScheme(): ?string
     {
@@ -386,7 +386,7 @@ class Company
     /**
      * The color scheme being used in the Harvest web client.
      *
-     * @param string $colorScheme
+     * @param string|null $colorScheme
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Company
     /**
      * Whether the expense module is enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getExpenseFeature(): ?bool
     {
@@ -410,7 +410,7 @@ class Company
     /**
      * Whether the expense module is enabled.
      *
-     * @param bool $expenseFeature
+     * @param bool|null $expenseFeature
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Company
     /**
      * Whether the invoice module is enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getInvoiceFeature(): ?bool
     {
@@ -434,7 +434,7 @@ class Company
     /**
      * Whether the invoice module is enabled.
      *
-     * @param bool $invoiceFeature
+     * @param bool|null $invoiceFeature
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Company
     /**
      * Whether the estimate module is enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getEstimateFeature(): ?bool
     {
@@ -458,7 +458,7 @@ class Company
     /**
      * Whether the estimate module is enabled.
      *
-     * @param bool $estimateFeature
+     * @param bool|null $estimateFeature
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Company
     /**
      * Whether the approval module is enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getApprovalFeature(): ?bool
     {
@@ -482,7 +482,7 @@ class Company
     /**
      * Whether the approval module is enabled.
      *
-     * @param bool $approvalFeature
+     * @param bool|null $approvalFeature
      *
      * @return self
      */

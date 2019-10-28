@@ -76,7 +76,7 @@ class UserAssignment
     /**
      * Unique ID for the user assignment.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -86,7 +86,7 @@ class UserAssignment
     /**
      * Unique ID for the user assignment.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class UserAssignment
     /**
      * An object containing the id, name, and code of the associated project.
      *
-     * @return UserAssignmentProject
+     * @return UserAssignmentProject|null
      */
     public function getProject(): ?UserAssignmentProject
     {
@@ -110,7 +110,7 @@ class UserAssignment
     /**
      * An object containing the id, name, and code of the associated project.
      *
-     * @param UserAssignmentProject $project
+     * @param UserAssignmentProject|null $project
      *
      * @return self
      */
@@ -124,7 +124,7 @@ class UserAssignment
     /**
      * An object containing the id and name of the associated user.
      *
-     * @return UserAssignmentUser
+     * @return UserAssignmentUser|null
      */
     public function getUser(): ?UserAssignmentUser
     {
@@ -134,7 +134,7 @@ class UserAssignment
     /**
      * An object containing the id and name of the associated user.
      *
-     * @param UserAssignmentUser $user
+     * @param UserAssignmentUser|null $user
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class UserAssignment
     /**
      * Whether the user assignment is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -158,7 +158,7 @@ class UserAssignment
     /**
      * Whether the user assignment is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -172,7 +172,7 @@ class UserAssignment
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -182,7 +182,7 @@ class UserAssignment
     /**
      * Determines if the user has project manager permissions for the project.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class UserAssignment
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseDefaultRates(): ?bool
     {
@@ -206,7 +206,7 @@ class UserAssignment
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.
      *
-     * @param bool $useDefaultRates
+     * @param bool|null $useDefaultRates
      *
      * @return self
      */
@@ -220,7 +220,7 @@ class UserAssignment
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -230,7 +230,7 @@ class UserAssignment
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -244,7 +244,7 @@ class UserAssignment
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -254,7 +254,7 @@ class UserAssignment
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */
@@ -268,7 +268,7 @@ class UserAssignment
     /**
      * Date and time the user assignment was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -278,7 +278,7 @@ class UserAssignment
     /**
      * Date and time the user assignment was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -292,7 +292,7 @@ class UserAssignment
     /**
      * Date and time the user assignment was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -302,7 +302,7 @@ class UserAssignment
     /**
      * Date and time the user assignment was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

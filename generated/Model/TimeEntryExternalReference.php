@@ -34,7 +34,7 @@ class TimeEntryExternalReference
     protected $serviceIconUrl;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -42,7 +42,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGroupId(): ?string
     {
@@ -62,7 +62,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @param string $groupId
+     * @param string|null $groupId
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalink(): ?string
     {
@@ -82,7 +82,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getService(): ?string
     {
@@ -102,7 +102,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @param string $service
+     * @param string|null $service
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getServiceIconUrl(): ?string
     {
@@ -122,7 +122,7 @@ class TimeEntryExternalReference
     }
 
     /**
-     * @param string $serviceIconUrl
+     * @param string|null $serviceIconUrl
      *
      * @return self
      */

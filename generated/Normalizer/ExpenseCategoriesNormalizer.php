@@ -30,7 +30,7 @@ class ExpenseCategoriesNormalizer implements DenormalizerInterface, NormalizerIn
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\ExpenseCategories;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

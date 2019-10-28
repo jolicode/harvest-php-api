@@ -26,7 +26,7 @@ class TimeEntriesPostBodyExternalReference
     protected $permalink;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -34,7 +34,7 @@ class TimeEntriesPostBodyExternalReference
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class TimeEntriesPostBodyExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGroupId(): ?string
     {
@@ -54,7 +54,7 @@ class TimeEntriesPostBodyExternalReference
     }
 
     /**
-     * @param string $groupId
+     * @param string|null $groupId
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class TimeEntriesPostBodyExternalReference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalink(): ?string
     {
@@ -74,7 +74,7 @@ class TimeEntriesPostBodyExternalReference
     }
 
     /**
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */

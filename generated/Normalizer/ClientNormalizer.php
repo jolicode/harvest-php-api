@@ -30,7 +30,7 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\Client;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Client';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -53,6 +53,9 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (property_exists($data, 'address') && $data->{'address'} !== null) {
             $object->setAddress($data->{'address'});
+        }
+        if (property_exists($data, 'statement_key') && $data->{'statement_key'} !== null) {
+            $object->setStatementKey($data->{'statement_key'});
         }
         if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
             $object->setCurrency($data->{'currency'});
@@ -81,6 +84,9 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getAddress()) {
             $data->{'address'} = $object->getAddress();
+        }
+        if (null !== $object->getStatementKey()) {
+            $data->{'statement_key'} = $object->getStatementKey();
         }
         if (null !== $object->getCurrency()) {
             $data->{'currency'} = $object->getCurrency();

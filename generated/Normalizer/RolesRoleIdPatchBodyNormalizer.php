@@ -30,7 +30,7 @@ class RolesRoleIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

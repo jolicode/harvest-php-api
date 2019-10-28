@@ -22,7 +22,7 @@ class EstimatesEstimateIdMessagesPostBody
     /**
      * Pass “re-open” to re-open the estimate.
      *
-     * @return string
+     * @return string|null
      */
     public function getEventType(): ?string
     {
@@ -32,7 +32,7 @@ class EstimatesEstimateIdMessagesPostBody
     /**
      * Pass “re-open” to re-open the estimate.
      *
-     * @param string $eventType
+     * @param string|null $eventType
      *
      * @return self
      */

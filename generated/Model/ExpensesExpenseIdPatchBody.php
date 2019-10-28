@@ -70,7 +70,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The ID of the project associated with this expense.
      *
-     * @return int
+     * @return int|null
      */
     public function getProjectId(): ?int
     {
@@ -80,7 +80,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The ID of the project associated with this expense.
      *
-     * @param int $projectId
+     * @param int|null $projectId
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The ID of the expense category this expense is being tracked against.
      *
-     * @return int
+     * @return int|null
      */
     public function getExpenseCategoryId(): ?int
     {
@@ -104,7 +104,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The ID of the expense category this expense is being tracked against.
      *
-     * @param int $expenseCategoryId
+     * @param int|null $expenseCategoryId
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Date the expense occurred.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -128,7 +128,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Date the expense occurred.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The quantity of units to use in calculating the total_cost of the expense.
      *
-     * @return int
+     * @return int|null
      */
     public function getUnits(): ?int
     {
@@ -152,7 +152,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The quantity of units to use in calculating the total_cost of the expense.
      *
-     * @param int $units
+     * @param int|null $units
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The total amount of the expense.
      *
-     * @return float
+     * @return float|null
      */
     public function getTotalCost(): ?float
     {
@@ -176,7 +176,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * The total amount of the expense.
      *
-     * @param float $totalCost
+     * @param float|null $totalCost
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Textual notes used to describe the expense.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -200,7 +200,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Textual notes used to describe the expense.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Whether this expense is billable or not. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -224,7 +224,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Whether this expense is billable or not. Defaults to true.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * A receipt file to attach to the expense. If including a receipt, you must submit a multipart/form-data request.
      *
-     * @return string
+     * @return string|null
      */
     public function getReceipt(): ?string
     {
@@ -248,7 +248,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * A receipt file to attach to the expense. If including a receipt, you must submit a multipart/form-data request.
      *
-     * @param string $receipt
+     * @param string|null $receipt
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Whether an attached expense receipt should be deleted. Pass true to delete the expense receipt.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getDeleteReceipt(): ?bool
     {
@@ -272,7 +272,7 @@ class ExpensesExpenseIdPatchBody
     /**
      * Whether an attached expense receipt should be deleted. Pass true to delete the expense receipt.
      *
-     * @param bool $deleteReceipt
+     * @param bool|null $deleteReceipt
      *
      * @return self
      */

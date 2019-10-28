@@ -18,7 +18,7 @@ class InvoiceEstimate
     protected $id;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -26,7 +26,7 @@ class InvoiceEstimate
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */

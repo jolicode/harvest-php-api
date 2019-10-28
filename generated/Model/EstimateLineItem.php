@@ -64,7 +64,7 @@ class EstimateLineItem
     /**
      * Unique ID for the line item.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -74,7 +74,7 @@ class EstimateLineItem
     /**
      * Unique ID for the line item.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class EstimateLineItem
     /**
      * The name of an estimate item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getKind(): ?string
     {
@@ -98,7 +98,7 @@ class EstimateLineItem
     /**
      * The name of an estimate item category.
      *
-     * @param string $kind
+     * @param string|null $kind
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class EstimateLineItem
     /**
      * Text description of the line item.
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -122,7 +122,7 @@ class EstimateLineItem
     /**
      * Text description of the line item.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class EstimateLineItem
     /**
      * The unit quantity of the item.
      *
-     * @return float
+     * @return float|null
      */
     public function getQuantity(): ?float
     {
@@ -146,7 +146,7 @@ class EstimateLineItem
     /**
      * The unit quantity of the item.
      *
-     * @param float $quantity
+     * @param float|null $quantity
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class EstimateLineItem
     /**
      * The individual price per unit.
      *
-     * @return float
+     * @return float|null
      */
     public function getUnitPrice(): ?float
     {
@@ -170,7 +170,7 @@ class EstimateLineItem
     /**
      * The individual price per unit.
      *
-     * @param float $unitPrice
+     * @param float|null $unitPrice
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class EstimateLineItem
     /**
      * The line item subtotal (quantity * unit_price).
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -194,7 +194,7 @@ class EstimateLineItem
     /**
      * The line item subtotal (quantity * unit_price).
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class EstimateLineItem
     /**
      * Whether the estimate’s tax percentage applies to this line item.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTaxed(): ?bool
     {
@@ -218,7 +218,7 @@ class EstimateLineItem
     /**
      * Whether the estimate’s tax percentage applies to this line item.
      *
-     * @param bool $taxed
+     * @param bool|null $taxed
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class EstimateLineItem
     /**
      * Whether the estimate’s tax2 percentage applies to this line item.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTaxed2(): ?bool
     {
@@ -242,7 +242,7 @@ class EstimateLineItem
     /**
      * Whether the estimate’s tax2 percentage applies to this line item.
      *
-     * @param bool $taxed2
+     * @param bool|null $taxed2
      *
      * @return self
      */

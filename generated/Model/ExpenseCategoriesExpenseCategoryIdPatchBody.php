@@ -40,7 +40,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The name of the expense category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The name of the expense category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The unit name of the expense category.
      *
-     * @return string
+     * @return string|null
      */
     public function getUnitName(): ?string
     {
@@ -74,7 +74,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The unit name of the expense category.
      *
-     * @param string $unitName
+     * @param string|null $unitName
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The unit price of the expense category.
      *
-     * @return float
+     * @return float|null
      */
     public function getUnitPrice(): ?float
     {
@@ -98,7 +98,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * The unit price of the expense category.
      *
-     * @param float $unitPrice
+     * @param float|null $unitPrice
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * Whether the expense category is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -122,7 +122,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBody
     /**
      * Whether the expense category is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */

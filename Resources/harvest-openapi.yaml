@@ -3863,7 +3863,7 @@ paths:
     post:
       summary: 'Create a billable rate'
       operationId: createBillableRate
-      description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
+      description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\nCreating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
       externalDocs:
         description: 'Create a billable rate'
         url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#create-a-billable-rate'
@@ -3978,7 +3978,7 @@ paths:
     post:
       summary: 'Create a cost rate'
       operationId: createCostRate
-      description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
+      description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\nCreating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
       externalDocs:
         description: 'Create a cost rate'
         url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#create-a-cost-rate'
@@ -4206,9 +4206,6 @@ paths:
                 type: string
                 description: 'The email address of the user.'
                 format: email
-              telephone:
-                type: string
-                description: 'The telephone number for the user.'
               timezone:
                 type: string
                 description: 'The user’s timezone. Defaults to the company’s timezone. See a list of supported time zones.'
@@ -4348,9 +4345,6 @@ paths:
                 type: string
                 description: 'The email address of the user. Can’t be updated if the user is inactive.'
                 format: email
-              telephone:
-                type: string
-                description: 'The telephone number for the user.'
               timezone:
                 type: string
                 description: 'The user’s timezone. Defaults to the company’s timezone. See a list of supported time zones.'
@@ -4496,6 +4490,9 @@ definitions:
       address:
         type: string
         description: 'The physical address for the client.'
+      statement_key:
+        type: string
+        description: 'Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}'
       currency:
         type: string
         description: 'The currency code associated with this client.'
@@ -5774,9 +5771,6 @@ definitions:
         type: string
         description: 'The email address of the user.'
         format: email
-      telephone:
-        type: string
-        description: 'The telephone number for the user.'
       timezone:
         type: string
         description: 'The user’s timezone.'

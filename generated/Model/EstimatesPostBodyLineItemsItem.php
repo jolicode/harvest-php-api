@@ -34,7 +34,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @return int[]
+     * @return int[]|null
      */
     public function getProjectIds(): ?array
     {
@@ -44,7 +44,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @param int[] $projectIds
+     * @param int[]|null $projectIds
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An time import object.
      *
-     * @return EstimatesPostBodyLineItemsItemTime
+     * @return EstimatesPostBodyLineItemsItemTime|null
      */
     public function getTime(): ?EstimatesPostBodyLineItemsItemTime
     {
@@ -68,7 +68,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An time import object.
      *
-     * @param EstimatesPostBodyLineItemsItemTime $time
+     * @param EstimatesPostBodyLineItemsItemTime|null $time
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An expense import object.
      *
-     * @return EstimatesPostBodyLineItemsItemExpenses
+     * @return EstimatesPostBodyLineItemsItemExpenses|null
      */
     public function getExpenses(): ?EstimatesPostBodyLineItemsItemExpenses
     {
@@ -92,7 +92,7 @@ class EstimatesPostBodyLineItemsItem
     /**
      * An expense import object.
      *
-     * @param EstimatesPostBodyLineItemsItemExpenses $expenses
+     * @param EstimatesPostBodyLineItemsItemExpenses|null $expenses
      *
      * @return self
      */

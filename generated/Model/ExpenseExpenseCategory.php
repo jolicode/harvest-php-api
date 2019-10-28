@@ -30,7 +30,7 @@ class ExpenseExpenseCategory
     protected $unitName;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -38,7 +38,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -58,7 +58,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUnitPrice(): ?string
     {
@@ -78,7 +78,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @param string $unitPrice
+     * @param string|null $unitPrice
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUnitName(): ?string
     {
@@ -98,7 +98,7 @@ class ExpenseExpenseCategory
     }
 
     /**
-     * @param string $unitName
+     * @param string|null $unitName
      *
      * @return self
      */

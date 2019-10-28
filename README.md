@@ -7,13 +7,15 @@ This PHP SDK is generated automatically with [JanePHP](https://github.com/janeph
 
 ## Installation
 
-This library is built atop of PHP-HTTP (read more about it [here](http://docs.php-http.org))
-and PSR-7. So you will need to install some implementations for those interfaces.
-If no PHP-HTTP adapter or PSR-7 message factory is available yet in your project
-or you don't care which one to use, just install some default:
+This library is built atop of [PSR-7](https://www.php-fig.org/psr/psr-7/) and
+[PSR-18](https://www.php-fig.org/psr/psr-18/). So you will need to install some
+implementations for those interfaces.
+
+If no PSR-18 client or PSR-7 message factory is available yet in your project
+or you don't know or don't care which one to use, just install some default:
 
 ```bash
-composer require php-http/curl-client guzzlehttp/psr7
+composer require symfony/http-client nyholm/psr7
 ```
 
 You can now install the Harvest client:

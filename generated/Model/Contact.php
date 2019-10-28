@@ -82,7 +82,7 @@ class Contact
     /**
      * Unique ID for the contact.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -92,7 +92,7 @@ class Contact
     /**
      * Unique ID for the contact.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class Contact
     /**
      * An object containing the contact’s client id and name.
      *
-     * @return ContactClient
+     * @return ContactClient|null
      */
     public function getClient(): ?ContactClient
     {
@@ -116,7 +116,7 @@ class Contact
     /**
      * An object containing the contact’s client id and name.
      *
-     * @param ContactClient $client
+     * @param ContactClient|null $client
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class Contact
     /**
      * The title of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -140,7 +140,7 @@ class Contact
     /**
      * The title of the contact.
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class Contact
     /**
      * The first name of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -164,7 +164,7 @@ class Contact
     /**
      * The first name of the contact.
      *
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class Contact
     /**
      * The last name of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -188,7 +188,7 @@ class Contact
     /**
      * The last name of the contact.
      *
-     * @param string $lastName
+     * @param string|null $lastName
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class Contact
     /**
      * The contact’s email address.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -212,7 +212,7 @@ class Contact
     /**
      * The contact’s email address.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class Contact
     /**
      * The contact’s office phone number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPhoneOffice(): ?string
     {
@@ -236,7 +236,7 @@ class Contact
     /**
      * The contact’s office phone number.
      *
-     * @param string $phoneOffice
+     * @param string|null $phoneOffice
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class Contact
     /**
      * The contact’s mobile phone number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPhoneMobile(): ?string
     {
@@ -260,7 +260,7 @@ class Contact
     /**
      * The contact’s mobile phone number.
      *
-     * @param string $phoneMobile
+     * @param string|null $phoneMobile
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class Contact
     /**
      * The contact’s fax number.
      *
-     * @return string
+     * @return string|null
      */
     public function getFax(): ?string
     {
@@ -284,7 +284,7 @@ class Contact
     /**
      * The contact’s fax number.
      *
-     * @param string $fax
+     * @param string|null $fax
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class Contact
     /**
      * Date and time the contact was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -308,7 +308,7 @@ class Contact
     /**
      * Date and time the contact was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class Contact
     /**
      * Date and time the contact was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -332,7 +332,7 @@ class Contact
     /**
      * Date and time the contact was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

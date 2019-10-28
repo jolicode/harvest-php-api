@@ -22,7 +22,7 @@ class TimeEntryClient
     protected $name;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -30,7 +30,7 @@ class TimeEntryClient
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TimeEntryClient
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class TimeEntryClient
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

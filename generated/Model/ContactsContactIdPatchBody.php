@@ -64,7 +64,7 @@ class ContactsContactIdPatchBody
     /**
      * The ID of the client associated with this contact.
      *
-     * @return int
+     * @return int|null
      */
     public function getClientId(): ?int
     {
@@ -74,7 +74,7 @@ class ContactsContactIdPatchBody
     /**
      * The ID of the client associated with this contact.
      *
-     * @param int $clientId
+     * @param int|null $clientId
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class ContactsContactIdPatchBody
     /**
      * The title of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -98,7 +98,7 @@ class ContactsContactIdPatchBody
     /**
      * The title of the contact.
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class ContactsContactIdPatchBody
     /**
      * The first name of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -122,7 +122,7 @@ class ContactsContactIdPatchBody
     /**
      * The first name of the contact.
      *
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class ContactsContactIdPatchBody
     /**
      * The last name of the contact.
      *
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -146,7 +146,7 @@ class ContactsContactIdPatchBody
     /**
      * The last name of the contact.
      *
-     * @param string $lastName
+     * @param string|null $lastName
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s email address.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -170,7 +170,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s email address.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s office phone number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPhoneOffice(): ?string
     {
@@ -194,7 +194,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s office phone number.
      *
-     * @param string $phoneOffice
+     * @param string|null $phoneOffice
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s mobile phone number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPhoneMobile(): ?string
     {
@@ -218,7 +218,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s mobile phone number.
      *
-     * @param string $phoneMobile
+     * @param string|null $phoneMobile
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s fax number.
      *
-     * @return string
+     * @return string|null
      */
     public function getFax(): ?string
     {
@@ -242,7 +242,7 @@ class ContactsContactIdPatchBody
     /**
      * The contact’s fax number.
      *
-     * @param string $fax
+     * @param string|null $fax
      *
      * @return self
      */

@@ -136,7 +136,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The ID of the client to associate this project with.
      *
-     * @return int
+     * @return int|null
      */
     public function getClientId(): ?int
     {
@@ -146,7 +146,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The ID of the client to associate this project with.
      *
-     * @param int $clientId
+     * @param int|null $clientId
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The name of the project.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -170,7 +170,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The name of the project.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The code associated with the project.
      *
-     * @return string
+     * @return string|null
      */
     public function getCode(): ?string
     {
@@ -194,7 +194,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The code associated with the project.
      *
-     * @param string $code
+     * @param string|null $code
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is active or archived. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -218,7 +218,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is active or archived. Defaults to true.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is billable or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsBillable(): ?bool
     {
@@ -242,7 +242,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is billable or not.
      *
-     * @param bool $isBillable
+     * @param bool|null $isBillable
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is a fixed-fee project or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsFixedFee(): ?bool
     {
@@ -266,7 +266,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether the project is a fixed-fee project or not.
      *
-     * @param bool $isFixedFee
+     * @param bool|null $isFixedFee
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The method by which the project is invoiced. Options: Project, Tasks, People, or none.
      *
-     * @return string
+     * @return string|null
      */
     public function getBillBy(): ?string
     {
@@ -290,7 +290,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The method by which the project is invoiced. Options: Project, Tasks, People, or none.
      *
-     * @param string $billBy
+     * @param string|null $billBy
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Rate for projects billed by Project Hourly Rate.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -314,7 +314,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Rate for projects billed by Project Hourly Rate.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The budget in hours for the project when budgeting by time.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -338,7 +338,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The budget in hours for the project when budgeting by time.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).
      *
-     * @return string
+     * @return string|null
      */
     public function getBudgetBy(): ?string
     {
@@ -362,7 +362,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).
      *
-     * @param string $budgetBy
+     * @param string|null $budgetBy
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option to have the budget reset every month. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBudgetIsMonthly(): ?bool
     {
@@ -386,7 +386,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option to have the budget reset every month. Defaults to false.
      *
-     * @param bool $budgetIsMonthly
+     * @param bool|null $budgetIsMonthly
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether project managers should be notified when the project goes over budget. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getNotifyWhenOverBudget(): ?bool
     {
@@ -410,7 +410,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Whether project managers should be notified when the project goes over budget. Defaults to false.
      *
-     * @param bool $notifyWhenOverBudget
+     * @param bool|null $notifyWhenOverBudget
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Percentage value used to trigger over budget email alerts. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getOverBudgetNotificationPercentage(): ?float
     {
@@ -434,7 +434,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Percentage value used to trigger over budget email alerts. Example: use 10.0 for 10.0%.
      *
-     * @param float $overBudgetNotificationPercentage
+     * @param float|null $overBudgetNotificationPercentage
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option to show project budget to all employees. Does not apply to Total Project Fee projects. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getShowBudgetToAll(): ?bool
     {
@@ -458,7 +458,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option to show project budget to all employees. Does not apply to Total Project Fee projects. Defaults to false.
      *
-     * @param bool $showBudgetToAll
+     * @param bool|null $showBudgetToAll
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The monetary budget for the project when budgeting by money.
      *
-     * @return float
+     * @return float|null
      */
     public function getCostBudget(): ?float
     {
@@ -482,7 +482,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The monetary budget for the project when budgeting by money.
      *
-     * @param float $costBudget
+     * @param float|null $costBudget
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCostBudgetIncludeExpenses(): ?bool
     {
@@ -506,7 +506,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
      *
-     * @param bool $costBudgetIncludeExpenses
+     * @param bool|null $costBudgetIncludeExpenses
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The amount you plan to invoice for the project. Only used by fixed-fee projects.
      *
-     * @return float
+     * @return float|null
      */
     public function getFee(): ?float
     {
@@ -530,7 +530,7 @@ class ProjectsProjectIdPatchBody
     /**
      * The amount you plan to invoice for the project. Only used by fixed-fee projects.
      *
-     * @param float $fee
+     * @param float|null $fee
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Project notes.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -554,7 +554,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Project notes.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Date the project was started.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartsOn(): ?string
     {
@@ -578,7 +578,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Date the project was started.
      *
-     * @param string $startsOn
+     * @param string|null $startsOn
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Date the project will end.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndsOn(): ?string
     {
@@ -602,7 +602,7 @@ class ProjectsProjectIdPatchBody
     /**
      * Date the project will end.
      *
-     * @param string $endsOn
+     * @param string|null $endsOn
      *
      * @return self
      */

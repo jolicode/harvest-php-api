@@ -40,7 +40,7 @@ class EstimateItemCategory
     /**
      * Unique ID for the estimate item category.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -50,7 +50,7 @@ class EstimateItemCategory
     /**
      * Unique ID for the estimate item category.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class EstimateItemCategory
     /**
      * The name of the estimate item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class EstimateItemCategory
     /**
      * The name of the estimate item category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class EstimateItemCategory
     /**
      * Date and time the estimate item category was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -98,7 +98,7 @@ class EstimateItemCategory
     /**
      * Date and time the estimate item category was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class EstimateItemCategory
     /**
      * Date and time the estimate item category was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -122,7 +122,7 @@ class EstimateItemCategory
     /**
      * Date and time the estimate item category was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

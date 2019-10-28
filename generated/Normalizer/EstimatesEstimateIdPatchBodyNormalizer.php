@@ -30,7 +30,7 @@ class EstimatesEstimateIdPatchBodyNormalizer implements DenormalizerInterface, N
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

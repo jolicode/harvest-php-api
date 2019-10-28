@@ -30,7 +30,7 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -50,9 +50,6 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
-        }
-        if (property_exists($data, 'telephone') && $data->{'telephone'} !== null) {
-            $object->setTelephone($data->{'telephone'});
         }
         if (property_exists($data, 'timezone') && $data->{'timezone'} !== null) {
             $object->setTimezone($data->{'timezone'});
@@ -112,9 +109,6 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
-        }
-        if (null !== $object->getTelephone()) {
-            $data->{'telephone'} = $object->getTelephone();
         }
         if (null !== $object->getTimezone()) {
             $data->{'timezone'} = $object->getTimezone();

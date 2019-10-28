@@ -208,7 +208,7 @@ class Invoice
     /**
      * Unique ID for the invoice.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -218,7 +218,7 @@ class Invoice
     /**
      * Unique ID for the invoice.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class Invoice
     /**
      * An object containing invoice’s client id and name.
      *
-     * @return InvoiceClient
+     * @return InvoiceClient|null
      */
     public function getClient(): ?InvoiceClient
     {
@@ -242,7 +242,7 @@ class Invoice
     /**
      * An object containing invoice’s client id and name.
      *
-     * @param InvoiceClient $client
+     * @param InvoiceClient|null $client
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class Invoice
     /**
      * Array of invoice line items.
      *
-     * @return InvoiceLineItem[]
+     * @return InvoiceLineItem[]|null
      */
     public function getLineItems(): ?array
     {
@@ -266,7 +266,7 @@ class Invoice
     /**
      * Array of invoice line items.
      *
-     * @param InvoiceLineItem[] $lineItems
+     * @param InvoiceLineItem[]|null $lineItems
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Invoice
     /**
      * An object containing the associated estimate’s id.
      *
-     * @return InvoiceEstimate
+     * @return InvoiceEstimate|null
      */
     public function getEstimate(): ?InvoiceEstimate
     {
@@ -290,7 +290,7 @@ class Invoice
     /**
      * An object containing the associated estimate’s id.
      *
-     * @param InvoiceEstimate $estimate
+     * @param InvoiceEstimate|null $estimate
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class Invoice
     /**
      * An object containing the associated retainer’s id.
      *
-     * @return InvoiceRetainer
+     * @return InvoiceRetainer|null
      */
     public function getRetainer(): ?InvoiceRetainer
     {
@@ -314,7 +314,7 @@ class Invoice
     /**
      * An object containing the associated retainer’s id.
      *
-     * @param InvoiceRetainer $retainer
+     * @param InvoiceRetainer|null $retainer
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class Invoice
     /**
      * An object containing the id and name of the person that created the invoice.
      *
-     * @return InvoiceCreator
+     * @return InvoiceCreator|null
      */
     public function getCreator(): ?InvoiceCreator
     {
@@ -338,7 +338,7 @@ class Invoice
     /**
      * An object containing the id and name of the person that created the invoice.
      *
-     * @param InvoiceCreator $creator
+     * @param InvoiceCreator|null $creator
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class Invoice
     /**
      * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456.
      *
-     * @return string
+     * @return string|null
      */
     public function getClientKey(): ?string
     {
@@ -362,7 +362,7 @@ class Invoice
     /**
      * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456.
      *
-     * @param string $clientKey
+     * @param string|null $clientKey
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class Invoice
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @return string
+     * @return string|null
      */
     public function getNumber(): ?string
     {
@@ -386,7 +386,7 @@ class Invoice
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Invoice
     /**
      * The purchase order number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPurchaseOrder(): ?string
     {
@@ -410,7 +410,7 @@ class Invoice
     /**
      * The purchase order number.
      *
-     * @param string $purchaseOrder
+     * @param string|null $purchaseOrder
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Invoice
     /**
      * The total amount for the invoice, including any discounts and taxes.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -434,7 +434,7 @@ class Invoice
     /**
      * The total amount for the invoice, including any discounts and taxes.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Invoice
     /**
      * The total amount due at this time for this invoice.
      *
-     * @return float
+     * @return float|null
      */
     public function getDueAmount(): ?float
     {
@@ -458,7 +458,7 @@ class Invoice
     /**
      * The total amount due at this time for this invoice.
      *
-     * @param float $dueAmount
+     * @param float|null $dueAmount
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Invoice
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax(): ?float
     {
@@ -482,7 +482,7 @@ class Invoice
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @param float $tax
+     * @param float|null $tax
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class Invoice
     /**
      * The first amount of tax included, calculated from tax. If no tax is defined, this value will be null.
      *
-     * @return float
+     * @return float|null
      */
     public function getTaxAmount(): ?float
     {
@@ -506,7 +506,7 @@ class Invoice
     /**
      * The first amount of tax included, calculated from tax. If no tax is defined, this value will be null.
      *
-     * @param float $taxAmount
+     * @param float|null $taxAmount
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class Invoice
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2(): ?float
     {
@@ -530,7 +530,7 @@ class Invoice
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @param float $tax2
+     * @param float|null $tax2
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class Invoice
     /**
      * The amount calculated from tax2.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2Amount(): ?float
     {
@@ -554,7 +554,7 @@ class Invoice
     /**
      * The amount calculated from tax2.
      *
-     * @param float $tax2Amount
+     * @param float|null $tax2Amount
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class Invoice
     /**
      * This percentage is subtracted from the subtotal.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscount(): ?float
     {
@@ -578,7 +578,7 @@ class Invoice
     /**
      * This percentage is subtracted from the subtotal.
      *
-     * @param float $discount
+     * @param float|null $discount
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class Invoice
     /**
      * The amount calcuated from discount.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscountAmount(): ?float
     {
@@ -602,7 +602,7 @@ class Invoice
     /**
      * The amount calcuated from discount.
      *
-     * @param float $discountAmount
+     * @param float|null $discountAmount
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class Invoice
     /**
      * The invoice subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -626,7 +626,7 @@ class Invoice
     /**
      * The invoice subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class Invoice
     /**
      * Any additional notes included on the invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -650,7 +650,7 @@ class Invoice
     /**
      * Any additional notes included on the invoice.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class Invoice
     /**
      * The currency code associated with this invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -674,7 +674,7 @@ class Invoice
     /**
      * The currency code associated with this invoice.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class Invoice
     /**
      * The current state of the invoice: draft, open, paid, or closed.
      *
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -698,7 +698,7 @@ class Invoice
     /**
      * The current state of the invoice: draft, open, paid, or closed.
      *
-     * @param string $state
+     * @param string|null $state
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class Invoice
     /**
      * Start of the period during which time entries were added to this invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getPeriodStart(): ?string
     {
@@ -722,7 +722,7 @@ class Invoice
     /**
      * Start of the period during which time entries were added to this invoice.
      *
-     * @param string $periodStart
+     * @param string|null $periodStart
      *
      * @return self
      */
@@ -736,7 +736,7 @@ class Invoice
     /**
      * End of the period during which time entries were added to this invoice.
      *
-     * @return string
+     * @return string|null
      */
     public function getPeriodEnd(): ?string
     {
@@ -746,7 +746,7 @@ class Invoice
     /**
      * End of the period during which time entries were added to this invoice.
      *
-     * @param string $periodEnd
+     * @param string|null $periodEnd
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class Invoice
     /**
      * Date the invoice was issued.
      *
-     * @return string
+     * @return string|null
      */
     public function getIssueDate(): ?string
     {
@@ -770,7 +770,7 @@ class Invoice
     /**
      * Date the invoice was issued.
      *
-     * @param string $issueDate
+     * @param string|null $issueDate
      *
      * @return self
      */
@@ -784,7 +784,7 @@ class Invoice
     /**
      * Date the invoice is due.
      *
-     * @return string
+     * @return string|null
      */
     public function getDueDate(): ?string
     {
@@ -794,7 +794,7 @@ class Invoice
     /**
      * Date the invoice is due.
      *
-     * @param string $dueDate
+     * @param string|null $dueDate
      *
      * @return self
      */
@@ -808,7 +808,7 @@ class Invoice
     /**
      * The timeframe in which the invoice should be paid. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.
      *
-     * @return string
+     * @return string|null
      */
     public function getPaymentTerm(): ?string
     {
@@ -818,7 +818,7 @@ class Invoice
     /**
      * The timeframe in which the invoice should be paid. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.
      *
-     * @param string $paymentTerm
+     * @param string|null $paymentTerm
      *
      * @return self
      */
@@ -832,7 +832,7 @@ class Invoice
     /**
      * Date and time the invoice was sent.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getSentAt(): ?\DateTime
     {
@@ -842,7 +842,7 @@ class Invoice
     /**
      * Date and time the invoice was sent.
      *
-     * @param \DateTime $sentAt
+     * @param \DateTime|null $sentAt
      *
      * @return self
      */
@@ -856,7 +856,7 @@ class Invoice
     /**
      * Date and time the invoice was paid.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPaidAt(): ?\DateTime
     {
@@ -866,7 +866,7 @@ class Invoice
     /**
      * Date and time the invoice was paid.
      *
-     * @param \DateTime $paidAt
+     * @param \DateTime|null $paidAt
      *
      * @return self
      */
@@ -880,7 +880,7 @@ class Invoice
     /**
      * Date the invoice was paid.
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidDate(): ?string
     {
@@ -890,7 +890,7 @@ class Invoice
     /**
      * Date the invoice was paid.
      *
-     * @param string $paidDate
+     * @param string|null $paidDate
      *
      * @return self
      */
@@ -904,7 +904,7 @@ class Invoice
     /**
      * Date and time the invoice was closed.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
     {
@@ -914,7 +914,7 @@ class Invoice
     /**
      * Date and time the invoice was closed.
      *
-     * @param \DateTime $closedAt
+     * @param \DateTime|null $closedAt
      *
      * @return self
      */
@@ -928,7 +928,7 @@ class Invoice
     /**
      * Date and time the invoice was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -938,7 +938,7 @@ class Invoice
     /**
      * Date and time the invoice was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -952,7 +952,7 @@ class Invoice
     /**
      * Date and time the invoice was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -962,7 +962,7 @@ class Invoice
     /**
      * Date and time the invoice was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

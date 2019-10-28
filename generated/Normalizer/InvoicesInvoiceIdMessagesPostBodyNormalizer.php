@@ -30,7 +30,7 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

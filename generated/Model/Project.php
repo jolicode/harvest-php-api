@@ -160,7 +160,7 @@ class Project
     /**
      * Unique ID for the project.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -170,7 +170,7 @@ class Project
     /**
      * Unique ID for the project.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class Project
     /**
      * An object containing the project’s client id, name, and currency.
      *
-     * @return ProjectClient
+     * @return ProjectClient|null
      */
     public function getClient(): ?ProjectClient
     {
@@ -194,7 +194,7 @@ class Project
     /**
      * An object containing the project’s client id, name, and currency.
      *
-     * @param ProjectClient $client
+     * @param ProjectClient|null $client
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class Project
     /**
      * Unique name for the project.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -218,7 +218,7 @@ class Project
     /**
      * Unique name for the project.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class Project
     /**
      * The code associated with the project.
      *
-     * @return string
+     * @return string|null
      */
     public function getCode(): ?string
     {
@@ -242,7 +242,7 @@ class Project
     /**
      * The code associated with the project.
      *
-     * @param string $code
+     * @param string|null $code
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class Project
     /**
      * Whether the project is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -266,7 +266,7 @@ class Project
     /**
      * Whether the project is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Project
     /**
      * Whether the project is billable or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsBillable(): ?bool
     {
@@ -290,7 +290,7 @@ class Project
     /**
      * Whether the project is billable or not.
      *
-     * @param bool $isBillable
+     * @param bool|null $isBillable
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class Project
     /**
      * Whether the project is a fixed-fee project or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsFixedFee(): ?bool
     {
@@ -314,7 +314,7 @@ class Project
     /**
      * Whether the project is a fixed-fee project or not.
      *
-     * @param bool $isFixedFee
+     * @param bool|null $isFixedFee
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class Project
     /**
      * The method by which the project is invoiced.
      *
-     * @return string
+     * @return string|null
      */
     public function getBillBy(): ?string
     {
@@ -338,7 +338,7 @@ class Project
     /**
      * The method by which the project is invoiced.
      *
-     * @param string $billBy
+     * @param string|null $billBy
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class Project
     /**
      * Rate for projects billed by Project Hourly Rate.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -362,7 +362,7 @@ class Project
     /**
      * Rate for projects billed by Project Hourly Rate.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class Project
     /**
      * The budget in hours for the project when budgeting by time.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -386,7 +386,7 @@ class Project
     /**
      * The budget in hours for the project when budgeting by time.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Project
     /**
      * The method by which the project is budgeted.
      *
-     * @return string
+     * @return string|null
      */
     public function getBudgetBy(): ?string
     {
@@ -410,7 +410,7 @@ class Project
     /**
      * The method by which the project is budgeted.
      *
-     * @param string $budgetBy
+     * @param string|null $budgetBy
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Project
     /**
      * Option to have the budget reset every month.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBudgetIsMonthly(): ?bool
     {
@@ -434,7 +434,7 @@ class Project
     /**
      * Option to have the budget reset every month.
      *
-     * @param bool $budgetIsMonthly
+     * @param bool|null $budgetIsMonthly
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Project
     /**
      * Whether project managers should be notified when the project goes over budget.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getNotifyWhenOverBudget(): ?bool
     {
@@ -458,7 +458,7 @@ class Project
     /**
      * Whether project managers should be notified when the project goes over budget.
      *
-     * @param bool $notifyWhenOverBudget
+     * @param bool|null $notifyWhenOverBudget
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Project
     /**
      * Percentage value used to trigger over budget email alerts.
      *
-     * @return float
+     * @return float|null
      */
     public function getOverBudgetNotificationPercentage(): ?float
     {
@@ -482,7 +482,7 @@ class Project
     /**
      * Percentage value used to trigger over budget email alerts.
      *
-     * @param float $overBudgetNotificationPercentage
+     * @param float|null $overBudgetNotificationPercentage
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class Project
     /**
      * Date of last over budget notification. If none have been sent, this will be null.
      *
-     * @return string
+     * @return string|null
      */
     public function getOverBudgetNotificationDate(): ?string
     {
@@ -506,7 +506,7 @@ class Project
     /**
      * Date of last over budget notification. If none have been sent, this will be null.
      *
-     * @param string $overBudgetNotificationDate
+     * @param string|null $overBudgetNotificationDate
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class Project
     /**
      * Option to show project budget to all employees. Does not apply to Total Project Fee projects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getShowBudgetToAll(): ?bool
     {
@@ -530,7 +530,7 @@ class Project
     /**
      * Option to show project budget to all employees. Does not apply to Total Project Fee projects.
      *
-     * @param bool $showBudgetToAll
+     * @param bool|null $showBudgetToAll
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class Project
     /**
      * The monetary budget for the project when budgeting by money.
      *
-     * @return float
+     * @return float|null
      */
     public function getCostBudget(): ?float
     {
@@ -554,7 +554,7 @@ class Project
     /**
      * The monetary budget for the project when budgeting by money.
      *
-     * @param float $costBudget
+     * @param float|null $costBudget
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class Project
     /**
      * Option for budget of Total Project Fees projects to include tracked expenses.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCostBudgetIncludeExpenses(): ?bool
     {
@@ -578,7 +578,7 @@ class Project
     /**
      * Option for budget of Total Project Fees projects to include tracked expenses.
      *
-     * @param bool $costBudgetIncludeExpenses
+     * @param bool|null $costBudgetIncludeExpenses
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class Project
     /**
      * The amount you plan to invoice for the project. Only used by fixed-fee projects.
      *
-     * @return float
+     * @return float|null
      */
     public function getFee(): ?float
     {
@@ -602,7 +602,7 @@ class Project
     /**
      * The amount you plan to invoice for the project. Only used by fixed-fee projects.
      *
-     * @param float $fee
+     * @param float|null $fee
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class Project
     /**
      * Project notes.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -626,7 +626,7 @@ class Project
     /**
      * Project notes.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class Project
     /**
      * Date the project was started.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartsOn(): ?string
     {
@@ -650,7 +650,7 @@ class Project
     /**
      * Date the project was started.
      *
-     * @param string $startsOn
+     * @param string|null $startsOn
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class Project
     /**
      * Date the project will end.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndsOn(): ?string
     {
@@ -674,7 +674,7 @@ class Project
     /**
      * Date the project will end.
      *
-     * @param string $endsOn
+     * @param string|null $endsOn
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class Project
     /**
      * Date and time the project was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -698,7 +698,7 @@ class Project
     /**
      * Date and time the project was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class Project
     /**
      * Date and time the project was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -722,7 +722,7 @@ class Project
     /**
      * Date and time the project was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

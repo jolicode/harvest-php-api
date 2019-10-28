@@ -40,7 +40,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * The amount of the payment.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -50,7 +50,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * The amount of the payment.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Date and time the payment was made. Pass either paid_at or paid_date, but not both.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPaidAt(): ?\DateTime
     {
@@ -74,7 +74,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Date and time the payment was made. Pass either paid_at or paid_date, but not both.
      *
-     * @param \DateTime $paidAt
+     * @param \DateTime|null $paidAt
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Date the payment was made. Pass either paid_at or paid_date, but not both.
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidDate(): ?string
     {
@@ -98,7 +98,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Date the payment was made. Pass either paid_at or paid_date, but not both.
      *
-     * @param string $paidDate
+     * @param string|null $paidDate
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Any notes to be associated with the payment.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -122,7 +122,7 @@ class InvoicesInvoiceIdPaymentsPostBody
     /**
      * Any notes to be associated with the payment.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */

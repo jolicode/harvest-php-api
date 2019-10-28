@@ -52,7 +52,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * The ID of the user to associate with the project.
      *
-     * @return int
+     * @return int|null
      */
     public function getUserId(): ?int
     {
@@ -62,7 +62,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * The ID of the user to associate with the project.
      *
-     * @param int $userId
+     * @param int|null $userId
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Whether the user assignment is active or archived. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -86,7 +86,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Whether the user assignment is active or archived. Defaults to true.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -110,7 +110,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -124,7 +124,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment. Defaults to true.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseDefaultRates(): ?bool
     {
@@ -134,7 +134,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment. Defaults to true.
      *
-     * @param bool $useDefaultRates
+     * @param bool|null $useDefaultRates
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false. Defaults to 0.
      *
-     * @return float
+     * @return float|null
      */
     public function getHourlyRate(): ?float
     {
@@ -158,7 +158,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Custom rate used when the project’s bill_by is People and use_default_rates is false. Defaults to 0.
      *
-     * @param float $hourlyRate
+     * @param float|null $hourlyRate
      *
      * @return self
      */
@@ -172,7 +172,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @return float
+     * @return float|null
      */
     public function getBudget(): ?float
     {
@@ -182,7 +182,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     /**
      * Budget used when the project’s budget_by is person.
      *
-     * @param float $budget
+     * @param float|null $budget
      *
      * @return self
      */

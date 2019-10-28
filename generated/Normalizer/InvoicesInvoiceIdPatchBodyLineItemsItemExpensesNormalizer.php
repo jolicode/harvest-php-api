@@ -30,7 +30,7 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemExpensesNormalizer implements Denor
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBodyLineItemsItemExpenses;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItemExpenses';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

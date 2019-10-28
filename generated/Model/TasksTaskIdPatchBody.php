@@ -46,7 +46,7 @@ class TasksTaskIdPatchBody
     /**
      * The name of the task.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -56,7 +56,7 @@ class TasksTaskIdPatchBody
     /**
      * The name of the task.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class TasksTaskIdPatchBody
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillableByDefault(): ?bool
     {
@@ -80,7 +80,7 @@ class TasksTaskIdPatchBody
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
      *
-     * @param bool $billableByDefault
+     * @param bool|null $billableByDefault
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class TasksTaskIdPatchBody
     /**
      * The default hourly rate to use for this task when it is added to a project.
      *
-     * @return float
+     * @return float|null
      */
     public function getDefaultHourlyRate(): ?float
     {
@@ -104,7 +104,7 @@ class TasksTaskIdPatchBody
     /**
      * The default hourly rate to use for this task when it is added to a project.
      *
-     * @param float $defaultHourlyRate
+     * @param float|null $defaultHourlyRate
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class TasksTaskIdPatchBody
     /**
      * Whether this task should be automatically added to future projects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsDefault(): ?bool
     {
@@ -128,7 +128,7 @@ class TasksTaskIdPatchBody
     /**
      * Whether this task should be automatically added to future projects.
      *
-     * @param bool $isDefault
+     * @param bool|null $isDefault
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class TasksTaskIdPatchBody
     /**
      * Whether this task is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -152,7 +152,7 @@ class TasksTaskIdPatchBody
     /**
      * Whether this task is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */

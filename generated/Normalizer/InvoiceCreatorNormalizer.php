@@ -30,7 +30,7 @@ class InvoiceCreatorNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\InvoiceCreator;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

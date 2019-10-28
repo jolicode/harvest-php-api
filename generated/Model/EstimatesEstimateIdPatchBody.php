@@ -82,7 +82,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The ID of the client this estimate belongs to.
      *
-     * @return int
+     * @return int|null
      */
     public function getClientId(): ?int
     {
@@ -92,7 +92,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The ID of the client this estimate belongs to.
      *
-     * @param int $clientId
+     * @param int|null $clientId
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @return string
+     * @return string|null
      */
     public function getNumber(): ?string
     {
@@ -116,7 +116,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The purchase order number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPurchaseOrder(): ?string
     {
@@ -140,7 +140,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The purchase order number.
      *
-     * @param string $purchaseOrder
+     * @param string|null $purchaseOrder
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax(): ?float
     {
@@ -164,7 +164,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @param float $tax
+     * @param float|null $tax
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2(): ?float
     {
@@ -188,7 +188,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
      *
-     * @param float $tax2
+     * @param float|null $tax2
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscount(): ?float
     {
@@ -212,7 +212,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
      *
-     * @param float $discount
+     * @param float|null $discount
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The estimate subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -236,7 +236,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The estimate subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Any additional notes to include on the estimate.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -260,7 +260,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Any additional notes to include on the estimate.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -284,7 +284,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Date the estimate was issued.
      *
-     * @return string
+     * @return string|null
      */
     public function getIssueDate(): ?string
     {
@@ -308,7 +308,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Date the estimate was issued.
      *
-     * @param string $issueDate
+     * @param string|null $issueDate
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Array of line item parameters.
      *
-     * @return EstimatesEstimateIdPatchBodyLineItemsItem[]
+     * @return EstimatesEstimateIdPatchBodyLineItemsItem[]|null
      */
     public function getLineItems(): ?array
     {
@@ -332,7 +332,7 @@ class EstimatesEstimateIdPatchBody
     /**
      * Array of line item parameters.
      *
-     * @param EstimatesEstimateIdPatchBodyLineItemsItem[] $lineItems
+     * @param EstimatesEstimateIdPatchBodyLineItemsItem[]|null $lineItems
      *
      * @return self
      */

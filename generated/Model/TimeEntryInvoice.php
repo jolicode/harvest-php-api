@@ -22,7 +22,7 @@ class TimeEntryInvoice
     protected $number;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -30,7 +30,7 @@ class TimeEntryInvoice
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TimeEntryInvoice
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNumber(): ?string
     {
@@ -50,7 +50,7 @@ class TimeEntryInvoice
     }
 
     /**
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */

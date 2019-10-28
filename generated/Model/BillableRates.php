@@ -46,7 +46,7 @@ class BillableRates
     protected $links;
 
     /**
-     * @return BillableRate[]
+     * @return BillableRate[]|null
      */
     public function getBillableRates(): ?array
     {
@@ -54,7 +54,7 @@ class BillableRates
     }
 
     /**
-     * @param BillableRate[] $billableRates
+     * @param BillableRate[]|null $billableRates
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPerPage(): ?int
     {
@@ -74,7 +74,7 @@ class BillableRates
     }
 
     /**
-     * @param int $perPage
+     * @param int|null $perPage
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTotalPages(): ?int
     {
@@ -94,7 +94,7 @@ class BillableRates
     }
 
     /**
-     * @param int $totalPages
+     * @param int|null $totalPages
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTotalEntries(): ?int
     {
@@ -114,7 +114,7 @@ class BillableRates
     }
 
     /**
-     * @param int $totalEntries
+     * @param int|null $totalEntries
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNextPage(): ?int
     {
@@ -134,7 +134,7 @@ class BillableRates
     }
 
     /**
-     * @param int $nextPage
+     * @param int|null $nextPage
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPreviousPage(): ?int
     {
@@ -154,7 +154,7 @@ class BillableRates
     }
 
     /**
-     * @param int $previousPage
+     * @param int|null $previousPage
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class BillableRates
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPage(): ?int
     {
@@ -174,7 +174,7 @@ class BillableRates
     }
 
     /**
-     * @param int $page
+     * @param int|null $page
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class BillableRates
     }
 
     /**
-     * @return PaginationLinks
+     * @return PaginationLinks|null
      */
     public function getLinks(): ?PaginationLinks
     {
@@ -194,7 +194,7 @@ class BillableRates
     }
 
     /**
-     * @param PaginationLinks $links
+     * @param PaginationLinks|null $links
      *
      * @return self
      */

@@ -37,6 +37,12 @@ class Client
      */
     protected $address;
     /**
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}.
+     *
+     * @var string
+     */
+    protected $statementKey;
+    /**
      * The currency code associated with this client.
      *
      * @var string
@@ -58,7 +64,7 @@ class Client
     /**
      * Unique ID for the client.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -68,7 +74,7 @@ class Client
     /**
      * Unique ID for the client.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -82,7 +88,7 @@ class Client
     /**
      * A textual description of the client.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -92,7 +98,7 @@ class Client
     /**
      * A textual description of the client.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -106,7 +112,7 @@ class Client
     /**
      * Whether the client is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -116,7 +122,7 @@ class Client
     /**
      * Whether the client is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -130,7 +136,7 @@ class Client
     /**
      * The physical address for the client.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddress(): ?string
     {
@@ -140,7 +146,7 @@ class Client
     /**
      * The physical address for the client.
      *
-     * @param string $address
+     * @param string|null $address
      *
      * @return self
      */
@@ -152,9 +158,33 @@ class Client
     }
 
     /**
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}.
+     *
+     * @return string|null
+     */
+    public function getStatementKey(): ?string
+    {
+        return $this->statementKey;
+    }
+
+    /**
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}.
+     *
+     * @param string|null $statementKey
+     *
+     * @return self
+     */
+    public function setStatementKey(?string $statementKey): self
+    {
+        $this->statementKey = $statementKey;
+
+        return $this;
+    }
+
+    /**
      * The currency code associated with this client.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -164,7 +194,7 @@ class Client
     /**
      * The currency code associated with this client.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
@@ -178,7 +208,7 @@ class Client
     /**
      * Date and time the client was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -188,7 +218,7 @@ class Client
     /**
      * Date and time the client was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -202,7 +232,7 @@ class Client
     /**
      * Date and time the client was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -212,7 +242,7 @@ class Client
     /**
      * Date and time the client was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

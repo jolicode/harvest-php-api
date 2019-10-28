@@ -30,7 +30,7 @@ class TimeEntriesPostBodyNormalizer implements DenormalizerInterface, Normalizer
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\TimeEntriesPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

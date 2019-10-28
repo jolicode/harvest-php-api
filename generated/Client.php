@@ -27,7 +27,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listContacts(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -40,7 +40,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $payload json payload
      * @param string                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -53,7 +53,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $contactId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -66,7 +66,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $contactId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -80,7 +80,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload   json payload
      * @param string                                                 $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -102,7 +102,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Clients|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Clients|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listClients(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -115,7 +115,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ClientsPostBody $payload json payload
      * @param string                                      $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createClient(\JoliCode\Harvest\Api\Model\ClientsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -128,7 +128,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $clientId
      * @param string $fetch    Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
@@ -141,7 +141,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $clientId
      * @param string $fetch    Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
@@ -155,7 +155,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload  json payload
      * @param string                                               $fetch    Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateClient(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -165,7 +165,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
@@ -187,7 +187,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoiceMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listMessagesForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -201,7 +201,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload   json payload
      * @param string                                                        $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function markOpenInvoiceAsDraft(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -215,7 +215,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $messageId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -237,7 +237,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoicePayments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoicePayments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -251,7 +251,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload   json payload
      * @param string                                                        $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -265,7 +265,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $paymentId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -291,7 +291,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listInvoices(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -304,7 +304,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $payload json payload
      * @param string                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoiceBasedOnTrackedTimeAndExpenses(\JoliCode\Harvest\Api\Model\InvoicesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -317,7 +317,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $invoiceId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -330,7 +330,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $invoiceId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -344,7 +344,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload   json payload
      * @param string                                                 $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -365,7 +365,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listInvoiceItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -378,7 +378,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload json payload
      * @param string                                                    $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -391,7 +391,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $invoiceItemCategoryId
      * @param string $fetch                 Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -404,7 +404,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $invoiceItemCategoryId
      * @param string $fetch                 Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -418,7 +418,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload               json payload
      * @param string                                                                          $fetch                 Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -440,7 +440,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\EstimateMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listMessagesForEstimate(string $estimateId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -454,7 +454,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload    json payload
      * @param string                                                          $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function reOpenClosedEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -468,7 +468,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $messageId
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -493,7 +493,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Estimates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Estimates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listEstimates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -506,7 +506,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\EstimatesPostBody $payload json payload
      * @param string                                        $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createEstimate(\JoliCode\Harvest\Api\Model\EstimatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -519,7 +519,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $estimateId
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -532,7 +532,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $estimateId
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -546,7 +546,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $payload    json payload
      * @param string                                                   $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -567,7 +567,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listEstimateItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -580,7 +580,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload json payload
      * @param string                                                     $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -593,7 +593,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $estimateItemCategoryId
      * @param string $fetch                  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -606,7 +606,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $estimateItemCategoryId
      * @param string $fetch                  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -620,7 +620,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload                json payload
      * @param string                                                                            $fetch                  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -647,7 +647,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Expenses|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Expenses|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listExpenses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -660,7 +660,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ExpensesPostBody $payload json payload
      * @param string                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createExpense(\JoliCode\Harvest\Api\Model\ExpensesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -673,7 +673,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $expenseId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -686,7 +686,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $expenseId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -700,7 +700,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $payload   json payload
      * @param string                                                 $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateExpense(string $expenseId, \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -722,7 +722,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ExpenseCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listExpenseCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -735,7 +735,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload json payload
      * @param string                                                $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -748,7 +748,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $expenseCategoryId
      * @param string $fetch             Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -761,7 +761,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $expenseCategoryId
      * @param string $fetch             Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -775,7 +775,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload           json payload
      * @param string                                                                  $fetch             Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -797,7 +797,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Tasks|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Tasks|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTasks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -810,7 +810,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\TasksPostBody $payload json payload
      * @param string                                    $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTask(\JoliCode\Harvest\Api\Model\TasksPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -823,7 +823,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $taskId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
@@ -836,7 +836,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $taskId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
@@ -850,7 +850,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $payload json payload
      * @param string                                           $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTask(string $taskId, \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -878,7 +878,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeEntries|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TimeEntries|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTimeEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -893,7 +893,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload json payload
      * @param string                                          $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTimeEntryViaStartAndEndTime(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -906,7 +906,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $timeEntryId
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -919,7 +919,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $timeEntryId
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -933,7 +933,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $payload     json payload
      * @param string                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTimeEntry(string $timeEntryId, \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -946,7 +946,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $timeEntryId
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTimeEntryExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -959,7 +959,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $timeEntryId
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function restartStoppedTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -972,7 +972,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $timeEntryId
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function stopRunningTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -995,7 +995,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUserAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1019,7 +1019,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1033,7 +1033,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload   json payload
      * @param string                                                               $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1047,7 +1047,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $userAssignmentId
      * @param string $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1061,7 +1061,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $userAssignmentId
      * @param string $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1076,7 +1076,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload          json payload
      * @param string                                                                                $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1098,7 +1098,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTaskAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1121,7 +1121,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1135,7 +1135,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload   json payload
      * @param string                                                               $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1149,7 +1149,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $taskAssignmentId
      * @param string $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1163,7 +1163,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $taskAssignmentId
      * @param string $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1178,7 +1178,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload          json payload
      * @param string                                                                                $fetch            Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1201,7 +1201,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Projects|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Projects|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listProjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1214,7 +1214,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $payload json payload
      * @param string                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1229,7 +1229,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $projectId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1242,7 +1242,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $projectId
      * @param string $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1256,7 +1256,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload   json payload
      * @param string                                                 $fetch     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1276,7 +1276,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listRoles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1289,7 +1289,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\RolesPostBody $payload json payload
      * @param string                                    $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1302,7 +1302,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $roleId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1315,7 +1315,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $roleId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1329,7 +1329,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload json payload
      * @param string                                           $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1350,7 +1350,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\BillableRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\BillableRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listBillableRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1360,8 +1360,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
 
-
-     Creating a billable rate with no start_date will replace a user’s existing rate(s).
+    Creating a billable rate with no start_date will replace a user’s existing rate(s).
      Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
 
      *
@@ -1369,7 +1368,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload json payload
      * @param string                                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createBillableRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1383,7 +1382,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $billableRateId
      * @param string $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveBillableRate(string $userId, string $billableRateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1404,7 +1403,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\CostRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\CostRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listCostRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1414,8 +1413,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
 
-
-     Creating a cost rate with no start_date will replace a user’s existing rate(s).
+    Creating a cost rate with no start_date will replace a user’s existing rate(s).
      Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
 
      *
@@ -1423,7 +1421,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload json payload
      * @param string                                                   $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createCostRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1437,7 +1435,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $costRateId
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveCostRate(string $userId, string $costRateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1459,7 +1457,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listActiveProjectAssignments(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1479,7 +1477,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1501,7 +1499,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Users|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Users|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1514,7 +1512,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\UsersPostBody $payload json payload
      * @param string                                    $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -1524,7 +1522,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
     {
@@ -1537,7 +1535,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $userId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1550,7 +1548,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $userId
      * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1564,7 +1562,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload json payload
      * @param string                                           $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {

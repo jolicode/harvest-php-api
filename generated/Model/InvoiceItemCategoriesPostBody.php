@@ -22,7 +22,7 @@ class InvoiceItemCategoriesPostBody
     /**
      * The name of the invoice item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -32,7 +32,7 @@ class InvoiceItemCategoriesPostBody
     /**
      * The name of the invoice item category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

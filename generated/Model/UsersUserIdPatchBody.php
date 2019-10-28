@@ -31,12 +31,6 @@ class UsersUserIdPatchBody
      */
     protected $email;
     /**
-     * The telephone number for the user.
-     *
-     * @var string
-     */
-    protected $telephone;
-    /**
      * The user’s timezone. Defaults to the company’s timezone. See a list of supported time zones.
      *
      * @var string
@@ -118,7 +112,7 @@ class UsersUserIdPatchBody
     /**
      * The first name of the user. Can’t be updated if the user is inactive.
      *
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -128,7 +122,7 @@ class UsersUserIdPatchBody
     /**
      * The first name of the user. Can’t be updated if the user is inactive.
      *
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -142,7 +136,7 @@ class UsersUserIdPatchBody
     /**
      * The last name of the user. Can’t be updated if the user is inactive.
      *
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -152,7 +146,7 @@ class UsersUserIdPatchBody
     /**
      * The last name of the user. Can’t be updated if the user is inactive.
      *
-     * @param string $lastName
+     * @param string|null $lastName
      *
      * @return self
      */
@@ -166,7 +160,7 @@ class UsersUserIdPatchBody
     /**
      * The email address of the user. Can’t be updated if the user is inactive.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -176,7 +170,7 @@ class UsersUserIdPatchBody
     /**
      * The email address of the user. Can’t be updated if the user is inactive.
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -188,33 +182,9 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * The telephone number for the user.
-     *
-     * @return string
-     */
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    /**
-     * The telephone number for the user.
-     *
-     * @param string $telephone
-     *
-     * @return self
-     */
-    public function setTelephone(?string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    /**
      * The user’s timezone. Defaults to the company’s timezone. See a list of supported time zones.
      *
-     * @return string
+     * @return string|null
      */
     public function getTimezone(): ?string
     {
@@ -224,7 +194,7 @@ class UsersUserIdPatchBody
     /**
      * The user’s timezone. Defaults to the company’s timezone. See a list of supported time zones.
      *
-     * @param string $timezone
+     * @param string|null $timezone
      *
      * @return self
      */
@@ -238,7 +208,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user should be automatically added to future projects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getHasAccessToAllFutureProjects(): ?bool
     {
@@ -248,7 +218,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user should be automatically added to future projects.
      *
-     * @param bool $hasAccessToAllFutureProjects
+     * @param bool|null $hasAccessToAllFutureProjects
      *
      * @return self
      */
@@ -262,7 +232,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user is a contractor or an employee.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsContractor(): ?bool
     {
@@ -272,7 +242,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user is a contractor or an employee.
      *
-     * @param bool $isContractor
+     * @param bool|null $isContractor
      *
      * @return self
      */
@@ -286,7 +256,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user has admin permissions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsAdmin(): ?bool
     {
@@ -296,7 +266,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user has admin permissions.
      *
-     * @param bool $isAdmin
+     * @param bool|null $isAdmin
      *
      * @return self
      */
@@ -310,7 +280,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user has project manager permissions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsProjectManager(): ?bool
     {
@@ -320,7 +290,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user has project manager permissions.
      *
-     * @param bool $isProjectManager
+     * @param bool|null $isProjectManager
      *
      * @return self
      */
@@ -334,7 +304,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can see billable rates on projects. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanSeeRates(): ?bool
     {
@@ -344,7 +314,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can see billable rates on projects. Only applicable to project managers.
      *
-     * @param bool $canSeeRates
+     * @param bool|null $canSeeRates
      *
      * @return self
      */
@@ -358,7 +328,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can create projects. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanCreateProjects(): ?bool
     {
@@ -368,7 +338,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can create projects. Only applicable to project managers.
      *
-     * @param bool $canCreateProjects
+     * @param bool|null $canCreateProjects
      *
      * @return self
      */
@@ -382,7 +352,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can create invoices. Only applicable to project managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCanCreateInvoices(): ?bool
     {
@@ -392,7 +362,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user can create invoices. Only applicable to project managers.
      *
-     * @param bool $canCreateInvoices
+     * @param bool|null $canCreateInvoices
      *
      * @return self
      */
@@ -406,7 +376,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user is active or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -416,7 +386,7 @@ class UsersUserIdPatchBody
     /**
      * Whether the user is active or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -430,7 +400,7 @@ class UsersUserIdPatchBody
     /**
      * The number of hours per week this person is available to work in seconds.
      *
-     * @return int
+     * @return int|null
      */
     public function getWeeklyCapacity(): ?int
     {
@@ -440,7 +410,7 @@ class UsersUserIdPatchBody
     /**
      * The number of hours per week this person is available to work in seconds.
      *
-     * @param int $weeklyCapacity
+     * @param int|null $weeklyCapacity
      *
      * @return self
      */
@@ -454,7 +424,7 @@ class UsersUserIdPatchBody
     /**
      * The billable rate to use for this user when they are added to a project.
      *
-     * @return float
+     * @return float|null
      */
     public function getDefaultHourlyRate(): ?float
     {
@@ -464,7 +434,7 @@ class UsersUserIdPatchBody
     /**
      * The billable rate to use for this user when they are added to a project.
      *
-     * @param float $defaultHourlyRate
+     * @param float|null $defaultHourlyRate
      *
      * @return self
      */
@@ -478,7 +448,7 @@ class UsersUserIdPatchBody
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
      *
-     * @return float
+     * @return float|null
      */
     public function getCostRate(): ?float
     {
@@ -488,7 +458,7 @@ class UsersUserIdPatchBody
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
      *
-     * @param float $costRate
+     * @param float|null $costRate
      *
      * @return self
      */
@@ -502,7 +472,7 @@ class UsersUserIdPatchBody
     /**
      * The role names assigned to this person.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getRoles(): ?array
     {
@@ -512,7 +482,7 @@ class UsersUserIdPatchBody
     /**
      * The role names assigned to this person.
      *
-     * @param string[] $roles
+     * @param string[]|null $roles
      *
      * @return self
      */

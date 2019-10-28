@@ -40,7 +40,7 @@ class ClientsClientIdPatchBody
     /**
      * A textual description of the client.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class ClientsClientIdPatchBody
     /**
      * A textual description of the client.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class ClientsClientIdPatchBody
     /**
      * Whether the client is active, or archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -74,7 +74,7 @@ class ClientsClientIdPatchBody
     /**
      * Whether the client is active, or archived.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class ClientsClientIdPatchBody
     /**
      * A textual representation of the client’s physical address. May include new line characters.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddress(): ?string
     {
@@ -98,7 +98,7 @@ class ClientsClientIdPatchBody
     /**
      * A textual representation of the client’s physical address. May include new line characters.
      *
-     * @param string $address
+     * @param string|null $address
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class ClientsClientIdPatchBody
     /**
      * The currency used by the client. See a list of supported currencies.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -122,7 +122,7 @@ class ClientsClientIdPatchBody
     /**
      * The currency used by the client. See a list of supported currencies.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */

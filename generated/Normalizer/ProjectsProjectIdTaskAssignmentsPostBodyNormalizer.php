@@ -30,7 +30,7 @@ class ProjectsProjectIdTaskAssignmentsPostBodyNormalizer implements Denormalizer
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

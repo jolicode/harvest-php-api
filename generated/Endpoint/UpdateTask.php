@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class UpdateTask extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class UpdateTask extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $taskId;
 
@@ -26,7 +26,7 @@ class UpdateTask extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->body = $payload;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -38,7 +38,7 @@ class UpdateTask extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         return str_replace(['{taskId}'], [$this->taskId], '/tasks/{taskId}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -47,9 +47,9 @@ class UpdateTask extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Task', 'json');

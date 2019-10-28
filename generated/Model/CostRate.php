@@ -52,7 +52,7 @@ class CostRate
     /**
      * Unique ID for the cost rate.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -62,7 +62,7 @@ class CostRate
     /**
      * Unique ID for the cost rate.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class CostRate
     /**
      * The amount of the cost rate.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -86,7 +86,7 @@ class CostRate
     /**
      * The amount of the cost rate.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class CostRate
     /**
      * The date the cost rate is effective.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartDate(): ?string
     {
@@ -110,7 +110,7 @@ class CostRate
     /**
      * The date the cost rate is effective.
      *
-     * @param string $startDate
+     * @param string|null $startDate
      *
      * @return self
      */
@@ -124,7 +124,7 @@ class CostRate
     /**
      * The date the cost rate is no longer effective. This date is calculated by Harvest.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndDate(): ?string
     {
@@ -134,7 +134,7 @@ class CostRate
     /**
      * The date the cost rate is no longer effective. This date is calculated by Harvest.
      *
-     * @param string $endDate
+     * @param string|null $endDate
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class CostRate
     /**
      * Date and time the cost rate was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -158,7 +158,7 @@ class CostRate
     /**
      * Date and time the cost rate was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -172,7 +172,7 @@ class CostRate
     /**
      * Date and time the cost rate was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -182,7 +182,7 @@ class CostRate
     /**
      * Date and time the cost rate was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

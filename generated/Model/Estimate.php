@@ -160,7 +160,7 @@ class Estimate
     /**
      * Unique ID for the estimate.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -170,7 +170,7 @@ class Estimate
     /**
      * Unique ID for the estimate.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class Estimate
     /**
      * An object containing estimate’s client id and name.
      *
-     * @return EstimateClient
+     * @return EstimateClient|null
      */
     public function getClient(): ?EstimateClient
     {
@@ -194,7 +194,7 @@ class Estimate
     /**
      * An object containing estimate’s client id and name.
      *
-     * @param EstimateClient $client
+     * @param EstimateClient|null $client
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class Estimate
     /**
      * Array of estimate line items.
      *
-     * @return EstimateLineItem[]
+     * @return EstimateLineItem[]|null
      */
     public function getLineItems(): ?array
     {
@@ -218,7 +218,7 @@ class Estimate
     /**
      * Array of estimate line items.
      *
-     * @param EstimateLineItem[] $lineItems
+     * @param EstimateLineItem[]|null $lineItems
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class Estimate
     /**
      * An object containing the id and name of the person that created the estimate.
      *
-     * @return EstimateCreator
+     * @return EstimateCreator|null
      */
     public function getCreator(): ?EstimateCreator
     {
@@ -242,7 +242,7 @@ class Estimate
     /**
      * An object containing the id and name of the person that created the estimate.
      *
-     * @param EstimateCreator $creator
+     * @param EstimateCreator|null $creator
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class Estimate
     /**
      * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/estimates/abc123456.
      *
-     * @return string
+     * @return string|null
      */
     public function getClientKey(): ?string
     {
@@ -266,7 +266,7 @@ class Estimate
     /**
      * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/estimates/abc123456.
      *
-     * @param string $clientKey
+     * @param string|null $clientKey
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Estimate
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @return string
+     * @return string|null
      */
     public function getNumber(): ?string
     {
@@ -290,7 +290,7 @@ class Estimate
     /**
      * If no value is set, the number will be automatically generated.
      *
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class Estimate
     /**
      * The purchase order number.
      *
-     * @return string
+     * @return string|null
      */
     public function getPurchaseOrder(): ?string
     {
@@ -314,7 +314,7 @@ class Estimate
     /**
      * The purchase order number.
      *
-     * @param string $purchaseOrder
+     * @param string|null $purchaseOrder
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class Estimate
     /**
      * The total amount for the estimate, including any discounts and taxes.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -338,7 +338,7 @@ class Estimate
     /**
      * The total amount for the estimate, including any discounts and taxes.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class Estimate
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax(): ?float
     {
@@ -362,7 +362,7 @@ class Estimate
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @param float $tax
+     * @param float|null $tax
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class Estimate
     /**
      * The first amount of tax included, calculated from tax. If no tax is defined, this value will be null.
      *
-     * @return float
+     * @return float|null
      */
     public function getTaxAmount(): ?float
     {
@@ -386,7 +386,7 @@ class Estimate
     /**
      * The first amount of tax included, calculated from tax. If no tax is defined, this value will be null.
      *
-     * @param float $taxAmount
+     * @param float|null $taxAmount
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Estimate
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2(): ?float
     {
@@ -410,7 +410,7 @@ class Estimate
     /**
      * This percentage is applied to the subtotal, including line items and discounts.
      *
-     * @param float $tax2
+     * @param float|null $tax2
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Estimate
     /**
      * The amount calculated from tax2.
      *
-     * @return float
+     * @return float|null
      */
     public function getTax2Amount(): ?float
     {
@@ -434,7 +434,7 @@ class Estimate
     /**
      * The amount calculated from tax2.
      *
-     * @param float $tax2Amount
+     * @param float|null $tax2Amount
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Estimate
     /**
      * This percentage is subtracted from the subtotal.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscount(): ?float
     {
@@ -458,7 +458,7 @@ class Estimate
     /**
      * This percentage is subtracted from the subtotal.
      *
-     * @param float $discount
+     * @param float|null $discount
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Estimate
     /**
      * The amount calcuated from discount.
      *
-     * @return float
+     * @return float|null
      */
     public function getDiscountAmount(): ?float
     {
@@ -482,7 +482,7 @@ class Estimate
     /**
      * The amount calcuated from discount.
      *
-     * @param float $discountAmount
+     * @param float|null $discountAmount
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class Estimate
     /**
      * The estimate subject.
      *
-     * @return string
+     * @return string|null
      */
     public function getSubject(): ?string
     {
@@ -506,7 +506,7 @@ class Estimate
     /**
      * The estimate subject.
      *
-     * @param string $subject
+     * @param string|null $subject
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class Estimate
     /**
      * Any additional notes included on the estimate.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -530,7 +530,7 @@ class Estimate
     /**
      * Any additional notes included on the estimate.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class Estimate
     /**
      * The currency code associated with this estimate.
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency(): ?string
     {
@@ -554,7 +554,7 @@ class Estimate
     /**
      * The currency code associated with this estimate.
      *
-     * @param string $currency
+     * @param string|null $currency
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class Estimate
     /**
      * The current state of the estimate: draft, sent, accepted, or declined.
      *
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -578,7 +578,7 @@ class Estimate
     /**
      * The current state of the estimate: draft, sent, accepted, or declined.
      *
-     * @param string $state
+     * @param string|null $state
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class Estimate
     /**
      * Date the estimate was issued.
      *
-     * @return string
+     * @return string|null
      */
     public function getIssueDate(): ?string
     {
@@ -602,7 +602,7 @@ class Estimate
     /**
      * Date the estimate was issued.
      *
-     * @param string $issueDate
+     * @param string|null $issueDate
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class Estimate
     /**
      * Date and time the estimate was sent.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getSentAt(): ?\DateTime
     {
@@ -626,7 +626,7 @@ class Estimate
     /**
      * Date and time the estimate was sent.
      *
-     * @param \DateTime $sentAt
+     * @param \DateTime|null $sentAt
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class Estimate
     /**
      * Date and time the estimate was accepted.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getAcceptedAt(): ?\DateTime
     {
@@ -650,7 +650,7 @@ class Estimate
     /**
      * Date and time the estimate was accepted.
      *
-     * @param \DateTime $acceptedAt
+     * @param \DateTime|null $acceptedAt
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class Estimate
     /**
      * Date and time the estimate was declined.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDeclinedAt(): ?\DateTime
     {
@@ -674,7 +674,7 @@ class Estimate
     /**
      * Date and time the estimate was declined.
      *
-     * @param \DateTime $declinedAt
+     * @param \DateTime|null $declinedAt
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class Estimate
     /**
      * Date and time the estimate was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -698,7 +698,7 @@ class Estimate
     /**
      * Date and time the estimate was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class Estimate
     /**
      * Date and time the estimate was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -722,7 +722,7 @@ class Estimate
     /**
      * Date and time the estimate was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class EstimateItemCategoriesPostBody
     /**
      * The name of the estimate item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -32,7 +32,7 @@ class EstimateItemCategoriesPostBody
     /**
      * The name of the estimate item category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

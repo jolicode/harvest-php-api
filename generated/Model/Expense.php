@@ -116,7 +116,7 @@ class Expense
     /**
      * Unique ID for the expense.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -126,7 +126,7 @@ class Expense
     /**
      * Unique ID for the expense.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -140,7 +140,7 @@ class Expense
     /**
      * An object containing the expense’s client id, name, and currency.
      *
-     * @return ExpenseClient
+     * @return ExpenseClient|null
      */
     public function getClient(): ?ExpenseClient
     {
@@ -150,7 +150,7 @@ class Expense
     /**
      * An object containing the expense’s client id, name, and currency.
      *
-     * @param ExpenseClient $client
+     * @param ExpenseClient|null $client
      *
      * @return self
      */
@@ -164,7 +164,7 @@ class Expense
     /**
      * An object containing the expense’s project id, name, and code.
      *
-     * @return ExpenseProject
+     * @return ExpenseProject|null
      */
     public function getProject(): ?ExpenseProject
     {
@@ -174,7 +174,7 @@ class Expense
     /**
      * An object containing the expense’s project id, name, and code.
      *
-     * @param ExpenseProject $project
+     * @param ExpenseProject|null $project
      *
      * @return self
      */
@@ -188,7 +188,7 @@ class Expense
     /**
      * An object containing the expense’s expense category id, name, unit_price, and unit_name.
      *
-     * @return ExpenseExpenseCategory
+     * @return ExpenseExpenseCategory|null
      */
     public function getExpenseCategory(): ?ExpenseExpenseCategory
     {
@@ -198,7 +198,7 @@ class Expense
     /**
      * An object containing the expense’s expense category id, name, unit_price, and unit_name.
      *
-     * @param ExpenseExpenseCategory $expenseCategory
+     * @param ExpenseExpenseCategory|null $expenseCategory
      *
      * @return self
      */
@@ -212,7 +212,7 @@ class Expense
     /**
      * An object containing the id and name of the user that recorded the expense.
      *
-     * @return ExpenseUser
+     * @return ExpenseUser|null
      */
     public function getUser(): ?ExpenseUser
     {
@@ -222,7 +222,7 @@ class Expense
     /**
      * An object containing the id and name of the user that recorded the expense.
      *
-     * @param ExpenseUser $user
+     * @param ExpenseUser|null $user
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class Expense
     }
 
     /**
-     * @return UserAssignment
+     * @return UserAssignment|null
      */
     public function getUserAssignment(): ?UserAssignment
     {
@@ -242,7 +242,7 @@ class Expense
     }
 
     /**
-     * @param UserAssignment $userAssignment
+     * @param UserAssignment|null $userAssignment
      *
      * @return self
      */
@@ -256,7 +256,7 @@ class Expense
     /**
      * An object containing the expense’s receipt URL and file name.
      *
-     * @return ExpenseReceipt
+     * @return ExpenseReceipt|null
      */
     public function getReceipt(): ?ExpenseReceipt
     {
@@ -266,7 +266,7 @@ class Expense
     /**
      * An object containing the expense’s receipt URL and file name.
      *
-     * @param ExpenseReceipt $receipt
+     * @param ExpenseReceipt|null $receipt
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Expense
     /**
      * Once the expense has been invoiced, this field will include the associated invoice’s id and number.
      *
-     * @return ExpenseInvoice
+     * @return ExpenseInvoice|null
      */
     public function getInvoice(): ?ExpenseInvoice
     {
@@ -290,7 +290,7 @@ class Expense
     /**
      * Once the expense has been invoiced, this field will include the associated invoice’s id and number.
      *
-     * @param ExpenseInvoice $invoice
+     * @param ExpenseInvoice|null $invoice
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class Expense
     /**
      * Textual notes used to describe the expense.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -314,7 +314,7 @@ class Expense
     /**
      * Textual notes used to describe the expense.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class Expense
     /**
      * Whether the expense is billable or not.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBillable(): ?bool
     {
@@ -338,7 +338,7 @@ class Expense
     /**
      * Whether the expense is billable or not.
      *
-     * @param bool $billable
+     * @param bool|null $billable
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class Expense
     /**
      * Whether the expense has been approved or closed for some other reason.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsClosed(): ?bool
     {
@@ -362,7 +362,7 @@ class Expense
     /**
      * Whether the expense has been approved or closed for some other reason.
      *
-     * @param bool $isClosed
+     * @param bool|null $isClosed
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class Expense
     /**
      * Whether the expense has been been invoiced, approved, or the project or person related to the expense is archived.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsLocked(): ?bool
     {
@@ -386,7 +386,7 @@ class Expense
     /**
      * Whether the expense has been been invoiced, approved, or the project or person related to the expense is archived.
      *
-     * @param bool $isLocked
+     * @param bool|null $isLocked
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Expense
     /**
      * Whether or not the expense has been marked as invoiced.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsBilled(): ?bool
     {
@@ -410,7 +410,7 @@ class Expense
     /**
      * Whether or not the expense has been marked as invoiced.
      *
-     * @param bool $isBilled
+     * @param bool|null $isBilled
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class Expense
     /**
      * An explanation of why the expense has been locked.
      *
-     * @return string
+     * @return string|null
      */
     public function getLockedReason(): ?string
     {
@@ -434,7 +434,7 @@ class Expense
     /**
      * An explanation of why the expense has been locked.
      *
-     * @param string $lockedReason
+     * @param string|null $lockedReason
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Expense
     /**
      * Date the expense occurred.
      *
-     * @return string
+     * @return string|null
      */
     public function getSpentDate(): ?string
     {
@@ -458,7 +458,7 @@ class Expense
     /**
      * Date the expense occurred.
      *
-     * @param string $spentDate
+     * @param string|null $spentDate
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class Expense
     /**
      * Date and time the expense was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -482,7 +482,7 @@ class Expense
     /**
      * Date and time the expense was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class Expense
     /**
      * Date and time the expense was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -506,7 +506,7 @@ class Expense
     /**
      * Date and time the expense was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

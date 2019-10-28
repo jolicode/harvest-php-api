@@ -30,7 +30,7 @@ class TimeEntryClientNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\TimeEntryClient;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

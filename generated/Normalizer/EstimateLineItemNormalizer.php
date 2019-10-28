@@ -30,7 +30,7 @@ class EstimateLineItemNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\EstimateLineItem;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

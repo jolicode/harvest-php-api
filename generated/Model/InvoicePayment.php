@@ -82,7 +82,7 @@ class InvoicePayment
     /**
      * Unique ID for the payment.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -92,7 +92,7 @@ class InvoicePayment
     /**
      * Unique ID for the payment.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class InvoicePayment
     /**
      * The amount of the payment.
      *
-     * @return float
+     * @return float|null
      */
     public function getAmount(): ?float
     {
@@ -116,7 +116,7 @@ class InvoicePayment
     /**
      * The amount of the payment.
      *
-     * @param float $amount
+     * @param float|null $amount
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class InvoicePayment
     /**
      * Date and time the payment was made.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPaidAt(): ?\DateTime
     {
@@ -140,7 +140,7 @@ class InvoicePayment
     /**
      * Date and time the payment was made.
      *
-     * @param \DateTime $paidAt
+     * @param \DateTime|null $paidAt
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class InvoicePayment
     /**
      * Date the payment was made.
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidDate(): ?string
     {
@@ -164,7 +164,7 @@ class InvoicePayment
     /**
      * Date the payment was made.
      *
-     * @param string $paidDate
+     * @param string|null $paidDate
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class InvoicePayment
     /**
      * The name of the person who recorded the payment.
      *
-     * @return string
+     * @return string|null
      */
     public function getRecordedBy(): ?string
     {
@@ -188,7 +188,7 @@ class InvoicePayment
     /**
      * The name of the person who recorded the payment.
      *
-     * @param string $recordedBy
+     * @param string|null $recordedBy
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class InvoicePayment
     /**
      * The email of the person who recorded the payment.
      *
-     * @return string
+     * @return string|null
      */
     public function getRecordedByEmail(): ?string
     {
@@ -212,7 +212,7 @@ class InvoicePayment
     /**
      * The email of the person who recorded the payment.
      *
-     * @param string $recordedByEmail
+     * @param string|null $recordedByEmail
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class InvoicePayment
     /**
      * Any notes associated with the payment.
      *
-     * @return string
+     * @return string|null
      */
     public function getNotes(): ?string
     {
@@ -236,7 +236,7 @@ class InvoicePayment
     /**
      * Any notes associated with the payment.
      *
-     * @param string $notes
+     * @param string|null $notes
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class InvoicePayment
     /**
      * Either the card authorization or PayPal transaction ID.
      *
-     * @return string
+     * @return string|null
      */
     public function getTransactionId(): ?string
     {
@@ -260,7 +260,7 @@ class InvoicePayment
     /**
      * Either the card authorization or PayPal transaction ID.
      *
-     * @param string $transactionId
+     * @param string|null $transactionId
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class InvoicePayment
     /**
      * The payment gateway id and name used to process the payment.
      *
-     * @return InvoicePaymentPaymentGateway
+     * @return InvoicePaymentPaymentGateway|null
      */
     public function getPaymentGateway(): ?InvoicePaymentPaymentGateway
     {
@@ -284,7 +284,7 @@ class InvoicePayment
     /**
      * The payment gateway id and name used to process the payment.
      *
-     * @param InvoicePaymentPaymentGateway $paymentGateway
+     * @param InvoicePaymentPaymentGateway|null $paymentGateway
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class InvoicePayment
     /**
      * Date and time the payment was recorded.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -308,7 +308,7 @@ class InvoicePayment
     /**
      * Date and time the payment was recorded.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -322,7 +322,7 @@ class InvoicePayment
     /**
      * Date and time the payment was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -332,7 +332,7 @@ class InvoicePayment
     /**
      * Date and time the payment was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

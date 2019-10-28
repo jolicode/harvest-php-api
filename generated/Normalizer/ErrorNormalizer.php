@@ -30,7 +30,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\Error;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Error';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListInvoices extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ListInvoices extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
@@ -34,7 +34,7 @@ class ListInvoices extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -46,7 +46,7 @@ class ListInvoices extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         return '/invoices';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -73,9 +73,9 @@ class ListInvoices extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Invoices', 'json');

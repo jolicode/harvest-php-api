@@ -30,7 +30,7 @@ class ClientsPostBodyNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Harvest\Api\Model\ClientsPostBody;
+        return get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ClientsPostBody';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

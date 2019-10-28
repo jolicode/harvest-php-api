@@ -52,7 +52,7 @@ class InvoiceItemCategory
     /**
      * Unique ID for the invoice item category.
      *
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -62,7 +62,7 @@ class InvoiceItemCategory
     /**
      * Unique ID for the invoice item category.
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class InvoiceItemCategory
     /**
      * The name of the invoice item category.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -86,7 +86,7 @@ class InvoiceItemCategory
     /**
      * The name of the invoice item category.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class InvoiceItemCategory
     /**
      * Whether this invoice item category is used for billable hours when generating an invoice.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseAsService(): ?bool
     {
@@ -110,7 +110,7 @@ class InvoiceItemCategory
     /**
      * Whether this invoice item category is used for billable hours when generating an invoice.
      *
-     * @param bool $useAsService
+     * @param bool|null $useAsService
      *
      * @return self
      */
@@ -124,7 +124,7 @@ class InvoiceItemCategory
     /**
      * Whether this invoice item category is used for expenses when generating an invoice.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getUseAsExpense(): ?bool
     {
@@ -134,7 +134,7 @@ class InvoiceItemCategory
     /**
      * Whether this invoice item category is used for expenses when generating an invoice.
      *
-     * @param bool $useAsExpense
+     * @param bool|null $useAsExpense
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class InvoiceItemCategory
     /**
      * Date and time the invoice item category was created.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -158,7 +158,7 @@ class InvoiceItemCategory
     /**
      * Date and time the invoice item category was created.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return self
      */
@@ -172,7 +172,7 @@ class InvoiceItemCategory
     /**
      * Date and time the invoice item category was last updated.
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -182,7 +182,7 @@ class InvoiceItemCategory
     /**
      * Date and time the invoice item category was last updated.
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime|null $updatedAt
      *
      * @return self
      */

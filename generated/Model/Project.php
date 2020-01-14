@@ -85,7 +85,7 @@ class Project
      */
     protected $budgetIsMonthly;
     /**
-     * Whether project managers should be notified when the project goes over budget.
+     * Whether Project Managers should be notified when the project goes over budget.
      *
      * @var bool
      */
@@ -446,7 +446,7 @@ class Project
     }
 
     /**
-     * Whether project managers should be notified when the project goes over budget.
+     * Whether Project Managers should be notified when the project goes over budget.
      *
      * @return bool|null
      */
@@ -456,7 +456,7 @@ class Project
     }
 
     /**
-     * Whether project managers should be notified when the project goes over budget.
+     * Whether Project Managers should be notified when the project goes over budget.
      *
      * @param bool|null $notifyWhenOverBudget
      *

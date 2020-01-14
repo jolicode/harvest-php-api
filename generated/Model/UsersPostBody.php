@@ -49,31 +49,31 @@ class UsersPostBody
      */
     protected $isContractor;
     /**
-     * Whether the user has admin permissions. Defaults to false.
+     * Whether the user has Admin permissions. Defaults to false.
      *
      * @var bool
      */
     protected $isAdmin;
     /**
-     * Whether the user has project manager permissions. Defaults to false.
+     * Whether the user has Project Manager permissions. Defaults to false.
      *
      * @var bool
      */
     protected $isProjectManager;
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers. Defaults to false.
      *
      * @var bool
      */
     protected $canSeeRates;
     /**
-     * Whether the user can create projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can create projects. Only applicable to Project Managers. Defaults to false.
      *
      * @var bool
      */
     protected $canCreateProjects;
     /**
-     * Whether the user can create invoices. Only applicable to project managers. Defaults to false.
+     * Whether the user can create invoices. Only applicable to Project Managers. Defaults to false.
      *
      * @var bool
      */
@@ -254,7 +254,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user has admin permissions. Defaults to false.
+     * Whether the user has Admin permissions. Defaults to false.
      *
      * @return bool|null
      */
@@ -264,7 +264,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user has admin permissions. Defaults to false.
+     * Whether the user has Admin permissions. Defaults to false.
      *
      * @param bool|null $isAdmin
      *
@@ -278,7 +278,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user has project manager permissions. Defaults to false.
+     * Whether the user has Project Manager permissions. Defaults to false.
      *
      * @return bool|null
      */
@@ -288,7 +288,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user has project manager permissions. Defaults to false.
+     * Whether the user has Project Manager permissions. Defaults to false.
      *
      * @param bool|null $isProjectManager
      *
@@ -302,7 +302,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers. Defaults to false.
      *
      * @return bool|null
      */
@@ -312,7 +312,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers. Defaults to false.
      *
      * @param bool|null $canSeeRates
      *
@@ -326,7 +326,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can create projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can create projects. Only applicable to Project Managers. Defaults to false.
      *
      * @return bool|null
      */
@@ -336,7 +336,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can create projects. Only applicable to project managers. Defaults to false.
+     * Whether the user can create projects. Only applicable to Project Managers. Defaults to false.
      *
      * @param bool|null $canCreateProjects
      *
@@ -350,7 +350,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can create invoices. Only applicable to project managers. Defaults to false.
+     * Whether the user can create invoices. Only applicable to Project Managers. Defaults to false.
      *
      * @return bool|null
      */
@@ -360,7 +360,7 @@ class UsersPostBody
     }
 
     /**
-     * Whether the user can create invoices. Only applicable to project managers. Defaults to false.
+     * Whether the user can create invoices. Only applicable to Project Managers. Defaults to false.
      *
      * @param bool|null $canCreateInvoices
      *

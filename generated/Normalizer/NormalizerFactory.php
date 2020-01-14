@@ -103,6 +103,7 @@ class NormalizerFactory
         $normalizers[] = new ContactsContactIdPatchBodyNormalizer();
         $normalizers[] = new ClientsPostBodyNormalizer();
         $normalizers[] = new ClientsClientIdPatchBodyNormalizer();
+        $normalizers[] = new CompanyPatchBodyNormalizer();
         $normalizers[] = new InvoicesInvoiceIdMessagesPostBodyNormalizer();
         $normalizers[] = new InvoicesInvoiceIdPaymentsPostBodyNormalizer();
         $normalizers[] = new InvoicesPostBodyNormalizer();

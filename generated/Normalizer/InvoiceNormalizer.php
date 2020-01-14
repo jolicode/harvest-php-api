@@ -136,6 +136,9 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (property_exists($data, 'closed_at') && $data->{'closed_at'} !== null) {
             $object->setClosedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'closed_at'}));
         }
+        if (property_exists($data, 'recurring_invoice_id') && $data->{'recurring_invoice_id'} !== null) {
+            $object->setRecurringInvoiceId($data->{'recurring_invoice_id'});
+        }
         if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
         }
@@ -242,6 +245,9 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getClosedAt()) {
             $data->{'closed_at'} = $object->getClosedAt()->format("Y-m-d\TH:i:sP");
+        }
+        if (null !== $object->getRecurringInvoiceId()) {
+            $data->{'recurring_invoice_id'} = $object->getRecurringInvoiceId();
         }
         if (null !== $object->getCreatedAt()) {
             $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");

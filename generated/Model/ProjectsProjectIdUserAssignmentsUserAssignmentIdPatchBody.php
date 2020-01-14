@@ -19,7 +19,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     protected $isActive;
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @var bool
      */
@@ -68,7 +68,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     }
 
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @return bool|null
      */
@@ -78,7 +78,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
     }
 
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @param bool|null $isProjectManager
      *

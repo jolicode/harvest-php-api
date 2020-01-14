@@ -78,6 +78,9 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (property_exists($data, 'color_scheme') && $data->{'color_scheme'} !== null) {
             $object->setColorScheme($data->{'color_scheme'});
         }
+        if (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} !== null) {
+            $object->setWeeklyCapacity($data->{'weekly_capacity'});
+        }
         if (property_exists($data, 'expense_feature') && $data->{'expense_feature'} !== null) {
             $object->setExpenseFeature($data->{'expense_feature'});
         }
@@ -132,6 +135,9 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getColorScheme()) {
             $data->{'color_scheme'} = $object->getColorScheme();
+        }
+        if (null !== $object->getWeeklyCapacity()) {
+            $data->{'weekly_capacity'} = $object->getWeeklyCapacity();
         }
         if (null !== $object->getExpenseFeature()) {
             $data->{'expense_feature'} = $object->getExpenseFeature();

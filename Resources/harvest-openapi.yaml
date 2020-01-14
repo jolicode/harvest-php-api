@@ -448,6 +448,42 @@ paths:
           description: 'error payload'
           schema:
             $ref: '#/definitions/Error'
+    patch:
+      summary: 'Update a company'
+      operationId: updateCompany
+      description: 'Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Update a company'
+        url: 'https://help.getharvest.com/api-v2/company-api/company/company/#update-a-company'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              wants_timestamp_timers:
+                type: boolean
+                description: 'Whether time is tracked via duration or start and end times.'
+              weekly_capacity:
+                type: integer
+                description: 'The weekly capacity in seconds.'
+                format: int32
+      responses:
+        200:
+          description: 'Update a company'
+          schema:
+            $ref: '#/definitions/Company'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
   '/invoices/{invoiceId}/messages':
     get:
       summary: 'List all messages for an invoice'
@@ -821,11 +857,11 @@ paths:
                 format: date
               due_date:
                 type: string
-                description: 'Date the invoice is due. Defaults to the issue_date if no payment_term is specified.'
+                description: 'Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.'
                 format: date
               payment_term:
                 type: string
-                description: 'The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.'
+                description: 'The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.'
               line_items_import:
                 type: object
                 description: 'An line items import object'
@@ -2940,7 +2976,7 @@ paths:
                 description: 'Whether the user assignment is active or archived. Defaults to true.'
               is_project_manager:
                 type: boolean
-                description: 'Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.'
+                description: 'Determines if the user has Project Manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.'
               use_default_rates:
                 type: boolean
                 description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment. Defaults to true.'
@@ -3030,7 +3066,7 @@ paths:
                 description: 'Whether the user assignment is active or archived.'
               is_project_manager:
                 type: boolean
-                description: 'Determines if the user has project manager permissions for the project.'
+                description: 'Determines if the user has Project Manager permissions for the project.'
               use_default_rates:
                 type: boolean
                 description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
@@ -3455,7 +3491,7 @@ paths:
                 description: 'Option to have the budget reset every month. Defaults to false.'
               notify_when_over_budget:
                 type: boolean
-                description: 'Whether project managers should be notified when the project goes over budget. Defaults to false.'
+                description: 'Whether Project Managers should be notified when the project goes over budget. Defaults to false.'
               over_budget_notification_percentage:
                 type: number
                 description: 'Percentage value used to trigger over budget email alerts. Example: use 10.0 for 10.0%.'
@@ -3590,7 +3626,7 @@ paths:
                 description: 'Option to have the budget reset every month. Defaults to false.'
               notify_when_over_budget:
                 type: boolean
-                description: 'Whether project managers should be notified when the project goes over budget. Defaults to false.'
+                description: 'Whether Project Managers should be notified when the project goes over budget. Defaults to false.'
               over_budget_notification_percentage:
                 type: number
                 description: 'Percentage value used to trigger over budget email alerts. Example: use 10.0 for 10.0%.'
@@ -3863,7 +3899,7 @@ paths:
     post:
       summary: 'Create a billable rate'
       operationId: createBillableRate
-      description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\nCreating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
+      description: "Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a billable rate with no start_date will replace a user’s existing rate(s).\n  Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.\n"
       externalDocs:
         description: 'Create a billable rate'
         url: 'https://help.getharvest.com/api-v2/users-api/users/billable-rates/#create-a-billable-rate'
@@ -3978,7 +4014,7 @@ paths:
     post:
       summary: 'Create a cost rate'
       operationId: createCostRate
-      description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\nCreating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
+      description: "Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.\n\n\n  Creating a cost rate with no start_date will replace a user’s existing rate(s).\n  Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.\n"
       externalDocs:
         description: 'Create a cost rate'
         url: 'https://help.getharvest.com/api-v2/users-api/users/cost-rates/#create-a-cost-rate'
@@ -4217,19 +4253,19 @@ paths:
                 description: 'Whether the user is a contractor or an employee. Defaults to false.'
               is_admin:
                 type: boolean
-                description: 'Whether the user has admin permissions. Defaults to false.'
+                description: 'Whether the user has Admin permissions. Defaults to false.'
               is_project_manager:
                 type: boolean
-                description: 'Whether the user has project manager permissions. Defaults to false.'
+                description: 'Whether the user has Project Manager permissions. Defaults to false.'
               can_see_rates:
                 type: boolean
-                description: 'Whether the user can see billable rates on projects. Only applicable to project managers. Defaults to false.'
+                description: 'Whether the user can see billable rates on projects. Only applicable to Project Managers. Defaults to false.'
               can_create_projects:
                 type: boolean
-                description: 'Whether the user can create projects. Only applicable to project managers. Defaults to false.'
+                description: 'Whether the user can create projects. Only applicable to Project Managers. Defaults to false.'
               can_create_invoices:
                 type: boolean
-                description: 'Whether the user can create invoices. Only applicable to project managers. Defaults to false.'
+                description: 'Whether the user can create invoices. Only applicable to Project Managers. Defaults to false.'
               is_active:
                 type: boolean
                 description: 'Whether the user is active or archived. Defaults to true.'
@@ -4356,19 +4392,19 @@ paths:
                 description: 'Whether the user is a contractor or an employee.'
               is_admin:
                 type: boolean
-                description: 'Whether the user has admin permissions.'
+                description: 'Whether the user has Admin permissions.'
               is_project_manager:
                 type: boolean
-                description: 'Whether the user has project manager permissions.'
+                description: 'Whether the user has Project Manager permissions.'
               can_see_rates:
                 type: boolean
-                description: 'Whether the user can see billable rates on projects. Only applicable to project managers.'
+                description: 'Whether the user can see billable rates on projects. Only applicable to Project Managers.'
               can_create_projects:
                 type: boolean
-                description: 'Whether the user can create projects. Only applicable to project managers.'
+                description: 'Whether the user can create projects. Only applicable to Project Managers.'
               can_create_invoices:
                 type: boolean
-                description: 'Whether the user can create invoices. Only applicable to project managers.'
+                description: 'Whether the user can create invoices. Only applicable to Project Managers.'
               is_active:
                 type: boolean
                 description: 'Whether the user is active or archived.'
@@ -4546,6 +4582,10 @@ definitions:
       color_scheme:
         type: string
         description: 'The color scheme being used in the Harvest web client.'
+      weekly_capacity:
+        type: integer
+        description: 'The weekly capacity in seconds.'
+        format: int32
       expense_feature:
         type: boolean
         description: 'Whether the expense module is enabled.'
@@ -4815,6 +4855,10 @@ definitions:
         type: string
         description: 'Date and time the invoice was closed.'
         format: date-time
+      recurring_invoice_id:
+        type: integer
+        description: 'Unique ID of the associated recurring invoice.'
+        format: int32
       created_at:
         type: string
         description: 'Date and time the invoice was created.'
@@ -5441,7 +5485,7 @@ definitions:
         description: 'Whether the user assignment is active or archived.'
       is_project_manager:
         type: boolean
-        description: 'Determines if the user has project manager permissions for the project.'
+        description: 'Determines if the user has Project Manager permissions for the project.'
       use_default_rates:
         type: boolean
         description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
@@ -5565,7 +5609,7 @@ definitions:
         description: 'Option to have the budget reset every month.'
       notify_when_over_budget:
         type: boolean
-        description: 'Whether project managers should be notified when the project goes over budget.'
+        description: 'Whether Project Managers should be notified when the project goes over budget.'
       over_budget_notification_percentage:
         type: number
         description: 'Percentage value used to trigger over budget email alerts.'
@@ -5708,7 +5752,7 @@ definitions:
         description: 'Whether the project assignment is active or archived.'
       is_project_manager:
         type: boolean
-        description: 'Determines if the user has project manager permissions for the project.'
+        description: 'Determines if the user has Project Manager permissions for the project.'
       use_default_rates:
         type: boolean
         description: 'Determines which billable rate(s) will be used on the project for this user when bill_by is People. When true, the project will use the user’s default billable rates. When false, the project will use the custom rate defined on this user assignment.'
@@ -5782,19 +5826,19 @@ definitions:
         description: 'Whether the user is a contractor or an employee.'
       is_admin:
         type: boolean
-        description: 'Whether the user has admin permissions.'
+        description: 'Whether the user has Admin permissions.'
       is_project_manager:
         type: boolean
-        description: 'Whether the user has project manager permissions.'
+        description: 'Whether the user has Project Manager permissions.'
       can_see_rates:
         type: boolean
-        description: 'Whether the user can see billable rates on projects. Only applicable to project managers.'
+        description: 'Whether the user can see billable rates on projects. Only applicable to Project Managers.'
       can_create_projects:
         type: boolean
-        description: 'Whether the user can create projects. Only applicable to project managers.'
+        description: 'Whether the user can create projects. Only applicable to Project Managers.'
       can_create_invoices:
         type: boolean
-        description: 'Whether the user can create invoices. Only applicable to project managers.'
+        description: 'Whether the user can create invoices. Only applicable to Project Managers.'
       is_active:
         type: boolean
         description: 'Whether the user is active or archived.'

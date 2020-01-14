@@ -25,7 +25,7 @@ class ProjectAssignment
      */
     protected $isActive;
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @var bool
      */
@@ -128,7 +128,7 @@ class ProjectAssignment
     }
 
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @return bool|null
      */
@@ -138,7 +138,7 @@ class ProjectAssignment
     }
 
     /**
-     * Determines if the user has project manager permissions for the project.
+     * Determines if the user has Project Manager permissions for the project.
      *
      * @param bool|null $isProjectManager
      *

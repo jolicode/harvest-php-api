@@ -85,6 +85,12 @@ class Company
      */
     protected $colorScheme;
     /**
+     * The weekly capacity in seconds.
+     *
+     * @var int
+     */
+    protected $weeklyCapacity;
+    /**
      * Whether the expense module is enabled.
      *
      * @var bool
@@ -393,6 +399,30 @@ class Company
     public function setColorScheme(?string $colorScheme): self
     {
         $this->colorScheme = $colorScheme;
+
+        return $this;
+    }
+
+    /**
+     * The weekly capacity in seconds.
+     *
+     * @return int|null
+     */
+    public function getWeeklyCapacity(): ?int
+    {
+        return $this->weeklyCapacity;
+    }
+
+    /**
+     * The weekly capacity in seconds.
+     *
+     * @param int|null $weeklyCapacity
+     *
+     * @return self
+     */
+    public function setWeeklyCapacity(?int $weeklyCapacity): self
+    {
+        $this->weeklyCapacity = $weeklyCapacity;
 
         return $this;
     }

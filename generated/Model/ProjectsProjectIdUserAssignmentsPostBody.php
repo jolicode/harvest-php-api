@@ -25,7 +25,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     protected $isActive;
     /**
-     * Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
+     * Determines if the user has Project Manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
      *
      * @var bool
      */
@@ -98,7 +98,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     }
 
     /**
-     * Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
+     * Determines if the user has Project Manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
      *
      * @return bool|null
      */
@@ -108,7 +108,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
     }
 
     /**
-     * Determines if the user has project manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
+     * Determines if the user has Project Manager permissions for the project. Defaults to false for users with Regular User permissions and true for those with Project Managers or Administrator permissions.
      *
      * @param bool|null $isProjectManager
      *

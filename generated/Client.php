@@ -173,6 +173,19 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
+     *
+     * @param \JoliCode\Harvest\Api\Model\CompanyPatchBody $payload json payload
+     * @param string                                       $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function updateCompany(\JoliCode\Harvest\Api\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($payload), $fetch);
+    }
+
+    /**
      * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
 
     The response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
@@ -1360,7 +1373,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
 
-    Creating a billable rate with no start_date will replace a user’s existing rate(s).
+
+     Creating a billable rate with no start_date will replace a user’s existing rate(s).
      Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
 
      *
@@ -1413,7 +1427,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
 
-    Creating a cost rate with no start_date will replace a user’s existing rate(s).
+
+     Creating a cost rate with no start_date will replace a user’s existing rate(s).
      Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
 
      *

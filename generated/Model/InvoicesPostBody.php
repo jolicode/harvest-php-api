@@ -85,13 +85,13 @@ class InvoicesPostBody
      */
     protected $issueDate;
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
      *
      * @var string
      */
     protected $dueDate;
     /**
-     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.
+     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.
      *
      * @var string
      */
@@ -392,7 +392,7 @@ class InvoicesPostBody
     }
 
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
      *
      * @return string|null
      */
@@ -402,7 +402,7 @@ class InvoicesPostBody
     }
 
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
      *
      * @param string|null $dueDate
      *
@@ -416,7 +416,7 @@ class InvoicesPostBody
     }
 
     /**
-     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.
+     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.
      *
      * @return string|null
      */
@@ -426,7 +426,7 @@ class InvoicesPostBody
     }
 
     /**
-     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, or net 60.
+     * The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.
      *
      * @param string|null $paymentTerm
      *

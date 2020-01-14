@@ -49,31 +49,31 @@ class UsersUserIdPatchBody
      */
     protected $isContractor;
     /**
-     * Whether the user has admin permissions.
+     * Whether the user has Admin permissions.
      *
      * @var bool
      */
     protected $isAdmin;
     /**
-     * Whether the user has project manager permissions.
+     * Whether the user has Project Manager permissions.
      *
      * @var bool
      */
     protected $isProjectManager;
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers.
      *
      * @var bool
      */
     protected $canSeeRates;
     /**
-     * Whether the user can create projects. Only applicable to project managers.
+     * Whether the user can create projects. Only applicable to Project Managers.
      *
      * @var bool
      */
     protected $canCreateProjects;
     /**
-     * Whether the user can create invoices. Only applicable to project managers.
+     * Whether the user can create invoices. Only applicable to Project Managers.
      *
      * @var bool
      */
@@ -254,7 +254,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user has admin permissions.
+     * Whether the user has Admin permissions.
      *
      * @return bool|null
      */
@@ -264,7 +264,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user has admin permissions.
+     * Whether the user has Admin permissions.
      *
      * @param bool|null $isAdmin
      *
@@ -278,7 +278,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user has project manager permissions.
+     * Whether the user has Project Manager permissions.
      *
      * @return bool|null
      */
@@ -288,7 +288,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user has project manager permissions.
+     * Whether the user has Project Manager permissions.
      *
      * @param bool|null $isProjectManager
      *
@@ -302,7 +302,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers.
      *
      * @return bool|null
      */
@@ -312,7 +312,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can see billable rates on projects. Only applicable to project managers.
+     * Whether the user can see billable rates on projects. Only applicable to Project Managers.
      *
      * @param bool|null $canSeeRates
      *
@@ -326,7 +326,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can create projects. Only applicable to project managers.
+     * Whether the user can create projects. Only applicable to Project Managers.
      *
      * @return bool|null
      */
@@ -336,7 +336,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can create projects. Only applicable to project managers.
+     * Whether the user can create projects. Only applicable to Project Managers.
      *
      * @param bool|null $canCreateProjects
      *
@@ -350,7 +350,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can create invoices. Only applicable to project managers.
+     * Whether the user can create invoices. Only applicable to Project Managers.
      *
      * @return bool|null
      */
@@ -360,7 +360,7 @@ class UsersUserIdPatchBody
     }
 
     /**
-     * Whether the user can create invoices. Only applicable to project managers.
+     * Whether the user can create invoices. Only applicable to Project Managers.
      *
      * @param bool|null $canCreateInvoices
      *

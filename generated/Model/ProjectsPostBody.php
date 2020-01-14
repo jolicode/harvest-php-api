@@ -79,7 +79,7 @@ class ProjectsPostBody
      */
     protected $budgetIsMonthly;
     /**
-     * Whether project managers should be notified when the project goes over budget. Defaults to false.
+     * Whether Project Managers should be notified when the project goes over budget. Defaults to false.
      *
      * @var bool
      */
@@ -398,7 +398,7 @@ class ProjectsPostBody
     }
 
     /**
-     * Whether project managers should be notified when the project goes over budget. Defaults to false.
+     * Whether Project Managers should be notified when the project goes over budget. Defaults to false.
      *
      * @return bool|null
      */
@@ -408,7 +408,7 @@ class ProjectsPostBody
     }
 
     /**
-     * Whether project managers should be notified when the project goes over budget. Defaults to false.
+     * Whether Project Managers should be notified when the project goes over budget. Defaults to false.
      *
      * @param bool|null $notifyWhenOverBudget
      *

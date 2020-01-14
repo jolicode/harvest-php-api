@@ -17,7 +17,8 @@ class CreateCostRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
 
-    Creating a cost rate with no start_date will replace a user’s existing rate(s).
+
+     Creating a cost rate with no start_date will replace a user’s existing rate(s).
      Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
 
      *

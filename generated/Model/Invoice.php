@@ -193,6 +193,12 @@ class Invoice
      */
     protected $closedAt;
     /**
+     * Unique ID of the associated recurring invoice.
+     *
+     * @var int
+     */
+    protected $recurringInvoiceId;
+    /**
      * Date and time the invoice was created.
      *
      * @var \DateTime
@@ -921,6 +927,30 @@ class Invoice
     public function setClosedAt(?\DateTime $closedAt): self
     {
         $this->closedAt = $closedAt;
+
+        return $this;
+    }
+
+    /**
+     * Unique ID of the associated recurring invoice.
+     *
+     * @return int|null
+     */
+    public function getRecurringInvoiceId(): ?int
+    {
+        return $this->recurringInvoiceId;
+    }
+
+    /**
+     * Unique ID of the associated recurring invoice.
+     *
+     * @param int|null $recurringInvoiceId
+     *
+     * @return self
+     */
+    public function setRecurringInvoiceId(?int $recurringInvoiceId): self
+    {
+        $this->recurringInvoiceId = $recurringInvoiceId;
 
         return $this;
     }

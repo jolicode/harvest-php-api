@@ -18,14 +18,14 @@
     },
     "require": {
         "php": ">= 7.1",
-        "jane-php/open-api-runtime": "^4.5",
-        "psr/http-client-implementation": "*",
+        "jane-php/open-api-runtime": "^5.3",
+        "php-http/client-implementation": "*",
         "php-http/client-common": "^1.7 || ^2.0"
     },
     "require-dev": {
-        "jane-php/open-api": "^4.5",
-        "symfony/http-client": "^4.3",
+        "jane-php/open-api-2": "^5.3",
+        "symfony/http-client": "^5.0",
         "nyholm/psr7": "^1.2",
-        "friendsofphp/php-cs-fixer": "^2.13"
+        "friendsofphp/php-cs-fixer": "^2.16"
     }
 }

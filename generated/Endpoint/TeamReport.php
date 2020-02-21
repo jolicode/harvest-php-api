@@ -2,8 +2,17 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class RetrieveTheCurrentlyAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class TeamReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload json payload
+     */
+    public function __construct(\JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload)
+    {
+        $this->body = $payload;
+    }
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
@@ -11,22 +20,22 @@ class RetrieveTheCurrentlyAuthenticatedUser extends \Jane\OpenApiRuntime\Client\
     }
     public function getUri() : string
     {
-        return '/users/me';
+        return '/reports/time/team';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return $this->getSerializedBody($serializer);
     }
     /**
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\User', 'json');
+            return null;
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

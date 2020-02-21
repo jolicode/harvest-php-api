@@ -71,6 +71,12 @@ class TimeEntry
      */
     protected $hours;
     /**
+     * Number of (decimal time) hours tracked in this time entry used in summary reports and invoices. This value is rounded according to the Time Rounding setting in your Preferences.
+     *
+     * @var float|null
+     */
+    protected $roundedHours;
+    /**
      * Notes attached to the time entry.
      *
      * @var string|null
@@ -389,6 +395,27 @@ class TimeEntry
     public function setHours(?float $hours) : self
     {
         $this->hours = $hours;
+        return $this;
+    }
+    /**
+     * Number of (decimal time) hours tracked in this time entry used in summary reports and invoices. This value is rounded according to the Time Rounding setting in your Preferences.
+     *
+     * @return float|null
+     */
+    public function getRoundedHours() : ?float
+    {
+        return $this->roundedHours;
+    }
+    /**
+     * Number of (decimal time) hours tracked in this time entry used in summary reports and invoices. This value is rounded according to the Time Rounding setting in your Preferences.
+     *
+     * @param float|null $roundedHours
+     *
+     * @return self
+     */
+    public function setRoundedHours(?float $roundedHours) : self
+    {
+        $this->roundedHours = $roundedHours;
         return $this;
     }
     /**

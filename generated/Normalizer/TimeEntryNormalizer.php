@@ -100,6 +100,12 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (property_exists($data, 'hours') && $data->{'hours'} === null) {
             $object->setHours(null);
         }
+        if (property_exists($data, 'rounded_hours') && $data->{'rounded_hours'} !== null) {
+            $object->setRoundedHours($data->{'rounded_hours'});
+        }
+        elseif (property_exists($data, 'rounded_hours') && $data->{'rounded_hours'} === null) {
+            $object->setRoundedHours(null);
+        }
         if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
             $object->setNotes($data->{'notes'});
         }
@@ -260,6 +266,12 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         else {
             $data->{'hours'} = null;
+        }
+        if (null !== $object->getRoundedHours()) {
+            $data->{'rounded_hours'} = $object->getRoundedHours();
+        }
+        else {
+            $data->{'rounded_hours'} = null;
         }
         if (null !== $object->getNotes()) {
             $data->{'notes'} = $object->getNotes();

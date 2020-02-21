@@ -13,6 +13,7 @@ class ListTimeEntries extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     *     @var int $user_id Only return time entries belonging to the user with the given ID.
     *     @var int $client_id Only return time entries belonging to the client with the given ID.
     *     @var int $project_id Only return time entries belonging to the project with the given ID.
+    *     @var int $task_id Only return time entries belonging to the task with the given ID.
     *     @var bool $is_billed Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.
     *     @var bool $is_running Pass true to only return running time entries and false to return non-running time entries.
     *     @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
@@ -42,12 +43,13 @@ class ListTimeEntries extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('user_id', 'client_id', 'project_id', 'is_billed', 'is_running', 'updated_since', 'from', 'to', 'page', 'per_page'));
+        $optionsResolver->setDefined(array('user_id', 'client_id', 'project_id', 'task_id', 'is_billed', 'is_running', 'updated_since', 'from', 'to', 'page', 'per_page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('user_id', array('int'));
         $optionsResolver->setAllowedTypes('client_id', array('int'));
         $optionsResolver->setAllowedTypes('project_id', array('int'));
+        $optionsResolver->setAllowedTypes('task_id', array('int'));
         $optionsResolver->setAllowedTypes('is_billed', array('bool'));
         $optionsResolver->setAllowedTypes('is_running', array('bool'));
         $optionsResolver->setAllowedTypes('updated_since', array('string'));

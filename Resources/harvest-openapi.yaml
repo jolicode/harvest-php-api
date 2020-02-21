@@ -2520,6 +2520,12 @@ paths:
           in: query
           type: integer
         -
+          name: task_id
+          description: 'Only return time entries belonging to the task with the given ID.'
+          required: false
+          in: query
+          type: integer
+        -
           name: is_billed
           description: 'Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.'
           required: false
@@ -4315,6 +4321,8 @@ paths:
       responses:
         200:
           description: 'Retrieve the currently authenticated user'
+          schema:
+            $ref: '#/definitions/User'
         default:
           description: 'error payload'
           schema:
@@ -4454,6 +4462,465 @@ paths:
       responses:
         200:
           description: 'Delete a user'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/expenses/clients:
+    get:
+      summary: 'Clients Report'
+      operationId: clientsReport
+      description: ''
+      externalDocs:
+        description: 'Clients Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/expense-reports/#clients-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on expenses with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on expenses with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Clients Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/expenses/projects:
+    get:
+      summary: 'Projects Report'
+      operationId: projectsReport
+      description: ''
+      externalDocs:
+        description: 'Projects Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/expense-reports/#projects-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on expenses with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on expenses with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Projects Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/expenses/categories:
+    get:
+      summary: 'Expense Categories Report'
+      operationId: expenseCategoriesReport
+      description: ''
+      externalDocs:
+        description: 'Expense Categories Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/expense-reports/#expense-categories-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on expenses with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on expenses with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Expense Categories Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/expenses/team:
+    get:
+      summary: 'Team Report'
+      operationId: teamReport
+      description: ''
+      externalDocs:
+        description: 'Team Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/expense-reports/#team-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on expenses with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on expenses with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Team Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/uninvoiced:
+    get:
+      summary: 'Uninvoiced Report'
+      operationId: uninvoicedReport
+      description: "The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.\n\nNote: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days)."
+      externalDocs:
+        description: 'Uninvoiced Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/uninvoiced-report/#uninvoiced-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on time entries and expenses with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on time entries and expenses with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Uninvoiced Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/time/clients:
+    get:
+      summary: 'Clients Report'
+      operationId: clientsReport
+      description: ''
+      externalDocs:
+        description: 'Clients Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/time-reports/#clients-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on time entries with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on time entries with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Clients Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/time/projects:
+    get:
+      summary: 'Projects Report'
+      operationId: projectsReport
+      description: ''
+      externalDocs:
+        description: 'Projects Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/time-reports/#projects-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on time entries with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on time entries with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Projects Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/time/tasks:
+    get:
+      summary: 'Tasks Report'
+      operationId: tasksReport
+      description: ''
+      externalDocs:
+        description: 'Tasks Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/time-reports/#tasks-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on time entries with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on time entries with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Tasks Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/time/team:
+    get:
+      summary: 'Team Report'
+      operationId: teamReport
+      description: ''
+      externalDocs:
+        description: 'Team Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/time-reports/#team-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              from:
+                type: string
+                description: 'Only report on time entries with a spent_date on or after the given date.'
+                format: date
+              to:
+                type: string
+                description: 'Only report on time entries with a spent_date on or before the given date.'
+                format: date
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+            required:
+              - from
+              - to
+      responses:
+        200:
+          description: 'Team Report'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
+  /reports/project_budget:
+    get:
+      summary: 'Project Budget Report'
+      operationId: projectBudgetReport
+      description: 'The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.'
+      externalDocs:
+        description: 'Project Budget Report'
+        url: 'https://help.getharvest.com/api-v2/reports-api/reports/project-budget-report/#project-budget-report'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: payload
+          description: 'json payload'
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              page:
+                type: integer
+                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+                format: int32
+              per_page:
+                type: integer
+                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+                format: int32
+      responses:
+        200:
+          description: 'Project Budget Report'
         default:
           description: 'error payload'
           schema:
@@ -5402,6 +5869,10 @@ definitions:
         type: number
         description: 'Number of (decimal time) hours tracked in this time entry.'
         format: float
+      rounded_hours:
+        type: number
+        description: 'Number of (decimal time) hours tracked in this time entry used in summary reports and invoices. This value is rounded according to the Time Rounding setting in your Preferences.'
+        format: float
       notes:
         type: string
         description: 'Notes attached to the time entry.'
@@ -5870,6 +6341,47 @@ definitions:
         type: string
         description: 'Date and time the user was last updated.'
         format: date-time
+  Result:
+    type: object
+    externalDocs:
+      description: result
+      url: 'https://help.getharvest.com/api-v2/reports-api/reports/project-budget-report/#the-result-object'
+    properties:
+      client_id:
+        type: integer
+        description: 'The ID of the client associated with this project.'
+        format: int32
+      client_name:
+        type: string
+        description: 'The name of the client associated with this project.'
+      project_id:
+        type: integer
+        description: 'The ID of the project.'
+        format: int32
+      project_name:
+        type: string
+        description: 'The name of the project.'
+      budget_is_monthly:
+        type: boolean
+        description: 'Whether the budget is reset every month.'
+      budget_by:
+        type: string
+        description: 'The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).'
+      is_active:
+        type: boolean
+        description: 'Whether the project is active or archived.'
+      budget:
+        type: number
+        description: 'The budget in hours or money for the project when budgeting by time. If the project is budgeted by money, this value will only be visible to Administrators and Project Managers with the View billable rates and amounts permission.'
+        format: float
+      budget_spent:
+        type: number
+        description: 'The total hours or money spent against the project’s budget. If Time Rounding is turned on, the hours will be rounded according to your settings. If the project is budgeted by money, this value will only be visible to Administrators and Project Managers with the View billable rates and amounts permission.'
+        format: float
+      budget_remaining:
+        type: number
+        description: 'The total hours or money remaining in the project’s budget. If Time Rounding is turned on, the hours will be rounded according to your settings. If the project is budgeted by money, this value will only be visible to Administrators and Project Managers with the View billable rates and amounts permission.'
+        format: float
   Contacts:
     type: object
     required:
@@ -6786,6 +7298,42 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/User'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  Results:
+    type: object
+    required:
+      - results
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/Result'
       per_page:
         type: integer
         format: int64

@@ -791,6 +791,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *     @var int $user_id Only return time entries belonging to the user with the given ID.
     *     @var int $client_id Only return time entries belonging to the client with the given ID.
     *     @var int $project_id Only return time entries belonging to the project with the given ID.
+    *     @var int $task_id Only return time entries belonging to the task with the given ID.
     *     @var bool $is_billed Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.
     *     @var bool $is_running Pass true to only return running time entries and false to return non-running time entries.
     *     @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
@@ -1385,7 +1386,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
     {
@@ -1427,6 +1428,92 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsTimeClientsGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function clientsReport(\JoliCode\Harvest\Api\Model\ReportsTimeClientsGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsReport($payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsTimeProjectsGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function projectsReport(\JoliCode\Harvest\Api\Model\ReportsTimeProjectsGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsReport($payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsExpensesCategoriesGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function expenseCategoriesReport(\JoliCode\Harvest\Api\Model\ReportsExpensesCategoriesGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function teamReport(\JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamReport($payload), $fetch);
+    }
+    /**
+    * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
+    
+    Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
+    *
+    * @param \JoliCode\Harvest\Api\Model\ReportsUninvoicedGetBody $payload json payload
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function uninvoicedReport(\JoliCode\Harvest\Api\Model\ReportsUninvoicedGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsTimeTasksGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function tasksReport(\JoliCode\Harvest\Api\Model\ReportsTimeTasksGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($payload), $fetch);
+    }
+    /**
+     * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
+     *
+     * @param \JoliCode\Harvest\Api\Model\ReportsProjectBudgetGetBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function projectBudgetReport(\JoliCode\Harvest\Api\Model\ReportsProjectBudgetGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($payload), $fetch);
     }
     public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {

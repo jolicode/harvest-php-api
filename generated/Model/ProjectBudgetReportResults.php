@@ -2,12 +2,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Results
+class ProjectBudgetReportResults
 {
     /**
      * 
      *
-     * @var Result[]|null
+     * @var ProjectBudgetReportResult[]|null
      */
     protected $results;
     /**
@@ -55,7 +55,7 @@ class Results
     /**
      * 
      *
-     * @return Result[]|null
+     * @return ProjectBudgetReportResult[]|null
      */
     public function getResults() : ?array
     {
@@ -64,7 +64,7 @@ class Results
     /**
      * 
      *
-     * @param Result[]|null $results
+     * @param ProjectBudgetReportResult[]|null $results
      *
      * @return self
      */

@@ -1432,88 +1432,121 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * 
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsTimeClientsGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function clientsReport(\JoliCode\Harvest\Api\Model\ReportsTimeClientsGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function clientsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsReport($queryParameters), $fetch);
     }
     /**
      * 
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsTimeProjectsGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsReport(\JoliCode\Harvest\Api\Model\ReportsTimeProjectsGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function projectsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsReport($queryParameters), $fetch);
     }
     /**
      * 
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsExpensesCategoriesGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function expenseCategoriesReport(\JoliCode\Harvest\Api\Model\ReportsExpensesCategoriesGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function expenseCategoriesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
     }
     /**
      * 
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function teamReport(\JoliCode\Harvest\Api\Model\ReportsTimeTeamGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function teamReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamReport($queryParameters), $fetch);
     }
     /**
     * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
     
     Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
     *
-    * @param \JoliCode\Harvest\Api\Model\ReportsUninvoicedGetBody $payload json payload
+    * @param array $queryParameters {
+    *     @var string $from Only report on time entries and expenses with a spent_date on or after the given date.
+    *     @var string $to Only report on time entries and expenses with a spent_date on or before the given date.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+    * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function uninvoicedReport(\JoliCode\Harvest\Api\Model\ReportsUninvoicedGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function uninvoicedReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
     }
     /**
      * 
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsTimeTasksGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function tasksReport(\JoliCode\Harvest\Api\Model\ReportsTimeTasksGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function tasksReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
     }
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
      *
-     * @param \JoliCode\Harvest\Api\Model\ReportsProjectBudgetGetBody $payload json payload
+     * @param array $queryParameters {
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function projectBudgetReport(\JoliCode\Harvest\Api\Model\ReportsProjectBudgetGetBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function projectBudgetReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
     }
     public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {

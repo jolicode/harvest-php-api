@@ -4480,32 +4480,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on expenses with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on expenses with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on expenses with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on expenses with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Clients Report'
@@ -4527,32 +4524,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on expenses with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on expenses with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on expenses with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on expenses with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Projects Report'
@@ -4574,32 +4568,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on expenses with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on expenses with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on expenses with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on expenses with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Expense Categories Report'
@@ -4621,32 +4612,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on expenses with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on expenses with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on expenses with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on expenses with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Team Report'
@@ -4668,32 +4656,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on time entries and expenses with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on time entries and expenses with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on time entries and expenses with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on time entries and expenses with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Uninvoiced Report'
@@ -4715,32 +4700,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on time entries with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on time entries with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on time entries with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on time entries with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Clients Report'
@@ -4762,32 +4744,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on time entries with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on time entries with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on time entries with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on time entries with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Projects Report'
@@ -4809,32 +4788,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on time entries with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on time entries with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on time entries with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on time entries with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Tasks Report'
@@ -4856,32 +4832,29 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
+          name: from
+          description: 'Only report on time entries with a spent_date on or after the given date.'
           required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              from:
-                type: string
-                description: 'Only report on time entries with a spent_date on or after the given date.'
-                format: date
-              to:
-                type: string
-                description: 'Only report on time entries with a spent_date on or before the given date.'
-                format: date
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
-            required:
-              - from
-              - to
+          in: query
+          type: string
+        -
+          name: to
+          description: 'Only report on time entries with a spent_date on or before the given date.'
+          required: true
+          in: query
+          type: string
+        -
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Team Report'
@@ -4903,21 +4876,17 @@ paths:
           AccountAuth: []
       parameters:
         -
-          name: payload
-          description: 'json payload'
-          required: true
-          in: body
-          schema:
-            type: object
-            properties:
-              page:
-                type: integer
-                description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
-                format: int32
-              per_page:
-                type: integer
-                description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
-                format: int32
+          name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          required: false
+          in: query
+          type: integer
       responses:
         200:
           description: 'Project Budget Report'

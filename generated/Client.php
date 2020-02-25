@@ -1440,7 +1440,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function clientsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1457,7 +1457,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function projectsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1474,7 +1474,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function expenseCategoriesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1491,7 +1491,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function teamReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1510,7 +1510,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
     public function uninvoicedReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1527,7 +1527,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function tasksReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1542,7 +1542,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ProjectBudgetReportResult|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\ProjectBudgetReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function projectBudgetReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {

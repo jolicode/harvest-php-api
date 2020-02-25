@@ -47,12 +47,12 @@ class ExpenseCategoriesReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResult|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

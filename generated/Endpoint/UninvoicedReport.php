@@ -49,12 +49,12 @@ class UninvoicedReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResult|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

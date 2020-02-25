@@ -4507,7 +4507,7 @@ paths:
         200:
           description: 'Clients Report'
           schema:
-            $ref: '#/definitions/ExpenseReportsResult'
+            $ref: '#/definitions/ExpenseReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4553,7 +4553,7 @@ paths:
         200:
           description: 'Projects Report'
           schema:
-            $ref: '#/definitions/ExpenseReportsResult'
+            $ref: '#/definitions/ExpenseReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4599,7 +4599,7 @@ paths:
         200:
           description: 'Expense Categories Report'
           schema:
-            $ref: '#/definitions/ExpenseReportsResult'
+            $ref: '#/definitions/ExpenseReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4645,7 +4645,7 @@ paths:
         200:
           description: 'Team Report'
           schema:
-            $ref: '#/definitions/ExpenseReportsResult'
+            $ref: '#/definitions/ExpenseReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4691,7 +4691,7 @@ paths:
         200:
           description: 'Uninvoiced Report'
           schema:
-            $ref: '#/definitions/UninvoicedReportResult'
+            $ref: '#/definitions/UninvoicedReportResults'
         default:
           description: 'error payload'
           schema:
@@ -4737,7 +4737,7 @@ paths:
         200:
           description: 'Clients Report'
           schema:
-            $ref: '#/definitions/TimeReportsResult'
+            $ref: '#/definitions/TimeReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4783,7 +4783,7 @@ paths:
         200:
           description: 'Projects Report'
           schema:
-            $ref: '#/definitions/TimeReportsResult'
+            $ref: '#/definitions/TimeReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4829,7 +4829,7 @@ paths:
         200:
           description: 'Tasks Report'
           schema:
-            $ref: '#/definitions/TimeReportsResult'
+            $ref: '#/definitions/TimeReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4875,7 +4875,7 @@ paths:
         200:
           description: 'Team Report'
           schema:
-            $ref: '#/definitions/TimeReportsResult'
+            $ref: '#/definitions/TimeReportsResults'
         default:
           description: 'error payload'
           schema:
@@ -4909,7 +4909,7 @@ paths:
         200:
           description: 'Project Budget Report'
           schema:
-            $ref: '#/definitions/ProjectBudgetReportResult'
+            $ref: '#/definitions/ProjectBudgetReportResults'
         default:
           description: 'error payload'
           schema:

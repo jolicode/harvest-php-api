@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ResultsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ExpenseReportsResultsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\Results';
+        return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Results';
+        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,11 +33,11 @@ class ResultsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\Results();
+        $object = new \JoliCode\Harvest\Api\Model\ExpenseReportsResults();
         if (property_exists($data, 'results') && $data->{'results'} !== null) {
             $values = array();
             foreach ($data->{'results'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\Result', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult', 'json', $context);
             }
             $object->setResults($values);
         }

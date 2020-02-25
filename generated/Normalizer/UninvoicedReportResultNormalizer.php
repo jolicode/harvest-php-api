@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class UninvoicedReportResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\Result';
+        return $type === 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Result';
+        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,7 +33,7 @@ class ResultNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\Result();
+        $object = new \JoliCode\Harvest\Api\Model\UninvoicedReportResult();
         if (property_exists($data, 'client_id') && $data->{'client_id'} !== null) {
             $object->setClientId($data->{'client_id'});
         }
@@ -58,41 +58,35 @@ class ResultNormalizer implements DenormalizerInterface, NormalizerInterface, De
         elseif (property_exists($data, 'project_name') && $data->{'project_name'} === null) {
             $object->setProjectName(null);
         }
-        if (property_exists($data, 'budget_is_monthly') && $data->{'budget_is_monthly'} !== null) {
-            $object->setBudgetIsMonthly($data->{'budget_is_monthly'});
+        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
+            $object->setCurrency($data->{'currency'});
         }
-        elseif (property_exists($data, 'budget_is_monthly') && $data->{'budget_is_monthly'} === null) {
-            $object->setBudgetIsMonthly(null);
+        elseif (property_exists($data, 'currency') && $data->{'currency'} === null) {
+            $object->setCurrency(null);
         }
-        if (property_exists($data, 'budget_by') && $data->{'budget_by'} !== null) {
-            $object->setBudgetBy($data->{'budget_by'});
+        if (property_exists($data, 'total_hours') && $data->{'total_hours'} !== null) {
+            $object->setTotalHours($data->{'total_hours'});
         }
-        elseif (property_exists($data, 'budget_by') && $data->{'budget_by'} === null) {
-            $object->setBudgetBy(null);
+        elseif (property_exists($data, 'total_hours') && $data->{'total_hours'} === null) {
+            $object->setTotalHours(null);
         }
-        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
-            $object->setIsActive($data->{'is_active'});
+        if (property_exists($data, 'uninvoiced_hours') && $data->{'uninvoiced_hours'} !== null) {
+            $object->setUninvoicedHours($data->{'uninvoiced_hours'});
         }
-        elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
-            $object->setIsActive(null);
+        elseif (property_exists($data, 'uninvoiced_hours') && $data->{'uninvoiced_hours'} === null) {
+            $object->setUninvoicedHours(null);
         }
-        if (property_exists($data, 'budget') && $data->{'budget'} !== null) {
-            $object->setBudget($data->{'budget'});
+        if (property_exists($data, 'uninvoiced_expenses') && $data->{'uninvoiced_expenses'} !== null) {
+            $object->setUninvoicedExpenses($data->{'uninvoiced_expenses'});
         }
-        elseif (property_exists($data, 'budget') && $data->{'budget'} === null) {
-            $object->setBudget(null);
+        elseif (property_exists($data, 'uninvoiced_expenses') && $data->{'uninvoiced_expenses'} === null) {
+            $object->setUninvoicedExpenses(null);
         }
-        if (property_exists($data, 'budget_spent') && $data->{'budget_spent'} !== null) {
-            $object->setBudgetSpent($data->{'budget_spent'});
+        if (property_exists($data, 'uninvoiced_amount') && $data->{'uninvoiced_amount'} !== null) {
+            $object->setUninvoicedAmount($data->{'uninvoiced_amount'});
         }
-        elseif (property_exists($data, 'budget_spent') && $data->{'budget_spent'} === null) {
-            $object->setBudgetSpent(null);
-        }
-        if (property_exists($data, 'budget_remaining') && $data->{'budget_remaining'} !== null) {
-            $object->setBudgetRemaining($data->{'budget_remaining'});
-        }
-        elseif (property_exists($data, 'budget_remaining') && $data->{'budget_remaining'} === null) {
-            $object->setBudgetRemaining(null);
+        elseif (property_exists($data, 'uninvoiced_amount') && $data->{'uninvoiced_amount'} === null) {
+            $object->setUninvoicedAmount(null);
         }
         return $object;
     }
@@ -123,41 +117,35 @@ class ResultNormalizer implements DenormalizerInterface, NormalizerInterface, De
         else {
             $data->{'project_name'} = null;
         }
-        if (null !== $object->getBudgetIsMonthly()) {
-            $data->{'budget_is_monthly'} = $object->getBudgetIsMonthly();
+        if (null !== $object->getCurrency()) {
+            $data->{'currency'} = $object->getCurrency();
         }
         else {
-            $data->{'budget_is_monthly'} = null;
+            $data->{'currency'} = null;
         }
-        if (null !== $object->getBudgetBy()) {
-            $data->{'budget_by'} = $object->getBudgetBy();
-        }
-        else {
-            $data->{'budget_by'} = null;
-        }
-        if (null !== $object->getIsActive()) {
-            $data->{'is_active'} = $object->getIsActive();
+        if (null !== $object->getTotalHours()) {
+            $data->{'total_hours'} = $object->getTotalHours();
         }
         else {
-            $data->{'is_active'} = null;
+            $data->{'total_hours'} = null;
         }
-        if (null !== $object->getBudget()) {
-            $data->{'budget'} = $object->getBudget();
-        }
-        else {
-            $data->{'budget'} = null;
-        }
-        if (null !== $object->getBudgetSpent()) {
-            $data->{'budget_spent'} = $object->getBudgetSpent();
+        if (null !== $object->getUninvoicedHours()) {
+            $data->{'uninvoiced_hours'} = $object->getUninvoicedHours();
         }
         else {
-            $data->{'budget_spent'} = null;
+            $data->{'uninvoiced_hours'} = null;
         }
-        if (null !== $object->getBudgetRemaining()) {
-            $data->{'budget_remaining'} = $object->getBudgetRemaining();
+        if (null !== $object->getUninvoicedExpenses()) {
+            $data->{'uninvoiced_expenses'} = $object->getUninvoicedExpenses();
         }
         else {
-            $data->{'budget_remaining'} = null;
+            $data->{'uninvoiced_expenses'} = null;
+        }
+        if (null !== $object->getUninvoicedAmount()) {
+            $data->{'uninvoiced_amount'} = $object->getUninvoicedAmount();
+        }
+        else {
+            $data->{'uninvoiced_amount'} = null;
         }
         return $data;
     }

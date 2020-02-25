@@ -4506,6 +4506,8 @@ paths:
       responses:
         200:
           description: 'Clients Report'
+          schema:
+            $ref: '#/definitions/ExpenseReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4550,6 +4552,8 @@ paths:
       responses:
         200:
           description: 'Projects Report'
+          schema:
+            $ref: '#/definitions/ExpenseReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4594,6 +4598,8 @@ paths:
       responses:
         200:
           description: 'Expense Categories Report'
+          schema:
+            $ref: '#/definitions/ExpenseReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4638,6 +4644,8 @@ paths:
       responses:
         200:
           description: 'Team Report'
+          schema:
+            $ref: '#/definitions/ExpenseReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4682,6 +4690,8 @@ paths:
       responses:
         200:
           description: 'Uninvoiced Report'
+          schema:
+            $ref: '#/definitions/UninvoicedReportResult'
         default:
           description: 'error payload'
           schema:
@@ -4726,6 +4736,8 @@ paths:
       responses:
         200:
           description: 'Clients Report'
+          schema:
+            $ref: '#/definitions/TimeReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4770,6 +4782,8 @@ paths:
       responses:
         200:
           description: 'Projects Report'
+          schema:
+            $ref: '#/definitions/TimeReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4814,6 +4828,8 @@ paths:
       responses:
         200:
           description: 'Tasks Report'
+          schema:
+            $ref: '#/definitions/TimeReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4858,6 +4874,8 @@ paths:
       responses:
         200:
           description: 'Team Report'
+          schema:
+            $ref: '#/definitions/TimeReportsResult'
         default:
           description: 'error payload'
           schema:
@@ -4890,6 +4908,8 @@ paths:
       responses:
         200:
           description: 'Project Budget Report'
+          schema:
+            $ref: '#/definitions/ProjectBudgetReportResult'
         default:
           description: 'error payload'
           schema:
@@ -6310,7 +6330,146 @@ definitions:
         type: string
         description: 'Date and time the user was last updated.'
         format: date-time
-  Result:
+  ExpenseReportsResult:
+    type: object
+    externalDocs:
+      description: result
+      url: 'https://help.getharvest.com/api-v2/reports-api/reports/expense-reports/#the-result-object'
+    properties:
+      client_id:
+        type: integer
+        description: 'The ID of the client associated with the reported expenses. Only returned in the Client and Project reports.'
+        format: int32
+      client_name:
+        type: string
+        description: 'The name of the client associated with the reported expenses. Only returned in the Client and Project reports.'
+      project_id:
+        type: integer
+        description: 'The ID of the project associated with the reported expenses. Only returned in the Client and Project reports.'
+        format: int32
+      project_name:
+        type: string
+        description: 'The name of the project associated with the reported expenses. Only returned in the Client and Project reports.'
+      expense_category_id:
+        type: integer
+        description: 'The ID of the expense category associated with the reported expenses. Only returned in the Expense Category report.'
+        format: int32
+      expense_category_name:
+        type: string
+        description: 'The name of the expense category associated with the reported expenses. Only returned in the Expense Category report.'
+      user_id:
+        type: integer
+        description: 'The ID of the user associated with the reported expenses. Only returned in the Team report.'
+        format: int32
+      user_name:
+        type: string
+        description: 'The name of the user associated with the reported expenses. Only returned in the Team report.'
+      is_contractor:
+        type: boolean
+        description: 'The contractor status of the user associated with the reported expenses. Only returned in the Team report.'
+      total_amount:
+        type: number
+        description: 'The totaled cost for all expenses for the given timeframe, subject (client, project, expense category, or user), and currency.'
+        format: float
+      billable_amount:
+        type: number
+        description: 'The totaled cost for billable expenses for the given timeframe, subject (client, project, expense category, or user), and currency.'
+        format: float
+      currency:
+        type: string
+        description: 'The currency code associated with the expenses for this result.'
+  UninvoicedReportResult:
+    type: object
+    externalDocs:
+      description: result
+      url: 'https://help.getharvest.com/api-v2/reports-api/reports/uninvoiced-report/#the-result-object'
+    properties:
+      client_id:
+        type: integer
+        description: 'The ID of the client associated with the reported hours and expenses.'
+        format: int32
+      client_name:
+        type: string
+        description: 'The name of the client associated with the reported hours and expenses.'
+      project_id:
+        type: integer
+        description: 'The ID of the project associated with the reported hours and expenses.'
+        format: int32
+      project_name:
+        type: string
+        description: 'The name of the project associated with the reported hours and expenses.'
+      currency:
+        type: string
+        description: 'The currency code associated with the tracked hours for this result.'
+      total_hours:
+        type: number
+        description: 'The total hours for the given timeframe and project. If Time Rounding is turned on, the hours will be rounded according to your settings.'
+        format: float
+      uninvoiced_hours:
+        type: number
+        description: 'The total hours for the given timeframe and project that have not been invoiced. If Time Rounding is turned on, the hours will be rounded according to your settings.'
+        format: float
+      uninvoiced_expenses:
+        type: number
+        description: 'The total amount for billable expenses for the timeframe and project that have not been invoiced.'
+        format: float
+      uninvoiced_amount:
+        type: number
+        description: 'The total amount (time and expenses) for the timeframe and project that have not been invoiced.'
+        format: float
+  TimeReportsResult:
+    type: object
+    externalDocs:
+      description: result
+      url: 'https://help.getharvest.com/api-v2/reports-api/reports/time-reports/#the-result-object'
+    properties:
+      client_id:
+        type: integer
+        description: 'The ID of the client associated with the reported hours. Only returned in the Client and Project reports.'
+        format: int32
+      client_name:
+        type: string
+        description: 'The name of the client associated with the reported hours. Only returned in the Client and Project reports.'
+      project_id:
+        type: integer
+        description: 'The ID of the project associated with the reported hours. Only returned in the Client and Project reports.'
+        format: int32
+      project_name:
+        type: string
+        description: 'The name of the project associated with the reported hours. Only returned in the Client and Project reports.'
+      task_id:
+        type: integer
+        description: 'The ID of the task associated with the reported hours. Only returned in the Task report.'
+        format: int32
+      task_name:
+        type: string
+        description: 'The name of the task associated with the reported hours. Only returned in the Task report.'
+      user_id:
+        type: integer
+        description: 'The ID of the user associated with the reported hours. Only returned in the Team report.'
+        format: int32
+      user_name:
+        type: string
+        description: 'The name of the user associated with the reported hours. Only returned in the Team report.'
+      is_contractor:
+        type: boolean
+        description: 'The contractor status of the user associated with the reported hours. Only returned in the Team report.'
+      total_hours:
+        type: number
+        description: 'The totaled hours for the given timeframe, subject (client, project, task, or user), and currency. If Time Rounding is turned on, the hours will be rounded according to your settings.'
+        format: float
+      billable_hours:
+        type: number
+        description: 'The totaled billable hours for the given timeframe, subject (client, project, task, or user), and currency. If Time Rounding is turned on, the hours will be rounded according to your settings.'
+        format: float
+      currency:
+        type: string
+        description: 'The currency code associated with the tracked hours for this result. Only visible to Administrators and Project Managers with the View billable rates and amounts permission.'
+      billable_amount:
+        type: number
+        description: 'The totaled billable amount for the billable hours above. Only visible to Administrators and Project Managers with the View billable rates and amounts permission.'
+        format: float
+  ProjectBudgetReportResult:
     type: object
     externalDocs:
       description: result
@@ -7287,7 +7446,7 @@ definitions:
         format: int64
       links:
         $ref: '#/definitions/PaginationLinks'
-  Results:
+  ExpenseReportsResults:
     type: object
     required:
       - results
@@ -7302,7 +7461,115 @@ definitions:
       results:
         type: array
         items:
-          $ref: '#/definitions/Result'
+          $ref: '#/definitions/ExpenseReportsResult'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  UninvoicedReportResults:
+    type: object
+    required:
+      - results
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/UninvoicedReportResult'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  TimeReportsResults:
+    type: object
+    required:
+      - results
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/TimeReportsResult'
+      per_page:
+        type: integer
+        format: int64
+      total_pages:
+        type: integer
+        format: int64
+      total_entries:
+        type: integer
+        format: int64
+      next_page:
+        type: integer
+        format: int64
+      previous_page:
+        type: integer
+        format: int64
+      page:
+        type: integer
+        format: int64
+      links:
+        $ref: '#/definitions/PaginationLinks'
+  ProjectBudgetReportResults:
+    type: object
+    required:
+      - results
+      - per_page
+      - total_pages
+      - total_entries
+      - next_page
+      - previous_page
+      - page
+      - links
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/ProjectBudgetReportResult'
       per_page:
         type: integer
         format: int64

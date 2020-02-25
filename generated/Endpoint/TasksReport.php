@@ -47,12 +47,12 @@ class TasksReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResult|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return null;
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

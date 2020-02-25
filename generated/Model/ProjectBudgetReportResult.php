@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Result
+class ProjectBudgetReportResult
 {
     /**
      * The ID of the client associated with this project.

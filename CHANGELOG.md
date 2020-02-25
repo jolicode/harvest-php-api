@@ -4,6 +4,26 @@
 
 Nothing
 
+## 3.0.1 (2020-02-25)
+
+ * fixed the location of reports endpoints parameters
+
+## 3.0.0 (2020-02-21)
+
+ * upgrade to `janephp/open-api` 5.3
+ * updated the SDK based on the latest [spec updates](https://github.com/jolicode/harvest-openapi-generator/pull/9):
+   * add the ability to filter time entries by `task_id`
+   * several new "report" endpoints
+   * support for `rounded_hours` in the `TimeEntry` model
+
+## 2.1.0
+
+ * updated the OpenAPI definition file
+ * added the "company update" endpoint
+ * updated the endpoints documentation according to Harvest's API doc
+ * added the `Company` `weekly_capacity` attribute
+ * added the `Invoice` `recurring_invoice_id` attribute
+
 ## 2.0.0 (2019-10-28)
 ​
 * Upgrade Jane to 4.5 https://github.com/janephp/janephp/releases/tag/v4.5.3, the new generated classes have better PHPDoc​

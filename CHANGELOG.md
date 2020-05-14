@@ -4,6 +4,20 @@
 
 Nothing
 
+## 4.0.0 (2020-05-14)
+
+ * fixed several endpoint names
+ * removed missnamed endpoints
+ * [documented all the available operations](doc/index.md)
+
+## 3.0.3 (2020-02-25)
+
+ * fixed plural definition names for reports Schemas
+
+## 3.0.2 (2020-02-25)
+
+ * Added Schemas for the "reports" endpoints
+
 ## 3.0.1 (2020-02-25)
 
  * fixed the location of reports endpoints parameters

@@ -2,12 +2,12 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateTimeEntryViaStartAndEndTime extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class CreateTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
     * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
     
-    You should only use this method to create time entries when your account is configured to track time via start and end time. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is true in the Company API.
+    You should only use this method to create time entries when your account is configured to track time via duration. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is false in the Company API.
     *
     * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload json payload
     */

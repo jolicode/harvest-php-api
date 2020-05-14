@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesEstimateIdPatchBodyLineItemsItemExpenses
+class InvoicesPostBodyLineItemsImportExpenses
 {
     /**
      * How to summarize the expenses per line item. Options: project, category, people, or detailed.

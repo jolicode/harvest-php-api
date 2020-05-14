@@ -31,20 +31,20 @@ First, you need to retrieve an access token. Please checkout Harvest's documenta
 Then, use the factory that is provided to create the client:
 
 ```php
-// $client contains all the methods to interact with the API
-$client = JoliCode\Harvest\ClientFactory::create(
+// $harvestClient contains all the methods to interact with the API
+$harvestClient = JoliCode\Harvest\ClientFactory::create(
   $accessToken,
   $harvestAccountId
 );
 
-$clients = $client->listClients([
+$clients = $harvestClient->listClients([
   'is_active' => true,
 ])->getClients();
 
 dump($clients);
 ```
 
-Want more example or documentation? See the [documentation](doc/index.md).
+Want more example or documentation? See the [documentation](doc/index.md), which lists all the available methods.
 
 ## Troubleshoot
 

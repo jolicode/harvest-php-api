@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class EstimatesEstimateIdPatchBodyLineItemsItemExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItemExpenses';
+        return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItemExpenses';
+        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,7 +33,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpensesNormalizer implements Den
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItemExpenses();
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime();
         if (property_exists($data, 'summary_type') && $data->{'summary_type'} !== null) {
             $object->setSummaryType($data->{'summary_type'});
         }
@@ -51,12 +51,6 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpensesNormalizer implements Den
         }
         elseif (property_exists($data, 'to') && $data->{'to'} === null) {
             $object->setTo(null);
-        }
-        if (property_exists($data, 'attach_receipt') && $data->{'attach_receipt'} !== null) {
-            $object->setAttachReceipt($data->{'attach_receipt'});
-        }
-        elseif (property_exists($data, 'attach_receipt') && $data->{'attach_receipt'} === null) {
-            $object->setAttachReceipt(null);
         }
         return $object;
     }
@@ -80,12 +74,6 @@ class EstimatesEstimateIdPatchBodyLineItemsItemExpensesNormalizer implements Den
         }
         else {
             $data->{'to'} = null;
-        }
-        if (null !== $object->getAttachReceipt()) {
-            $data->{'attach_receipt'} = $object->getAttachReceipt();
-        }
-        else {
-            $data->{'attach_receipt'} = null;
         }
         return $data;
     }

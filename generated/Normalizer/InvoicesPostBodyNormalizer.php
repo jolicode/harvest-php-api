@@ -119,10 +119,20 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setPaymentTerm(null);
         }
         if (property_exists($data, 'line_items_import') && $data->{'line_items_import'} !== null) {
-            $object->setLineItemsImport($data->{'line_items_import'});
+            $object->setLineItemsImport($this->denormalizer->denormalize($data->{'line_items_import'}, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport', 'json', $context));
         }
         elseif (property_exists($data, 'line_items_import') && $data->{'line_items_import'} === null) {
             $object->setLineItemsImport(null);
+        }
+        if (property_exists($data, 'line_items') && $data->{'line_items'} !== null) {
+            $values = array();
+            foreach ($data->{'line_items'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem', 'json', $context);
+            }
+            $object->setLineItems($values);
+        }
+        elseif (property_exists($data, 'line_items') && $data->{'line_items'} === null) {
+            $object->setLineItems(null);
         }
         return $object;
     }
@@ -214,10 +224,20 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'payment_term'} = null;
         }
         if (null !== $object->getLineItemsImport()) {
-            $data->{'line_items_import'} = $object->getLineItemsImport();
+            $data->{'line_items_import'} = $this->normalizer->normalize($object->getLineItemsImport(), 'json', $context);
         }
         else {
             $data->{'line_items_import'} = null;
+        }
+        if (null !== $object->getLineItems()) {
+            $values = array();
+            foreach ($object->getLineItems() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'line_items'} = $values;
+        }
+        else {
+            $data->{'line_items'} = null;
         }
         return $data;
     }

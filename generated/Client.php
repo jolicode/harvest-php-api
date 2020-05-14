@@ -5,74 +5,6 @@ namespace JoliCode\Harvest\Api;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-    * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
-    
-    The response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts.
-    *
-    * @param array $queryParameters {
-    *     @var int $client_id Only return contacts belonging to the client with the given ID.
-    *     @var string $updated_since Only return contacts that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listContacts(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListContacts($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($payload), $fetch);
-    }
-    /**
-     * Delete a contact. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $contactId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteContact($contactId), $fetch);
-    }
-    /**
-     * Retrieves the contact with the given ID. Returns a contact object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $contactId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveContact($contactId), $fetch);
-    }
-    /**
-     * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $contactId 
-     * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $payload), $fetch);
-    }
-    /**
     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
     
     The response contains an object with a clients property that contains an array of up to per_page clients. Each entry in the array is a separate client object. If no more clients are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your clients.
@@ -162,278 +94,139 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($payload), $fetch);
     }
     /**
-    * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
+    * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
     
-    The response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
+    The response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts.
     *
-    * @param string $invoiceId 
     * @param array $queryParameters {
-    *     @var string $updated_since Only return invoice messages that have been updated since the given date and time.
+    *     @var int $client_id Only return contacts belonging to the client with the given ID.
+    *     @var string $updated_since Only return contacts that have been updated since the given date and time.
     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function listMessagesForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listContacts(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListContacts($queryParameters), $fetch);
     }
     /**
-     * Creates a new invoice message object and marks an open invoice as a draft. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     * Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.
      *
-     * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($payload), $fetch);
+    }
+    /**
+     * Delete a contact. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $contactId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function markOpenInvoiceAsDraft(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\MarkOpenInvoiceAsDraft($invoiceId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteContact($contactId), $fetch);
     }
     /**
-     * Delete an invoice message. Returns a 200 OK response code if the call succeeded.
+     * Retrieves the contact with the given ID. Returns a contact object and a 200 OK response code if a valid identifier was provided.
      *
-     * @param string $invoiceId 
-     * @param string $messageId 
+     * @param string $contactId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
+    public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveContact($contactId), $fetch);
     }
     /**
-    * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
+     * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $contactId 
+     * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
     
-    The response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments.
+    The response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories.
     *
-    * @param string $invoiceId 
     * @param array $queryParameters {
-    *     @var string $updated_since Only return invoice payments that have been updated since the given date and time.
+    *     @var string $updated_since Only return estimate item categories that have been updated since the given date and time.
     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\InvoicePayments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listEstimateItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
     }
     /**
-     * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
+     * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
      *
-     * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($payload), $fetch);
     }
     /**
-     * Delete an invoice payment. Returns a 200 OK response code if the call succeeded.
+     * Delete an estimate item category. Returns a 200 OK response code if the call succeeded.
      *
-     * @param string $invoiceId 
-     * @param string $paymentId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
-    }
-    /**
-    * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
-    
-    The response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices.
-    *
-    * @param array $queryParameters {
-    *     @var int $client_id Only return invoices belonging to the client with the given ID.
-    *     @var int $project_id Only return invoices associated with the project with the given ID.
-    *     @var string $updated_since Only return invoices that have been updated since the given date and time.
-    *     @var string $from Only return invoices with an issue_date on or after the given date.
-    *     @var string $to Only return invoices with an issue_date on or before the given date.
-    *     @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listInvoices(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoices($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createInvoiceBasedOnTrackedTimeAndExpenses(\JoliCode\Harvest\Api\Model\InvoicesPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceBasedOnTrackedTimeAndExpenses($payload), $fetch);
-    }
-    /**
-     * Delete an invoice. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $invoiceId 
+     * @param string $estimateItemCategoryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
+    public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoice($invoiceId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
     /**
-     * Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.
+     * Retrieves the estimate item category with the given ID. Returns an estimate item category object and a 200 OK response code if a valid identifier was provided.
      *
-     * @param string $invoiceId 
+     * @param string $estimateItemCategoryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
+    public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoice($invoiceId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
     /**
-     * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
+     * Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.
      *
-     * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload json payload
+     * @param string $estimateItemCategoryId 
+     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $payload), $fetch);
-    }
-    /**
-    * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
-    
-    The response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories.
-    *
-    * @param array $queryParameters {
-    *     @var string $updated_since Only return invoice item categories that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listInvoiceItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($payload), $fetch);
-    }
-    /**
-     * Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $invoiceItemCategoryId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
-    }
-    /**
-     * Retrieves the invoice item category with the given ID. Returns an invoice item category object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $invoiceItemCategoryId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
-    }
-    /**
-     * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $invoiceItemCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $payload), $fetch);
-    }
-    /**
-    * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
-    
-    The response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
-    *
-    * @param string $estimateId 
-    * @param array $queryParameters {
-    *     @var string $updated_since Only return estimate messages that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\EstimateMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listMessagesForEstimate(string $estimateId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
-    }
-    /**
-     * Creates a new estimate message object and re-opens a closed estimate. Returns an estimate message object and a 201 Created response code if the call succeeded.
-     *
-     * @param string $estimateId 
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function reOpenClosedEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ReOpenClosedEstimate($estimateId, $payload), $fetch);
-    }
-    /**
-     * Delete an estimate message. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $estimateId 
-     * @param string $messageId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $payload), $fetch);
     }
     /**
     * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
@@ -507,71 +300,117 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $payload), $fetch);
     }
     /**
-    * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
+    * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
     
-    The response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories.
+    The response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
     *
+    * @param string $estimateId 
     * @param array $queryParameters {
-    *     @var string $updated_since Only return estimate item categories that have been updated since the given date and time.
+    *     @var string $updated_since Only return estimate messages that have been updated since the given date and time.
     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\EstimateMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function listEstimateItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listMessagesForEstimate(string $estimateId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
     }
     /**
-     * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
+     * Creates a new estimate message object. Returns an estimate message object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload json payload
+     * @param string $estimateId 
+     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\EstimateMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createEstimateMessage(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $payload), $fetch);
     }
     /**
-     * Delete an estimate item category. Returns a 200 OK response code if the call succeeded.
+     * Delete an estimate message. Returns a 200 OK response code if the call succeeded.
      *
-     * @param string $estimateItemCategoryId 
+     * @param string $estimateId 
+     * @param string $messageId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
+    public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
     }
     /**
-     * Retrieves the estimate item category with the given ID. Returns an estimate item category object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $estimateItemCategoryId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
+    * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
+    
+    The response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories.
+    *
+    * @param array $queryParameters {
+    *     @var bool $is_active Pass true to only return active expense categories and false to return inactive expense categories.
+    *     @var string $updated_since Only return expense categories that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listExpenseCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenseCategories($queryParameters), $fetch);
     }
     /**
-     * Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.
+     * Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.
      *
-     * @param string $estimateItemCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($payload), $fetch);
+    }
+    /**
+     * Delete an expense category. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $expenseCategoryId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
+    }
+    /**
+     * Retrieves the expense category with the given ID. Returns an expense category object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $expenseCategoryId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
+    }
+    /**
+     * Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $expenseCategoryId 
+     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $payload), $fetch);
     }
     /**
     * Returns a list of your expenses. If accessing this endpoint as an Admin, all expenses in the account will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
@@ -647,72 +486,706 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $payload), $fetch);
     }
     /**
-    * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
+    * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
     
-    The response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories.
+    The response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories.
     *
     * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active expense categories and false to return inactive expense categories.
-    *     @var string $updated_since Only return expense categories that have been updated since the given date and time.
+    *     @var string $updated_since Only return invoice item categories that have been updated since the given date and time.
     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function listExpenseCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listInvoiceItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenseCategories($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
     }
     /**
-     * Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.
+     * Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($payload), $fetch);
     }
     /**
-     * Delete an expense category. Returns a 200 OK response code if the call succeeded.
+     * Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.
      *
-     * @param string $expenseCategoryId 
+     * @param string $invoiceItemCategoryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
+    public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
     /**
-     * Retrieves the expense category with the given ID. Returns an expense category object and a 200 OK response code if a valid identifier was provided.
+     * Retrieves the invoice item category with the given ID. Returns an invoice item category object and a 200 OK response code if a valid identifier was provided.
      *
-     * @param string $expenseCategoryId 
+     * @param string $invoiceItemCategoryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
+    public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
     /**
-     * Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.
+     * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
      *
-     * @param string $expenseCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload json payload
+     * @param string $invoiceItemCategoryId 
+     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
+    
+    The response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices.
+    *
+    * @param array $queryParameters {
+    *     @var int $client_id Only return invoices belonging to the client with the given ID.
+    *     @var int $project_id Only return invoices associated with the project with the given ID.
+    *     @var string $updated_since Only return invoices that have been updated since the given date and time.
+    *     @var string $from Only return invoices with an issue_date on or after the given date.
+    *     @var string $to Only return invoices with an issue_date on or before the given date.
+    *     @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listInvoices(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoices($queryParameters), $fetch);
+    }
+    /**
+     * Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.
+     *
+     * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createInvoice(\JoliCode\Harvest\Api\Model\InvoicesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($payload), $fetch);
+    }
+    /**
+     * Delete an invoice. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoice($invoiceId), $fetch);
+    }
+    /**
+     * Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $invoiceId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoice($invoiceId), $fetch);
+    }
+    /**
+     * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
+    
+    The response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
+    *
+    * @param string $invoiceId 
+    * @param array $queryParameters {
+    *     @var string $updated_since Only return invoice messages that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listMessagesForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
+    }
+    /**
+     * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createInvoiceMessage(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $payload), $fetch);
+    }
+    /**
+     * Delete an invoice message. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param string $messageId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
+    }
+    /**
+    * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
+    
+    The response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments.
+    *
+    * @param string $invoiceId 
+    * @param array $queryParameters {
+    *     @var string $updated_since Only return invoice payments that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\InvoicePayments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
+    }
+    /**
+     * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $payload), $fetch);
+    }
+    /**
+     * Delete an invoice payment. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $invoiceId 
+     * @param string $paymentId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
+    }
+    /**
+    * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
+    
+    The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
+    *
+    * @param array $queryParameters {
+    *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
+    *     @var int $client_id Only return projects belonging to the client with the given ID.
+    *     @var string $updated_since Only return projects that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\Projects|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjects($queryParameters), $fetch);
+    }
+    /**
+     * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
+     *
+     * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($payload), $fetch);
+    }
+    /**
+    * Deletes a project and any time entries or expenses tracked to it.
+    However, invoices associated with the project will not be deleted.
+    If you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead.
+    *
+    * @param string $projectId 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteProject($projectId), $fetch);
+    }
+    /**
+     * Retrieves the project with the given ID. Returns a project object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $projectId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveProject($projectId), $fetch);
+    }
+    /**
+     * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
+    
+    The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
+    *
+    * @param string $projectId 
+    * @param array $queryParameters {
+    *     @var bool $is_active Pass true to only return active task assignments and false to return inactive task assignments.
+    *     @var string $updated_since Only return task assignments that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+    }
+    /**
+     * Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $payload), $fetch);
+    }
+    /**
+     * Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param string $taskAssignmentId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
+    }
+    /**
+     * Retrieves the task assignment with the given ID. Returns a task assignment object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $projectId 
+     * @param string $taskAssignmentId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
+    }
+    /**
+     * Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param string $taskAssignmentId 
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
+    
+    The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
+    *
+    * @param string $projectId 
+    * @param array $queryParameters {
+    *     @var int $user_id Only return user assignments belonging to the user with the given ID.
+    *     @var bool $is_active Pass true to only return active user assignments and false to return inactive user assignments.
+    *     @var string $updated_since Only return user assignments that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+    }
+    /**
+     * Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $payload), $fetch);
+    }
+    /**
+     * Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param string $userAssignmentId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
+    }
+    /**
+     * Retrieves the user assignment with the given ID. Returns a user assignment object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $projectId 
+     * @param string $userAssignmentId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
+    }
+    /**
+     * Updates the specific user assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user assignment object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $projectId 
+     * @param string $userAssignmentId 
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $payload), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function expenseCategoriesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function clientsExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsExpensesReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function projectsExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsExpensesReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function teamExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamExpensesReport($queryParameters), $fetch);
+    }
+    /**
+     * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
+     *
+     * @param array $queryParameters {
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\ProjectBudgetReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function projectBudgetReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function clientsTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsTimeReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function projectsTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsTimeReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function tasksReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $from Only report on time entries with a spent_date on or after the given date.
+     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function teamTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamTimeReport($queryParameters), $fetch);
+    }
+    /**
+    * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
+    
+    Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
+    *
+    * @param array $queryParameters {
+    *     @var string $from Only report on time entries and expenses with a spent_date on or after the given date.
+    *     @var string $to Only report on time entries and expenses with a spent_date on or before the given date.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function uninvoicedReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
+    }
+    /**
+    * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
+    
+    The response contains an object with a roles property that contains an array of up to per_page roles. Each entry in the array is a separate role object. If no more roles are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your roles.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listRoles(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListRoles($queryParameters), $fetch);
+    }
+    /**
+     * Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.
+     *
+     * @param \JoliCode\Harvest\Api\Model\RolesPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($payload), $fetch);
+    }
+    /**
+     * Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $roleId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteRole($roleId), $fetch);
+    }
+    /**
+     * Retrieves the role with the given ID. Returns a role object and a 200 OK response code if a valid identifier was provided.
+     *
+     * @param string $roleId 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveRole($roleId), $fetch);
+    }
+    /**
+     * Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.
+     *
+     * @param string $roleId 
+     * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $payload), $fetch);
+    }
+    /**
+    * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
+    
+    The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
+    *
+    * @param array $queryParameters {
+    *     @var bool $is_active Pass true to only return active task assignments and false to return inactive task assignments.
+    *     @var string $updated_since Only return task assignments that have been updated since the given date and time.
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listTaskAssignments(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignments($queryParameters), $fetch);
     }
     /**
     * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
@@ -792,6 +1265,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *     @var int $client_id Only return time entries belonging to the client with the given ID.
     *     @var int $project_id Only return time entries belonging to the project with the given ID.
     *     @var int $task_id Only return time entries belonging to the task with the given ID.
+    *     @var string $external_reference_id Only return time entries with the given external_reference ID.
     *     @var bool $is_billed Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.
     *     @var bool $is_running Pass true to only return running time entries and false to return non-running time entries.
     *     @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
@@ -811,16 +1285,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
     * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
     
-    You should only use this method to create time entries when your account is configured to track time via start and end time. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is true in the Company API.
+    You should only use this method to create time entries when your account is configured to track time via duration. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is false in the Company API.
     *
     * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload json payload
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function createTimeEntryViaStartAndEndTime(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createTimeEntry(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntryViaStartAndEndTime($payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($payload), $fetch);
     }
     /**
      * Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.
@@ -916,307 +1390,98 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignments($queryParameters), $fetch);
     }
     /**
-    * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
+    * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
     
-    The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
+    The response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users.
     *
-    * @param string $projectId 
     * @param array $queryParameters {
-    *     @var int $user_id Only return user assignments belonging to the user with the given ID.
-    *     @var bool $is_active Pass true to only return active user assignments and false to return inactive user assignments.
-    *     @var string $updated_since Only return user assignments that have been updated since the given date and time.
+    *     @var bool $is_active Pass true to only return active users and false to return inactive users.
+    *     @var string $updated_since Only return users that have been updated since the given date and time.
     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\JoliCode\Harvest\Api\Model\Users|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listUsers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUsers($queryParameters), $fetch);
     }
     /**
-     * Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.
+     * Creates a new user object and sends an invitation email to the address specified in the email parameter. Returns a user object and a 201 Created response code if the call succeeded.
      *
-     * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\UsersPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($payload), $fetch);
     }
     /**
-     * Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @param string $projectId 
-     * @param string $userAssignmentId 
+     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
+    }
+    /**
+    * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
+    
+    The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    *
+    * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+    */
+    public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
+    }
+    /**
+     * Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.
+     *
+     * @param string $userId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
+    public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUser($userId), $fetch);
     }
     /**
-     * Retrieves the user assignment with the given ID. Returns a user assignment object and a 200 OK response code if a valid identifier was provided.
+     * Retrieves the user with the given ID. Returns a user object and a 200 OK response code if a valid identifier was provided.
      *
-     * @param string $projectId 
-     * @param string $userAssignmentId 
+     * @param string $userId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
+    public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUser($userId), $fetch);
     }
     /**
-     * Updates the specific user assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user assignment object and a 200 OK response code if the call succeeded.
+     * Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.
      *
-     * @param string $projectId 
-     * @param string $userAssignmentId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload json payload
+     * @param string $userId 
+     * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $payload), $fetch);
-    }
-    /**
-    * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
-    
-    The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
-    *
-    * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active task assignments and false to return inactive task assignments.
-    *     @var string $updated_since Only return task assignments that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listTaskAssignments(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignments($queryParameters), $fetch);
-    }
-    /**
-    * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
-    
-    The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
-    *
-    * @param string $projectId 
-    * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active task assignments and false to return inactive task assignments.
-    *     @var string $updated_since Only return task assignments that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
-    }
-    /**
-     * Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.
-     *
-     * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $payload), $fetch);
-    }
-    /**
-     * Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $projectId 
-     * @param string $taskAssignmentId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
-    }
-    /**
-     * Retrieves the task assignment with the given ID. Returns a task assignment object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $projectId 
-     * @param string $taskAssignmentId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
-    }
-    /**
-     * Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $projectId 
-     * @param string $taskAssignmentId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $payload), $fetch);
-    }
-    /**
-    * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
-    
-    The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
-    *
-    * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
-    *     @var int $client_id Only return projects belonging to the client with the given ID.
-    *     @var string $updated_since Only return projects that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Projects|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjects($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($payload), $fetch);
-    }
-    /**
-    * Deletes a project and any time entries or expenses tracked to it.
-    However, invoices associated with the project will not be deleted.
-    If you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead.
-    *
-    * @param string $projectId 
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteProject($projectId), $fetch);
-    }
-    /**
-     * Retrieves the project with the given ID. Returns a project object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $projectId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveProject($projectId), $fetch);
-    }
-    /**
-     * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $payload), $fetch);
-    }
-    /**
-    * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
-    
-    The response contains an object with a roles property that contains an array of up to per_page roles. Each entry in the array is a separate role object. If no more roles are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your roles.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listRoles(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListRoles($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\RolesPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($payload), $fetch);
-    }
-    /**
-     * Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $roleId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteRole($roleId), $fetch);
-    }
-    /**
-     * Retrieves the role with the given ID. Returns a role object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $roleId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveRole($roleId), $fetch);
-    }
-    /**
-     * Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $roleId 
-     * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $payload), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
     }
     /**
     * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
@@ -1334,219 +1599,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function listActiveProjectAssignments(string $userId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
-    }
-    /**
-    * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
-    
-    The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
-    }
-    /**
-    * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
-    
-    The response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users.
-    *
-    * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active users and false to return inactive users.
-    *     @var string $updated_since Only return users that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\Users|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function listUsers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUsers($queryParameters), $fetch);
-    }
-    /**
-     * Creates a new user object. Returns a user object and a 201 Created response code if the call succeeded.
-     *
-     * @param \JoliCode\Harvest\Api\Model\UsersPostBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($payload), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
-    }
-    /**
-     * Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.
-     *
-     * @param string $userId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUser($userId), $fetch);
-    }
-    /**
-     * Retrieves the user with the given ID. Returns a user object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $userId 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUser($userId), $fetch);
-    }
-    /**
-     * Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.
-     *
-     * @param string $userId 
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload json payload
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
-    }
-    /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var string $from Only report on time entries with a spent_date on or after the given date.
-     *     @var string $to Only report on time entries with a spent_date on or before the given date.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function clientsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsReport($queryParameters), $fetch);
-    }
-    /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var string $from Only report on time entries with a spent_date on or after the given date.
-     *     @var string $to Only report on time entries with a spent_date on or before the given date.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function projectsReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsReport($queryParameters), $fetch);
-    }
-    /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var string $from Only report on expenses with a spent_date on or after the given date.
-     *     @var string $to Only report on expenses with a spent_date on or before the given date.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function expenseCategoriesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
-    }
-    /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var string $from Only report on time entries with a spent_date on or after the given date.
-     *     @var string $to Only report on time entries with a spent_date on or before the given date.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function teamReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamReport($queryParameters), $fetch);
-    }
-    /**
-    * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
-    
-    Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
-    *
-    * @param array $queryParameters {
-    *     @var string $from Only report on time entries and expenses with a spent_date on or after the given date.
-    *     @var string $to Only report on time entries and expenses with a spent_date on or before the given date.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
-    public function uninvoicedReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
-    }
-    /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var string $from Only report on time entries with a spent_date on or after the given date.
-     *     @var string $to Only report on time entries with a spent_date on or before the given date.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function tasksReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
-    }
-    /**
-     * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\ProjectBudgetReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
-     */
-    public function projectBudgetReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
     }
     public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {

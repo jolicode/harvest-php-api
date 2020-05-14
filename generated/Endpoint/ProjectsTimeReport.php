@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class TeamReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ProjectsTimeReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 
@@ -25,7 +25,7 @@ class TeamReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     }
     public function getUri() : string
     {
-        return '/reports/time/team';
+        return '/reports/time/projects';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

@@ -40,6 +40,34 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
         elseif (property_exists($data, 'event_type') && $data->{'event_type'} === null) {
             $object->setEventType(null);
         }
+        if (property_exists($data, 'recipients') && $data->{'recipients'} !== null) {
+            $values = array();
+            foreach ($data->{'recipients'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem', 'json', $context);
+            }
+            $object->setRecipients($values);
+        }
+        elseif (property_exists($data, 'recipients') && $data->{'recipients'} === null) {
+            $object->setRecipients(null);
+        }
+        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
+            $object->setSubject($data->{'subject'});
+        }
+        elseif (property_exists($data, 'subject') && $data->{'subject'} === null) {
+            $object->setSubject(null);
+        }
+        if (property_exists($data, 'body') && $data->{'body'} !== null) {
+            $object->setBody($data->{'body'});
+        }
+        elseif (property_exists($data, 'body') && $data->{'body'} === null) {
+            $object->setBody(null);
+        }
+        if (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} !== null) {
+            $object->setSendMeACopy($data->{'send_me_a_copy'});
+        }
+        elseif (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} === null) {
+            $object->setSendMeACopy(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -50,6 +78,34 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
         }
         else {
             $data->{'event_type'} = null;
+        }
+        if (null !== $object->getRecipients()) {
+            $values = array();
+            foreach ($object->getRecipients() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'recipients'} = $values;
+        }
+        else {
+            $data->{'recipients'} = null;
+        }
+        if (null !== $object->getSubject()) {
+            $data->{'subject'} = $object->getSubject();
+        }
+        else {
+            $data->{'subject'} = null;
+        }
+        if (null !== $object->getBody()) {
+            $data->{'body'} = $object->getBody();
+        }
+        else {
+            $data->{'body'} = null;
+        }
+        if (null !== $object->getSendMeACopy()) {
+            $data->{'send_me_a_copy'} = $object->getSendMeACopy();
+        }
+        else {
+            $data->{'send_me_a_copy'} = null;
         }
         return $data;
     }

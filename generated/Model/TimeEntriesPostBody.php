@@ -53,6 +53,12 @@ class TimeEntriesPostBody
      */
     protected $externalReference;
     /**
+     * The current amount of time tracked. If provided, the time entry will be created with the specified hours and is_running will be set to false. If not provided, hours will be set to 0.0 and is_running will be set to true.
+     *
+     * @var float|null
+     */
+    protected $hours;
+    /**
      * The ID of the user to associate with the time entry. Defaults to the currently authenticated user’s ID.
      *
      * @return int|null
@@ -218,6 +224,27 @@ class TimeEntriesPostBody
     public function setExternalReference(?TimeEntriesPostBodyExternalReference $externalReference) : self
     {
         $this->externalReference = $externalReference;
+        return $this;
+    }
+    /**
+     * The current amount of time tracked. If provided, the time entry will be created with the specified hours and is_running will be set to false. If not provided, hours will be set to 0.0 and is_running will be set to true.
+     *
+     * @return float|null
+     */
+    public function getHours() : ?float
+    {
+        return $this->hours;
+    }
+    /**
+     * The current amount of time tracked. If provided, the time entry will be created with the specified hours and is_running will be set to false. If not provided, hours will be set to 0.0 and is_running will be set to true.
+     *
+     * @param float|null $hours
+     *
+     * @return self
+     */
+    public function setHours(?float $hours) : self
+    {
+        $this->hours = $hours;
         return $this;
     }
 }

@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class InvoicesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem';
+        return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem';
+        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,7 +33,13 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem();
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem();
+        if (property_exists($data, 'project_id') && $data->{'project_id'} !== null) {
+            $object->setProjectId($data->{'project_id'});
+        }
+        elseif (property_exists($data, 'project_id') && $data->{'project_id'} === null) {
+            $object->setProjectId(null);
+        }
         if (property_exists($data, 'kind') && $data->{'kind'} !== null) {
             $object->setKind($data->{'kind'});
         }
@@ -75,6 +81,12 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getProjectId()) {
+            $data->{'project_id'} = $object->getProjectId();
+        }
+        else {
+            $data->{'project_id'} = null;
+        }
         if (null !== $object->getKind()) {
             $data->{'kind'} = $object->getKind();
         }

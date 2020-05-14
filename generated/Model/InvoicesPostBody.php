@@ -91,9 +91,15 @@ class InvoicesPostBody
     /**
      * An line items import object
      *
-     * @var mixed|null
+     * @var InvoicesPostBodyLineItemsImport|null
      */
     protected $lineItemsImport;
+    /**
+     * Array of line item parameters
+     *
+     * @var InvoicesPostBodyLineItemsItem[]|null
+     */
+    protected $lineItems;
     /**
      * The ID of the client this invoice belongs to.
      *
@@ -391,22 +397,43 @@ class InvoicesPostBody
     /**
      * An line items import object
      *
-     * @return mixed
+     * @return InvoicesPostBodyLineItemsImport|null
      */
-    public function getLineItemsImport()
+    public function getLineItemsImport() : ?InvoicesPostBodyLineItemsImport
     {
         return $this->lineItemsImport;
     }
     /**
      * An line items import object
      *
-     * @param mixed $lineItemsImport
+     * @param InvoicesPostBodyLineItemsImport|null $lineItemsImport
      *
      * @return self
      */
-    public function setLineItemsImport($lineItemsImport) : self
+    public function setLineItemsImport(?InvoicesPostBodyLineItemsImport $lineItemsImport) : self
     {
         $this->lineItemsImport = $lineItemsImport;
+        return $this;
+    }
+    /**
+     * Array of line item parameters
+     *
+     * @return InvoicesPostBodyLineItemsItem[]|null
+     */
+    public function getLineItems() : ?array
+    {
+        return $this->lineItems;
+    }
+    /**
+     * Array of line item parameters
+     *
+     * @param InvoicesPostBodyLineItemsItem[]|null $lineItems
+     *
+     * @return self
+     */
+    public function setLineItems(?array $lineItems) : self
+    {
+        $this->lineItems = $lineItems;
         return $this;
     }
 }

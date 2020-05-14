@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class EstimatesPostBodyLineItemsItemExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class InvoicesPostBodyLineItemsImportExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItemExpenses';
+        return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItemExpenses';
+        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,7 +33,7 @@ class EstimatesPostBodyLineItemsItemExpensesNormalizer implements DenormalizerIn
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItemExpenses();
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportExpenses();
         if (property_exists($data, 'summary_type') && $data->{'summary_type'} !== null) {
             $object->setSummaryType($data->{'summary_type'});
         }

@@ -2,16 +2,16 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesEstimateIdPatchBodyLineItemsItem
+class InvoicesPostBodyLineItemsItem
 {
     /**
-     * Unique ID for the line item.
+     * The ID of the project associated with this line item.
      *
      * @var int|null
      */
-    protected $id;
+    protected $projectId;
     /**
-     * The name of an estimate item category.
+     * The name of an invoice item category.
      *
      * @var string|null
      */
@@ -25,7 +25,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * The unit quantity of the item. Defaults to 1.
      *
-     * @var int|null
+     * @var float|null
      */
     protected $quantity;
     /**
@@ -35,40 +35,40 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     protected $unitPrice;
     /**
-     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
      *
      * @var bool|null
      */
     protected $taxed;
     /**
-     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
      *
      * @var bool|null
      */
     protected $taxed2;
     /**
-     * Unique ID for the line item.
+     * The ID of the project associated with this line item.
      *
      * @return int|null
      */
-    public function getId() : ?int
+    public function getProjectId() : ?int
     {
-        return $this->id;
+        return $this->projectId;
     }
     /**
-     * Unique ID for the line item.
+     * The ID of the project associated with this line item.
      *
-     * @param int|null $id
+     * @param int|null $projectId
      *
      * @return self
      */
-    public function setId(?int $id) : self
+    public function setProjectId(?int $projectId) : self
     {
-        $this->id = $id;
+        $this->projectId = $projectId;
         return $this;
     }
     /**
-     * The name of an estimate item category.
+     * The name of an invoice item category.
      *
      * @return string|null
      */
@@ -77,7 +77,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
         return $this->kind;
     }
     /**
-     * The name of an estimate item category.
+     * The name of an invoice item category.
      *
      * @param string|null $kind
      *
@@ -112,20 +112,20 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
     /**
      * The unit quantity of the item. Defaults to 1.
      *
-     * @return int|null
+     * @return float|null
      */
-    public function getQuantity() : ?int
+    public function getQuantity() : ?float
     {
         return $this->quantity;
     }
     /**
      * The unit quantity of the item. Defaults to 1.
      *
-     * @param int|null $quantity
+     * @param float|null $quantity
      *
      * @return self
      */
-    public function setQuantity(?int $quantity) : self
+    public function setQuantity(?float $quantity) : self
     {
         $this->quantity = $quantity;
         return $this;
@@ -152,7 +152,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
         return $this;
     }
     /**
-     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
      *
      * @return bool|null
      */
@@ -161,7 +161,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
         return $this->taxed;
     }
     /**
-     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
      *
      * @param bool|null $taxed
      *
@@ -173,7 +173,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
         return $this;
     }
     /**
-     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
      *
      * @return bool|null
      */
@@ -182,7 +182,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
         return $this->taxed2;
     }
     /**
-     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
      *
      * @param bool|null $taxed2
      *

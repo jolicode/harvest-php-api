@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesInvoiceIdPatchBodyLineItemsItemTime
+class InvoicesPostBodyLineItemsImportTime
 {
     /**
      * How to summarize the time entries per line item. Options: project, task, people, or detailed.

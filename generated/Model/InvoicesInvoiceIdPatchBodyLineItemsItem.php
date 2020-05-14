@@ -5,84 +5,219 @@ namespace JoliCode\Harvest\Api\Model;
 class InvoicesInvoiceIdPatchBodyLineItemsItem
 {
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * Unique ID for the line item.
      *
-     * @var int[]|null
+     * @var int|null
      */
-    protected $projectIds;
+    protected $id;
     /**
-     * An time import object.
+     * The ID of the project associated with this line item.
      *
-     * @var InvoicesInvoiceIdPatchBodyLineItemsItemTime|null
+     * @var int|null
      */
-    protected $time;
+    protected $projectId;
     /**
-     * An expense import object.
+     * The name of an invoice item category.
      *
-     * @var InvoicesInvoiceIdPatchBodyLineItemsItemExpenses|null
+     * @var string|null
      */
-    protected $expenses;
+    protected $kind;
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * Text description of the line item.
      *
-     * @return int[]|null
+     * @var string|null
      */
-    public function getProjectIds() : ?array
+    protected $description;
+    /**
+     * The unit quantity of the item. Defaults to 1.
+     *
+     * @var float|null
+     */
+    protected $quantity;
+    /**
+     * The individual price per unit.
+     *
+     * @var float|null
+     */
+    protected $unitPrice;
+    /**
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @var bool|null
+     */
+    protected $taxed;
+    /**
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @var bool|null
+     */
+    protected $taxed2;
+    /**
+     * Unique ID for the line item.
+     *
+     * @return int|null
+     */
+    public function getId() : ?int
     {
-        return $this->projectIds;
+        return $this->id;
     }
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * Unique ID for the line item.
      *
-     * @param int[]|null $projectIds
+     * @param int|null $id
      *
      * @return self
      */
-    public function setProjectIds(?array $projectIds) : self
+    public function setId(?int $id) : self
     {
-        $this->projectIds = $projectIds;
+        $this->id = $id;
         return $this;
     }
     /**
-     * An time import object.
+     * The ID of the project associated with this line item.
      *
-     * @return InvoicesInvoiceIdPatchBodyLineItemsItemTime|null
+     * @return int|null
      */
-    public function getTime() : ?InvoicesInvoiceIdPatchBodyLineItemsItemTime
+    public function getProjectId() : ?int
     {
-        return $this->time;
+        return $this->projectId;
     }
     /**
-     * An time import object.
+     * The ID of the project associated with this line item.
      *
-     * @param InvoicesInvoiceIdPatchBodyLineItemsItemTime|null $time
+     * @param int|null $projectId
      *
      * @return self
      */
-    public function setTime(?InvoicesInvoiceIdPatchBodyLineItemsItemTime $time) : self
+    public function setProjectId(?int $projectId) : self
     {
-        $this->time = $time;
+        $this->projectId = $projectId;
         return $this;
     }
     /**
-     * An expense import object.
+     * The name of an invoice item category.
      *
-     * @return InvoicesInvoiceIdPatchBodyLineItemsItemExpenses|null
+     * @return string|null
      */
-    public function getExpenses() : ?InvoicesInvoiceIdPatchBodyLineItemsItemExpenses
+    public function getKind() : ?string
     {
-        return $this->expenses;
+        return $this->kind;
     }
     /**
-     * An expense import object.
+     * The name of an invoice item category.
      *
-     * @param InvoicesInvoiceIdPatchBodyLineItemsItemExpenses|null $expenses
+     * @param string|null $kind
      *
      * @return self
      */
-    public function setExpenses(?InvoicesInvoiceIdPatchBodyLineItemsItemExpenses $expenses) : self
+    public function setKind(?string $kind) : self
     {
-        $this->expenses = $expenses;
+        $this->kind = $kind;
+        return $this;
+    }
+    /**
+     * Text description of the line item.
+     *
+     * @return string|null
+     */
+    public function getDescription() : ?string
+    {
+        return $this->description;
+    }
+    /**
+     * Text description of the line item.
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description) : self
+    {
+        $this->description = $description;
+        return $this;
+    }
+    /**
+     * The unit quantity of the item. Defaults to 1.
+     *
+     * @return float|null
+     */
+    public function getQuantity() : ?float
+    {
+        return $this->quantity;
+    }
+    /**
+     * The unit quantity of the item. Defaults to 1.
+     *
+     * @param float|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?float $quantity) : self
+    {
+        $this->quantity = $quantity;
+        return $this;
+    }
+    /**
+     * The individual price per unit.
+     *
+     * @return float|null
+     */
+    public function getUnitPrice() : ?float
+    {
+        return $this->unitPrice;
+    }
+    /**
+     * The individual price per unit.
+     *
+     * @param float|null $unitPrice
+     *
+     * @return self
+     */
+    public function setUnitPrice(?float $unitPrice) : self
+    {
+        $this->unitPrice = $unitPrice;
+        return $this;
+    }
+    /**
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @return bool|null
+     */
+    public function getTaxed() : ?bool
+    {
+        return $this->taxed;
+    }
+    /**
+     * Whether the invoice’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @param bool|null $taxed
+     *
+     * @return self
+     */
+    public function setTaxed(?bool $taxed) : self
+    {
+        $this->taxed = $taxed;
+        return $this;
+    }
+    /**
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @return bool|null
+     */
+    public function getTaxed2() : ?bool
+    {
+        return $this->taxed2;
+    }
+    /**
+     * Whether the invoice’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @param bool|null $taxed2
+     *
+     * @return self
+     */
+    public function setTaxed2(?bool $taxed2) : self
+    {
+        $this->taxed2 = $taxed2;
         return $this;
     }
 }

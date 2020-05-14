@@ -5,7 +5,7 @@ namespace JoliCode\Harvest\Api\Endpoint;
 class CreateUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
-     * Creates a new user object. Returns a user object and a 201 Created response code if the call succeeded.
+     * Creates a new user object and sends an invitation email to the address specified in the email parameter. Returns a user object and a 201 Created response code if the call succeeded.
      *
      * @param \JoliCode\Harvest\Api\Model\UsersPostBody $payload json payload
      */

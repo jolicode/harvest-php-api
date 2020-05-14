@@ -82,6 +82,12 @@ class TimeEntriesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         elseif (property_exists($data, 'external_reference') && $data->{'external_reference'} === null) {
             $object->setExternalReference(null);
         }
+        if (property_exists($data, 'hours') && $data->{'hours'} !== null) {
+            $object->setHours($data->{'hours'});
+        }
+        elseif (property_exists($data, 'hours') && $data->{'hours'} === null) {
+            $object->setHours(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -134,6 +140,12 @@ class TimeEntriesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         else {
             $data->{'external_reference'} = null;
+        }
+        if (null !== $object->getHours()) {
+            $data->{'hours'} = $object->getHours();
+        }
+        else {
+            $data->{'hours'} = null;
         }
         return $data;
     }

@@ -25,8 +25,8 @@ Use the `ClientFactory` to generate a `Client` configured with your token:
 use JoliCode\Harvest\Api\Client;
 use JoliCode\Harvest\ClientFactory;
 
-/** @var Client $client */
-$client = ClientFactory::create(
+/** @var Client $harvestClient */
+$harvestClient = ClientFactory::create(
   $accessToken,
   $harvestAccountId
 );
@@ -39,10 +39,140 @@ PHP doc to know which option you can provide to each method:
 <?php
 //...
 
-$clients = $client->listClients([
+$clients = $harvestClient->listClients([
   'is_active' => true,
 ])->getClients();
 ```
+
+Instead of `listClients()`, you can use all of these methods:
+
+ * Clients:
+   * `listClients()`
+   * `createClient()`
+   * `retrieveClient()`
+   * `updateClient()`
+   * `deleteClient()`
+ * Company:
+   * `retrieveCompany()`
+   * `updateCompany()`
+ * Contacts:
+   * `listContacts()`
+   * `createContact()`
+   * `retrieveContact()`
+   * `updateContact()`
+   * `deleteContact()`
+ * Estimate Item Categories:
+   * `listEstimateItemCategories()`
+   * `createEstimateItemCategory()`
+   * `retrieveEstimateItemCategory()`
+   * `updateEstimateItemCategory()`
+   * `deleteEstimateItemCategory()`
+ * Estimates:
+   * `listEstimates()`
+   * `createEstimate()`
+   * `retrieveEstimate()`
+   * `updateEstimate()`
+   * `deleteEstimate()`
+   * `listMessagesForEstimate()`
+   * `createEstimateMessage()`
+   * `deleteEstimateMessage()`
+ * Expense Categories:
+   * `listExpenseCategories()`
+   * `createExpenseCategory()`
+   * `retrieveExpenseCategory()`
+   * `updateExpenseCategory()`
+   * `deleteExpenseCategory()`
+ * Expenses:
+   * `listExpenses()`
+   * `createExpense()`
+   * `retrieveExpense()`
+   * `updateExpense()`
+   * `deleteExpense()`
+ * Invoice Item Categories:
+   * `listInvoiceItemCategories()`
+   * `createInvoiceItemCategory()`
+   * `retrieveInvoiceItemCategory()`
+   * `updateInvoiceItemCategory()`
+   * `deleteInvoiceItemCategory()`
+ * Invoices:
+   * `listInvoices()`
+   * `createInvoice()`
+   * `retrieveInvoice()`
+   * `updateInvoice()`
+   * `deleteInvoice()`
+   * `listMessagesForInvoice()`
+   * `createInvoiceMessage()`
+   * `deleteInvoiceMessage()`
+   * `listPaymentsForInvoice()`
+   * `createInvoicePayment()`
+   * `deleteInvoicePayment()`
+ * Projects:
+   * `listProjects()`
+   * `createProject()`
+   * `retrieveProject()`
+   * `updateProject()`
+   * `deleteProject()`
+   * `listTaskAssignmentsForSpecificProject()`
+   * `createTaskAssignment()`
+   * `retrieveTaskAssignment()`
+   * `updateTaskAssignment()`
+   * `deleteTaskAssignment()`
+   * `listUserAssignmentsForSpecificProject()`
+   * `createUserAssignment()`
+   * `retrieveUserAssignment()`
+   * `updateUserAssignment()`
+   * `deleteUserAssignment()`
+ * Reports:
+   * `expenseCategoriesReport()`
+   * `clientsExpensesReport()`
+   * `projectsExpensesReport()`
+   * `teamExpensesReport()`
+   * `projectBudgetReport()`
+   * `clientsTimeReport()`
+   * `projectsTimeReport()`
+   * `tasksReport()`
+   * `teamTimeReport()`
+   * `uninvoicedReport()`
+ * Roles:
+   * `listRoles()`
+   * `createRole()`
+   * `retrieveRole()`
+   * `updateRole()`
+   * `deleteRole()`
+ * Task Assignments:
+   * `listTaskAssignments()`
+ * Tasks:
+   * `listTasks()`
+   * `createTask()`
+   * `retrieveTask()`
+   * `updateTask()`
+   * `deleteTask()`
+ * Time Entries:
+   * `listTimeEntries()`
+   * `createTimeEntry()`
+   * `retrieveTimeEntry()`
+   * `updateTimeEntry()`
+   * `deleteTimeEntry()`
+   * `deleteTimeEntryExternalReference()`
+   * `restartStoppedTimeEntry()`
+   * `stopRunningTimeEntry()`
+ * User Assignments:
+   * `listUserAssignments()`
+ * Users:
+   * `listUsers()`
+   * `createUser()`
+   * `retrieveTheCurrentlyAuthenticatedUser()`
+   * `listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser()`
+   * `retrieveUser()`
+   * `updateUser()`
+   * `deleteUser()`
+   * `listBillableRatesForSpecificUser()`
+   * `createBillableRate()`
+   * `retrieveBillableRate()`
+   * `listCostRatesForSpecificUser()`
+   * `createCostRate()`
+   * `retrieveCostRate()`
+   * `listActiveProjectAssignments()`
 
 ## Bypassing the incomplete API specification
 

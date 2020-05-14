@@ -5,84 +5,165 @@ namespace JoliCode\Harvest\Api\Model;
 class EstimatesPostBodyLineItemsItem
 {
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * The name of an estimate item category.
      *
-     * @var int[]|null
+     * @var string|null
      */
-    protected $projectIds;
+    protected $kind;
     /**
-     * An time import object.
+     * Text description of the line item.
      *
-     * @var EstimatesPostBodyLineItemsItemTime|null
+     * @var string|null
      */
-    protected $time;
+    protected $description;
     /**
-     * An expense import object.
+     * The unit quantity of the item. Defaults to 1.
      *
-     * @var EstimatesPostBodyLineItemsItemExpenses|null
+     * @var int|null
      */
-    protected $expenses;
+    protected $quantity;
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * The individual price per unit.
      *
-     * @return int[]|null
+     * @var float|null
      */
-    public function getProjectIds() : ?array
+    protected $unitPrice;
+    /**
+     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @var bool|null
+     */
+    protected $taxed;
+    /**
+     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @var bool|null
+     */
+    protected $taxed2;
+    /**
+     * The name of an estimate item category.
+     *
+     * @return string|null
+     */
+    public function getKind() : ?string
     {
-        return $this->projectIds;
+        return $this->kind;
     }
     /**
-     * An array of the client’s project IDs you’d like to include time/expenses from.
+     * The name of an estimate item category.
      *
-     * @param int[]|null $projectIds
+     * @param string|null $kind
      *
      * @return self
      */
-    public function setProjectIds(?array $projectIds) : self
+    public function setKind(?string $kind) : self
     {
-        $this->projectIds = $projectIds;
+        $this->kind = $kind;
         return $this;
     }
     /**
-     * An time import object.
+     * Text description of the line item.
      *
-     * @return EstimatesPostBodyLineItemsItemTime|null
+     * @return string|null
      */
-    public function getTime() : ?EstimatesPostBodyLineItemsItemTime
+    public function getDescription() : ?string
     {
-        return $this->time;
+        return $this->description;
     }
     /**
-     * An time import object.
+     * Text description of the line item.
      *
-     * @param EstimatesPostBodyLineItemsItemTime|null $time
+     * @param string|null $description
      *
      * @return self
      */
-    public function setTime(?EstimatesPostBodyLineItemsItemTime $time) : self
+    public function setDescription(?string $description) : self
     {
-        $this->time = $time;
+        $this->description = $description;
         return $this;
     }
     /**
-     * An expense import object.
+     * The unit quantity of the item. Defaults to 1.
      *
-     * @return EstimatesPostBodyLineItemsItemExpenses|null
+     * @return int|null
      */
-    public function getExpenses() : ?EstimatesPostBodyLineItemsItemExpenses
+    public function getQuantity() : ?int
     {
-        return $this->expenses;
+        return $this->quantity;
     }
     /**
-     * An expense import object.
+     * The unit quantity of the item. Defaults to 1.
      *
-     * @param EstimatesPostBodyLineItemsItemExpenses|null $expenses
+     * @param int|null $quantity
      *
      * @return self
      */
-    public function setExpenses(?EstimatesPostBodyLineItemsItemExpenses $expenses) : self
+    public function setQuantity(?int $quantity) : self
     {
-        $this->expenses = $expenses;
+        $this->quantity = $quantity;
+        return $this;
+    }
+    /**
+     * The individual price per unit.
+     *
+     * @return float|null
+     */
+    public function getUnitPrice() : ?float
+    {
+        return $this->unitPrice;
+    }
+    /**
+     * The individual price per unit.
+     *
+     * @param float|null $unitPrice
+     *
+     * @return self
+     */
+    public function setUnitPrice(?float $unitPrice) : self
+    {
+        $this->unitPrice = $unitPrice;
+        return $this;
+    }
+    /**
+     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @return bool|null
+     */
+    public function getTaxed() : ?bool
+    {
+        return $this->taxed;
+    }
+    /**
+     * Whether the estimate’s tax percentage applies to this line item. Defaults to false.
+     *
+     * @param bool|null $taxed
+     *
+     * @return self
+     */
+    public function setTaxed(?bool $taxed) : self
+    {
+        $this->taxed = $taxed;
+        return $this;
+    }
+    /**
+     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @return bool|null
+     */
+    public function getTaxed2() : ?bool
+    {
+        return $this->taxed2;
+    }
+    /**
+     * Whether the estimate’s tax2 percentage applies to this line item. Defaults to false.
+     *
+     * @param bool|null $taxed2
+     *
+     * @return self
+     */
+    public function setTaxed2(?bool $taxed2) : self
+    {
+        $this->taxed2 = $taxed2;
         return $this;
     }
 }

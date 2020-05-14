@@ -2,14 +2,14 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ProjectsReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ProjectsExpensesReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 
      *
      * @param array $queryParameters {
-     *     @var string $from Only report on time entries with a spent_date on or after the given date.
-     *     @var string $to Only report on time entries with a spent_date on or before the given date.
+     *     @var string $from Only report on expenses with a spent_date on or after the given date.
+     *     @var string $to Only report on expenses with a spent_date on or before the given date.
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
      * }
@@ -25,7 +25,7 @@ class ProjectsReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return '/reports/time/projects';
+        return '/reports/expenses/projects';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -47,12 +47,12 @@ class ProjectsReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResults', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

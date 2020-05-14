@@ -2,11 +2,11 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class MarkOpenInvoiceAsDraft extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class CreateInvoiceMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $invoiceId;
     /**
-     * Creates a new invoice message object and marks an open invoice as a draft. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
      *
      * @param string $invoiceId 
      * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload json payload
@@ -33,12 +33,12 @@ class MarkOpenInvoiceAsDraft extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error
+     * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessage|\JoliCode\Harvest\Api\Model\Error
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
-        if (200 === $status) {
-            return null;
+        if (201 === $status) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }

@@ -44,6 +44,8 @@ $clients = $harvestClient->listClients([
 ])->getClients();
 ```
 
+## Available operations
+
 Instead of `listClients()`, you can use all of these methods:
 
  * Clients:
@@ -173,6 +175,24 @@ Instead of `listClients()`, you can use all of these methods:
    * `createCostRate()`
    * `retrieveCostRate()`
    * `listActiveProjectAssignments()`
+
+## Examples
+
+### Create an invoice
+
+```php
+use JoliCode\Harvest\ClientFactory;
+
+$harvestClient = ClientFactory::create(
+  $accessToken,
+  $harvestAccountId
+);
+
+$payload = new \JoliCode\Harvest\Api\Model\InvoicesPostBody();
+$payload->setClientId(123456);
+$payload->setSubject('test invoice, please delete it');
+$invoice = $client->createInvoice($payload);
+```
 
 ## Bypassing the incomplete API specification
 

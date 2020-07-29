@@ -2,7 +2,12 @@
 
 ## Unreleased
 
-Nothing
+ * nothing
+
+## 4.0.1 (2020-07-30)
+
+ * upgrade to `janephp/open-api` 6.0
+ * fixed boolean query parameters serialization
 
 ## 4.0.0 (2020-05-14)
 
@@ -30,7 +35,7 @@ Nothing
    * several new "report" endpoints
    * support for `rounded_hours` in the `TimeEntry` model
 
-## 2.1.0
+## 2.1.0 (2020-01-14)
 
  * updated the OpenAPI definition file
  * added the "company update" endpoint

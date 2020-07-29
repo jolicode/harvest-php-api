@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody';
@@ -24,124 +26,97 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody();
-        if (property_exists($data, 'event_type') && $data->{'event_type'} !== null) {
-            $object->setEventType($data->{'event_type'});
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
+            $object->setEventType($data['event_type']);
         }
-        elseif (property_exists($data, 'event_type') && $data->{'event_type'} === null) {
+        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
             $object->setEventType(null);
         }
-        if (property_exists($data, 'recipients') && $data->{'recipients'} !== null) {
+        if (\array_key_exists('recipients', $data) && $data['recipients'] !== null) {
             $values = array();
-            foreach ($data->{'recipients'} as $value) {
+            foreach ($data['recipients'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem', 'json', $context);
             }
             $object->setRecipients($values);
         }
-        elseif (property_exists($data, 'recipients') && $data->{'recipients'} === null) {
+        elseif (\array_key_exists('recipients', $data) && $data['recipients'] === null) {
             $object->setRecipients(null);
         }
-        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
-            $object->setSubject($data->{'subject'});
+        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
+            $object->setSubject($data['subject']);
         }
-        elseif (property_exists($data, 'subject') && $data->{'subject'} === null) {
+        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
             $object->setSubject(null);
         }
-        if (property_exists($data, 'body') && $data->{'body'} !== null) {
-            $object->setBody($data->{'body'});
+        if (\array_key_exists('body', $data) && $data['body'] !== null) {
+            $object->setBody($data['body']);
         }
-        elseif (property_exists($data, 'body') && $data->{'body'} === null) {
+        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
         }
-        if (property_exists($data, 'include_link_to_client_invoice') && $data->{'include_link_to_client_invoice'} !== null) {
-            $object->setIncludeLinkToClientInvoice($data->{'include_link_to_client_invoice'});
+        if (\array_key_exists('include_link_to_client_invoice', $data) && $data['include_link_to_client_invoice'] !== null) {
+            $object->setIncludeLinkToClientInvoice($data['include_link_to_client_invoice']);
         }
-        elseif (property_exists($data, 'include_link_to_client_invoice') && $data->{'include_link_to_client_invoice'} === null) {
+        elseif (\array_key_exists('include_link_to_client_invoice', $data) && $data['include_link_to_client_invoice'] === null) {
             $object->setIncludeLinkToClientInvoice(null);
         }
-        if (property_exists($data, 'attach_pdf') && $data->{'attach_pdf'} !== null) {
-            $object->setAttachPdf($data->{'attach_pdf'});
+        if (\array_key_exists('attach_pdf', $data) && $data['attach_pdf'] !== null) {
+            $object->setAttachPdf($data['attach_pdf']);
         }
-        elseif (property_exists($data, 'attach_pdf') && $data->{'attach_pdf'} === null) {
+        elseif (\array_key_exists('attach_pdf', $data) && $data['attach_pdf'] === null) {
             $object->setAttachPdf(null);
         }
-        if (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} !== null) {
-            $object->setSendMeACopy($data->{'send_me_a_copy'});
+        if (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] !== null) {
+            $object->setSendMeACopy($data['send_me_a_copy']);
         }
-        elseif (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} === null) {
+        elseif (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] === null) {
             $object->setSendMeACopy(null);
         }
-        if (property_exists($data, 'thank_you') && $data->{'thank_you'} !== null) {
-            $object->setThankYou($data->{'thank_you'});
+        if (\array_key_exists('thank_you', $data) && $data['thank_you'] !== null) {
+            $object->setThankYou($data['thank_you']);
         }
-        elseif (property_exists($data, 'thank_you') && $data->{'thank_you'} === null) {
+        elseif (\array_key_exists('thank_you', $data) && $data['thank_you'] === null) {
             $object->setThankYou(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getEventType()) {
-            $data->{'event_type'} = $object->getEventType();
-        }
-        else {
-            $data->{'event_type'} = null;
+            $data['event_type'] = $object->getEventType();
         }
         if (null !== $object->getRecipients()) {
             $values = array();
             foreach ($object->getRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'recipients'} = $values;
-        }
-        else {
-            $data->{'recipients'} = null;
+            $data['recipients'] = $values;
         }
         if (null !== $object->getSubject()) {
-            $data->{'subject'} = $object->getSubject();
-        }
-        else {
-            $data->{'subject'} = null;
+            $data['subject'] = $object->getSubject();
         }
         if (null !== $object->getBody()) {
-            $data->{'body'} = $object->getBody();
-        }
-        else {
-            $data->{'body'} = null;
+            $data['body'] = $object->getBody();
         }
         if (null !== $object->getIncludeLinkToClientInvoice()) {
-            $data->{'include_link_to_client_invoice'} = $object->getIncludeLinkToClientInvoice();
-        }
-        else {
-            $data->{'include_link_to_client_invoice'} = null;
+            $data['include_link_to_client_invoice'] = $object->getIncludeLinkToClientInvoice();
         }
         if (null !== $object->getAttachPdf()) {
-            $data->{'attach_pdf'} = $object->getAttachPdf();
-        }
-        else {
-            $data->{'attach_pdf'} = null;
+            $data['attach_pdf'] = $object->getAttachPdf();
         }
         if (null !== $object->getSendMeACopy()) {
-            $data->{'send_me_a_copy'} = $object->getSendMeACopy();
-        }
-        else {
-            $data->{'send_me_a_copy'} = null;
+            $data['send_me_a_copy'] = $object->getSendMeACopy();
         }
         if (null !== $object->getThankYou()) {
-            $data->{'thank_you'} = $object->getThankYou();
-        }
-        else {
-            $data->{'thank_you'} = null;
+            $data['thank_you'] = $object->getThankYou();
         }
         return $data;
     }

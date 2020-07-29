@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TasksNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\Tasks';
@@ -24,124 +26,97 @@ class TasksNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Tasks();
-        if (property_exists($data, 'tasks') && $data->{'tasks'} !== null) {
+        if (\array_key_exists('tasks', $data) && $data['tasks'] !== null) {
             $values = array();
-            foreach ($data->{'tasks'} as $value) {
+            foreach ($data['tasks'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\Task', 'json', $context);
             }
             $object->setTasks($values);
         }
-        elseif (property_exists($data, 'tasks') && $data->{'tasks'} === null) {
+        elseif (\array_key_exists('tasks', $data) && $data['tasks'] === null) {
             $object->setTasks(null);
         }
-        if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
-            $object->setPerPage($data->{'per_page'});
+        if (\array_key_exists('per_page', $data) && $data['per_page'] !== null) {
+            $object->setPerPage($data['per_page']);
         }
-        elseif (property_exists($data, 'per_page') && $data->{'per_page'} === null) {
+        elseif (\array_key_exists('per_page', $data) && $data['per_page'] === null) {
             $object->setPerPage(null);
         }
-        if (property_exists($data, 'total_pages') && $data->{'total_pages'} !== null) {
-            $object->setTotalPages($data->{'total_pages'});
+        if (\array_key_exists('total_pages', $data) && $data['total_pages'] !== null) {
+            $object->setTotalPages($data['total_pages']);
         }
-        elseif (property_exists($data, 'total_pages') && $data->{'total_pages'} === null) {
+        elseif (\array_key_exists('total_pages', $data) && $data['total_pages'] === null) {
             $object->setTotalPages(null);
         }
-        if (property_exists($data, 'total_entries') && $data->{'total_entries'} !== null) {
-            $object->setTotalEntries($data->{'total_entries'});
+        if (\array_key_exists('total_entries', $data) && $data['total_entries'] !== null) {
+            $object->setTotalEntries($data['total_entries']);
         }
-        elseif (property_exists($data, 'total_entries') && $data->{'total_entries'} === null) {
+        elseif (\array_key_exists('total_entries', $data) && $data['total_entries'] === null) {
             $object->setTotalEntries(null);
         }
-        if (property_exists($data, 'next_page') && $data->{'next_page'} !== null) {
-            $object->setNextPage($data->{'next_page'});
+        if (\array_key_exists('next_page', $data) && $data['next_page'] !== null) {
+            $object->setNextPage($data['next_page']);
         }
-        elseif (property_exists($data, 'next_page') && $data->{'next_page'} === null) {
+        elseif (\array_key_exists('next_page', $data) && $data['next_page'] === null) {
             $object->setNextPage(null);
         }
-        if (property_exists($data, 'previous_page') && $data->{'previous_page'} !== null) {
-            $object->setPreviousPage($data->{'previous_page'});
+        if (\array_key_exists('previous_page', $data) && $data['previous_page'] !== null) {
+            $object->setPreviousPage($data['previous_page']);
         }
-        elseif (property_exists($data, 'previous_page') && $data->{'previous_page'} === null) {
+        elseif (\array_key_exists('previous_page', $data) && $data['previous_page'] === null) {
             $object->setPreviousPage(null);
         }
-        if (property_exists($data, 'page') && $data->{'page'} !== null) {
-            $object->setPage($data->{'page'});
+        if (\array_key_exists('page', $data) && $data['page'] !== null) {
+            $object->setPage($data['page']);
         }
-        elseif (property_exists($data, 'page') && $data->{'page'} === null) {
+        elseif (\array_key_exists('page', $data) && $data['page'] === null) {
             $object->setPage(null);
         }
-        if (property_exists($data, 'links') && $data->{'links'} !== null) {
-            $object->setLinks($this->denormalizer->denormalize($data->{'links'}, 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+        if (\array_key_exists('links', $data) && $data['links'] !== null) {
+            $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
         }
-        elseif (property_exists($data, 'links') && $data->{'links'} === null) {
+        elseif (\array_key_exists('links', $data) && $data['links'] === null) {
             $object->setLinks(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getTasks()) {
             $values = array();
             foreach ($object->getTasks() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'tasks'} = $values;
-        }
-        else {
-            $data->{'tasks'} = null;
+            $data['tasks'] = $values;
         }
         if (null !== $object->getPerPage()) {
-            $data->{'per_page'} = $object->getPerPage();
-        }
-        else {
-            $data->{'per_page'} = null;
+            $data['per_page'] = $object->getPerPage();
         }
         if (null !== $object->getTotalPages()) {
-            $data->{'total_pages'} = $object->getTotalPages();
-        }
-        else {
-            $data->{'total_pages'} = null;
+            $data['total_pages'] = $object->getTotalPages();
         }
         if (null !== $object->getTotalEntries()) {
-            $data->{'total_entries'} = $object->getTotalEntries();
-        }
-        else {
-            $data->{'total_entries'} = null;
+            $data['total_entries'] = $object->getTotalEntries();
         }
         if (null !== $object->getNextPage()) {
-            $data->{'next_page'} = $object->getNextPage();
-        }
-        else {
-            $data->{'next_page'} = null;
+            $data['next_page'] = $object->getNextPage();
         }
         if (null !== $object->getPreviousPage()) {
-            $data->{'previous_page'} = $object->getPreviousPage();
-        }
-        else {
-            $data->{'previous_page'} = null;
+            $data['previous_page'] = $object->getPreviousPage();
         }
         if (null !== $object->getPage()) {
-            $data->{'page'} = $object->getPage();
-        }
-        else {
-            $data->{'page'} = null;
+            $data['page'] = $object->getPage();
         }
         if (null !== $object->getLinks()) {
-            $data->{'links'} = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
-        else {
-            $data->{'links'} = null;
+            $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }
         return $data;
     }

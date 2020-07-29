@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\Error';
@@ -24,44 +26,35 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Error();
-        if (property_exists($data, 'code') && $data->{'code'} !== null) {
-            $object->setCode($data->{'code'});
+        if (\array_key_exists('code', $data) && $data['code'] !== null) {
+            $object->setCode($data['code']);
         }
-        elseif (property_exists($data, 'code') && $data->{'code'} === null) {
+        elseif (\array_key_exists('code', $data) && $data['code'] === null) {
             $object->setCode(null);
         }
-        if (property_exists($data, 'message') && $data->{'message'} !== null) {
-            $object->setMessage($data->{'message'});
+        if (\array_key_exists('message', $data) && $data['message'] !== null) {
+            $object->setMessage($data['message']);
         }
-        elseif (property_exists($data, 'message') && $data->{'message'} === null) {
+        elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getCode()) {
-            $data->{'code'} = $object->getCode();
-        }
-        else {
-            $data->{'code'} = null;
+            $data['code'] = $object->getCode();
         }
         if (null !== $object->getMessage()) {
-            $data->{'message'} = $object->getMessage();
-        }
-        else {
-            $data->{'message'} = null;
+            $data['message'] = $object->getMessage();
         }
         return $data;
     }

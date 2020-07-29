@@ -45,6 +45,7 @@ class ListUserAssignmentsForSpecificProject extends \Jane\OpenApiRuntime\Client\
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('user_id', array('int'));
         $optionsResolver->setAllowedTypes('is_active', array('bool'));
+        $optionsResolver->setNormalizer('is_active', \Closure::fromCallable(array(new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke')));
         $optionsResolver->setAllowedTypes('updated_since', array('string'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('per_page', array('int'));
@@ -62,5 +63,9 @@ class ListUserAssignmentsForSpecificProject extends \Jane\OpenApiRuntime\Client\
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\UserAssignments', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
     }
 }

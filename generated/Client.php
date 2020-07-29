@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
+class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
@@ -1600,22 +1600,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     {
         return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
     }
-    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
+    public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://api.harvestapp.com/v2');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.harvestapp.com/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
-            if (null !== $authentication) {
-                $plugins[] = $authentication->getPlugin();
+            if (count($additionalPlugins) > 0) {
+                $plugins = array_merge($plugins, $additionalPlugins);
             }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
-        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
-        $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
-        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \JoliCode\Harvest\Api\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())));
-        return new static($httpClient, $messageFactory, $serializer, $streamFactory);
+        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
+        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \JoliCode\Harvest\Api\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

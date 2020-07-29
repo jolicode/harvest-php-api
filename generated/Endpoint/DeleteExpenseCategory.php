@@ -40,4 +40,8 @@ class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

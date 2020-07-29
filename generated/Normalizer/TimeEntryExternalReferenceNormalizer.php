@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference';
@@ -24,80 +26,62 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeEntryExternalReference();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'group_id') && $data->{'group_id'} !== null) {
-            $object->setGroupId($data->{'group_id'});
+        if (\array_key_exists('group_id', $data) && $data['group_id'] !== null) {
+            $object->setGroupId($data['group_id']);
         }
-        elseif (property_exists($data, 'group_id') && $data->{'group_id'} === null) {
+        elseif (\array_key_exists('group_id', $data) && $data['group_id'] === null) {
             $object->setGroupId(null);
         }
-        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
-            $object->setPermalink($data->{'permalink'});
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
+            $object->setPermalink($data['permalink']);
         }
-        elseif (property_exists($data, 'permalink') && $data->{'permalink'} === null) {
+        elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
             $object->setPermalink(null);
         }
-        if (property_exists($data, 'service') && $data->{'service'} !== null) {
-            $object->setService($data->{'service'});
+        if (\array_key_exists('service', $data) && $data['service'] !== null) {
+            $object->setService($data['service']);
         }
-        elseif (property_exists($data, 'service') && $data->{'service'} === null) {
+        elseif (\array_key_exists('service', $data) && $data['service'] === null) {
             $object->setService(null);
         }
-        if (property_exists($data, 'service_icon_url') && $data->{'service_icon_url'} !== null) {
-            $object->setServiceIconUrl($data->{'service_icon_url'});
+        if (\array_key_exists('service_icon_url', $data) && $data['service_icon_url'] !== null) {
+            $object->setServiceIconUrl($data['service_icon_url']);
         }
-        elseif (property_exists($data, 'service_icon_url') && $data->{'service_icon_url'} === null) {
+        elseif (\array_key_exists('service_icon_url', $data) && $data['service_icon_url'] === null) {
             $object->setServiceIconUrl(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getGroupId()) {
-            $data->{'group_id'} = $object->getGroupId();
-        }
-        else {
-            $data->{'group_id'} = null;
+            $data['group_id'] = $object->getGroupId();
         }
         if (null !== $object->getPermalink()) {
-            $data->{'permalink'} = $object->getPermalink();
-        }
-        else {
-            $data->{'permalink'} = null;
+            $data['permalink'] = $object->getPermalink();
         }
         if (null !== $object->getService()) {
-            $data->{'service'} = $object->getService();
-        }
-        else {
-            $data->{'service'} = null;
+            $data['service'] = $object->getService();
         }
         if (null !== $object->getServiceIconUrl()) {
-            $data->{'service_icon_url'} = $object->getServiceIconUrl();
-        }
-        else {
-            $data->{'service_icon_url'} = null;
+            $data['service_icon_url'] = $object->getServiceIconUrl();
         }
         return $data;
     }

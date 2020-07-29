@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ExpenseClientNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient';
@@ -24,56 +26,44 @@ class ExpenseClientNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpenseClient();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
-            $object->setCurrency($data->{'currency'});
+        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
+            $object->setCurrency($data['currency']);
         }
-        elseif (property_exists($data, 'currency') && $data->{'currency'} === null) {
+        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
             $object->setCurrency(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getCurrency()) {
-            $data->{'currency'} = $object->getCurrency();
-        }
-        else {
-            $data->{'currency'} = null;
+            $data['currency'] = $object->getCurrency();
         }
         return $data;
     }

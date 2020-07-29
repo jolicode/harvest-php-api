@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody';
@@ -24,68 +26,53 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody();
-        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
-            $object->setAmount($data->{'amount'});
+        if (\array_key_exists('amount', $data) && $data['amount'] !== null) {
+            $object->setAmount($data['amount']);
         }
-        elseif (property_exists($data, 'amount') && $data->{'amount'} === null) {
+        elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
             $object->setAmount(null);
         }
-        if (property_exists($data, 'paid_at') && $data->{'paid_at'} !== null) {
-            $object->setPaidAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'paid_at'}));
+        if (\array_key_exists('paid_at', $data) && $data['paid_at'] !== null) {
+            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['paid_at']));
         }
-        elseif (property_exists($data, 'paid_at') && $data->{'paid_at'} === null) {
+        elseif (\array_key_exists('paid_at', $data) && $data['paid_at'] === null) {
             $object->setPaidAt(null);
         }
-        if (property_exists($data, 'paid_date') && $data->{'paid_date'} !== null) {
-            $object->setPaidDate(\DateTime::createFromFormat('Y-m-d', $data->{'paid_date'})->setTime(0, 0, 0));
+        if (\array_key_exists('paid_date', $data) && $data['paid_date'] !== null) {
+            $object->setPaidDate(\DateTime::createFromFormat('Y-m-d', $data['paid_date'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'paid_date') && $data->{'paid_date'} === null) {
+        elseif (\array_key_exists('paid_date', $data) && $data['paid_date'] === null) {
             $object->setPaidDate(null);
         }
-        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
-            $object->setNotes($data->{'notes'});
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+            $object->setNotes($data['notes']);
         }
-        elseif (property_exists($data, 'notes') && $data->{'notes'} === null) {
+        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getAmount()) {
-            $data->{'amount'} = $object->getAmount();
-        }
-        else {
-            $data->{'amount'} = null;
+            $data['amount'] = $object->getAmount();
         }
         if (null !== $object->getPaidAt()) {
-            $data->{'paid_at'} = $object->getPaidAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'paid_at'} = null;
+            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getPaidDate()) {
-            $data->{'paid_date'} = $object->getPaidDate()->format('Y-m-d');
-        }
-        else {
-            $data->{'paid_date'} = null;
+            $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
         }
         if (null !== $object->getNotes()) {
-            $data->{'notes'} = $object->getNotes();
-        }
-        else {
-            $data->{'notes'} = null;
+            $data['notes'] = $object->getNotes();
         }
         return $data;
     }

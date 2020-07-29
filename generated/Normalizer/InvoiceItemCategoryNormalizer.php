@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory';
@@ -24,92 +26,71 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceItemCategory();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (property_exists($data, 'use_as_service') && $data->{'use_as_service'} !== null) {
-            $object->setUseAsService($data->{'use_as_service'});
+        if (\array_key_exists('use_as_service', $data) && $data['use_as_service'] !== null) {
+            $object->setUseAsService($data['use_as_service']);
         }
-        elseif (property_exists($data, 'use_as_service') && $data->{'use_as_service'} === null) {
+        elseif (\array_key_exists('use_as_service', $data) && $data['use_as_service'] === null) {
             $object->setUseAsService(null);
         }
-        if (property_exists($data, 'use_as_expense') && $data->{'use_as_expense'} !== null) {
-            $object->setUseAsExpense($data->{'use_as_expense'});
+        if (\array_key_exists('use_as_expense', $data) && $data['use_as_expense'] !== null) {
+            $object->setUseAsExpense($data['use_as_expense']);
         }
-        elseif (property_exists($data, 'use_as_expense') && $data->{'use_as_expense'} === null) {
+        elseif (\array_key_exists('use_as_expense', $data) && $data['use_as_expense'] === null) {
             $object->setUseAsExpense(null);
         }
-        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
         }
-        elseif (property_exists($data, 'created_at') && $data->{'created_at'} === null) {
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
+        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
         }
-        elseif (property_exists($data, 'updated_at') && $data->{'updated_at'} === null) {
+        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getUseAsService()) {
-            $data->{'use_as_service'} = $object->getUseAsService();
-        }
-        else {
-            $data->{'use_as_service'} = null;
+            $data['use_as_service'] = $object->getUseAsService();
         }
         if (null !== $object->getUseAsExpense()) {
-            $data->{'use_as_expense'} = $object->getUseAsExpense();
-        }
-        else {
-            $data->{'use_as_expense'} = null;
+            $data['use_as_expense'] = $object->getUseAsExpense();
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'created_at'} = null;
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data->{'updated_at'} = $object->getUpdatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'updated_at'} = null;
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

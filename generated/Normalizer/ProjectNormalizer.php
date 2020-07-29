@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\Project';
@@ -24,308 +26,233 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Project();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'client') && $data->{'client'} !== null) {
-            $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\ProjectClient', 'json', $context));
+        if (\array_key_exists('client', $data) && $data['client'] !== null) {
+            $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\ProjectClient', 'json', $context));
         }
-        elseif (property_exists($data, 'client') && $data->{'client'} === null) {
+        elseif (\array_key_exists('client', $data) && $data['client'] === null) {
             $object->setClient(null);
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (property_exists($data, 'code') && $data->{'code'} !== null) {
-            $object->setCode($data->{'code'});
+        if (\array_key_exists('code', $data) && $data['code'] !== null) {
+            $object->setCode($data['code']);
         }
-        elseif (property_exists($data, 'code') && $data->{'code'} === null) {
+        elseif (\array_key_exists('code', $data) && $data['code'] === null) {
             $object->setCode(null);
         }
-        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
-            $object->setIsActive($data->{'is_active'});
+        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+            $object->setIsActive($data['is_active']);
         }
-        elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
+        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
             $object->setIsActive(null);
         }
-        if (property_exists($data, 'is_billable') && $data->{'is_billable'} !== null) {
-            $object->setIsBillable($data->{'is_billable'});
+        if (\array_key_exists('is_billable', $data) && $data['is_billable'] !== null) {
+            $object->setIsBillable($data['is_billable']);
         }
-        elseif (property_exists($data, 'is_billable') && $data->{'is_billable'} === null) {
+        elseif (\array_key_exists('is_billable', $data) && $data['is_billable'] === null) {
             $object->setIsBillable(null);
         }
-        if (property_exists($data, 'is_fixed_fee') && $data->{'is_fixed_fee'} !== null) {
-            $object->setIsFixedFee($data->{'is_fixed_fee'});
+        if (\array_key_exists('is_fixed_fee', $data) && $data['is_fixed_fee'] !== null) {
+            $object->setIsFixedFee($data['is_fixed_fee']);
         }
-        elseif (property_exists($data, 'is_fixed_fee') && $data->{'is_fixed_fee'} === null) {
+        elseif (\array_key_exists('is_fixed_fee', $data) && $data['is_fixed_fee'] === null) {
             $object->setIsFixedFee(null);
         }
-        if (property_exists($data, 'bill_by') && $data->{'bill_by'} !== null) {
-            $object->setBillBy($data->{'bill_by'});
+        if (\array_key_exists('bill_by', $data) && $data['bill_by'] !== null) {
+            $object->setBillBy($data['bill_by']);
         }
-        elseif (property_exists($data, 'bill_by') && $data->{'bill_by'} === null) {
+        elseif (\array_key_exists('bill_by', $data) && $data['bill_by'] === null) {
             $object->setBillBy(null);
         }
-        if (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} !== null) {
-            $object->setHourlyRate($data->{'hourly_rate'});
+        if (\array_key_exists('hourly_rate', $data) && $data['hourly_rate'] !== null) {
+            $object->setHourlyRate($data['hourly_rate']);
         }
-        elseif (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} === null) {
+        elseif (\array_key_exists('hourly_rate', $data) && $data['hourly_rate'] === null) {
             $object->setHourlyRate(null);
         }
-        if (property_exists($data, 'budget') && $data->{'budget'} !== null) {
-            $object->setBudget($data->{'budget'});
+        if (\array_key_exists('budget', $data) && $data['budget'] !== null) {
+            $object->setBudget($data['budget']);
         }
-        elseif (property_exists($data, 'budget') && $data->{'budget'} === null) {
+        elseif (\array_key_exists('budget', $data) && $data['budget'] === null) {
             $object->setBudget(null);
         }
-        if (property_exists($data, 'budget_by') && $data->{'budget_by'} !== null) {
-            $object->setBudgetBy($data->{'budget_by'});
+        if (\array_key_exists('budget_by', $data) && $data['budget_by'] !== null) {
+            $object->setBudgetBy($data['budget_by']);
         }
-        elseif (property_exists($data, 'budget_by') && $data->{'budget_by'} === null) {
+        elseif (\array_key_exists('budget_by', $data) && $data['budget_by'] === null) {
             $object->setBudgetBy(null);
         }
-        if (property_exists($data, 'budget_is_monthly') && $data->{'budget_is_monthly'} !== null) {
-            $object->setBudgetIsMonthly($data->{'budget_is_monthly'});
+        if (\array_key_exists('budget_is_monthly', $data) && $data['budget_is_monthly'] !== null) {
+            $object->setBudgetIsMonthly($data['budget_is_monthly']);
         }
-        elseif (property_exists($data, 'budget_is_monthly') && $data->{'budget_is_monthly'} === null) {
+        elseif (\array_key_exists('budget_is_monthly', $data) && $data['budget_is_monthly'] === null) {
             $object->setBudgetIsMonthly(null);
         }
-        if (property_exists($data, 'notify_when_over_budget') && $data->{'notify_when_over_budget'} !== null) {
-            $object->setNotifyWhenOverBudget($data->{'notify_when_over_budget'});
+        if (\array_key_exists('notify_when_over_budget', $data) && $data['notify_when_over_budget'] !== null) {
+            $object->setNotifyWhenOverBudget($data['notify_when_over_budget']);
         }
-        elseif (property_exists($data, 'notify_when_over_budget') && $data->{'notify_when_over_budget'} === null) {
+        elseif (\array_key_exists('notify_when_over_budget', $data) && $data['notify_when_over_budget'] === null) {
             $object->setNotifyWhenOverBudget(null);
         }
-        if (property_exists($data, 'over_budget_notification_percentage') && $data->{'over_budget_notification_percentage'} !== null) {
-            $object->setOverBudgetNotificationPercentage($data->{'over_budget_notification_percentage'});
+        if (\array_key_exists('over_budget_notification_percentage', $data) && $data['over_budget_notification_percentage'] !== null) {
+            $object->setOverBudgetNotificationPercentage($data['over_budget_notification_percentage']);
         }
-        elseif (property_exists($data, 'over_budget_notification_percentage') && $data->{'over_budget_notification_percentage'} === null) {
+        elseif (\array_key_exists('over_budget_notification_percentage', $data) && $data['over_budget_notification_percentage'] === null) {
             $object->setOverBudgetNotificationPercentage(null);
         }
-        if (property_exists($data, 'over_budget_notification_date') && $data->{'over_budget_notification_date'} !== null) {
-            $object->setOverBudgetNotificationDate(\DateTime::createFromFormat('Y-m-d', $data->{'over_budget_notification_date'})->setTime(0, 0, 0));
+        if (\array_key_exists('over_budget_notification_date', $data) && $data['over_budget_notification_date'] !== null) {
+            $object->setOverBudgetNotificationDate(\DateTime::createFromFormat('Y-m-d', $data['over_budget_notification_date'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'over_budget_notification_date') && $data->{'over_budget_notification_date'} === null) {
+        elseif (\array_key_exists('over_budget_notification_date', $data) && $data['over_budget_notification_date'] === null) {
             $object->setOverBudgetNotificationDate(null);
         }
-        if (property_exists($data, 'show_budget_to_all') && $data->{'show_budget_to_all'} !== null) {
-            $object->setShowBudgetToAll($data->{'show_budget_to_all'});
+        if (\array_key_exists('show_budget_to_all', $data) && $data['show_budget_to_all'] !== null) {
+            $object->setShowBudgetToAll($data['show_budget_to_all']);
         }
-        elseif (property_exists($data, 'show_budget_to_all') && $data->{'show_budget_to_all'} === null) {
+        elseif (\array_key_exists('show_budget_to_all', $data) && $data['show_budget_to_all'] === null) {
             $object->setShowBudgetToAll(null);
         }
-        if (property_exists($data, 'cost_budget') && $data->{'cost_budget'} !== null) {
-            $object->setCostBudget($data->{'cost_budget'});
+        if (\array_key_exists('cost_budget', $data) && $data['cost_budget'] !== null) {
+            $object->setCostBudget($data['cost_budget']);
         }
-        elseif (property_exists($data, 'cost_budget') && $data->{'cost_budget'} === null) {
+        elseif (\array_key_exists('cost_budget', $data) && $data['cost_budget'] === null) {
             $object->setCostBudget(null);
         }
-        if (property_exists($data, 'cost_budget_include_expenses') && $data->{'cost_budget_include_expenses'} !== null) {
-            $object->setCostBudgetIncludeExpenses($data->{'cost_budget_include_expenses'});
+        if (\array_key_exists('cost_budget_include_expenses', $data) && $data['cost_budget_include_expenses'] !== null) {
+            $object->setCostBudgetIncludeExpenses($data['cost_budget_include_expenses']);
         }
-        elseif (property_exists($data, 'cost_budget_include_expenses') && $data->{'cost_budget_include_expenses'} === null) {
+        elseif (\array_key_exists('cost_budget_include_expenses', $data) && $data['cost_budget_include_expenses'] === null) {
             $object->setCostBudgetIncludeExpenses(null);
         }
-        if (property_exists($data, 'fee') && $data->{'fee'} !== null) {
-            $object->setFee($data->{'fee'});
+        if (\array_key_exists('fee', $data) && $data['fee'] !== null) {
+            $object->setFee($data['fee']);
         }
-        elseif (property_exists($data, 'fee') && $data->{'fee'} === null) {
+        elseif (\array_key_exists('fee', $data) && $data['fee'] === null) {
             $object->setFee(null);
         }
-        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
-            $object->setNotes($data->{'notes'});
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+            $object->setNotes($data['notes']);
         }
-        elseif (property_exists($data, 'notes') && $data->{'notes'} === null) {
+        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
-        if (property_exists($data, 'starts_on') && $data->{'starts_on'} !== null) {
-            $object->setStartsOn(\DateTime::createFromFormat('Y-m-d', $data->{'starts_on'})->setTime(0, 0, 0));
+        if (\array_key_exists('starts_on', $data) && $data['starts_on'] !== null) {
+            $object->setStartsOn(\DateTime::createFromFormat('Y-m-d', $data['starts_on'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'starts_on') && $data->{'starts_on'} === null) {
+        elseif (\array_key_exists('starts_on', $data) && $data['starts_on'] === null) {
             $object->setStartsOn(null);
         }
-        if (property_exists($data, 'ends_on') && $data->{'ends_on'} !== null) {
-            $object->setEndsOn(\DateTime::createFromFormat('Y-m-d', $data->{'ends_on'})->setTime(0, 0, 0));
+        if (\array_key_exists('ends_on', $data) && $data['ends_on'] !== null) {
+            $object->setEndsOn(\DateTime::createFromFormat('Y-m-d', $data['ends_on'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'ends_on') && $data->{'ends_on'} === null) {
+        elseif (\array_key_exists('ends_on', $data) && $data['ends_on'] === null) {
             $object->setEndsOn(null);
         }
-        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
         }
-        elseif (property_exists($data, 'created_at') && $data->{'created_at'} === null) {
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
+        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
         }
-        elseif (property_exists($data, 'updated_at') && $data->{'updated_at'} === null) {
+        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getClient()) {
-            $data->{'client'} = $this->normalizer->normalize($object->getClient(), 'json', $context);
-        }
-        else {
-            $data->{'client'} = null;
+            $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getCode()) {
-            $data->{'code'} = $object->getCode();
-        }
-        else {
-            $data->{'code'} = null;
+            $data['code'] = $object->getCode();
         }
         if (null !== $object->getIsActive()) {
-            $data->{'is_active'} = $object->getIsActive();
-        }
-        else {
-            $data->{'is_active'} = null;
+            $data['is_active'] = $object->getIsActive();
         }
         if (null !== $object->getIsBillable()) {
-            $data->{'is_billable'} = $object->getIsBillable();
-        }
-        else {
-            $data->{'is_billable'} = null;
+            $data['is_billable'] = $object->getIsBillable();
         }
         if (null !== $object->getIsFixedFee()) {
-            $data->{'is_fixed_fee'} = $object->getIsFixedFee();
-        }
-        else {
-            $data->{'is_fixed_fee'} = null;
+            $data['is_fixed_fee'] = $object->getIsFixedFee();
         }
         if (null !== $object->getBillBy()) {
-            $data->{'bill_by'} = $object->getBillBy();
-        }
-        else {
-            $data->{'bill_by'} = null;
+            $data['bill_by'] = $object->getBillBy();
         }
         if (null !== $object->getHourlyRate()) {
-            $data->{'hourly_rate'} = $object->getHourlyRate();
-        }
-        else {
-            $data->{'hourly_rate'} = null;
+            $data['hourly_rate'] = $object->getHourlyRate();
         }
         if (null !== $object->getBudget()) {
-            $data->{'budget'} = $object->getBudget();
-        }
-        else {
-            $data->{'budget'} = null;
+            $data['budget'] = $object->getBudget();
         }
         if (null !== $object->getBudgetBy()) {
-            $data->{'budget_by'} = $object->getBudgetBy();
-        }
-        else {
-            $data->{'budget_by'} = null;
+            $data['budget_by'] = $object->getBudgetBy();
         }
         if (null !== $object->getBudgetIsMonthly()) {
-            $data->{'budget_is_monthly'} = $object->getBudgetIsMonthly();
-        }
-        else {
-            $data->{'budget_is_monthly'} = null;
+            $data['budget_is_monthly'] = $object->getBudgetIsMonthly();
         }
         if (null !== $object->getNotifyWhenOverBudget()) {
-            $data->{'notify_when_over_budget'} = $object->getNotifyWhenOverBudget();
-        }
-        else {
-            $data->{'notify_when_over_budget'} = null;
+            $data['notify_when_over_budget'] = $object->getNotifyWhenOverBudget();
         }
         if (null !== $object->getOverBudgetNotificationPercentage()) {
-            $data->{'over_budget_notification_percentage'} = $object->getOverBudgetNotificationPercentage();
-        }
-        else {
-            $data->{'over_budget_notification_percentage'} = null;
+            $data['over_budget_notification_percentage'] = $object->getOverBudgetNotificationPercentage();
         }
         if (null !== $object->getOverBudgetNotificationDate()) {
-            $data->{'over_budget_notification_date'} = $object->getOverBudgetNotificationDate()->format('Y-m-d');
-        }
-        else {
-            $data->{'over_budget_notification_date'} = null;
+            $data['over_budget_notification_date'] = $object->getOverBudgetNotificationDate()->format('Y-m-d');
         }
         if (null !== $object->getShowBudgetToAll()) {
-            $data->{'show_budget_to_all'} = $object->getShowBudgetToAll();
-        }
-        else {
-            $data->{'show_budget_to_all'} = null;
+            $data['show_budget_to_all'] = $object->getShowBudgetToAll();
         }
         if (null !== $object->getCostBudget()) {
-            $data->{'cost_budget'} = $object->getCostBudget();
-        }
-        else {
-            $data->{'cost_budget'} = null;
+            $data['cost_budget'] = $object->getCostBudget();
         }
         if (null !== $object->getCostBudgetIncludeExpenses()) {
-            $data->{'cost_budget_include_expenses'} = $object->getCostBudgetIncludeExpenses();
-        }
-        else {
-            $data->{'cost_budget_include_expenses'} = null;
+            $data['cost_budget_include_expenses'] = $object->getCostBudgetIncludeExpenses();
         }
         if (null !== $object->getFee()) {
-            $data->{'fee'} = $object->getFee();
-        }
-        else {
-            $data->{'fee'} = null;
+            $data['fee'] = $object->getFee();
         }
         if (null !== $object->getNotes()) {
-            $data->{'notes'} = $object->getNotes();
-        }
-        else {
-            $data->{'notes'} = null;
+            $data['notes'] = $object->getNotes();
         }
         if (null !== $object->getStartsOn()) {
-            $data->{'starts_on'} = $object->getStartsOn()->format('Y-m-d');
-        }
-        else {
-            $data->{'starts_on'} = null;
+            $data['starts_on'] = $object->getStartsOn()->format('Y-m-d');
         }
         if (null !== $object->getEndsOn()) {
-            $data->{'ends_on'} = $object->getEndsOn()->format('Y-m-d');
-        }
-        else {
-            $data->{'ends_on'} = null;
+            $data['ends_on'] = $object->getEndsOn()->format('Y-m-d');
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'created_at'} = null;
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data->{'updated_at'} = $object->getUpdatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'updated_at'} = null;
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

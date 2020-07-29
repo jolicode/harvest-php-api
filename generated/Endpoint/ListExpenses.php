@@ -48,6 +48,7 @@ class ListExpenses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setAllowedTypes('client_id', array('int'));
         $optionsResolver->setAllowedTypes('project_id', array('int'));
         $optionsResolver->setAllowedTypes('is_billed', array('bool'));
+        $optionsResolver->setNormalizer('is_billed', \Closure::fromCallable(array(new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke')));
         $optionsResolver->setAllowedTypes('updated_since', array('string'));
         $optionsResolver->setAllowedTypes('from', array('string'));
         $optionsResolver->setAllowedTypes('to', array('string'));
@@ -67,5 +68,9 @@ class ListExpenses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Expenses', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
     }
 }

@@ -42,4 +42,8 @@ class UpdateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

@@ -40,6 +40,7 @@ class ListExpenseCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('is_active', array('bool'));
+        $optionsResolver->setNormalizer('is_active', \Closure::fromCallable(array(new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke')));
         $optionsResolver->setAllowedTypes('updated_since', array('string'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('per_page', array('int'));
@@ -57,5 +58,9 @@ class ListExpenseCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
     }
 }

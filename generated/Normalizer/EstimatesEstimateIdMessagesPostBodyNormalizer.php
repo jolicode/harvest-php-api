@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody';
@@ -24,88 +26,70 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody();
-        if (property_exists($data, 'event_type') && $data->{'event_type'} !== null) {
-            $object->setEventType($data->{'event_type'});
+        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
+            $object->setEventType($data['event_type']);
         }
-        elseif (property_exists($data, 'event_type') && $data->{'event_type'} === null) {
+        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
             $object->setEventType(null);
         }
-        if (property_exists($data, 'recipients') && $data->{'recipients'} !== null) {
+        if (\array_key_exists('recipients', $data) && $data['recipients'] !== null) {
             $values = array();
-            foreach ($data->{'recipients'} as $value) {
+            foreach ($data['recipients'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem', 'json', $context);
             }
             $object->setRecipients($values);
         }
-        elseif (property_exists($data, 'recipients') && $data->{'recipients'} === null) {
+        elseif (\array_key_exists('recipients', $data) && $data['recipients'] === null) {
             $object->setRecipients(null);
         }
-        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
-            $object->setSubject($data->{'subject'});
+        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
+            $object->setSubject($data['subject']);
         }
-        elseif (property_exists($data, 'subject') && $data->{'subject'} === null) {
+        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
             $object->setSubject(null);
         }
-        if (property_exists($data, 'body') && $data->{'body'} !== null) {
-            $object->setBody($data->{'body'});
+        if (\array_key_exists('body', $data) && $data['body'] !== null) {
+            $object->setBody($data['body']);
         }
-        elseif (property_exists($data, 'body') && $data->{'body'} === null) {
+        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
         }
-        if (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} !== null) {
-            $object->setSendMeACopy($data->{'send_me_a_copy'});
+        if (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] !== null) {
+            $object->setSendMeACopy($data['send_me_a_copy']);
         }
-        elseif (property_exists($data, 'send_me_a_copy') && $data->{'send_me_a_copy'} === null) {
+        elseif (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] === null) {
             $object->setSendMeACopy(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getEventType()) {
-            $data->{'event_type'} = $object->getEventType();
-        }
-        else {
-            $data->{'event_type'} = null;
+            $data['event_type'] = $object->getEventType();
         }
         if (null !== $object->getRecipients()) {
             $values = array();
             foreach ($object->getRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'recipients'} = $values;
-        }
-        else {
-            $data->{'recipients'} = null;
+            $data['recipients'] = $values;
         }
         if (null !== $object->getSubject()) {
-            $data->{'subject'} = $object->getSubject();
-        }
-        else {
-            $data->{'subject'} = null;
+            $data['subject'] = $object->getSubject();
         }
         if (null !== $object->getBody()) {
-            $data->{'body'} = $object->getBody();
-        }
-        else {
-            $data->{'body'} = null;
+            $data['body'] = $object->getBody();
         }
         if (null !== $object->getSendMeACopy()) {
-            $data->{'send_me_a_copy'} = $object->getSendMeACopy();
-        }
-        else {
-            $data->{'send_me_a_copy'} = null;
+            $data['send_me_a_copy'] = $object->getSendMeACopy();
         }
         return $data;
     }

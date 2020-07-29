@@ -52,4 +52,8 @@ class ProjectBudgetReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

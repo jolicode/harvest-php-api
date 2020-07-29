@@ -43,4 +43,8 @@ class RetrieveUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

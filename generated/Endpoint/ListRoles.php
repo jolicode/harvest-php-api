@@ -54,4 +54,8 @@ class ListRoles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

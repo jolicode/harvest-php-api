@@ -56,4 +56,8 @@ class ClientsTimeReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

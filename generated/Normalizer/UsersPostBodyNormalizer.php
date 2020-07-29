@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody';
@@ -24,220 +26,169 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\UsersPostBody();
-        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
-            $object->setFirstName($data->{'first_name'});
+        if (\array_key_exists('first_name', $data) && $data['first_name'] !== null) {
+            $object->setFirstName($data['first_name']);
         }
-        elseif (property_exists($data, 'first_name') && $data->{'first_name'} === null) {
+        elseif (\array_key_exists('first_name', $data) && $data['first_name'] === null) {
             $object->setFirstName(null);
         }
-        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
-            $object->setLastName($data->{'last_name'});
+        if (\array_key_exists('last_name', $data) && $data['last_name'] !== null) {
+            $object->setLastName($data['last_name']);
         }
-        elseif (property_exists($data, 'last_name') && $data->{'last_name'} === null) {
+        elseif (\array_key_exists('last_name', $data) && $data['last_name'] === null) {
             $object->setLastName(null);
         }
-        if (property_exists($data, 'email') && $data->{'email'} !== null) {
-            $object->setEmail($data->{'email'});
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+            $object->setEmail($data['email']);
         }
-        elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
-        if (property_exists($data, 'timezone') && $data->{'timezone'} !== null) {
-            $object->setTimezone($data->{'timezone'});
+        if (\array_key_exists('timezone', $data) && $data['timezone'] !== null) {
+            $object->setTimezone($data['timezone']);
         }
-        elseif (property_exists($data, 'timezone') && $data->{'timezone'} === null) {
+        elseif (\array_key_exists('timezone', $data) && $data['timezone'] === null) {
             $object->setTimezone(null);
         }
-        if (property_exists($data, 'has_access_to_all_future_projects') && $data->{'has_access_to_all_future_projects'} !== null) {
-            $object->setHasAccessToAllFutureProjects($data->{'has_access_to_all_future_projects'});
+        if (\array_key_exists('has_access_to_all_future_projects', $data) && $data['has_access_to_all_future_projects'] !== null) {
+            $object->setHasAccessToAllFutureProjects($data['has_access_to_all_future_projects']);
         }
-        elseif (property_exists($data, 'has_access_to_all_future_projects') && $data->{'has_access_to_all_future_projects'} === null) {
+        elseif (\array_key_exists('has_access_to_all_future_projects', $data) && $data['has_access_to_all_future_projects'] === null) {
             $object->setHasAccessToAllFutureProjects(null);
         }
-        if (property_exists($data, 'is_contractor') && $data->{'is_contractor'} !== null) {
-            $object->setIsContractor($data->{'is_contractor'});
+        if (\array_key_exists('is_contractor', $data) && $data['is_contractor'] !== null) {
+            $object->setIsContractor($data['is_contractor']);
         }
-        elseif (property_exists($data, 'is_contractor') && $data->{'is_contractor'} === null) {
+        elseif (\array_key_exists('is_contractor', $data) && $data['is_contractor'] === null) {
             $object->setIsContractor(null);
         }
-        if (property_exists($data, 'is_admin') && $data->{'is_admin'} !== null) {
-            $object->setIsAdmin($data->{'is_admin'});
+        if (\array_key_exists('is_admin', $data) && $data['is_admin'] !== null) {
+            $object->setIsAdmin($data['is_admin']);
         }
-        elseif (property_exists($data, 'is_admin') && $data->{'is_admin'} === null) {
+        elseif (\array_key_exists('is_admin', $data) && $data['is_admin'] === null) {
             $object->setIsAdmin(null);
         }
-        if (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} !== null) {
-            $object->setIsProjectManager($data->{'is_project_manager'});
+        if (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] !== null) {
+            $object->setIsProjectManager($data['is_project_manager']);
         }
-        elseif (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} === null) {
+        elseif (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] === null) {
             $object->setIsProjectManager(null);
         }
-        if (property_exists($data, 'can_see_rates') && $data->{'can_see_rates'} !== null) {
-            $object->setCanSeeRates($data->{'can_see_rates'});
+        if (\array_key_exists('can_see_rates', $data) && $data['can_see_rates'] !== null) {
+            $object->setCanSeeRates($data['can_see_rates']);
         }
-        elseif (property_exists($data, 'can_see_rates') && $data->{'can_see_rates'} === null) {
+        elseif (\array_key_exists('can_see_rates', $data) && $data['can_see_rates'] === null) {
             $object->setCanSeeRates(null);
         }
-        if (property_exists($data, 'can_create_projects') && $data->{'can_create_projects'} !== null) {
-            $object->setCanCreateProjects($data->{'can_create_projects'});
+        if (\array_key_exists('can_create_projects', $data) && $data['can_create_projects'] !== null) {
+            $object->setCanCreateProjects($data['can_create_projects']);
         }
-        elseif (property_exists($data, 'can_create_projects') && $data->{'can_create_projects'} === null) {
+        elseif (\array_key_exists('can_create_projects', $data) && $data['can_create_projects'] === null) {
             $object->setCanCreateProjects(null);
         }
-        if (property_exists($data, 'can_create_invoices') && $data->{'can_create_invoices'} !== null) {
-            $object->setCanCreateInvoices($data->{'can_create_invoices'});
+        if (\array_key_exists('can_create_invoices', $data) && $data['can_create_invoices'] !== null) {
+            $object->setCanCreateInvoices($data['can_create_invoices']);
         }
-        elseif (property_exists($data, 'can_create_invoices') && $data->{'can_create_invoices'} === null) {
+        elseif (\array_key_exists('can_create_invoices', $data) && $data['can_create_invoices'] === null) {
             $object->setCanCreateInvoices(null);
         }
-        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
-            $object->setIsActive($data->{'is_active'});
+        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+            $object->setIsActive($data['is_active']);
         }
-        elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
+        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
             $object->setIsActive(null);
         }
-        if (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} !== null) {
-            $object->setWeeklyCapacity($data->{'weekly_capacity'});
+        if (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] !== null) {
+            $object->setWeeklyCapacity($data['weekly_capacity']);
         }
-        elseif (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} === null) {
+        elseif (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] === null) {
             $object->setWeeklyCapacity(null);
         }
-        if (property_exists($data, 'default_hourly_rate') && $data->{'default_hourly_rate'} !== null) {
-            $object->setDefaultHourlyRate($data->{'default_hourly_rate'});
+        if (\array_key_exists('default_hourly_rate', $data) && $data['default_hourly_rate'] !== null) {
+            $object->setDefaultHourlyRate($data['default_hourly_rate']);
         }
-        elseif (property_exists($data, 'default_hourly_rate') && $data->{'default_hourly_rate'} === null) {
+        elseif (\array_key_exists('default_hourly_rate', $data) && $data['default_hourly_rate'] === null) {
             $object->setDefaultHourlyRate(null);
         }
-        if (property_exists($data, 'cost_rate') && $data->{'cost_rate'} !== null) {
-            $object->setCostRate($data->{'cost_rate'});
+        if (\array_key_exists('cost_rate', $data) && $data['cost_rate'] !== null) {
+            $object->setCostRate($data['cost_rate']);
         }
-        elseif (property_exists($data, 'cost_rate') && $data->{'cost_rate'} === null) {
+        elseif (\array_key_exists('cost_rate', $data) && $data['cost_rate'] === null) {
             $object->setCostRate(null);
         }
-        if (property_exists($data, 'roles') && $data->{'roles'} !== null) {
+        if (\array_key_exists('roles', $data) && $data['roles'] !== null) {
             $values = array();
-            foreach ($data->{'roles'} as $value) {
+            foreach ($data['roles'] as $value) {
                 $values[] = $value;
             }
             $object->setRoles($values);
         }
-        elseif (property_exists($data, 'roles') && $data->{'roles'} === null) {
+        elseif (\array_key_exists('roles', $data) && $data['roles'] === null) {
             $object->setRoles(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFirstName()) {
-            $data->{'first_name'} = $object->getFirstName();
-        }
-        else {
-            $data->{'first_name'} = null;
+            $data['first_name'] = $object->getFirstName();
         }
         if (null !== $object->getLastName()) {
-            $data->{'last_name'} = $object->getLastName();
-        }
-        else {
-            $data->{'last_name'} = null;
+            $data['last_name'] = $object->getLastName();
         }
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
-        }
-        else {
-            $data->{'email'} = null;
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getTimezone()) {
-            $data->{'timezone'} = $object->getTimezone();
-        }
-        else {
-            $data->{'timezone'} = null;
+            $data['timezone'] = $object->getTimezone();
         }
         if (null !== $object->getHasAccessToAllFutureProjects()) {
-            $data->{'has_access_to_all_future_projects'} = $object->getHasAccessToAllFutureProjects();
-        }
-        else {
-            $data->{'has_access_to_all_future_projects'} = null;
+            $data['has_access_to_all_future_projects'] = $object->getHasAccessToAllFutureProjects();
         }
         if (null !== $object->getIsContractor()) {
-            $data->{'is_contractor'} = $object->getIsContractor();
-        }
-        else {
-            $data->{'is_contractor'} = null;
+            $data['is_contractor'] = $object->getIsContractor();
         }
         if (null !== $object->getIsAdmin()) {
-            $data->{'is_admin'} = $object->getIsAdmin();
-        }
-        else {
-            $data->{'is_admin'} = null;
+            $data['is_admin'] = $object->getIsAdmin();
         }
         if (null !== $object->getIsProjectManager()) {
-            $data->{'is_project_manager'} = $object->getIsProjectManager();
-        }
-        else {
-            $data->{'is_project_manager'} = null;
+            $data['is_project_manager'] = $object->getIsProjectManager();
         }
         if (null !== $object->getCanSeeRates()) {
-            $data->{'can_see_rates'} = $object->getCanSeeRates();
-        }
-        else {
-            $data->{'can_see_rates'} = null;
+            $data['can_see_rates'] = $object->getCanSeeRates();
         }
         if (null !== $object->getCanCreateProjects()) {
-            $data->{'can_create_projects'} = $object->getCanCreateProjects();
-        }
-        else {
-            $data->{'can_create_projects'} = null;
+            $data['can_create_projects'] = $object->getCanCreateProjects();
         }
         if (null !== $object->getCanCreateInvoices()) {
-            $data->{'can_create_invoices'} = $object->getCanCreateInvoices();
-        }
-        else {
-            $data->{'can_create_invoices'} = null;
+            $data['can_create_invoices'] = $object->getCanCreateInvoices();
         }
         if (null !== $object->getIsActive()) {
-            $data->{'is_active'} = $object->getIsActive();
-        }
-        else {
-            $data->{'is_active'} = null;
+            $data['is_active'] = $object->getIsActive();
         }
         if (null !== $object->getWeeklyCapacity()) {
-            $data->{'weekly_capacity'} = $object->getWeeklyCapacity();
-        }
-        else {
-            $data->{'weekly_capacity'} = null;
+            $data['weekly_capacity'] = $object->getWeeklyCapacity();
         }
         if (null !== $object->getDefaultHourlyRate()) {
-            $data->{'default_hourly_rate'} = $object->getDefaultHourlyRate();
-        }
-        else {
-            $data->{'default_hourly_rate'} = null;
+            $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
         }
         if (null !== $object->getCostRate()) {
-            $data->{'cost_rate'} = $object->getCostRate();
-        }
-        else {
-            $data->{'cost_rate'} = null;
+            $data['cost_rate'] = $object->getCostRate();
         }
         if (null !== $object->getRoles()) {
             $values = array();
             foreach ($object->getRoles() as $value) {
                 $values[] = $value;
             }
-            $data->{'roles'} = $values;
-        }
-        else {
-            $data->{'roles'} = null;
+            $data['roles'] = $values;
         }
         return $data;
     }

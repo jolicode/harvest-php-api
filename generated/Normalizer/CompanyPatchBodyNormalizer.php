@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\CompanyPatchBody';
@@ -24,44 +26,35 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\CompanyPatchBody();
-        if (property_exists($data, 'wants_timestamp_timers') && $data->{'wants_timestamp_timers'} !== null) {
-            $object->setWantsTimestampTimers($data->{'wants_timestamp_timers'});
+        if (\array_key_exists('wants_timestamp_timers', $data) && $data['wants_timestamp_timers'] !== null) {
+            $object->setWantsTimestampTimers($data['wants_timestamp_timers']);
         }
-        elseif (property_exists($data, 'wants_timestamp_timers') && $data->{'wants_timestamp_timers'} === null) {
+        elseif (\array_key_exists('wants_timestamp_timers', $data) && $data['wants_timestamp_timers'] === null) {
             $object->setWantsTimestampTimers(null);
         }
-        if (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} !== null) {
-            $object->setWeeklyCapacity($data->{'weekly_capacity'});
+        if (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] !== null) {
+            $object->setWeeklyCapacity($data['weekly_capacity']);
         }
-        elseif (property_exists($data, 'weekly_capacity') && $data->{'weekly_capacity'} === null) {
+        elseif (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] === null) {
             $object->setWeeklyCapacity(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getWantsTimestampTimers()) {
-            $data->{'wants_timestamp_timers'} = $object->getWantsTimestampTimers();
-        }
-        else {
-            $data->{'wants_timestamp_timers'} = null;
+            $data['wants_timestamp_timers'] = $object->getWantsTimestampTimers();
         }
         if (null !== $object->getWeeklyCapacity()) {
-            $data->{'weekly_capacity'} = $object->getWeeklyCapacity();
-        }
-        else {
-            $data->{'weekly_capacity'} = null;
+            $data['weekly_capacity'] = $object->getWeeklyCapacity();
         }
         return $data;
     }

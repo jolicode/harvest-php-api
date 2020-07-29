@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks';
@@ -24,68 +26,53 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\PaginationLinks();
-        if (property_exists($data, 'first') && $data->{'first'} !== null) {
-            $object->setFirst($data->{'first'});
+        if (\array_key_exists('first', $data) && $data['first'] !== null) {
+            $object->setFirst($data['first']);
         }
-        elseif (property_exists($data, 'first') && $data->{'first'} === null) {
+        elseif (\array_key_exists('first', $data) && $data['first'] === null) {
             $object->setFirst(null);
         }
-        if (property_exists($data, 'last') && $data->{'last'} !== null) {
-            $object->setLast($data->{'last'});
+        if (\array_key_exists('last', $data) && $data['last'] !== null) {
+            $object->setLast($data['last']);
         }
-        elseif (property_exists($data, 'last') && $data->{'last'} === null) {
+        elseif (\array_key_exists('last', $data) && $data['last'] === null) {
             $object->setLast(null);
         }
-        if (property_exists($data, 'previous') && $data->{'previous'} !== null) {
-            $object->setPrevious($data->{'previous'});
+        if (\array_key_exists('previous', $data) && $data['previous'] !== null) {
+            $object->setPrevious($data['previous']);
         }
-        elseif (property_exists($data, 'previous') && $data->{'previous'} === null) {
+        elseif (\array_key_exists('previous', $data) && $data['previous'] === null) {
             $object->setPrevious(null);
         }
-        if (property_exists($data, 'next') && $data->{'next'} !== null) {
-            $object->setNext($data->{'next'});
+        if (\array_key_exists('next', $data) && $data['next'] !== null) {
+            $object->setNext($data['next']);
         }
-        elseif (property_exists($data, 'next') && $data->{'next'} === null) {
+        elseif (\array_key_exists('next', $data) && $data['next'] === null) {
             $object->setNext(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFirst()) {
-            $data->{'first'} = $object->getFirst();
-        }
-        else {
-            $data->{'first'} = null;
+            $data['first'] = $object->getFirst();
         }
         if (null !== $object->getLast()) {
-            $data->{'last'} = $object->getLast();
-        }
-        else {
-            $data->{'last'} = null;
+            $data['last'] = $object->getLast();
         }
         if (null !== $object->getPrevious()) {
-            $data->{'previous'} = $object->getPrevious();
-        }
-        else {
-            $data->{'previous'} = null;
+            $data['previous'] = $object->getPrevious();
         }
         if (null !== $object->getNext()) {
-            $data->{'next'} = $object->getNext();
-        }
-        else {
-            $data->{'next'} = null;
+            $data['next'] = $object->getNext();
         }
         return $data;
     }

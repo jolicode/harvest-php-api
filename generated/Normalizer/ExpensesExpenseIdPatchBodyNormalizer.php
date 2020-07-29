@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody';
@@ -24,128 +26,98 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody();
-        if (property_exists($data, 'project_id') && $data->{'project_id'} !== null) {
-            $object->setProjectId($data->{'project_id'});
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+            $object->setProjectId($data['project_id']);
         }
-        elseif (property_exists($data, 'project_id') && $data->{'project_id'} === null) {
+        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
             $object->setProjectId(null);
         }
-        if (property_exists($data, 'expense_category_id') && $data->{'expense_category_id'} !== null) {
-            $object->setExpenseCategoryId($data->{'expense_category_id'});
+        if (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] !== null) {
+            $object->setExpenseCategoryId($data['expense_category_id']);
         }
-        elseif (property_exists($data, 'expense_category_id') && $data->{'expense_category_id'} === null) {
+        elseif (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] === null) {
             $object->setExpenseCategoryId(null);
         }
-        if (property_exists($data, 'spent_date') && $data->{'spent_date'} !== null) {
-            $object->setSpentDate(\DateTime::createFromFormat('Y-m-d', $data->{'spent_date'})->setTime(0, 0, 0));
+        if (\array_key_exists('spent_date', $data) && $data['spent_date'] !== null) {
+            $object->setSpentDate(\DateTime::createFromFormat('Y-m-d', $data['spent_date'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'spent_date') && $data->{'spent_date'} === null) {
+        elseif (\array_key_exists('spent_date', $data) && $data['spent_date'] === null) {
             $object->setSpentDate(null);
         }
-        if (property_exists($data, 'units') && $data->{'units'} !== null) {
-            $object->setUnits($data->{'units'});
+        if (\array_key_exists('units', $data) && $data['units'] !== null) {
+            $object->setUnits($data['units']);
         }
-        elseif (property_exists($data, 'units') && $data->{'units'} === null) {
+        elseif (\array_key_exists('units', $data) && $data['units'] === null) {
             $object->setUnits(null);
         }
-        if (property_exists($data, 'total_cost') && $data->{'total_cost'} !== null) {
-            $object->setTotalCost($data->{'total_cost'});
+        if (\array_key_exists('total_cost', $data) && $data['total_cost'] !== null) {
+            $object->setTotalCost($data['total_cost']);
         }
-        elseif (property_exists($data, 'total_cost') && $data->{'total_cost'} === null) {
+        elseif (\array_key_exists('total_cost', $data) && $data['total_cost'] === null) {
             $object->setTotalCost(null);
         }
-        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
-            $object->setNotes($data->{'notes'});
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+            $object->setNotes($data['notes']);
         }
-        elseif (property_exists($data, 'notes') && $data->{'notes'} === null) {
+        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
-        if (property_exists($data, 'billable') && $data->{'billable'} !== null) {
-            $object->setBillable($data->{'billable'});
+        if (\array_key_exists('billable', $data) && $data['billable'] !== null) {
+            $object->setBillable($data['billable']);
         }
-        elseif (property_exists($data, 'billable') && $data->{'billable'} === null) {
+        elseif (\array_key_exists('billable', $data) && $data['billable'] === null) {
             $object->setBillable(null);
         }
-        if (property_exists($data, 'receipt') && $data->{'receipt'} !== null) {
-            $object->setReceipt($data->{'receipt'});
+        if (\array_key_exists('receipt', $data) && $data['receipt'] !== null) {
+            $object->setReceipt($data['receipt']);
         }
-        elseif (property_exists($data, 'receipt') && $data->{'receipt'} === null) {
+        elseif (\array_key_exists('receipt', $data) && $data['receipt'] === null) {
             $object->setReceipt(null);
         }
-        if (property_exists($data, 'delete_receipt') && $data->{'delete_receipt'} !== null) {
-            $object->setDeleteReceipt($data->{'delete_receipt'});
+        if (\array_key_exists('delete_receipt', $data) && $data['delete_receipt'] !== null) {
+            $object->setDeleteReceipt($data['delete_receipt']);
         }
-        elseif (property_exists($data, 'delete_receipt') && $data->{'delete_receipt'} === null) {
+        elseif (\array_key_exists('delete_receipt', $data) && $data['delete_receipt'] === null) {
             $object->setDeleteReceipt(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getProjectId()) {
-            $data->{'project_id'} = $object->getProjectId();
-        }
-        else {
-            $data->{'project_id'} = null;
+            $data['project_id'] = $object->getProjectId();
         }
         if (null !== $object->getExpenseCategoryId()) {
-            $data->{'expense_category_id'} = $object->getExpenseCategoryId();
-        }
-        else {
-            $data->{'expense_category_id'} = null;
+            $data['expense_category_id'] = $object->getExpenseCategoryId();
         }
         if (null !== $object->getSpentDate()) {
-            $data->{'spent_date'} = $object->getSpentDate()->format('Y-m-d');
-        }
-        else {
-            $data->{'spent_date'} = null;
+            $data['spent_date'] = $object->getSpentDate()->format('Y-m-d');
         }
         if (null !== $object->getUnits()) {
-            $data->{'units'} = $object->getUnits();
-        }
-        else {
-            $data->{'units'} = null;
+            $data['units'] = $object->getUnits();
         }
         if (null !== $object->getTotalCost()) {
-            $data->{'total_cost'} = $object->getTotalCost();
-        }
-        else {
-            $data->{'total_cost'} = null;
+            $data['total_cost'] = $object->getTotalCost();
         }
         if (null !== $object->getNotes()) {
-            $data->{'notes'} = $object->getNotes();
-        }
-        else {
-            $data->{'notes'} = null;
+            $data['notes'] = $object->getNotes();
         }
         if (null !== $object->getBillable()) {
-            $data->{'billable'} = $object->getBillable();
-        }
-        else {
-            $data->{'billable'} = null;
+            $data['billable'] = $object->getBillable();
         }
         if (null !== $object->getReceipt()) {
-            $data->{'receipt'} = $object->getReceipt();
-        }
-        else {
-            $data->{'receipt'} = null;
+            $data['receipt'] = $object->getReceipt();
         }
         if (null !== $object->getDeleteReceipt()) {
-            $data->{'delete_receipt'} = $object->getDeleteReceipt();
-        }
-        else {
-            $data->{'delete_receipt'} = null;
+            $data['delete_receipt'] = $object->getDeleteReceipt();
         }
         return $data;
     }

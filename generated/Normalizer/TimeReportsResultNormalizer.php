@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult';
@@ -24,176 +26,134 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TimeReportsResult();
-        if (property_exists($data, 'client_id') && $data->{'client_id'} !== null) {
-            $object->setClientId($data->{'client_id'});
+        if (\array_key_exists('client_id', $data) && $data['client_id'] !== null) {
+            $object->setClientId($data['client_id']);
         }
-        elseif (property_exists($data, 'client_id') && $data->{'client_id'} === null) {
+        elseif (\array_key_exists('client_id', $data) && $data['client_id'] === null) {
             $object->setClientId(null);
         }
-        if (property_exists($data, 'client_name') && $data->{'client_name'} !== null) {
-            $object->setClientName($data->{'client_name'});
+        if (\array_key_exists('client_name', $data) && $data['client_name'] !== null) {
+            $object->setClientName($data['client_name']);
         }
-        elseif (property_exists($data, 'client_name') && $data->{'client_name'} === null) {
+        elseif (\array_key_exists('client_name', $data) && $data['client_name'] === null) {
             $object->setClientName(null);
         }
-        if (property_exists($data, 'project_id') && $data->{'project_id'} !== null) {
-            $object->setProjectId($data->{'project_id'});
+        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+            $object->setProjectId($data['project_id']);
         }
-        elseif (property_exists($data, 'project_id') && $data->{'project_id'} === null) {
+        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
             $object->setProjectId(null);
         }
-        if (property_exists($data, 'project_name') && $data->{'project_name'} !== null) {
-            $object->setProjectName($data->{'project_name'});
+        if (\array_key_exists('project_name', $data) && $data['project_name'] !== null) {
+            $object->setProjectName($data['project_name']);
         }
-        elseif (property_exists($data, 'project_name') && $data->{'project_name'} === null) {
+        elseif (\array_key_exists('project_name', $data) && $data['project_name'] === null) {
             $object->setProjectName(null);
         }
-        if (property_exists($data, 'task_id') && $data->{'task_id'} !== null) {
-            $object->setTaskId($data->{'task_id'});
+        if (\array_key_exists('task_id', $data) && $data['task_id'] !== null) {
+            $object->setTaskId($data['task_id']);
         }
-        elseif (property_exists($data, 'task_id') && $data->{'task_id'} === null) {
+        elseif (\array_key_exists('task_id', $data) && $data['task_id'] === null) {
             $object->setTaskId(null);
         }
-        if (property_exists($data, 'task_name') && $data->{'task_name'} !== null) {
-            $object->setTaskName($data->{'task_name'});
+        if (\array_key_exists('task_name', $data) && $data['task_name'] !== null) {
+            $object->setTaskName($data['task_name']);
         }
-        elseif (property_exists($data, 'task_name') && $data->{'task_name'} === null) {
+        elseif (\array_key_exists('task_name', $data) && $data['task_name'] === null) {
             $object->setTaskName(null);
         }
-        if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
-            $object->setUserId($data->{'user_id'});
+        if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
+            $object->setUserId($data['user_id']);
         }
-        elseif (property_exists($data, 'user_id') && $data->{'user_id'} === null) {
+        elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
             $object->setUserId(null);
         }
-        if (property_exists($data, 'user_name') && $data->{'user_name'} !== null) {
-            $object->setUserName($data->{'user_name'});
+        if (\array_key_exists('user_name', $data) && $data['user_name'] !== null) {
+            $object->setUserName($data['user_name']);
         }
-        elseif (property_exists($data, 'user_name') && $data->{'user_name'} === null) {
+        elseif (\array_key_exists('user_name', $data) && $data['user_name'] === null) {
             $object->setUserName(null);
         }
-        if (property_exists($data, 'is_contractor') && $data->{'is_contractor'} !== null) {
-            $object->setIsContractor($data->{'is_contractor'});
+        if (\array_key_exists('is_contractor', $data) && $data['is_contractor'] !== null) {
+            $object->setIsContractor($data['is_contractor']);
         }
-        elseif (property_exists($data, 'is_contractor') && $data->{'is_contractor'} === null) {
+        elseif (\array_key_exists('is_contractor', $data) && $data['is_contractor'] === null) {
             $object->setIsContractor(null);
         }
-        if (property_exists($data, 'total_hours') && $data->{'total_hours'} !== null) {
-            $object->setTotalHours($data->{'total_hours'});
+        if (\array_key_exists('total_hours', $data) && $data['total_hours'] !== null) {
+            $object->setTotalHours($data['total_hours']);
         }
-        elseif (property_exists($data, 'total_hours') && $data->{'total_hours'} === null) {
+        elseif (\array_key_exists('total_hours', $data) && $data['total_hours'] === null) {
             $object->setTotalHours(null);
         }
-        if (property_exists($data, 'billable_hours') && $data->{'billable_hours'} !== null) {
-            $object->setBillableHours($data->{'billable_hours'});
+        if (\array_key_exists('billable_hours', $data) && $data['billable_hours'] !== null) {
+            $object->setBillableHours($data['billable_hours']);
         }
-        elseif (property_exists($data, 'billable_hours') && $data->{'billable_hours'} === null) {
+        elseif (\array_key_exists('billable_hours', $data) && $data['billable_hours'] === null) {
             $object->setBillableHours(null);
         }
-        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
-            $object->setCurrency($data->{'currency'});
+        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
+            $object->setCurrency($data['currency']);
         }
-        elseif (property_exists($data, 'currency') && $data->{'currency'} === null) {
+        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
             $object->setCurrency(null);
         }
-        if (property_exists($data, 'billable_amount') && $data->{'billable_amount'} !== null) {
-            $object->setBillableAmount($data->{'billable_amount'});
+        if (\array_key_exists('billable_amount', $data) && $data['billable_amount'] !== null) {
+            $object->setBillableAmount($data['billable_amount']);
         }
-        elseif (property_exists($data, 'billable_amount') && $data->{'billable_amount'} === null) {
+        elseif (\array_key_exists('billable_amount', $data) && $data['billable_amount'] === null) {
             $object->setBillableAmount(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getClientId()) {
-            $data->{'client_id'} = $object->getClientId();
-        }
-        else {
-            $data->{'client_id'} = null;
+            $data['client_id'] = $object->getClientId();
         }
         if (null !== $object->getClientName()) {
-            $data->{'client_name'} = $object->getClientName();
-        }
-        else {
-            $data->{'client_name'} = null;
+            $data['client_name'] = $object->getClientName();
         }
         if (null !== $object->getProjectId()) {
-            $data->{'project_id'} = $object->getProjectId();
-        }
-        else {
-            $data->{'project_id'} = null;
+            $data['project_id'] = $object->getProjectId();
         }
         if (null !== $object->getProjectName()) {
-            $data->{'project_name'} = $object->getProjectName();
-        }
-        else {
-            $data->{'project_name'} = null;
+            $data['project_name'] = $object->getProjectName();
         }
         if (null !== $object->getTaskId()) {
-            $data->{'task_id'} = $object->getTaskId();
-        }
-        else {
-            $data->{'task_id'} = null;
+            $data['task_id'] = $object->getTaskId();
         }
         if (null !== $object->getTaskName()) {
-            $data->{'task_name'} = $object->getTaskName();
-        }
-        else {
-            $data->{'task_name'} = null;
+            $data['task_name'] = $object->getTaskName();
         }
         if (null !== $object->getUserId()) {
-            $data->{'user_id'} = $object->getUserId();
-        }
-        else {
-            $data->{'user_id'} = null;
+            $data['user_id'] = $object->getUserId();
         }
         if (null !== $object->getUserName()) {
-            $data->{'user_name'} = $object->getUserName();
-        }
-        else {
-            $data->{'user_name'} = null;
+            $data['user_name'] = $object->getUserName();
         }
         if (null !== $object->getIsContractor()) {
-            $data->{'is_contractor'} = $object->getIsContractor();
-        }
-        else {
-            $data->{'is_contractor'} = null;
+            $data['is_contractor'] = $object->getIsContractor();
         }
         if (null !== $object->getTotalHours()) {
-            $data->{'total_hours'} = $object->getTotalHours();
-        }
-        else {
-            $data->{'total_hours'} = null;
+            $data['total_hours'] = $object->getTotalHours();
         }
         if (null !== $object->getBillableHours()) {
-            $data->{'billable_hours'} = $object->getBillableHours();
-        }
-        else {
-            $data->{'billable_hours'} = null;
+            $data['billable_hours'] = $object->getBillableHours();
         }
         if (null !== $object->getCurrency()) {
-            $data->{'currency'} = $object->getCurrency();
-        }
-        else {
-            $data->{'currency'} = null;
+            $data['currency'] = $object->getCurrency();
         }
         if (null !== $object->getBillableAmount()) {
-            $data->{'billable_amount'} = $object->getBillableAmount();
-        }
-        else {
-            $data->{'billable_amount'} = null;
+            $data['billable_amount'] = $object->getBillableAmount();
         }
         return $data;
     }

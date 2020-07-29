@@ -53,7 +53,9 @@ class ListTimeEntries extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $optionsResolver->setAllowedTypes('task_id', array('int'));
         $optionsResolver->setAllowedTypes('external_reference_id', array('string'));
         $optionsResolver->setAllowedTypes('is_billed', array('bool'));
+        $optionsResolver->setNormalizer('is_billed', \Closure::fromCallable(array(new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke')));
         $optionsResolver->setAllowedTypes('is_running', array('bool'));
+        $optionsResolver->setNormalizer('is_running', \Closure::fromCallable(array(new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke')));
         $optionsResolver->setAllowedTypes('updated_since', array('string'));
         $optionsResolver->setAllowedTypes('from', array('string'));
         $optionsResolver->setAllowedTypes('to', array('string'));
@@ -73,5 +75,9 @@ class ListTimeEntries extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\TimeEntries', 'json');
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
     }
 }

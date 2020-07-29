@@ -40,4 +40,8 @@ class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseE
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

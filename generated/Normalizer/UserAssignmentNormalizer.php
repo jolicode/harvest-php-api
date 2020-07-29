@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class UserAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\UserAssignment';
@@ -24,140 +26,107 @@ class UserAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\UserAssignment();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'project') && $data->{'project'} !== null) {
-            $object->setProject($this->denormalizer->denormalize($data->{'project'}, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject', 'json', $context));
+        if (\array_key_exists('project', $data) && $data['project'] !== null) {
+            $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject', 'json', $context));
         }
-        elseif (property_exists($data, 'project') && $data->{'project'} === null) {
+        elseif (\array_key_exists('project', $data) && $data['project'] === null) {
             $object->setProject(null);
         }
-        if (property_exists($data, 'user') && $data->{'user'} !== null) {
-            $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser', 'json', $context));
+        if (\array_key_exists('user', $data) && $data['user'] !== null) {
+            $object->setUser($this->denormalizer->denormalize($data['user'], 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser', 'json', $context));
         }
-        elseif (property_exists($data, 'user') && $data->{'user'} === null) {
+        elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
-            $object->setIsActive($data->{'is_active'});
+        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+            $object->setIsActive($data['is_active']);
         }
-        elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
+        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
             $object->setIsActive(null);
         }
-        if (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} !== null) {
-            $object->setIsProjectManager($data->{'is_project_manager'});
+        if (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] !== null) {
+            $object->setIsProjectManager($data['is_project_manager']);
         }
-        elseif (property_exists($data, 'is_project_manager') && $data->{'is_project_manager'} === null) {
+        elseif (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] === null) {
             $object->setIsProjectManager(null);
         }
-        if (property_exists($data, 'use_default_rates') && $data->{'use_default_rates'} !== null) {
-            $object->setUseDefaultRates($data->{'use_default_rates'});
+        if (\array_key_exists('use_default_rates', $data) && $data['use_default_rates'] !== null) {
+            $object->setUseDefaultRates($data['use_default_rates']);
         }
-        elseif (property_exists($data, 'use_default_rates') && $data->{'use_default_rates'} === null) {
+        elseif (\array_key_exists('use_default_rates', $data) && $data['use_default_rates'] === null) {
             $object->setUseDefaultRates(null);
         }
-        if (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} !== null) {
-            $object->setHourlyRate($data->{'hourly_rate'});
+        if (\array_key_exists('hourly_rate', $data) && $data['hourly_rate'] !== null) {
+            $object->setHourlyRate($data['hourly_rate']);
         }
-        elseif (property_exists($data, 'hourly_rate') && $data->{'hourly_rate'} === null) {
+        elseif (\array_key_exists('hourly_rate', $data) && $data['hourly_rate'] === null) {
             $object->setHourlyRate(null);
         }
-        if (property_exists($data, 'budget') && $data->{'budget'} !== null) {
-            $object->setBudget($data->{'budget'});
+        if (\array_key_exists('budget', $data) && $data['budget'] !== null) {
+            $object->setBudget($data['budget']);
         }
-        elseif (property_exists($data, 'budget') && $data->{'budget'} === null) {
+        elseif (\array_key_exists('budget', $data) && $data['budget'] === null) {
             $object->setBudget(null);
         }
-        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
         }
-        elseif (property_exists($data, 'created_at') && $data->{'created_at'} === null) {
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
+        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
         }
-        elseif (property_exists($data, 'updated_at') && $data->{'updated_at'} === null) {
+        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getProject()) {
-            $data->{'project'} = $this->normalizer->normalize($object->getProject(), 'json', $context);
-        }
-        else {
-            $data->{'project'} = null;
+            $data['project'] = $this->normalizer->normalize($object->getProject(), 'json', $context);
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        else {
-            $data->{'user'} = null;
+            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
         if (null !== $object->getIsActive()) {
-            $data->{'is_active'} = $object->getIsActive();
-        }
-        else {
-            $data->{'is_active'} = null;
+            $data['is_active'] = $object->getIsActive();
         }
         if (null !== $object->getIsProjectManager()) {
-            $data->{'is_project_manager'} = $object->getIsProjectManager();
-        }
-        else {
-            $data->{'is_project_manager'} = null;
+            $data['is_project_manager'] = $object->getIsProjectManager();
         }
         if (null !== $object->getUseDefaultRates()) {
-            $data->{'use_default_rates'} = $object->getUseDefaultRates();
-        }
-        else {
-            $data->{'use_default_rates'} = null;
+            $data['use_default_rates'] = $object->getUseDefaultRates();
         }
         if (null !== $object->getHourlyRate()) {
-            $data->{'hourly_rate'} = $object->getHourlyRate();
-        }
-        else {
-            $data->{'hourly_rate'} = null;
+            $data['hourly_rate'] = $object->getHourlyRate();
         }
         if (null !== $object->getBudget()) {
-            $data->{'budget'} = $object->getBudget();
-        }
-        else {
-            $data->{'budget'} = null;
+            $data['budget'] = $object->getBudget();
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'created_at'} = null;
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data->{'updated_at'} = $object->getUpdatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'updated_at'} = null;
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

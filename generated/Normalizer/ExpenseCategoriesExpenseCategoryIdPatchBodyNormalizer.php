@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer implements Denormali
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesExpenseCategoryIdPatchBody';
@@ -24,68 +26,53 @@ class ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer implements Denormali
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody();
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (property_exists($data, 'unit_name') && $data->{'unit_name'} !== null) {
-            $object->setUnitName($data->{'unit_name'});
+        if (\array_key_exists('unit_name', $data) && $data['unit_name'] !== null) {
+            $object->setUnitName($data['unit_name']);
         }
-        elseif (property_exists($data, 'unit_name') && $data->{'unit_name'} === null) {
+        elseif (\array_key_exists('unit_name', $data) && $data['unit_name'] === null) {
             $object->setUnitName(null);
         }
-        if (property_exists($data, 'unit_price') && $data->{'unit_price'} !== null) {
-            $object->setUnitPrice($data->{'unit_price'});
+        if (\array_key_exists('unit_price', $data) && $data['unit_price'] !== null) {
+            $object->setUnitPrice($data['unit_price']);
         }
-        elseif (property_exists($data, 'unit_price') && $data->{'unit_price'} === null) {
+        elseif (\array_key_exists('unit_price', $data) && $data['unit_price'] === null) {
             $object->setUnitPrice(null);
         }
-        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
-            $object->setIsActive($data->{'is_active'});
+        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+            $object->setIsActive($data['is_active']);
         }
-        elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
+        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
             $object->setIsActive(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getUnitName()) {
-            $data->{'unit_name'} = $object->getUnitName();
-        }
-        else {
-            $data->{'unit_name'} = null;
+            $data['unit_name'] = $object->getUnitName();
         }
         if (null !== $object->getUnitPrice()) {
-            $data->{'unit_price'} = $object->getUnitPrice();
-        }
-        else {
-            $data->{'unit_price'} = null;
+            $data['unit_price'] = $object->getUnitPrice();
         }
         if (null !== $object->getIsActive()) {
-            $data->{'is_active'} = $object->getIsActive();
-        }
-        else {
-            $data->{'is_active'} = null;
+            $data['is_active'] = $object->getIsActive();
         }
         return $data;
     }

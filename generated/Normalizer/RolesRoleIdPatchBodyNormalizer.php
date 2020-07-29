@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class RolesRoleIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody';
@@ -24,52 +26,43 @@ class RolesRoleIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody();
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (property_exists($data, 'user_ids') && $data->{'user_ids'} !== null) {
+        if (\array_key_exists('user_ids', $data) && $data['user_ids'] !== null) {
             $values = array();
-            foreach ($data->{'user_ids'} as $value) {
+            foreach ($data['user_ids'] as $value) {
                 $values[] = $value;
             }
             $object->setUserIds($values);
         }
-        elseif (property_exists($data, 'user_ids') && $data->{'user_ids'} === null) {
+        elseif (\array_key_exists('user_ids', $data) && $data['user_ids'] === null) {
             $object->setUserIds(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getUserIds()) {
             $values = array();
             foreach ($object->getUserIds() as $value) {
                 $values[] = $value;
             }
-            $data->{'user_ids'} = $values;
-        }
-        else {
-            $data->{'user_ids'} = null;
+            $data['user_ids'] = $values;
         }
         return $data;
     }

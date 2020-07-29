@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\Estimate';
@@ -24,316 +26,241 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\Estimate();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'client') && $data->{'client'} !== null) {
-            $object->setClient($this->denormalizer->denormalize($data->{'client'}, 'JoliCode\\Harvest\\Api\\Model\\EstimateClient', 'json', $context));
+        if (\array_key_exists('client', $data) && $data['client'] !== null) {
+            $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\EstimateClient', 'json', $context));
         }
-        elseif (property_exists($data, 'client') && $data->{'client'} === null) {
+        elseif (\array_key_exists('client', $data) && $data['client'] === null) {
             $object->setClient(null);
         }
-        if (property_exists($data, 'line_items') && $data->{'line_items'} !== null) {
+        if (\array_key_exists('line_items', $data) && $data['line_items'] !== null) {
             $values = array();
-            foreach ($data->{'line_items'} as $value) {
+            foreach ($data['line_items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem', 'json', $context);
             }
             $object->setLineItems($values);
         }
-        elseif (property_exists($data, 'line_items') && $data->{'line_items'} === null) {
+        elseif (\array_key_exists('line_items', $data) && $data['line_items'] === null) {
             $object->setLineItems(null);
         }
-        if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
-            $object->setCreator($this->denormalizer->denormalize($data->{'creator'}, 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator', 'json', $context));
+        if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
+            $object->setCreator($this->denormalizer->denormalize($data['creator'], 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator', 'json', $context));
         }
-        elseif (property_exists($data, 'creator') && $data->{'creator'} === null) {
+        elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
         }
-        if (property_exists($data, 'client_key') && $data->{'client_key'} !== null) {
-            $object->setClientKey($data->{'client_key'});
+        if (\array_key_exists('client_key', $data) && $data['client_key'] !== null) {
+            $object->setClientKey($data['client_key']);
         }
-        elseif (property_exists($data, 'client_key') && $data->{'client_key'} === null) {
+        elseif (\array_key_exists('client_key', $data) && $data['client_key'] === null) {
             $object->setClientKey(null);
         }
-        if (property_exists($data, 'number') && $data->{'number'} !== null) {
-            $object->setNumber($data->{'number'});
+        if (\array_key_exists('number', $data) && $data['number'] !== null) {
+            $object->setNumber($data['number']);
         }
-        elseif (property_exists($data, 'number') && $data->{'number'} === null) {
+        elseif (\array_key_exists('number', $data) && $data['number'] === null) {
             $object->setNumber(null);
         }
-        if (property_exists($data, 'purchase_order') && $data->{'purchase_order'} !== null) {
-            $object->setPurchaseOrder($data->{'purchase_order'});
+        if (\array_key_exists('purchase_order', $data) && $data['purchase_order'] !== null) {
+            $object->setPurchaseOrder($data['purchase_order']);
         }
-        elseif (property_exists($data, 'purchase_order') && $data->{'purchase_order'} === null) {
+        elseif (\array_key_exists('purchase_order', $data) && $data['purchase_order'] === null) {
             $object->setPurchaseOrder(null);
         }
-        if (property_exists($data, 'amount') && $data->{'amount'} !== null) {
-            $object->setAmount($data->{'amount'});
+        if (\array_key_exists('amount', $data) && $data['amount'] !== null) {
+            $object->setAmount($data['amount']);
         }
-        elseif (property_exists($data, 'amount') && $data->{'amount'} === null) {
+        elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
             $object->setAmount(null);
         }
-        if (property_exists($data, 'tax') && $data->{'tax'} !== null) {
-            $object->setTax($data->{'tax'});
+        if (\array_key_exists('tax', $data) && $data['tax'] !== null) {
+            $object->setTax($data['tax']);
         }
-        elseif (property_exists($data, 'tax') && $data->{'tax'} === null) {
+        elseif (\array_key_exists('tax', $data) && $data['tax'] === null) {
             $object->setTax(null);
         }
-        if (property_exists($data, 'tax_amount') && $data->{'tax_amount'} !== null) {
-            $object->setTaxAmount($data->{'tax_amount'});
+        if (\array_key_exists('tax_amount', $data) && $data['tax_amount'] !== null) {
+            $object->setTaxAmount($data['tax_amount']);
         }
-        elseif (property_exists($data, 'tax_amount') && $data->{'tax_amount'} === null) {
+        elseif (\array_key_exists('tax_amount', $data) && $data['tax_amount'] === null) {
             $object->setTaxAmount(null);
         }
-        if (property_exists($data, 'tax2') && $data->{'tax2'} !== null) {
-            $object->setTax2($data->{'tax2'});
+        if (\array_key_exists('tax2', $data) && $data['tax2'] !== null) {
+            $object->setTax2($data['tax2']);
         }
-        elseif (property_exists($data, 'tax2') && $data->{'tax2'} === null) {
+        elseif (\array_key_exists('tax2', $data) && $data['tax2'] === null) {
             $object->setTax2(null);
         }
-        if (property_exists($data, 'tax2_amount') && $data->{'tax2_amount'} !== null) {
-            $object->setTax2Amount($data->{'tax2_amount'});
+        if (\array_key_exists('tax2_amount', $data) && $data['tax2_amount'] !== null) {
+            $object->setTax2Amount($data['tax2_amount']);
         }
-        elseif (property_exists($data, 'tax2_amount') && $data->{'tax2_amount'} === null) {
+        elseif (\array_key_exists('tax2_amount', $data) && $data['tax2_amount'] === null) {
             $object->setTax2Amount(null);
         }
-        if (property_exists($data, 'discount') && $data->{'discount'} !== null) {
-            $object->setDiscount($data->{'discount'});
+        if (\array_key_exists('discount', $data) && $data['discount'] !== null) {
+            $object->setDiscount($data['discount']);
         }
-        elseif (property_exists($data, 'discount') && $data->{'discount'} === null) {
+        elseif (\array_key_exists('discount', $data) && $data['discount'] === null) {
             $object->setDiscount(null);
         }
-        if (property_exists($data, 'discount_amount') && $data->{'discount_amount'} !== null) {
-            $object->setDiscountAmount($data->{'discount_amount'});
+        if (\array_key_exists('discount_amount', $data) && $data['discount_amount'] !== null) {
+            $object->setDiscountAmount($data['discount_amount']);
         }
-        elseif (property_exists($data, 'discount_amount') && $data->{'discount_amount'} === null) {
+        elseif (\array_key_exists('discount_amount', $data) && $data['discount_amount'] === null) {
             $object->setDiscountAmount(null);
         }
-        if (property_exists($data, 'subject') && $data->{'subject'} !== null) {
-            $object->setSubject($data->{'subject'});
+        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
+            $object->setSubject($data['subject']);
         }
-        elseif (property_exists($data, 'subject') && $data->{'subject'} === null) {
+        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
             $object->setSubject(null);
         }
-        if (property_exists($data, 'notes') && $data->{'notes'} !== null) {
-            $object->setNotes($data->{'notes'});
+        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+            $object->setNotes($data['notes']);
         }
-        elseif (property_exists($data, 'notes') && $data->{'notes'} === null) {
+        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
-        if (property_exists($data, 'currency') && $data->{'currency'} !== null) {
-            $object->setCurrency($data->{'currency'});
+        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
+            $object->setCurrency($data['currency']);
         }
-        elseif (property_exists($data, 'currency') && $data->{'currency'} === null) {
+        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
             $object->setCurrency(null);
         }
-        if (property_exists($data, 'state') && $data->{'state'} !== null) {
-            $object->setState($data->{'state'});
+        if (\array_key_exists('state', $data) && $data['state'] !== null) {
+            $object->setState($data['state']);
         }
-        elseif (property_exists($data, 'state') && $data->{'state'} === null) {
+        elseif (\array_key_exists('state', $data) && $data['state'] === null) {
             $object->setState(null);
         }
-        if (property_exists($data, 'issue_date') && $data->{'issue_date'} !== null) {
-            $object->setIssueDate(\DateTime::createFromFormat('Y-m-d', $data->{'issue_date'})->setTime(0, 0, 0));
+        if (\array_key_exists('issue_date', $data) && $data['issue_date'] !== null) {
+            $object->setIssueDate(\DateTime::createFromFormat('Y-m-d', $data['issue_date'])->setTime(0, 0, 0));
         }
-        elseif (property_exists($data, 'issue_date') && $data->{'issue_date'} === null) {
+        elseif (\array_key_exists('issue_date', $data) && $data['issue_date'] === null) {
             $object->setIssueDate(null);
         }
-        if (property_exists($data, 'sent_at') && $data->{'sent_at'} !== null) {
-            $object->setSentAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'sent_at'}));
+        if (\array_key_exists('sent_at', $data) && $data['sent_at'] !== null) {
+            $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['sent_at']));
         }
-        elseif (property_exists($data, 'sent_at') && $data->{'sent_at'} === null) {
+        elseif (\array_key_exists('sent_at', $data) && $data['sent_at'] === null) {
             $object->setSentAt(null);
         }
-        if (property_exists($data, 'accepted_at') && $data->{'accepted_at'} !== null) {
-            $object->setAcceptedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'accepted_at'}));
+        if (\array_key_exists('accepted_at', $data) && $data['accepted_at'] !== null) {
+            $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['accepted_at']));
         }
-        elseif (property_exists($data, 'accepted_at') && $data->{'accepted_at'} === null) {
+        elseif (\array_key_exists('accepted_at', $data) && $data['accepted_at'] === null) {
             $object->setAcceptedAt(null);
         }
-        if (property_exists($data, 'declined_at') && $data->{'declined_at'} !== null) {
-            $object->setDeclinedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'declined_at'}));
+        if (\array_key_exists('declined_at', $data) && $data['declined_at'] !== null) {
+            $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['declined_at']));
         }
-        elseif (property_exists($data, 'declined_at') && $data->{'declined_at'} === null) {
+        elseif (\array_key_exists('declined_at', $data) && $data['declined_at'] === null) {
             $object->setDeclinedAt(null);
         }
-        if (property_exists($data, 'created_at') && $data->{'created_at'} !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
         }
-        elseif (property_exists($data, 'created_at') && $data->{'created_at'} === null) {
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'updated_at') && $data->{'updated_at'} !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updated_at'}));
+        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
         }
-        elseif (property_exists($data, 'updated_at') && $data->{'updated_at'} === null) {
+        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getClient()) {
-            $data->{'client'} = $this->normalizer->normalize($object->getClient(), 'json', $context);
-        }
-        else {
-            $data->{'client'} = null;
+            $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
         }
         if (null !== $object->getLineItems()) {
             $values = array();
             foreach ($object->getLineItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'line_items'} = $values;
-        }
-        else {
-            $data->{'line_items'} = null;
+            $data['line_items'] = $values;
         }
         if (null !== $object->getCreator()) {
-            $data->{'creator'} = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        else {
-            $data->{'creator'} = null;
+            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         }
         if (null !== $object->getClientKey()) {
-            $data->{'client_key'} = $object->getClientKey();
-        }
-        else {
-            $data->{'client_key'} = null;
+            $data['client_key'] = $object->getClientKey();
         }
         if (null !== $object->getNumber()) {
-            $data->{'number'} = $object->getNumber();
-        }
-        else {
-            $data->{'number'} = null;
+            $data['number'] = $object->getNumber();
         }
         if (null !== $object->getPurchaseOrder()) {
-            $data->{'purchase_order'} = $object->getPurchaseOrder();
-        }
-        else {
-            $data->{'purchase_order'} = null;
+            $data['purchase_order'] = $object->getPurchaseOrder();
         }
         if (null !== $object->getAmount()) {
-            $data->{'amount'} = $object->getAmount();
-        }
-        else {
-            $data->{'amount'} = null;
+            $data['amount'] = $object->getAmount();
         }
         if (null !== $object->getTax()) {
-            $data->{'tax'} = $object->getTax();
-        }
-        else {
-            $data->{'tax'} = null;
+            $data['tax'] = $object->getTax();
         }
         if (null !== $object->getTaxAmount()) {
-            $data->{'tax_amount'} = $object->getTaxAmount();
-        }
-        else {
-            $data->{'tax_amount'} = null;
+            $data['tax_amount'] = $object->getTaxAmount();
         }
         if (null !== $object->getTax2()) {
-            $data->{'tax2'} = $object->getTax2();
-        }
-        else {
-            $data->{'tax2'} = null;
+            $data['tax2'] = $object->getTax2();
         }
         if (null !== $object->getTax2Amount()) {
-            $data->{'tax2_amount'} = $object->getTax2Amount();
-        }
-        else {
-            $data->{'tax2_amount'} = null;
+            $data['tax2_amount'] = $object->getTax2Amount();
         }
         if (null !== $object->getDiscount()) {
-            $data->{'discount'} = $object->getDiscount();
-        }
-        else {
-            $data->{'discount'} = null;
+            $data['discount'] = $object->getDiscount();
         }
         if (null !== $object->getDiscountAmount()) {
-            $data->{'discount_amount'} = $object->getDiscountAmount();
-        }
-        else {
-            $data->{'discount_amount'} = null;
+            $data['discount_amount'] = $object->getDiscountAmount();
         }
         if (null !== $object->getSubject()) {
-            $data->{'subject'} = $object->getSubject();
-        }
-        else {
-            $data->{'subject'} = null;
+            $data['subject'] = $object->getSubject();
         }
         if (null !== $object->getNotes()) {
-            $data->{'notes'} = $object->getNotes();
-        }
-        else {
-            $data->{'notes'} = null;
+            $data['notes'] = $object->getNotes();
         }
         if (null !== $object->getCurrency()) {
-            $data->{'currency'} = $object->getCurrency();
-        }
-        else {
-            $data->{'currency'} = null;
+            $data['currency'] = $object->getCurrency();
         }
         if (null !== $object->getState()) {
-            $data->{'state'} = $object->getState();
-        }
-        else {
-            $data->{'state'} = null;
+            $data['state'] = $object->getState();
         }
         if (null !== $object->getIssueDate()) {
-            $data->{'issue_date'} = $object->getIssueDate()->format('Y-m-d');
-        }
-        else {
-            $data->{'issue_date'} = null;
+            $data['issue_date'] = $object->getIssueDate()->format('Y-m-d');
         }
         if (null !== $object->getSentAt()) {
-            $data->{'sent_at'} = $object->getSentAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'sent_at'} = null;
+            $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getAcceptedAt()) {
-            $data->{'accepted_at'} = $object->getAcceptedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'accepted_at'} = null;
+            $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getDeclinedAt()) {
-            $data->{'declined_at'} = $object->getDeclinedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'declined_at'} = null;
+            $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'created_at'} = null;
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data->{'updated_at'} = $object->getUpdatedAt()->format("Y-m-d\TH:i:sP");
-        }
-        else {
-            $data->{'updated_at'} = null;
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

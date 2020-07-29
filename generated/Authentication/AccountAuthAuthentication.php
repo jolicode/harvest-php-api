@@ -2,26 +2,20 @@
 
 namespace JoliCode\Harvest\Api\Authentication;
 
-class AccountAuthAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
+class AccountAuthAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)
     {
         $this->{'apiKey'} = $apiKey;
     }
-    public function getPlugin() : \Http\Client\Common\Plugin
+    public function authentication(\Psr\Http\Message\RequestInterface $request) : \Psr\Http\Message\RequestInterface
     {
-        return new \Http\Client\Common\Plugin\AuthenticationPlugin(new class($this->{'apiKey'}) implements \Http\Message\Authentication
-        {
-            private $apiKey;
-            public function __construct(string $apiKey)
-            {
-                $this->{'apiKey'} = $apiKey;
-            }
-            public function authenticate(\Psr\Http\Message\RequestInterface $request)
-            {
-                return $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
-            }
-        });
+        $request = $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
+        return $request;
+    }
+    public function getScope() : string
+    {
+        return 'AccountAuth';
     }
 }

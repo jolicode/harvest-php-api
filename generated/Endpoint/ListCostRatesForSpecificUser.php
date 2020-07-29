@@ -57,4 +57,8 @@ class ListCostRatesForSpecificUser extends \Jane\OpenApiRuntime\Client\BaseEndpo
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

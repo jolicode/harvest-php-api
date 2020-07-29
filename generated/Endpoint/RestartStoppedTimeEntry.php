@@ -40,4 +40,8 @@ class RestartStoppedTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         }
         return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

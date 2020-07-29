@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItemNormalizer implements Denormalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem';
@@ -24,104 +26,80 @@ class EstimatesEstimateIdPatchBodyLineItemsItemNormalizer implements Denormalize
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
         }
-        elseif (property_exists($data, 'id') && $data->{'id'} === null) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
-        if (property_exists($data, 'kind') && $data->{'kind'} !== null) {
-            $object->setKind($data->{'kind'});
+        if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
+            $object->setKind($data['kind']);
         }
-        elseif (property_exists($data, 'kind') && $data->{'kind'} === null) {
+        elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
             $object->setKind(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
         }
-        elseif (property_exists($data, 'description') && $data->{'description'} === null) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
-        if (property_exists($data, 'quantity') && $data->{'quantity'} !== null) {
-            $object->setQuantity($data->{'quantity'});
+        if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
+            $object->setQuantity($data['quantity']);
         }
-        elseif (property_exists($data, 'quantity') && $data->{'quantity'} === null) {
+        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
             $object->setQuantity(null);
         }
-        if (property_exists($data, 'unit_price') && $data->{'unit_price'} !== null) {
-            $object->setUnitPrice($data->{'unit_price'});
+        if (\array_key_exists('unit_price', $data) && $data['unit_price'] !== null) {
+            $object->setUnitPrice($data['unit_price']);
         }
-        elseif (property_exists($data, 'unit_price') && $data->{'unit_price'} === null) {
+        elseif (\array_key_exists('unit_price', $data) && $data['unit_price'] === null) {
             $object->setUnitPrice(null);
         }
-        if (property_exists($data, 'taxed') && $data->{'taxed'} !== null) {
-            $object->setTaxed($data->{'taxed'});
+        if (\array_key_exists('taxed', $data) && $data['taxed'] !== null) {
+            $object->setTaxed($data['taxed']);
         }
-        elseif (property_exists($data, 'taxed') && $data->{'taxed'} === null) {
+        elseif (\array_key_exists('taxed', $data) && $data['taxed'] === null) {
             $object->setTaxed(null);
         }
-        if (property_exists($data, 'taxed2') && $data->{'taxed2'} !== null) {
-            $object->setTaxed2($data->{'taxed2'});
+        if (\array_key_exists('taxed2', $data) && $data['taxed2'] !== null) {
+            $object->setTaxed2($data['taxed2']);
         }
-        elseif (property_exists($data, 'taxed2') && $data->{'taxed2'} === null) {
+        elseif (\array_key_exists('taxed2', $data) && $data['taxed2'] === null) {
             $object->setTaxed2(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getKind()) {
-            $data->{'kind'} = $object->getKind();
-        }
-        else {
-            $data->{'kind'} = null;
+            $data['kind'] = $object->getKind();
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
-        }
-        else {
-            $data->{'description'} = null;
+            $data['description'] = $object->getDescription();
         }
         if (null !== $object->getQuantity()) {
-            $data->{'quantity'} = $object->getQuantity();
-        }
-        else {
-            $data->{'quantity'} = null;
+            $data['quantity'] = $object->getQuantity();
         }
         if (null !== $object->getUnitPrice()) {
-            $data->{'unit_price'} = $object->getUnitPrice();
-        }
-        else {
-            $data->{'unit_price'} = null;
+            $data['unit_price'] = $object->getUnitPrice();
         }
         if (null !== $object->getTaxed()) {
-            $data->{'taxed'} = $object->getTaxed();
-        }
-        else {
-            $data->{'taxed'} = null;
+            $data['taxed'] = $object->getTaxed();
         }
         if (null !== $object->getTaxed2()) {
-            $data->{'taxed2'} = $object->getTaxed2();
-        }
-        else {
-            $data->{'taxed2'} = null;
+            $data['taxed2'] = $object->getTaxed2();
         }
         return $data;
     }

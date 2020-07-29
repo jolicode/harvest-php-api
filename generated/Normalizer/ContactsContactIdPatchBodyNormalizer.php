@@ -3,6 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\ContactsContactIdPatchBody';
@@ -24,116 +26,89 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody();
-        if (property_exists($data, 'client_id') && $data->{'client_id'} !== null) {
-            $object->setClientId($data->{'client_id'});
+        if (\array_key_exists('client_id', $data) && $data['client_id'] !== null) {
+            $object->setClientId($data['client_id']);
         }
-        elseif (property_exists($data, 'client_id') && $data->{'client_id'} === null) {
+        elseif (\array_key_exists('client_id', $data) && $data['client_id'] === null) {
             $object->setClientId(null);
         }
-        if (property_exists($data, 'title') && $data->{'title'} !== null) {
-            $object->setTitle($data->{'title'});
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
+            $object->setTitle($data['title']);
         }
-        elseif (property_exists($data, 'title') && $data->{'title'} === null) {
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
-        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
-            $object->setFirstName($data->{'first_name'});
+        if (\array_key_exists('first_name', $data) && $data['first_name'] !== null) {
+            $object->setFirstName($data['first_name']);
         }
-        elseif (property_exists($data, 'first_name') && $data->{'first_name'} === null) {
+        elseif (\array_key_exists('first_name', $data) && $data['first_name'] === null) {
             $object->setFirstName(null);
         }
-        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
-            $object->setLastName($data->{'last_name'});
+        if (\array_key_exists('last_name', $data) && $data['last_name'] !== null) {
+            $object->setLastName($data['last_name']);
         }
-        elseif (property_exists($data, 'last_name') && $data->{'last_name'} === null) {
+        elseif (\array_key_exists('last_name', $data) && $data['last_name'] === null) {
             $object->setLastName(null);
         }
-        if (property_exists($data, 'email') && $data->{'email'} !== null) {
-            $object->setEmail($data->{'email'});
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+            $object->setEmail($data['email']);
         }
-        elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
-        if (property_exists($data, 'phone_office') && $data->{'phone_office'} !== null) {
-            $object->setPhoneOffice($data->{'phone_office'});
+        if (\array_key_exists('phone_office', $data) && $data['phone_office'] !== null) {
+            $object->setPhoneOffice($data['phone_office']);
         }
-        elseif (property_exists($data, 'phone_office') && $data->{'phone_office'} === null) {
+        elseif (\array_key_exists('phone_office', $data) && $data['phone_office'] === null) {
             $object->setPhoneOffice(null);
         }
-        if (property_exists($data, 'phone_mobile') && $data->{'phone_mobile'} !== null) {
-            $object->setPhoneMobile($data->{'phone_mobile'});
+        if (\array_key_exists('phone_mobile', $data) && $data['phone_mobile'] !== null) {
+            $object->setPhoneMobile($data['phone_mobile']);
         }
-        elseif (property_exists($data, 'phone_mobile') && $data->{'phone_mobile'} === null) {
+        elseif (\array_key_exists('phone_mobile', $data) && $data['phone_mobile'] === null) {
             $object->setPhoneMobile(null);
         }
-        if (property_exists($data, 'fax') && $data->{'fax'} !== null) {
-            $object->setFax($data->{'fax'});
+        if (\array_key_exists('fax', $data) && $data['fax'] !== null) {
+            $object->setFax($data['fax']);
         }
-        elseif (property_exists($data, 'fax') && $data->{'fax'} === null) {
+        elseif (\array_key_exists('fax', $data) && $data['fax'] === null) {
             $object->setFax(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getClientId()) {
-            $data->{'client_id'} = $object->getClientId();
-        }
-        else {
-            $data->{'client_id'} = null;
+            $data['client_id'] = $object->getClientId();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
-        }
-        else {
-            $data->{'title'} = null;
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getFirstName()) {
-            $data->{'first_name'} = $object->getFirstName();
-        }
-        else {
-            $data->{'first_name'} = null;
+            $data['first_name'] = $object->getFirstName();
         }
         if (null !== $object->getLastName()) {
-            $data->{'last_name'} = $object->getLastName();
-        }
-        else {
-            $data->{'last_name'} = null;
+            $data['last_name'] = $object->getLastName();
         }
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
-        }
-        else {
-            $data->{'email'} = null;
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getPhoneOffice()) {
-            $data->{'phone_office'} = $object->getPhoneOffice();
-        }
-        else {
-            $data->{'phone_office'} = null;
+            $data['phone_office'] = $object->getPhoneOffice();
         }
         if (null !== $object->getPhoneMobile()) {
-            $data->{'phone_mobile'} = $object->getPhoneMobile();
-        }
-        else {
-            $data->{'phone_mobile'} = null;
+            $data['phone_mobile'] = $object->getPhoneMobile();
         }
         if (null !== $object->getFax()) {
-            $data->{'fax'} = $object->getFax();
-        }
-        else {
-            $data->{'fax'} = null;
+            $data['fax'] = $object->getFax();
         }
         return $data;
     }

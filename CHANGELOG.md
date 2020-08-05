@@ -2,7 +2,7 @@
 
 ## Unreleased
 
- * nothing
+ * use Jane 6 Authentication plugins
 
 ## 4.0.1 (2020-07-30)
 

@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class RetrieveBillableRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class RetrieveBillableRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $userId;
     protected $billableRateId;
@@ -17,7 +17,7 @@ class RetrieveBillableRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->userId = $userId;
         $this->billableRateId = $billableRateId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

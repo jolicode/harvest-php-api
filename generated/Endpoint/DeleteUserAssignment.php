@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class DeleteUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class DeleteUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $projectId;
     protected $userAssignmentId;
@@ -17,7 +17,7 @@ class DeleteUserAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->projectId = $projectId;
         $this->userAssignmentId = $userAssignmentId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

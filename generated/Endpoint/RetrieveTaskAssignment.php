@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class RetrieveTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class RetrieveTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $projectId;
     protected $taskAssignmentId;
@@ -17,7 +17,7 @@ class RetrieveTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         $this->projectId = $projectId;
         $this->taskAssignmentId = $taskAssignmentId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

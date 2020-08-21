@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
@@ -21,7 +21,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listClients(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListClients($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListClients($queryParameters), $fetch);
     }
     /**
      * Creates a new client object. Returns a client object and a 201 Created response code if the call succeeded.
@@ -33,7 +33,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createClient(\JoliCode\Harvest\Api\Model\ClientsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateClient($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateClient($payload), $fetch);
     }
     /**
      * Delete a client. Deleting a client is only possible if it has no projects, invoices, or estimates associated with it. Returns a 200 OK response code if the call succeeded.
@@ -45,7 +45,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteClient($clientId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteClient($clientId), $fetch);
     }
     /**
      * Retrieves the client with the given ID. Returns a client object and a 200 OK response code if a valid identifier was provided.
@@ -57,7 +57,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveClient($clientId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveClient($clientId), $fetch);
     }
     /**
      * Updates the specific client by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a client object and a 200 OK response code if the call succeeded.
@@ -70,7 +70,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateClient(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateClient($clientId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateClient($clientId, $payload), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -79,7 +79,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCompany(), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCompany(), $fetch);
     }
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
@@ -91,7 +91,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateCompany(\JoliCode\Harvest\Api\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($payload), $fetch);
     }
     /**
     * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
@@ -110,7 +110,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listContacts(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListContacts($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListContacts($queryParameters), $fetch);
     }
     /**
      * Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.
@@ -122,7 +122,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($payload), $fetch);
     }
     /**
      * Delete a contact. Returns a 200 OK response code if the call succeeded.
@@ -134,7 +134,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteContact($contactId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteContact($contactId), $fetch);
     }
     /**
      * Retrieves the contact with the given ID. Returns a contact object and a 200 OK response code if a valid identifier was provided.
@@ -146,7 +146,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveContact($contactId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveContact($contactId), $fetch);
     }
     /**
      * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
@@ -159,7 +159,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $payload), $fetch);
     }
     /**
     * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
@@ -177,7 +177,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listEstimateItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
     }
     /**
      * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
@@ -189,7 +189,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($payload), $fetch);
     }
     /**
      * Delete an estimate item category. Returns a 200 OK response code if the call succeeded.
@@ -201,7 +201,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
     /**
      * Retrieves the estimate item category with the given ID. Returns an estimate item category object and a 200 OK response code if a valid identifier was provided.
@@ -213,7 +213,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
     /**
      * Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.
@@ -226,7 +226,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $payload), $fetch);
     }
     /**
     * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
@@ -248,7 +248,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listEstimates(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimates($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimates($queryParameters), $fetch);
     }
     /**
      * Creates a new estimate object. Returns an estimate object and a 201 Created response code if the call succeeded.
@@ -260,7 +260,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createEstimate(\JoliCode\Harvest\Api\Model\EstimatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimate($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimate($payload), $fetch);
     }
     /**
      * Delete an estimate. Returns a 200 OK response code if the call succeeded.
@@ -272,7 +272,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimate($estimateId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimate($estimateId), $fetch);
     }
     /**
      * Retrieves the estimate with the given ID. Returns an estimate object and a 200 OK response code if a valid identifier was provided.
@@ -284,7 +284,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimate($estimateId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimate($estimateId), $fetch);
     }
     /**
      * Updates the specific estimate by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate object and a 200 OK response code if the call succeeded.
@@ -297,7 +297,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $payload), $fetch);
     }
     /**
     * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -316,7 +316,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listMessagesForEstimate(string $estimateId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
     }
     /**
      * Creates a new estimate message object. Returns an estimate message object and a 201 Created response code if the call succeeded.
@@ -329,7 +329,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createEstimateMessage(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $payload), $fetch);
     }
     /**
      * Delete an estimate message. Returns a 200 OK response code if the call succeeded.
@@ -342,7 +342,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
     }
     /**
     * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
@@ -361,7 +361,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listExpenseCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenseCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenseCategories($queryParameters), $fetch);
     }
     /**
      * Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.
@@ -373,7 +373,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($payload), $fetch);
     }
     /**
      * Delete an expense category. Returns a 200 OK response code if the call succeeded.
@@ -385,7 +385,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
     }
     /**
      * Retrieves the expense category with the given ID. Returns an expense category object and a 200 OK response code if a valid identifier was provided.
@@ -397,7 +397,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
     }
     /**
      * Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.
@@ -410,7 +410,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $payload), $fetch);
     }
     /**
     * Returns a list of your expenses. If accessing this endpoint as an Admin, all expenses in the account will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
@@ -434,7 +434,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listExpenses(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenses($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenses($queryParameters), $fetch);
     }
     /**
      * Creates a new expense object. Returns an expense object and a 201 Created response code if the call succeeded.
@@ -446,7 +446,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createExpense(\JoliCode\Harvest\Api\Model\ExpensesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpense($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpense($payload), $fetch);
     }
     /**
      * Delete an expense. Returns a 200 OK response code if the call succeeded.
@@ -458,7 +458,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpense($expenseId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpense($expenseId), $fetch);
     }
     /**
      * Retrieves the expense with the given ID. Returns an expense object and a 200 OK response code if a valid identifier was provided.
@@ -470,7 +470,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpense($expenseId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpense($expenseId), $fetch);
     }
     /**
      * Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.
@@ -483,7 +483,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateExpense(string $expenseId, \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $payload), $fetch);
     }
     /**
     * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
@@ -501,7 +501,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listInvoiceItemCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
     }
     /**
      * Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.
@@ -513,7 +513,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($payload), $fetch);
     }
     /**
      * Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.
@@ -525,7 +525,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
     /**
      * Retrieves the invoice item category with the given ID. Returns an invoice item category object and a 200 OK response code if a valid identifier was provided.
@@ -537,7 +537,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
     /**
      * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
@@ -550,7 +550,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $payload), $fetch);
     }
     /**
     * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
@@ -573,7 +573,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listInvoices(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoices($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoices($queryParameters), $fetch);
     }
     /**
      * Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.
@@ -585,7 +585,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createInvoice(\JoliCode\Harvest\Api\Model\InvoicesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($payload), $fetch);
     }
     /**
      * Delete an invoice. Returns a 200 OK response code if the call succeeded.
@@ -597,7 +597,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoice($invoiceId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoice($invoiceId), $fetch);
     }
     /**
      * Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.
@@ -609,7 +609,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoice($invoiceId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoice($invoiceId), $fetch);
     }
     /**
      * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
@@ -622,7 +622,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $payload), $fetch);
     }
     /**
     * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -641,7 +641,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listMessagesForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
     }
     /**
      * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
@@ -654,7 +654,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createInvoiceMessage(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $payload), $fetch);
     }
     /**
      * Delete an invoice message. Returns a 200 OK response code if the call succeeded.
@@ -667,7 +667,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
     }
     /**
     * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
@@ -686,7 +686,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
     }
     /**
      * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
@@ -699,7 +699,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $payload), $fetch);
     }
     /**
      * Delete an invoice payment. Returns a 200 OK response code if the call succeeded.
@@ -712,7 +712,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
     }
     /**
     * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
@@ -732,7 +732,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjects($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjects($queryParameters), $fetch);
     }
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
@@ -744,7 +744,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($payload), $fetch);
     }
     /**
     * Deletes a project and any time entries or expenses tracked to it.
@@ -758,7 +758,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteProject($projectId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteProject($projectId), $fetch);
     }
     /**
      * Retrieves the project with the given ID. Returns a project object and a 200 OK response code if a valid identifier was provided.
@@ -770,7 +770,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveProject($projectId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveProject($projectId), $fetch);
     }
     /**
      * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
@@ -783,7 +783,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $payload), $fetch);
     }
     /**
     * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
@@ -803,7 +803,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
     }
     /**
      * Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.
@@ -816,7 +816,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $payload), $fetch);
     }
     /**
      * Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
@@ -829,7 +829,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
     }
     /**
      * Retrieves the task assignment with the given ID. Returns a task assignment object and a 200 OK response code if a valid identifier was provided.
@@ -842,7 +842,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
     }
     /**
      * Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.
@@ -856,7 +856,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $payload), $fetch);
     }
     /**
     * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
@@ -877,7 +877,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
     }
     /**
      * Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.
@@ -890,7 +890,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $payload), $fetch);
     }
     /**
      * Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.
@@ -903,7 +903,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
     }
     /**
      * Retrieves the user assignment with the given ID. Returns a user assignment object and a 200 OK response code if a valid identifier was provided.
@@ -916,7 +916,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
     }
     /**
      * Updates the specific user assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user assignment object and a 200 OK response code if the call succeeded.
@@ -930,7 +930,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $payload), $fetch);
     }
     /**
      * 
@@ -947,7 +947,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function expenseCategoriesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -964,7 +964,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function clientsExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsExpensesReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -981,7 +981,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function projectsExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsExpensesReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -998,7 +998,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function teamExpensesReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TeamExpensesReport($queryParameters), $fetch);
     }
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
@@ -1013,7 +1013,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function projectBudgetReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -1030,7 +1030,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function clientsTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsTimeReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -1047,7 +1047,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function projectsTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsTimeReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -1064,7 +1064,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function tasksReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
     }
     /**
      * 
@@ -1081,7 +1081,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function teamTimeReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\TeamTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TeamTimeReport($queryParameters), $fetch);
     }
     /**
     * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
@@ -1100,7 +1100,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function uninvoicedReport(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
     }
     /**
     * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
@@ -1117,7 +1117,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listRoles(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListRoles($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListRoles($queryParameters), $fetch);
     }
     /**
      * Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.
@@ -1129,7 +1129,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($payload), $fetch);
     }
     /**
      * Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.
@@ -1141,7 +1141,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteRole($roleId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteRole($roleId), $fetch);
     }
     /**
      * Retrieves the role with the given ID. Returns a role object and a 200 OK response code if a valid identifier was provided.
@@ -1153,7 +1153,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveRole($roleId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveRole($roleId), $fetch);
     }
     /**
      * Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.
@@ -1166,7 +1166,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $payload), $fetch);
     }
     /**
     * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
@@ -1185,7 +1185,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listTaskAssignments(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignments($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignments($queryParameters), $fetch);
     }
     /**
     * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
@@ -1204,7 +1204,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listTasks(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTasks($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTasks($queryParameters), $fetch);
     }
     /**
      * Creates a new task object. Returns a task object and a 201 Created response code if the call succeeded.
@@ -1216,7 +1216,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createTask(\JoliCode\Harvest\Api\Model\TasksPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTask($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTask($payload), $fetch);
     }
     /**
      * Delete a task. Deleting a task is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
@@ -1228,7 +1228,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTask($taskId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTask($taskId), $fetch);
     }
     /**
      * Retrieves the task with the given ID. Returns a task object and a 200 OK response code if a valid identifier was provided.
@@ -1240,7 +1240,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTask($taskId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTask($taskId), $fetch);
     }
     /**
      * Updates the specific task by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task object and a 200 OK response code if the call succeeded.
@@ -1253,7 +1253,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateTask(string $taskId, \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $payload), $fetch);
     }
     /**
     * Returns a list of your time entries. The time entries are returned sorted by spent_at date. At this time, the sort option can’t be customized.
@@ -1280,7 +1280,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listTimeEntries(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListTimeEntries($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTimeEntries($queryParameters), $fetch);
     }
     /**
     * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
@@ -1294,7 +1294,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function createTimeEntry(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($payload), $fetch);
     }
     /**
      * Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.
@@ -1306,7 +1306,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntry($timeEntryId), $fetch);
     }
     /**
      * Retrieves the time entry with the given ID. Returns a time entry object and a 200 OK response code if a valid identifier was provided.
@@ -1318,7 +1318,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTimeEntry($timeEntryId), $fetch);
     }
     /**
      * Updates the specific time entry by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a time entry object and a 200 OK response code if the call succeeded.
@@ -1331,7 +1331,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateTimeEntry(string $timeEntryId, \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTimeEntry($timeEntryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTimeEntry($timeEntryId, $payload), $fetch);
     }
     /**
      * Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.
@@ -1343,7 +1343,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteTimeEntryExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntryExternalReference($timeEntryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntryExternalReference($timeEntryId), $fetch);
     }
     /**
      * Restarting a time entry is only possible if it isn’t currently running. Returns a 200 OK response code if the call succeeded.
@@ -1355,7 +1355,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function restartStoppedTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RestartStoppedTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RestartStoppedTimeEntry($timeEntryId), $fetch);
     }
     /**
      * Stopping a time entry is only possible if it’s currently running. Returns a 200 OK response code if the call succeeded.
@@ -1367,7 +1367,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function stopRunningTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\StopRunningTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\StopRunningTimeEntry($timeEntryId), $fetch);
     }
     /**
     * Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
@@ -1387,7 +1387,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listUserAssignments(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignments($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignments($queryParameters), $fetch);
     }
     /**
     * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
@@ -1406,7 +1406,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listUsers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListUsers($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUsers($queryParameters), $fetch);
     }
     /**
      * Creates a new user object and sends an invitation email to the address specified in the email parameter. Returns a user object and a 201 Created response code if the call succeeded.
@@ -1418,7 +1418,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($payload), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1427,7 +1427,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
     }
     /**
     * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
@@ -1444,7 +1444,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
     }
     /**
      * Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.
@@ -1456,7 +1456,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUser($userId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUser($userId), $fetch);
     }
     /**
      * Retrieves the user with the given ID. Returns a user object and a 200 OK response code if a valid identifier was provided.
@@ -1468,7 +1468,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUser($userId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUser($userId), $fetch);
     }
     /**
      * Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.
@@ -1481,7 +1481,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
     }
     /**
     * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
@@ -1499,7 +1499,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listBillableRatesForSpecificUser(string $userId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListBillableRatesForSpecificUser($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListBillableRatesForSpecificUser($userId, $queryParameters), $fetch);
     }
     /**
     * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
@@ -1517,7 +1517,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function createBillableRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $payload), $fetch);
     }
     /**
      * Retrieves the billable rate with the given ID. Returns a billable rate object and a 200 OK response code if a valid identifier was provided.
@@ -1530,7 +1530,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveBillableRate(string $userId, string $billableRateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveBillableRate($userId, $billableRateId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveBillableRate($userId, $billableRateId), $fetch);
     }
     /**
     * Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.
@@ -1548,7 +1548,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listCostRatesForSpecificUser(string $userId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListCostRatesForSpecificUser($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListCostRatesForSpecificUser($userId, $queryParameters), $fetch);
     }
     /**
     * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
@@ -1566,7 +1566,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function createCostRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $payload), $fetch);
     }
     /**
      * Retrieves the cost rate with the given ID. Returns a cost rate object and a 200 OK response code if a valid identifier was provided.
@@ -1579,7 +1579,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveCostRate(string $userId, string $costRateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCostRate($userId, $costRateId), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCostRate($userId, $costRateId), $fetch);
     }
     /**
     * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
@@ -1598,7 +1598,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listActiveProjectAssignments(string $userId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

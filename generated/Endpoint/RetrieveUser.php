@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class RetrieveUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class RetrieveUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $userId;
     /**
@@ -14,7 +14,7 @@ class RetrieveUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $this->userId = $userId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

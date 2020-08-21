@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListMessagesForEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ListMessagesForEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $estimateId;
     /**
@@ -22,7 +22,7 @@ class ListMessagesForEstimate extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->estimateId = $estimateId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class UpdateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class UpdateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $estimateItemCategoryId;
     /**
@@ -16,7 +16,7 @@ class UpdateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->estimateItemCategoryId = $estimateItemCategoryId;
         $this->body = $payload;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

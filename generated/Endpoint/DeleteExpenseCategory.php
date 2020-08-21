@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $expenseCategoryId;
     /**
@@ -14,7 +14,7 @@ class DeleteExpenseCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->expenseCategoryId = $expenseCategoryId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

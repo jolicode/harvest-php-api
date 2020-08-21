@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $timeEntryId;
     /**
@@ -14,7 +14,7 @@ class DeleteTimeEntryExternalReference extends \Jane\OpenApiRuntime\Client\BaseE
     {
         $this->timeEntryId = $timeEntryId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

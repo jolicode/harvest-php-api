@@ -3343,6 +3343,12 @@ paths:
           required: false
           in: query
           type: integer
+        -
+          name: is_active
+          description: 'Pass true to only return active projects and false to return inactive projects.'
+          required: false
+          in: query
+          type: boolean
       responses:
         200:
           description: 'Project Budget Report'
@@ -5108,7 +5114,7 @@ definitions:
         description: 'Whether the company is active or archived.'
       week_start_day:
         type: string
-        description: 'The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.'
+        description: 'The weekday used as the start of the week. Returns one of: Saturday, Sunday, or Monday.'
       wants_timestamp_timers:
         type: boolean
         description: 'Whether time is tracked via duration or start and end times.'

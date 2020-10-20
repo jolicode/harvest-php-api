@@ -1006,6 +1006,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      * @param array $queryParameters {
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *

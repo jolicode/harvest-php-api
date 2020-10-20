@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\PaginationLinks();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('first', $data) && $data['first'] !== null) {
             $object->setFirst($data['first']);
         }
@@ -62,12 +65,8 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFirst()) {
-            $data['first'] = $object->getFirst();
-        }
-        if (null !== $object->getLast()) {
-            $data['last'] = $object->getLast();
-        }
+        $data['first'] = $object->getFirst();
+        $data['last'] = $object->getLast();
         if (null !== $object->getPrevious()) {
             $data['previous'] = $object->getPrevious();
         }

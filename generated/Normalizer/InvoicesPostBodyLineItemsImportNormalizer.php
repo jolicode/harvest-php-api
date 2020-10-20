@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImport();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('project_ids', $data) && $data['project_ids'] !== null) {
             $values = array();
             foreach ($data['project_ids'] as $value) {
@@ -60,13 +63,11 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProjectIds()) {
-            $values = array();
-            foreach ($object->getProjectIds() as $value) {
-                $values[] = $value;
-            }
-            $data['project_ids'] = $values;
+        $values = array();
+        foreach ($object->getProjectIds() as $value) {
+            $values[] = $value;
         }
+        $data['project_ids'] = $values;
         if (null !== $object->getTime()) {
             $data['time'] = $this->normalizer->normalize($object->getTime(), 'json', $context);
         }

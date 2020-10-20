@@ -11,7 +11,7 @@
 
 namespace JoliCode\Harvest;
 
-use Jane\OpenApiRuntime\Client\CustomQueryResolver;
+use JoliCode\Harvest\Api\Runtime\Client\CustomQueryResolver;
 use Symfony\Component\OptionsResolver\Options;
 
 class BooleanCustomQueryResolver implements CustomQueryResolver

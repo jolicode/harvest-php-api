@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class ExpensesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ExpensesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
             $object->setUserId($data['user_id']);
         }
@@ -95,15 +98,9 @@ class ExpensesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
         }
-        if (null !== $object->getProjectId()) {
-            $data['project_id'] = $object->getProjectId();
-        }
-        if (null !== $object->getExpenseCategoryId()) {
-            $data['expense_category_id'] = $object->getExpenseCategoryId();
-        }
-        if (null !== $object->getSpentDate()) {
-            $data['spent_date'] = $object->getSpentDate()->format('Y-m-d');
-        }
+        $data['project_id'] = $object->getProjectId();
+        $data['expense_category_id'] = $object->getExpenseCategoryId();
+        $data['spent_date'] = $object->getSpentDate()->format('Y-m-d');
         if (null !== $object->getUnits()) {
             $data['units'] = $object->getUnits();
         }

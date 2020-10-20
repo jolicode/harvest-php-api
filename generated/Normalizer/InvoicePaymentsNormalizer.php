@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class InvoicePaymentsNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicePayments();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('invoice_payments', $data) && $data['invoice_payments'] !== null) {
             $values = array();
             foreach ($data['invoice_payments'] as $value) {
@@ -90,34 +93,18 @@ class InvoicePaymentsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getInvoicePayments()) {
-            $values = array();
-            foreach ($object->getInvoicePayments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['invoice_payments'] = $values;
+        $values = array();
+        foreach ($object->getInvoicePayments() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getPerPage()) {
-            $data['per_page'] = $object->getPerPage();
-        }
-        if (null !== $object->getTotalPages()) {
-            $data['total_pages'] = $object->getTotalPages();
-        }
-        if (null !== $object->getTotalEntries()) {
-            $data['total_entries'] = $object->getTotalEntries();
-        }
-        if (null !== $object->getNextPage()) {
-            $data['next_page'] = $object->getNextPage();
-        }
-        if (null !== $object->getPreviousPage()) {
-            $data['previous_page'] = $object->getPreviousPage();
-        }
-        if (null !== $object->getPage()) {
-            $data['page'] = $object->getPage();
-        }
-        if (null !== $object->getLinks()) {
-            $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['invoice_payments'] = $values;
+        $data['per_page'] = $object->getPerPage();
+        $data['total_pages'] = $object->getTotalPages();
+        $data['total_entries'] = $object->getTotalEntries();
+        $data['next_page'] = $object->getNextPage();
+        $data['previous_page'] = $object->getPreviousPage();
+        $data['page'] = $object->getPage();
+        $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
 }

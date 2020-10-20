@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 {
     /**
     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.

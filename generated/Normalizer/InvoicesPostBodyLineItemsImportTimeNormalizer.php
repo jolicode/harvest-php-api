@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('summary_type', $data) && $data['summary_type'] !== null) {
             $object->setSummaryType($data['summary_type']);
         }
@@ -56,9 +59,7 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSummaryType()) {
-            $data['summary_type'] = $object->getSummaryType();
-        }
+        $data['summary_type'] = $object->getSummaryType();
         if (null !== $object->getFrom()) {
             $data['from'] = $object->getFrom()->format('Y-m-d');
         }

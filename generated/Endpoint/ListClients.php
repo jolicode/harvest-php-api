@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListClients extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ListClients extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     /**
     * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
@@ -20,7 +20,7 @@ class ListClients extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

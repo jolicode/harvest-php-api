@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ClientsExpensesReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ClientsExpensesReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -18,7 +18,7 @@ class ClientsExpensesReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

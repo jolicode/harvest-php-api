@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CreateTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     /**
     * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
@@ -15,7 +15,7 @@ class CreateTimeEntry extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         $this->body = $payload;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

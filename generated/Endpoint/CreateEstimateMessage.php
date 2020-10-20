@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateEstimateMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CreateEstimateMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     protected $estimateId;
     /**
@@ -16,7 +16,7 @@ class CreateEstimateMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $this->estimateId = $estimateId;
         $this->body = $payload;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

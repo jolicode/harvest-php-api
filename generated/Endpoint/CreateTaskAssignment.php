@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CreateTaskAssignment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     protected $projectId;
     /**
@@ -16,7 +16,7 @@ class CreateTaskAssignment extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->projectId = $projectId;
         $this->body = $payload;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

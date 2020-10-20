@@ -3,6 +3,7 @@
 ## Unreleased
 
  * add support for the `is_active` query param on the `/reports/project_budget` endpoint - see jolicode/harvest-openapi-generator#14
+ * upgrade to `janephp/open-api` 6.2
 
 ## 4.1.0 (2020-08-21)
 

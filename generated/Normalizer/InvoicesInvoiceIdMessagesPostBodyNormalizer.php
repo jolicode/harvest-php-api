@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
             $object->setEventType($data['event_type']);
         }
@@ -93,13 +96,11 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getEventType()) {
             $data['event_type'] = $object->getEventType();
         }
-        if (null !== $object->getRecipients()) {
-            $values = array();
-            foreach ($object->getRecipients() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['recipients'] = $values;
+        $values = array();
+        foreach ($object->getRecipients() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['recipients'] = $values;
         if (null !== $object->getSubject()) {
             $data['subject'] = $object->getSubject();
         }

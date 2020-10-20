@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ProjectsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('client_id', $data) && $data['client_id'] !== null) {
             $object->setClientId($data['client_id']);
         }
@@ -158,36 +161,26 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClientId()) {
-            $data['client_id'] = $object->getClientId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['client_id'] = $object->getClientId();
+        $data['name'] = $object->getName();
         if (null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
         if (null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
         }
-        if (null !== $object->getIsBillable()) {
-            $data['is_billable'] = $object->getIsBillable();
-        }
+        $data['is_billable'] = $object->getIsBillable();
         if (null !== $object->getIsFixedFee()) {
             $data['is_fixed_fee'] = $object->getIsFixedFee();
         }
-        if (null !== $object->getBillBy()) {
-            $data['bill_by'] = $object->getBillBy();
-        }
+        $data['bill_by'] = $object->getBillBy();
         if (null !== $object->getHourlyRate()) {
             $data['hourly_rate'] = $object->getHourlyRate();
         }
         if (null !== $object->getBudget()) {
             $data['budget'] = $object->getBudget();
         }
-        if (null !== $object->getBudgetBy()) {
-            $data['budget_by'] = $object->getBudgetBy();
-        }
+        $data['budget_by'] = $object->getBudgetBy();
         if (null !== $object->getBudgetIsMonthly()) {
             $data['budget_is_monthly'] = $object->getBudgetIsMonthly();
         }

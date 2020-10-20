@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class RetrieveInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class RetrieveInvoiceItemCategory extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     protected $invoiceItemCategoryId;
     /**
@@ -14,7 +14,7 @@ class RetrieveInvoiceItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $this->invoiceItemCategoryId = $invoiceItemCategoryId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

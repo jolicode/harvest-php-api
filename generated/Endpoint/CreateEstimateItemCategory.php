@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class CreateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CreateEstimateItemCategory extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     /**
      * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
@@ -13,7 +13,7 @@ class CreateEstimateItemCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     {
         $this->body = $payload;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

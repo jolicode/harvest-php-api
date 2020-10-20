@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
         }
@@ -53,9 +56,7 @@ class InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer implements Denor
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
+        $data['email'] = $object->getEmail();
         return $data;
     }
 }

@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ContactsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('client_id', $data) && $data['client_id'] !== null) {
             $object->setClientId($data['client_id']);
         }
@@ -86,15 +89,11 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClientId()) {
-            $data['client_id'] = $object->getClientId();
-        }
+        $data['client_id'] = $object->getClientId();
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getFirstName()) {
-            $data['first_name'] = $object->getFirstName();
-        }
+        $data['first_name'] = $object->getFirstName();
         if (null !== $object->getLastName()) {
             $data['last_name'] = $object->getLastName();
         }

@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TaskAssignments();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('task_assignments', $data) && $data['task_assignments'] !== null) {
             $values = array();
             foreach ($data['task_assignments'] as $value) {
@@ -90,34 +93,18 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTaskAssignments()) {
-            $values = array();
-            foreach ($object->getTaskAssignments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['task_assignments'] = $values;
+        $values = array();
+        foreach ($object->getTaskAssignments() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getPerPage()) {
-            $data['per_page'] = $object->getPerPage();
-        }
-        if (null !== $object->getTotalPages()) {
-            $data['total_pages'] = $object->getTotalPages();
-        }
-        if (null !== $object->getTotalEntries()) {
-            $data['total_entries'] = $object->getTotalEntries();
-        }
-        if (null !== $object->getNextPage()) {
-            $data['next_page'] = $object->getNextPage();
-        }
-        if (null !== $object->getPreviousPage()) {
-            $data['previous_page'] = $object->getPreviousPage();
-        }
-        if (null !== $object->getPage()) {
-            $data['page'] = $object->getPage();
-        }
-        if (null !== $object->getLinks()) {
-            $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['task_assignments'] = $values;
+        $data['per_page'] = $object->getPerPage();
+        $data['total_pages'] = $object->getTotalPages();
+        $data['total_entries'] = $object->getTotalEntries();
+        $data['next_page'] = $object->getNextPage();
+        $data['previous_page'] = $object->getPreviousPage();
+        $data['page'] = $object->getPage();
+        $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
 }

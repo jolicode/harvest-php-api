@@ -3,7 +3,7 @@
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class ProjectsProjectIdTaskAssignmentsPostBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('task_id', $data) && $data['task_id'] !== null) {
             $object->setTaskId($data['task_id']);
         }
@@ -68,9 +71,7 @@ class ProjectsProjectIdTaskAssignmentsPostBodyNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTaskId()) {
-            $data['task_id'] = $object->getTaskId();
-        }
+        $data['task_id'] = $object->getTaskId();
         if (null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
         }

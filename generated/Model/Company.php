@@ -29,7 +29,7 @@ class Company
      */
     protected $isActive;
     /**
-     * The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
+     * The weekday used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
      *
      * @var string|null
      */
@@ -191,7 +191,7 @@ class Company
         return $this;
     }
     /**
-     * The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
+     * The weekday used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
      *
      * @return string|null
      */
@@ -200,7 +200,7 @@ class Company
         return $this->weekStartDay;
     }
     /**
-     * The week day used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
+     * The weekday used as the start of the week. Returns one of: Saturday, Sunday, or Monday.
      *
      * @param string|null $weekStartDay
      *

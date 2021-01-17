@@ -90,6 +90,18 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
+        if (\array_key_exists('total_cost', $data) && $data['total_cost'] !== null) {
+            $object->setTotalCost($data['total_cost']);
+        }
+        elseif (\array_key_exists('total_cost', $data) && $data['total_cost'] === null) {
+            $object->setTotalCost(null);
+        }
+        if (\array_key_exists('units', $data) && $data['units'] !== null) {
+            $object->setUnits($data['units']);
+        }
+        elseif (\array_key_exists('units', $data) && $data['units'] === null) {
+            $object->setUnits(null);
+        }
         if (\array_key_exists('billable', $data) && $data['billable'] !== null) {
             $object->setBillable($data['billable']);
         }
@@ -169,6 +181,12 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getNotes()) {
             $data['notes'] = $object->getNotes();
+        }
+        if (null !== $object->getTotalCost()) {
+            $data['total_cost'] = $object->getTotalCost();
+        }
+        if (null !== $object->getUnits()) {
+            $data['units'] = $object->getUnits();
         }
         if (null !== $object->getBillable()) {
             $data['billable'] = $object->getBillable();

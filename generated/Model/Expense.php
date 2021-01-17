@@ -59,6 +59,18 @@ class Expense
      */
     protected $notes;
     /**
+     * The total amount of the expense.
+     *
+     * @var float|null
+     */
+    protected $totalCost;
+    /**
+     * The quantity of units to use in calculating the total_cost of the expense.
+     *
+     * @var int|null
+     */
+    protected $units;
+    /**
      * Whether the expense is billable or not.
      *
      * @var bool|null
@@ -293,6 +305,48 @@ class Expense
     public function setNotes(?string $notes) : self
     {
         $this->notes = $notes;
+        return $this;
+    }
+    /**
+     * The total amount of the expense.
+     *
+     * @return float|null
+     */
+    public function getTotalCost() : ?float
+    {
+        return $this->totalCost;
+    }
+    /**
+     * The total amount of the expense.
+     *
+     * @param float|null $totalCost
+     *
+     * @return self
+     */
+    public function setTotalCost(?float $totalCost) : self
+    {
+        $this->totalCost = $totalCost;
+        return $this;
+    }
+    /**
+     * The quantity of units to use in calculating the total_cost of the expense.
+     *
+     * @return int|null
+     */
+    public function getUnits() : ?int
+    {
+        return $this->units;
+    }
+    /**
+     * The quantity of units to use in calculating the total_cost of the expense.
+     *
+     * @param int|null $units
+     *
+     * @return self
+     */
+    public function setUnits(?int $units) : self
+    {
+        $this->units = $units;
         return $this;
     }
     /**

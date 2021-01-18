@@ -115,6 +115,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/clients/{clientId}':
+    delete:
+      summary: 'Delete a client'
+      operationId: deleteClient
+      description: 'Delete a client. Deleting a client is only possible if it has no projects, invoices, or estimates associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a client'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#delete-a-client'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: clientId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a client'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a client'
       operationId: retrieveClient
@@ -183,30 +207,6 @@ paths:
           description: 'Update a client'
           schema:
             $ref: '#/definitions/Client'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a client'
-      operationId: deleteClient
-      description: 'Delete a client. Deleting a client is only possible if it has no projects, invoices, or estimates associated with it. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a client'
-        url: 'https://help.getharvest.com/api-v2/clients-api/clients/clients/#delete-a-client'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: clientId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a client'
         default:
           description: 'error payload'
           schema:
@@ -374,6 +374,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/contacts/{contactId}':
+    delete:
+      summary: 'Delete a contact'
+      operationId: deleteContact
+      description: 'Delete a contact. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a contact'
+        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#delete-a-contact'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: contactId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a contact'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a contact'
       operationId: retrieveContact
@@ -460,30 +484,6 @@ paths:
           description: 'error payload'
           schema:
             $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a contact'
-      operationId: deleteContact
-      description: 'Delete a contact. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a contact'
-        url: 'https://help.getharvest.com/api-v2/clients-api/clients/contacts/#delete-a-contact'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: contactId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a contact'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
   /estimate_item_categories:
     get:
       summary: 'List all estimate item categories'
@@ -559,6 +559,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/estimate_item_categories/{estimateItemCategoryId}':
+    delete:
+      summary: 'Delete an estimate item category'
+      operationId: deleteEstimateItemCategory
+      description: 'Delete an estimate item category. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an estimate item category'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#delete-an-estimate-item-category'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: estimateItemCategoryId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an estimate item category'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an estimate item category'
       operationId: retrieveEstimateItemCategory
@@ -618,30 +642,6 @@ paths:
           description: 'Update an estimate item category'
           schema:
             $ref: '#/definitions/EstimateItemCategory'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an estimate item category'
-      operationId: deleteEstimateItemCategory
-      description: 'Delete an estimate item category. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an estimate item category'
-        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimate-item-categories/#delete-an-estimate-item-category'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: estimateItemCategoryId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an estimate item category'
         default:
           description: 'error payload'
           schema:
@@ -806,6 +806,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/estimates/{estimateId}':
+    delete:
+      summary: 'Delete an estimate'
+      operationId: deleteEstimate
+      description: 'Delete an estimate. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an estimate'
+        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: estimateId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an estimate'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an estimate'
       operationId: retrieveEstimate
@@ -927,30 +951,6 @@ paths:
           description: 'Update an estimate'
           schema:
             $ref: '#/definitions/Estimate'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an estimate'
-      operationId: deleteEstimate
-      description: 'Delete an estimate. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an estimate'
-        url: 'https://help.getharvest.com/api-v2/estimates-api/estimates/estimates/#delete-an-estimate'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: estimateId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an estimate'
         default:
           description: 'error payload'
           schema:
@@ -1184,6 +1184,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/expense_categories/{expenseCategoryId}':
+    delete:
+      summary: 'Delete an expense category'
+      operationId: deleteExpenseCategory
+      description: 'Delete an expense category. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an expense category'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#delete-an-expense-category'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: expenseCategoryId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an expense category'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an expense category'
       operationId: retrieveExpenseCategory
@@ -1253,30 +1277,6 @@ paths:
           description: 'Update an expense category'
           schema:
             $ref: '#/definitions/ExpenseCategory'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an expense category'
-      operationId: deleteExpenseCategory
-      description: 'Delete an expense category. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an expense category'
-        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expense-categories/#delete-an-expense-category'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: expenseCategoryId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an expense category'
         default:
           description: 'error payload'
           schema:
@@ -1424,6 +1424,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/expenses/{expenseId}':
+    delete:
+      summary: 'Delete an expense'
+      operationId: deleteExpense
+      description: 'Delete an expense. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an expense'
+        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#delete-an-expense'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: expenseId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an expense'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an expense'
       operationId: retrieveExpense
@@ -1516,30 +1540,6 @@ paths:
           description: 'error payload'
           schema:
             $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an expense'
-      operationId: deleteExpense
-      description: 'Delete an expense. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an expense'
-        url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#delete-an-expense'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: expenseId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an expense'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
   /invoice_item_categories:
     get:
       summary: 'List all invoice item categories'
@@ -1615,6 +1615,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/invoice_item_categories/{invoiceItemCategoryId}':
+    delete:
+      summary: 'Delete an invoice item category'
+      operationId: deleteInvoiceItemCategory
+      description: 'Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice item category'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#delete-an-invoice-item-category'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: invoiceItemCategoryId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an invoice item category'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an invoice item category'
       operationId: retrieveInvoiceItemCategory
@@ -1674,30 +1698,6 @@ paths:
           description: 'Update an invoice item category'
           schema:
             $ref: '#/definitions/InvoiceItemCategory'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an invoice item category'
-      operationId: deleteInvoiceItemCategory
-      description: 'Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an invoice item category'
-        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-item-categories/#delete-an-invoice-item-category'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: invoiceItemCategoryId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an invoice item category'
         default:
           description: 'error payload'
           schema:
@@ -1935,6 +1935,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/invoices/{invoiceId}':
+    delete:
+      summary: 'Delete an invoice'
+      operationId: deleteInvoice
+      description: 'Delete an invoice. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete an invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: invoiceId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete an invoice'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve an invoice'
       operationId: retrieveInvoice
@@ -2075,30 +2099,6 @@ paths:
           description: 'Update an invoice'
           schema:
             $ref: '#/definitions/Invoice'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete an invoice'
-      operationId: deleteInvoice
-      description: 'Delete an invoice. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete an invoice'
-        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/#delete-an-invoice'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: invoiceId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete an invoice'
         default:
           description: 'error payload'
           schema:
@@ -2532,6 +2532,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/projects/{projectId}':
+    delete:
+      summary: 'Delete a project'
+      operationId: deleteProject
+      description: "Deletes a project and any time entries or expenses tracked to it.\nHowever, invoices associated with the project will not be deleted.\nIf you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead."
+      externalDocs:
+        description: 'Delete a project'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#delete-a-project'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: projectId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a project'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a project'
       operationId: retrieveProject
@@ -2660,30 +2684,6 @@ paths:
           description: 'error payload'
           schema:
             $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a project'
-      operationId: deleteProject
-      description: "Deletes a project and any time entries or expenses tracked to it.\nHowever, invoices associated with the project will not be deleted.\nIf you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead."
-      externalDocs:
-        description: 'Delete a project'
-        url: 'https://help.getharvest.com/api-v2/projects-api/projects/projects/#delete-a-project'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: projectId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a project'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
   '/projects/{projectId}/task_assignments':
     get:
       summary: 'List all task assignments for a specific project'
@@ -2790,6 +2790,35 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/projects/{projectId}/task_assignments/{taskAssignmentId}':
+    delete:
+      summary: 'Delete a task assignment'
+      operationId: deleteTaskAssignment
+      description: 'Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a task assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#delete-a-task-assignment'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: projectId
+          required: true
+          in: path
+          type: string
+        -
+          name: taskAssignmentId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a task assignment'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a task assignment'
       operationId: retrieveTaskAssignment
@@ -2870,35 +2899,6 @@ paths:
           description: 'Update a task assignment'
           schema:
             $ref: '#/definitions/TaskAssignment'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a task assignment'
-      operationId: deleteTaskAssignment
-      description: 'Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a task assignment'
-        url: 'https://help.getharvest.com/api-v2/projects-api/projects/task-assignments/#delete-a-task-assignment'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: projectId
-          required: true
-          in: path
-          type: string
-        -
-          name: taskAssignmentId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a task assignment'
         default:
           description: 'error payload'
           schema:
@@ -3018,6 +3018,35 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/projects/{projectId}/user_assignments/{userAssignmentId}':
+    delete:
+      summary: 'Delete a user assignment'
+      operationId: deleteUserAssignment
+      description: 'Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a user assignment'
+        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#delete-a-user-assignment'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: projectId
+          required: true
+          in: path
+          type: string
+        -
+          name: userAssignmentId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a user assignment'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a user assignment'
       operationId: retrieveUserAssignment
@@ -3101,35 +3130,6 @@ paths:
           description: 'Update a user assignment'
           schema:
             $ref: '#/definitions/UserAssignment'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a user assignment'
-      operationId: deleteUserAssignment
-      description: 'Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a user assignment'
-        url: 'https://help.getharvest.com/api-v2/projects-api/projects/user-assignments/#delete-a-user-assignment'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: projectId
-          required: true
-          in: path
-          type: string
-        -
-          name: userAssignmentId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a user assignment'
         default:
           description: 'error payload'
           schema:
@@ -3662,6 +3662,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/roles/{roleId}':
+    delete:
+      summary: 'Delete a role'
+      operationId: deleteRole
+      description: 'Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a role'
+        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#delete-a-role'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: roleId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a role'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a role'
       operationId: retrieveRole
@@ -3728,30 +3752,6 @@ paths:
           description: 'Update a role'
           schema:
             $ref: '#/definitions/Role'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a role'
-      operationId: deleteRole
-      description: 'Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a role'
-        url: 'https://help.getharvest.com/api-v2/roles-api/roles/roles/#delete-a-role'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: roleId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a role'
         default:
           description: 'error payload'
           schema:
@@ -3896,6 +3896,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/tasks/{taskId}':
+    delete:
+      summary: 'Delete a task'
+      operationId: deleteTask
+      description: 'Delete a task. Deleting a task is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a task'
+        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#delete-a-task'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: taskId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a task'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a task'
       operationId: retrieveTask
@@ -3968,30 +3992,6 @@ paths:
           description: 'Update a task'
           schema:
             $ref: '#/definitions/Task'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a task'
-      operationId: deleteTask
-      description: 'Delete a task. Deleting a task is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a task'
-        url: 'https://help.getharvest.com/api-v2/tasks-api/tasks/tasks/#delete-a-task'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: taskId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a task'
         default:
           description: 'error payload'
           schema:
@@ -4163,6 +4163,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/time_entries/{timeEntryId}':
+    delete:
+      summary: 'Delete a time entry'
+      operationId: deleteTimeEntry
+      description: 'Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a time entry'
+        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entry'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: timeEntryId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a time entry'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a time entry'
       operationId: retrieveTimeEntry
@@ -4254,30 +4278,6 @@ paths:
           description: 'Update a time entry'
           schema:
             $ref: '#/definitions/TimeEntry'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a time entry'
-      operationId: deleteTimeEntry
-      description: 'Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a time entry'
-        url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#delete-a-time-entry'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: timeEntryId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a time entry'
         default:
           description: 'error payload'
           schema:
@@ -4599,6 +4599,30 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   '/users/{userId}':
+    delete:
+      summary: 'Delete a user'
+      operationId: deleteUser
+      description: 'Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.'
+      externalDocs:
+        description: 'Delete a user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#delete-a-user'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          type: string
+      responses:
+        200:
+          description: 'Delete a user'
+        default:
+          description: 'error payload'
+          schema:
+            $ref: '#/definitions/Error'
     get:
       summary: 'Retrieve a user'
       operationId: retrieveUser
@@ -4709,30 +4733,6 @@ paths:
           description: 'Update a user'
           schema:
             $ref: '#/definitions/User'
-        default:
-          description: 'error payload'
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      summary: 'Delete a user'
-      operationId: deleteUser
-      description: 'Delete a user. Deleting a user is only possible if they have no time entries or expenses associated with them. Returns a 200 OK response code if the call succeeded.'
-      externalDocs:
-        description: 'Delete a user'
-        url: 'https://help.getharvest.com/api-v2/users-api/users/users/#delete-a-user'
-      security:
-        -
-          BearerAuth: []
-          AccountAuth: []
-      parameters:
-        -
-          name: userId
-          required: true
-          in: path
-          type: string
-      responses:
-        200:
-          description: 'Delete a user'
         default:
           description: 'error payload'
           schema:
@@ -5784,14 +5784,6 @@ definitions:
       notes:
         type: string
         description: 'Textual notes used to describe the expense.'
-      total_cost:
-        type: number
-        description: 'The total amount of the expense.'
-        format: float
-      units:
-        type: integer
-        description: 'The quantity of units to use in calculating the total_cost of the expense.'
-        format: int32
       billable:
         type: boolean
         description: 'Whether the expense is billable or not.'
@@ -5819,6 +5811,14 @@ definitions:
         type: string
         description: 'Date and time the expense was last updated.'
         format: date-time
+      total_cost:
+        type: number
+        description: 'The total amount of the expense.'
+        format: float
+      units:
+        type: integer
+        description: 'The quantity of units to use in calculating the total_cost of the expense.'
+        format: int32
   ExpenseCategory:
     type: object
     externalDocs:

@@ -1,5 +1,10 @@
 # Changes between versions
 
+## 4.3.0 (2021-01-18)
+
+ * add the `units` and `total_cost` properties to the `Expense` definition
+ * upgrade to `janephp/open-api` 6.3
+
 ## 4.2.0 (2020-10-20)
 
  * add support for the `is_active` query param on the `/reports/project_budget` endpoint - see jolicode/harvest-openapi-generator#14

@@ -46,62 +46,62 @@ $clients = $harvestClient->listClients([
 
 ## Available operations
 
-Instead of `listClients()`, you can use all of these methods:
+Instead of the `listClients()` method above, you can use all of these methods:
 
  * Clients:
    * `listClients()`
    * `createClient()`
+   * `deleteClient()`
    * `retrieveClient()`
    * `updateClient()`
-   * `deleteClient()`
  * Company:
    * `retrieveCompany()`
    * `updateCompany()`
  * Contacts:
    * `listContacts()`
    * `createContact()`
+   * `deleteContact()`
    * `retrieveContact()`
    * `updateContact()`
-   * `deleteContact()`
  * Estimate Item Categories:
    * `listEstimateItemCategories()`
    * `createEstimateItemCategory()`
+   * `deleteEstimateItemCategory()`
    * `retrieveEstimateItemCategory()`
    * `updateEstimateItemCategory()`
-   * `deleteEstimateItemCategory()`
  * Estimates:
    * `listEstimates()`
    * `createEstimate()`
+   * `deleteEstimate()`
    * `retrieveEstimate()`
    * `updateEstimate()`
-   * `deleteEstimate()`
    * `listMessagesForEstimate()`
    * `createEstimateMessage()`
    * `deleteEstimateMessage()`
  * Expense Categories:
    * `listExpenseCategories()`
    * `createExpenseCategory()`
+   * `deleteExpenseCategory()`
    * `retrieveExpenseCategory()`
    * `updateExpenseCategory()`
-   * `deleteExpenseCategory()`
  * Expenses:
    * `listExpenses()`
    * `createExpense()`
+   * `deleteExpense()`
    * `retrieveExpense()`
    * `updateExpense()`
-   * `deleteExpense()`
  * Invoice Item Categories:
    * `listInvoiceItemCategories()`
    * `createInvoiceItemCategory()`
+   * `deleteInvoiceItemCategory()`
    * `retrieveInvoiceItemCategory()`
    * `updateInvoiceItemCategory()`
-   * `deleteInvoiceItemCategory()`
  * Invoices:
    * `listInvoices()`
    * `createInvoice()`
+   * `deleteInvoice()`
    * `retrieveInvoice()`
    * `updateInvoice()`
-   * `deleteInvoice()`
    * `listMessagesForInvoice()`
    * `createInvoiceMessage()`
    * `deleteInvoiceMessage()`
@@ -111,19 +111,19 @@ Instead of `listClients()`, you can use all of these methods:
  * Projects:
    * `listProjects()`
    * `createProject()`
+   * `deleteProject()`
    * `retrieveProject()`
    * `updateProject()`
-   * `deleteProject()`
    * `listTaskAssignmentsForSpecificProject()`
    * `createTaskAssignment()`
+   * `deleteTaskAssignment()`
    * `retrieveTaskAssignment()`
    * `updateTaskAssignment()`
-   * `deleteTaskAssignment()`
    * `listUserAssignmentsForSpecificProject()`
    * `createUserAssignment()`
+   * `deleteUserAssignment()`
    * `retrieveUserAssignment()`
    * `updateUserAssignment()`
-   * `deleteUserAssignment()`
  * Reports:
    * `expenseCategoriesReport()`
    * `clientsExpensesReport()`
@@ -138,23 +138,23 @@ Instead of `listClients()`, you can use all of these methods:
  * Roles:
    * `listRoles()`
    * `createRole()`
+   * `deleteRole()`
    * `retrieveRole()`
    * `updateRole()`
-   * `deleteRole()`
  * Task Assignments:
    * `listTaskAssignments()`
  * Tasks:
    * `listTasks()`
    * `createTask()`
+   * `deleteTask()`
    * `retrieveTask()`
    * `updateTask()`
-   * `deleteTask()`
  * Time Entries:
    * `listTimeEntries()`
    * `createTimeEntry()`
+   * `deleteTimeEntry()`
    * `retrieveTimeEntry()`
    * `updateTimeEntry()`
-   * `deleteTimeEntry()`
    * `deleteTimeEntryExternalReference()`
    * `restartStoppedTimeEntry()`
    * `stopRunningTimeEntry()`
@@ -165,9 +165,9 @@ Instead of `listClients()`, you can use all of these methods:
    * `createUser()`
    * `retrieveTheCurrentlyAuthenticatedUser()`
    * `listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser()`
+   * `deleteUser()`
    * `retrieveUser()`
    * `updateUser()`
-   * `deleteUser()`
    * `listBillableRatesForSpecificUser()`
    * `createBillableRate()`
    * `retrieveBillableRate()`

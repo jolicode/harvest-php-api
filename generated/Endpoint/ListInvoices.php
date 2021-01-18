@@ -59,7 +59,7 @@ class ListInvoices extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
      *
      * @return null|\JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Invoices', 'json');

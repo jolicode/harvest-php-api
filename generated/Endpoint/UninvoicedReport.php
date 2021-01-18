@@ -51,7 +51,7 @@ class UninvoicedReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint
      *
      * @return null|\JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults', 'json');

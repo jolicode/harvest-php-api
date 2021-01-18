@@ -5784,6 +5784,14 @@ definitions:
       notes:
         type: string
         description: 'Textual notes used to describe the expense.'
+      total_cost:
+        type: number
+        description: 'The total amount of the expense.'
+        format: float
+      units:
+        type: integer
+        description: 'The quantity of units to use in calculating the total_cost of the expense.'
+        format: int32
       billable:
         type: boolean
         description: 'Whether the expense is billable or not.'

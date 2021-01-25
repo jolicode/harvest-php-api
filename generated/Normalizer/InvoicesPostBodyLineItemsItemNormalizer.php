@@ -36,47 +36,26 @@ class InvoicesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+        if (\array_key_exists('project_id', $data)) {
             $object->setProjectId($data['project_id']);
         }
-        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
-            $object->setProjectId(null);
-        }
-        if (\array_key_exists('kind', $data) && $data['kind'] !== null) {
+        if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
         }
-        elseif (\array_key_exists('kind', $data) && $data['kind'] === null) {
-            $object->setKind(null);
-        }
-        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+        if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
-        }
-        if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
+        if (\array_key_exists('quantity', $data)) {
             $object->setQuantity($data['quantity']);
         }
-        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
-            $object->setQuantity(null);
-        }
-        if (\array_key_exists('unit_price', $data) && $data['unit_price'] !== null) {
+        if (\array_key_exists('unit_price', $data)) {
             $object->setUnitPrice($data['unit_price']);
         }
-        elseif (\array_key_exists('unit_price', $data) && $data['unit_price'] === null) {
-            $object->setUnitPrice(null);
-        }
-        if (\array_key_exists('taxed', $data) && $data['taxed'] !== null) {
+        if (\array_key_exists('taxed', $data)) {
             $object->setTaxed($data['taxed']);
         }
-        elseif (\array_key_exists('taxed', $data) && $data['taxed'] === null) {
-            $object->setTaxed(null);
-        }
-        if (\array_key_exists('taxed2', $data) && $data['taxed2'] !== null) {
+        if (\array_key_exists('taxed2', $data)) {
             $object->setTaxed2($data['taxed2']);
-        }
-        elseif (\array_key_exists('taxed2', $data) && $data['taxed2'] === null) {
-            $object->setTaxed2(null);
         }
         return $object;
     }

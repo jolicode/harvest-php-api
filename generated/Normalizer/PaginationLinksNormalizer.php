@@ -36,17 +36,11 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('first', $data) && $data['first'] !== null) {
+        if (\array_key_exists('first', $data)) {
             $object->setFirst($data['first']);
         }
-        elseif (\array_key_exists('first', $data) && $data['first'] === null) {
-            $object->setFirst(null);
-        }
-        if (\array_key_exists('last', $data) && $data['last'] !== null) {
+        if (\array_key_exists('last', $data)) {
             $object->setLast($data['last']);
-        }
-        elseif (\array_key_exists('last', $data) && $data['last'] === null) {
-            $object->setLast(null);
         }
         if (\array_key_exists('previous', $data) && $data['previous'] !== null) {
             $object->setPrevious($data['previous']);

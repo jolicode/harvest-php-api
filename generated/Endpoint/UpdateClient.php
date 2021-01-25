@@ -9,12 +9,12 @@ class UpdateClient extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
      * Updates the specific client by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a client object and a 200 OK response code if the call succeeded.
      *
      * @param string $clientId 
-     * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $requestBody 
      */
-    public function __construct(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload)
+    public function __construct(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $requestBody)
     {
         $this->clientId = $clientId;
-        $this->body = $payload;
+        $this->body = $requestBody;
     }
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -27,7 +27,14 @@ class UpdateClient extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return $this->getSerializedBody($serializer);
+        if ($this->body instanceof \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+        }
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
@@ -37,10 +44,12 @@ class UpdateClient extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Client', 'json');
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

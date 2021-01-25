@@ -36,17 +36,11 @@ class InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer implements Denor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+        if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
-        }
-        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+        if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
-        }
-        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
-            $object->setEmail(null);
         }
         return $object;
     }

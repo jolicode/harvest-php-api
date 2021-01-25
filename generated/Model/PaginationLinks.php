@@ -7,13 +7,13 @@ class PaginationLinks
     /**
      * First page
      *
-     * @var string|null
+     * @var string
      */
     protected $first;
     /**
      * Last page
      *
-     * @var string|null
+     * @var string
      */
     protected $last;
     /**
@@ -31,20 +31,20 @@ class PaginationLinks
     /**
      * First page
      *
-     * @return string|null
+     * @return string
      */
-    public function getFirst() : ?string
+    public function getFirst() : string
     {
         return $this->first;
     }
     /**
      * First page
      *
-     * @param string|null $first
+     * @param string $first
      *
      * @return self
      */
-    public function setFirst(?string $first) : self
+    public function setFirst(string $first) : self
     {
         $this->first = $first;
         return $this;
@@ -52,20 +52,20 @@ class PaginationLinks
     /**
      * Last page
      *
-     * @return string|null
+     * @return string
      */
-    public function getLast() : ?string
+    public function getLast() : string
     {
         return $this->last;
     }
     /**
      * Last page
      *
-     * @param string|null $last
+     * @param string $last
      *
      * @return self
      */
-    public function setLast(?string $last) : self
+    public function setLast(string $last) : self
     {
         $this->last = $last;
         return $this;

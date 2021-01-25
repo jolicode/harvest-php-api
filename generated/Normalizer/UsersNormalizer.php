@@ -36,33 +36,21 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('users', $data) && $data['users'] !== null) {
+        if (\array_key_exists('users', $data)) {
             $values = array();
             foreach ($data['users'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\User', 'json', $context);
             }
             $object->setUsers($values);
         }
-        elseif (\array_key_exists('users', $data) && $data['users'] === null) {
-            $object->setUsers(null);
-        }
-        if (\array_key_exists('per_page', $data) && $data['per_page'] !== null) {
+        if (\array_key_exists('per_page', $data)) {
             $object->setPerPage($data['per_page']);
         }
-        elseif (\array_key_exists('per_page', $data) && $data['per_page'] === null) {
-            $object->setPerPage(null);
-        }
-        if (\array_key_exists('total_pages', $data) && $data['total_pages'] !== null) {
+        if (\array_key_exists('total_pages', $data)) {
             $object->setTotalPages($data['total_pages']);
         }
-        elseif (\array_key_exists('total_pages', $data) && $data['total_pages'] === null) {
-            $object->setTotalPages(null);
-        }
-        if (\array_key_exists('total_entries', $data) && $data['total_entries'] !== null) {
+        if (\array_key_exists('total_entries', $data)) {
             $object->setTotalEntries($data['total_entries']);
-        }
-        elseif (\array_key_exists('total_entries', $data) && $data['total_entries'] === null) {
-            $object->setTotalEntries(null);
         }
         if (\array_key_exists('next_page', $data) && $data['next_page'] !== null) {
             $object->setNextPage($data['next_page']);
@@ -76,17 +64,11 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('previous_page', $data) && $data['previous_page'] === null) {
             $object->setPreviousPage(null);
         }
-        if (\array_key_exists('page', $data) && $data['page'] !== null) {
+        if (\array_key_exists('page', $data)) {
             $object->setPage($data['page']);
         }
-        elseif (\array_key_exists('page', $data) && $data['page'] === null) {
-            $object->setPage(null);
-        }
-        if (\array_key_exists('links', $data) && $data['links'] !== null) {
+        if (\array_key_exists('links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
-        }
-        elseif (\array_key_exists('links', $data) && $data['links'] === null) {
-            $object->setLinks(null);
         }
         return $object;
     }

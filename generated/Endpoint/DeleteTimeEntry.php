@@ -27,6 +27,10 @@ class DeleteTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
     /**
      * {@inheritdoc}
      *
@@ -38,7 +42,9 @@ class DeleteTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

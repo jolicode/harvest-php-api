@@ -7,38 +7,38 @@ class InvoicesPostBodyLineItemsImport
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @var int[]|null
+     * @var int[]
      */
     protected $projectIds;
     /**
      * An time import object.
      *
-     * @var InvoicesPostBodyLineItemsImportTime|null
+     * @var InvoicesPostBodyLineItemsImportTime
      */
     protected $time;
     /**
      * An expense import object.
      *
-     * @var InvoicesPostBodyLineItemsImportExpenses|null
+     * @var InvoicesPostBodyLineItemsImportExpenses
      */
     protected $expenses;
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @return int[]|null
+     * @return int[]
      */
-    public function getProjectIds() : ?array
+    public function getProjectIds() : array
     {
         return $this->projectIds;
     }
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @param int[]|null $projectIds
+     * @param int[] $projectIds
      *
      * @return self
      */
-    public function setProjectIds(?array $projectIds) : self
+    public function setProjectIds(array $projectIds) : self
     {
         $this->projectIds = $projectIds;
         return $this;
@@ -46,20 +46,20 @@ class InvoicesPostBodyLineItemsImport
     /**
      * An time import object.
      *
-     * @return InvoicesPostBodyLineItemsImportTime|null
+     * @return InvoicesPostBodyLineItemsImportTime
      */
-    public function getTime() : ?InvoicesPostBodyLineItemsImportTime
+    public function getTime() : InvoicesPostBodyLineItemsImportTime
     {
         return $this->time;
     }
     /**
      * An time import object.
      *
-     * @param InvoicesPostBodyLineItemsImportTime|null $time
+     * @param InvoicesPostBodyLineItemsImportTime $time
      *
      * @return self
      */
-    public function setTime(?InvoicesPostBodyLineItemsImportTime $time) : self
+    public function setTime(InvoicesPostBodyLineItemsImportTime $time) : self
     {
         $this->time = $time;
         return $this;
@@ -67,20 +67,20 @@ class InvoicesPostBodyLineItemsImport
     /**
      * An expense import object.
      *
-     * @return InvoicesPostBodyLineItemsImportExpenses|null
+     * @return InvoicesPostBodyLineItemsImportExpenses
      */
-    public function getExpenses() : ?InvoicesPostBodyLineItemsImportExpenses
+    public function getExpenses() : InvoicesPostBodyLineItemsImportExpenses
     {
         return $this->expenses;
     }
     /**
      * An expense import object.
      *
-     * @param InvoicesPostBodyLineItemsImportExpenses|null $expenses
+     * @param InvoicesPostBodyLineItemsImportExpenses $expenses
      *
      * @return self
      */
-    public function setExpenses(?InvoicesPostBodyLineItemsImportExpenses $expenses) : self
+    public function setExpenses(InvoicesPostBodyLineItemsImportExpenses $expenses) : self
     {
         $this->expenses = $expenses;
         return $this;

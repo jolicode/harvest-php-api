@@ -25,7 +25,7 @@ class TimeEntry
     /**
      * 
      *
-     * @var UserAssignment|null
+     * @var UserAssignment
      */
     protected $userAssignment;
     /**
@@ -49,7 +49,7 @@ class TimeEntry
     /**
      * 
      *
-     * @var TaskAssignment|null
+     * @var TaskAssignment
      */
     protected $taskAssignment;
     /**
@@ -232,20 +232,20 @@ class TimeEntry
     /**
      * 
      *
-     * @return UserAssignment|null
+     * @return UserAssignment
      */
-    public function getUserAssignment() : ?UserAssignment
+    public function getUserAssignment() : UserAssignment
     {
         return $this->userAssignment;
     }
     /**
      * 
      *
-     * @param UserAssignment|null $userAssignment
+     * @param UserAssignment $userAssignment
      *
      * @return self
      */
-    public function setUserAssignment(?UserAssignment $userAssignment) : self
+    public function setUserAssignment(UserAssignment $userAssignment) : self
     {
         $this->userAssignment = $userAssignment;
         return $this;
@@ -316,20 +316,20 @@ class TimeEntry
     /**
      * 
      *
-     * @return TaskAssignment|null
+     * @return TaskAssignment
      */
-    public function getTaskAssignment() : ?TaskAssignment
+    public function getTaskAssignment() : TaskAssignment
     {
         return $this->taskAssignment;
     }
     /**
      * 
      *
-     * @param TaskAssignment|null $taskAssignment
+     * @param TaskAssignment $taskAssignment
      *
      * @return self
      */
-    public function setTaskAssignment(?TaskAssignment $taskAssignment) : self
+    public function setTaskAssignment(TaskAssignment $taskAssignment) : self
     {
         $this->taskAssignment = $taskAssignment;
         return $this;

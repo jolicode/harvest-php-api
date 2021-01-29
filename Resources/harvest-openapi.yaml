@@ -1833,9 +1833,6 @@ components:
           description: 'Date and time the user was last updated.'
           nullable: true
           format: date-time
-        telephone:
-          type: string
-          nullable: true
     ExpenseReportsResult:
       type: object
       externalDocs:

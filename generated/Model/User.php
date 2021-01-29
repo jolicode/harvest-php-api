@@ -125,12 +125,6 @@ class User
      */
     protected $updatedAt;
     /**
-     * 
-     *
-     * @var string|null
-     */
-    protected $telephone;
-    /**
      * Unique ID for the user.
      *
      * @return int|null
@@ -548,27 +542,6 @@ class User
     public function setUpdatedAt(?\DateTime $updatedAt) : self
     {
         $this->updatedAt = $updatedAt;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getTelephone() : ?string
-    {
-        return $this->telephone;
-    }
-    /**
-     * 
-     *
-     * @param string|null $telephone
-     *
-     * @return self
-     */
-    public function setTelephone(?string $telephone) : self
-    {
-        $this->telephone = $telephone;
         return $this;
     }
 }

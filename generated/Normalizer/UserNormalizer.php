@@ -160,12 +160,6 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('telephone', $data) && $data['telephone'] !== null) {
-            $object->setTelephone($data['telephone']);
-        }
-        elseif (\array_key_exists('telephone', $data) && $data['telephone'] === null) {
-            $object->setTelephone(null);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -234,9 +228,6 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
-        }
-        if (null !== $object->getTelephone()) {
-            $data['telephone'] = $object->getTelephone();
         }
         return $data;
     }

@@ -69,6 +69,18 @@ class ModelTest extends TestCase
                 'get' => true, // undocumented exemple attribute "approval_required"
                 'patch' => true, // undocumented exemple attribute "approval_required"
             ],
+            '/users' => [
+                'get' => true, // deprecated parameter "telephone"
+                'post' => true, // deprecated parameter "telephone"
+            ],
+            '/users/me' => [
+                'get' => true, // deprecated parameter "telephone"
+                'post' => true, // deprecated parameter "telephone"
+            ],
+            '/users/{userId}' => [
+                'get' => true, // deprecated parameter "telephone"
+                'patch' => true, // deprecated parameter "telephone"
+            ],
         ];
 
         foreach ($openapi['paths'] as $pathName => $path) {

@@ -1,5 +1,11 @@
 # Changes between versions
 
+## 5.0.0 (2021-04-10)
+
+ * add tests on the API
+ * support PHP 7.2 to PHP 8.0
+ * migrated the openapi spec to open api 3
+
 ## 4.3.0 (2021-01-18)
 
  * add the `units` and `total_cost` properties to the `Expense` definition

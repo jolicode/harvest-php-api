@@ -1,27 +1,60 @@
 name: Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
-  tests:
-    name: Run tests
+  cs-check:
+    name: Check Coding Standards
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Cache composer dependencies
+      - name: Cache composer
         uses: actions/cache@v2
         with:
-          path: ~/vendor
-          key: composer-${{ hashFiles('composer.lock') }}
+          path: ~/.composer/cache/
+          key: composer-ubuntu-${{ github.sha }}
+
+      - name: Setup
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          php-version: 8.0
+          extensions: mbstring, fileinfo, json, intl, dom
 
       - name: Run composer install
-        run: composer install -n --prefer-dist
+        run: composer install -n --prefer-dist --prefer-stable
+
+      - name: 'php-cs-fixer check'
+        run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
+
+  tests:
+    name: Run tests for PHP ${{ matrix.php-versions }}
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 15
+      matrix:
+        php-versions:  ['7.2', '7.3', '7.4', '8.0']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache composer
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/
+          key: composer-${{ matrix.php-versions }}-${{ github.sha }}
+
+      - name: setup
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, fileinfo, json, intl, dom
+
+      - name: Run composer install
+        run: composer install -n --prefer-dist --prefer-stable
 
       - name: Run tests
         run: make test

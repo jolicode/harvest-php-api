@@ -23,7 +23,7 @@ jobs:
           extensions: mbstring, fileinfo, json, intl, dom
 
       - name: Run composer install
-        run: composer install -n --prefer-dist --prefer-stable
+        run: composer install -n --prefer-dist
 
       - name: 'php-cs-fixer check'
         run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
@@ -54,7 +54,7 @@ jobs:
           extensions: mbstring, fileinfo, json, intl, dom
 
       - name: Run composer install
-        run: composer install -n --prefer-dist --prefer-stable
+        run: composer install -n --prefer-dist
 
       - name: Run tests
         run: make test

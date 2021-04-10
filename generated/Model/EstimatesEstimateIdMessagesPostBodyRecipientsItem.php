@@ -7,32 +7,32 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItem
     /**
      * Name of the message recipient.
      *
-     * @var string|null
+     * @var string
      */
     protected $name;
     /**
      * Email of the message recipient.
      *
-     * @var string|null
+     * @var string
      */
     protected $email;
     /**
      * Name of the message recipient.
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * Name of the message recipient.
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -40,20 +40,20 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItem
     /**
      * Email of the message recipient.
      *
-     * @return string|null
+     * @return string
      */
-    public function getEmail() : ?string
+    public function getEmail() : string
     {
         return $this->email;
     }
     /**
      * Email of the message recipient.
      *
-     * @param string|null $email
+     * @param string $email
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
         return $this;

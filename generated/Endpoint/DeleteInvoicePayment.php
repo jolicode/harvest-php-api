@@ -30,6 +30,10 @@ class DeleteInvoicePayment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
     /**
      * {@inheritdoc}
      *
@@ -41,7 +45,9 @@ class DeleteInvoicePayment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
         if (200 === $status) {
             return null;
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

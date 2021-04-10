@@ -9,7 +9,7 @@ class ExpenseReceipt
      *
      * @var string|null
      */
-    protected $uRL;
+    protected $url;
     /**
      * 
      *
@@ -19,22 +19,34 @@ class ExpenseReceipt
     /**
      * 
      *
+     * @var int|null
+     */
+    protected $fileSize;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $contentType;
+    /**
+     * 
+     *
      * @return string|null
      */
-    public function getURL() : ?string
+    public function getUrl() : ?string
     {
-        return $this->uRL;
+        return $this->url;
     }
     /**
      * 
      *
-     * @param string|null $uRL
+     * @param string|null $url
      *
      * @return self
      */
-    public function setURL(?string $uRL) : self
+    public function setUrl(?string $url) : self
     {
-        $this->uRL = $uRL;
+        $this->url = $url;
         return $this;
     }
     /**
@@ -56,6 +68,48 @@ class ExpenseReceipt
     public function setFileName(?string $fileName) : self
     {
         $this->fileName = $fileName;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getFileSize() : ?int
+    {
+        return $this->fileSize;
+    }
+    /**
+     * 
+     *
+     * @param int|null $fileSize
+     *
+     * @return self
+     */
+    public function setFileSize(?int $fileSize) : self
+    {
+        $this->fileSize = $fileSize;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getContentType() : ?string
+    {
+        return $this->contentType;
+    }
+    /**
+     * 
+     *
+     * @param string|null $contentType
+     *
+     * @return self
+     */
+    public function setContentType(?string $contentType) : self
+    {
+        $this->contentType = $contentType;
         return $this;
     }
 }

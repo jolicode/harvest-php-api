@@ -27,6 +27,10 @@ class DeleteEstimate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
     /**
      * {@inheritdoc}
      *
@@ -38,7 +42,9 @@ class DeleteEstimate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
         if (200 === $status) {
             return null;
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

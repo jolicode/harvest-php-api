@@ -49,7 +49,7 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setAmount(null);
         }
         if (\array_key_exists('paid_at', $data) && $data['paid_at'] !== null) {
-            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['paid_at']));
+            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
         }
         elseif (\array_key_exists('paid_at', $data) && $data['paid_at'] === null) {
             $object->setPaidAt(null);
@@ -91,13 +91,13 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setPaymentGateway(null);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
@@ -114,7 +114,7 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
             $data['amount'] = $object->getAmount();
         }
         if (null !== $object->getPaidAt()) {
-            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:sP');
+            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getPaidDate()) {
             $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
@@ -135,10 +135,10 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
             $data['payment_gateway'] = $this->normalizer->normalize($object->getPaymentGateway(), 'json', $context);
         }
         if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         return $data;
     }

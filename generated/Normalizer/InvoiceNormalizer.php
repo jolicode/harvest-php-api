@@ -197,13 +197,13 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPaymentTerm(null);
         }
         if (\array_key_exists('sent_at', $data) && $data['sent_at'] !== null) {
-            $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['sent_at']));
+            $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
         }
         elseif (\array_key_exists('sent_at', $data) && $data['sent_at'] === null) {
             $object->setSentAt(null);
         }
         if (\array_key_exists('paid_at', $data) && $data['paid_at'] !== null) {
-            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['paid_at']));
+            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
         }
         elseif (\array_key_exists('paid_at', $data) && $data['paid_at'] === null) {
             $object->setPaidAt(null);
@@ -215,7 +215,7 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPaidDate(null);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['closed_at']));
+            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['closed_at']));
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
@@ -227,13 +227,13 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setRecurringInvoiceId(null);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
@@ -326,25 +326,25 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['payment_term'] = $object->getPaymentTerm();
         }
         if (null !== $object->getSentAt()) {
-            $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:sP');
+            $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getPaidAt()) {
-            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:sP');
+            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getPaidDate()) {
             $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
         }
         if (null !== $object->getClosedAt()) {
-            $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
+            $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getRecurringInvoiceId()) {
             $data['recurring_invoice_id'] = $object->getRecurringInvoiceId();
         }
         if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         return $data;
     }

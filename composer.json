@@ -16,16 +16,23 @@
           "JoliCode\\Harvest\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "require": {
-        "php": ">= 7.1",
+        "php": "^7.2 || ^8.0",
         "jane-php/open-api-runtime": "^6.3",
         "php-http/client-implementation": "*",
         "php-http/client-common": "^1.7 || ^2.0"
     },
     "require-dev": {
-        "jane-php/open-api-2": "^6.3",
+        "jane-php/open-api-3": "^6.3",
         "symfony/http-client": "^5.2",
         "nyholm/psr7": "^1.3",
-        "friendsofphp/php-cs-fixer": "^2.18"
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "symfony/phpunit-bridge": "^5.2",
+        "symfony/yaml": "^5.2"
     }
 }

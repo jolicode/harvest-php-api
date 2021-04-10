@@ -26,14 +26,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new client object. Returns a client object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ClientsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ClientsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createClient(\JoliCode\Harvest\Api\Model\ClientsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createClient(\JoliCode\Harvest\Api\Model\ClientsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateClient($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateClient($requestBody), $fetch);
     }
     /**
      * Delete a client. Deleting a client is only possible if it has no projects, invoices, or estimates associated with it. Returns a 200 OK response code if the call succeeded.
@@ -63,14 +63,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific client by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a client object and a 200 OK response code if the call succeeded.
      *
      * @param string $clientId 
-     * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateClient(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateClient(string $clientId, \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateClient($clientId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateClient($clientId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -84,14 +84,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\CompanyPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\CompanyPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateCompany(\JoliCode\Harvest\Api\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateCompany(\JoliCode\Harvest\Api\Model\CompanyPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($requestBody), $fetch);
     }
     /**
     * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
@@ -115,14 +115,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createContact(\JoliCode\Harvest\Api\Model\ContactsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($requestBody), $fetch);
     }
     /**
      * Delete a contact. Returns a 200 OK response code if the call succeeded.
@@ -152,14 +152,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
      *
      * @param string $contactId 
-     * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateContact(string $contactId, \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
@@ -182,14 +182,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createEstimateItemCategory(\JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($requestBody), $fetch);
     }
     /**
      * Delete an estimate item category. Returns a 200 OK response code if the call succeeded.
@@ -219,14 +219,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.
      *
      * @param string $estimateItemCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateEstimateItemCategory(string $estimateItemCategoryId, \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
@@ -253,14 +253,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new estimate object. Returns an estimate object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimatesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimatesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createEstimate(\JoliCode\Harvest\Api\Model\EstimatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createEstimate(\JoliCode\Harvest\Api\Model\EstimatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimate($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimate($requestBody), $fetch);
     }
     /**
      * Delete an estimate. Returns a 200 OK response code if the call succeeded.
@@ -290,14 +290,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific estimate by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate object and a 200 OK response code if the call succeeded.
      *
      * @param string $estimateId 
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateEstimate(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $requestBody), $fetch);
     }
     /**
     * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -322,14 +322,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Creates a new estimate message object. Returns an estimate message object and a 201 Created response code if the call succeeded.
      *
      * @param string $estimateId 
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\EstimateMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createEstimateMessage(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createEstimateMessage(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $requestBody), $fetch);
     }
     /**
      * Delete an estimate message. Returns a 200 OK response code if the call succeeded.
@@ -366,14 +366,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createExpenseCategory(\JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($requestBody), $fetch);
     }
     /**
      * Delete an expense category. Returns a 200 OK response code if the call succeeded.
@@ -403,14 +403,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.
      *
      * @param string $expenseCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateExpenseCategory(string $expenseCategoryId, \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your expenses. If accessing this endpoint as an Admin, all expenses in the account will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
@@ -439,14 +439,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new expense object. Returns an expense object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpensesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ExpensesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createExpense(\JoliCode\Harvest\Api\Model\ExpensesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createExpense(\JoliCode\Harvest\Api\Model\ExpensesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpense($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpense($requestBody), $fetch);
     }
     /**
      * Delete an expense. Returns a 200 OK response code if the call succeeded.
@@ -476,14 +476,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.
      *
      * @param string $expenseId 
-     * @param \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateExpense(string $expenseId, \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateExpense(string $expenseId, \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
@@ -506,14 +506,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createInvoiceItemCategory(\JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($requestBody), $fetch);
     }
     /**
      * Delete an invoice item category. Deleting an invoice item category is only possible if use_as_service and use_as_expense are both false. Returns a 200 OK response code if the call succeeded.
@@ -543,14 +543,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
      *
      * @param string $invoiceItemCategoryId 
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateInvoiceItemCategory(string $invoiceItemCategoryId, \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
@@ -578,14 +578,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createInvoice(\JoliCode\Harvest\Api\Model\InvoicesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createInvoice(\JoliCode\Harvest\Api\Model\InvoicesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($requestBody), $fetch);
     }
     /**
      * Delete an invoice. Returns a 200 OK response code if the call succeeded.
@@ -615,14 +615,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
      *
      * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateInvoice(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $requestBody), $fetch);
     }
     /**
     * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
@@ -647,14 +647,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
      *
      * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\InvoiceMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createInvoiceMessage(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createInvoiceMessage(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $requestBody), $fetch);
     }
     /**
      * Delete an invoice message. Returns a 200 OK response code if the call succeeded.
@@ -692,14 +692,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
      *
      * @param string $invoiceId 
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createInvoicePayment(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $requestBody), $fetch);
     }
     /**
      * Delete an invoice payment. Returns a 200 OK response code if the call succeeded.
@@ -737,14 +737,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createProject(\JoliCode\Harvest\Api\Model\ProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($requestBody), $fetch);
     }
     /**
     * Deletes a project and any time entries or expenses tracked to it.
@@ -776,14 +776,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
      *
      * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateProject(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
@@ -809,14 +809,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.
      *
      * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createTaskAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $requestBody), $fetch);
     }
     /**
      * Delete a task assignment. Deleting a task assignment is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
@@ -849,14 +849,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $projectId 
      * @param string $taskAssignmentId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateTaskAssignment(string $projectId, string $taskAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $requestBody), $fetch);
     }
     /**
     * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
@@ -883,14 +883,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.
      *
      * @param string $projectId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createUserAssignment(string $projectId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $requestBody), $fetch);
     }
     /**
      * Delete a user assignment. Deleting a user assignment is only possible if it has no time entries or expenses associated with it. Returns a 200 OK response code if the call succeeded.
@@ -923,14 +923,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $projectId 
      * @param string $userAssignmentId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateUserAssignment(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $requestBody), $fetch);
     }
     /**
      * 
@@ -1123,14 +1123,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\RolesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\RolesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createRole(\JoliCode\Harvest\Api\Model\RolesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($requestBody), $fetch);
     }
     /**
      * Delete a role. Deleting a role will unlink it from any users it was assigned to. Returns a 200 OK response code if the call succeeded.
@@ -1160,14 +1160,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.
      *
      * @param string $roleId 
-     * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateRole(string $roleId, \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
@@ -1210,14 +1210,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new task object. Returns a task object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\TasksPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\TasksPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createTask(\JoliCode\Harvest\Api\Model\TasksPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createTask(\JoliCode\Harvest\Api\Model\TasksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTask($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTask($requestBody), $fetch);
     }
     /**
      * Delete a task. Deleting a task is only possible if it has no time entries associated with it. Returns a 200 OK response code if the call succeeded.
@@ -1247,14 +1247,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific task by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task object and a 200 OK response code if the call succeeded.
      *
      * @param string $taskId 
-     * @param \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateTask(string $taskId, \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateTask(string $taskId, \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $requestBody), $fetch);
     }
     /**
     * Returns a list of your time entries. The time entries are returned sorted by spent_at date. At this time, the sort option can’t be customized.
@@ -1288,14 +1288,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     
     You should only use this method to create time entries when your account is configured to track time via duration. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is false in the Company API.
     *
-    * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload json payload
+    * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function createTimeEntry(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createTimeEntry(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($requestBody), $fetch);
     }
     /**
      * Delete a time entry. Deleting a time entry is only possible if it’s not closed and the associated project and task haven’t been archived.  However, Admins can delete closed entries. Returns a 200 OK response code if the call succeeded.
@@ -1325,14 +1325,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific time entry by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a time entry object and a 200 OK response code if the call succeeded.
      *
      * @param string $timeEntryId 
-     * @param \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateTimeEntry(string $timeEntryId, \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateTimeEntry(string $timeEntryId, \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTimeEntry($timeEntryId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTimeEntry($timeEntryId, $requestBody), $fetch);
     }
     /**
      * Delete a time entry’s external reference. Returns a 200 OK response code if the call succeeded.
@@ -1352,7 +1352,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param string $timeEntryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function restartStoppedTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1364,7 +1364,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param string $timeEntryId 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function stopRunningTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1412,14 +1412,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new user object and sends an invitation email to the address specified in the email parameter. Returns a user object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\UsersPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createUser(\JoliCode\Harvest\Api\Model\UsersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1475,14 +1475,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.
      *
      * @param string $userId 
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function updateUser(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $requestBody), $fetch);
     }
     /**
     * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
@@ -1511,14 +1511,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     
     *
     * @param string $userId 
-    * @param \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload json payload
+    * @param \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function createBillableRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createBillableRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $requestBody), $fetch);
     }
     /**
      * Retrieves the billable rate with the given ID. Returns a billable rate object and a 200 OK response code if a valid identifier was provided.
@@ -1560,14 +1560,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     
     *
     * @param string $userId 
-    * @param \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload json payload
+    * @param \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface
     */
-    public function createCostRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    public function createCostRate(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $payload), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $requestBody), $fetch);
     }
     /**
      * Retrieves the cost rate with the given ID. Returns a cost rate object and a 200 OK response code if a valid identifier was provided.

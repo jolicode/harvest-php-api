@@ -8,17 +8,23 @@ generated. Therefore, you should not manually change the
 generated in the [jolicode/harvest-openapi-generator](https://github.com/jolicode/harvest-openapi-generator)
 repository.
 
-Run the following command to retrieve the latest API spec:
+You can update the SDK to the last available specification version by running the following command:
+
+```bash
+make update_sdk
+```
+
+Once done, you can run tests against the library:
+
+```bash
+make tests
+```
+
+### Detailed steps
+
+Updating the SDK "by hand" requires to download the last specification version and re-generate the library code (trhis is basically what `make update_sdk` does):
 
 ```bash
 curl https://raw.githubusercontent.com/jolicode/harvest-openapi-generator/master/generated/harvest-openapi.yaml -o Resources/harvest-openapi.yaml
-```
-
-## Regenerate the SDK
-
-When the versioned spec has been updated, simply run Jane to regenerate the
-SDK:
-
-```bash
-vendor/bin/jane-openapi generate -c .jane-openapi.php
+./vendor/bin/jane-openapi generate -c .jane-openapi.php
 ```

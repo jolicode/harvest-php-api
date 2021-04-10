@@ -9,12 +9,12 @@ class CreateEstimateMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEnd
      * Creates a new estimate message object. Returns an estimate message object and a 201 Created response code if the call succeeded.
      *
      * @param string $estimateId 
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $requestBody 
      */
-    public function __construct(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $payload)
+    public function __construct(string $estimateId, \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $requestBody)
     {
         $this->estimateId = $estimateId;
-        $this->body = $payload;
+        $this->body = $requestBody;
     }
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -27,7 +27,14 @@ class CreateEstimateMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEnd
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return $this->getSerializedBody($serializer);
+        if ($this->body instanceof \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+        }
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
@@ -37,10 +44,12 @@ class CreateEstimateMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEnd
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage', 'json');
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

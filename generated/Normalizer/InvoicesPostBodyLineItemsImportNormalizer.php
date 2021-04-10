@@ -36,27 +36,18 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('project_ids', $data) && $data['project_ids'] !== null) {
+        if (\array_key_exists('project_ids', $data)) {
             $values = array();
             foreach ($data['project_ids'] as $value) {
                 $values[] = $value;
             }
             $object->setProjectIds($values);
         }
-        elseif (\array_key_exists('project_ids', $data) && $data['project_ids'] === null) {
-            $object->setProjectIds(null);
-        }
-        if (\array_key_exists('time', $data) && $data['time'] !== null) {
+        if (\array_key_exists('time', $data)) {
             $object->setTime($this->denormalizer->denormalize($data['time'], 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime', 'json', $context));
         }
-        elseif (\array_key_exists('time', $data) && $data['time'] === null) {
-            $object->setTime(null);
-        }
-        if (\array_key_exists('expenses', $data) && $data['expenses'] !== null) {
+        if (\array_key_exists('expenses', $data)) {
             $object->setExpenses($this->denormalizer->denormalize($data['expenses'], 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses', 'json', $context));
-        }
-        elseif (\array_key_exists('expenses', $data) && $data['expenses'] === null) {
-            $object->setExpenses(null);
         }
         return $object;
     }

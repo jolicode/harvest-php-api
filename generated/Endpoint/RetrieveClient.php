@@ -27,6 +27,10 @@ class RetrieveClient extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
     /**
      * {@inheritdoc}
      *
@@ -35,10 +39,12 @@ class RetrieveClient extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Client', 'json');
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

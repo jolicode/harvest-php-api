@@ -11,13 +11,13 @@ class UpdateUserAssignment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
      *
      * @param string $projectId 
      * @param string $userAssignmentId 
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload json payload
+     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody 
      */
-    public function __construct(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $payload)
+    public function __construct(string $projectId, string $userAssignmentId, \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody)
     {
         $this->projectId = $projectId;
         $this->userAssignmentId = $userAssignmentId;
-        $this->body = $payload;
+        $this->body = $requestBody;
     }
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -30,7 +30,14 @@ class UpdateUserAssignment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return $this->getSerializedBody($serializer);
+        if ($this->body instanceof \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+        }
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
@@ -40,10 +47,12 @@ class UpdateUserAssignment extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json');
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

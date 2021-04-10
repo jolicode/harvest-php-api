@@ -54,11 +54,8 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
-        if (\array_key_exists('user_assignment', $data) && $data['user_assignment'] !== null) {
+        if (\array_key_exists('user_assignment', $data)) {
             $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context));
-        }
-        elseif (\array_key_exists('user_assignment', $data) && $data['user_assignment'] === null) {
-            $object->setUserAssignment(null);
         }
         if (\array_key_exists('client', $data) && $data['client'] !== null) {
             $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient', 'json', $context));
@@ -78,11 +75,8 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('task', $data) && $data['task'] === null) {
             $object->setTask(null);
         }
-        if (\array_key_exists('task_assignment', $data) && $data['task_assignment'] !== null) {
+        if (\array_key_exists('task_assignment', $data)) {
             $object->setTaskAssignment($this->denormalizer->denormalize($data['task_assignment'], 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context));
-        }
-        elseif (\array_key_exists('task_assignment', $data) && $data['task_assignment'] === null) {
-            $object->setTaskAssignment(null);
         }
         if (\array_key_exists('external_reference', $data) && $data['external_reference'] !== null) {
             $object->setExternalReference($this->denormalizer->denormalize($data['external_reference'], 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference', 'json', $context));
@@ -139,7 +133,7 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setIsBilled(null);
         }
         if (\array_key_exists('timer_started_at', $data) && $data['timer_started_at'] !== null) {
-            $object->setTimerStartedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timer_started_at']));
+            $object->setTimerStartedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['timer_started_at']));
         }
         elseif (\array_key_exists('timer_started_at', $data) && $data['timer_started_at'] === null) {
             $object->setTimerStartedAt(null);
@@ -187,13 +181,13 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setCostRate(null);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
@@ -255,7 +249,7 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['is_billed'] = $object->getIsBilled();
         }
         if (null !== $object->getTimerStartedAt()) {
-            $data['timer_started_at'] = $object->getTimerStartedAt()->format('Y-m-d\\TH:i:sP');
+            $data['timer_started_at'] = $object->getTimerStartedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getStartedTime()) {
             $data['started_time'] = $object->getStartedTime();
@@ -279,10 +273,10 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['cost_rate'] = $object->getCostRate();
         }
         if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         return $data;
     }

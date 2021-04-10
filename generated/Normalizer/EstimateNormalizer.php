@@ -155,31 +155,31 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setIssueDate(null);
         }
         if (\array_key_exists('sent_at', $data) && $data['sent_at'] !== null) {
-            $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['sent_at']));
+            $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
         }
         elseif (\array_key_exists('sent_at', $data) && $data['sent_at'] === null) {
             $object->setSentAt(null);
         }
         if (\array_key_exists('accepted_at', $data) && $data['accepted_at'] !== null) {
-            $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['accepted_at']));
+            $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['accepted_at']));
         }
         elseif (\array_key_exists('accepted_at', $data) && $data['accepted_at'] === null) {
             $object->setAcceptedAt(null);
         }
         if (\array_key_exists('declined_at', $data) && $data['declined_at'] !== null) {
-            $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['declined_at']));
+            $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['declined_at']));
         }
         elseif (\array_key_exists('declined_at', $data) && $data['declined_at'] === null) {
             $object->setDeclinedAt(null);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
@@ -251,19 +251,19 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['issue_date'] = $object->getIssueDate()->format('Y-m-d');
         }
         if (null !== $object->getSentAt()) {
-            $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:sP');
+            $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getAcceptedAt()) {
-            $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\\TH:i:sP');
+            $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getDeclinedAt()) {
-            $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\\TH:i:sP');
+            $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         return $data;
     }

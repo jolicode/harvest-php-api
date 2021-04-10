@@ -9,11 +9,11 @@ class CreateTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     
     You should only use this method to create time entries when your account is configured to track time via duration. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is false in the Company API.
     *
-    * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload json payload
+    * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $requestBody 
     */
-    public function __construct(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $payload)
+    public function __construct(\JoliCode\Harvest\Api\Model\TimeEntriesPostBody $requestBody)
     {
-        $this->body = $payload;
+        $this->body = $requestBody;
     }
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -26,7 +26,14 @@ class CreateTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return $this->getSerializedBody($serializer);
+        if ($this->body instanceof \JoliCode\Harvest\Api\Model\TimeEntriesPostBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+        }
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
@@ -36,10 +43,12 @@ class CreateTimeEntry extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\TimeEntry', 'json');
         }
-        return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        if (mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+        }
     }
     public function getAuthenticationScopes() : array
     {

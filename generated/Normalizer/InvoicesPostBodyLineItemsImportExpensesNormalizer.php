@@ -36,29 +36,17 @@ class InvoicesPostBodyLineItemsImportExpensesNormalizer implements DenormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('summary_type', $data) && $data['summary_type'] !== null) {
+        if (\array_key_exists('summary_type', $data)) {
             $object->setSummaryType($data['summary_type']);
         }
-        elseif (\array_key_exists('summary_type', $data) && $data['summary_type'] === null) {
-            $object->setSummaryType(null);
-        }
-        if (\array_key_exists('from', $data) && $data['from'] !== null) {
+        if (\array_key_exists('from', $data)) {
             $object->setFrom(\DateTime::createFromFormat('Y-m-d', $data['from'])->setTime(0, 0, 0));
         }
-        elseif (\array_key_exists('from', $data) && $data['from'] === null) {
-            $object->setFrom(null);
-        }
-        if (\array_key_exists('to', $data) && $data['to'] !== null) {
+        if (\array_key_exists('to', $data)) {
             $object->setTo(\DateTime::createFromFormat('Y-m-d', $data['to'])->setTime(0, 0, 0));
         }
-        elseif (\array_key_exists('to', $data) && $data['to'] === null) {
-            $object->setTo(null);
-        }
-        if (\array_key_exists('attach_receipt', $data) && $data['attach_receipt'] !== null) {
+        if (\array_key_exists('attach_receipt', $data)) {
             $object->setAttachReceipt($data['attach_receipt']);
-        }
-        elseif (\array_key_exists('attach_receipt', $data) && $data['attach_receipt'] === null) {
-            $object->setAttachReceipt(null);
         }
         return $object;
     }

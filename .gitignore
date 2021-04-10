@@ -4,6 +4,7 @@ composer.phar
 
 # CS
 .php_cs.cache
+.phpunit.result.cache
 
 # Dependencies
 vendor

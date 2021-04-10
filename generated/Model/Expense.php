@@ -37,7 +37,7 @@ class Expense
     /**
      * 
      *
-     * @var UserAssignment|null
+     * @var UserAssignment
      */
     protected $userAssignment;
     /**
@@ -226,20 +226,20 @@ class Expense
     /**
      * 
      *
-     * @return UserAssignment|null
+     * @return UserAssignment
      */
-    public function getUserAssignment() : ?UserAssignment
+    public function getUserAssignment() : UserAssignment
     {
         return $this->userAssignment;
     }
     /**
      * 
      *
-     * @param UserAssignment|null $userAssignment
+     * @param UserAssignment $userAssignment
      *
      * @return self
      */
-    public function setUserAssignment(?UserAssignment $userAssignment) : self
+    public function setUserAssignment(UserAssignment $userAssignment) : self
     {
         $this->userAssignment = $userAssignment;
         return $this;

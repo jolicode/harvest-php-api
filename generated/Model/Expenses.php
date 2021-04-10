@@ -7,25 +7,25 @@ class Expenses
     /**
      * 
      *
-     * @var Expense[]|null
+     * @var Expense[]
      */
     protected $expenses;
     /**
      * 
      *
-     * @var int|null
+     * @var int
      */
     protected $perPage;
     /**
      * 
      *
-     * @var int|null
+     * @var int
      */
     protected $totalPages;
     /**
      * 
      *
-     * @var int|null
+     * @var int
      */
     protected $totalEntries;
     /**
@@ -43,32 +43,32 @@ class Expenses
     /**
      * 
      *
-     * @var int|null
+     * @var int
      */
     protected $page;
     /**
      * 
      *
-     * @var PaginationLinks|null
+     * @var PaginationLinks
      */
     protected $links;
     /**
      * 
      *
-     * @return Expense[]|null
+     * @return Expense[]
      */
-    public function getExpenses() : ?array
+    public function getExpenses() : array
     {
         return $this->expenses;
     }
     /**
      * 
      *
-     * @param Expense[]|null $expenses
+     * @param Expense[] $expenses
      *
      * @return self
      */
-    public function setExpenses(?array $expenses) : self
+    public function setExpenses(array $expenses) : self
     {
         $this->expenses = $expenses;
         return $this;
@@ -76,20 +76,20 @@ class Expenses
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getPerPage() : ?int
+    public function getPerPage() : int
     {
         return $this->perPage;
     }
     /**
      * 
      *
-     * @param int|null $perPage
+     * @param int $perPage
      *
      * @return self
      */
-    public function setPerPage(?int $perPage) : self
+    public function setPerPage(int $perPage) : self
     {
         $this->perPage = $perPage;
         return $this;
@@ -97,20 +97,20 @@ class Expenses
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getTotalPages() : ?int
+    public function getTotalPages() : int
     {
         return $this->totalPages;
     }
     /**
      * 
      *
-     * @param int|null $totalPages
+     * @param int $totalPages
      *
      * @return self
      */
-    public function setTotalPages(?int $totalPages) : self
+    public function setTotalPages(int $totalPages) : self
     {
         $this->totalPages = $totalPages;
         return $this;
@@ -118,20 +118,20 @@ class Expenses
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getTotalEntries() : ?int
+    public function getTotalEntries() : int
     {
         return $this->totalEntries;
     }
     /**
      * 
      *
-     * @param int|null $totalEntries
+     * @param int $totalEntries
      *
      * @return self
      */
-    public function setTotalEntries(?int $totalEntries) : self
+    public function setTotalEntries(int $totalEntries) : self
     {
         $this->totalEntries = $totalEntries;
         return $this;
@@ -181,20 +181,20 @@ class Expenses
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getPage() : ?int
+    public function getPage() : int
     {
         return $this->page;
     }
     /**
      * 
      *
-     * @param int|null $page
+     * @param int $page
      *
      * @return self
      */
-    public function setPage(?int $page) : self
+    public function setPage(int $page) : self
     {
         $this->page = $page;
         return $this;
@@ -202,20 +202,20 @@ class Expenses
     /**
      * 
      *
-     * @return PaginationLinks|null
+     * @return PaginationLinks
      */
-    public function getLinks() : ?PaginationLinks
+    public function getLinks() : PaginationLinks
     {
         return $this->links;
     }
     /**
      * 
      *
-     * @param PaginationLinks|null $links
+     * @param PaginationLinks $links
      *
      * @return self
      */
-    public function setLinks(?PaginationLinks $links) : self
+    public function setLinks(PaginationLinks $links) : self
     {
         $this->links = $links;
         return $this;

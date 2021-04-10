@@ -43,7 +43,7 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
             $object->setAmount(null);
         }
         if (\array_key_exists('paid_at', $data) && $data['paid_at'] !== null) {
-            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['paid_at']));
+            $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
         }
         elseif (\array_key_exists('paid_at', $data) && $data['paid_at'] === null) {
             $object->setPaidAt(null);
@@ -67,7 +67,7 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
         $data = array();
         $data['amount'] = $object->getAmount();
         if (null !== $object->getPaidAt()) {
-            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:sP');
+            $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
         }
         if (null !== $object->getPaidDate()) {
             $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');

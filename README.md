@@ -1,9 +1,15 @@
 # A PHP Client for Harvest API
 
+![example workflow](https://github.com/jolicode/harvest-php-api/actions/workflows/tests.yml/badge.svg)
+
 [Harvest](https://www.getharvest.com/) is a time tracking and invoicing tool.
 
-This PHP SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp) using a [Harvest OpenAPI specification](https://github.com/jolicode/harvest-openapi-generator/) generated from the HTML documentation.
+This PHP SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp) using a [Harvest OpenAPI specification](https://github.com/jolicode/harvest-openapi-generator/) generated from the HTML documentation. It means that:
 
+ * all the API endpoints and parameters are supported. See the [list of available endpoints](doc/index.md#available-operations);
+ * when the documentation changes, it is easy to update the library and keep up-to-date.
+
+The API is tested against the examples provided by the Harvest API documentation.
 
 ## Installation
 

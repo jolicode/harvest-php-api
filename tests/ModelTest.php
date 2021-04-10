@@ -17,7 +17,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class ModelTest extends TestCase
 {
-    private Serializer $serializer;
+    private $serializer;
 
     protected function setUp(): void
     {

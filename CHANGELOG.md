@@ -1,5 +1,11 @@
 # Changes between versions
 
+## 5.1.0 (2021-08-03)
+
+ * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#18)
+   * added `date_format` on the `Company` model
+   * added `hours_without_timer` and `external_reference/account_id` in the `TaskAssignment` model
+
 ## 5.0.0 (2021-04-10)
 
  * add tests on the API

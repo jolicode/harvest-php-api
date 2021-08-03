@@ -47,6 +47,12 @@ class Company
      */
     protected $timeFormat;
     /**
+     * The format used to display date in Harvest. Returns one of: %m/%d/%Y, %d/%m/%Y, %Y-%m-%d, %d.%m.%Y,.%Y.%m.%d or %Y/%m/%d.
+     *
+     * @var string|null
+     */
+    protected $dateFormat;
+    /**
      * The type of plan the company is on. Examples: trial, free, or simple-v4
      *
      * @var string|null
@@ -251,6 +257,27 @@ class Company
     public function setTimeFormat(?string $timeFormat) : self
     {
         $this->timeFormat = $timeFormat;
+        return $this;
+    }
+    /**
+     * The format used to display date in Harvest. Returns one of: %m/%d/%Y, %d/%m/%Y, %Y-%m-%d, %d.%m.%Y,.%Y.%m.%d or %Y/%m/%d.
+     *
+     * @return string|null
+     */
+    public function getDateFormat() : ?string
+    {
+        return $this->dateFormat;
+    }
+    /**
+     * The format used to display date in Harvest. Returns one of: %m/%d/%Y, %d/%m/%Y, %Y-%m-%d, %d.%m.%Y,.%Y.%m.%d or %Y/%m/%d.
+     *
+     * @param string|null $dateFormat
+     *
+     * @return self
+     */
+    public function setDateFormat(?string $dateFormat) : self
+    {
+        $this->dateFormat = $dateFormat;
         return $this;
     }
     /**

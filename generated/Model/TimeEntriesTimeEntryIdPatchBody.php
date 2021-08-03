@@ -47,7 +47,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     protected $notes;
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @var TimeEntriesTimeEntryIdPatchBodyExternalReference|null
      */
@@ -200,7 +200,7 @@ class TimeEntriesTimeEntryIdPatchBody
         return $this;
     }
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @return TimeEntriesTimeEntryIdPatchBodyExternalReference|null
      */
@@ -209,7 +209,7 @@ class TimeEntriesTimeEntryIdPatchBody
         return $this->externalReference;
     }
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @param TimeEntriesTimeEntryIdPatchBodyExternalReference|null $externalReference
      *

@@ -53,7 +53,7 @@ class TimeEntry
      */
     protected $taskAssignment;
     /**
-     * An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.
+     * An object containing the id, group_id, account_id, permalink, service, and service_icon_url of the associated external reference.
      *
      * @var TimeEntryExternalReference|null
      */
@@ -70,6 +70,12 @@ class TimeEntry
      * @var float|null
      */
     protected $hours;
+    /**
+     * Number of (decimal time) hours already tracked in this time entry, before the timer was last started.
+     *
+     * @var float|null
+     */
+    protected $hoursWithoutTimer;
     /**
      * Number of (decimal time) hours tracked in this time entry used in summary reports and invoices. This value is rounded according to the Time Rounding setting in your Preferences.
      *
@@ -335,7 +341,7 @@ class TimeEntry
         return $this;
     }
     /**
-     * An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.
+     * An object containing the id, group_id, account_id, permalink, service, and service_icon_url of the associated external reference.
      *
      * @return TimeEntryExternalReference|null
      */
@@ -344,7 +350,7 @@ class TimeEntry
         return $this->externalReference;
     }
     /**
-     * An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.
+     * An object containing the id, group_id, account_id, permalink, service, and service_icon_url of the associated external reference.
      *
      * @param TimeEntryExternalReference|null $externalReference
      *
@@ -395,6 +401,27 @@ class TimeEntry
     public function setHours(?float $hours) : self
     {
         $this->hours = $hours;
+        return $this;
+    }
+    /**
+     * Number of (decimal time) hours already tracked in this time entry, before the timer was last started.
+     *
+     * @return float|null
+     */
+    public function getHoursWithoutTimer() : ?float
+    {
+        return $this->hoursWithoutTimer;
+    }
+    /**
+     * Number of (decimal time) hours already tracked in this time entry, before the timer was last started.
+     *
+     * @param float|null $hoursWithoutTimer
+     *
+     * @return self
+     */
+    public function setHoursWithoutTimer(?float $hoursWithoutTimer) : self
+    {
+        $this->hoursWithoutTimer = $hoursWithoutTimer;
         return $this;
     }
     /**

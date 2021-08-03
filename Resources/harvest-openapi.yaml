@@ -107,7 +107,7 @@ components:
           nullable: true
         statement_key:
           type: string
-          description: 'Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}'
+          description: 'Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/statements/{STATEMENT_KEY}'
           nullable: true
         currency:
           type: string
@@ -156,6 +156,10 @@ components:
         time_format:
           type: string
           description: 'The format used to display time in Harvest. Returns either decimal or hours_minutes.'
+          nullable: true
+        date_format:
+          type: string
+          description: 'The format used to display date in Harvest. Returns one of: %m/%d/%Y, %d/%m/%Y, %Y-%m-%d, %d.%m.%Y,.%Y.%m.%d or %Y/%m/%d.'
           nullable: true
         plan_type:
           type: string
@@ -413,7 +417,7 @@ components:
               nullable: true
         client_key:
           type: string
-          description: 'Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456'
+          description: 'Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}'
           nullable: true
         number:
           type: string
@@ -1005,6 +1009,16 @@ components:
           type: string
           description: 'Textual notes used to describe the expense.'
           nullable: true
+        units:
+          type: integer
+          description: 'The quantity of units used to calculate the total_cost of the expense.'
+          nullable: true
+          format: int32
+        total_cost:
+          type: number
+          description: 'The total amount of the expense.'
+          nullable: true
+          format: float
         billable:
           type: boolean
           description: 'Whether the expense is billable or not.'
@@ -1040,16 +1054,6 @@ components:
           description: 'Date and time the expense was last updated.'
           nullable: true
           format: date-time
-        total_cost:
-          type: number
-          description: 'The total amount of the expense.'
-          format: float
-          nullable: true
-        units:
-          type: integer
-          description: 'The quantity of units to use in calculating the total_cost of the expense.'
-          format: int32
-          nullable: true
     ExpenseCategory:
       type: object
       externalDocs:
@@ -1202,13 +1206,16 @@ components:
           $ref: '#/components/schemas/TaskAssignment'
         external_reference:
           type: object
-          description: 'An object containing the id, group_id, permalink, service, and service_icon_url of the associated external reference.'
+          description: 'An object containing the id, group_id, account_id, permalink, service, and service_icon_url of the associated external reference.'
           nullable: true
           properties:
             id:
               type: string
               nullable: true
             group_id:
+              type: string
+              nullable: true
+            account_id:
               type: string
               nullable: true
             permalink:
@@ -1234,6 +1241,11 @@ components:
         hours:
           type: number
           description: 'Number of (decimal time) hours tracked in this time entry.'
+          nullable: true
+          format: float
+        hours_without_timer:
+          type: number
+          description: 'Number of (decimal time) hours already tracked in this time entry, before the timer was last started.'
           nullable: true
           format: float
         rounded_hours:
@@ -3536,6 +3548,7 @@ paths:
                 week_start_day: Monday
                 wants_timestamp_timers: true
                 time_format: hours_minutes
+                date_format: '%Y-%m-%d'
                 plan_type: sponsored
                 expense_feature: true
                 invoice_feature: true
@@ -3578,6 +3591,7 @@ paths:
                 week_start_day: Monday
                 wants_timestamp_timers: false
                 time_format: hours_minutes
+                date_format: '%Y-%m-%d'
                 plan_type: sponsored
                 expense_feature: true
                 invoice_feature: true
@@ -10112,6 +10126,7 @@ paths:
                       hourly_rate: 100.0
                       budget: null
                     hours: 2.11
+                    hours_without_timer: 2.11
                     rounded_hours: 2.25
                     notes: 'Adding CSS styling'
                     created_at: '2017-06-27T15:50:15Z'
@@ -10162,6 +10177,7 @@ paths:
                       hourly_rate: 100.0
                       budget: null
                     hours: 1.35
+                    hours_without_timer: 1.35
                     rounded_hours: 1.5
                     notes: 'Importing products'
                     created_at: '2017-06-27T15:49:28Z'
@@ -10214,6 +10230,7 @@ paths:
                       hourly_rate: 100.0
                       budget: null
                     hours: 1.0
+                    hours_without_timer: 1.0
                     rounded_hours: 1.0
                     notes: 'Evaluating 3rd party libraries'
                     created_at: '2017-06-27T15:49:17Z'
@@ -10264,6 +10281,7 @@ paths:
                       hourly_rate: 100.0
                       budget: null
                     hours: 2.0
+                    hours_without_timer: 2.0
                     rounded_hours: 2.0
                     notes: 'Planning meetings'
                     created_at: '2017-06-27T15:48:24Z'
@@ -10502,13 +10520,16 @@ paths:
                   nullable: true
                 external_reference:
                   type: object
-                  description: 'An object containing the id, group_id, and permalink of the external reference.'
+                  description: 'An object containing the id, group_id, account_id, and permalink of the external reference.'
                   nullable: true
                   properties:
                     id:
                       type: string
                       nullable: true
                     group_id:
+                      type: string
+                      nullable: true
+                    account_id:
                       type: string
                       nullable: true
                     permalink:
@@ -10601,6 +10622,7 @@ paths:
                   hourly_rate: 100.0
                   budget: null
                 hours: 1.0
+                hours_without_timer: 1.0
                 rounded_hours: 1.0
                 notes: 'Importing products'
                 created_at: '2017-06-27T15:49:28Z'
@@ -10684,6 +10706,7 @@ paths:
                   hourly_rate: 100.0
                   budget: null
                 hours: 1.0
+                hours_without_timer: 1.0
                 rounded_hours: 1.0
                 notes: 'Updated notes'
                 created_at: '2017-06-27T16:01:23Z'
@@ -10757,13 +10780,16 @@ paths:
                   nullable: true
                 external_reference:
                   type: object
-                  description: 'An object containing the id, group_id, and permalink of the external reference.'
+                  description: 'An object containing the id, group_id, account_id, and permalink of the external reference.'
                   nullable: true
                   properties:
                     id:
                       type: string
                       nullable: true
                     group_id:
+                      type: string
+                      nullable: true
+                    account_id:
                       type: string
                       nullable: true
                     permalink:
@@ -10848,6 +10874,7 @@ paths:
                   hourly_rate: 100
                   budget: null
                 hours: 0
+                hours_without_timer: 0
                 rounded_hours: 0
                 notes: null
                 created_at: '2017-08-22T17:40:24Z'
@@ -10930,6 +10957,7 @@ paths:
                   hourly_rate: 100
                   budget: null
                 hours: 0.02
+                hours_without_timer: 0.02
                 rounded_hours: 0.25
                 notes: null
                 created_at: '2017-08-22T17:37:13Z'

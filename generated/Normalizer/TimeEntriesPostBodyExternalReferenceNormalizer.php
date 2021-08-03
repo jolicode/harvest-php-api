@@ -48,6 +48,12 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
         elseif (\array_key_exists('group_id', $data) && $data['group_id'] === null) {
             $object->setGroupId(null);
         }
+        if (\array_key_exists('account_id', $data) && $data['account_id'] !== null) {
+            $object->setAccountId($data['account_id']);
+        }
+        elseif (\array_key_exists('account_id', $data) && $data['account_id'] === null) {
+            $object->setAccountId(null);
+        }
         if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
             $object->setPermalink($data['permalink']);
         }
@@ -64,6 +70,9 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
         }
         if (null !== $object->getGroupId()) {
             $data['group_id'] = $object->getGroupId();
+        }
+        if (null !== $object->getAccountId()) {
+            $data['account_id'] = $object->getAccountId();
         }
         if (null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();

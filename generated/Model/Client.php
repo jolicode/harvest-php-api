@@ -29,7 +29,7 @@ class Client
      */
     protected $address;
     /**
-     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/statements/{STATEMENT_KEY}
      *
      * @var string|null
      */
@@ -137,7 +137,7 @@ class Client
         return $this;
     }
     /**
-     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/statements/{STATEMENT_KEY}
      *
      * @return string|null
      */
@@ -146,7 +146,7 @@ class Client
         return $this->statementKey;
     }
     /**
-     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{statement_key}
+     * Used to build a URL to your client’s invoice dashboard:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/statements/{STATEMENT_KEY}
      *
      * @param string|null $statementKey
      *

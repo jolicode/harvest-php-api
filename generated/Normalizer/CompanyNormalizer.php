@@ -78,6 +78,12 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('time_format', $data) && $data['time_format'] === null) {
             $object->setTimeFormat(null);
         }
+        if (\array_key_exists('date_format', $data) && $data['date_format'] !== null) {
+            $object->setDateFormat($data['date_format']);
+        }
+        elseif (\array_key_exists('date_format', $data) && $data['date_format'] === null) {
+            $object->setDateFormat(null);
+        }
         if (\array_key_exists('plan_type', $data) && $data['plan_type'] !== null) {
             $object->setPlanType($data['plan_type']);
         }
@@ -163,6 +169,9 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getTimeFormat()) {
             $data['time_format'] = $object->getTimeFormat();
+        }
+        if (null !== $object->getDateFormat()) {
+            $data['date_format'] = $object->getDateFormat();
         }
         if (null !== $object->getPlanType()) {
             $data['plan_type'] = $object->getPlanType();

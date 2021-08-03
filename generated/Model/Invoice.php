@@ -41,7 +41,7 @@ class Invoice
      */
     protected $creator;
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456
+     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}
      *
      * @var string|null
      */
@@ -329,7 +329,7 @@ class Invoice
         return $this;
     }
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456
+     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}
      *
      * @return string|null
      */
@@ -338,7 +338,7 @@ class Invoice
         return $this->clientKey;
     }
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/abc123456
+     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}
      *
      * @param string|null $clientKey
      *

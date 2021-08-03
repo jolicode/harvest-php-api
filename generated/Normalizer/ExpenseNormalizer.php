@@ -87,6 +87,18 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
             $object->setNotes(null);
         }
+        if (\array_key_exists('units', $data) && $data['units'] !== null) {
+            $object->setUnits($data['units']);
+        }
+        elseif (\array_key_exists('units', $data) && $data['units'] === null) {
+            $object->setUnits(null);
+        }
+        if (\array_key_exists('total_cost', $data) && $data['total_cost'] !== null) {
+            $object->setTotalCost($data['total_cost']);
+        }
+        elseif (\array_key_exists('total_cost', $data) && $data['total_cost'] === null) {
+            $object->setTotalCost(null);
+        }
         if (\array_key_exists('billable', $data) && $data['billable'] !== null) {
             $object->setBillable($data['billable']);
         }
@@ -135,18 +147,6 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('total_cost', $data) && $data['total_cost'] !== null) {
-            $object->setTotalCost($data['total_cost']);
-        }
-        elseif (\array_key_exists('total_cost', $data) && $data['total_cost'] === null) {
-            $object->setTotalCost(null);
-        }
-        if (\array_key_exists('units', $data) && $data['units'] !== null) {
-            $object->setUnits($data['units']);
-        }
-        elseif (\array_key_exists('units', $data) && $data['units'] === null) {
-            $object->setUnits(null);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -179,6 +179,12 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getNotes()) {
             $data['notes'] = $object->getNotes();
         }
+        if (null !== $object->getUnits()) {
+            $data['units'] = $object->getUnits();
+        }
+        if (null !== $object->getTotalCost()) {
+            $data['total_cost'] = $object->getTotalCost();
+        }
         if (null !== $object->getBillable()) {
             $data['billable'] = $object->getBillable();
         }
@@ -202,12 +208,6 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
-        }
-        if (null !== $object->getTotalCost()) {
-            $data['total_cost'] = $object->getTotalCost();
-        }
-        if (null !== $object->getUnits()) {
-            $data['units'] = $object->getUnits();
         }
         return $data;
     }

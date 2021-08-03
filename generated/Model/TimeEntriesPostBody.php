@@ -47,7 +47,7 @@ class TimeEntriesPostBody
      */
     protected $notes;
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @var TimeEntriesPostBodyExternalReference|null
      */
@@ -206,7 +206,7 @@ class TimeEntriesPostBody
         return $this;
     }
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @return TimeEntriesPostBodyExternalReference|null
      */
@@ -215,7 +215,7 @@ class TimeEntriesPostBody
         return $this->externalReference;
     }
     /**
-     * An object containing the id, group_id, and permalink of the external reference.
+     * An object containing the id, group_id, account_id, and permalink of the external reference.
      *
      * @param TimeEntriesPostBodyExternalReference|null $externalReference
      *

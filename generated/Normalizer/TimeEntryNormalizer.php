@@ -96,6 +96,12 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('hours', $data) && $data['hours'] === null) {
             $object->setHours(null);
         }
+        if (\array_key_exists('hours_without_timer', $data) && $data['hours_without_timer'] !== null) {
+            $object->setHoursWithoutTimer($data['hours_without_timer']);
+        }
+        elseif (\array_key_exists('hours_without_timer', $data) && $data['hours_without_timer'] === null) {
+            $object->setHoursWithoutTimer(null);
+        }
         if (\array_key_exists('rounded_hours', $data) && $data['rounded_hours'] !== null) {
             $object->setRoundedHours($data['rounded_hours']);
         }
@@ -229,6 +235,9 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (null !== $object->getHours()) {
             $data['hours'] = $object->getHours();
+        }
+        if (null !== $object->getHoursWithoutTimer()) {
+            $data['hours_without_timer'] = $object->getHoursWithoutTimer();
         }
         if (null !== $object->getRoundedHours()) {
             $data['rounded_hours'] = $object->getRoundedHours();

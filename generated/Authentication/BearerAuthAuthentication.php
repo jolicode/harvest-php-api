@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Authentication;
 
-class BearerAuthAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class BearerAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)

@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Authentication;
 
-class AccountAuthAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class AccountAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)

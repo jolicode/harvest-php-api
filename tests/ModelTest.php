@@ -57,30 +57,6 @@ class ModelTest extends TestCase
         $openapi = Yaml::parseFile(__DIR__.'/../Resources/harvest-openapi.yaml');
 
         $failedExpected = [
-            '/clients' => [
-                'get' => true, // statement_key is documented as a string, integer in example
-                'post' => true, // statement_key is documented as a string, integer in example
-            ],
-            '/clients/{clientId}' => [
-                'get' => true, // statement_key is documented as a string, integer in example
-                'patch' => true, // statement_key is documented as a string, integer in example
-            ],
-            '/company' => [
-                'get' => true, // undocumented exemple attribute "approval_required"
-                'patch' => true, // undocumented exemple attribute "approval_required"
-            ],
-            '/users' => [
-                'get' => true, // deprecated parameter "telephone"
-                'post' => true, // deprecated parameter "telephone"
-            ],
-            '/users/me' => [
-                'get' => true, // deprecated parameter "telephone"
-                'post' => true, // deprecated parameter "telephone"
-            ],
-            '/users/{userId}' => [
-                'get' => true, // deprecated parameter "telephone"
-                'patch' => true, // deprecated parameter "telephone"
-            ],
         ];
 
         foreach ($openapi['paths'] as $pathName => $path) {

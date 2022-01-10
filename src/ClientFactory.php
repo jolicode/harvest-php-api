@@ -12,7 +12,7 @@
 namespace JoliCode\Harvest;
 
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
-use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
+use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use JoliCode\Harvest\Api\Authentication\AccountAuthAuthentication;
 use JoliCode\Harvest\Api\Authentication\BearerAuthAuthentication;
 use JoliCode\Harvest\Api\Client;

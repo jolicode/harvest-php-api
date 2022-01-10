@@ -1774,6 +1774,10 @@ components:
           description: 'The email address of the user.'
           nullable: true
           format: email
+        telephone:
+          type: string
+          description: 'The user’s telephone number.'
+          nullable: true
         timezone:
           type: string
           description: 'The user’s timezone.'
@@ -3271,7 +3275,7 @@ paths:
                     name: '123 Industries'
                     is_active: true
                     address: "123 Main St.\r\nAnytown, LA 71223"
-                    statement_key: 1234567890987654321
+                    statement_key: 0a39d3e33c8058cf7c3f8097d854c64e
                     created_at: '2017-06-26T21:02:12Z'
                     updated_at: '2017-06-26T21:34:11Z'
                     currency: EUR
@@ -3280,7 +3284,7 @@ paths:
                     name: 'ABC Corp'
                     is_active: true
                     address: "456 Main St.\r\nAnytown, CT 06467"
-                    statement_key: 1234567890987654321
+                    statement_key: e42aa2cb60e85925ffe5d13ee7ee8706
                     created_at: '2017-06-26T21:01:52Z'
                     updated_at: '2017-06-26T21:27:07Z'
                     currency: USD
@@ -3353,7 +3357,7 @@ paths:
                 name: 'Your New Client'
                 is_active: true
                 address: null
-                statement_key: 1234567890987654321
+                statement_key: 82455699ad085d8cffc3e9a4e43ff7b8
                 created_at: '2017-06-26T21:39:35Z'
                 updated_at: '2017-06-26T21:39:35Z'
                 currency: EUR
@@ -3440,7 +3444,7 @@ paths:
                 name: '123 Industries'
                 is_active: true
                 address: "123 Main St.\r\nAnytown, LA 71223"
-                statement_key: 1234567890987654321
+                statement_key: 0a39d3e33c8058cf7c3f8097d854c64e
                 created_at: '2017-06-26T21:02:12Z'
                 updated_at: '2017-06-26T21:34:11Z'
                 currency: EUR
@@ -3480,7 +3484,7 @@ paths:
                 name: 'Your New Client'
                 is_active: false
                 address: null
-                statement_key: 1234567890987654321
+                statement_key: 82455699ad085d8cffc3e9a4e43ff7b8
                 created_at: '2017-06-26T21:39:35Z'
                 updated_at: '2017-06-26T21:41:18Z'
                 currency: EUR
@@ -3553,7 +3557,7 @@ paths:
                 expense_feature: true
                 invoice_feature: true
                 estimate_feature: true
-                approval_required: true
+                approval_feature: true
                 clock: 12h
                 decimal_symbol: .
                 thousands_separator: ','
@@ -3596,7 +3600,7 @@ paths:
                 expense_feature: true
                 invoice_feature: true
                 estimate_feature: true
-                approval_required: true
+                approval_feature: true
                 clock: 12h
                 decimal_symbol: .
                 thousands_separator: ','
@@ -9511,8 +9515,6 @@ paths:
                   nullable: true
                   items:
                     type: integer
-              required:
-                - name
   /task_assignments:
     get:
       summary: 'List all task assignments'
@@ -10077,7 +10079,7 @@ paths:
     get:
       summary: 'List all time entries'
       operationId: listTimeEntries
-      description: "Returns a list of your time entries. The time entries are returned sorted by spent_at date. At this time, the sort option can’t be customized.\n\nThe response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries."
+      description: "Returns a list of your time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.\n\nThe response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries."
       externalDocs:
         description: 'List all time entries'
         url: 'https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/#list-all-time-entries'

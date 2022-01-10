@@ -29,6 +29,12 @@ class User
      */
     protected $email;
     /**
+     * The user’s telephone number.
+     *
+     * @var string|null
+     */
+    protected $telephone;
+    /**
      * The user’s timezone.
      *
      * @var string|null
@@ -206,6 +212,27 @@ class User
     public function setEmail(?string $email) : self
     {
         $this->email = $email;
+        return $this;
+    }
+    /**
+     * The user’s telephone number.
+     *
+     * @return string|null
+     */
+    public function getTelephone() : ?string
+    {
+        return $this->telephone;
+    }
+    /**
+     * The user’s telephone number.
+     *
+     * @param string|null $telephone
+     *
+     * @return self
+     */
+    public function setTelephone(?string $telephone) : self
+    {
+        $this->telephone = $telephone;
         return $this;
     }
     /**

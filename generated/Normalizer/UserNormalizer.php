@@ -66,6 +66,12 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
+        if (\array_key_exists('telephone', $data) && $data['telephone'] !== null) {
+            $object->setTelephone($data['telephone']);
+        }
+        elseif (\array_key_exists('telephone', $data) && $data['telephone'] === null) {
+            $object->setTelephone(null);
+        }
         if (\array_key_exists('timezone', $data) && $data['timezone'] !== null) {
             $object->setTimezone($data['timezone']);
         }
@@ -185,6 +191,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        if (null !== $object->getTelephone()) {
+            $data['telephone'] = $object->getTelephone();
         }
         if (null !== $object->getTimezone()) {
             $data['timezone'] = $object->getTimezone();

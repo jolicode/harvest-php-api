@@ -1,5 +1,9 @@
 # Changes between versions
 
+## 8.2.0 (not released yet)
+* upgrade `janephp/open-api` from 6.3 to v7.1
+* add support for Symfony v6
+
 ## 5.1.0 (2021-08-03)
 
  * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#18)

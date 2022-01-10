@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -16,6 +16,9 @@ class EstimateClientNormalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\EstimateClient';
@@ -24,6 +27,9 @@ class EstimateClientNormalizer implements DenormalizerInterface, NormalizerInter
     {
         return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\EstimateClient';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -50,6 +56,9 @@ class EstimateClientNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

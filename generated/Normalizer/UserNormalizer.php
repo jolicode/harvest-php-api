@@ -2,7 +2,7 @@
 
 namespace JoliCode\Harvest\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -16,6 +16,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'JoliCode\\Harvest\\Api\\Model\\User';
@@ -24,6 +27,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\User';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -162,6 +168,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

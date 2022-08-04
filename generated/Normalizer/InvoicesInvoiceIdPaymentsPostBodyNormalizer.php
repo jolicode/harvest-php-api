@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody';
+        return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,38 +55,39 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('amount', $data) && $data['amount'] !== null) {
+        if (\array_key_exists('amount', $data) && null !== $data['amount']) {
             $object->setAmount($data['amount']);
-        }
-        elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
+        } elseif (\array_key_exists('amount', $data) && null === $data['amount']) {
             $object->setAmount(null);
         }
-        if (\array_key_exists('paid_at', $data) && $data['paid_at'] !== null) {
+        if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
             $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
-        }
-        elseif (\array_key_exists('paid_at', $data) && $data['paid_at'] === null) {
+        } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
             $object->setPaidAt(null);
         }
-        if (\array_key_exists('paid_date', $data) && $data['paid_date'] !== null) {
+        if (\array_key_exists('paid_date', $data) && null !== $data['paid_date']) {
             $object->setPaidDate(\DateTime::createFromFormat('Y-m-d', $data['paid_date'])->setTime(0, 0, 0));
-        }
-        elseif (\array_key_exists('paid_date', $data) && $data['paid_date'] === null) {
+        } elseif (\array_key_exists('paid_date', $data) && null === $data['paid_date']) {
             $object->setPaidDate(null);
         }
-        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+        if (\array_key_exists('notes', $data) && null !== $data['notes']) {
             $object->setNotes($data['notes']);
-        }
-        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
+        } elseif (\array_key_exists('notes', $data) && null === $data['notes']) {
             $object->setNotes(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         $data['amount'] = $object->getAmount();
         if (null !== $object->getPaidAt()) {
             $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
@@ -84,6 +98,7 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getNotes()) {
             $data['notes'] = $object->getNotes();
         }
+
         return $data;
     }
 }

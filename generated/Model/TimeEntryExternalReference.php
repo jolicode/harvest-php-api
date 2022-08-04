@@ -1,169 +1,112 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class TimeEntryExternalReference
 {
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $groupId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $accountId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $permalink;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $service;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $serviceIconUrl;
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getId() : ?string
+
+    public function getId(): ?string
     {
         return $this->id;
     }
-    /**
-     * 
-     *
-     * @param string|null $id
-     *
-     * @return self
-     */
-    public function setId(?string $id) : self
+
+    public function setId(?string $id): self
     {
         $this->id = $id;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getGroupId() : ?string
+
+    public function getGroupId(): ?string
     {
         return $this->groupId;
     }
-    /**
-     * 
-     *
-     * @param string|null $groupId
-     *
-     * @return self
-     */
-    public function setGroupId(?string $groupId) : self
+
+    public function setGroupId(?string $groupId): self
     {
         $this->groupId = $groupId;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getAccountId() : ?string
+
+    public function getAccountId(): ?string
     {
         return $this->accountId;
     }
-    /**
-     * 
-     *
-     * @param string|null $accountId
-     *
-     * @return self
-     */
-    public function setAccountId(?string $accountId) : self
+
+    public function setAccountId(?string $accountId): self
     {
         $this->accountId = $accountId;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getPermalink() : ?string
+
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
-    /**
-     * 
-     *
-     * @param string|null $permalink
-     *
-     * @return self
-     */
-    public function setPermalink(?string $permalink) : self
+
+    public function setPermalink(?string $permalink): self
     {
         $this->permalink = $permalink;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getService() : ?string
+
+    public function getService(): ?string
     {
         return $this->service;
     }
-    /**
-     * 
-     *
-     * @param string|null $service
-     *
-     * @return self
-     */
-    public function setService(?string $service) : self
+
+    public function setService(?string $service): self
     {
         $this->service = $service;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getServiceIconUrl() : ?string
+
+    public function getServiceIconUrl(): ?string
     {
         return $this->serviceIconUrl;
     }
-    /**
-     * 
-     *
-     * @param string|null $serviceIconUrl
-     *
-     * @return self
-     */
-    public function setServiceIconUrl(?string $serviceIconUrl) : self
+
+    public function setServiceIconUrl(?string $serviceIconUrl): self
     {
         $this->serviceIconUrl = $serviceIconUrl;
+
         return $this;
     }
 }

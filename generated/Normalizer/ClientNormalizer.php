@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\Client';
+        return 'JoliCode\\Harvest\\Api\\Model\\Client' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Client';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Client' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,62 +55,59 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
-        }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
-        }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+        if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
             $object->setIsActive($data['is_active']);
-        }
-        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
+        } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
             $object->setIsActive(null);
         }
-        if (\array_key_exists('address', $data) && $data['address'] !== null) {
+        if (\array_key_exists('address', $data) && null !== $data['address']) {
             $object->setAddress($data['address']);
-        }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        } elseif (\array_key_exists('address', $data) && null === $data['address']) {
             $object->setAddress(null);
         }
-        if (\array_key_exists('statement_key', $data) && $data['statement_key'] !== null) {
+        if (\array_key_exists('statement_key', $data) && null !== $data['statement_key']) {
             $object->setStatementKey($data['statement_key']);
-        }
-        elseif (\array_key_exists('statement_key', $data) && $data['statement_key'] === null) {
+        } elseif (\array_key_exists('statement_key', $data) && null === $data['statement_key']) {
             $object->setStatementKey(null);
         }
-        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
+        if (\array_key_exists('currency', $data) && null !== $data['currency']) {
             $object->setCurrency($data['currency']);
-        }
-        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
+        } elseif (\array_key_exists('currency', $data) && null === $data['currency']) {
             $object->setCurrency(null);
         }
-        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+        if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
-        }
-        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
+        } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
             $object->setCreatedAt(null);
         }
-        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+        if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
-        }
-        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
+        } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
             $object->setUpdatedAt(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
@@ -122,6 +132,7 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
+
         return $data;
     }
 }

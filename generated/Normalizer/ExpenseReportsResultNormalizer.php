@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ExpenseReportsResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult';
+        return 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,86 +55,79 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('client_id', $data) && $data['client_id'] !== null) {
+        if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
-        }
-        elseif (\array_key_exists('client_id', $data) && $data['client_id'] === null) {
+        } elseif (\array_key_exists('client_id', $data) && null === $data['client_id']) {
             $object->setClientId(null);
         }
-        if (\array_key_exists('client_name', $data) && $data['client_name'] !== null) {
+        if (\array_key_exists('client_name', $data) && null !== $data['client_name']) {
             $object->setClientName($data['client_name']);
-        }
-        elseif (\array_key_exists('client_name', $data) && $data['client_name'] === null) {
+        } elseif (\array_key_exists('client_name', $data) && null === $data['client_name']) {
             $object->setClientName(null);
         }
-        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+        if (\array_key_exists('project_id', $data) && null !== $data['project_id']) {
             $object->setProjectId($data['project_id']);
-        }
-        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+        } elseif (\array_key_exists('project_id', $data) && null === $data['project_id']) {
             $object->setProjectId(null);
         }
-        if (\array_key_exists('project_name', $data) && $data['project_name'] !== null) {
+        if (\array_key_exists('project_name', $data) && null !== $data['project_name']) {
             $object->setProjectName($data['project_name']);
-        }
-        elseif (\array_key_exists('project_name', $data) && $data['project_name'] === null) {
+        } elseif (\array_key_exists('project_name', $data) && null === $data['project_name']) {
             $object->setProjectName(null);
         }
-        if (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] !== null) {
+        if (\array_key_exists('expense_category_id', $data) && null !== $data['expense_category_id']) {
             $object->setExpenseCategoryId($data['expense_category_id']);
-        }
-        elseif (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] === null) {
+        } elseif (\array_key_exists('expense_category_id', $data) && null === $data['expense_category_id']) {
             $object->setExpenseCategoryId(null);
         }
-        if (\array_key_exists('expense_category_name', $data) && $data['expense_category_name'] !== null) {
+        if (\array_key_exists('expense_category_name', $data) && null !== $data['expense_category_name']) {
             $object->setExpenseCategoryName($data['expense_category_name']);
-        }
-        elseif (\array_key_exists('expense_category_name', $data) && $data['expense_category_name'] === null) {
+        } elseif (\array_key_exists('expense_category_name', $data) && null === $data['expense_category_name']) {
             $object->setExpenseCategoryName(null);
         }
-        if (\array_key_exists('user_id', $data) && $data['user_id'] !== null) {
+        if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
             $object->setUserId($data['user_id']);
-        }
-        elseif (\array_key_exists('user_id', $data) && $data['user_id'] === null) {
+        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
             $object->setUserId(null);
         }
-        if (\array_key_exists('user_name', $data) && $data['user_name'] !== null) {
+        if (\array_key_exists('user_name', $data) && null !== $data['user_name']) {
             $object->setUserName($data['user_name']);
-        }
-        elseif (\array_key_exists('user_name', $data) && $data['user_name'] === null) {
+        } elseif (\array_key_exists('user_name', $data) && null === $data['user_name']) {
             $object->setUserName(null);
         }
-        if (\array_key_exists('is_contractor', $data) && $data['is_contractor'] !== null) {
+        if (\array_key_exists('is_contractor', $data) && null !== $data['is_contractor']) {
             $object->setIsContractor($data['is_contractor']);
-        }
-        elseif (\array_key_exists('is_contractor', $data) && $data['is_contractor'] === null) {
+        } elseif (\array_key_exists('is_contractor', $data) && null === $data['is_contractor']) {
             $object->setIsContractor(null);
         }
-        if (\array_key_exists('total_amount', $data) && $data['total_amount'] !== null) {
+        if (\array_key_exists('total_amount', $data) && null !== $data['total_amount']) {
             $object->setTotalAmount($data['total_amount']);
-        }
-        elseif (\array_key_exists('total_amount', $data) && $data['total_amount'] === null) {
+        } elseif (\array_key_exists('total_amount', $data) && null === $data['total_amount']) {
             $object->setTotalAmount(null);
         }
-        if (\array_key_exists('billable_amount', $data) && $data['billable_amount'] !== null) {
+        if (\array_key_exists('billable_amount', $data) && null !== $data['billable_amount']) {
             $object->setBillableAmount($data['billable_amount']);
-        }
-        elseif (\array_key_exists('billable_amount', $data) && $data['billable_amount'] === null) {
+        } elseif (\array_key_exists('billable_amount', $data) && null === $data['billable_amount']) {
             $object->setBillableAmount(null);
         }
-        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
+        if (\array_key_exists('currency', $data) && null !== $data['currency']) {
             $object->setCurrency($data['currency']);
-        }
-        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
+        } elseif (\array_key_exists('currency', $data) && null === $data['currency']) {
             $object->setCurrency(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         if (null !== $object->getClientId()) {
             $data['client_id'] = $object->getClientId();
         }
@@ -158,6 +164,7 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getCurrency()) {
             $data['currency'] = $object->getCurrency();
         }
+
         return $data;
     }
 }

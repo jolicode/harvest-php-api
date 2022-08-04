@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class InvoicesPostBodyLineItemsImport
@@ -22,67 +31,62 @@ class InvoicesPostBodyLineItemsImport
      * @var InvoicesPostBodyLineItemsImportExpenses
      */
     protected $expenses;
+
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
      * @return int[]
      */
-    public function getProjectIds() : array
+    public function getProjectIds(): array
     {
         return $this->projectIds;
     }
+
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
      * @param int[] $projectIds
-     *
-     * @return self
      */
-    public function setProjectIds(array $projectIds) : self
+    public function setProjectIds(array $projectIds): self
     {
         $this->projectIds = $projectIds;
+
         return $this;
     }
+
     /**
      * An time import object.
-     *
-     * @return InvoicesPostBodyLineItemsImportTime
      */
-    public function getTime() : InvoicesPostBodyLineItemsImportTime
+    public function getTime(): InvoicesPostBodyLineItemsImportTime
     {
         return $this->time;
     }
+
     /**
      * An time import object.
-     *
-     * @param InvoicesPostBodyLineItemsImportTime $time
-     *
-     * @return self
      */
-    public function setTime(InvoicesPostBodyLineItemsImportTime $time) : self
+    public function setTime(InvoicesPostBodyLineItemsImportTime $time): self
     {
         $this->time = $time;
+
         return $this;
     }
+
     /**
      * An expense import object.
-     *
-     * @return InvoicesPostBodyLineItemsImportExpenses
      */
-    public function getExpenses() : InvoicesPostBodyLineItemsImportExpenses
+    public function getExpenses(): InvoicesPostBodyLineItemsImportExpenses
     {
         return $this->expenses;
     }
+
     /**
      * An expense import object.
-     *
-     * @param InvoicesPostBodyLineItemsImportExpenses $expenses
-     *
-     * @return self
      */
-    public function setExpenses(InvoicesPostBodyLineItemsImportExpenses $expenses) : self
+    public function setExpenses(InvoicesPostBodyLineItemsImportExpenses $expenses): self
     {
         $this->expenses = $expenses;
+
         return $this;
     }
 }

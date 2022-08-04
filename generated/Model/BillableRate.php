@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class BillableRate
@@ -40,130 +49,112 @@ class BillableRate
      * @var \DateTime|null
      */
     protected $updatedAt;
+
     /**
      * Unique ID for the billable rate.
-     *
-     * @return int|null
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
+
     /**
      * Unique ID for the billable rate.
-     *
-     * @param int|null $id
-     *
-     * @return self
      */
-    public function setId(?int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * The amount of the billable rate.
-     *
-     * @return float|null
      */
-    public function getAmount() : ?float
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
+
     /**
      * The amount of the billable rate.
-     *
-     * @param float|null $amount
-     *
-     * @return self
      */
-    public function setAmount(?float $amount) : self
+    public function setAmount(?float $amount): self
     {
         $this->amount = $amount;
+
         return $this;
     }
+
     /**
      * The date the billable rate is effective.
-     *
-     * @return \DateTime|null
      */
-    public function getStartDate() : ?\DateTime
+    public function getStartDate(): ?\DateTime
     {
         return $this->startDate;
     }
+
     /**
      * The date the billable rate is effective.
-     *
-     * @param \DateTime|null $startDate
-     *
-     * @return self
      */
-    public function setStartDate(?\DateTime $startDate) : self
+    public function setStartDate(?\DateTime $startDate): self
     {
         $this->startDate = $startDate;
+
         return $this;
     }
+
     /**
      * The date the billable rate is no longer effective. This date is calculated by Harvest.
-     *
-     * @return \DateTime|null
      */
-    public function getEndDate() : ?\DateTime
+    public function getEndDate(): ?\DateTime
     {
         return $this->endDate;
     }
+
     /**
      * The date the billable rate is no longer effective. This date is calculated by Harvest.
-     *
-     * @param \DateTime|null $endDate
-     *
-     * @return self
      */
-    public function setEndDate(?\DateTime $endDate) : self
+    public function setEndDate(?\DateTime $endDate): self
     {
         $this->endDate = $endDate;
+
         return $this;
     }
+
     /**
      * Date and time the billable rate was created.
-     *
-     * @return \DateTime|null
      */
-    public function getCreatedAt() : ?\DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
+
     /**
      * Date and time the billable rate was created.
-     *
-     * @param \DateTime|null $createdAt
-     *
-     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt) : self
+    public function setCreatedAt(?\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
      * Date and time the billable rate was last updated.
-     *
-     * @return \DateTime|null
      */
-    public function getUpdatedAt() : ?\DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
+
     /**
      * Date and time the billable rate was last updated.
-     *
-     * @param \DateTime|null $updatedAt
-     *
-     * @return self
      */
-    public function setUpdatedAt(?\DateTime $updatedAt) : self
+    public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
 }

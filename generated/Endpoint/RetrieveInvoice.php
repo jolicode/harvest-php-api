@@ -1,53 +1,66 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Endpoint;
 
 class RetrieveInvoice extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
+    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
     protected $invoiceId;
+
     /**
      * Retrieves the invoice with the given ID. Returns an invoice object and a 200 OK response code if a valid identifier was provided.
-     *
-     * @param string $invoiceId 
      */
     public function __construct(string $invoiceId)
     {
         $this->invoiceId = $invoiceId;
     }
-    use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+
+    public function getUri(): string
     {
-        return str_replace(array('{invoiceId}'), array($this->invoiceId), '/invoices/{invoiceId}');
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return array(array(), null);
+        return [[], null];
     }
-    public function getExtraHeaders() : array
+
+    public function getExtraHeaders(): array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
+
+    public function getAuthenticationScopes(): array
+    {
+        return ['BearerAuth', 'AccountAuth'];
+    }
+
     /**
      * {@inheritdoc}
      *
-     *
-     * @return null|\JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error
+     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Invoice', 'json');
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (false !== mb_strpos($contentType, 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
         }
-    }
-    public function getAuthenticationScopes() : array
-    {
-        return array('BearerAuth', 'AccountAuth');
     }
 }

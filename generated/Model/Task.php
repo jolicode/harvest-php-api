@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class Task
@@ -52,172 +61,148 @@ class Task
      * @var \DateTime|null
      */
     protected $updatedAt;
+
     /**
      * Unique ID for the task.
-     *
-     * @return int|null
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
+
     /**
      * Unique ID for the task.
-     *
-     * @param int|null $id
-     *
-     * @return self
      */
-    public function setId(?int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * The name of the task.
-     *
-     * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The name of the task.
-     *
-     * @param string|null $name
-     *
-     * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
-     *
-     * @return bool|null
      */
-    public function getBillableByDefault() : ?bool
+    public function getBillableByDefault(): ?bool
     {
         return $this->billableByDefault;
     }
+
     /**
      * Used in determining whether default tasks should be marked billable when creating a new project.
-     *
-     * @param bool|null $billableByDefault
-     *
-     * @return self
      */
-    public function setBillableByDefault(?bool $billableByDefault) : self
+    public function setBillableByDefault(?bool $billableByDefault): self
     {
         $this->billableByDefault = $billableByDefault;
+
         return $this;
     }
+
     /**
      * The hourly rate to use for this task when it is added to a project.
-     *
-     * @return float|null
      */
-    public function getDefaultHourlyRate() : ?float
+    public function getDefaultHourlyRate(): ?float
     {
         return $this->defaultHourlyRate;
     }
+
     /**
      * The hourly rate to use for this task when it is added to a project.
-     *
-     * @param float|null $defaultHourlyRate
-     *
-     * @return self
      */
-    public function setDefaultHourlyRate(?float $defaultHourlyRate) : self
+    public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
         $this->defaultHourlyRate = $defaultHourlyRate;
+
         return $this;
     }
+
     /**
      * Whether this task should be automatically added to future projects.
-     *
-     * @return bool|null
      */
-    public function getIsDefault() : ?bool
+    public function getIsDefault(): ?bool
     {
         return $this->isDefault;
     }
+
     /**
      * Whether this task should be automatically added to future projects.
-     *
-     * @param bool|null $isDefault
-     *
-     * @return self
      */
-    public function setIsDefault(?bool $isDefault) : self
+    public function setIsDefault(?bool $isDefault): self
     {
         $this->isDefault = $isDefault;
+
         return $this;
     }
+
     /**
      * Whether this task is active or archived.
-     *
-     * @return bool|null
      */
-    public function getIsActive() : ?bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
+
     /**
      * Whether this task is active or archived.
-     *
-     * @param bool|null $isActive
-     *
-     * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
+
         return $this;
     }
+
     /**
      * Date and time the task was created.
-     *
-     * @return \DateTime|null
      */
-    public function getCreatedAt() : ?\DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
+
     /**
      * Date and time the task was created.
-     *
-     * @param \DateTime|null $createdAt
-     *
-     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt) : self
+    public function setCreatedAt(?\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
      * Date and time the task was last updated.
-     *
-     * @return \DateTime|null
      */
-    public function getUpdatedAt() : ?\DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
+
     /**
      * Date and time the task was last updated.
-     *
-     * @param \DateTime|null $updatedAt
-     *
-     * @return self
      */
-    public function setUpdatedAt(?\DateTime $updatedAt) : self
+    public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
 }

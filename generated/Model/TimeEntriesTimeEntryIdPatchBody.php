@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class TimeEntriesTimeEntryIdPatchBody
@@ -52,172 +61,148 @@ class TimeEntriesTimeEntryIdPatchBody
      * @var TimeEntriesTimeEntryIdPatchBodyExternalReference|null
      */
     protected $externalReference;
+
     /**
      * The ID of the project to associate with the time entry.
-     *
-     * @return int|null
      */
-    public function getProjectId() : ?int
+    public function getProjectId(): ?int
     {
         return $this->projectId;
     }
+
     /**
      * The ID of the project to associate with the time entry.
-     *
-     * @param int|null $projectId
-     *
-     * @return self
      */
-    public function setProjectId(?int $projectId) : self
+    public function setProjectId(?int $projectId): self
     {
         $this->projectId = $projectId;
+
         return $this;
     }
+
     /**
      * The ID of the task to associate with the time entry.
-     *
-     * @return int|null
      */
-    public function getTaskId() : ?int
+    public function getTaskId(): ?int
     {
         return $this->taskId;
     }
+
     /**
      * The ID of the task to associate with the time entry.
-     *
-     * @param int|null $taskId
-     *
-     * @return self
      */
-    public function setTaskId(?int $taskId) : self
+    public function setTaskId(?int $taskId): self
     {
         $this->taskId = $taskId;
+
         return $this;
     }
+
     /**
      * The ISO 8601 formatted date the time entry was spent.
-     *
-     * @return \DateTime|null
      */
-    public function getSpentDate() : ?\DateTime
+    public function getSpentDate(): ?\DateTime
     {
         return $this->spentDate;
     }
+
     /**
      * The ISO 8601 formatted date the time entry was spent.
-     *
-     * @param \DateTime|null $spentDate
-     *
-     * @return self
      */
-    public function setSpentDate(?\DateTime $spentDate) : self
+    public function setSpentDate(?\DateTime $spentDate): self
     {
         $this->spentDate = $spentDate;
+
         return $this;
     }
+
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
-     *
-     * @return string|null
      */
-    public function getStartedTime() : ?string
+    public function getStartedTime(): ?string
     {
         return $this->startedTime;
     }
+
     /**
      * The time the entry started. Defaults to the current time. Example: “8:00am”.
-     *
-     * @param string|null $startedTime
-     *
-     * @return self
      */
-    public function setStartedTime(?string $startedTime) : self
+    public function setStartedTime(?string $startedTime): self
     {
         $this->startedTime = $startedTime;
+
         return $this;
     }
+
     /**
      * The time the entry ended.
-     *
-     * @return string|null
      */
-    public function getEndedTime() : ?string
+    public function getEndedTime(): ?string
     {
         return $this->endedTime;
     }
+
     /**
      * The time the entry ended.
-     *
-     * @param string|null $endedTime
-     *
-     * @return self
      */
-    public function setEndedTime(?string $endedTime) : self
+    public function setEndedTime(?string $endedTime): self
     {
         $this->endedTime = $endedTime;
+
         return $this;
     }
+
     /**
      * The current amount of time tracked.
-     *
-     * @return float|null
      */
-    public function getHours() : ?float
+    public function getHours(): ?float
     {
         return $this->hours;
     }
+
     /**
      * The current amount of time tracked.
-     *
-     * @param float|null $hours
-     *
-     * @return self
      */
-    public function setHours(?float $hours) : self
+    public function setHours(?float $hours): self
     {
         $this->hours = $hours;
+
         return $this;
     }
+
     /**
      * Any notes to be associated with the time entry.
-     *
-     * @return string|null
      */
-    public function getNotes() : ?string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
+
     /**
      * Any notes to be associated with the time entry.
-     *
-     * @param string|null $notes
-     *
-     * @return self
      */
-    public function setNotes(?string $notes) : self
+    public function setNotes(?string $notes): self
     {
         $this->notes = $notes;
+
         return $this;
     }
+
     /**
      * An object containing the id, group_id, account_id, and permalink of the external reference.
-     *
-     * @return TimeEntriesTimeEntryIdPatchBodyExternalReference|null
      */
-    public function getExternalReference() : ?TimeEntriesTimeEntryIdPatchBodyExternalReference
+    public function getExternalReference(): ?TimeEntriesTimeEntryIdPatchBodyExternalReference
     {
         return $this->externalReference;
     }
+
     /**
      * An object containing the id, group_id, account_id, and permalink of the external reference.
-     *
-     * @param TimeEntriesTimeEntryIdPatchBodyExternalReference|null $externalReference
-     *
-     * @return self
      */
-    public function setExternalReference(?TimeEntriesTimeEntryIdPatchBodyExternalReference $externalReference) : self
+    public function setExternalReference(?TimeEntriesTimeEntryIdPatchBodyExternalReference $externalReference): self
     {
         $this->externalReference = $externalReference;
+
         return $this;
     }
 }

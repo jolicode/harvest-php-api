@@ -1,5 +1,13 @@
 # Changes between versions
 
+## 6.0.0 (2022-08-04)
+￼
+￼ * upgrade to `janephp/open-api` 7.3
+￼ * drop support for PHP <7.4
+  * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#20)
+    * added `Company.currency_code_display` and `Company.currency_symbol_display`
+    * several fields of the `User` object have disappeared, due to the [API changes introduced in March](https://www.getharvest.com/blog/new-flexible-permissions#:~:text=The%20API%20has%20been%20updated%20to%20align%20with%20the%20new%20permissions%20features.).
+￼
 ## 5.2.0 (2022-01-10)
 
  * upgraded `janephp/open-api` from 6.3 to 7.1 - thanks @jdrieghe

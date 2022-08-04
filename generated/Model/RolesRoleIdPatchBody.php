@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class RolesRoleIdPatchBody
@@ -16,46 +25,44 @@ class RolesRoleIdPatchBody
      * @var int[]|null
      */
     protected $userIds;
+
     /**
      * The  name of the role.
-     *
-     * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The  name of the role.
-     *
-     * @param string|null $name
-     *
-     * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * The IDs of the users assigned to this role.
      *
      * @return int[]|null
      */
-    public function getUserIds() : ?array
+    public function getUserIds(): ?array
     {
         return $this->userIds;
     }
+
     /**
      * The IDs of the users assigned to this role.
      *
      * @param int[]|null $userIds
-     *
-     * @return self
      */
-    public function setUserIds(?array $userIds) : self
+    public function setUserIds(?array $userIds): self
     {
         $this->userIds = $userIds;
+
         return $this;
     }
 }

@@ -65,6 +65,18 @@ class Company
      */
     protected $clock;
     /**
+     * How to display the currency code when formatting currency. Returns one of: iso_code_none, iso_code_before, or iso_code_after.
+     *
+     * @var string|null
+     */
+    protected $currencyCodeDisplay;
+    /**
+     * How to display the currency symbol when formatting currency. Returns one of: symbol_none, symbol_before, or symbol_after.
+     *
+     * @var string|null
+     */
+    protected $currencySymbolDisplay;
+    /**
      * Symbol used when formatting decimals.
      *
      * @var string|null
@@ -320,6 +332,48 @@ class Company
     public function setClock(?string $clock) : self
     {
         $this->clock = $clock;
+        return $this;
+    }
+    /**
+     * How to display the currency code when formatting currency. Returns one of: iso_code_none, iso_code_before, or iso_code_after.
+     *
+     * @return string|null
+     */
+    public function getCurrencyCodeDisplay() : ?string
+    {
+        return $this->currencyCodeDisplay;
+    }
+    /**
+     * How to display the currency code when formatting currency. Returns one of: iso_code_none, iso_code_before, or iso_code_after.
+     *
+     * @param string|null $currencyCodeDisplay
+     *
+     * @return self
+     */
+    public function setCurrencyCodeDisplay(?string $currencyCodeDisplay) : self
+    {
+        $this->currencyCodeDisplay = $currencyCodeDisplay;
+        return $this;
+    }
+    /**
+     * How to display the currency symbol when formatting currency. Returns one of: symbol_none, symbol_before, or symbol_after.
+     *
+     * @return string|null
+     */
+    public function getCurrencySymbolDisplay() : ?string
+    {
+        return $this->currencySymbolDisplay;
+    }
+    /**
+     * How to display the currency symbol when formatting currency. Returns one of: symbol_none, symbol_before, or symbol_after.
+     *
+     * @param string|null $currencySymbolDisplay
+     *
+     * @return self
+     */
+    public function setCurrencySymbolDisplay(?string $currencySymbolDisplay) : self
+    {
+        $this->currencySymbolDisplay = $currencySymbolDisplay;
         return $this;
     }
     /**

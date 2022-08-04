@@ -1,115 +1,112 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class PaginationLinks
 {
     /**
-     * First page
+     * First page.
      *
      * @var string
      */
     protected $first;
     /**
-     * Last page
+     * Last page.
      *
      * @var string
      */
     protected $last;
     /**
-     * Previous page
+     * Previous page.
      *
      * @var string|null
      */
     protected $previous;
     /**
-     * Next page
+     * Next page.
      *
      * @var string|null
      */
     protected $next;
+
     /**
-     * First page
-     *
-     * @return string
+     * First page.
      */
-    public function getFirst() : string
+    public function getFirst(): string
     {
         return $this->first;
     }
+
     /**
-     * First page
-     *
-     * @param string $first
-     *
-     * @return self
+     * First page.
      */
-    public function setFirst(string $first) : self
+    public function setFirst(string $first): self
     {
         $this->first = $first;
+
         return $this;
     }
+
     /**
-     * Last page
-     *
-     * @return string
+     * Last page.
      */
-    public function getLast() : string
+    public function getLast(): string
     {
         return $this->last;
     }
+
     /**
-     * Last page
-     *
-     * @param string $last
-     *
-     * @return self
+     * Last page.
      */
-    public function setLast(string $last) : self
+    public function setLast(string $last): self
     {
         $this->last = $last;
+
         return $this;
     }
+
     /**
-     * Previous page
-     *
-     * @return string|null
+     * Previous page.
      */
-    public function getPrevious() : ?string
+    public function getPrevious(): ?string
     {
         return $this->previous;
     }
+
     /**
-     * Previous page
-     *
-     * @param string|null $previous
-     *
-     * @return self
+     * Previous page.
      */
-    public function setPrevious(?string $previous) : self
+    public function setPrevious(?string $previous): self
     {
         $this->previous = $previous;
+
         return $this;
     }
+
     /**
-     * Next page
-     *
-     * @return string|null
+     * Next page.
      */
-    public function getNext() : ?string
+    public function getNext(): ?string
     {
         return $this->next;
     }
+
     /**
-     * Next page
-     *
-     * @param string|null $next
-     *
-     * @return self
+     * Next page.
      */
-    public function setNext(?string $next) : self
+    public function setNext(?string $next): self
     {
         $this->next = $next;
+
         return $this;
     }
 }

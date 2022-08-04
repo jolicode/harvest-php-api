@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
@@ -28,88 +37,76 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      * @var float|null
      */
     protected $budget;
+
     /**
      * Whether the task assignment is active or archived.
-     *
-     * @return bool|null
      */
-    public function getIsActive() : ?bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
+
     /**
      * Whether the task assignment is active or archived.
-     *
-     * @param bool|null $isActive
-     *
-     * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
+
         return $this;
     }
+
     /**
      * Whether the task assignment is billable or not.
-     *
-     * @return bool|null
      */
-    public function getBillable() : ?bool
+    public function getBillable(): ?bool
     {
         return $this->billable;
     }
+
     /**
      * Whether the task assignment is billable or not.
-     *
-     * @param bool|null $billable
-     *
-     * @return self
      */
-    public function setBillable(?bool $billable) : self
+    public function setBillable(?bool $billable): self
     {
         $this->billable = $billable;
+
         return $this;
     }
+
     /**
      * Rate used when the project’s bill_by is Tasks.
-     *
-     * @return float|null
      */
-    public function getHourlyRate() : ?float
+    public function getHourlyRate(): ?float
     {
         return $this->hourlyRate;
     }
+
     /**
      * Rate used when the project’s bill_by is Tasks.
-     *
-     * @param float|null $hourlyRate
-     *
-     * @return self
      */
-    public function setHourlyRate(?float $hourlyRate) : self
+    public function setHourlyRate(?float $hourlyRate): self
     {
         $this->hourlyRate = $hourlyRate;
+
         return $this;
     }
+
     /**
      * Budget used when the project’s budget_by is task or task_fees.
-     *
-     * @return float|null
      */
-    public function getBudget() : ?float
+    public function getBudget(): ?float
     {
         return $this->budget;
     }
+
     /**
      * Budget used when the project’s budget_by is task or task_fees.
-     *
-     * @param float|null $budget
-     *
-     * @return self
      */
-    public function setBudget(?float $budget) : self
+    public function setBudget(?float $budget): self
     {
         $this->budget = $budget;
+
         return $this;
     }
 }

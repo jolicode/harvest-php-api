@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class ExpenseCategoriesPostBody
@@ -28,88 +37,76 @@ class ExpenseCategoriesPostBody
      * @var bool|null
      */
     protected $isActive;
+
     /**
      * The name of the expense category.
-     *
-     * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The name of the expense category.
-     *
-     * @param string|null $name
-     *
-     * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * The unit name of the expense category.
-     *
-     * @return string|null
      */
-    public function getUnitName() : ?string
+    public function getUnitName(): ?string
     {
         return $this->unitName;
     }
+
     /**
      * The unit name of the expense category.
-     *
-     * @param string|null $unitName
-     *
-     * @return self
      */
-    public function setUnitName(?string $unitName) : self
+    public function setUnitName(?string $unitName): self
     {
         $this->unitName = $unitName;
+
         return $this;
     }
+
     /**
      * The unit price of the expense category.
-     *
-     * @return float|null
      */
-    public function getUnitPrice() : ?float
+    public function getUnitPrice(): ?float
     {
         return $this->unitPrice;
     }
+
     /**
      * The unit price of the expense category.
-     *
-     * @param float|null $unitPrice
-     *
-     * @return self
      */
-    public function setUnitPrice(?float $unitPrice) : self
+    public function setUnitPrice(?float $unitPrice): self
     {
         $this->unitPrice = $unitPrice;
+
         return $this;
     }
+
     /**
      * Whether the expense category is active or archived. Defaults to true.
-     *
-     * @return bool|null
      */
-    public function getIsActive() : ?bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
+
     /**
      * Whether the expense category is active or archived. Defaults to true.
-     *
-     * @param bool|null $isActive
-     *
-     * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
+
         return $this;
     }
 }

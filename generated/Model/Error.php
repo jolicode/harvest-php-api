@@ -1,61 +1,48 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class Error
 {
     /**
-     * 
-     *
      * @var int
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
-    /**
-     * 
-     *
-     * @return int
-     */
-    public function getCode() : int
+
+    public function getCode(): int
     {
         return $this->code;
     }
-    /**
-     * 
-     *
-     * @param int $code
-     *
-     * @return self
-     */
-    public function setCode(int $code) : self
+
+    public function setCode(int $code): self
     {
         $this->code = $code;
+
         return $this;
     }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getMessage() : string
+
+    public function getMessage(): string
     {
         return $this->message;
     }
-    /**
-     * 
-     *
-     * @param string $message
-     *
-     * @return self
-     */
-    public function setMessage(string $message) : self
+
+    public function setMessage(string $message): self
     {
         $this->message = $message;
+
         return $this;
     }
 }

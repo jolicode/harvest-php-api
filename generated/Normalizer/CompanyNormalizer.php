@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\Company';
+        return 'JoliCode\\Harvest\\Api\\Model\\Company' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\Company';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Company' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,134 +55,119 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('base_uri', $data) && $data['base_uri'] !== null) {
+        if (\array_key_exists('base_uri', $data) && null !== $data['base_uri']) {
             $object->setBaseUri($data['base_uri']);
-        }
-        elseif (\array_key_exists('base_uri', $data) && $data['base_uri'] === null) {
+        } elseif (\array_key_exists('base_uri', $data) && null === $data['base_uri']) {
             $object->setBaseUri(null);
         }
-        if (\array_key_exists('full_domain', $data) && $data['full_domain'] !== null) {
+        if (\array_key_exists('full_domain', $data) && null !== $data['full_domain']) {
             $object->setFullDomain($data['full_domain']);
-        }
-        elseif (\array_key_exists('full_domain', $data) && $data['full_domain'] === null) {
+        } elseif (\array_key_exists('full_domain', $data) && null === $data['full_domain']) {
             $object->setFullDomain(null);
         }
-        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
-        }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
+        if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
             $object->setIsActive($data['is_active']);
-        }
-        elseif (\array_key_exists('is_active', $data) && $data['is_active'] === null) {
+        } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
             $object->setIsActive(null);
         }
-        if (\array_key_exists('week_start_day', $data) && $data['week_start_day'] !== null) {
+        if (\array_key_exists('week_start_day', $data) && null !== $data['week_start_day']) {
             $object->setWeekStartDay($data['week_start_day']);
-        }
-        elseif (\array_key_exists('week_start_day', $data) && $data['week_start_day'] === null) {
+        } elseif (\array_key_exists('week_start_day', $data) && null === $data['week_start_day']) {
             $object->setWeekStartDay(null);
         }
-        if (\array_key_exists('wants_timestamp_timers', $data) && $data['wants_timestamp_timers'] !== null) {
+        if (\array_key_exists('wants_timestamp_timers', $data) && null !== $data['wants_timestamp_timers']) {
             $object->setWantsTimestampTimers($data['wants_timestamp_timers']);
-        }
-        elseif (\array_key_exists('wants_timestamp_timers', $data) && $data['wants_timestamp_timers'] === null) {
+        } elseif (\array_key_exists('wants_timestamp_timers', $data) && null === $data['wants_timestamp_timers']) {
             $object->setWantsTimestampTimers(null);
         }
-        if (\array_key_exists('time_format', $data) && $data['time_format'] !== null) {
+        if (\array_key_exists('time_format', $data) && null !== $data['time_format']) {
             $object->setTimeFormat($data['time_format']);
-        }
-        elseif (\array_key_exists('time_format', $data) && $data['time_format'] === null) {
+        } elseif (\array_key_exists('time_format', $data) && null === $data['time_format']) {
             $object->setTimeFormat(null);
         }
-        if (\array_key_exists('date_format', $data) && $data['date_format'] !== null) {
+        if (\array_key_exists('date_format', $data) && null !== $data['date_format']) {
             $object->setDateFormat($data['date_format']);
-        }
-        elseif (\array_key_exists('date_format', $data) && $data['date_format'] === null) {
+        } elseif (\array_key_exists('date_format', $data) && null === $data['date_format']) {
             $object->setDateFormat(null);
         }
-        if (\array_key_exists('plan_type', $data) && $data['plan_type'] !== null) {
+        if (\array_key_exists('plan_type', $data) && null !== $data['plan_type']) {
             $object->setPlanType($data['plan_type']);
-        }
-        elseif (\array_key_exists('plan_type', $data) && $data['plan_type'] === null) {
+        } elseif (\array_key_exists('plan_type', $data) && null === $data['plan_type']) {
             $object->setPlanType(null);
         }
-        if (\array_key_exists('clock', $data) && $data['clock'] !== null) {
+        if (\array_key_exists('clock', $data) && null !== $data['clock']) {
             $object->setClock($data['clock']);
-        }
-        elseif (\array_key_exists('clock', $data) && $data['clock'] === null) {
+        } elseif (\array_key_exists('clock', $data) && null === $data['clock']) {
             $object->setClock(null);
         }
-        if (\array_key_exists('currency_code_display', $data) && $data['currency_code_display'] !== null) {
+        if (\array_key_exists('currency_code_display', $data) && null !== $data['currency_code_display']) {
             $object->setCurrencyCodeDisplay($data['currency_code_display']);
-        }
-        elseif (\array_key_exists('currency_code_display', $data) && $data['currency_code_display'] === null) {
+        } elseif (\array_key_exists('currency_code_display', $data) && null === $data['currency_code_display']) {
             $object->setCurrencyCodeDisplay(null);
         }
-        if (\array_key_exists('currency_symbol_display', $data) && $data['currency_symbol_display'] !== null) {
+        if (\array_key_exists('currency_symbol_display', $data) && null !== $data['currency_symbol_display']) {
             $object->setCurrencySymbolDisplay($data['currency_symbol_display']);
-        }
-        elseif (\array_key_exists('currency_symbol_display', $data) && $data['currency_symbol_display'] === null) {
+        } elseif (\array_key_exists('currency_symbol_display', $data) && null === $data['currency_symbol_display']) {
             $object->setCurrencySymbolDisplay(null);
         }
-        if (\array_key_exists('decimal_symbol', $data) && $data['decimal_symbol'] !== null) {
+        if (\array_key_exists('decimal_symbol', $data) && null !== $data['decimal_symbol']) {
             $object->setDecimalSymbol($data['decimal_symbol']);
-        }
-        elseif (\array_key_exists('decimal_symbol', $data) && $data['decimal_symbol'] === null) {
+        } elseif (\array_key_exists('decimal_symbol', $data) && null === $data['decimal_symbol']) {
             $object->setDecimalSymbol(null);
         }
-        if (\array_key_exists('thousands_separator', $data) && $data['thousands_separator'] !== null) {
+        if (\array_key_exists('thousands_separator', $data) && null !== $data['thousands_separator']) {
             $object->setThousandsSeparator($data['thousands_separator']);
-        }
-        elseif (\array_key_exists('thousands_separator', $data) && $data['thousands_separator'] === null) {
+        } elseif (\array_key_exists('thousands_separator', $data) && null === $data['thousands_separator']) {
             $object->setThousandsSeparator(null);
         }
-        if (\array_key_exists('color_scheme', $data) && $data['color_scheme'] !== null) {
+        if (\array_key_exists('color_scheme', $data) && null !== $data['color_scheme']) {
             $object->setColorScheme($data['color_scheme']);
-        }
-        elseif (\array_key_exists('color_scheme', $data) && $data['color_scheme'] === null) {
+        } elseif (\array_key_exists('color_scheme', $data) && null === $data['color_scheme']) {
             $object->setColorScheme(null);
         }
-        if (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] !== null) {
+        if (\array_key_exists('weekly_capacity', $data) && null !== $data['weekly_capacity']) {
             $object->setWeeklyCapacity($data['weekly_capacity']);
-        }
-        elseif (\array_key_exists('weekly_capacity', $data) && $data['weekly_capacity'] === null) {
+        } elseif (\array_key_exists('weekly_capacity', $data) && null === $data['weekly_capacity']) {
             $object->setWeeklyCapacity(null);
         }
-        if (\array_key_exists('expense_feature', $data) && $data['expense_feature'] !== null) {
+        if (\array_key_exists('expense_feature', $data) && null !== $data['expense_feature']) {
             $object->setExpenseFeature($data['expense_feature']);
-        }
-        elseif (\array_key_exists('expense_feature', $data) && $data['expense_feature'] === null) {
+        } elseif (\array_key_exists('expense_feature', $data) && null === $data['expense_feature']) {
             $object->setExpenseFeature(null);
         }
-        if (\array_key_exists('invoice_feature', $data) && $data['invoice_feature'] !== null) {
+        if (\array_key_exists('invoice_feature', $data) && null !== $data['invoice_feature']) {
             $object->setInvoiceFeature($data['invoice_feature']);
-        }
-        elseif (\array_key_exists('invoice_feature', $data) && $data['invoice_feature'] === null) {
+        } elseif (\array_key_exists('invoice_feature', $data) && null === $data['invoice_feature']) {
             $object->setInvoiceFeature(null);
         }
-        if (\array_key_exists('estimate_feature', $data) && $data['estimate_feature'] !== null) {
+        if (\array_key_exists('estimate_feature', $data) && null !== $data['estimate_feature']) {
             $object->setEstimateFeature($data['estimate_feature']);
-        }
-        elseif (\array_key_exists('estimate_feature', $data) && $data['estimate_feature'] === null) {
+        } elseif (\array_key_exists('estimate_feature', $data) && null === $data['estimate_feature']) {
             $object->setEstimateFeature(null);
         }
-        if (\array_key_exists('approval_feature', $data) && $data['approval_feature'] !== null) {
+        if (\array_key_exists('approval_feature', $data) && null !== $data['approval_feature']) {
             $object->setApprovalFeature($data['approval_feature']);
-        }
-        elseif (\array_key_exists('approval_feature', $data) && $data['approval_feature'] === null) {
+        } elseif (\array_key_exists('approval_feature', $data) && null === $data['approval_feature']) {
             $object->setApprovalFeature(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         if (null !== $object->getBaseUri()) {
             $data['base_uri'] = $object->getBaseUri();
         }
@@ -230,6 +228,7 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getApprovalFeature()) {
             $data['approval_feature'] = $object->getApprovalFeature();
         }
+
         return $data;
     }
 }

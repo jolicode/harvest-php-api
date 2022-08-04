@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody';
+        return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,70 +55,67 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('event_type', $data) && $data['event_type'] !== null) {
+        if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
             $object->setEventType($data['event_type']);
-        }
-        elseif (\array_key_exists('event_type', $data) && $data['event_type'] === null) {
+        } elseif (\array_key_exists('event_type', $data) && null === $data['event_type']) {
             $object->setEventType(null);
         }
-        if (\array_key_exists('recipients', $data) && $data['recipients'] !== null) {
-            $values = array();
+        if (\array_key_exists('recipients', $data) && null !== $data['recipients']) {
+            $values = [];
             foreach ($data['recipients'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem', 'json', $context);
             }
             $object->setRecipients($values);
-        }
-        elseif (\array_key_exists('recipients', $data) && $data['recipients'] === null) {
+        } elseif (\array_key_exists('recipients', $data) && null === $data['recipients']) {
             $object->setRecipients(null);
         }
-        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
+        if (\array_key_exists('subject', $data) && null !== $data['subject']) {
             $object->setSubject($data['subject']);
-        }
-        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
+        } elseif (\array_key_exists('subject', $data) && null === $data['subject']) {
             $object->setSubject(null);
         }
-        if (\array_key_exists('body', $data) && $data['body'] !== null) {
+        if (\array_key_exists('body', $data) && null !== $data['body']) {
             $object->setBody($data['body']);
-        }
-        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+        } elseif (\array_key_exists('body', $data) && null === $data['body']) {
             $object->setBody(null);
         }
-        if (\array_key_exists('include_link_to_client_invoice', $data) && $data['include_link_to_client_invoice'] !== null) {
+        if (\array_key_exists('include_link_to_client_invoice', $data) && null !== $data['include_link_to_client_invoice']) {
             $object->setIncludeLinkToClientInvoice($data['include_link_to_client_invoice']);
-        }
-        elseif (\array_key_exists('include_link_to_client_invoice', $data) && $data['include_link_to_client_invoice'] === null) {
+        } elseif (\array_key_exists('include_link_to_client_invoice', $data) && null === $data['include_link_to_client_invoice']) {
             $object->setIncludeLinkToClientInvoice(null);
         }
-        if (\array_key_exists('attach_pdf', $data) && $data['attach_pdf'] !== null) {
+        if (\array_key_exists('attach_pdf', $data) && null !== $data['attach_pdf']) {
             $object->setAttachPdf($data['attach_pdf']);
-        }
-        elseif (\array_key_exists('attach_pdf', $data) && $data['attach_pdf'] === null) {
+        } elseif (\array_key_exists('attach_pdf', $data) && null === $data['attach_pdf']) {
             $object->setAttachPdf(null);
         }
-        if (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] !== null) {
+        if (\array_key_exists('send_me_a_copy', $data) && null !== $data['send_me_a_copy']) {
             $object->setSendMeACopy($data['send_me_a_copy']);
-        }
-        elseif (\array_key_exists('send_me_a_copy', $data) && $data['send_me_a_copy'] === null) {
+        } elseif (\array_key_exists('send_me_a_copy', $data) && null === $data['send_me_a_copy']) {
             $object->setSendMeACopy(null);
         }
-        if (\array_key_exists('thank_you', $data) && $data['thank_you'] !== null) {
+        if (\array_key_exists('thank_you', $data) && null !== $data['thank_you']) {
             $object->setThankYou($data['thank_you']);
-        }
-        elseif (\array_key_exists('thank_you', $data) && $data['thank_you'] === null) {
+        } elseif (\array_key_exists('thank_you', $data) && null === $data['thank_you']) {
             $object->setThankYou(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         if (null !== $object->getEventType()) {
             $data['event_type'] = $object->getEventType();
         }
-        $values = array();
+        $values = [];
         foreach ($object->getRecipients() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
@@ -128,6 +138,7 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getThankYou()) {
             $data['thank_you'] = $object->getThankYou();
         }
+
         return $data;
     }
 }

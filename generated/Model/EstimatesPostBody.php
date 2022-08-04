@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class EstimatesPostBody
@@ -53,7 +62,7 @@ class EstimatesPostBody
      */
     protected $notes;
     /**
-     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies
+     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies.
      *
      * @var string|null
      */
@@ -65,240 +74,211 @@ class EstimatesPostBody
      */
     protected $issueDate;
     /**
-     * Array of line item parameters
+     * Array of line item parameters.
      *
      * @var EstimatesPostBodyLineItemsItem[]|null
      */
     protected $lineItems;
+
     /**
      * The ID of the client this estimate belongs to.
-     *
-     * @return int|null
      */
-    public function getClientId() : ?int
+    public function getClientId(): ?int
     {
         return $this->clientId;
     }
+
     /**
      * The ID of the client this estimate belongs to.
-     *
-     * @param int|null $clientId
-     *
-     * @return self
      */
-    public function setClientId(?int $clientId) : self
+    public function setClientId(?int $clientId): self
     {
         $this->clientId = $clientId;
+
         return $this;
     }
+
     /**
      * If no value is set, the number will be automatically generated.
-     *
-     * @return string|null
      */
-    public function getNumber() : ?string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
+
     /**
      * If no value is set, the number will be automatically generated.
-     *
-     * @param string|null $number
-     *
-     * @return self
      */
-    public function setNumber(?string $number) : self
+    public function setNumber(?string $number): self
     {
         $this->number = $number;
+
         return $this;
     }
+
     /**
      * The purchase order number.
-     *
-     * @return string|null
      */
-    public function getPurchaseOrder() : ?string
+    public function getPurchaseOrder(): ?string
     {
         return $this->purchaseOrder;
     }
+
     /**
      * The purchase order number.
-     *
-     * @param string|null $purchaseOrder
-     *
-     * @return self
      */
-    public function setPurchaseOrder(?string $purchaseOrder) : self
+    public function setPurchaseOrder(?string $purchaseOrder): self
     {
         $this->purchaseOrder = $purchaseOrder;
+
         return $this;
     }
+
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
-     *
-     * @return float|null
      */
-    public function getTax() : ?float
+    public function getTax(): ?float
     {
         return $this->tax;
     }
+
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
-     *
-     * @param float|null $tax
-     *
-     * @return self
      */
-    public function setTax(?float $tax) : self
+    public function setTax(?float $tax): self
     {
         $this->tax = $tax;
+
         return $this;
     }
+
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
-     *
-     * @return float|null
      */
-    public function getTax2() : ?float
+    public function getTax2(): ?float
     {
         return $this->tax2;
     }
+
     /**
      * This percentage is applied to the subtotal, including line items and discounts. Example: use 10.0 for 10.0%.
-     *
-     * @param float|null $tax2
-     *
-     * @return self
      */
-    public function setTax2(?float $tax2) : self
+    public function setTax2(?float $tax2): self
     {
         $this->tax2 = $tax2;
+
         return $this;
     }
+
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
-     *
-     * @return float|null
      */
-    public function getDiscount() : ?float
+    public function getDiscount(): ?float
     {
         return $this->discount;
     }
+
     /**
      * This percentage is subtracted from the subtotal. Example: use 10.0 for 10.0%.
-     *
-     * @param float|null $discount
-     *
-     * @return self
      */
-    public function setDiscount(?float $discount) : self
+    public function setDiscount(?float $discount): self
     {
         $this->discount = $discount;
+
         return $this;
     }
+
     /**
      * The estimate subject.
-     *
-     * @return string|null
      */
-    public function getSubject() : ?string
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
+
     /**
      * The estimate subject.
-     *
-     * @param string|null $subject
-     *
-     * @return self
      */
-    public function setSubject(?string $subject) : self
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
+
         return $this;
     }
+
     /**
      * Any additional notes to include on the estimate.
-     *
-     * @return string|null
      */
-    public function getNotes() : ?string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
+
     /**
      * Any additional notes to include on the estimate.
-     *
-     * @param string|null $notes
-     *
-     * @return self
      */
-    public function setNotes(?string $notes) : self
+    public function setNotes(?string $notes): self
     {
         $this->notes = $notes;
+
         return $this;
     }
+
     /**
-     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies
-     *
-     * @return string|null
+     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies.
      */
-    public function getCurrency() : ?string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
+
     /**
-     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies
-     *
-     * @param string|null $currency
-     *
-     * @return self
+     * The currency used by the estimate. If not provided, the client’s currency will be used. See a list of supported currencies.
      */
-    public function setCurrency(?string $currency) : self
+    public function setCurrency(?string $currency): self
     {
         $this->currency = $currency;
+
         return $this;
     }
+
     /**
      * Date the estimate was issued. Defaults to today’s date.
-     *
-     * @return \DateTime|null
      */
-    public function getIssueDate() : ?\DateTime
+    public function getIssueDate(): ?\DateTime
     {
         return $this->issueDate;
     }
+
     /**
      * Date the estimate was issued. Defaults to today’s date.
-     *
-     * @param \DateTime|null $issueDate
-     *
-     * @return self
      */
-    public function setIssueDate(?\DateTime $issueDate) : self
+    public function setIssueDate(?\DateTime $issueDate): self
     {
         $this->issueDate = $issueDate;
+
         return $this;
     }
+
     /**
-     * Array of line item parameters
+     * Array of line item parameters.
      *
      * @return EstimatesPostBodyLineItemsItem[]|null
      */
-    public function getLineItems() : ?array
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
+
     /**
-     * Array of line item parameters
+     * Array of line item parameters.
      *
      * @param EstimatesPostBodyLineItemsItem[]|null $lineItems
-     *
-     * @return self
      */
-    public function setLineItems(?array $lineItems) : self
+    public function setLineItems(?array $lineItems): self
     {
         $this->lineItems = $lineItems;
+
         return $this;
     }
 }

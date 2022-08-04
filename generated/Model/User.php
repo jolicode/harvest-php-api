@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class User
@@ -100,340 +109,296 @@ class User
      * @var \DateTime|null
      */
     protected $updatedAt;
+
     /**
      * Unique ID for the user.
-     *
-     * @return int|null
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
+
     /**
      * Unique ID for the user.
-     *
-     * @param int|null $id
-     *
-     * @return self
      */
-    public function setId(?int $id) : self
+    public function setId(?int $id): self
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * The first name of the user.
-     *
-     * @return string|null
      */
-    public function getFirstName() : ?string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
+
     /**
      * The first name of the user.
-     *
-     * @param string|null $firstName
-     *
-     * @return self
      */
-    public function setFirstName(?string $firstName) : self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
+
     /**
      * The last name of the user.
-     *
-     * @return string|null
      */
-    public function getLastName() : ?string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
+
     /**
      * The last name of the user.
-     *
-     * @param string|null $lastName
-     *
-     * @return self
      */
-    public function setLastName(?string $lastName) : self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
+
         return $this;
     }
+
     /**
      * The email address of the user.
-     *
-     * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
+
     /**
      * The email address of the user.
-     *
-     * @param string|null $email
-     *
-     * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
+
     /**
      * The user’s telephone number.
-     *
-     * @return string|null
      */
-    public function getTelephone() : ?string
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
+
     /**
      * The user’s telephone number.
-     *
-     * @param string|null $telephone
-     *
-     * @return self
      */
-    public function setTelephone(?string $telephone) : self
+    public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
+
         return $this;
     }
+
     /**
      * The user’s timezone.
-     *
-     * @return string|null
      */
-    public function getTimezone() : ?string
+    public function getTimezone(): ?string
     {
         return $this->timezone;
     }
+
     /**
      * The user’s timezone.
-     *
-     * @param string|null $timezone
-     *
-     * @return self
      */
-    public function setTimezone(?string $timezone) : self
+    public function setTimezone(?string $timezone): self
     {
         $this->timezone = $timezone;
+
         return $this;
     }
+
     /**
      * Whether the user should be automatically added to future projects.
-     *
-     * @return bool|null
      */
-    public function getHasAccessToAllFutureProjects() : ?bool
+    public function getHasAccessToAllFutureProjects(): ?bool
     {
         return $this->hasAccessToAllFutureProjects;
     }
+
     /**
      * Whether the user should be automatically added to future projects.
-     *
-     * @param bool|null $hasAccessToAllFutureProjects
-     *
-     * @return self
      */
-    public function setHasAccessToAllFutureProjects(?bool $hasAccessToAllFutureProjects) : self
+    public function setHasAccessToAllFutureProjects(?bool $hasAccessToAllFutureProjects): self
     {
         $this->hasAccessToAllFutureProjects = $hasAccessToAllFutureProjects;
+
         return $this;
     }
+
     /**
      * Whether the user is a contractor or an employee.
-     *
-     * @return bool|null
      */
-    public function getIsContractor() : ?bool
+    public function getIsContractor(): ?bool
     {
         return $this->isContractor;
     }
+
     /**
      * Whether the user is a contractor or an employee.
-     *
-     * @param bool|null $isContractor
-     *
-     * @return self
      */
-    public function setIsContractor(?bool $isContractor) : self
+    public function setIsContractor(?bool $isContractor): self
     {
         $this->isContractor = $isContractor;
+
         return $this;
     }
+
     /**
      * Whether the user is active or archived.
-     *
-     * @return bool|null
      */
-    public function getIsActive() : ?bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
+
     /**
      * Whether the user is active or archived.
-     *
-     * @param bool|null $isActive
-     *
-     * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
+
         return $this;
     }
+
     /**
      * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds.
-     *
-     * @return int|null
      */
-    public function getWeeklyCapacity() : ?int
+    public function getWeeklyCapacity(): ?int
     {
         return $this->weeklyCapacity;
     }
+
     /**
      * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds.
-     *
-     * @param int|null $weeklyCapacity
-     *
-     * @return self
      */
-    public function setWeeklyCapacity(?int $weeklyCapacity) : self
+    public function setWeeklyCapacity(?int $weeklyCapacity): self
     {
         $this->weeklyCapacity = $weeklyCapacity;
+
         return $this;
     }
+
     /**
      * The billable rate to use for this user when they are added to a project.
-     *
-     * @return float|null
      */
-    public function getDefaultHourlyRate() : ?float
+    public function getDefaultHourlyRate(): ?float
     {
         return $this->defaultHourlyRate;
     }
+
     /**
      * The billable rate to use for this user when they are added to a project.
-     *
-     * @param float|null $defaultHourlyRate
-     *
-     * @return self
      */
-    public function setDefaultHourlyRate(?float $defaultHourlyRate) : self
+    public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
         $this->defaultHourlyRate = $defaultHourlyRate;
+
         return $this;
     }
+
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
-     *
-     * @return float|null
      */
-    public function getCostRate() : ?float
+    public function getCostRate(): ?float
     {
         return $this->costRate;
     }
+
     /**
      * The cost rate to use for this user when calculating a project’s costs vs billable amount.
-     *
-     * @param float|null $costRate
-     *
-     * @return self
      */
-    public function setCostRate(?float $costRate) : self
+    public function setCostRate(?float $costRate): self
     {
         $this->costRate = $costRate;
+
         return $this;
     }
+
     /**
      * The role names assigned to this person.
      *
      * @return string[]|null
      */
-    public function getRoles() : ?array
+    public function getRoles(): ?array
     {
         return $this->roles;
     }
+
     /**
      * The role names assigned to this person.
      *
      * @param string[]|null $roles
-     *
-     * @return self
      */
-    public function setRoles(?array $roles) : self
+    public function setRoles(?array $roles): self
     {
         $this->roles = $roles;
+
         return $this;
     }
+
     /**
      * The URL to the user’s avatar image.
-     *
-     * @return string|null
      */
-    public function getAvatarUrl() : ?string
+    public function getAvatarUrl(): ?string
     {
         return $this->avatarUrl;
     }
+
     /**
      * The URL to the user’s avatar image.
-     *
-     * @param string|null $avatarUrl
-     *
-     * @return self
      */
-    public function setAvatarUrl(?string $avatarUrl) : self
+    public function setAvatarUrl(?string $avatarUrl): self
     {
         $this->avatarUrl = $avatarUrl;
+
         return $this;
     }
+
     /**
      * Date and time the user was created.
-     *
-     * @return \DateTime|null
      */
-    public function getCreatedAt() : ?\DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
+
     /**
      * Date and time the user was created.
-     *
-     * @param \DateTime|null $createdAt
-     *
-     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt) : self
+    public function setCreatedAt(?\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
      * Date and time the user was last updated.
-     *
-     * @return \DateTime|null
      */
-    public function getUpdatedAt() : ?\DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
+
     /**
      * Date and time the user was last updated.
-     *
-     * @param \DateTime|null $updatedAt
-     *
-     * @return self
      */
-    public function setUpdatedAt(?\DateTime $updatedAt) : self
+    public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
 }

@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody';
+        return 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,68 +55,64 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('project_id', $data) && $data['project_id'] !== null) {
+        if (\array_key_exists('project_id', $data) && null !== $data['project_id']) {
             $object->setProjectId($data['project_id']);
-        }
-        elseif (\array_key_exists('project_id', $data) && $data['project_id'] === null) {
+        } elseif (\array_key_exists('project_id', $data) && null === $data['project_id']) {
             $object->setProjectId(null);
         }
-        if (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] !== null) {
+        if (\array_key_exists('expense_category_id', $data) && null !== $data['expense_category_id']) {
             $object->setExpenseCategoryId($data['expense_category_id']);
-        }
-        elseif (\array_key_exists('expense_category_id', $data) && $data['expense_category_id'] === null) {
+        } elseif (\array_key_exists('expense_category_id', $data) && null === $data['expense_category_id']) {
             $object->setExpenseCategoryId(null);
         }
-        if (\array_key_exists('spent_date', $data) && $data['spent_date'] !== null) {
+        if (\array_key_exists('spent_date', $data) && null !== $data['spent_date']) {
             $object->setSpentDate(\DateTime::createFromFormat('Y-m-d', $data['spent_date'])->setTime(0, 0, 0));
-        }
-        elseif (\array_key_exists('spent_date', $data) && $data['spent_date'] === null) {
+        } elseif (\array_key_exists('spent_date', $data) && null === $data['spent_date']) {
             $object->setSpentDate(null);
         }
-        if (\array_key_exists('units', $data) && $data['units'] !== null) {
+        if (\array_key_exists('units', $data) && null !== $data['units']) {
             $object->setUnits($data['units']);
-        }
-        elseif (\array_key_exists('units', $data) && $data['units'] === null) {
+        } elseif (\array_key_exists('units', $data) && null === $data['units']) {
             $object->setUnits(null);
         }
-        if (\array_key_exists('total_cost', $data) && $data['total_cost'] !== null) {
+        if (\array_key_exists('total_cost', $data) && null !== $data['total_cost']) {
             $object->setTotalCost($data['total_cost']);
-        }
-        elseif (\array_key_exists('total_cost', $data) && $data['total_cost'] === null) {
+        } elseif (\array_key_exists('total_cost', $data) && null === $data['total_cost']) {
             $object->setTotalCost(null);
         }
-        if (\array_key_exists('notes', $data) && $data['notes'] !== null) {
+        if (\array_key_exists('notes', $data) && null !== $data['notes']) {
             $object->setNotes($data['notes']);
-        }
-        elseif (\array_key_exists('notes', $data) && $data['notes'] === null) {
+        } elseif (\array_key_exists('notes', $data) && null === $data['notes']) {
             $object->setNotes(null);
         }
-        if (\array_key_exists('billable', $data) && $data['billable'] !== null) {
+        if (\array_key_exists('billable', $data) && null !== $data['billable']) {
             $object->setBillable($data['billable']);
-        }
-        elseif (\array_key_exists('billable', $data) && $data['billable'] === null) {
+        } elseif (\array_key_exists('billable', $data) && null === $data['billable']) {
             $object->setBillable(null);
         }
-        if (\array_key_exists('receipt', $data) && $data['receipt'] !== null) {
+        if (\array_key_exists('receipt', $data) && null !== $data['receipt']) {
             $object->setReceipt($data['receipt']);
-        }
-        elseif (\array_key_exists('receipt', $data) && $data['receipt'] === null) {
+        } elseif (\array_key_exists('receipt', $data) && null === $data['receipt']) {
             $object->setReceipt(null);
         }
-        if (\array_key_exists('delete_receipt', $data) && $data['delete_receipt'] !== null) {
+        if (\array_key_exists('delete_receipt', $data) && null !== $data['delete_receipt']) {
             $object->setDeleteReceipt($data['delete_receipt']);
-        }
-        elseif (\array_key_exists('delete_receipt', $data) && $data['delete_receipt'] === null) {
+        } elseif (\array_key_exists('delete_receipt', $data) && null === $data['delete_receipt']) {
             $object->setDeleteReceipt(null);
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
+        $data = [];
         if (null !== $object->getProjectId()) {
             $data['project_id'] = $object->getProjectId();
         }
@@ -131,6 +140,7 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getDeleteReceipt()) {
             $data['delete_receipt'] = $object->getDeleteReceipt();
         }
+
         return $data;
     }
 }

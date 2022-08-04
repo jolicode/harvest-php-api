@@ -1,36 +1,49 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments';
+        return 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === $type;
     }
-    public function supportsNormalization($data, $format = null)
+
+    public function supportsNormalization($data, $format = null): bool
     {
-        return is_object($data) && get_class($data) === 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments';
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === \get_class($data);
     }
+
     /**
+     * @param mixed      $data
+     * @param mixed      $class
+     * @param mixed|null $format
+     *
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -43,7 +56,7 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
             return $object;
         }
         if (\array_key_exists('task_assignments', $data)) {
-            $values = array();
+            $values = [];
             foreach ($data['task_assignments'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
             }
@@ -58,16 +71,14 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('total_entries', $data)) {
             $object->setTotalEntries($data['total_entries']);
         }
-        if (\array_key_exists('next_page', $data) && $data['next_page'] !== null) {
+        if (\array_key_exists('next_page', $data) && null !== $data['next_page']) {
             $object->setNextPage($data['next_page']);
-        }
-        elseif (\array_key_exists('next_page', $data) && $data['next_page'] === null) {
+        } elseif (\array_key_exists('next_page', $data) && null === $data['next_page']) {
             $object->setNextPage(null);
         }
-        if (\array_key_exists('previous_page', $data) && $data['previous_page'] !== null) {
+        if (\array_key_exists('previous_page', $data) && null !== $data['previous_page']) {
             $object->setPreviousPage($data['previous_page']);
-        }
-        elseif (\array_key_exists('previous_page', $data) && $data['previous_page'] === null) {
+        } elseif (\array_key_exists('previous_page', $data) && null === $data['previous_page']) {
             $object->setPreviousPage(null);
         }
         if (\array_key_exists('page', $data)) {
@@ -76,15 +87,20 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
         }
+
         return $object;
     }
+
     /**
+     * @param mixed      $object
+     * @param mixed|null $format
+     *
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = array();
-        $values = array();
+        $data = [];
+        $values = [];
         foreach ($object->getTaskAssignments() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
@@ -96,6 +112,7 @@ class TaskAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
         $data['previous_page'] = $object->getPreviousPage();
         $data['page'] = $object->getPage();
         $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+
         return $data;
     }
 }

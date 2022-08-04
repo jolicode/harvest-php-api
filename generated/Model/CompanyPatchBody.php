@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of JoliCode's Harvest PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Harvest\Api\Model;
 
 class CompanyPatchBody
@@ -16,46 +25,40 @@ class CompanyPatchBody
      * @var int|null
      */
     protected $weeklyCapacity;
+
     /**
      * Whether time is tracked via duration or start and end times.
-     *
-     * @return bool|null
      */
-    public function getWantsTimestampTimers() : ?bool
+    public function getWantsTimestampTimers(): ?bool
     {
         return $this->wantsTimestampTimers;
     }
+
     /**
      * Whether time is tracked via duration or start and end times.
-     *
-     * @param bool|null $wantsTimestampTimers
-     *
-     * @return self
      */
-    public function setWantsTimestampTimers(?bool $wantsTimestampTimers) : self
+    public function setWantsTimestampTimers(?bool $wantsTimestampTimers): self
     {
         $this->wantsTimestampTimers = $wantsTimestampTimers;
+
         return $this;
     }
+
     /**
      * The weekly capacity in seconds.
-     *
-     * @return int|null
      */
-    public function getWeeklyCapacity() : ?int
+    public function getWeeklyCapacity(): ?int
     {
         return $this->weeklyCapacity;
     }
+
     /**
      * The weekly capacity in seconds.
-     *
-     * @param int|null $weeklyCapacity
-     *
-     * @return self
      */
-    public function setWeeklyCapacity(?int $weeklyCapacity) : self
+    public function setWeeklyCapacity(?int $weeklyCapacity): self
     {
         $this->weeklyCapacity = $weeklyCapacity;
+
         return $this;
     }
 }

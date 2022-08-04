@@ -413,7 +413,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
         return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $requestBody), $fetch);
     }
     /**
-    * Returns a list of your expenses. If accessing this endpoint as an Admin, all expenses in the account will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
+    * Returns a list of your expenses. If accessing this endpoint as an Administrator, all expenses in the account will be returned. If accessing this endpoint as a Manager, all expenses for assigned teammates and managed projects will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
     
     The response contains an object with a expenses property that contains an array of up to per_page expenses. Each entry in the array is a separate expense object. If no more expenses are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expenses.
     *
@@ -1257,7 +1257,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
         return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $requestBody), $fetch);
     }
     /**
-    * Returns a list of your time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.
+    * Returns a list of time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.
     
     The response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries.
     *

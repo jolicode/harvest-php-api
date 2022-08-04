@@ -78,36 +78,6 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('is_contractor', $data) && $data['is_contractor'] === null) {
             $object->setIsContractor(null);
         }
-        if (\array_key_exists('is_admin', $data) && $data['is_admin'] !== null) {
-            $object->setIsAdmin($data['is_admin']);
-        }
-        elseif (\array_key_exists('is_admin', $data) && $data['is_admin'] === null) {
-            $object->setIsAdmin(null);
-        }
-        if (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] !== null) {
-            $object->setIsProjectManager($data['is_project_manager']);
-        }
-        elseif (\array_key_exists('is_project_manager', $data) && $data['is_project_manager'] === null) {
-            $object->setIsProjectManager(null);
-        }
-        if (\array_key_exists('can_see_rates', $data) && $data['can_see_rates'] !== null) {
-            $object->setCanSeeRates($data['can_see_rates']);
-        }
-        elseif (\array_key_exists('can_see_rates', $data) && $data['can_see_rates'] === null) {
-            $object->setCanSeeRates(null);
-        }
-        if (\array_key_exists('can_create_projects', $data) && $data['can_create_projects'] !== null) {
-            $object->setCanCreateProjects($data['can_create_projects']);
-        }
-        elseif (\array_key_exists('can_create_projects', $data) && $data['can_create_projects'] === null) {
-            $object->setCanCreateProjects(null);
-        }
-        if (\array_key_exists('can_create_invoices', $data) && $data['can_create_invoices'] !== null) {
-            $object->setCanCreateInvoices($data['can_create_invoices']);
-        }
-        elseif (\array_key_exists('can_create_invoices', $data) && $data['can_create_invoices'] === null) {
-            $object->setCanCreateInvoices(null);
-        }
         if (\array_key_exists('is_active', $data) && $data['is_active'] !== null) {
             $object->setIsActive($data['is_active']);
         }
@@ -167,21 +137,6 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getIsContractor()) {
             $data['is_contractor'] = $object->getIsContractor();
-        }
-        if (null !== $object->getIsAdmin()) {
-            $data['is_admin'] = $object->getIsAdmin();
-        }
-        if (null !== $object->getIsProjectManager()) {
-            $data['is_project_manager'] = $object->getIsProjectManager();
-        }
-        if (null !== $object->getCanSeeRates()) {
-            $data['can_see_rates'] = $object->getCanSeeRates();
-        }
-        if (null !== $object->getCanCreateProjects()) {
-            $data['can_create_projects'] = $object->getCanCreateProjects();
-        }
-        if (null !== $object->getCanCreateInvoices()) {
-            $data['can_create_invoices'] = $object->getCanCreateInvoices();
         }
         if (null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();

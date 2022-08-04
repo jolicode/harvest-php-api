@@ -102,6 +102,18 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('clock', $data) && $data['clock'] === null) {
             $object->setClock(null);
         }
+        if (\array_key_exists('currency_code_display', $data) && $data['currency_code_display'] !== null) {
+            $object->setCurrencyCodeDisplay($data['currency_code_display']);
+        }
+        elseif (\array_key_exists('currency_code_display', $data) && $data['currency_code_display'] === null) {
+            $object->setCurrencyCodeDisplay(null);
+        }
+        if (\array_key_exists('currency_symbol_display', $data) && $data['currency_symbol_display'] !== null) {
+            $object->setCurrencySymbolDisplay($data['currency_symbol_display']);
+        }
+        elseif (\array_key_exists('currency_symbol_display', $data) && $data['currency_symbol_display'] === null) {
+            $object->setCurrencySymbolDisplay(null);
+        }
         if (\array_key_exists('decimal_symbol', $data) && $data['decimal_symbol'] !== null) {
             $object->setDecimalSymbol($data['decimal_symbol']);
         }
@@ -187,6 +199,12 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getClock()) {
             $data['clock'] = $object->getClock();
+        }
+        if (null !== $object->getCurrencyCodeDisplay()) {
+            $data['currency_code_display'] = $object->getCurrencyCodeDisplay();
+        }
+        if (null !== $object->getCurrencySymbolDisplay()) {
+            $data['currency_symbol_display'] = $object->getCurrencySymbolDisplay();
         }
         if (null !== $object->getDecimalSymbol()) {
             $data['decimal_symbol'] = $object->getDecimalSymbol();

@@ -139,6 +139,16 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
             $object->setUpdatedAt(null);
         }
+        if (\array_key_exists('is_admin', $data) && null !== $data['is_admin']) {
+            $object->setIsAdmin($data['is_admin']);
+        } elseif (\array_key_exists('is_admin', $data) && null === $data['is_admin']) {
+            $object->setIsAdmin(null);
+        }
+        if (\array_key_exists('is_project_manager', $data) && null !== $data['is_project_manager']) {
+            $object->setIsProjectManager($data['is_project_manager']);
+        } elseif (\array_key_exists('is_project_manager', $data) && null === $data['is_project_manager']) {
+            $object->setIsProjectManager(null);
+        }
 
         return $object;
     }
@@ -203,6 +213,12 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+        }
+        if (null !== $object->getIsAdmin()) {
+            $data['is_admin'] = $object->getIsAdmin();
+        }
+        if (null !== $object->getIsProjectManager()) {
+            $data['is_project_manager'] = $object->getIsProjectManager();
         }
 
         return $data;

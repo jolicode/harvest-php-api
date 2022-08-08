@@ -109,6 +109,18 @@ class User
      * @var \DateTime|null
      */
     protected $updatedAt;
+    /**
+     * Whether the user has Admin permissions.
+     *
+     * @var bool|null
+     */
+    protected $isAdmin;
+    /**
+     * Whether the user has Project Manager permissions.
+     *
+     * @var bool|null
+     */
+    protected $isProjectManager;
 
     /**
      * Unique ID for the user.
@@ -398,6 +410,42 @@ class User
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Whether the user has Admin permissions.
+     */
+    public function getIsAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Whether the user has Admin permissions.
+     */
+    public function setIsAdmin(?bool $isAdmin): self
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Whether the user has Project Manager permissions.
+     */
+    public function getIsProjectManager(): ?bool
+    {
+        return $this->isProjectManager;
+    }
+
+    /**
+     * Whether the user has Project Manager permissions.
+     */
+    public function setIsProjectManager(?bool $isProjectManager): self
+    {
+        $this->isProjectManager = $isProjectManager;
 
         return $this;
     }

@@ -38,7 +38,7 @@ class TaskAssignment
      */
     protected $isActive;
     /**
-     * Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
+     * Whether the task assignment is billable or not. For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
      *
      * @var bool|null
      */
@@ -141,7 +141,7 @@ class TaskAssignment
     }
 
     /**
-     * Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
+     * Whether the task assignment is billable or not. For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
      */
     public function getBillable(): ?bool
     {
@@ -149,7 +149,7 @@ class TaskAssignment
     }
 
     /**
-     * Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
+     * Whether the task assignment is billable or not. For example: if set to true, all time tracked on this project for the associated task will be marked as billable.
      */
     public function setBillable(?bool $billable): self
     {

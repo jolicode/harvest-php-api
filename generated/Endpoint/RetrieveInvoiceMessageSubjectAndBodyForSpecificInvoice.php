@@ -11,24 +11,23 @@
 
 namespace JoliCode\Harvest\Api\Endpoint;
 
-class ListContacts extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
+class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Harvest\Api\Runtime\Client\Endpoint
 {
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
+    protected $invoiceId;
 
     /**
-     * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
-
+     * Returns the subject and body text as configured in Harvest of an invoice message for a specific invoice and a 200 OK response code if the call succeeded. Does not create the invoice message. If no parameters are passed, will return the subject and body of a general invoice message for the specific invoice.
      *
      * @param array $queryParameters {
      *
-     *     @var int $client_id only return contacts belonging to the client with the given ID
-     *     @var string $updated_since only return contacts that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
+     *     @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
      * }
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(string $invoiceId, array $queryParameters = [])
     {
+        $this->invoiceId = $invoiceId;
         $this->queryParameters = $queryParameters;
     }
 
@@ -39,7 +38,7 @@ class ListContacts extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
 
     public function getUri(): string
     {
-        return '/contacts';
+        return str_replace(['{invoiceId}'], [$this->invoiceId], '/invoices/{invoiceId}/messages/new');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -60,13 +59,13 @@ class ListContacts extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_id', 'updated_since', 'page', 'per_page']);
+        $optionsResolver->setDefined(['thank_you', 'reminder']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('client_id', ['int']);
-        $optionsResolver->setAllowedTypes('updated_since', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['int']);
-        $optionsResolver->setAllowedTypes('per_page', ['int']);
+        $optionsResolver->setAllowedTypes('thank_you', ['bool']);
+        $optionsResolver->setNormalizer('thank_you', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
+        $optionsResolver->setAllowedTypes('reminder', ['bool']);
+        $optionsResolver->setNormalizer('reminder', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
 
         return $optionsResolver;
     }
@@ -74,12 +73,12 @@ class ListContacts extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|null
+     * @return \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody|\JoliCode\Harvest\Api\Model\Error|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Contacts', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');

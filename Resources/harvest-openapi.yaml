@@ -1436,7 +1436,7 @@ components:
           nullable: true
         billable:
           type: boolean
-          description: 'Whether the task assignment is billable or not.  For example: if set to true, all time tracked on this project for the associated task will be marked as billable.'
+          description: 'Whether the task assignment is billable or not. For example: if set to true, all time tracked on this project for the associated task will be marked as billable.'
           nullable: true
         hourly_rate:
           type: number
@@ -1612,6 +1612,29 @@ components:
           description: 'Date and time the role was last updated.'
           nullable: true
           format: date-time
+    Teammate:
+      type: object
+      externalDocs:
+        description: teammate
+        url: 'https://help.getharvest.com/api-v2/users-api/users/teammates/#the-teammate-object'
+      properties:
+        id:
+          type: int
+          description: 'Unique ID for the teammate'
+          nullable: true
+        first_name:
+          type: string
+          description: 'The first name of the teammate'
+          nullable: true
+        last_name:
+          type: string
+          description: 'The last name of the teammate'
+          nullable: true
+        email:
+          type: string
+          description: 'The email of the teammate'
+          nullable: true
+          format: email
     BillableRate:
       type: object
       externalDocs:
@@ -1819,7 +1842,13 @@ components:
           format: float
         roles:
           type: array
-          description: 'The role names assigned to this person.'
+          description: 'Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.'
+          nullable: true
+          items:
+            type: string
+        access_roles:
+          type: array
+          description: 'Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.'
           nullable: true
           items:
             type: string
@@ -1837,14 +1866,6 @@ components:
           description: 'Date and time the user was last updated.'
           nullable: true
           format: date-time
-        is_admin:
-          type: boolean
-          description: 'Whether the user has Admin permissions.'
-          nullable: true
-        is_project_manager:
-          type: boolean
-          description: 'Whether the user has Project Manager permissions.'
-          nullable: true
     ExpenseReportsResult:
       type: object
       externalDocs:
@@ -2905,6 +2926,44 @@ components:
           format: int64
         links:
           $ref: '#/components/schemas/PaginationLinks'
+    Teammates:
+      type: object
+      required:
+        - teammates
+        - per_page
+        - total_pages
+        - total_entries
+        - next_page
+        - previous_page
+        - page
+        - links
+      properties:
+        teammates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Teammate'
+        per_page:
+          type: integer
+          format: int64
+        total_pages:
+          type: integer
+          format: int64
+        total_entries:
+          type: integer
+          format: int64
+        next_page:
+          type: integer
+          format: int64
+          nullable: true
+        previous_page:
+          type: integer
+          format: int64
+          nullable: true
+        page:
+          type: integer
+          format: int64
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
     BillableRates:
       type: object
       required:
@@ -3216,6 +3275,26 @@ components:
           type: integer
         message:
           type: string
+    InvoiceMessageSubjectAndBody:
+      type: object
+      required:
+        - invoice_id
+        - subject
+        - body
+        - reminder
+        - thank_you
+      properties:
+        invoice_id:
+          type: integer
+          format: int32
+        subject:
+          type: string
+        body:
+          type: string
+        reminder:
+          type: boolean
+        thank_you:
+          type: boolean
     PaginationLinks:
       type: object
       required:
@@ -3240,6 +3319,15 @@ components:
           format: url
           description: 'Next page'
           nullable: true
+    TeammatesPatchResponse:
+      type: object
+      required:
+        - teammates
+      properties:
+        teammates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Teammate'
 security:
   -
     BearerAuth: []
@@ -3284,17 +3372,17 @@ paths:
                     created_at: '2017-06-26T21:01:52Z'
                     updated_at: '2017-06-26T21:27:07Z'
                     currency: USD
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/clients?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/clients?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/clients?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/clients?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -3318,14 +3406,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -3671,14 +3759,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -3915,17 +4003,17 @@ paths:
                     name: Service
                     created_at: '2017-06-26T20:41:00Z'
                     updated_at: '2017-06-26T20:41:00Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/estimate_item_categories?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/estimate_item_categories?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/estimate_item_categories?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/estimate_item_categories?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -3942,14 +4030,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -4206,17 +4294,17 @@ paths:
                         amount: 20000
                         taxed: true
                         taxed2: false
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/estimates?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/estimates?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/estimates?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/estimates?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -4261,14 +4349,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -4710,17 +4798,17 @@ paths:
                     event_type: null
                     subject: 'Estimate #1001 from API Examples'
                     body: "---------------------------------------------\r\nEstimate Summary\r\n---------------------------------------------\r\nEstimate ID: 1001\r\nEstimate Date: 06/01/2017\r\nClient: 123 Industries\r\nP.O. Number: 5678\r\nAmount: $9,630.00\r\n\r\nYou can view the estimate here:\r\n\r\n%estimate_url%\r\n\r\nThank you!\r\n---------------------------------------------"
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 1
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/estimates/1439818/messages?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/estimates/1439818/messages?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/estimates/1439818/messages?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/estimates/1439818/messages?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -4743,14 +4831,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -4934,17 +5022,17 @@ paths:
                     is_active: true
                     created_at: '2017-06-26T20:41:00Z'
                     updated_at: '2017-06-26T20:41:00Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 4
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/expense_categories?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/expense_categories?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/expense_categories?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/expense_categories?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -4968,14 +5056,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -5275,17 +5363,17 @@ paths:
                       name: '123 Industries'
                       currency: EUR
                     invoice: null
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/expenses?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/expenses?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/expenses?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/expenses?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -5344,14 +5432,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -5429,7 +5517,7 @@ paths:
               properties:
                 user_id:
                   type: integer
-                  description: 'The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.'
+                  description: 'The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.'
                   nullable: true
                   format: int32
                 project_id:
@@ -5735,17 +5823,17 @@ paths:
                     use_as_expense: false
                     created_at: '2017-06-26T20:41:00Z'
                     updated_at: '2017-06-26T20:41:00Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/invoice_item_categories?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/invoice_item_categories?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/invoice_item_categories?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/invoice_item_categories?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -5762,14 +5850,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -6072,17 +6160,17 @@ paths:
                           id: 14308069
                           name: 'Online Store - Phase 1'
                           code: OS1
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -6134,14 +6222,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -6738,17 +6826,17 @@ paths:
                         email: bobpowell@example.com
                     subject: 'Invoice #1001 from API Examples'
                     body: "---------------------------------------------\r\nInvoice Summary\r\n---------------------------------------------\r\nInvoice ID: 1001\r\nIssue Date: 04/01/2017\r\nClient: 123 Industries\r\nP.O. Number: \r\nAmount: €288.90\r\nDue: 04/01/2017 (upon receipt)\r\n\r\nThe detailed invoice is attached as a PDF.\r\n\r\nThank you!\r\n---------------------------------------------"
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/api/v2/invoices/13150403/messages?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/api/v2/invoices/13150403/messages?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/invoices/13150403/messages?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/invoices/13150403/messages?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -6771,14 +6859,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -6892,6 +6980,58 @@ paths:
                   nullable: true
               required:
                 - recipients
+  '/invoices/{invoiceId}/messages/new':
+    get:
+      summary: 'Retrieve invoice message subject and body for specific invoice'
+      operationId: retrieveInvoiceMessageSubjectAndBodyForSpecificInvoice
+      description: 'Returns the subject and body text as configured in Harvest of an invoice message for a specific invoice and a 200 OK response code if the call succeeded. Does not create the invoice message. If no parameters are passed, will return the subject and body of a general invoice message for the specific invoice.'
+      externalDocs:
+        description: 'Retrieve invoice message subject and body for specific invoice'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#retrieve-invoice-message-subject-and-body-for-specific-invoice'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      responses:
+        200:
+          description: 'Retrieve invoice message subject and body for specific invoice'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceMessageSubjectAndBody'
+              example:
+                invoice_id: 13150403
+                subject: 'Past due invoice reminder: #1002 from API Examples'
+                body: "Dear Customer,\n\nThis is a friendly reminder to let you know that Invoice 1002 is 20 days past due. If you have already sent the payment, please disregard this message. If not, we would appreciate your prompt attention to this matter.\n\nThank you for your business.\n\nCheers,\nAPI Examples\n"
+                reminder: false
+                thank_you: false
+        default:
+          description: 'error payload'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        -
+          name: invoiceId
+          required: true
+          in: path
+          schema:
+            type: string
+        -
+          name: thank_you
+          description: 'Set to true to return the subject and body of a thank-you invoice message for the specific invoice.'
+          required: false
+          in: query
+          schema:
+            type: boolean
+        -
+          name: reminder
+          description: 'Set to true to return the subject and body of a reminder invoice message for the specific invoice.'
+          required: false
+          in: query
+          schema:
+            type: boolean
   '/invoices/{invoiceId}/messages/{messageId}':
     delete:
       summary: 'Delete an invoice message'
@@ -6961,17 +7101,17 @@ paths:
                     payment_gateway:
                       id: 1234
                       name: 'Linkpoint International'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 1
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/invoices/13150378/payments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/invoices/13150378/payments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/invoices/13150378/payments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/invoices/13150378/payments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -6994,14 +7134,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -7191,17 +7331,17 @@ paths:
                     cost_budget_include_expenses: false
                     hourly_rate: 100.0
                     fee: null
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/projects?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/projects?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/projects?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/projects?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -7232,14 +7372,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -7721,17 +7861,17 @@ paths:
                     task:
                       id: 8083365
                       name: 'Graphic Design'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 4
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/projects/14308069/task_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/projects/14308069/task_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/projects/14308069/task_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/projects/14308069/task_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -7761,14 +7901,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -8069,17 +8209,17 @@ paths:
                     user:
                       id: 1782884
                       name: 'Jeremy Israelsen'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/projects/14308069/user_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/projects/14308069/user_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/projects/14308069/user_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/projects/14308069/user_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -8116,14 +8256,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -8421,17 +8561,17 @@ paths:
                     total_amount: 33.35
                     billable_amount: 33.35
                     currency: USD
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/expenses/categories?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/expenses/categories?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/expenses/categories?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/expenses/categories?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8455,14 +8595,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8500,17 +8640,17 @@ paths:
                     total_amount: 133.35
                     billable_amount: 133.35
                     currency: USD
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/expenses/clients?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/expenses/clients?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/expenses/clients?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/expenses/clients?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8534,14 +8674,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8583,17 +8723,17 @@ paths:
                     total_amount: 100
                     billable_amount: 100
                     currency: EUR
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/expenses/projects?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/expenses/projects?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/expenses/projects?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/expenses/projects?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8617,14 +8757,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8671,17 +8811,17 @@ paths:
                     total_amount: 33.35
                     billable_amount: 33.35
                     currency: USD
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/expenses/team?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/expenses/team?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/expenses/team?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/expenses/team?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8705,14 +8845,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8760,17 +8900,17 @@ paths:
                     budget: 50
                     budget_spent: 2
                     budget_remaining: 48
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/project_budget?page=1&per_page=1000'
+                  first: 'https://api.harvestapp.com/v2/reports/project_budget?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/project_budget?page=1&per_page=1000'
+                  last: 'https://api.harvestapp.com/v2/reports/project_budget?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -8780,14 +8920,14 @@ paths:
       parameters:
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8834,17 +8974,17 @@ paths:
                     billable_hours: 2
                     currency: USD
                     billable_amount: 200
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/clients?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/clients?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/clients?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/clients?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8868,14 +9008,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -8928,17 +9068,17 @@ paths:
                     billable_hours: 0.5
                     currency: EUR
                     billable_amount: 50
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -8962,14 +9102,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -9030,17 +9170,17 @@ paths:
                     billable_hours: 0
                     currency: EUR
                     billable_amount: 0
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 5
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/tasks?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/tasks?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/tasks?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/tasks?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -9064,14 +9204,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -9121,17 +9261,17 @@ paths:
                     billable_hours: 2
                     currency: USD
                     billable_amount: 200
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -9155,14 +9295,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -9218,17 +9358,17 @@ paths:
                     uninvoiced_hours: 0
                     uninvoiced_expenses: 0
                     uninvoiced_amount: 0
-                per_page: 1000
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/uninvoiced?from=20170101&page=1&per_page=1000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/uninvoiced?from=20170101&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/uninvoiced?from=20170101&page=1&per_page=1000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/uninvoiced?from=20170101&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -9252,14 +9392,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
           required: false
           in: query
           schema:
@@ -9306,17 +9446,17 @@ paths:
                       - 2084359
                       - 3122373
                       - 3122374
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/roles?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/roles?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/roles?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/roles?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -9326,14 +9466,14 @@ paths:
       parameters:
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -9381,7 +9521,7 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'The  name of the role.'
+                  description: 'The name of the role.'
                   nullable: true
                 user_ids:
                   type: array
@@ -9507,7 +9647,7 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'The  name of the role.'
+                  description: 'The name of the role.'
                   nullable: true
                 user_ids:
                   type: array
@@ -9716,17 +9856,17 @@ paths:
                     task:
                       id: 8083365
                       name: 'Graphic Design'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 12
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/task_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/task_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/task_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/task_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -9750,14 +9890,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -9828,17 +9968,17 @@ paths:
                     is_active: true
                     created_at: '2017-06-26T20:41:00Z'
                     updated_at: '2017-06-26T21:14:02Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 5
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/tasks?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/tasks?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/tasks?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/tasks?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -9862,14 +10002,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -10304,17 +10444,17 @@ paths:
                     budgeted: true
                     billable_rate: 100.0
                     cost_rate: 50.0
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 4
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/time_entries?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/time_entries?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/time_entries?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/time_entries?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -10394,14 +10534,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -11108,17 +11248,17 @@ paths:
                     user:
                       id: 1782884
                       name: 'Jeremy Israelsen'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 6
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/user_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/user_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/user_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/user_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -11149,14 +11289,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -11199,6 +11339,8 @@ paths:
                     cost_rate: 50.0
                     roles:
                       - Developer
+                    access_roles:
+                      - member
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/abraj_albait_towers.png?1498516481'
                   -
                     id: 1782959
@@ -11217,6 +11359,8 @@ paths:
                     cost_rate: 50.0
                     roles:
                       - Designer
+                    access_roles:
+                      - member
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/cornell_clock_tower.png?1498515345'
                   -
                     id: 1782884
@@ -11236,18 +11380,20 @@ paths:
                     roles:
                       - Founder
                       - CEO
+                    access_roles:
+                      - administrator
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/allen_bradley_clock_tower.png?1498509661'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 3
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/users?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/users?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/users?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/users?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -11271,14 +11417,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -11303,9 +11449,9 @@ paths:
                 $ref: '#/components/schemas/User'
               example:
                 id: 3
-                first_name: Gary
-                last_name: Brookes
-                email: gary@example.com
+                first_name: George
+                last_name: Frank
+                email: george@example.com
                 telephone: ''
                 timezone: 'Eastern Time (US & Canada)'
                 has_access_to_all_future_projects: false
@@ -11314,8 +11460,11 @@ paths:
                 weekly_capacity: 126000
                 default_hourly_rate: 0
                 cost_rate: 0
-                roles:
-                  - 'Project Manager'
+                roles: []
+                access_roles:
+                  - manager
+                  - project_creator
+                  - time_and_expenses_manager
                 avatar_url: 'https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/assets/profile_images/big_ben.png?1485372046'
                 created_at: '2020-01-25T19:20:46Z'
                 updated_at: '2020-01-25T19:20:57Z'
@@ -11379,7 +11528,13 @@ paths:
                   format: float
                 roles:
                   type: array
-                  description: 'The role names assigned to this person.'
+                  description: 'Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.'
+                  nullable: true
+                  items:
+                    type: string
+                access_roles:
+                  type: array
+                  description: 'Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.'
                   nullable: true
                   items:
                     type: string
@@ -11424,6 +11579,8 @@ paths:
                 roles:
                   - Founder
                   - CEO
+                access_roles:
+                  - administrator
                 avatar_url: 'https://cache.harvestapp.com/assets/profile_images/allen_bradley_clock_tower.png?1498509661'
         default:
           description: 'error payload'
@@ -11574,17 +11731,17 @@ paths:
                         task:
                           id: 8083369
                           name: Research
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/users/1782884/project_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/users/1782884/project_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/users/1782884/project_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/users/1782884/project_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -11594,14 +11751,14 @@ paths:
       parameters:
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -11669,6 +11826,8 @@ paths:
                 cost_rate: 50.0
                 roles:
                   - Developer
+                access_roles:
+                  - member
                 avatar_url: 'https://cache.harvestapp.com/assets/profile_images/abraj_albait_towers.png?1498516481'
         default:
           description: 'error payload'
@@ -11703,9 +11862,9 @@ paths:
                 $ref: '#/components/schemas/User'
               example:
                 id: 3237198
-                first_name: Project
-                last_name: Manager
-                email: pm@example.com
+                first_name: Gary
+                last_name: Brookes
+                email: gary@example.com
                 telephone: ''
                 timezone: 'Eastern Time (US & Canada)'
                 has_access_to_all_future_projects: true
@@ -11715,7 +11874,11 @@ paths:
                 default_hourly_rate: 120
                 cost_rate: 50
                 roles:
-                  - 'Project Manager'
+                  - 'Product Team'
+                access_roles:
+                  - manager
+                  - time_and_expenses_manager
+                  - billable_rates_manager
                 avatar_url: 'https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/assets/profile_images/big_ben.png?1485372046'
                 created_at: '2018-01-01T19:20:46Z'
                 updated_at: '2019-01-25T19:20:57Z'
@@ -11786,7 +11949,13 @@ paths:
                   format: float
                 roles:
                   type: array
-                  description: 'The role names assigned to this person.'
+                  description: 'Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.'
+                  nullable: true
+                  items:
+                    type: string
+                access_roles:
+                  type: array
+                  description: 'Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.'
                   nullable: true
                   items:
                     type: string
@@ -11839,17 +12008,17 @@ paths:
                     end_date: null
                     created_at: '2020-05-01T13:18:10Z'
                     updated_at: '2020-05-01T13:18:10Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 4
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/users/3226125/billable_rates?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/users/3226125/billable_rates?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/users/3226125/billable_rates?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/users/3226125/billable_rates?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -11865,14 +12034,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -12022,17 +12191,17 @@ paths:
                     end_date: null
                     created_at: '2020-05-01T13:19:31Z'
                     updated_at: '2020-05-01T13:19:31Z'
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 4
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/users/3226125/cost_rates?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/users/3226125/cost_rates?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/users/3226125/cost_rates?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/users/3226125/cost_rates?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -12048,14 +12217,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -12306,17 +12475,17 @@ paths:
                         task:
                           id: 8083369
                           name: Research
-                per_page: 100
+                per_page: 2000
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/users/1782959/project_assignments?page=1&per_page=100'
+                  first: 'https://api.harvestapp.com/v2/users/1782959/project_assignments?page=1&per_page=2000'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/users/1782959/project_assignments?page=1&per_page=100'
+                  last: 'https://api.harvestapp.com/v2/users/1782959/project_assignments?page=1&per_page=2000'
         default:
           description: 'error payload'
           content:
@@ -12339,6 +12508,75 @@ paths:
             type: string
         -
           name: page
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          required: false
+          in: query
+          schema:
+            type: integer
+        -
+          name: per_page
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          required: false
+          in: query
+          schema:
+            type: integer
+  '/users/{userId}/teammates':
+    get:
+      summary: 'List all assigned teammates for a specific user'
+      operationId: listAssignedTeammatesForSpecificUser
+      description: "Returns a list of assigned teammates for the user identified by USER_ID. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.\n\nThe response contains an object with a teammates property that contains an array of up to per_page teammates. Each entry in the array is a separate teammate object. If no more teammates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your teammates."
+      externalDocs:
+        description: 'List all assigned teammates for a specific user'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/teammates/#list-all-assigned-teammates-for-a-specific-user'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      responses:
+        200:
+          description: 'List all assigned teammates for a specific user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teammates'
+              example:
+                teammates:
+                  -
+                    id: 3230547
+                    first_name: Jim
+                    last_name: Allen
+                    email: jimallen@example.com
+                  -
+                    id: 1782884
+                    first_name: Bob
+                    last_name: Powell
+                    email: bobpowell@example.com
+                per_page: 100
+                total_pages: 1
+                total_entries: 2
+                next_page: null
+                previous_page: null
+                page: 1
+                links:
+                  first: 'https://api.harvestapp.com/v2/users/1782959/teammates?page=1&per_page=100'
+                  next: null
+                  previous: null
+                  last: 'https://api.harvestapp.com/v2/users/1782959/teammates?page=1&per_page=100'
+        default:
+          description: 'error payload'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          schema:
+            type: string
+        -
+          name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
@@ -12346,8 +12584,65 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 100.  (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
             type: integer
+    patch:
+      summary: 'Update a user’s assigned teammates'
+      operationId: updateUserAssignedTeammates
+      description: "Updates the the assigned teammates for a specific user. Returns list of assigned teammates and a 200 OK response code if the call succeeded. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.\n\nAdding teammates for the first time will add the people_manager access role to the Manager. Any IDs not included in the teammate_ids that are currently assigned will be unassigned from the Manager. Use an empty array to unassign all users. This will also remove the people_manager access role from the Manager."
+      externalDocs:
+        description: 'Update a user’s assigned teammates'
+        url: 'https://help.getharvest.com/api-v2/users-api/users/teammates/#update-a-users-assigned-teammates'
+      security:
+        -
+          BearerAuth: []
+          AccountAuth: []
+      responses:
+        200:
+          description: 'Update a user’s assigned teammates'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeammatesPatchResponse'
+              example:
+                teammates:
+                  -
+                    id: 3230547
+                    first_name: Jim
+                    last_name: Allen
+                    email: jimallen@example.com
+                  -
+                    id: 3230575
+                    first_name: Gary
+                    last_name: Brookes
+                    email: gary@example.com
+        default:
+          description: 'error payload'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        -
+          name: userId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        description: 'json payload'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teammate_ids:
+                  type: 'array of user ids'
+                  description: 'Full list of user IDs to be assigned to the Manager.'
+                  nullable: true
+              required:
+                - teammate_ids

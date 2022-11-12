@@ -124,6 +124,15 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         } elseif (\array_key_exists('roles', $data) && null === $data['roles']) {
             $object->setRoles(null);
         }
+        if (\array_key_exists('access_roles', $data) && null !== $data['access_roles']) {
+            $values_1 = [];
+            foreach ($data['access_roles'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setAccessRoles($values_1);
+        } elseif (\array_key_exists('access_roles', $data) && null === $data['access_roles']) {
+            $object->setAccessRoles(null);
+        }
         if (\array_key_exists('avatar_url', $data) && null !== $data['avatar_url']) {
             $object->setAvatarUrl($data['avatar_url']);
         } elseif (\array_key_exists('avatar_url', $data) && null === $data['avatar_url']) {
@@ -138,16 +147,6 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
         } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
             $object->setUpdatedAt(null);
-        }
-        if (\array_key_exists('is_admin', $data) && null !== $data['is_admin']) {
-            $object->setIsAdmin($data['is_admin']);
-        } elseif (\array_key_exists('is_admin', $data) && null === $data['is_admin']) {
-            $object->setIsAdmin(null);
-        }
-        if (\array_key_exists('is_project_manager', $data) && null !== $data['is_project_manager']) {
-            $object->setIsProjectManager($data['is_project_manager']);
-        } elseif (\array_key_exists('is_project_manager', $data) && null === $data['is_project_manager']) {
-            $object->setIsProjectManager(null);
         }
 
         return $object;
@@ -205,6 +204,13 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['roles'] = $values;
         }
+        if (null !== $object->getAccessRoles()) {
+            $values_1 = [];
+            foreach ($object->getAccessRoles() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['access_roles'] = $values_1;
+        }
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
@@ -213,12 +219,6 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
-        }
-        if (null !== $object->getIsAdmin()) {
-            $data['is_admin'] = $object->getIsAdmin();
-        }
-        if (null !== $object->getIsProjectManager()) {
-            $data['is_project_manager'] = $object->getIsProjectManager();
         }
 
         return $data;

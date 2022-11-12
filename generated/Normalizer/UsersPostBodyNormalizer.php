@@ -114,6 +114,15 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         } elseif (\array_key_exists('roles', $data) && null === $data['roles']) {
             $object->setRoles(null);
         }
+        if (\array_key_exists('access_roles', $data) && null !== $data['access_roles']) {
+            $values_1 = [];
+            foreach ($data['access_roles'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setAccessRoles($values_1);
+        } elseif (\array_key_exists('access_roles', $data) && null === $data['access_roles']) {
+            $object->setAccessRoles(null);
+        }
 
         return $object;
     }
@@ -157,6 +166,13 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $value;
             }
             $data['roles'] = $values;
+        }
+        if (null !== $object->getAccessRoles()) {
+            $values_1 = [];
+            foreach ($object->getAccessRoles() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['access_roles'] = $values_1;
         }
 
         return $data;

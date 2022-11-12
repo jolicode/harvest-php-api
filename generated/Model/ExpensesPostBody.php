@@ -14,7 +14,7 @@ namespace JoliCode\Harvest\Api\Model;
 class ExpensesPostBody
 {
     /**
-     * The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.
+     * The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.
      *
      * @var int|null
      */
@@ -69,7 +69,7 @@ class ExpensesPostBody
     protected $receipt;
 
     /**
-     * The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.
+     * The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.
      */
     public function getUserId(): ?int
     {
@@ -77,7 +77,7 @@ class ExpensesPostBody
     }
 
     /**
-     * The ID of the user associated with this expense.  Defaults to the ID of the currently authenticated user.
+     * The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.
      */
     public function setUserId(?int $userId): self
     {

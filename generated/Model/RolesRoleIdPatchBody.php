@@ -14,7 +14,7 @@ namespace JoliCode\Harvest\Api\Model;
 class RolesRoleIdPatchBody
 {
     /**
-     * The  name of the role.
+     * The name of the role.
      *
      * @var string|null
      */
@@ -27,7 +27,7 @@ class RolesRoleIdPatchBody
     protected $userIds;
 
     /**
-     * The  name of the role.
+     * The name of the role.
      */
     public function getName(): ?string
     {
@@ -35,7 +35,7 @@ class RolesRoleIdPatchBody
     }
 
     /**
-     * The  name of the role.
+     * The name of the role.
      */
     public function setName(?string $name): self
     {

@@ -74,11 +74,17 @@ class UsersPostBody
      */
     protected $costRate;
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @var string[]|null
      */
     protected $roles;
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @var string[]|null
+     */
+    protected $accessRoles;
 
     /**
      * The first name of the user.
@@ -261,7 +267,7 @@ class UsersPostBody
     }
 
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @return string[]|null
      */
@@ -271,13 +277,35 @@ class UsersPostBody
     }
 
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @param string[]|null $roles
      */
     public function setRoles(?array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @return string[]|null
+     */
+    public function getAccessRoles(): ?array
+    {
+        return $this->accessRoles;
+    }
+
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @param string[]|null $accessRoles
+     */
+    public function setAccessRoles(?array $accessRoles): self
+    {
+        $this->accessRoles = $accessRoles;
 
         return $this;
     }

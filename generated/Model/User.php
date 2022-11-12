@@ -86,11 +86,17 @@ class User
      */
     protected $costRate;
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @var string[]|null
      */
     protected $roles;
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @var string[]|null
+     */
+    protected $accessRoles;
     /**
      * The URL to the user’s avatar image.
      *
@@ -109,18 +115,6 @@ class User
      * @var \DateTime|null
      */
     protected $updatedAt;
-    /**
-     * Whether the user has Admin permissions.
-     *
-     * @var bool|null
-     */
-    protected $isAdmin;
-    /**
-     * Whether the user has Project Manager permissions.
-     *
-     * @var bool|null
-     */
-    protected $isProjectManager;
 
     /**
      * Unique ID for the user.
@@ -339,7 +333,7 @@ class User
     }
 
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @return string[]|null
      */
@@ -349,13 +343,35 @@ class User
     }
 
     /**
-     * The role names assigned to this person.
+     * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @param string[]|null $roles
      */
     public function setRoles(?array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @return string[]|null
+     */
+    public function getAccessRoles(): ?array
+    {
+        return $this->accessRoles;
+    }
+
+    /**
+     * Access role(s) that determine the user’s permissions in Harvest. Possible values: administrator, manager or member. Users with the manager role can additionally be granted one or more of these roles: project_creator, billable_rates_manager, managed_projects_invoice_drafter, managed_projects_invoice_manager, client_and_task_manager, time_and_expenses_manager, estimates_manager.
+     *
+     * @param string[]|null $accessRoles
+     */
+    public function setAccessRoles(?array $accessRoles): self
+    {
+        $this->accessRoles = $accessRoles;
 
         return $this;
     }
@@ -410,42 +426,6 @@ class User
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Whether the user has Admin permissions.
-     */
-    public function getIsAdmin(): ?bool
-    {
-        return $this->isAdmin;
-    }
-
-    /**
-     * Whether the user has Admin permissions.
-     */
-    public function setIsAdmin(?bool $isAdmin): self
-    {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
-    }
-
-    /**
-     * Whether the user has Project Manager permissions.
-     */
-    public function getIsProjectManager(): ?bool
-    {
-        return $this->isProjectManager;
-    }
-
-    /**
-     * Whether the user has Project Manager permissions.
-     */
-    public function setIsProjectManager(?bool $isProjectManager): self
-    {
-        $this->isProjectManager = $isProjectManager;
 
         return $this;
     }

@@ -20,8 +20,8 @@ class TeamTimeReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
      *
      *     @var string $from only report on time entries with a spent_date on or after the given date
      *     @var string $to only report on time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 1000.  (Default: 1000)
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
      * }
      */
     public function __construct(array $queryParameters = [])

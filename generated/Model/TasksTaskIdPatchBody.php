@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TasksTaskIdPatchBody
+class TasksTaskIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The name of the task.
      *
@@ -44,6 +48,11 @@ class TasksTaskIdPatchBody
      */
     protected $isActive;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The name of the task.
      */
@@ -57,6 +66,7 @@ class TasksTaskIdPatchBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -75,6 +85,7 @@ class TasksTaskIdPatchBody
      */
     public function setBillableByDefault(?bool $billableByDefault): self
     {
+        $this->initialized['billableByDefault'] = true;
         $this->billableByDefault = $billableByDefault;
 
         return $this;
@@ -93,6 +104,7 @@ class TasksTaskIdPatchBody
      */
     public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
+        $this->initialized['defaultHourlyRate'] = true;
         $this->defaultHourlyRate = $defaultHourlyRate;
 
         return $this;
@@ -111,6 +123,7 @@ class TasksTaskIdPatchBody
      */
     public function setIsDefault(?bool $isDefault): self
     {
+        $this->initialized['isDefault'] = true;
         $this->isDefault = $isDefault;
 
         return $this;
@@ -129,6 +142,7 @@ class TasksTaskIdPatchBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;

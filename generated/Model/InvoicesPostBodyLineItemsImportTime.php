@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesPostBodyLineItemsImportTime
+class InvoicesPostBodyLineItemsImportTime extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * How to summarize the time entries per line item. Options: project, task, people, or detailed.
      *
@@ -32,6 +36,11 @@ class InvoicesPostBodyLineItemsImportTime
      */
     protected $to;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * How to summarize the time entries per line item. Options: project, task, people, or detailed.
      */
@@ -45,6 +54,7 @@ class InvoicesPostBodyLineItemsImportTime
      */
     public function setSummaryType(string $summaryType): self
     {
+        $this->initialized['summaryType'] = true;
         $this->summaryType = $summaryType;
 
         return $this;
@@ -63,6 +73,7 @@ class InvoicesPostBodyLineItemsImportTime
      */
     public function setFrom(\DateTime $from): self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
 
         return $this;
@@ -81,6 +92,7 @@ class InvoicesPostBodyLineItemsImportTime
      */
     public function setTo(\DateTime $to): self
     {
+        $this->initialized['to'] = true;
         $this->to = $to;
 
         return $this;

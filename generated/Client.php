@@ -21,8 +21,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var bool $is_active pass true to only return active clients and false to return inactive clients
      *     @var string $updated_since only return clients that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -115,8 +116,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var int $client_id only return contacts belonging to the client with the given ID
      *     @var string $updated_since only return contacts that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -185,8 +187,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return estimate item categories that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -260,7 +263,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $to only return estimates with an issue_date on or before the given date
      *     @var string $state Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -329,8 +332,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return estimate messages that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -375,8 +379,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var bool $is_active pass true to only return active expense categories and false to return inactive expense categories
      *     @var string $updated_since only return expense categories that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -452,7 +457,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only return expenses with a spent_date on or after the given date
      *     @var string $to only return expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -521,8 +526,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return invoice item categories that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -597,7 +603,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $to only return invoices with an issue_date on or before the given date
      *     @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -666,8 +672,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return invoice messages that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -729,8 +736,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return invoice payments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -776,8 +784,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var bool $is_active pass true to only return active projects and false to return inactive projects
      *     @var int $client_id only return projects belonging to the client with the given ID
      *     @var string $updated_since only return projects that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -848,7 +857,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var bool $is_active pass true to only return active task assignments and false to return inactive task assignments
      *     @var string $updated_since only return task assignments that have been updated since the given date and time
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -920,7 +929,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
      *     @var string $updated_since only return user assignments that have been updated since the given date and time
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -988,7 +997,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on expenses with a spent_date on or after the given date
      *     @var string $to only report on expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1006,7 +1015,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on expenses with a spent_date on or after the given date
      *     @var string $to only report on expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1024,7 +1033,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on expenses with a spent_date on or after the given date
      *     @var string $to only report on expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1042,7 +1051,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on expenses with a spent_date on or after the given date
      *     @var string $to only report on expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1060,7 +1069,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
      * }
      *
@@ -1079,7 +1088,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on time entries with a spent_date on or after the given date
      *     @var string $to only report on time entries with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1097,7 +1106,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on time entries with a spent_date on or after the given date
      *     @var string $to only report on time entries with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1115,7 +1124,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on time entries with a spent_date on or after the given date
      *     @var string $to only report on time entries with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1133,7 +1142,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on time entries with a spent_date on or after the given date
      *     @var string $to only report on time entries with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1154,7 +1163,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only report on time entries and expenses with a spent_date on or after the given date
      *     @var string $to only report on time entries and expenses with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 1000)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1172,8 +1181,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1243,8 +1253,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var bool $is_active pass true to only return active task assignments and false to return inactive task assignments
      *     @var string $updated_since only return task assignments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1264,8 +1275,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var bool $is_active pass true to only return active tasks and false to return inactive tasks
      *     @var string $updated_since only return tasks that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1344,7 +1356,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var string $from only return time entries with a spent_date on or after the given date
      *     @var string $to only return time entries with a spent_date on or before the given date
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1452,8 +1464,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *     @var int $user_id only return user assignments belonging to the user with the given ID
      *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
      *     @var string $updated_since only return user assignments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1473,8 +1486,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      *     @var bool $is_active pass true to only return active users and false to return inactive users
      *     @var string $updated_since only return users that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1516,7 +1530,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1571,8 +1585,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1617,8 +1632,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1664,8 +1680,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *
      *     @var string $updated_since only return project assignments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1683,8 +1700,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var string $cursor Pagination cursor
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpenseCategoriesPostBody
+class ExpenseCategoriesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The name of the expense category.
      *
@@ -38,6 +42,11 @@ class ExpenseCategoriesPostBody
      */
     protected $isActive;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The name of the expense category.
      */
@@ -51,6 +60,7 @@ class ExpenseCategoriesPostBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -69,6 +79,7 @@ class ExpenseCategoriesPostBody
      */
     public function setUnitName(?string $unitName): self
     {
+        $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
 
         return $this;
@@ -87,6 +98,7 @@ class ExpenseCategoriesPostBody
      */
     public function setUnitPrice(?float $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -105,6 +117,7 @@ class ExpenseCategoriesPostBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;

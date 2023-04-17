@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceMessage
+class InvoiceMessage extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the message.
      *
@@ -116,6 +120,11 @@ class InvoiceMessage
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the message.
      */
@@ -129,6 +138,7 @@ class InvoiceMessage
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -147,6 +157,7 @@ class InvoiceMessage
      */
     public function setSentBy(?string $sentBy): self
     {
+        $this->initialized['sentBy'] = true;
         $this->sentBy = $sentBy;
 
         return $this;
@@ -165,6 +176,7 @@ class InvoiceMessage
      */
     public function setSentByEmail(?string $sentByEmail): self
     {
+        $this->initialized['sentByEmail'] = true;
         $this->sentByEmail = $sentByEmail;
 
         return $this;
@@ -183,6 +195,7 @@ class InvoiceMessage
      */
     public function setSentFrom(?string $sentFrom): self
     {
+        $this->initialized['sentFrom'] = true;
         $this->sentFrom = $sentFrom;
 
         return $this;
@@ -201,6 +214,7 @@ class InvoiceMessage
      */
     public function setSentFromEmail(?string $sentFromEmail): self
     {
+        $this->initialized['sentFromEmail'] = true;
         $this->sentFromEmail = $sentFromEmail;
 
         return $this;
@@ -223,6 +237,7 @@ class InvoiceMessage
      */
     public function setRecipients(?array $recipients): self
     {
+        $this->initialized['recipients'] = true;
         $this->recipients = $recipients;
 
         return $this;
@@ -241,6 +256,7 @@ class InvoiceMessage
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -259,6 +275,7 @@ class InvoiceMessage
      */
     public function setBody(?string $body): self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
 
         return $this;
@@ -277,6 +294,7 @@ class InvoiceMessage
      */
     public function setIncludeLinkToClientInvoice(?bool $includeLinkToClientInvoice): self
     {
+        $this->initialized['includeLinkToClientInvoice'] = true;
         $this->includeLinkToClientInvoice = $includeLinkToClientInvoice;
 
         return $this;
@@ -295,6 +313,7 @@ class InvoiceMessage
      */
     public function setAttachPdf(?bool $attachPdf): self
     {
+        $this->initialized['attachPdf'] = true;
         $this->attachPdf = $attachPdf;
 
         return $this;
@@ -313,6 +332,7 @@ class InvoiceMessage
      */
     public function setSendMeACopy(?bool $sendMeACopy): self
     {
+        $this->initialized['sendMeACopy'] = true;
         $this->sendMeACopy = $sendMeACopy;
 
         return $this;
@@ -331,6 +351,7 @@ class InvoiceMessage
      */
     public function setThankYou(?bool $thankYou): self
     {
+        $this->initialized['thankYou'] = true;
         $this->thankYou = $thankYou;
 
         return $this;
@@ -349,6 +370,7 @@ class InvoiceMessage
      */
     public function setEventType(?string $eventType): self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
 
         return $this;
@@ -367,6 +389,7 @@ class InvoiceMessage
      */
     public function setReminder(?bool $reminder): self
     {
+        $this->initialized['reminder'] = true;
         $this->reminder = $reminder;
 
         return $this;
@@ -385,6 +408,7 @@ class InvoiceMessage
      */
     public function setSendReminderOn(?\DateTime $sendReminderOn): self
     {
+        $this->initialized['sendReminderOn'] = true;
         $this->sendReminderOn = $sendReminderOn;
 
         return $this;
@@ -403,6 +427,7 @@ class InvoiceMessage
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -421,6 +446,7 @@ class InvoiceMessage
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

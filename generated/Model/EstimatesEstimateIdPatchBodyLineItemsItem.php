@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesEstimateIdPatchBodyLineItemsItem
+class EstimatesEstimateIdPatchBodyLineItemsItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the line item.
      *
@@ -56,6 +60,11 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     protected $taxed2;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the line item.
      */
@@ -69,6 +78,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setId(int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -87,6 +97,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setKind(string $kind): self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
 
         return $this;
@@ -105,6 +116,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setDescription(string $description): self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
 
         return $this;
@@ -123,6 +135,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setQuantity(int $quantity): self
     {
+        $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
 
         return $this;
@@ -141,6 +154,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setUnitPrice(float $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -159,6 +173,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setTaxed(bool $taxed): self
     {
+        $this->initialized['taxed'] = true;
         $this->taxed = $taxed;
 
         return $this;
@@ -177,6 +192,7 @@ class EstimatesEstimateIdPatchBodyLineItemsItem
      */
     public function setTaxed2(bool $taxed2): self
     {
+        $this->initialized['taxed2'] = true;
         $this->taxed2 = $taxed2;
 
         return $this;

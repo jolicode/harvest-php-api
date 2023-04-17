@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === \get_class($data);
     }
@@ -57,12 +59,20 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('summary_type', $data)) {
             $object->setSummaryType($data['summary_type']);
+            unset($data['summary_type']);
         }
         if (\array_key_exists('from', $data)) {
             $object->setFrom(\DateTime::createFromFormat('Y-m-d', $data['from'])->setTime(0, 0, 0));
+            unset($data['from']);
         }
         if (\array_key_exists('to', $data)) {
             $object->setTo(\DateTime::createFromFormat('Y-m-d', $data['to'])->setTime(0, 0, 0));
+            unset($data['to']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -78,11 +88,16 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
     {
         $data = [];
         $data['summary_type'] = $object->getSummaryType();
-        if (null !== $object->getFrom()) {
+        if ($object->isInitialized('from') && null !== $object->getFrom()) {
             $data['from'] = $object->getFrom()->format('Y-m-d');
         }
-        if (null !== $object->getTo()) {
+        if ($object->isInitialized('to') && null !== $object->getTo()) {
             $data['to'] = $object->getTo()->format('Y-m-d');
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

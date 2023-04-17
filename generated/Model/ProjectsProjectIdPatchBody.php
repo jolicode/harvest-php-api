@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectsProjectIdPatchBody
+class ProjectsProjectIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client to associate this project with.
      *
@@ -134,6 +138,11 @@ class ProjectsProjectIdPatchBody
      */
     protected $endsOn;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client to associate this project with.
      */
@@ -147,6 +156,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -165,6 +175,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -183,6 +194,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setCode(?string $code): self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
 
         return $this;
@@ -201,6 +213,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -219,6 +232,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setIsBillable(?bool $isBillable): self
     {
+        $this->initialized['isBillable'] = true;
         $this->isBillable = $isBillable;
 
         return $this;
@@ -237,6 +251,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setIsFixedFee(?bool $isFixedFee): self
     {
+        $this->initialized['isFixedFee'] = true;
         $this->isFixedFee = $isFixedFee;
 
         return $this;
@@ -255,6 +270,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setBillBy(?string $billBy): self
     {
+        $this->initialized['billBy'] = true;
         $this->billBy = $billBy;
 
         return $this;
@@ -273,6 +289,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -291,6 +308,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;
@@ -309,6 +327,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setBudgetBy(?string $budgetBy): self
     {
+        $this->initialized['budgetBy'] = true;
         $this->budgetBy = $budgetBy;
 
         return $this;
@@ -327,6 +346,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setBudgetIsMonthly(?bool $budgetIsMonthly): self
     {
+        $this->initialized['budgetIsMonthly'] = true;
         $this->budgetIsMonthly = $budgetIsMonthly;
 
         return $this;
@@ -345,6 +365,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setNotifyWhenOverBudget(?bool $notifyWhenOverBudget): self
     {
+        $this->initialized['notifyWhenOverBudget'] = true;
         $this->notifyWhenOverBudget = $notifyWhenOverBudget;
 
         return $this;
@@ -363,6 +384,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setOverBudgetNotificationPercentage(?float $overBudgetNotificationPercentage): self
     {
+        $this->initialized['overBudgetNotificationPercentage'] = true;
         $this->overBudgetNotificationPercentage = $overBudgetNotificationPercentage;
 
         return $this;
@@ -381,6 +403,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setShowBudgetToAll(?bool $showBudgetToAll): self
     {
+        $this->initialized['showBudgetToAll'] = true;
         $this->showBudgetToAll = $showBudgetToAll;
 
         return $this;
@@ -399,6 +422,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setCostBudget(?float $costBudget): self
     {
+        $this->initialized['costBudget'] = true;
         $this->costBudget = $costBudget;
 
         return $this;
@@ -417,6 +441,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setCostBudgetIncludeExpenses(?bool $costBudgetIncludeExpenses): self
     {
+        $this->initialized['costBudgetIncludeExpenses'] = true;
         $this->costBudgetIncludeExpenses = $costBudgetIncludeExpenses;
 
         return $this;
@@ -435,6 +460,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setFee(?float $fee): self
     {
+        $this->initialized['fee'] = true;
         $this->fee = $fee;
 
         return $this;
@@ -453,6 +479,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -471,6 +498,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setStartsOn(?\DateTime $startsOn): self
     {
+        $this->initialized['startsOn'] = true;
         $this->startsOn = $startsOn;
 
         return $this;
@@ -489,6 +517,7 @@ class ProjectsProjectIdPatchBody
      */
     public function setEndsOn(?\DateTime $endsOn): self
     {
+        $this->initialized['endsOn'] = true;
         $this->endsOn = $endsOn;
 
         return $this;

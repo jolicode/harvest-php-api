@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Expenses
+class Expenses extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var Expense[]
      */
@@ -46,6 +50,11 @@ class Expenses
      */
     protected $links;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return Expense[]
      */
@@ -59,6 +68,7 @@ class Expenses
      */
     public function setExpenses(array $expenses): self
     {
+        $this->initialized['expenses'] = true;
         $this->expenses = $expenses;
 
         return $this;
@@ -71,6 +81,7 @@ class Expenses
 
     public function setPerPage(int $perPage): self
     {
+        $this->initialized['perPage'] = true;
         $this->perPage = $perPage;
 
         return $this;
@@ -83,6 +94,7 @@ class Expenses
 
     public function setTotalPages(int $totalPages): self
     {
+        $this->initialized['totalPages'] = true;
         $this->totalPages = $totalPages;
 
         return $this;
@@ -95,6 +107,7 @@ class Expenses
 
     public function setTotalEntries(int $totalEntries): self
     {
+        $this->initialized['totalEntries'] = true;
         $this->totalEntries = $totalEntries;
 
         return $this;
@@ -107,6 +120,7 @@ class Expenses
 
     public function setNextPage(?int $nextPage): self
     {
+        $this->initialized['nextPage'] = true;
         $this->nextPage = $nextPage;
 
         return $this;
@@ -119,6 +133,7 @@ class Expenses
 
     public function setPreviousPage(?int $previousPage): self
     {
+        $this->initialized['previousPage'] = true;
         $this->previousPage = $previousPage;
 
         return $this;
@@ -131,6 +146,7 @@ class Expenses
 
     public function setPage(int $page): self
     {
+        $this->initialized['page'] = true;
         $this->page = $page;
 
         return $this;
@@ -143,6 +159,7 @@ class Expenses
 
     public function setLinks(PaginationLinks $links): self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
 
         return $this;

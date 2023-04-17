@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class UsersPostBody
+class UsersPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The first name of the user.
      *
@@ -86,6 +90,11 @@ class UsersPostBody
      */
     protected $accessRoles;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The first name of the user.
      */
@@ -99,6 +108,7 @@ class UsersPostBody
      */
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -117,6 +127,7 @@ class UsersPostBody
      */
     public function setLastName(?string $lastName): self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
 
         return $this;
@@ -135,6 +146,7 @@ class UsersPostBody
      */
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -153,6 +165,7 @@ class UsersPostBody
      */
     public function setTimezone(?string $timezone): self
     {
+        $this->initialized['timezone'] = true;
         $this->timezone = $timezone;
 
         return $this;
@@ -171,6 +184,7 @@ class UsersPostBody
      */
     public function setHasAccessToAllFutureProjects(?bool $hasAccessToAllFutureProjects): self
     {
+        $this->initialized['hasAccessToAllFutureProjects'] = true;
         $this->hasAccessToAllFutureProjects = $hasAccessToAllFutureProjects;
 
         return $this;
@@ -189,6 +203,7 @@ class UsersPostBody
      */
     public function setIsContractor(?bool $isContractor): self
     {
+        $this->initialized['isContractor'] = true;
         $this->isContractor = $isContractor;
 
         return $this;
@@ -207,6 +222,7 @@ class UsersPostBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -225,6 +241,7 @@ class UsersPostBody
      */
     public function setWeeklyCapacity(?int $weeklyCapacity): self
     {
+        $this->initialized['weeklyCapacity'] = true;
         $this->weeklyCapacity = $weeklyCapacity;
 
         return $this;
@@ -243,6 +260,7 @@ class UsersPostBody
      */
     public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
+        $this->initialized['defaultHourlyRate'] = true;
         $this->defaultHourlyRate = $defaultHourlyRate;
 
         return $this;
@@ -261,6 +279,7 @@ class UsersPostBody
      */
     public function setCostRate(?float $costRate): self
     {
+        $this->initialized['costRate'] = true;
         $this->costRate = $costRate;
 
         return $this;
@@ -283,6 +302,7 @@ class UsersPostBody
      */
     public function setRoles(?array $roles): self
     {
+        $this->initialized['roles'] = true;
         $this->roles = $roles;
 
         return $this;
@@ -305,6 +325,7 @@ class UsersPostBody
      */
     public function setAccessRoles(?array $accessRoles): self
     {
+        $this->initialized['accessRoles'] = true;
         $this->accessRoles = $accessRoles;
 
         return $this;

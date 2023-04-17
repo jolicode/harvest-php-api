@@ -425,7 +425,7 @@ components:
               nullable: true
         client_key:
           type: string
-          description: 'Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}'
+          description: 'Used to build a URL to the public web invoice for your client by adding /client/invoices/{CLIENT_KEY} to your account URL https://{SUBDOMAIN}.harvestapp.com/ Note: you can also add .pdf to the end of this URL to access a PDF version of the invoice.'
           nullable: true
         number:
           type: string
@@ -472,7 +472,7 @@ components:
           format: float
         discount_amount:
           type: number
-          description: 'The amount calcuated from discount.'
+          description: 'The amount calculated from discount.'
           nullable: true
           format: float
         subject:
@@ -796,7 +796,7 @@ components:
           format: float
         discount_amount:
           type: number
-          description: 'The amount calcuated from discount.'
+          description: 'The amount calculated from discount.'
           nullable: true
           format: float
         subject:
@@ -2015,6 +2015,15 @@ components:
         user_name:
           type: string
           description: 'The name of the user associated with the reported hours. Only returned in the Team report.'
+          nullable: true
+        weekly_capacity:
+          type: integer
+          description: 'The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds. Only returned in the Team report.'
+          nullable: true
+          format: int32
+        avatar_url:
+          type: string
+          description: 'The URL to the user’s avatar image. Only returned in the Team report.'
           nullable: true
         is_contractor:
           type: boolean
@@ -3406,14 +3415,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -3759,14 +3776,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -4030,14 +4055,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -4356,7 +4389,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -4831,14 +4864,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -5056,14 +5097,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -5439,7 +5488,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -5850,14 +5899,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -6229,7 +6286,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -6319,11 +6376,6 @@ paths:
                   description: 'The ID of the client this invoice belongs to.'
                   nullable: true
                   format: int32
-                retainer_id:
-                  type: integer
-                  description: 'The ID of the retainer associated with this invoice.'
-                  nullable: true
-                  format: int32
                 estimate_id:
                   type: integer
                   description: 'The ID of the estimate associated with this invoice.'
@@ -6371,7 +6423,7 @@ paths:
                   format: date
                 due_date:
                   type: string
-                  description: 'Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.'
+                  description: 'Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calculated using the issue_date and the payment_term.'
                   nullable: true
                   format: date
                 payment_term:
@@ -6427,6 +6479,11 @@ paths:
                         attach_receipt:
                           type: boolean
                           description: 'If set to true, a PDF containing an expense report with receipts will be attached to the invoice. Defaults to false.'
+                retainer_id:
+                  type: integer
+                  description: 'The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.'
+                  nullable: true
+                  format: int32
                 line_items:
                   type: array
                   description: 'Array of line item parameters'
@@ -6859,14 +6916,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -7134,14 +7199,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -7372,14 +7445,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -7908,7 +7989,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8263,7 +8344,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8602,7 +8683,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8681,7 +8762,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8764,7 +8845,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8852,7 +8933,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -8927,7 +9008,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9015,7 +9096,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9109,7 +9190,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9211,7 +9292,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9245,6 +9326,8 @@ paths:
                     billable_hours: 0.5
                     currency: EUR
                     billable_amount: 50
+                    weekly_capacity: 126000
+                    avatar_url: 'https://cache.harvestapp.com/assets/profile_images/abraj_albait_towers.png?1498516481'
                   -
                     user_id: 1782959
                     user_name: 'Kim Allen'
@@ -9253,6 +9336,8 @@ paths:
                     billable_hours: 3
                     currency: EUR
                     billable_amount: 300
+                    weekly_capacity: 126000
+                    avatar_url: 'https://cache.harvestapp.com/assets/profile_images/cornell_clock_tower.png?1498515345'
                   -
                     user_id: 1782959
                     user_name: 'Kim Allen'
@@ -9261,6 +9346,8 @@ paths:
                     billable_hours: 2
                     currency: USD
                     billable_amount: 200
+                    weekly_capacity: 126000
+                    avatar_url: 'https://cache.harvestapp.com/assets/profile_images/allen_bradley_clock_tower.png?1498509661'
                 per_page: 2000
                 total_pages: 1
                 total_entries: 3
@@ -9302,7 +9389,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9399,7 +9486,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 1000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9466,14 +9553,22 @@ paths:
       parameters:
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -9890,14 +9985,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -10002,14 +10105,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -10541,7 +10652,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -11289,14 +11400,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -11417,14 +11536,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -11758,7 +11885,7 @@ paths:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -12034,14 +12161,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -12217,14 +12352,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -12508,14 +12651,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:
@@ -12577,14 +12728,22 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
+          deprecated: true
+        -
+          name: cursor
+          description: 'Pagination cursor'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
           required: false
           in: query
           schema:

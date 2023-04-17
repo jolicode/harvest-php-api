@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectAssignment
+class ProjectAssignment extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the project assignment.
      *
@@ -80,6 +84,11 @@ class ProjectAssignment
      */
     protected $taskAssignments;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the project assignment.
      */
@@ -93,6 +102,7 @@ class ProjectAssignment
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -111,6 +121,7 @@ class ProjectAssignment
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -129,6 +140,7 @@ class ProjectAssignment
      */
     public function setIsProjectManager(?bool $isProjectManager): self
     {
+        $this->initialized['isProjectManager'] = true;
         $this->isProjectManager = $isProjectManager;
 
         return $this;
@@ -147,6 +159,7 @@ class ProjectAssignment
      */
     public function setUseDefaultRates(?bool $useDefaultRates): self
     {
+        $this->initialized['useDefaultRates'] = true;
         $this->useDefaultRates = $useDefaultRates;
 
         return $this;
@@ -165,6 +178,7 @@ class ProjectAssignment
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -183,6 +197,7 @@ class ProjectAssignment
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;
@@ -201,6 +216,7 @@ class ProjectAssignment
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -219,6 +235,7 @@ class ProjectAssignment
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -237,6 +254,7 @@ class ProjectAssignment
      */
     public function setProject(?ProjectAssignmentProject $project): self
     {
+        $this->initialized['project'] = true;
         $this->project = $project;
 
         return $this;
@@ -255,6 +273,7 @@ class ProjectAssignment
      */
     public function setClient(?ProjectAssignmentClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -277,6 +296,7 @@ class ProjectAssignment
      */
     public function setTaskAssignments(?array $taskAssignments): self
     {
+        $this->initialized['taskAssignments'] = true;
         $this->taskAssignments = $taskAssignments;
 
         return $this;

@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' === \get_class($data);
     }
@@ -57,6 +59,7 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
+            unset($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
@@ -66,8 +69,14 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $value;
             }
             $object->setUserIds($values);
+            unset($data['user_ids']);
         } elseif (\array_key_exists('user_ids', $data) && null === $data['user_ids']) {
             $object->setUserIds(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -83,12 +92,17 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = [];
         $data['name'] = $object->getName();
-        if (null !== $object->getUserIds()) {
+        if ($object->isInitialized('userIds') && null !== $object->getUserIds()) {
             $values = [];
             foreach ($object->getUserIds() as $value) {
                 $values[] = $value;
             }
             $data['user_ids'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
 
         return $data;

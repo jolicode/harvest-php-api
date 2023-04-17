@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntry
+class TimeEntry extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the time entry.
      *
@@ -178,6 +182,11 @@ class TimeEntry
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the time entry.
      */
@@ -191,6 +200,7 @@ class TimeEntry
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -209,6 +219,7 @@ class TimeEntry
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -227,6 +238,7 @@ class TimeEntry
      */
     public function setUser(?TimeEntryUser $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -239,6 +251,7 @@ class TimeEntry
 
     public function setUserAssignment(UserAssignment $userAssignment): self
     {
+        $this->initialized['userAssignment'] = true;
         $this->userAssignment = $userAssignment;
 
         return $this;
@@ -257,6 +270,7 @@ class TimeEntry
      */
     public function setClient(?TimeEntryClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -275,6 +289,7 @@ class TimeEntry
      */
     public function setProject(?TimeEntryProject $project): self
     {
+        $this->initialized['project'] = true;
         $this->project = $project;
 
         return $this;
@@ -293,6 +308,7 @@ class TimeEntry
      */
     public function setTask(?TimeEntryTask $task): self
     {
+        $this->initialized['task'] = true;
         $this->task = $task;
 
         return $this;
@@ -305,6 +321,7 @@ class TimeEntry
 
     public function setTaskAssignment(TaskAssignment $taskAssignment): self
     {
+        $this->initialized['taskAssignment'] = true;
         $this->taskAssignment = $taskAssignment;
 
         return $this;
@@ -323,6 +340,7 @@ class TimeEntry
      */
     public function setExternalReference(?TimeEntryExternalReference $externalReference): self
     {
+        $this->initialized['externalReference'] = true;
         $this->externalReference = $externalReference;
 
         return $this;
@@ -341,6 +359,7 @@ class TimeEntry
      */
     public function setInvoice(?TimeEntryInvoice $invoice): self
     {
+        $this->initialized['invoice'] = true;
         $this->invoice = $invoice;
 
         return $this;
@@ -359,6 +378,7 @@ class TimeEntry
      */
     public function setHours(?float $hours): self
     {
+        $this->initialized['hours'] = true;
         $this->hours = $hours;
 
         return $this;
@@ -377,6 +397,7 @@ class TimeEntry
      */
     public function setHoursWithoutTimer(?float $hoursWithoutTimer): self
     {
+        $this->initialized['hoursWithoutTimer'] = true;
         $this->hoursWithoutTimer = $hoursWithoutTimer;
 
         return $this;
@@ -395,6 +416,7 @@ class TimeEntry
      */
     public function setRoundedHours(?float $roundedHours): self
     {
+        $this->initialized['roundedHours'] = true;
         $this->roundedHours = $roundedHours;
 
         return $this;
@@ -413,6 +435,7 @@ class TimeEntry
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -431,6 +454,7 @@ class TimeEntry
      */
     public function setIsLocked(?bool $isLocked): self
     {
+        $this->initialized['isLocked'] = true;
         $this->isLocked = $isLocked;
 
         return $this;
@@ -449,6 +473,7 @@ class TimeEntry
      */
     public function setLockedReason(?string $lockedReason): self
     {
+        $this->initialized['lockedReason'] = true;
         $this->lockedReason = $lockedReason;
 
         return $this;
@@ -467,6 +492,7 @@ class TimeEntry
      */
     public function setIsClosed(?bool $isClosed): self
     {
+        $this->initialized['isClosed'] = true;
         $this->isClosed = $isClosed;
 
         return $this;
@@ -485,6 +511,7 @@ class TimeEntry
      */
     public function setIsBilled(?bool $isBilled): self
     {
+        $this->initialized['isBilled'] = true;
         $this->isBilled = $isBilled;
 
         return $this;
@@ -503,6 +530,7 @@ class TimeEntry
      */
     public function setTimerStartedAt(?\DateTime $timerStartedAt): self
     {
+        $this->initialized['timerStartedAt'] = true;
         $this->timerStartedAt = $timerStartedAt;
 
         return $this;
@@ -521,6 +549,7 @@ class TimeEntry
      */
     public function setStartedTime(?string $startedTime): self
     {
+        $this->initialized['startedTime'] = true;
         $this->startedTime = $startedTime;
 
         return $this;
@@ -539,6 +568,7 @@ class TimeEntry
      */
     public function setEndedTime(?string $endedTime): self
     {
+        $this->initialized['endedTime'] = true;
         $this->endedTime = $endedTime;
 
         return $this;
@@ -557,6 +587,7 @@ class TimeEntry
      */
     public function setIsRunning(?bool $isRunning): self
     {
+        $this->initialized['isRunning'] = true;
         $this->isRunning = $isRunning;
 
         return $this;
@@ -575,6 +606,7 @@ class TimeEntry
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -593,6 +625,7 @@ class TimeEntry
      */
     public function setBudgeted(?bool $budgeted): self
     {
+        $this->initialized['budgeted'] = true;
         $this->budgeted = $budgeted;
 
         return $this;
@@ -611,6 +644,7 @@ class TimeEntry
      */
     public function setBillableRate(?float $billableRate): self
     {
+        $this->initialized['billableRate'] = true;
         $this->billableRate = $billableRate;
 
         return $this;
@@ -629,6 +663,7 @@ class TimeEntry
      */
     public function setCostRate(?float $costRate): self
     {
+        $this->initialized['costRate'] = true;
         $this->costRate = $costRate;
 
         return $this;
@@ -647,6 +682,7 @@ class TimeEntry
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -665,6 +701,7 @@ class TimeEntry
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

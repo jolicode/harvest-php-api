@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpenseReceipt
+class ExpenseReceipt extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var string|null
      */
@@ -30,6 +34,11 @@ class ExpenseReceipt
      */
     protected $contentType;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getUrl(): ?string
     {
         return $this->url;
@@ -37,6 +46,7 @@ class ExpenseReceipt
 
     public function setUrl(?string $url): self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
 
         return $this;
@@ -49,6 +59,7 @@ class ExpenseReceipt
 
     public function setFileName(?string $fileName): self
     {
+        $this->initialized['fileName'] = true;
         $this->fileName = $fileName;
 
         return $this;
@@ -61,6 +72,7 @@ class ExpenseReceipt
 
     public function setFileSize(?int $fileSize): self
     {
+        $this->initialized['fileSize'] = true;
         $this->fileSize = $fileSize;
 
         return $this;
@@ -73,6 +85,7 @@ class ExpenseReceipt
 
     public function setContentType(?string $contentType): self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
 
         return $this;

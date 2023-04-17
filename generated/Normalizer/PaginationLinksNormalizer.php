@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' === \get_class($data);
     }
@@ -57,19 +59,28 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('first', $data)) {
             $object->setFirst($data['first']);
+            unset($data['first']);
         }
         if (\array_key_exists('last', $data)) {
             $object->setLast($data['last']);
+            unset($data['last']);
         }
         if (\array_key_exists('previous', $data) && null !== $data['previous']) {
             $object->setPrevious($data['previous']);
+            unset($data['previous']);
         } elseif (\array_key_exists('previous', $data) && null === $data['previous']) {
             $object->setPrevious(null);
         }
         if (\array_key_exists('next', $data) && null !== $data['next']) {
             $object->setNext($data['next']);
+            unset($data['next']);
         } elseif (\array_key_exists('next', $data) && null === $data['next']) {
             $object->setNext(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -86,11 +97,16 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         $data = [];
         $data['first'] = $object->getFirst();
         $data['last'] = $object->getLast();
-        if (null !== $object->getPrevious()) {
+        if ($object->isInitialized('previous') && null !== $object->getPrevious()) {
             $data['previous'] = $object->getPrevious();
         }
-        if (null !== $object->getNext()) {
+        if ($object->isInitialized('next') && null !== $object->getNext()) {
             $data['next'] = $object->getNext();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

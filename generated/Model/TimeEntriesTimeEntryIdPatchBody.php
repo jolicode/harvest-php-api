@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntriesTimeEntryIdPatchBody
+class TimeEntriesTimeEntryIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the project to associate with the time entry.
      *
@@ -62,6 +66,11 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     protected $externalReference;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the project to associate with the time entry.
      */
@@ -75,6 +84,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -93,6 +103,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setTaskId(?int $taskId): self
     {
+        $this->initialized['taskId'] = true;
         $this->taskId = $taskId;
 
         return $this;
@@ -111,6 +122,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -129,6 +141,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setStartedTime(?string $startedTime): self
     {
+        $this->initialized['startedTime'] = true;
         $this->startedTime = $startedTime;
 
         return $this;
@@ -147,6 +160,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setEndedTime(?string $endedTime): self
     {
+        $this->initialized['endedTime'] = true;
         $this->endedTime = $endedTime;
 
         return $this;
@@ -165,6 +179,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setHours(?float $hours): self
     {
+        $this->initialized['hours'] = true;
         $this->hours = $hours;
 
         return $this;
@@ -183,6 +198,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -201,6 +217,7 @@ class TimeEntriesTimeEntryIdPatchBody
      */
     public function setExternalReference(?TimeEntriesTimeEntryIdPatchBodyExternalReference $externalReference): self
     {
+        $this->initialized['externalReference'] = true;
         $this->externalReference = $externalReference;
 
         return $this;

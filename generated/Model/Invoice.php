@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Invoice
+class Invoice extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the invoice.
      *
@@ -50,7 +54,7 @@ class Invoice
      */
     protected $creator;
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}.
+     * Used to build a URL to the public web invoice for your client by adding /client/invoices/{CLIENT_KEY} to your account URL https://{SUBDOMAIN}.harvestapp.com/ Note: you can also add .pdf to the end of this URL to access a PDF version of the invoice.
      *
      * @var string|null
      */
@@ -110,7 +114,7 @@ class Invoice
      */
     protected $discount;
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      *
      * @var float|null
      */
@@ -212,6 +216,11 @@ class Invoice
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the invoice.
      */
@@ -225,6 +234,7 @@ class Invoice
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -243,6 +253,7 @@ class Invoice
      */
     public function setClient(?InvoiceClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -265,6 +276,7 @@ class Invoice
      */
     public function setLineItems(?array $lineItems): self
     {
+        $this->initialized['lineItems'] = true;
         $this->lineItems = $lineItems;
 
         return $this;
@@ -283,6 +295,7 @@ class Invoice
      */
     public function setEstimate(?InvoiceEstimate $estimate): self
     {
+        $this->initialized['estimate'] = true;
         $this->estimate = $estimate;
 
         return $this;
@@ -301,6 +314,7 @@ class Invoice
      */
     public function setRetainer(?InvoiceRetainer $retainer): self
     {
+        $this->initialized['retainer'] = true;
         $this->retainer = $retainer;
 
         return $this;
@@ -319,13 +333,14 @@ class Invoice
      */
     public function setCreator(?InvoiceCreator $creator): self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
 
         return $this;
     }
 
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}.
+     * Used to build a URL to the public web invoice for your client by adding /client/invoices/{CLIENT_KEY} to your account URL https://{SUBDOMAIN}.harvestapp.com/ Note: you can also add .pdf to the end of this URL to access a PDF version of the invoice.
      */
     public function getClientKey(): ?string
     {
@@ -333,10 +348,11 @@ class Invoice
     }
 
     /**
-     * Used to build a URL to the public web invoice for your client:https://{ACCOUNT_SUBDOMAIN}.harvestapp.com/client/invoices/{CLIENT_KEY}.
+     * Used to build a URL to the public web invoice for your client by adding /client/invoices/{CLIENT_KEY} to your account URL https://{SUBDOMAIN}.harvestapp.com/ Note: you can also add .pdf to the end of this URL to access a PDF version of the invoice.
      */
     public function setClientKey(?string $clientKey): self
     {
+        $this->initialized['clientKey'] = true;
         $this->clientKey = $clientKey;
 
         return $this;
@@ -355,6 +371,7 @@ class Invoice
      */
     public function setNumber(?string $number): self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
 
         return $this;
@@ -373,6 +390,7 @@ class Invoice
      */
     public function setPurchaseOrder(?string $purchaseOrder): self
     {
+        $this->initialized['purchaseOrder'] = true;
         $this->purchaseOrder = $purchaseOrder;
 
         return $this;
@@ -391,6 +409,7 @@ class Invoice
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -409,6 +428,7 @@ class Invoice
      */
     public function setDueAmount(?float $dueAmount): self
     {
+        $this->initialized['dueAmount'] = true;
         $this->dueAmount = $dueAmount;
 
         return $this;
@@ -427,6 +447,7 @@ class Invoice
      */
     public function setTax(?float $tax): self
     {
+        $this->initialized['tax'] = true;
         $this->tax = $tax;
 
         return $this;
@@ -445,6 +466,7 @@ class Invoice
      */
     public function setTaxAmount(?float $taxAmount): self
     {
+        $this->initialized['taxAmount'] = true;
         $this->taxAmount = $taxAmount;
 
         return $this;
@@ -463,6 +485,7 @@ class Invoice
      */
     public function setTax2(?float $tax2): self
     {
+        $this->initialized['tax2'] = true;
         $this->tax2 = $tax2;
 
         return $this;
@@ -481,6 +504,7 @@ class Invoice
      */
     public function setTax2Amount(?float $tax2Amount): self
     {
+        $this->initialized['tax2Amount'] = true;
         $this->tax2Amount = $tax2Amount;
 
         return $this;
@@ -499,13 +523,14 @@ class Invoice
      */
     public function setDiscount(?float $discount): self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
 
         return $this;
     }
 
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      */
     public function getDiscountAmount(): ?float
     {
@@ -513,10 +538,11 @@ class Invoice
     }
 
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      */
     public function setDiscountAmount(?float $discountAmount): self
     {
+        $this->initialized['discountAmount'] = true;
         $this->discountAmount = $discountAmount;
 
         return $this;
@@ -535,6 +561,7 @@ class Invoice
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -553,6 +580,7 @@ class Invoice
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -571,6 +599,7 @@ class Invoice
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -589,6 +618,7 @@ class Invoice
      */
     public function setState(?string $state): self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
 
         return $this;
@@ -607,6 +637,7 @@ class Invoice
      */
     public function setPeriodStart(?\DateTime $periodStart): self
     {
+        $this->initialized['periodStart'] = true;
         $this->periodStart = $periodStart;
 
         return $this;
@@ -625,6 +656,7 @@ class Invoice
      */
     public function setPeriodEnd(?\DateTime $periodEnd): self
     {
+        $this->initialized['periodEnd'] = true;
         $this->periodEnd = $periodEnd;
 
         return $this;
@@ -643,6 +675,7 @@ class Invoice
      */
     public function setIssueDate(?\DateTime $issueDate): self
     {
+        $this->initialized['issueDate'] = true;
         $this->issueDate = $issueDate;
 
         return $this;
@@ -661,6 +694,7 @@ class Invoice
      */
     public function setDueDate(?\DateTime $dueDate): self
     {
+        $this->initialized['dueDate'] = true;
         $this->dueDate = $dueDate;
 
         return $this;
@@ -679,6 +713,7 @@ class Invoice
      */
     public function setPaymentTerm(?string $paymentTerm): self
     {
+        $this->initialized['paymentTerm'] = true;
         $this->paymentTerm = $paymentTerm;
 
         return $this;
@@ -697,6 +732,7 @@ class Invoice
      */
     public function setSentAt(?\DateTime $sentAt): self
     {
+        $this->initialized['sentAt'] = true;
         $this->sentAt = $sentAt;
 
         return $this;
@@ -715,6 +751,7 @@ class Invoice
      */
     public function setPaidAt(?\DateTime $paidAt): self
     {
+        $this->initialized['paidAt'] = true;
         $this->paidAt = $paidAt;
 
         return $this;
@@ -733,6 +770,7 @@ class Invoice
      */
     public function setPaidDate(?\DateTime $paidDate): self
     {
+        $this->initialized['paidDate'] = true;
         $this->paidDate = $paidDate;
 
         return $this;
@@ -751,6 +789,7 @@ class Invoice
      */
     public function setClosedAt(?\DateTime $closedAt): self
     {
+        $this->initialized['closedAt'] = true;
         $this->closedAt = $closedAt;
 
         return $this;
@@ -769,6 +808,7 @@ class Invoice
      */
     public function setRecurringInvoiceId(?int $recurringInvoiceId): self
     {
+        $this->initialized['recurringInvoiceId'] = true;
         $this->recurringInvoiceId = $recurringInvoiceId;
 
         return $this;
@@ -787,6 +827,7 @@ class Invoice
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -805,6 +846,7 @@ class Invoice
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

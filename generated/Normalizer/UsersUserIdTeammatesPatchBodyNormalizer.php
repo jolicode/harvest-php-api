@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === \get_class($data);
     }
@@ -57,8 +59,14 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('teammate_ids', $data) && null !== $data['teammate_ids']) {
             $object->setTeammateIds($data['teammate_ids']);
+            unset($data['teammate_ids']);
         } elseif (\array_key_exists('teammate_ids', $data) && null === $data['teammate_ids']) {
             $object->setTeammateIds(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -74,6 +82,11 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
     {
         $data = [];
         $data['teammate_ids'] = $object->getTeammateIds();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

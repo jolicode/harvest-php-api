@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Users
+class Users extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var User[]
      */
@@ -46,6 +50,11 @@ class Users
      */
     protected $links;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return User[]
      */
@@ -59,6 +68,7 @@ class Users
      */
     public function setUsers(array $users): self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
 
         return $this;
@@ -71,6 +81,7 @@ class Users
 
     public function setPerPage(int $perPage): self
     {
+        $this->initialized['perPage'] = true;
         $this->perPage = $perPage;
 
         return $this;
@@ -83,6 +94,7 @@ class Users
 
     public function setTotalPages(int $totalPages): self
     {
+        $this->initialized['totalPages'] = true;
         $this->totalPages = $totalPages;
 
         return $this;
@@ -95,6 +107,7 @@ class Users
 
     public function setTotalEntries(int $totalEntries): self
     {
+        $this->initialized['totalEntries'] = true;
         $this->totalEntries = $totalEntries;
 
         return $this;
@@ -107,6 +120,7 @@ class Users
 
     public function setNextPage(?int $nextPage): self
     {
+        $this->initialized['nextPage'] = true;
         $this->nextPage = $nextPage;
 
         return $this;
@@ -119,6 +133,7 @@ class Users
 
     public function setPreviousPage(?int $previousPage): self
     {
+        $this->initialized['previousPage'] = true;
         $this->previousPage = $previousPage;
 
         return $this;
@@ -131,6 +146,7 @@ class Users
 
     public function setPage(int $page): self
     {
+        $this->initialized['page'] = true;
         $this->page = $page;
 
         return $this;
@@ -143,6 +159,7 @@ class Users
 
     public function setLinks(PaginationLinks $links): self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
 
         return $this;

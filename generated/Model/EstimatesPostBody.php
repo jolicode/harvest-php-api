@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesPostBody
+class EstimatesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client this estimate belongs to.
      *
@@ -80,6 +84,11 @@ class EstimatesPostBody
      */
     protected $lineItems;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client this estimate belongs to.
      */
@@ -93,6 +102,7 @@ class EstimatesPostBody
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -111,6 +121,7 @@ class EstimatesPostBody
      */
     public function setNumber(?string $number): self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
 
         return $this;
@@ -129,6 +140,7 @@ class EstimatesPostBody
      */
     public function setPurchaseOrder(?string $purchaseOrder): self
     {
+        $this->initialized['purchaseOrder'] = true;
         $this->purchaseOrder = $purchaseOrder;
 
         return $this;
@@ -147,6 +159,7 @@ class EstimatesPostBody
      */
     public function setTax(?float $tax): self
     {
+        $this->initialized['tax'] = true;
         $this->tax = $tax;
 
         return $this;
@@ -165,6 +178,7 @@ class EstimatesPostBody
      */
     public function setTax2(?float $tax2): self
     {
+        $this->initialized['tax2'] = true;
         $this->tax2 = $tax2;
 
         return $this;
@@ -183,6 +197,7 @@ class EstimatesPostBody
      */
     public function setDiscount(?float $discount): self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
 
         return $this;
@@ -201,6 +216,7 @@ class EstimatesPostBody
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -219,6 +235,7 @@ class EstimatesPostBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -237,6 +254,7 @@ class EstimatesPostBody
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -255,6 +273,7 @@ class EstimatesPostBody
      */
     public function setIssueDate(?\DateTime $issueDate): self
     {
+        $this->initialized['issueDate'] = true;
         $this->issueDate = $issueDate;
 
         return $this;
@@ -277,6 +296,7 @@ class EstimatesPostBody
      */
     public function setLineItems(?array $lineItems): self
     {
+        $this->initialized['lineItems'] = true;
         $this->lineItems = $lineItems;
 
         return $this;

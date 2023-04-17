@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesEstimateIdMessagesPostBodyRecipientsItem
+class EstimatesEstimateIdMessagesPostBodyRecipientsItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Name of the message recipient.
      *
@@ -25,6 +29,11 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItem
      * @var string
      */
     protected $email;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * Name of the message recipient.
@@ -39,6 +48,7 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItem
      */
     public function setName(string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -57,6 +67,7 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItem
      */
     public function setEmail(string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;

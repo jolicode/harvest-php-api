@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
+class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Whether the user assignment is active or archived.
      *
@@ -44,6 +48,11 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     protected $budget;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Whether the user assignment is active or archived.
      */
@@ -57,6 +66,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -75,6 +85,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     public function setIsProjectManager(?bool $isProjectManager): self
     {
+        $this->initialized['isProjectManager'] = true;
         $this->isProjectManager = $isProjectManager;
 
         return $this;
@@ -93,6 +104,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     public function setUseDefaultRates(?bool $useDefaultRates): self
     {
+        $this->initialized['useDefaultRates'] = true;
         $this->useDefaultRates = $useDefaultRates;
 
         return $this;
@@ -111,6 +123,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -129,6 +142,7 @@ class ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;

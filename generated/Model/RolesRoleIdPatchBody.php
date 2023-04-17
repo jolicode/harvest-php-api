@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class RolesRoleIdPatchBody
+class RolesRoleIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The name of the role.
      *
@@ -25,6 +29,11 @@ class RolesRoleIdPatchBody
      * @var int[]|null
      */
     protected $userIds;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * The name of the role.
@@ -39,6 +48,7 @@ class RolesRoleIdPatchBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -61,6 +71,7 @@ class RolesRoleIdPatchBody
      */
     public function setUserIds(?array $userIds): self
     {
+        $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
 
         return $this;

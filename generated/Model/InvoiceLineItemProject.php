@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceLineItemProject
+class InvoiceLineItemProject extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var int|null
      */
@@ -26,6 +30,11 @@ class InvoiceLineItemProject
      */
     protected $code;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -33,6 +42,7 @@ class InvoiceLineItemProject
 
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -45,6 +55,7 @@ class InvoiceLineItemProject
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -57,6 +68,7 @@ class InvoiceLineItemProject
 
     public function setCode(?string $code): self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
 
         return $this;

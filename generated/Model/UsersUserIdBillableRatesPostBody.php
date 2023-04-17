@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class UsersUserIdBillableRatesPostBody
+class UsersUserIdBillableRatesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The amount of the billable rate.
      *
@@ -25,6 +29,11 @@ class UsersUserIdBillableRatesPostBody
      * @var \DateTime|null
      */
     protected $startDate;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * The amount of the billable rate.
@@ -39,6 +48,7 @@ class UsersUserIdBillableRatesPostBody
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -57,6 +67,7 @@ class UsersUserIdBillableRatesPostBody
      */
     public function setStartDate(?\DateTime $startDate): self
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
 
         return $this;

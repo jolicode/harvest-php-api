@@ -11,14 +11,23 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody
+class InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The name of the invoice item category.
      *
      * @var string|null
      */
     protected $name;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * The name of the invoice item category.
@@ -33,6 +42,7 @@ class InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;

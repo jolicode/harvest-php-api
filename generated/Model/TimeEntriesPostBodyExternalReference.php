@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntriesPostBodyExternalReference
+class TimeEntriesPostBodyExternalReference extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var string|null
      */
@@ -30,6 +34,11 @@ class TimeEntriesPostBodyExternalReference
      */
     protected $permalink;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?string
     {
         return $this->id;
@@ -37,6 +46,7 @@ class TimeEntriesPostBodyExternalReference
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -49,6 +59,7 @@ class TimeEntriesPostBodyExternalReference
 
     public function setGroupId(?string $groupId): self
     {
+        $this->initialized['groupId'] = true;
         $this->groupId = $groupId;
 
         return $this;
@@ -61,6 +72,7 @@ class TimeEntriesPostBodyExternalReference
 
     public function setAccountId(?string $accountId): self
     {
+        $this->initialized['accountId'] = true;
         $this->accountId = $accountId;
 
         return $this;
@@ -73,6 +85,7 @@ class TimeEntriesPostBodyExternalReference
 
     public function setPermalink(?string $permalink): self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
 
         return $this;

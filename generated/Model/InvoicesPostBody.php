@@ -11,20 +11,18 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesPostBody
+class InvoicesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client this invoice belongs to.
      *
      * @var int|null
      */
     protected $clientId;
-    /**
-     * The ID of the retainer associated with this invoice.
-     *
-     * @var int|null
-     */
-    protected $retainerId;
     /**
      * The ID of the estimate associated with this invoice.
      *
@@ -86,7 +84,7 @@ class InvoicesPostBody
      */
     protected $issueDate;
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calculated using the issue_date and the payment_term.
      *
      * @var \DateTime|null
      */
@@ -104,11 +102,22 @@ class InvoicesPostBody
      */
     protected $lineItemsImport;
     /**
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     *
+     * @var int|null
+     */
+    protected $retainerId;
+    /**
      * Array of line item parameters.
      *
      * @var InvoicesPostBodyLineItemsItem[]|null
      */
     protected $lineItems;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * The ID of the client this invoice belongs to.
@@ -123,25 +132,8 @@ class InvoicesPostBody
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
-
-        return $this;
-    }
-
-    /**
-     * The ID of the retainer associated with this invoice.
-     */
-    public function getRetainerId(): ?int
-    {
-        return $this->retainerId;
-    }
-
-    /**
-     * The ID of the retainer associated with this invoice.
-     */
-    public function setRetainerId(?int $retainerId): self
-    {
-        $this->retainerId = $retainerId;
 
         return $this;
     }
@@ -159,6 +151,7 @@ class InvoicesPostBody
      */
     public function setEstimateId(?int $estimateId): self
     {
+        $this->initialized['estimateId'] = true;
         $this->estimateId = $estimateId;
 
         return $this;
@@ -177,6 +170,7 @@ class InvoicesPostBody
      */
     public function setNumber(?string $number): self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
 
         return $this;
@@ -195,6 +189,7 @@ class InvoicesPostBody
      */
     public function setPurchaseOrder(?string $purchaseOrder): self
     {
+        $this->initialized['purchaseOrder'] = true;
         $this->purchaseOrder = $purchaseOrder;
 
         return $this;
@@ -213,6 +208,7 @@ class InvoicesPostBody
      */
     public function setTax(?float $tax): self
     {
+        $this->initialized['tax'] = true;
         $this->tax = $tax;
 
         return $this;
@@ -231,6 +227,7 @@ class InvoicesPostBody
      */
     public function setTax2(?float $tax2): self
     {
+        $this->initialized['tax2'] = true;
         $this->tax2 = $tax2;
 
         return $this;
@@ -249,6 +246,7 @@ class InvoicesPostBody
      */
     public function setDiscount(?float $discount): self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
 
         return $this;
@@ -267,6 +265,7 @@ class InvoicesPostBody
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -285,6 +284,7 @@ class InvoicesPostBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -303,6 +303,7 @@ class InvoicesPostBody
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -321,13 +322,14 @@ class InvoicesPostBody
      */
     public function setIssueDate(?\DateTime $issueDate): self
     {
+        $this->initialized['issueDate'] = true;
         $this->issueDate = $issueDate;
 
         return $this;
     }
 
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calculated using the issue_date and the payment_term.
      */
     public function getDueDate(): ?\DateTime
     {
@@ -335,10 +337,11 @@ class InvoicesPostBody
     }
 
     /**
-     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calucated using the issue_date and the payment_term.
+     * Date the invoice is due. Defaults to the issue_date if no payment_term is specified. To set a custom due_date the payment_term must also be set to custom, otherwise the value supplied in the request for due_date will be ignored and the due_date will be calculated using the issue_date and the payment_term.
      */
     public function setDueDate(?\DateTime $dueDate): self
     {
+        $this->initialized['dueDate'] = true;
         $this->dueDate = $dueDate;
 
         return $this;
@@ -357,6 +360,7 @@ class InvoicesPostBody
      */
     public function setPaymentTerm(?string $paymentTerm): self
     {
+        $this->initialized['paymentTerm'] = true;
         $this->paymentTerm = $paymentTerm;
 
         return $this;
@@ -375,7 +379,27 @@ class InvoicesPostBody
      */
     public function setLineItemsImport(?InvoicesPostBodyLineItemsImport $lineItemsImport): self
     {
+        $this->initialized['lineItemsImport'] = true;
         $this->lineItemsImport = $lineItemsImport;
+
+        return $this;
+    }
+
+    /**
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     */
+    public function getRetainerId(): ?int
+    {
+        return $this->retainerId;
+    }
+
+    /**
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     */
+    public function setRetainerId(?int $retainerId): self
+    {
+        $this->initialized['retainerId'] = true;
+        $this->retainerId = $retainerId;
 
         return $this;
     }
@@ -397,6 +421,7 @@ class InvoicesPostBody
      */
     public function setLineItems(?array $lineItems): self
     {
+        $this->initialized['lineItems'] = true;
         $this->lineItems = $lineItems;
 
         return $this;

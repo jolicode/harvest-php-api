@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntryExternalReference
+class TimeEntryExternalReference extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var string|null
      */
@@ -38,6 +42,11 @@ class TimeEntryExternalReference
      */
     protected $serviceIconUrl;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?string
     {
         return $this->id;
@@ -45,6 +54,7 @@ class TimeEntryExternalReference
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -57,6 +67,7 @@ class TimeEntryExternalReference
 
     public function setGroupId(?string $groupId): self
     {
+        $this->initialized['groupId'] = true;
         $this->groupId = $groupId;
 
         return $this;
@@ -69,6 +80,7 @@ class TimeEntryExternalReference
 
     public function setAccountId(?string $accountId): self
     {
+        $this->initialized['accountId'] = true;
         $this->accountId = $accountId;
 
         return $this;
@@ -81,6 +93,7 @@ class TimeEntryExternalReference
 
     public function setPermalink(?string $permalink): self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
 
         return $this;
@@ -93,6 +106,7 @@ class TimeEntryExternalReference
 
     public function setService(?string $service): self
     {
+        $this->initialized['service'] = true;
         $this->service = $service;
 
         return $this;
@@ -105,6 +119,7 @@ class TimeEntryExternalReference
 
     public function setServiceIconUrl(?string $serviceIconUrl): self
     {
+        $this->initialized['serviceIconUrl'] = true;
         $this->serviceIconUrl = $serviceIconUrl;
 
         return $this;

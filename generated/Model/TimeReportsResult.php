@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeReportsResult
+class TimeReportsResult extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client associated with the reported hours. Only returned in the Client and Project reports.
      *
@@ -62,6 +66,18 @@ class TimeReportsResult
      */
     protected $userName;
     /**
+     * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds. Only returned in the Team report.
+     *
+     * @var int|null
+     */
+    protected $weeklyCapacity;
+    /**
+     * The URL to the user’s avatar image. Only returned in the Team report.
+     *
+     * @var string|null
+     */
+    protected $avatarUrl;
+    /**
      * The contractor status of the user associated with the reported hours. Only returned in the Team report.
      *
      * @var bool|null
@@ -92,6 +108,11 @@ class TimeReportsResult
      */
     protected $billableAmount;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client associated with the reported hours. Only returned in the Client and Project reports.
      */
@@ -105,6 +126,7 @@ class TimeReportsResult
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -123,6 +145,7 @@ class TimeReportsResult
      */
     public function setClientName(?string $clientName): self
     {
+        $this->initialized['clientName'] = true;
         $this->clientName = $clientName;
 
         return $this;
@@ -141,6 +164,7 @@ class TimeReportsResult
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -159,6 +183,7 @@ class TimeReportsResult
      */
     public function setProjectName(?string $projectName): self
     {
+        $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
 
         return $this;
@@ -177,6 +202,7 @@ class TimeReportsResult
      */
     public function setTaskId(?int $taskId): self
     {
+        $this->initialized['taskId'] = true;
         $this->taskId = $taskId;
 
         return $this;
@@ -195,6 +221,7 @@ class TimeReportsResult
      */
     public function setTaskName(?string $taskName): self
     {
+        $this->initialized['taskName'] = true;
         $this->taskName = $taskName;
 
         return $this;
@@ -213,6 +240,7 @@ class TimeReportsResult
      */
     public function setUserId(?int $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -231,7 +259,46 @@ class TimeReportsResult
      */
     public function setUserName(?string $userName): self
     {
+        $this->initialized['userName'] = true;
         $this->userName = $userName;
+
+        return $this;
+    }
+
+    /**
+     * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds. Only returned in the Team report.
+     */
+    public function getWeeklyCapacity(): ?int
+    {
+        return $this->weeklyCapacity;
+    }
+
+    /**
+     * The number of hours per week this person is available to work in seconds, in half hour increments. For example, if a person’s capacity is 35 hours, the API will return 126000 seconds. Only returned in the Team report.
+     */
+    public function setWeeklyCapacity(?int $weeklyCapacity): self
+    {
+        $this->initialized['weeklyCapacity'] = true;
+        $this->weeklyCapacity = $weeklyCapacity;
+
+        return $this;
+    }
+
+    /**
+     * The URL to the user’s avatar image. Only returned in the Team report.
+     */
+    public function getAvatarUrl(): ?string
+    {
+        return $this->avatarUrl;
+    }
+
+    /**
+     * The URL to the user’s avatar image. Only returned in the Team report.
+     */
+    public function setAvatarUrl(?string $avatarUrl): self
+    {
+        $this->initialized['avatarUrl'] = true;
+        $this->avatarUrl = $avatarUrl;
 
         return $this;
     }
@@ -249,6 +316,7 @@ class TimeReportsResult
      */
     public function setIsContractor(?bool $isContractor): self
     {
+        $this->initialized['isContractor'] = true;
         $this->isContractor = $isContractor;
 
         return $this;
@@ -267,6 +335,7 @@ class TimeReportsResult
      */
     public function setTotalHours(?float $totalHours): self
     {
+        $this->initialized['totalHours'] = true;
         $this->totalHours = $totalHours;
 
         return $this;
@@ -285,6 +354,7 @@ class TimeReportsResult
      */
     public function setBillableHours(?float $billableHours): self
     {
+        $this->initialized['billableHours'] = true;
         $this->billableHours = $billableHours;
 
         return $this;
@@ -303,6 +373,7 @@ class TimeReportsResult
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -321,6 +392,7 @@ class TimeReportsResult
      */
     public function setBillableAmount(?float $billableAmount): self
     {
+        $this->initialized['billableAmount'] = true;
         $this->billableAmount = $billableAmount;
 
         return $this;

@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectBudgetReportResult
+class ProjectBudgetReportResult extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client associated with this project.
      *
@@ -74,6 +78,11 @@ class ProjectBudgetReportResult
      */
     protected $budgetRemaining;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client associated with this project.
      */
@@ -87,6 +96,7 @@ class ProjectBudgetReportResult
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -105,6 +115,7 @@ class ProjectBudgetReportResult
      */
     public function setClientName(?string $clientName): self
     {
+        $this->initialized['clientName'] = true;
         $this->clientName = $clientName;
 
         return $this;
@@ -123,6 +134,7 @@ class ProjectBudgetReportResult
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -141,6 +153,7 @@ class ProjectBudgetReportResult
      */
     public function setProjectName(?string $projectName): self
     {
+        $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
 
         return $this;
@@ -159,6 +172,7 @@ class ProjectBudgetReportResult
      */
     public function setBudgetIsMonthly(?bool $budgetIsMonthly): self
     {
+        $this->initialized['budgetIsMonthly'] = true;
         $this->budgetIsMonthly = $budgetIsMonthly;
 
         return $this;
@@ -177,6 +191,7 @@ class ProjectBudgetReportResult
      */
     public function setBudgetBy(?string $budgetBy): self
     {
+        $this->initialized['budgetBy'] = true;
         $this->budgetBy = $budgetBy;
 
         return $this;
@@ -195,6 +210,7 @@ class ProjectBudgetReportResult
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -213,6 +229,7 @@ class ProjectBudgetReportResult
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;
@@ -231,6 +248,7 @@ class ProjectBudgetReportResult
      */
     public function setBudgetSpent(?float $budgetSpent): self
     {
+        $this->initialized['budgetSpent'] = true;
         $this->budgetSpent = $budgetSpent;
 
         return $this;
@@ -249,6 +267,7 @@ class ProjectBudgetReportResult
      */
     public function setBudgetRemaining(?float $budgetRemaining): self
     {
+        $this->initialized['budgetRemaining'] = true;
         $this->budgetRemaining = $budgetRemaining;
 
         return $this;

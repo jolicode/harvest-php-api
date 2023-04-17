@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class UninvoicedReportResult
+class UninvoicedReportResult extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client associated with the reported hours and expenses.
      *
@@ -68,6 +72,11 @@ class UninvoicedReportResult
      */
     protected $uninvoicedAmount;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client associated with the reported hours and expenses.
      */
@@ -81,6 +90,7 @@ class UninvoicedReportResult
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -99,6 +109,7 @@ class UninvoicedReportResult
      */
     public function setClientName(?string $clientName): self
     {
+        $this->initialized['clientName'] = true;
         $this->clientName = $clientName;
 
         return $this;
@@ -117,6 +128,7 @@ class UninvoicedReportResult
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -135,6 +147,7 @@ class UninvoicedReportResult
      */
     public function setProjectName(?string $projectName): self
     {
+        $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
 
         return $this;
@@ -153,6 +166,7 @@ class UninvoicedReportResult
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -171,6 +185,7 @@ class UninvoicedReportResult
      */
     public function setTotalHours(?float $totalHours): self
     {
+        $this->initialized['totalHours'] = true;
         $this->totalHours = $totalHours;
 
         return $this;
@@ -189,6 +204,7 @@ class UninvoicedReportResult
      */
     public function setUninvoicedHours(?float $uninvoicedHours): self
     {
+        $this->initialized['uninvoicedHours'] = true;
         $this->uninvoicedHours = $uninvoicedHours;
 
         return $this;
@@ -207,6 +223,7 @@ class UninvoicedReportResult
      */
     public function setUninvoicedExpenses(?float $uninvoicedExpenses): self
     {
+        $this->initialized['uninvoicedExpenses'] = true;
         $this->uninvoicedExpenses = $uninvoicedExpenses;
 
         return $this;
@@ -225,6 +242,7 @@ class UninvoicedReportResult
      */
     public function setUninvoicedAmount(?float $uninvoicedAmount): self
     {
+        $this->initialized['uninvoicedAmount'] = true;
         $this->uninvoicedAmount = $uninvoicedAmount;
 
         return $this;

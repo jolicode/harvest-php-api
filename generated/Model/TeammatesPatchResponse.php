@@ -11,12 +11,21 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TeammatesPatchResponse
+class TeammatesPatchResponse extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var Teammate[]
      */
     protected $teammates;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return Teammate[]
@@ -31,6 +40,7 @@ class TeammatesPatchResponse
      */
     public function setTeammates(array $teammates): self
     {
+        $this->initialized['teammates'] = true;
         $this->teammates = $teammates;
 
         return $this;

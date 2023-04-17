@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimateMessage
+class EstimateMessage extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the message.
      *
@@ -86,6 +90,11 @@ class EstimateMessage
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the message.
      */
@@ -99,6 +108,7 @@ class EstimateMessage
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -117,6 +127,7 @@ class EstimateMessage
      */
     public function setSentBy(?string $sentBy): self
     {
+        $this->initialized['sentBy'] = true;
         $this->sentBy = $sentBy;
 
         return $this;
@@ -135,6 +146,7 @@ class EstimateMessage
      */
     public function setSentByEmail(?string $sentByEmail): self
     {
+        $this->initialized['sentByEmail'] = true;
         $this->sentByEmail = $sentByEmail;
 
         return $this;
@@ -153,6 +165,7 @@ class EstimateMessage
      */
     public function setSentFrom(?string $sentFrom): self
     {
+        $this->initialized['sentFrom'] = true;
         $this->sentFrom = $sentFrom;
 
         return $this;
@@ -171,6 +184,7 @@ class EstimateMessage
      */
     public function setSentFromEmail(?string $sentFromEmail): self
     {
+        $this->initialized['sentFromEmail'] = true;
         $this->sentFromEmail = $sentFromEmail;
 
         return $this;
@@ -193,6 +207,7 @@ class EstimateMessage
      */
     public function setRecipients(?array $recipients): self
     {
+        $this->initialized['recipients'] = true;
         $this->recipients = $recipients;
 
         return $this;
@@ -211,6 +226,7 @@ class EstimateMessage
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -229,6 +245,7 @@ class EstimateMessage
      */
     public function setBody(?string $body): self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
 
         return $this;
@@ -247,6 +264,7 @@ class EstimateMessage
      */
     public function setSendMeACopy(?bool $sendMeACopy): self
     {
+        $this->initialized['sendMeACopy'] = true;
         $this->sendMeACopy = $sendMeACopy;
 
         return $this;
@@ -265,6 +283,7 @@ class EstimateMessage
      */
     public function setEventType(?string $eventType): self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
 
         return $this;
@@ -283,6 +302,7 @@ class EstimateMessage
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -301,6 +321,7 @@ class EstimateMessage
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

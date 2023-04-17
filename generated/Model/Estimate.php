@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Estimate
+class Estimate extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the estimate.
      *
@@ -92,7 +96,7 @@ class Estimate
      */
     protected $discount;
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      *
      * @var float|null
      */
@@ -158,6 +162,11 @@ class Estimate
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the estimate.
      */
@@ -171,6 +180,7 @@ class Estimate
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -189,6 +199,7 @@ class Estimate
      */
     public function setClient(?EstimateClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -211,6 +222,7 @@ class Estimate
      */
     public function setLineItems(?array $lineItems): self
     {
+        $this->initialized['lineItems'] = true;
         $this->lineItems = $lineItems;
 
         return $this;
@@ -229,6 +241,7 @@ class Estimate
      */
     public function setCreator(?EstimateCreator $creator): self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
 
         return $this;
@@ -247,6 +260,7 @@ class Estimate
      */
     public function setClientKey(?string $clientKey): self
     {
+        $this->initialized['clientKey'] = true;
         $this->clientKey = $clientKey;
 
         return $this;
@@ -265,6 +279,7 @@ class Estimate
      */
     public function setNumber(?string $number): self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
 
         return $this;
@@ -283,6 +298,7 @@ class Estimate
      */
     public function setPurchaseOrder(?string $purchaseOrder): self
     {
+        $this->initialized['purchaseOrder'] = true;
         $this->purchaseOrder = $purchaseOrder;
 
         return $this;
@@ -301,6 +317,7 @@ class Estimate
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -319,6 +336,7 @@ class Estimate
      */
     public function setTax(?float $tax): self
     {
+        $this->initialized['tax'] = true;
         $this->tax = $tax;
 
         return $this;
@@ -337,6 +355,7 @@ class Estimate
      */
     public function setTaxAmount(?float $taxAmount): self
     {
+        $this->initialized['taxAmount'] = true;
         $this->taxAmount = $taxAmount;
 
         return $this;
@@ -355,6 +374,7 @@ class Estimate
      */
     public function setTax2(?float $tax2): self
     {
+        $this->initialized['tax2'] = true;
         $this->tax2 = $tax2;
 
         return $this;
@@ -373,6 +393,7 @@ class Estimate
      */
     public function setTax2Amount(?float $tax2Amount): self
     {
+        $this->initialized['tax2Amount'] = true;
         $this->tax2Amount = $tax2Amount;
 
         return $this;
@@ -391,13 +412,14 @@ class Estimate
      */
     public function setDiscount(?float $discount): self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
 
         return $this;
     }
 
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      */
     public function getDiscountAmount(): ?float
     {
@@ -405,10 +427,11 @@ class Estimate
     }
 
     /**
-     * The amount calcuated from discount.
+     * The amount calculated from discount.
      */
     public function setDiscountAmount(?float $discountAmount): self
     {
+        $this->initialized['discountAmount'] = true;
         $this->discountAmount = $discountAmount;
 
         return $this;
@@ -427,6 +450,7 @@ class Estimate
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -445,6 +469,7 @@ class Estimate
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -463,6 +488,7 @@ class Estimate
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -481,6 +507,7 @@ class Estimate
      */
     public function setState(?string $state): self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
 
         return $this;
@@ -499,6 +526,7 @@ class Estimate
      */
     public function setIssueDate(?\DateTime $issueDate): self
     {
+        $this->initialized['issueDate'] = true;
         $this->issueDate = $issueDate;
 
         return $this;
@@ -517,6 +545,7 @@ class Estimate
      */
     public function setSentAt(?\DateTime $sentAt): self
     {
+        $this->initialized['sentAt'] = true;
         $this->sentAt = $sentAt;
 
         return $this;
@@ -535,6 +564,7 @@ class Estimate
      */
     public function setAcceptedAt(?\DateTime $acceptedAt): self
     {
+        $this->initialized['acceptedAt'] = true;
         $this->acceptedAt = $acceptedAt;
 
         return $this;
@@ -553,6 +583,7 @@ class Estimate
      */
     public function setDeclinedAt(?\DateTime $declinedAt): self
     {
+        $this->initialized['declinedAt'] = true;
         $this->declinedAt = $declinedAt;
 
         return $this;
@@ -571,6 +602,7 @@ class Estimate
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -589,6 +621,7 @@ class Estimate
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

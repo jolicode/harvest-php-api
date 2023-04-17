@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class User
+class User extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the user.
      *
@@ -116,6 +120,11 @@ class User
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the user.
      */
@@ -129,6 +138,7 @@ class User
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -147,6 +157,7 @@ class User
      */
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -165,6 +176,7 @@ class User
      */
     public function setLastName(?string $lastName): self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
 
         return $this;
@@ -183,6 +195,7 @@ class User
      */
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -201,6 +214,7 @@ class User
      */
     public function setTelephone(?string $telephone): self
     {
+        $this->initialized['telephone'] = true;
         $this->telephone = $telephone;
 
         return $this;
@@ -219,6 +233,7 @@ class User
      */
     public function setTimezone(?string $timezone): self
     {
+        $this->initialized['timezone'] = true;
         $this->timezone = $timezone;
 
         return $this;
@@ -237,6 +252,7 @@ class User
      */
     public function setHasAccessToAllFutureProjects(?bool $hasAccessToAllFutureProjects): self
     {
+        $this->initialized['hasAccessToAllFutureProjects'] = true;
         $this->hasAccessToAllFutureProjects = $hasAccessToAllFutureProjects;
 
         return $this;
@@ -255,6 +271,7 @@ class User
      */
     public function setIsContractor(?bool $isContractor): self
     {
+        $this->initialized['isContractor'] = true;
         $this->isContractor = $isContractor;
 
         return $this;
@@ -273,6 +290,7 @@ class User
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -291,6 +309,7 @@ class User
      */
     public function setWeeklyCapacity(?int $weeklyCapacity): self
     {
+        $this->initialized['weeklyCapacity'] = true;
         $this->weeklyCapacity = $weeklyCapacity;
 
         return $this;
@@ -309,6 +328,7 @@ class User
      */
     public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
+        $this->initialized['defaultHourlyRate'] = true;
         $this->defaultHourlyRate = $defaultHourlyRate;
 
         return $this;
@@ -327,6 +347,7 @@ class User
      */
     public function setCostRate(?float $costRate): self
     {
+        $this->initialized['costRate'] = true;
         $this->costRate = $costRate;
 
         return $this;
@@ -349,6 +370,7 @@ class User
      */
     public function setRoles(?array $roles): self
     {
+        $this->initialized['roles'] = true;
         $this->roles = $roles;
 
         return $this;
@@ -371,6 +393,7 @@ class User
      */
     public function setAccessRoles(?array $accessRoles): self
     {
+        $this->initialized['accessRoles'] = true;
         $this->accessRoles = $accessRoles;
 
         return $this;
@@ -389,6 +412,7 @@ class User
      */
     public function setAvatarUrl(?string $avatarUrl): self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
 
         return $this;
@@ -407,6 +431,7 @@ class User
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -425,6 +450,7 @@ class User
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

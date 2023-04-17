@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpenseExpenseCategory
+class ExpenseExpenseCategory extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var int|null
      */
@@ -30,6 +34,11 @@ class ExpenseExpenseCategory
      */
     protected $unitName;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +46,7 @@ class ExpenseExpenseCategory
 
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -49,6 +59,7 @@ class ExpenseExpenseCategory
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -61,6 +72,7 @@ class ExpenseExpenseCategory
 
     public function setUnitPrice(?string $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -73,6 +85,7 @@ class ExpenseExpenseCategory
 
     public function setUnitName(?string $unitName): self
     {
+        $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
 
         return $this;

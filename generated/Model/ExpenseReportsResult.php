@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpenseReportsResult
+class ExpenseReportsResult extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client associated with the reported expenses. Only returned in the Client and Project reports.
      *
@@ -86,6 +90,11 @@ class ExpenseReportsResult
      */
     protected $currency;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client associated with the reported expenses. Only returned in the Client and Project reports.
      */
@@ -99,6 +108,7 @@ class ExpenseReportsResult
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -117,6 +127,7 @@ class ExpenseReportsResult
      */
     public function setClientName(?string $clientName): self
     {
+        $this->initialized['clientName'] = true;
         $this->clientName = $clientName;
 
         return $this;
@@ -135,6 +146,7 @@ class ExpenseReportsResult
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -153,6 +165,7 @@ class ExpenseReportsResult
      */
     public function setProjectName(?string $projectName): self
     {
+        $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
 
         return $this;
@@ -171,6 +184,7 @@ class ExpenseReportsResult
      */
     public function setExpenseCategoryId(?int $expenseCategoryId): self
     {
+        $this->initialized['expenseCategoryId'] = true;
         $this->expenseCategoryId = $expenseCategoryId;
 
         return $this;
@@ -189,6 +203,7 @@ class ExpenseReportsResult
      */
     public function setExpenseCategoryName(?string $expenseCategoryName): self
     {
+        $this->initialized['expenseCategoryName'] = true;
         $this->expenseCategoryName = $expenseCategoryName;
 
         return $this;
@@ -207,6 +222,7 @@ class ExpenseReportsResult
      */
     public function setUserId(?int $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -225,6 +241,7 @@ class ExpenseReportsResult
      */
     public function setUserName(?string $userName): self
     {
+        $this->initialized['userName'] = true;
         $this->userName = $userName;
 
         return $this;
@@ -243,6 +260,7 @@ class ExpenseReportsResult
      */
     public function setIsContractor(?bool $isContractor): self
     {
+        $this->initialized['isContractor'] = true;
         $this->isContractor = $isContractor;
 
         return $this;
@@ -261,6 +279,7 @@ class ExpenseReportsResult
      */
     public function setTotalAmount(?float $totalAmount): self
     {
+        $this->initialized['totalAmount'] = true;
         $this->totalAmount = $totalAmount;
 
         return $this;
@@ -279,6 +298,7 @@ class ExpenseReportsResult
      */
     public function setBillableAmount(?float $billableAmount): self
     {
+        $this->initialized['billableAmount'] = true;
         $this->billableAmount = $billableAmount;
 
         return $this;
@@ -297,6 +317,7 @@ class ExpenseReportsResult
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;

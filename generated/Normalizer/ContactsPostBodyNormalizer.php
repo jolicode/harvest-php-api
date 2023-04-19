@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === \get_class($data);
     }
@@ -57,43 +59,56 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
+            unset($data['client_id']);
         } elseif (\array_key_exists('client_id', $data) && null === $data['client_id']) {
             $object->setClientId(null);
         }
         if (\array_key_exists('title', $data) && null !== $data['title']) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         } elseif (\array_key_exists('title', $data) && null === $data['title']) {
             $object->setTitle(null);
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
             $object->setFirstName($data['first_name']);
+            unset($data['first_name']);
         } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
             $object->setFirstName(null);
         }
         if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
             $object->setLastName($data['last_name']);
+            unset($data['last_name']);
         } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
             $object->setLastName(null);
         }
         if (\array_key_exists('email', $data) && null !== $data['email']) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         } elseif (\array_key_exists('email', $data) && null === $data['email']) {
             $object->setEmail(null);
         }
         if (\array_key_exists('phone_office', $data) && null !== $data['phone_office']) {
             $object->setPhoneOffice($data['phone_office']);
+            unset($data['phone_office']);
         } elseif (\array_key_exists('phone_office', $data) && null === $data['phone_office']) {
             $object->setPhoneOffice(null);
         }
         if (\array_key_exists('phone_mobile', $data) && null !== $data['phone_mobile']) {
             $object->setPhoneMobile($data['phone_mobile']);
+            unset($data['phone_mobile']);
         } elseif (\array_key_exists('phone_mobile', $data) && null === $data['phone_mobile']) {
             $object->setPhoneMobile(null);
         }
         if (\array_key_exists('fax', $data) && null !== $data['fax']) {
             $object->setFax($data['fax']);
+            unset($data['fax']);
         } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
             $object->setFax(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -109,24 +124,29 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = [];
         $data['client_id'] = $object->getClientId();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['first_name'] = $object->getFirstName();
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['last_name'] = $object->getLastName();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getPhoneOffice()) {
+        if ($object->isInitialized('phoneOffice') && null !== $object->getPhoneOffice()) {
             $data['phone_office'] = $object->getPhoneOffice();
         }
-        if (null !== $object->getPhoneMobile()) {
+        if ($object->isInitialized('phoneMobile') && null !== $object->getPhoneMobile()) {
             $data['phone_mobile'] = $object->getPhoneMobile();
         }
-        if (null !== $object->getFax()) {
+        if ($object->isInitialized('fax') && null !== $object->getFax()) {
             $data['fax'] = $object->getFax();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

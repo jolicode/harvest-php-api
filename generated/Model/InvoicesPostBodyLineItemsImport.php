@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesPostBodyLineItemsImport
+class InvoicesPostBodyLineItemsImport extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
@@ -32,6 +36,11 @@ class InvoicesPostBodyLineItemsImport
      */
     protected $expenses;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
@@ -49,6 +58,7 @@ class InvoicesPostBodyLineItemsImport
      */
     public function setProjectIds(array $projectIds): self
     {
+        $this->initialized['projectIds'] = true;
         $this->projectIds = $projectIds;
 
         return $this;
@@ -67,6 +77,7 @@ class InvoicesPostBodyLineItemsImport
      */
     public function setTime(InvoicesPostBodyLineItemsImportTime $time): self
     {
+        $this->initialized['time'] = true;
         $this->time = $time;
 
         return $this;
@@ -85,6 +96,7 @@ class InvoicesPostBodyLineItemsImport
      */
     public function setExpenses(InvoicesPostBodyLineItemsImportExpenses $expenses): self
     {
+        $this->initialized['expenses'] = true;
         $this->expenses = $expenses;
 
         return $this;

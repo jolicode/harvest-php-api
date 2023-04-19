@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectsProjectIdUserAssignmentsPostBody
+class ProjectsProjectIdUserAssignmentsPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the user to associate with the project.
      *
@@ -50,6 +54,11 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     protected $budget;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the user to associate with the project.
      */
@@ -63,6 +72,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setUserId(?int $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -81,6 +91,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -99,6 +110,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setIsProjectManager(?bool $isProjectManager): self
     {
+        $this->initialized['isProjectManager'] = true;
         $this->isProjectManager = $isProjectManager;
 
         return $this;
@@ -117,6 +129,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setUseDefaultRates(?bool $useDefaultRates): self
     {
+        $this->initialized['useDefaultRates'] = true;
         $this->useDefaultRates = $useDefaultRates;
 
         return $this;
@@ -135,6 +148,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -153,6 +167,7 @@ class ProjectsProjectIdUserAssignmentsPostBody
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;

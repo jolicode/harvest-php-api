@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class EstimateMessageRecipientNormalizer implements DenormalizerInterface, Norma
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' === \get_class($data);
     }
@@ -57,13 +59,20 @@ class EstimateMessageRecipientNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
+            unset($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
         if (\array_key_exists('email', $data) && null !== $data['email']) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         } elseif (\array_key_exists('email', $data) && null === $data['email']) {
             $object->setEmail(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -78,11 +87,16 @@ class EstimateMessageRecipientNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

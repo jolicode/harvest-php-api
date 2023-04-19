@@ -62,9 +62,9 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
         $optionsResolver->setDefined(['thank_you', 'reminder']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thank_you', ['bool']);
+        $optionsResolver->addAllowedTypes('thank_you', ['bool']);
         $optionsResolver->setNormalizer('thank_you', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
-        $optionsResolver->setAllowedTypes('reminder', ['bool']);
+        $optionsResolver->addAllowedTypes('reminder', ['bool']);
         $optionsResolver->setNormalizer('reminder', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
 
         return $optionsResolver;
@@ -75,8 +75,10 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
      *
      * @return \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody', 'json');
         }

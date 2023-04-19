@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesPostBodyLineItemsImportExpenses
+class InvoicesPostBodyLineItemsImportExpenses extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * How to summarize the expenses per line item. Options: project, category, people, or detailed.
      *
@@ -38,6 +42,11 @@ class InvoicesPostBodyLineItemsImportExpenses
      */
     protected $attachReceipt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * How to summarize the expenses per line item. Options: project, category, people, or detailed.
      */
@@ -51,6 +60,7 @@ class InvoicesPostBodyLineItemsImportExpenses
      */
     public function setSummaryType(string $summaryType): self
     {
+        $this->initialized['summaryType'] = true;
         $this->summaryType = $summaryType;
 
         return $this;
@@ -69,6 +79,7 @@ class InvoicesPostBodyLineItemsImportExpenses
      */
     public function setFrom(\DateTime $from): self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
 
         return $this;
@@ -87,6 +98,7 @@ class InvoicesPostBodyLineItemsImportExpenses
      */
     public function setTo(\DateTime $to): self
     {
+        $this->initialized['to'] = true;
         $this->to = $to;
 
         return $this;
@@ -105,6 +117,7 @@ class InvoicesPostBodyLineItemsImportExpenses
      */
     public function setAttachReceipt(bool $attachReceipt): self
     {
+        $this->initialized['attachReceipt'] = true;
         $this->attachReceipt = $attachReceipt;
 
         return $this;

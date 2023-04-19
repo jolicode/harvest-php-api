@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesPostBodyLineItemsItem
+class InvoicesPostBodyLineItemsItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the project associated with this line item.
      *
@@ -56,6 +60,11 @@ class InvoicesPostBodyLineItemsItem
      */
     protected $taxed2;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the project associated with this line item.
      */
@@ -69,6 +78,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setProjectId(int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -87,6 +97,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setKind(string $kind): self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
 
         return $this;
@@ -105,6 +116,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setDescription(string $description): self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
 
         return $this;
@@ -123,6 +135,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setQuantity(float $quantity): self
     {
+        $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
 
         return $this;
@@ -141,6 +154,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setUnitPrice(float $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -159,6 +173,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setTaxed(bool $taxed): self
     {
+        $this->initialized['taxed'] = true;
         $this->taxed = $taxed;
 
         return $this;
@@ -177,6 +192,7 @@ class InvoicesPostBodyLineItemsItem
      */
     public function setTaxed2(bool $taxed2): self
     {
+        $this->initialized['taxed2'] = true;
         $this->taxed2 = $taxed2;
 
         return $this;

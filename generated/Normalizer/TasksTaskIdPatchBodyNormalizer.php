@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class TasksTaskIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' === \get_class($data);
     }
@@ -52,33 +54,46 @@ class TasksTaskIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody();
+        if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
+            $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
+            unset($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
         if (\array_key_exists('billable_by_default', $data) && null !== $data['billable_by_default']) {
             $object->setBillableByDefault($data['billable_by_default']);
+            unset($data['billable_by_default']);
         } elseif (\array_key_exists('billable_by_default', $data) && null === $data['billable_by_default']) {
             $object->setBillableByDefault(null);
         }
         if (\array_key_exists('default_hourly_rate', $data) && null !== $data['default_hourly_rate']) {
             $object->setDefaultHourlyRate($data['default_hourly_rate']);
+            unset($data['default_hourly_rate']);
         } elseif (\array_key_exists('default_hourly_rate', $data) && null === $data['default_hourly_rate']) {
             $object->setDefaultHourlyRate(null);
         }
         if (\array_key_exists('is_default', $data) && null !== $data['is_default']) {
             $object->setIsDefault($data['is_default']);
+            unset($data['is_default']);
         } elseif (\array_key_exists('is_default', $data) && null === $data['is_default']) {
             $object->setIsDefault(null);
         }
         if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
             $object->setIsActive($data['is_active']);
+            unset($data['is_active']);
         } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
             $object->setIsActive(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -93,20 +108,25 @@ class TasksTaskIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getBillableByDefault()) {
+        if ($object->isInitialized('billableByDefault') && null !== $object->getBillableByDefault()) {
             $data['billable_by_default'] = $object->getBillableByDefault();
         }
-        if (null !== $object->getDefaultHourlyRate()) {
+        if ($object->isInitialized('defaultHourlyRate') && null !== $object->getDefaultHourlyRate()) {
             $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
         }
-        if (null !== $object->getIsDefault()) {
+        if ($object->isInitialized('isDefault') && null !== $object->getIsDefault()) {
             $data['is_default'] = $object->getIsDefault();
         }
-        if (null !== $object->getIsActive()) {
+        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

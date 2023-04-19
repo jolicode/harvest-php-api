@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
+class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Whether the task assignment is active or archived.
      *
@@ -38,6 +42,11 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      */
     protected $budget;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Whether the task assignment is active or archived.
      */
@@ -51,6 +60,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -69,6 +79,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -87,6 +98,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -105,6 +117,7 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;

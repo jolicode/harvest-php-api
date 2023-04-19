@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer implements Deno
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' === \get_class($data);
     }
@@ -57,23 +59,32 @@ class TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer implements Deno
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
+            unset($data['id']);
         } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
         if (\array_key_exists('group_id', $data) && null !== $data['group_id']) {
             $object->setGroupId($data['group_id']);
+            unset($data['group_id']);
         } elseif (\array_key_exists('group_id', $data) && null === $data['group_id']) {
             $object->setGroupId(null);
         }
         if (\array_key_exists('account_id', $data) && null !== $data['account_id']) {
             $object->setAccountId($data['account_id']);
+            unset($data['account_id']);
         } elseif (\array_key_exists('account_id', $data) && null === $data['account_id']) {
             $object->setAccountId(null);
         }
         if (\array_key_exists('permalink', $data) && null !== $data['permalink']) {
             $object->setPermalink($data['permalink']);
+            unset($data['permalink']);
         } elseif (\array_key_exists('permalink', $data) && null === $data['permalink']) {
             $object->setPermalink(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -88,17 +99,22 @@ class TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer implements Deno
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getGroupId()) {
+        if ($object->isInitialized('groupId') && null !== $object->getGroupId()) {
             $data['group_id'] = $object->getGroupId();
         }
-        if (null !== $object->getAccountId()) {
+        if ($object->isInitialized('accountId') && null !== $object->getAccountId()) {
             $data['account_id'] = $object->getAccountId();
         }
-        if (null !== $object->getPermalink()) {
+        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

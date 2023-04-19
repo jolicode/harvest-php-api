@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, Normali
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' === \get_class($data);
     }
@@ -57,23 +59,32 @@ class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
+            unset($data['id']);
         } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
+            unset($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
         if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
             $object->setUnitPrice($data['unit_price']);
+            unset($data['unit_price']);
         } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
             $object->setUnitPrice(null);
         }
         if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
             $object->setUnitName($data['unit_name']);
+            unset($data['unit_name']);
         } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
             $object->setUnitName(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -88,17 +99,22 @@ class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getUnitPrice()) {
+        if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
             $data['unit_price'] = $object->getUnitPrice();
         }
-        if (null !== $object->getUnitName()) {
+        if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
             $data['unit_name'] = $object->getUnitName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

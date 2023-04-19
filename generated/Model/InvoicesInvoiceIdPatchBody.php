@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesInvoiceIdPatchBody
+class InvoicesInvoiceIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client this invoice belongs to.
      *
@@ -104,6 +108,11 @@ class InvoicesInvoiceIdPatchBody
      */
     protected $lineItems;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client this invoice belongs to.
      */
@@ -117,6 +126,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -135,6 +145,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setRetainerId(?int $retainerId): self
     {
+        $this->initialized['retainerId'] = true;
         $this->retainerId = $retainerId;
 
         return $this;
@@ -153,6 +164,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setEstimateId(?int $estimateId): self
     {
+        $this->initialized['estimateId'] = true;
         $this->estimateId = $estimateId;
 
         return $this;
@@ -171,6 +183,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setNumber(?string $number): self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
 
         return $this;
@@ -189,6 +202,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setPurchaseOrder(?string $purchaseOrder): self
     {
+        $this->initialized['purchaseOrder'] = true;
         $this->purchaseOrder = $purchaseOrder;
 
         return $this;
@@ -207,6 +221,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setTax(?float $tax): self
     {
+        $this->initialized['tax'] = true;
         $this->tax = $tax;
 
         return $this;
@@ -225,6 +240,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setTax2(?float $tax2): self
     {
+        $this->initialized['tax2'] = true;
         $this->tax2 = $tax2;
 
         return $this;
@@ -243,6 +259,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setDiscount(?float $discount): self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
 
         return $this;
@@ -261,6 +278,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -279,6 +297,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -297,6 +316,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -315,6 +335,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setIssueDate(?\DateTime $issueDate): self
     {
+        $this->initialized['issueDate'] = true;
         $this->issueDate = $issueDate;
 
         return $this;
@@ -333,6 +354,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setDueDate(?\DateTime $dueDate): self
     {
+        $this->initialized['dueDate'] = true;
         $this->dueDate = $dueDate;
 
         return $this;
@@ -351,6 +373,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setPaymentTerm(?string $paymentTerm): self
     {
+        $this->initialized['paymentTerm'] = true;
         $this->paymentTerm = $paymentTerm;
 
         return $this;
@@ -373,6 +396,7 @@ class InvoicesInvoiceIdPatchBody
      */
     public function setLineItems(?array $lineItems): self
     {
+        $this->initialized['lineItems'] = true;
         $this->lineItems = $lineItems;
 
         return $this;

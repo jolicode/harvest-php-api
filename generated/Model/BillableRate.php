@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class BillableRate
+class BillableRate extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the billable rate.
      *
@@ -50,6 +54,11 @@ class BillableRate
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the billable rate.
      */
@@ -63,6 +72,7 @@ class BillableRate
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -81,6 +91,7 @@ class BillableRate
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -99,6 +110,7 @@ class BillableRate
      */
     public function setStartDate(?\DateTime $startDate): self
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
 
         return $this;
@@ -117,6 +129,7 @@ class BillableRate
      */
     public function setEndDate(?\DateTime $endDate): self
     {
+        $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
 
         return $this;
@@ -135,6 +148,7 @@ class BillableRate
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -153,6 +167,7 @@ class BillableRate
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

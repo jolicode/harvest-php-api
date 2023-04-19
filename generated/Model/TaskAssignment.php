@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TaskAssignment
+class TaskAssignment extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the task assignment.
      *
@@ -68,6 +72,11 @@ class TaskAssignment
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the task assignment.
      */
@@ -81,6 +90,7 @@ class TaskAssignment
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -99,6 +109,7 @@ class TaskAssignment
      */
     public function setProject(?TaskAssignmentProject $project): self
     {
+        $this->initialized['project'] = true;
         $this->project = $project;
 
         return $this;
@@ -117,6 +128,7 @@ class TaskAssignment
      */
     public function setTask(?TaskAssignmentTask $task): self
     {
+        $this->initialized['task'] = true;
         $this->task = $task;
 
         return $this;
@@ -135,6 +147,7 @@ class TaskAssignment
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -153,6 +166,7 @@ class TaskAssignment
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -171,6 +185,7 @@ class TaskAssignment
      */
     public function setHourlyRate(?float $hourlyRate): self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
 
         return $this;
@@ -189,6 +204,7 @@ class TaskAssignment
      */
     public function setBudget(?float $budget): self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
 
         return $this;
@@ -207,6 +223,7 @@ class TaskAssignment
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -225,6 +242,7 @@ class TaskAssignment
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

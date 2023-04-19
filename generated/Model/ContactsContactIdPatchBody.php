@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ContactsContactIdPatchBody
+class ContactsContactIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the client associated with this contact.
      *
@@ -62,6 +66,11 @@ class ContactsContactIdPatchBody
      */
     protected $fax;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the client associated with this contact.
      */
@@ -75,6 +84,7 @@ class ContactsContactIdPatchBody
      */
     public function setClientId(?int $clientId): self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
 
         return $this;
@@ -93,6 +103,7 @@ class ContactsContactIdPatchBody
      */
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -111,6 +122,7 @@ class ContactsContactIdPatchBody
      */
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -129,6 +141,7 @@ class ContactsContactIdPatchBody
      */
     public function setLastName(?string $lastName): self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
 
         return $this;
@@ -147,6 +160,7 @@ class ContactsContactIdPatchBody
      */
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -165,6 +179,7 @@ class ContactsContactIdPatchBody
      */
     public function setPhoneOffice(?string $phoneOffice): self
     {
+        $this->initialized['phoneOffice'] = true;
         $this->phoneOffice = $phoneOffice;
 
         return $this;
@@ -183,6 +198,7 @@ class ContactsContactIdPatchBody
      */
     public function setPhoneMobile(?string $phoneMobile): self
     {
+        $this->initialized['phoneMobile'] = true;
         $this->phoneMobile = $phoneMobile;
 
         return $this;
@@ -201,6 +217,7 @@ class ContactsContactIdPatchBody
      */
     public function setFax(?string $fax): self
     {
+        $this->initialized['fax'] = true;
         $this->fax = $fax;
 
         return $this;

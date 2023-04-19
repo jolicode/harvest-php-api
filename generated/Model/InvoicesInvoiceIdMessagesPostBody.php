@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesInvoiceIdMessagesPostBody
+class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * If provided, runs an event against the invoice. Options: close, draft, re-open, or send.
      *
@@ -62,6 +66,11 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     protected $thankYou;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * If provided, runs an event against the invoice. Options: close, draft, re-open, or send.
      */
@@ -75,6 +84,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setEventType(?string $eventType): self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
 
         return $this;
@@ -97,6 +107,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setRecipients(?array $recipients): self
     {
+        $this->initialized['recipients'] = true;
         $this->recipients = $recipients;
 
         return $this;
@@ -115,6 +126,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -133,6 +145,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setBody(?string $body): self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
 
         return $this;
@@ -151,6 +164,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setIncludeLinkToClientInvoice(?bool $includeLinkToClientInvoice): self
     {
+        $this->initialized['includeLinkToClientInvoice'] = true;
         $this->includeLinkToClientInvoice = $includeLinkToClientInvoice;
 
         return $this;
@@ -169,6 +183,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setAttachPdf(?bool $attachPdf): self
     {
+        $this->initialized['attachPdf'] = true;
         $this->attachPdf = $attachPdf;
 
         return $this;
@@ -187,6 +202,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setSendMeACopy(?bool $sendMeACopy): self
     {
+        $this->initialized['sendMeACopy'] = true;
         $this->sendMeACopy = $sendMeACopy;
 
         return $this;
@@ -205,6 +221,7 @@ class InvoicesInvoiceIdMessagesPostBody
      */
     public function setThankYou(?bool $thankYou): self
     {
+        $this->initialized['thankYou'] = true;
         $this->thankYou = $thankYou;
 
         return $this;

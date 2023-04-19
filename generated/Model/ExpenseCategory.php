@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpenseCategory
+class ExpenseCategory extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the expense category.
      *
@@ -56,6 +60,11 @@ class ExpenseCategory
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the expense category.
      */
@@ -69,6 +78,7 @@ class ExpenseCategory
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -87,6 +97,7 @@ class ExpenseCategory
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -105,6 +116,7 @@ class ExpenseCategory
      */
     public function setUnitName(?string $unitName): self
     {
+        $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
 
         return $this;
@@ -123,6 +135,7 @@ class ExpenseCategory
      */
     public function setUnitPrice(?float $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -141,6 +154,7 @@ class ExpenseCategory
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -159,6 +173,7 @@ class ExpenseCategory
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -177,6 +192,7 @@ class ExpenseCategory
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

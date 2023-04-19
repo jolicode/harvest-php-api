@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntriesPostBody
+class TimeEntriesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the user to associate with the time entry. Defaults to the currently authenticated user’s ID.
      *
@@ -68,6 +72,11 @@ class TimeEntriesPostBody
      */
     protected $hours;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the user to associate with the time entry. Defaults to the currently authenticated user’s ID.
      */
@@ -81,6 +90,7 @@ class TimeEntriesPostBody
      */
     public function setUserId(?int $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -99,6 +109,7 @@ class TimeEntriesPostBody
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -117,6 +128,7 @@ class TimeEntriesPostBody
      */
     public function setTaskId(?int $taskId): self
     {
+        $this->initialized['taskId'] = true;
         $this->taskId = $taskId;
 
         return $this;
@@ -135,6 +147,7 @@ class TimeEntriesPostBody
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -153,6 +166,7 @@ class TimeEntriesPostBody
      */
     public function setStartedTime(?string $startedTime): self
     {
+        $this->initialized['startedTime'] = true;
         $this->startedTime = $startedTime;
 
         return $this;
@@ -171,6 +185,7 @@ class TimeEntriesPostBody
      */
     public function setEndedTime(?string $endedTime): self
     {
+        $this->initialized['endedTime'] = true;
         $this->endedTime = $endedTime;
 
         return $this;
@@ -189,6 +204,7 @@ class TimeEntriesPostBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -207,6 +223,7 @@ class TimeEntriesPostBody
      */
     public function setExternalReference(?TimeEntriesPostBodyExternalReference $externalReference): self
     {
+        $this->initialized['externalReference'] = true;
         $this->externalReference = $externalReference;
 
         return $this;
@@ -225,6 +242,7 @@ class TimeEntriesPostBody
      */
     public function setHours(?float $hours): self
     {
+        $this->initialized['hours'] = true;
         $this->hours = $hours;
 
         return $this;

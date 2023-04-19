@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' === \get_class($data);
     }
@@ -61,12 +63,20 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
                 $values[] = $value;
             }
             $object->setProjectIds($values);
+            unset($data['project_ids']);
         }
         if (\array_key_exists('time', $data)) {
             $object->setTime($this->denormalizer->denormalize($data['time'], 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime', 'json', $context));
+            unset($data['time']);
         }
         if (\array_key_exists('expenses', $data)) {
             $object->setExpenses($this->denormalizer->denormalize($data['expenses'], 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses', 'json', $context));
+            unset($data['expenses']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -86,11 +96,16 @@ class InvoicesPostBodyLineItemsImportNormalizer implements DenormalizerInterface
             $values[] = $value;
         }
         $data['project_ids'] = $values;
-        if (null !== $object->getTime()) {
+        if ($object->isInitialized('time') && null !== $object->getTime()) {
             $data['time'] = $this->normalizer->normalize($object->getTime(), 'json', $context);
         }
-        if (null !== $object->getExpenses()) {
+        if ($object->isInitialized('expenses') && null !== $object->getExpenses()) {
             $data['expenses'] = $this->normalizer->normalize($object->getExpenses(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
 
         return $data;

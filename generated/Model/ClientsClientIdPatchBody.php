@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ClientsClientIdPatchBody
+class ClientsClientIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * A textual description of the client.
      *
@@ -38,6 +42,11 @@ class ClientsClientIdPatchBody
      */
     protected $currency;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * A textual description of the client.
      */
@@ -51,6 +60,7 @@ class ClientsClientIdPatchBody
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -69,6 +79,7 @@ class ClientsClientIdPatchBody
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -87,6 +98,7 @@ class ClientsClientIdPatchBody
      */
     public function setAddress(?string $address): self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
 
         return $this;
@@ -105,6 +117,7 @@ class ClientsClientIdPatchBody
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;

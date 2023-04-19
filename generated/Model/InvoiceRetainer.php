@@ -11,12 +11,21 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceRetainer
+class InvoiceRetainer extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var int|null
      */
     protected $id;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     public function getId(): ?int
     {
@@ -25,6 +34,7 @@ class InvoiceRetainer
 
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;

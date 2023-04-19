@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInter
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === \get_class($data);
     }
@@ -57,23 +59,32 @@ class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('url', $data) && null !== $data['url']) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         } elseif (\array_key_exists('url', $data) && null === $data['url']) {
             $object->setUrl(null);
         }
         if (\array_key_exists('file_name', $data) && null !== $data['file_name']) {
             $object->setFileName($data['file_name']);
+            unset($data['file_name']);
         } elseif (\array_key_exists('file_name', $data) && null === $data['file_name']) {
             $object->setFileName(null);
         }
         if (\array_key_exists('file_size', $data) && null !== $data['file_size']) {
             $object->setFileSize($data['file_size']);
+            unset($data['file_size']);
         } elseif (\array_key_exists('file_size', $data) && null === $data['file_size']) {
             $object->setFileSize(null);
         }
         if (\array_key_exists('content_type', $data) && null !== $data['content_type']) {
             $object->setContentType($data['content_type']);
+            unset($data['content_type']);
         } elseif (\array_key_exists('content_type', $data) && null === $data['content_type']) {
             $object->setContentType(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -88,17 +99,22 @@ class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getFileName()) {
+        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
             $data['file_name'] = $object->getFileName();
         }
-        if (null !== $object->getFileSize()) {
+        if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
             $data['file_size'] = $object->getFileSize();
         }
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

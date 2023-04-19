@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceMessageSubjectAndBody
+class InvoiceMessageSubjectAndBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var int
      */
@@ -34,6 +38,11 @@ class InvoiceMessageSubjectAndBody
      */
     protected $thankYou;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getInvoiceId(): int
     {
         return $this->invoiceId;
@@ -41,6 +50,7 @@ class InvoiceMessageSubjectAndBody
 
     public function setInvoiceId(int $invoiceId): self
     {
+        $this->initialized['invoiceId'] = true;
         $this->invoiceId = $invoiceId;
 
         return $this;
@@ -53,6 +63,7 @@ class InvoiceMessageSubjectAndBody
 
     public function setSubject(string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -65,6 +76,7 @@ class InvoiceMessageSubjectAndBody
 
     public function setBody(string $body): self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
 
         return $this;
@@ -77,6 +89,7 @@ class InvoiceMessageSubjectAndBody
 
     public function setReminder(bool $reminder): self
     {
+        $this->initialized['reminder'] = true;
         $this->reminder = $reminder;
 
         return $this;
@@ -89,6 +102,7 @@ class InvoiceMessageSubjectAndBody
 
     public function setThankYou(bool $thankYou): self
     {
+        $this->initialized['thankYou'] = true;
         $this->thankYou = $thankYou;
 
         return $this;

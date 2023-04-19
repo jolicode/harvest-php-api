@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpensesPostBody
+class ExpensesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.
      *
@@ -68,6 +72,11 @@ class ExpensesPostBody
      */
     protected $receipt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the user associated with this expense. Defaults to the ID of the currently authenticated user.
      */
@@ -81,6 +90,7 @@ class ExpensesPostBody
      */
     public function setUserId(?int $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -99,6 +109,7 @@ class ExpensesPostBody
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -117,6 +128,7 @@ class ExpensesPostBody
      */
     public function setExpenseCategoryId(?int $expenseCategoryId): self
     {
+        $this->initialized['expenseCategoryId'] = true;
         $this->expenseCategoryId = $expenseCategoryId;
 
         return $this;
@@ -135,6 +147,7 @@ class ExpensesPostBody
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -153,6 +166,7 @@ class ExpensesPostBody
      */
     public function setUnits(?int $units): self
     {
+        $this->initialized['units'] = true;
         $this->units = $units;
 
         return $this;
@@ -171,6 +185,7 @@ class ExpensesPostBody
      */
     public function setTotalCost(?float $totalCost): self
     {
+        $this->initialized['totalCost'] = true;
         $this->totalCost = $totalCost;
 
         return $this;
@@ -189,6 +204,7 @@ class ExpensesPostBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -207,6 +223,7 @@ class ExpensesPostBody
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -225,6 +242,7 @@ class ExpensesPostBody
      */
     public function setReceipt(?string $receipt): self
     {
+        $this->initialized['receipt'] = true;
         $this->receipt = $receipt;
 
         return $this;

@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicesInvoiceIdPaymentsPostBody
+class InvoicesInvoiceIdPaymentsPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The amount of the payment.
      *
@@ -38,6 +42,11 @@ class InvoicesInvoiceIdPaymentsPostBody
      */
     protected $notes;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The amount of the payment.
      */
@@ -51,6 +60,7 @@ class InvoicesInvoiceIdPaymentsPostBody
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -69,6 +79,7 @@ class InvoicesInvoiceIdPaymentsPostBody
      */
     public function setPaidAt(?\DateTime $paidAt): self
     {
+        $this->initialized['paidAt'] = true;
         $this->paidAt = $paidAt;
 
         return $this;
@@ -87,6 +98,7 @@ class InvoicesInvoiceIdPaymentsPostBody
      */
     public function setPaidDate(?\DateTime $paidDate): self
     {
+        $this->initialized['paidDate'] = true;
         $this->paidDate = $paidDate;
 
         return $this;
@@ -105,6 +117,7 @@ class InvoicesInvoiceIdPaymentsPostBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;

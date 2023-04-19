@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class TimeEntryProject
+class TimeEntryProject extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var int|null
      */
@@ -22,6 +26,11 @@ class TimeEntryProject
      */
     protected $name;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +38,7 @@ class TimeEntryProject
 
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -41,6 +51,7 @@ class TimeEntryProject
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;

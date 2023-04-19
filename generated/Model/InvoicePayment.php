@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoicePayment
+class InvoicePayment extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the payment.
      *
@@ -80,6 +84,11 @@ class InvoicePayment
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the payment.
      */
@@ -93,6 +102,7 @@ class InvoicePayment
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -111,6 +121,7 @@ class InvoicePayment
      */
     public function setAmount(?float $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -129,6 +140,7 @@ class InvoicePayment
      */
     public function setPaidAt(?\DateTime $paidAt): self
     {
+        $this->initialized['paidAt'] = true;
         $this->paidAt = $paidAt;
 
         return $this;
@@ -147,6 +159,7 @@ class InvoicePayment
      */
     public function setPaidDate(?\DateTime $paidDate): self
     {
+        $this->initialized['paidDate'] = true;
         $this->paidDate = $paidDate;
 
         return $this;
@@ -165,6 +178,7 @@ class InvoicePayment
      */
     public function setRecordedBy(?string $recordedBy): self
     {
+        $this->initialized['recordedBy'] = true;
         $this->recordedBy = $recordedBy;
 
         return $this;
@@ -183,6 +197,7 @@ class InvoicePayment
      */
     public function setRecordedByEmail(?string $recordedByEmail): self
     {
+        $this->initialized['recordedByEmail'] = true;
         $this->recordedByEmail = $recordedByEmail;
 
         return $this;
@@ -201,6 +216,7 @@ class InvoicePayment
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -219,6 +235,7 @@ class InvoicePayment
      */
     public function setTransactionId(?string $transactionId): self
     {
+        $this->initialized['transactionId'] = true;
         $this->transactionId = $transactionId;
 
         return $this;
@@ -237,6 +254,7 @@ class InvoicePayment
      */
     public function setPaymentGateway(?InvoicePaymentPaymentGateway $paymentGateway): self
     {
+        $this->initialized['paymentGateway'] = true;
         $this->paymentGateway = $paymentGateway;
 
         return $this;
@@ -255,6 +273,7 @@ class InvoicePayment
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -273,6 +292,7 @@ class InvoicePayment
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

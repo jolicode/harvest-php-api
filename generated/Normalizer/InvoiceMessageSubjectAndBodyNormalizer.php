@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class InvoiceMessageSubjectAndBodyNormalizer implements DenormalizerInterface, N
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' === \get_class($data);
     }
@@ -57,18 +59,28 @@ class InvoiceMessageSubjectAndBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('invoice_id', $data)) {
             $object->setInvoiceId($data['invoice_id']);
+            unset($data['invoice_id']);
         }
         if (\array_key_exists('subject', $data)) {
             $object->setSubject($data['subject']);
+            unset($data['subject']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('reminder', $data)) {
             $object->setReminder($data['reminder']);
+            unset($data['reminder']);
         }
         if (\array_key_exists('thank_you', $data)) {
             $object->setThankYou($data['thank_you']);
+            unset($data['thank_you']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -88,6 +100,11 @@ class InvoiceMessageSubjectAndBodyNormalizer implements DenormalizerInterface, N
         $data['body'] = $object->getBody();
         $data['reminder'] = $object->getReminder();
         $data['thank_you'] = $object->getThankYou();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

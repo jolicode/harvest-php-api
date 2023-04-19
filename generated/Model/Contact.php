@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Contact
+class Contact extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the contact.
      *
@@ -80,6 +84,11 @@ class Contact
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the contact.
      */
@@ -93,6 +102,7 @@ class Contact
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -111,6 +121,7 @@ class Contact
      */
     public function setClient(?ContactClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -129,6 +140,7 @@ class Contact
      */
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -147,6 +159,7 @@ class Contact
      */
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -165,6 +178,7 @@ class Contact
      */
     public function setLastName(?string $lastName): self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
 
         return $this;
@@ -183,6 +197,7 @@ class Contact
      */
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -201,6 +216,7 @@ class Contact
      */
     public function setPhoneOffice(?string $phoneOffice): self
     {
+        $this->initialized['phoneOffice'] = true;
         $this->phoneOffice = $phoneOffice;
 
         return $this;
@@ -219,6 +235,7 @@ class Contact
      */
     public function setPhoneMobile(?string $phoneMobile): self
     {
+        $this->initialized['phoneMobile'] = true;
         $this->phoneMobile = $phoneMobile;
 
         return $this;
@@ -237,6 +254,7 @@ class Contact
      */
     public function setFax(?string $fax): self
     {
+        $this->initialized['fax'] = true;
         $this->fax = $fax;
 
         return $this;
@@ -255,6 +273,7 @@ class Contact
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -273,6 +292,7 @@ class Contact
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesPostBodyLineItemsItem
+class EstimatesPostBodyLineItemsItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The name of an estimate item category.
      *
@@ -50,6 +54,11 @@ class EstimatesPostBodyLineItemsItem
      */
     protected $taxed2;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The name of an estimate item category.
      */
@@ -63,6 +72,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setKind(string $kind): self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
 
         return $this;
@@ -81,6 +91,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setDescription(string $description): self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
 
         return $this;
@@ -99,6 +110,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setQuantity(int $quantity): self
     {
+        $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
 
         return $this;
@@ -117,6 +129,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setUnitPrice(float $unitPrice): self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
 
         return $this;
@@ -135,6 +148,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setTaxed(bool $taxed): self
     {
+        $this->initialized['taxed'] = true;
         $this->taxed = $taxed;
 
         return $this;
@@ -153,6 +167,7 @@ class EstimatesPostBodyLineItemsItem
      */
     public function setTaxed2(bool $taxed2): self
     {
+        $this->initialized['taxed2'] = true;
         $this->taxed2 = $taxed2;
 
         return $this;

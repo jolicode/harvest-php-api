@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceMessages
+class InvoiceMessages extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * @var InvoiceMessage[]
      */
@@ -46,6 +50,11 @@ class InvoiceMessages
      */
     protected $links;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return InvoiceMessage[]
      */
@@ -59,6 +68,7 @@ class InvoiceMessages
      */
     public function setInvoiceMessages(array $invoiceMessages): self
     {
+        $this->initialized['invoiceMessages'] = true;
         $this->invoiceMessages = $invoiceMessages;
 
         return $this;
@@ -71,6 +81,7 @@ class InvoiceMessages
 
     public function setPerPage(int $perPage): self
     {
+        $this->initialized['perPage'] = true;
         $this->perPage = $perPage;
 
         return $this;
@@ -83,6 +94,7 @@ class InvoiceMessages
 
     public function setTotalPages(int $totalPages): self
     {
+        $this->initialized['totalPages'] = true;
         $this->totalPages = $totalPages;
 
         return $this;
@@ -95,6 +107,7 @@ class InvoiceMessages
 
     public function setTotalEntries(int $totalEntries): self
     {
+        $this->initialized['totalEntries'] = true;
         $this->totalEntries = $totalEntries;
 
         return $this;
@@ -107,6 +120,7 @@ class InvoiceMessages
 
     public function setNextPage(?int $nextPage): self
     {
+        $this->initialized['nextPage'] = true;
         $this->nextPage = $nextPage;
 
         return $this;
@@ -119,6 +133,7 @@ class InvoiceMessages
 
     public function setPreviousPage(?int $previousPage): self
     {
+        $this->initialized['previousPage'] = true;
         $this->previousPage = $previousPage;
 
         return $this;
@@ -131,6 +146,7 @@ class InvoiceMessages
 
     public function setPage(int $page): self
     {
+        $this->initialized['page'] = true;
         $this->page = $page;
 
         return $this;
@@ -143,6 +159,7 @@ class InvoiceMessages
 
     public function setLinks(PaginationLinks $links): self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
 
         return $this;

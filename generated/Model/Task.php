@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Task
+class Task extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the task.
      *
@@ -62,6 +66,11 @@ class Task
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the task.
      */
@@ -75,6 +84,7 @@ class Task
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -93,6 +103,7 @@ class Task
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -111,6 +122,7 @@ class Task
      */
     public function setBillableByDefault(?bool $billableByDefault): self
     {
+        $this->initialized['billableByDefault'] = true;
         $this->billableByDefault = $billableByDefault;
 
         return $this;
@@ -129,6 +141,7 @@ class Task
      */
     public function setDefaultHourlyRate(?float $defaultHourlyRate): self
     {
+        $this->initialized['defaultHourlyRate'] = true;
         $this->defaultHourlyRate = $defaultHourlyRate;
 
         return $this;
@@ -147,6 +160,7 @@ class Task
      */
     public function setIsDefault(?bool $isDefault): self
     {
+        $this->initialized['isDefault'] = true;
         $this->isDefault = $isDefault;
 
         return $this;
@@ -165,6 +179,7 @@ class Task
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -183,6 +198,7 @@ class Task
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -201,6 +217,7 @@ class Task
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

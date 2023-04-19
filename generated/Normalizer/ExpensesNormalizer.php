@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class ExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\Expenses' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Expenses' === \get_class($data);
     }
@@ -61,31 +63,44 @@ class ExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\Expense', 'json', $context);
             }
             $object->setExpenses($values);
+            unset($data['expenses']);
         }
         if (\array_key_exists('per_page', $data)) {
             $object->setPerPage($data['per_page']);
+            unset($data['per_page']);
         }
         if (\array_key_exists('total_pages', $data)) {
             $object->setTotalPages($data['total_pages']);
+            unset($data['total_pages']);
         }
         if (\array_key_exists('total_entries', $data)) {
             $object->setTotalEntries($data['total_entries']);
+            unset($data['total_entries']);
         }
         if (\array_key_exists('next_page', $data) && null !== $data['next_page']) {
             $object->setNextPage($data['next_page']);
+            unset($data['next_page']);
         } elseif (\array_key_exists('next_page', $data) && null === $data['next_page']) {
             $object->setNextPage(null);
         }
         if (\array_key_exists('previous_page', $data) && null !== $data['previous_page']) {
             $object->setPreviousPage($data['previous_page']);
+            unset($data['previous_page']);
         } elseif (\array_key_exists('previous_page', $data) && null === $data['previous_page']) {
             $object->setPreviousPage(null);
         }
         if (\array_key_exists('page', $data)) {
             $object->setPage($data['page']);
+            unset($data['page']);
         }
         if (\array_key_exists('links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+            unset($data['links']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -112,6 +127,11 @@ class ExpensesNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['previous_page'] = $object->getPreviousPage();
         $data['page'] = $object->getPage();
         $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
 
         return $data;
     }

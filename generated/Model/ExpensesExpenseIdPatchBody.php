@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class ExpensesExpenseIdPatchBody
+class ExpensesExpenseIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * The ID of the project associated with this expense.
      *
@@ -68,6 +72,11 @@ class ExpensesExpenseIdPatchBody
      */
     protected $deleteReceipt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * The ID of the project associated with this expense.
      */
@@ -81,6 +90,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setProjectId(?int $projectId): self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
 
         return $this;
@@ -99,6 +109,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setExpenseCategoryId(?int $expenseCategoryId): self
     {
+        $this->initialized['expenseCategoryId'] = true;
         $this->expenseCategoryId = $expenseCategoryId;
 
         return $this;
@@ -117,6 +128,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -135,6 +147,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setUnits(?int $units): self
     {
+        $this->initialized['units'] = true;
         $this->units = $units;
 
         return $this;
@@ -153,6 +166,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setTotalCost(?float $totalCost): self
     {
+        $this->initialized['totalCost'] = true;
         $this->totalCost = $totalCost;
 
         return $this;
@@ -171,6 +185,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -189,6 +204,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -207,6 +223,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setReceipt(?string $receipt): self
     {
+        $this->initialized['receipt'] = true;
         $this->receipt = $receipt;
 
         return $this;
@@ -225,6 +242,7 @@ class ExpensesExpenseIdPatchBody
      */
     public function setDeleteReceipt(?bool $deleteReceipt): self
     {
+        $this->initialized['deleteReceipt'] = true;
         $this->deleteReceipt = $deleteReceipt;
 
         return $this;

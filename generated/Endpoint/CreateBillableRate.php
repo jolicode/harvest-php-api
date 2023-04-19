@@ -62,8 +62,10 @@ class CreateBillableRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoi
      *
      * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\BillableRate', 'json');
         }

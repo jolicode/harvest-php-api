@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === \get_class($data);
     }
@@ -52,28 +54,40 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody();
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (float) $data['amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('amount', $data) && null !== $data['amount']) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         } elseif (\array_key_exists('amount', $data) && null === $data['amount']) {
             $object->setAmount(null);
         }
         if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
             $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
+            unset($data['paid_at']);
         } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
             $object->setPaidAt(null);
         }
         if (\array_key_exists('paid_date', $data) && null !== $data['paid_date']) {
             $object->setPaidDate(\DateTime::createFromFormat('Y-m-d', $data['paid_date'])->setTime(0, 0, 0));
+            unset($data['paid_date']);
         } elseif (\array_key_exists('paid_date', $data) && null === $data['paid_date']) {
             $object->setPaidDate(null);
         }
         if (\array_key_exists('notes', $data) && null !== $data['notes']) {
             $object->setNotes($data['notes']);
+            unset($data['notes']);
         } elseif (\array_key_exists('notes', $data) && null === $data['notes']) {
             $object->setNotes(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -89,14 +103,19 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
     {
         $data = [];
         $data['amount'] = $object->getAmount();
-        if (null !== $object->getPaidAt()) {
+        if ($object->isInitialized('paidAt') && null !== $object->getPaidAt()) {
             $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
         }
-        if (null !== $object->getPaidDate()) {
+        if ($object->isInitialized('paidDate') && null !== $object->getPaidDate()) {
             $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
         }
-        if (null !== $object->getNotes()) {
+        if ($object->isInitialized('notes') && null !== $object->getNotes()) {
             $data['notes'] = $object->getNotes();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

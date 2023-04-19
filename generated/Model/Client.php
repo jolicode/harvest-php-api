@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Client
+class Client extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the client.
      *
@@ -62,6 +66,11 @@ class Client
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the client.
      */
@@ -75,6 +84,7 @@ class Client
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -93,6 +103,7 @@ class Client
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -111,6 +122,7 @@ class Client
      */
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -129,6 +141,7 @@ class Client
      */
     public function setAddress(?string $address): self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
 
         return $this;
@@ -147,6 +160,7 @@ class Client
      */
     public function setStatementKey(?string $statementKey): self
     {
+        $this->initialized['statementKey'] = true;
         $this->statementKey = $statementKey;
 
         return $this;
@@ -165,6 +179,7 @@ class Client
      */
     public function setCurrency(?string $currency): self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
 
         return $this;
@@ -183,6 +198,7 @@ class Client
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -201,6 +217,7 @@ class Client
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class EstimatesEstimateIdMessagesPostBody
+class EstimatesEstimateIdMessagesPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * If provided, runs an event against the estimate. Options: “accept”, “decline”, “re-open”, or “send”.
      *
@@ -44,6 +48,11 @@ class EstimatesEstimateIdMessagesPostBody
      */
     protected $sendMeACopy;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * If provided, runs an event against the estimate. Options: “accept”, “decline”, “re-open”, or “send”.
      */
@@ -57,6 +66,7 @@ class EstimatesEstimateIdMessagesPostBody
      */
     public function setEventType(?string $eventType): self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
 
         return $this;
@@ -79,6 +89,7 @@ class EstimatesEstimateIdMessagesPostBody
      */
     public function setRecipients(?array $recipients): self
     {
+        $this->initialized['recipients'] = true;
         $this->recipients = $recipients;
 
         return $this;
@@ -97,6 +108,7 @@ class EstimatesEstimateIdMessagesPostBody
      */
     public function setSubject(?string $subject): self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
 
         return $this;
@@ -115,6 +127,7 @@ class EstimatesEstimateIdMessagesPostBody
      */
     public function setBody(?string $body): self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
 
         return $this;
@@ -133,6 +146,7 @@ class EstimatesEstimateIdMessagesPostBody
      */
     public function setSendMeACopy(?bool $sendMeACopy): self
     {
+        $this->initialized['sendMeACopy'] = true;
         $this->sendMeACopy = $sendMeACopy;
 
         return $this;

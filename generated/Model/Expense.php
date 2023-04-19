@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class Expense
+class Expense extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the expense.
      *
@@ -126,6 +130,11 @@ class Expense
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the expense.
      */
@@ -139,6 +148,7 @@ class Expense
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -157,6 +167,7 @@ class Expense
      */
     public function setClient(?ExpenseClient $client): self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
 
         return $this;
@@ -175,6 +186,7 @@ class Expense
      */
     public function setProject(?ExpenseProject $project): self
     {
+        $this->initialized['project'] = true;
         $this->project = $project;
 
         return $this;
@@ -193,6 +205,7 @@ class Expense
      */
     public function setExpenseCategory(?ExpenseExpenseCategory $expenseCategory): self
     {
+        $this->initialized['expenseCategory'] = true;
         $this->expenseCategory = $expenseCategory;
 
         return $this;
@@ -211,6 +224,7 @@ class Expense
      */
     public function setUser(?ExpenseUser $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -223,6 +237,7 @@ class Expense
 
     public function setUserAssignment(UserAssignment $userAssignment): self
     {
+        $this->initialized['userAssignment'] = true;
         $this->userAssignment = $userAssignment;
 
         return $this;
@@ -241,6 +256,7 @@ class Expense
      */
     public function setReceipt(?ExpenseReceipt $receipt): self
     {
+        $this->initialized['receipt'] = true;
         $this->receipt = $receipt;
 
         return $this;
@@ -259,6 +275,7 @@ class Expense
      */
     public function setInvoice(?ExpenseInvoice $invoice): self
     {
+        $this->initialized['invoice'] = true;
         $this->invoice = $invoice;
 
         return $this;
@@ -277,6 +294,7 @@ class Expense
      */
     public function setNotes(?string $notes): self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
 
         return $this;
@@ -295,6 +313,7 @@ class Expense
      */
     public function setUnits(?int $units): self
     {
+        $this->initialized['units'] = true;
         $this->units = $units;
 
         return $this;
@@ -313,6 +332,7 @@ class Expense
      */
     public function setTotalCost(?float $totalCost): self
     {
+        $this->initialized['totalCost'] = true;
         $this->totalCost = $totalCost;
 
         return $this;
@@ -331,6 +351,7 @@ class Expense
      */
     public function setBillable(?bool $billable): self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
 
         return $this;
@@ -349,6 +370,7 @@ class Expense
      */
     public function setIsClosed(?bool $isClosed): self
     {
+        $this->initialized['isClosed'] = true;
         $this->isClosed = $isClosed;
 
         return $this;
@@ -367,6 +389,7 @@ class Expense
      */
     public function setIsLocked(?bool $isLocked): self
     {
+        $this->initialized['isLocked'] = true;
         $this->isLocked = $isLocked;
 
         return $this;
@@ -385,6 +408,7 @@ class Expense
      */
     public function setIsBilled(?bool $isBilled): self
     {
+        $this->initialized['isBilled'] = true;
         $this->isBilled = $isBilled;
 
         return $this;
@@ -403,6 +427,7 @@ class Expense
      */
     public function setLockedReason(?string $lockedReason): self
     {
+        $this->initialized['lockedReason'] = true;
         $this->lockedReason = $lockedReason;
 
         return $this;
@@ -421,6 +446,7 @@ class Expense
      */
     public function setSpentDate(?\DateTime $spentDate): self
     {
+        $this->initialized['spentDate'] = true;
         $this->spentDate = $spentDate;
 
         return $this;
@@ -439,6 +465,7 @@ class Expense
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -457,6 +484,7 @@ class Expense
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

@@ -1,12 +1,29 @@
 # Changes between versions
 
+## 6.2.0 (2023-04-19)
+
+ * upgrade to `janephp/open-api` 7.4
+ * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#26) in #43
+   * support for the newly introduced pagination cursors
+   * updated descriptions according to the docs
+   * add `TimeReportsResult.weekly_capacity` and `TimeReportsResult.avatar_url`
+ * bump the minimum required PHP version
+
+## 6.1.0 (2022-11-12)
+
+ * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#22) in #41
+   * add support for `User.access_roles` as defined in https://help.getharvest.com/api-v2/users-api/users/users/#access-roles
+   * remove the now non-working `User.is_admin` and `User.is_project_manager` booleans
+   * add management of users assigned team mates, as defined in https://help.getharvest.com/api-v2/users-api/users/teammates/
+   * add the ability to retrieve message subject and body for specific invoices as defined in https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#retrieve-invoice-message-subject-and-body-for-specific-invoice
+
 ## 6.0.0 (2022-08-04)
 ￼
-￼ * upgrade to `janephp/open-api` 7.3
-￼ * drop support for PHP <7.4
-  * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#20)
-    * added `Company.currency_code_display` and `Company.currency_symbol_display`
-    * several fields of the `User` object have disappeared, due to the [API changes introduced in March](https://www.getharvest.com/blog/new-flexible-permissions#:~:text=The%20API%20has%20been%20updated%20to%20align%20with%20the%20new%20permissions%20features.).
+ * upgrade to `janephp/open-api` 7.3
+ * drop support for PHP <7.4
+ * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#20)
+   * added `Company.currency_code_display` and `Company.currency_symbol_display`
+   * several fields of the `User` object have disappeared, due to the [API changes introduced in March](https://www.getharvest.com/blog/new-flexible-permissions#:~:text=The%20API%20has%20been%20updated%20to%20align%20with%20the%20new%20permissions%20features.).
 ￼
 ## 5.2.0 (2022-01-10)
 

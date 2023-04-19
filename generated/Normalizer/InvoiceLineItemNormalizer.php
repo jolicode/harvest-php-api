@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === \get_class($data);
     }
@@ -52,53 +54,76 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\InvoiceLineItem();
+        if (\array_key_exists('quantity', $data) && \is_int($data['quantity'])) {
+            $data['quantity'] = (float) $data['quantity'];
+        }
+        if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
+            $data['unit_price'] = (float) $data['unit_price'];
+        }
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (float) $data['amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
+            unset($data['id']);
         } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
         if (\array_key_exists('project', $data) && null !== $data['project']) {
             $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject', 'json', $context));
+            unset($data['project']);
         } elseif (\array_key_exists('project', $data) && null === $data['project']) {
             $object->setProject(null);
         }
         if (\array_key_exists('kind', $data) && null !== $data['kind']) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         } elseif (\array_key_exists('kind', $data) && null === $data['kind']) {
             $object->setKind(null);
         }
         if (\array_key_exists('description', $data) && null !== $data['description']) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         } elseif (\array_key_exists('description', $data) && null === $data['description']) {
             $object->setDescription(null);
         }
         if (\array_key_exists('quantity', $data) && null !== $data['quantity']) {
             $object->setQuantity($data['quantity']);
+            unset($data['quantity']);
         } elseif (\array_key_exists('quantity', $data) && null === $data['quantity']) {
             $object->setQuantity(null);
         }
         if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
             $object->setUnitPrice($data['unit_price']);
+            unset($data['unit_price']);
         } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
             $object->setUnitPrice(null);
         }
         if (\array_key_exists('amount', $data) && null !== $data['amount']) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         } elseif (\array_key_exists('amount', $data) && null === $data['amount']) {
             $object->setAmount(null);
         }
         if (\array_key_exists('taxed', $data) && null !== $data['taxed']) {
             $object->setTaxed($data['taxed']);
+            unset($data['taxed']);
         } elseif (\array_key_exists('taxed', $data) && null === $data['taxed']) {
             $object->setTaxed(null);
         }
         if (\array_key_exists('taxed2', $data) && null !== $data['taxed2']) {
             $object->setTaxed2($data['taxed2']);
+            unset($data['taxed2']);
         } elseif (\array_key_exists('taxed2', $data) && null === $data['taxed2']) {
             $object->setTaxed2(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -113,32 +138,37 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getProject()) {
+        if ($object->isInitialized('project') && null !== $object->getProject()) {
             $data['project'] = $this->normalizer->normalize($object->getProject(), 'json', $context);
         }
-        if (null !== $object->getKind()) {
+        if ($object->isInitialized('kind') && null !== $object->getKind()) {
             $data['kind'] = $object->getKind();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getQuantity()) {
+        if ($object->isInitialized('quantity') && null !== $object->getQuantity()) {
             $data['quantity'] = $object->getQuantity();
         }
-        if (null !== $object->getUnitPrice()) {
+        if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
             $data['unit_price'] = $object->getUnitPrice();
         }
-        if (null !== $object->getAmount()) {
+        if ($object->isInitialized('amount') && null !== $object->getAmount()) {
             $data['amount'] = $object->getAmount();
         }
-        if (null !== $object->getTaxed()) {
+        if ($object->isInitialized('taxed') && null !== $object->getTaxed()) {
             $data['taxed'] = $object->getTaxed();
         }
-        if (null !== $object->getTaxed2()) {
+        if ($object->isInitialized('taxed2') && null !== $object->getTaxed2()) {
             $data['taxed2'] = $object->getTaxed2();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

@@ -13,6 +13,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -25,13 +26,14 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' === \get_class($data);
     }
@@ -52,38 +54,55 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody();
+        if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
+            $data['hourly_rate'] = (float) $data['hourly_rate'];
+        }
+        if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
+            $data['budget'] = (float) $data['budget'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
             $object->setUserId($data['user_id']);
+            unset($data['user_id']);
         } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
             $object->setUserId(null);
         }
         if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
             $object->setIsActive($data['is_active']);
+            unset($data['is_active']);
         } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
             $object->setIsActive(null);
         }
         if (\array_key_exists('is_project_manager', $data) && null !== $data['is_project_manager']) {
             $object->setIsProjectManager($data['is_project_manager']);
+            unset($data['is_project_manager']);
         } elseif (\array_key_exists('is_project_manager', $data) && null === $data['is_project_manager']) {
             $object->setIsProjectManager(null);
         }
         if (\array_key_exists('use_default_rates', $data) && null !== $data['use_default_rates']) {
             $object->setUseDefaultRates($data['use_default_rates']);
+            unset($data['use_default_rates']);
         } elseif (\array_key_exists('use_default_rates', $data) && null === $data['use_default_rates']) {
             $object->setUseDefaultRates(null);
         }
         if (\array_key_exists('hourly_rate', $data) && null !== $data['hourly_rate']) {
             $object->setHourlyRate($data['hourly_rate']);
+            unset($data['hourly_rate']);
         } elseif (\array_key_exists('hourly_rate', $data) && null === $data['hourly_rate']) {
             $object->setHourlyRate(null);
         }
         if (\array_key_exists('budget', $data) && null !== $data['budget']) {
             $object->setBudget($data['budget']);
+            unset($data['budget']);
         } elseif (\array_key_exists('budget', $data) && null === $data['budget']) {
             $object->setBudget(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -99,20 +118,25 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
     {
         $data = [];
         $data['user_id'] = $object->getUserId();
-        if (null !== $object->getIsActive()) {
+        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
         }
-        if (null !== $object->getIsProjectManager()) {
+        if ($object->isInitialized('isProjectManager') && null !== $object->getIsProjectManager()) {
             $data['is_project_manager'] = $object->getIsProjectManager();
         }
-        if (null !== $object->getUseDefaultRates()) {
+        if ($object->isInitialized('useDefaultRates') && null !== $object->getUseDefaultRates()) {
             $data['use_default_rates'] = $object->getUseDefaultRates();
         }
-        if (null !== $object->getHourlyRate()) {
+        if ($object->isInitialized('hourlyRate') && null !== $object->getHourlyRate()) {
             $data['hourly_rate'] = $object->getHourlyRate();
         }
-        if (null !== $object->getBudget()) {
+        if ($object->isInitialized('budget') && null !== $object->getBudget()) {
             $data['budget'] = $object->getBudget();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

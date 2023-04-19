@@ -11,8 +11,12 @@
 
 namespace JoliCode\Harvest\Api\Model;
 
-class InvoiceItemCategory
+class InvoiceItemCategory extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
     /**
      * Unique ID for the invoice item category.
      *
@@ -50,6 +54,11 @@ class InvoiceItemCategory
      */
     protected $updatedAt;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Unique ID for the invoice item category.
      */
@@ -63,6 +72,7 @@ class InvoiceItemCategory
      */
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -81,6 +91,7 @@ class InvoiceItemCategory
      */
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -99,6 +110,7 @@ class InvoiceItemCategory
      */
     public function setUseAsService(?bool $useAsService): self
     {
+        $this->initialized['useAsService'] = true;
         $this->useAsService = $useAsService;
 
         return $this;
@@ -117,6 +129,7 @@ class InvoiceItemCategory
      */
     public function setUseAsExpense(?bool $useAsExpense): self
     {
+        $this->initialized['useAsExpense'] = true;
         $this->useAsExpense = $useAsExpense;
 
         return $this;
@@ -135,6 +148,7 @@ class InvoiceItemCategory
      */
     public function setCreatedAt(?\DateTime $createdAt): self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
 
         return $this;
@@ -153,6 +167,7 @@ class InvoiceItemCategory
      */
     public function setUpdatedAt(?\DateTime $updatedAt): self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
 
         return $this;

@@ -1,8 +1,8 @@
 # Changes between versions
 
-## Unreleased
+## 6.3.0 (2023-08-17)
 
- * updated the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#27
+ * updated the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#27 in #44
    * updated the spec according to the current documentation
    * fixed several definitions
 

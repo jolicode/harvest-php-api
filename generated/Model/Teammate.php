@@ -20,7 +20,7 @@ class Teammate extends \ArrayObject
     /**
      * Unique ID for the teammate.
      *
-     * @var mixed|null
+     * @var int|null
      */
     protected $id;
     /**
@@ -49,20 +49,16 @@ class Teammate extends \ArrayObject
 
     /**
      * Unique ID for the teammate.
-     *
-     * @return mixed
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
      * Unique ID for the teammate.
-     *
-     * @param mixed $id
      */
-    public function setId($id): self
+    public function setId(?int $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;

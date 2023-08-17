@@ -1,5 +1,11 @@
 # Changes between versions
 
+## Unreleased
+
+ * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#27)
+   * updated the spec according to the current documentation
+   * fixed several definitions
+
 ## 6.2.0 (2023-04-19)
 
  * upgrade to `janephp/open-api` 7.4
@@ -18,7 +24,7 @@
    * add the ability to retrieve message subject and body for specific invoices as defined in https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#retrieve-invoice-message-subject-and-body-for-specific-invoice
 
 ## 6.0.0 (2022-08-04)
-￼
+
  * upgrade to `janephp/open-api` 7.3
  * drop support for PHP <7.4
  * updated the SDK based on the latest [spec updates](jolicode/harvest-openapi-generator#20)
@@ -101,26 +107,26 @@
  * added the `Invoice` `recurring_invoice_id` attribute
 
 ## 2.0.0 (2019-10-28)
-​
-* Upgrade Jane to 4.5 https://github.com/janephp/janephp/releases/tag/v4.5.3, the new generated classes have better PHPDoc​
-* Generate PSR-18 client instead of HttPlug client
-* Support for cost and billable rates
-* Removed the telephone property from the user model
-* Added statement_key in the Client properties
+
+ * Upgrade Jane to 4.5 https://github.com/janephp/janephp/releases/tag/v4.5.3, the new generated classes have better PHPDoc​
+ * Generate PSR-18 client instead of HttPlug client
+ * Support for cost and billable rates
+ * Removed the telephone property from the user model
+ * Added statement_key in the Client properties
 
 ## 1.1.0 (2019-04-01)
 
-* Support HTTPlug 2
+ * Support HTTPlug 2
 
 ## 1.0.2 (2019-01-24)
 
-* support null values for nested objects or values (jane-openapi strict mode false)
-* changed `quantity` types to `float` instead of `integer`
+ * support null values for nested objects or values (jane-openapi strict mode false)
+ * changed `quantity` types to `float` instead of `integer`
 
 ## 1.0.1 (2019-01-22)
 
-* Fixed the `deleteTimeEntryExternalReference` endpoint operationId
+ * Fixed the `deleteTimeEntryExternalReference` endpoint operationId
 
 ## 1.0.0 (2019-01-21)
 
-* Initial release
+ * Initial release

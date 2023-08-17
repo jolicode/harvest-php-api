@@ -42,7 +42,9 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
      */
     protected $body;
     /**
-     * If set to true, a link to the client invoice URL will be included in the message email. Defaults to false. Ignored when thank_you is set to true.
+     * DEPRECATED A link to the client invoice URL will be automatically included in the message email if payment_options have been assigned to the invoice. Setting to true will be ignored. Setting to false will clear all payment_options on the invoice.
+     *
+     * @deprecated
      *
      * @var bool|null
      */
@@ -152,7 +154,9 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * If set to true, a link to the client invoice URL will be included in the message email. Defaults to false. Ignored when thank_you is set to true.
+     * DEPRECATED A link to the client invoice URL will be automatically included in the message email if payment_options have been assigned to the invoice. Setting to true will be ignored. Setting to false will clear all payment_options on the invoice.
+     *
+     * @deprecated
      */
     public function getIncludeLinkToClientInvoice(): ?bool
     {
@@ -160,7 +164,9 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * If set to true, a link to the client invoice URL will be included in the message email. Defaults to false. Ignored when thank_you is set to true.
+     * DEPRECATED A link to the client invoice URL will be automatically included in the message email if payment_options have been assigned to the invoice. Setting to true will be ignored. Setting to false will clear all payment_options on the invoice.
+     *
+     * @deprecated
      */
     public function setIncludeLinkToClientInvoice(?bool $includeLinkToClientInvoice): self
     {

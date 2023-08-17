@@ -174,6 +174,12 @@ class Invoice extends \ArrayObject
      */
     protected $paymentTerm;
     /**
+     * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
+     *
+     * @var string[]|null
+     */
+    protected $paymentOptions;
+    /**
      * Date and time the invoice was sent.
      *
      * @var \DateTime|null
@@ -715,6 +721,29 @@ class Invoice extends \ArrayObject
     {
         $this->initialized['paymentTerm'] = true;
         $this->paymentTerm = $paymentTerm;
+
+        return $this;
+    }
+
+    /**
+     * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
+     *
+     * @return string[]|null
+     */
+    public function getPaymentOptions(): ?array
+    {
+        return $this->paymentOptions;
+    }
+
+    /**
+     * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
+     *
+     * @param string[]|null $paymentOptions
+     */
+    public function setPaymentOptions(?array $paymentOptions): self
+    {
+        $this->initialized['paymentOptions'] = true;
+        $this->paymentOptions = $paymentOptions;
 
         return $this;
     }

@@ -35,7 +35,7 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' === $data::class;
     }
 
     /**

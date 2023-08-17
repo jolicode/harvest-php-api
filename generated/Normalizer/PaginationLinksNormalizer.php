@@ -35,7 +35,7 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' === $data::class;
     }
 
     /**

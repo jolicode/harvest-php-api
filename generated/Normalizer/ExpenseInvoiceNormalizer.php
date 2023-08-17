@@ -35,7 +35,7 @@ class ExpenseInvoiceNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' === $data::class;
     }
 
     /**

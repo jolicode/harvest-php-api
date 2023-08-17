@@ -35,7 +35,7 @@ class UserAssignmentsNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' === $data::class;
     }
 
     /**

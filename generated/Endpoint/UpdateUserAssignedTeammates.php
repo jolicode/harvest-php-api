@@ -18,8 +18,8 @@ class UpdateUserAssignedTeammates extends \JoliCode\Harvest\Api\Runtime\Client\B
 
     /**
      * Updates the the assigned teammates for a specific user. Returns list of assigned teammates and a 200 OK response code if the call succeeded. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.
-
-    Adding teammates for the first time will add the people_manager access role to the Manager. Any IDs not included in the teammate_ids that are currently assigned will be unassigned from the Manager. Use an empty array to unassign all users. This will also remove the people_manager access role from the Manager.
+     *
+     * Adding teammates for the first time will add the people_manager access role to the Manager. Any IDs not included in the teammate_ids that are currently assigned will be unassigned from the Manager. Use an empty array to unassign all users. This will also remove the people_manager access role from the Manager.
      */
     public function __construct(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody $requestBody)
     {
@@ -57,11 +57,9 @@ class UpdateUserAssignedTeammates extends \JoliCode\Harvest\Api\Runtime\Client\B
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \JoliCode\Harvest\Api\Model\TeammatesPatchResponse|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

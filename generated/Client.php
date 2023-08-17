@@ -15,16 +15,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 {
     /**
      * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active clients and false to return inactive clients
-     *     @var string $updated_since only return clients that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active clients and false to return inactive clients
+     * @var string $updated_since only return clients that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -38,8 +37,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new client object. Returns a client object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ClientsPostBody $requestBody
-     * @param string                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -75,8 +73,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific client by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a client object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody $requestBody
-     * @param string                                               $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -98,8 +95,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\CompanyPatchBody $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -110,16 +106,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $client_id only return contacts belonging to the client with the given ID
-     *     @var string $updated_since only return contacts that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $client_id only return contacts belonging to the client with the given ID
+     * @var string $updated_since only return contacts that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -133,8 +128,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new contact object. Returns a contact object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ContactsPostBody $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -170,8 +164,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific contact by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a contact object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody $requestBody
-     * @param string                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -182,15 +175,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return estimate item categories that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return estimate item categories that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -204,8 +196,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new estimate item category object. Returns an estimate item category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody $requestBody
-     * @param string                                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -241,8 +232,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific estimate item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate item category object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $requestBody
-     * @param string                                                                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -253,18 +243,17 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $client_id only return estimates belonging to the client with the given ID
-     *     @var string $updated_since only return estimates that have been updated since the given date and time
-     *     @var string $from only return estimates with an issue_date on or after the given date
-     *     @var string $to only return estimates with an issue_date on or before the given date
-     *     @var string $state Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $client_id only return estimates belonging to the client with the given ID
+     * @var string $updated_since only return estimates that have been updated since the given date and time
+     * @var string $from only return estimates with an issue_date on or after the given date
+     * @var string $to only return estimates with an issue_date on or before the given date
+     * @var string $state Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -278,8 +267,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new estimate object. Returns an estimate object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimatesPostBody $requestBody
-     * @param string                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -315,8 +303,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific estimate by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an estimate object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody $requestBody
-     * @param string                                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -327,15 +314,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return estimate messages that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return estimate messages that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -349,8 +335,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new estimate message object. Returns an estimate message object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody $requestBody
-     * @param string                                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\EstimateMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -373,16 +358,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active expense categories and false to return inactive expense categories
-     *     @var string $updated_since only return expense categories that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active expense categories and false to return inactive expense categories
+     * @var string $updated_since only return expense categories that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -396,8 +380,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new expense category object. Returns an expense category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody $requestBody
-     * @param string                                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -433,8 +416,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific expense category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense category object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody $requestBody
-     * @param string                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -445,20 +427,19 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your expenses. If accessing this endpoint as an Administrator, all expenses in the account will be returned. If accessing this endpoint as a Manager, all expenses for assigned teammates and managed projects will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $user_id only return expenses belonging to the user with the given ID
-     *     @var int $client_id only return expenses belonging to the client with the given ID
-     *     @var int $project_id only return expenses belonging to the project with the given ID
-     *     @var bool $is_billed pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced
-     *     @var string $updated_since only return expenses that have been updated since the given date and time
-     *     @var string $from only return expenses with a spent_date on or after the given date
-     *     @var string $to only return expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $user_id only return expenses belonging to the user with the given ID
+     * @var int    $client_id only return expenses belonging to the client with the given ID
+     * @var int    $project_id only return expenses belonging to the project with the given ID
+     * @var bool   $is_billed pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced
+     * @var string $updated_since only return expenses that have been updated since the given date and time
+     * @var string $from only return expenses with a spent_date on or after the given date
+     * @var string $to only return expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -472,8 +453,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new expense object. Returns an expense object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpensesPostBody $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -509,8 +489,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $requestBody
-     * @param string                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -521,15 +500,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return invoice item categories that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return invoice item categories that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -543,8 +521,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice item category object. Returns an invoice item category object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody $requestBody
-     * @param string                                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -580,8 +557,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific invoice item category by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice item category object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $requestBody
-     * @param string                                                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -592,19 +568,18 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $client_id only return invoices belonging to the client with the given ID
-     *     @var int $project_id only return invoices associated with the project with the given ID
-     *     @var string $updated_since only return invoices that have been updated since the given date and time
-     *     @var string $from only return invoices with an issue_date on or after the given date
-     *     @var string $to only return invoices with an issue_date on or before the given date
-     *     @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $client_id only return invoices belonging to the client with the given ID
+     * @var int    $project_id only return invoices associated with the project with the given ID
+     * @var string $updated_since only return invoices that have been updated since the given date and time
+     * @var string $from only return invoices with an issue_date on or after the given date
+     * @var string $to only return invoices with an issue_date on or before the given date
+     * @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -618,8 +593,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice object. Returns an invoice object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesPostBody $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -655,8 +629,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific invoice by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an invoice object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody $requestBody
-     * @param string                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -667,15 +640,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return invoice messages that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return invoice messages that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -689,8 +661,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $requestBody
-     * @param string                                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\InvoiceMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -704,9 +675,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
-     *     @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
-     * }
+     * @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
+     * @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
+     *           }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -731,15 +702,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return invoice payments that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return invoice payments that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -753,8 +723,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new invoice payment object. Returns an invoice payment object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody $requestBody
-     * @param string                                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -777,17 +746,16 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active projects and false to return inactive projects
-     *     @var int $client_id only return projects belonging to the client with the given ID
-     *     @var string $updated_since only return projects that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active projects and false to return inactive projects
+     * @var int    $client_id only return projects belonging to the client with the given ID
+     * @var string $updated_since only return projects that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -801,8 +769,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsPostBody $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -838,8 +805,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific project by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a project object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody $requestBody
-     * @param string                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -850,15 +816,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active task assignments and false to return inactive task assignments
-     *     @var string $updated_since only return task assignments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments
+     * @var string $updated_since only return task assignments that have been updated since the given date and time
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -872,8 +837,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new task assignment object. Returns a task assignment object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody $requestBody
-     * @param string                                                               $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -909,8 +873,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific task assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task assignment object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $requestBody
-     * @param string                                                                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -921,16 +884,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $user_id only return user assignments belonging to the user with the given ID
-     *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
-     *     @var string $updated_since only return user assignments that have been updated since the given date and time
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $user_id only return user assignments belonging to the user with the given ID
+     * @var bool   $is_active pass true to only return active user assignments and false to return inactive user assignments
+     * @var string $updated_since only return user assignments that have been updated since the given date and time
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -944,8 +906,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new user assignment object. Returns a user assignment object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody $requestBody
-     * @param string                                                               $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -981,8 +942,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific user assignment by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user assignment object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody
-     * @param string                                                                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -994,11 +954,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on expenses with a spent_date on or after the given date
-     *     @var string $to only report on expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on expenses with a spent_date on or after the given date
+     * @var string $to only report on expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1012,11 +972,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on expenses with a spent_date on or after the given date
-     *     @var string $to only report on expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on expenses with a spent_date on or after the given date
+     * @var string $to only report on expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1030,11 +990,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on expenses with a spent_date on or after the given date
-     *     @var string $to only report on expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on expenses with a spent_date on or after the given date
+     * @var string $to only report on expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1048,11 +1008,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on expenses with a spent_date on or after the given date
-     *     @var string $to only report on expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on expenses with a spent_date on or after the given date
+     * @var string $to only report on expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1068,10 +1028,10 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
-     * }
+     * @var int  $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int  $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * @var bool $is_active Pass true to only return active projects and false to return inactive projects.
+     *           }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1085,11 +1045,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on time entries with a spent_date on or after the given date
-     *     @var string $to only report on time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on time entries with a spent_date on or after the given date
+     * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1103,11 +1063,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on time entries with a spent_date on or after the given date
-     *     @var string $to only report on time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on time entries with a spent_date on or after the given date
+     * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1121,11 +1081,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on time entries with a spent_date on or after the given date
-     *     @var string $to only report on time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on time entries with a spent_date on or after the given date
+     * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1139,11 +1099,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * @param array $queryParameters {
      *
-     *     @var string $from only report on time entries with a spent_date on or after the given date
-     *     @var string $to only report on time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on time entries with a spent_date on or after the given date
+     * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1156,15 +1116,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $from only report on time entries and expenses with a spent_date on or after the given date
-     *     @var string $to only report on time entries and expenses with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $from only report on time entries and expenses with a spent_date on or after the given date
+     * @var string $to only report on time entries and expenses with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1177,14 +1136,13 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1198,8 +1156,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new role object. Returns a role object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\RolesPostBody $requestBody
-     * @param string                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1235,8 +1192,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific role by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a role object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody $requestBody
-     * @param string                                           $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1247,16 +1203,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active task assignments and false to return inactive task assignments
-     *     @var string $updated_since only return task assignments that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments
+     * @var string $updated_since only return task assignments that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1269,16 +1224,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active tasks and false to return inactive tasks
-     *     @var string $updated_since only return tasks that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active tasks and false to return inactive tasks
+     * @var string $updated_since only return tasks that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1292,8 +1246,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new task object. Returns a task object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\TasksPostBody $requestBody
-     * @param string                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1329,8 +1282,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific task by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a task object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody $requestBody
-     * @param string                                           $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1341,23 +1293,22 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $user_id only return time entries belonging to the user with the given ID
-     *     @var int $client_id only return time entries belonging to the client with the given ID
-     *     @var int $project_id only return time entries belonging to the project with the given ID
-     *     @var int $task_id only return time entries belonging to the task with the given ID
-     *     @var string $external_reference_id only return time entries with the given external_reference ID
-     *     @var bool $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
-     *     @var bool $is_running pass true to only return running time entries and false to return non-running time entries
-     *     @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
-     *     @var string $from only return time entries with a spent_date on or after the given date
-     *     @var string $to only return time entries with a spent_date on or before the given date
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $user_id only return time entries belonging to the user with the given ID
+     * @var int    $client_id only return time entries belonging to the client with the given ID
+     * @var int    $project_id only return time entries belonging to the project with the given ID
+     * @var int    $task_id only return time entries belonging to the task with the given ID
+     * @var string $external_reference_id only return time entries with the given external_reference ID
+     * @var bool   $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
+     * @var bool   $is_running pass true to only return running time entries and false to return non-running time entries
+     * @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
+     * @var string $from only return time entries with a spent_date on or after the given date
+     * @var string $to only return time entries with a spent_date on or before the given date
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1370,10 +1321,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
-
      *
-     * @param \JoliCode\Harvest\Api\Model\TimeEntriesPostBody $requestBody
-     * @param string                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1409,8 +1358,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific time entry by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a time entry object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody $requestBody
-     * @param string                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1457,17 +1405,16 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $user_id only return user assignments belonging to the user with the given ID
-     *     @var bool $is_active pass true to only return active user assignments and false to return inactive user assignments
-     *     @var string $updated_since only return user assignments that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $user_id only return user assignments belonging to the user with the given ID
+     * @var bool   $is_active pass true to only return active user assignments and false to return inactive user assignments
+     * @var string $updated_since only return user assignments that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1480,16 +1427,15 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active users and false to return inactive users
-     *     @var string $updated_since only return users that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active users and false to return inactive users
+     * @var string $updated_since only return users that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1503,8 +1449,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Creates a new user object and sends an invitation email to the address specified in the email parameter. Returns a user object and a 201 Created response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersPostBody $requestBody
-     * @param string                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1525,13 +1470,12 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *          }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1569,8 +1513,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Updates the specific user by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a user object and a 200 OK response code if the call succeeded.
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody $requestBody
-     * @param string                                           $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1581,14 +1524,13 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1601,11 +1543,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
-
-
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $requestBody
-     * @param string                                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1628,14 +1567,13 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1648,11 +1586,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
-
-
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $requestBody
-     * @param string                                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
@@ -1675,15 +1610,14 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
-
      *
      * @param array $queryParameters {
      *
-     *     @var string $updated_since only return project assignments that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var string $updated_since only return project assignments that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1696,14 +1630,13 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of assigned teammates for the user identified by USER_ID. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.
-
      *
      * @param array $queryParameters {
      *
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1716,10 +1649,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Updates the the assigned teammates for a specific user. Returns list of assigned teammates and a 200 OK response code if the call succeeded. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.
-
      *
-     * @param \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody $requestBody
-     * @param string                                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Harvest\Api\Model\TeammatesPatchResponse|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
      */

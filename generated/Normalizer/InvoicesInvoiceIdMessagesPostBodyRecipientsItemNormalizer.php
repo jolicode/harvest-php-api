@@ -35,7 +35,7 @@ class InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer implements Denor
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' === $data::class;
     }
 
     /**

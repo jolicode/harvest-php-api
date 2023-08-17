@@ -18,9 +18,8 @@ class CreateBillableRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoi
 
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
-
-
-     Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
+     *
+     * Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
      */
     public function __construct(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $requestBody)
     {
@@ -58,11 +57,9 @@ class CreateBillableRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoi
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

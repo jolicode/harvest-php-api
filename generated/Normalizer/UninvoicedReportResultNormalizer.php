@@ -35,7 +35,7 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' === $data::class;
     }
 
     /**

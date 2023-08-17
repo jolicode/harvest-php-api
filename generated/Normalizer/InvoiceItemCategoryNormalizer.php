@@ -35,7 +35,7 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' === $data::class;
     }
 
     /**

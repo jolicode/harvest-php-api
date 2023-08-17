@@ -35,7 +35,7 @@ class InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer implements D
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' === $data::class;
     }
 
     /**

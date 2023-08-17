@@ -35,7 +35,7 @@ class ProjectAssignmentClientNormalizer implements DenormalizerInterface, Normal
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' === $data::class;
     }
 
     /**

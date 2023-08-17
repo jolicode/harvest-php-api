@@ -35,7 +35,7 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === $data::class;
     }
 
     /**

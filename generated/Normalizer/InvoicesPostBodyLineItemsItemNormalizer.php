@@ -35,7 +35,7 @@ class InvoicesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, 
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' === $data::class;
     }
 
     /**

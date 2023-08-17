@@ -21,9 +21,9 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
      *
      * @param array $queryParameters {
      *
-     *     @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
-     *     @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
-     * }
+     * @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
+     * @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
+     *           }
      */
     public function __construct(string $invoiceId, array $queryParameters = [])
     {
@@ -71,11 +71,9 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

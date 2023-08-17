@@ -35,7 +35,7 @@ class UsersUserIdCostRatesPostBodyNormalizer implements DenormalizerInterface, N
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' === $data::class;
     }
 
     /**

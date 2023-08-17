@@ -182,4 +182,9 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Contact' => false];
+    }
 }

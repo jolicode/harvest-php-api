@@ -252,4 +252,9 @@ class InvoicesInvoiceIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBody' => false];
+    }
 }

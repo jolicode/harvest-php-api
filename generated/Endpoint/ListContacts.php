@@ -18,6 +18,8 @@ class ListContacts extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
      *
+     * The response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts.
+     *
      * @param array $queryParameters {
      *
      * @var int    $client_id only return contacts belonging to the client with the given ID

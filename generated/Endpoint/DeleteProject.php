@@ -18,6 +18,7 @@ class DeleteProject extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
 
     /**
      * Deletes a project and any time entries or expenses tracked to it.
+     * However, invoices associated with the project will not be deleted.
      * If you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead.
      */
     public function __construct(string $projectId)

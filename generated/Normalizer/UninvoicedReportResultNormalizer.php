@@ -176,4 +176,9 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' => false];
+    }
 }

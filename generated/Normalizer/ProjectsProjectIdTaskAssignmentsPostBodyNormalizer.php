@@ -132,4 +132,9 @@ class ProjectsProjectIdTaskAssignmentsPostBodyNormalizer implements Denormalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody' => false];
+    }
 }

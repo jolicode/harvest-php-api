@@ -95,4 +95,9 @@ class EstimatesEstimateIdMessagesPostBodyRecipientsItemNormalizer implements Den
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem' => false];
+    }
 }

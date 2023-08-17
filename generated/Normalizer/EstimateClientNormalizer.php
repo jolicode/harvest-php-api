@@ -101,4 +101,9 @@ class EstimateClientNormalizer implements DenormalizerInterface, NormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimateClient' => false];
+    }
 }

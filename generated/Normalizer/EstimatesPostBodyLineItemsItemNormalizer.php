@@ -124,4 +124,9 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => false];
+    }
 }

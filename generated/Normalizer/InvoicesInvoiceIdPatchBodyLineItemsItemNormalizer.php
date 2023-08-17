@@ -145,4 +145,9 @@ class InvoicesInvoiceIdPatchBodyLineItemsItemNormalizer implements DenormalizerI
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem' => false];
+    }
 }

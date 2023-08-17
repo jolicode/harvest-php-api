@@ -101,4 +101,9 @@ class ExpenseUserNormalizer implements DenormalizerInterface, NormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ExpenseUser' => false];
+    }
 }

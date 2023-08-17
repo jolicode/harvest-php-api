@@ -110,4 +110,9 @@ class UserAssignmentProjectNormalizer implements DenormalizerInterface, Normaliz
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject' => false];
+    }
 }

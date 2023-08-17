@@ -18,6 +18,8 @@ class ListEstimateItemCategories extends \JoliCode\Harvest\Api\Runtime\Client\Ba
     /**
      * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
      *
+     * The response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return estimate item categories that have been updated since the given date and time

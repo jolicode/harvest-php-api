@@ -101,4 +101,9 @@ class TaskAssignmentTaskNormalizer implements DenormalizerInterface, NormalizerI
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => false];
+    }
 }

@@ -18,6 +18,8 @@ class ListExpenses extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Returns a list of your expenses. If accessing this endpoint as an Administrator, all expenses in the account will be returned. If accessing this endpoint as a Manager, all expenses for assigned teammates and managed projects will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
      *
+     * The response contains an object with a expenses property that contains an array of up to per_page expenses. Each entry in the array is a separate expense object. If no more expenses are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expenses.
+     *
      * @param array $queryParameters {
      *
      * @var int    $user_id only return expenses belonging to the user with the given ID

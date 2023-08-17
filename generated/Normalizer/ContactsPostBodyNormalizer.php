@@ -151,4 +151,9 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false];
+    }
 }

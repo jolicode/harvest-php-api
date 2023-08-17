@@ -135,4 +135,9 @@ class TimeReportsResultsNormalizer implements DenormalizerInterface, NormalizerI
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\TimeReportsResults' => false];
+    }
 }

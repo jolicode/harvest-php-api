@@ -92,4 +92,9 @@ class InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer implements D
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' => false];
+    }
 }

@@ -18,6 +18,8 @@ class ListUserAssignments extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpo
     /**
      * Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
      *
+     * The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
+     *
      * @param array $queryParameters {
      *
      * @var int    $user_id only return user assignments belonging to the user with the given ID

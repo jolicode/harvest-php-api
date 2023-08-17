@@ -19,6 +19,8 @@ class ListActiveProjectAssignments extends \JoliCode\Harvest\Api\Runtime\Client\
     /**
      * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
      *
+     * The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return project assignments that have been updated since the given date and time

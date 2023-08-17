@@ -18,6 +18,8 @@ class ListInvoices extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
      *
+     * The response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices.
+     *
      * @param array $queryParameters {
      *
      * @var int    $client_id only return invoices belonging to the client with the given ID

@@ -199,4 +199,9 @@ class EstimatesEstimateIdPatchBodyNormalizer implements DenormalizerInterface, N
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody' => false];
+    }
 }

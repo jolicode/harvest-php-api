@@ -18,6 +18,8 @@ class ListTasks extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
      *
+     * The response contains an object with a tasks property that contains an array of up to per_page tasks. Each entry in the array is a separate task object. If no more tasks are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your tasks.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active tasks and false to return inactive tasks

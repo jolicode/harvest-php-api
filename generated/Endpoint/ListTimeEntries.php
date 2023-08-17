@@ -18,6 +18,8 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     /**
      * Returns a list of time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.
      *
+     * The response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries.
+     *
      * @param array $queryParameters {
      *
      * @var int    $user_id only return time entries belonging to the user with the given ID

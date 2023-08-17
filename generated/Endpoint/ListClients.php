@@ -18,6 +18,8 @@ class ListClients extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
      *
+     * The response contains an object with a clients property that contains an array of up to per_page clients. Each entry in the array is a separate client object. If no more clients are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your clients.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active clients and false to return inactive clients

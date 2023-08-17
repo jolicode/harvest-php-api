@@ -90,4 +90,9 @@ class EstimateItemCategoriesPostBodyNormalizer implements DenormalizerInterface,
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesPostBody' => false];
+    }
 }

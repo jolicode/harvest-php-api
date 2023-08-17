@@ -111,4 +111,9 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\PaginationLinks' => false];
+    }
 }

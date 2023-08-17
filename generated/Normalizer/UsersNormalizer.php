@@ -135,4 +135,9 @@ class UsersNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Users' => false];
+    }
 }

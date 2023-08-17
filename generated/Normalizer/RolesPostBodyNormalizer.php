@@ -107,4 +107,9 @@ class RolesPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\RolesPostBody' => false];
+    }
 }

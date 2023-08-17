@@ -135,4 +135,9 @@ class ProjectBudgetReportResultsNormalizer implements DenormalizerInterface, Nor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResults' => false];
+    }
 }

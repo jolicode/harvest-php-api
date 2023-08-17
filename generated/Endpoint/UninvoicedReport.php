@@ -18,6 +18,8 @@ class UninvoicedReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
      *
+     * Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
+     *
      * @param array $queryParameters {
      *
      * @var string $from only report on time entries and expenses with a spent_date on or after the given date

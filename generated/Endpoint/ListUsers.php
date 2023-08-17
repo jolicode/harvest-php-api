@@ -18,6 +18,8 @@ class ListUsers extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
      *
+     * The response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active users and false to return inactive users

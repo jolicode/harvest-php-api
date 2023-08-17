@@ -19,6 +19,8 @@ class ListPaymentsForInvoice extends \JoliCode\Harvest\Api\Runtime\Client\BaseEn
     /**
      * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
      *
+     * The response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return invoice payments that have been updated since the given date and time

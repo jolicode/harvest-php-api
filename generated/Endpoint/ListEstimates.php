@@ -18,6 +18,8 @@ class ListEstimates extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
     /**
      * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
      *
+     * The response contains an object with a estimates property that contains an array of up to per_page estimates. Each entry in the array is a separate estimate object. If no more estimates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimates.
+     *
      * @param array $queryParameters {
      *
      * @var int    $client_id only return estimates belonging to the client with the given ID

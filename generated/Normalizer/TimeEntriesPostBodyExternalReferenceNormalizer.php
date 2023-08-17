@@ -119,4 +119,9 @@ class TimeEntriesPostBodyExternalReferenceNormalizer implements DenormalizerInte
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference' => false];
+    }
 }

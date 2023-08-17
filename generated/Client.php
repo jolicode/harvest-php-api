@@ -16,6 +16,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
      *
+     * The response contains an object with a clients property that contains an array of up to per_page clients. Each entry in the array is a separate client object. If no more clients are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your clients.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active clients and false to return inactive clients
@@ -107,6 +109,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your contacts. The contacts are returned sorted by creation date, with the most recently created contacts appearing first.
      *
+     * The response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts.
+     *
      * @param array $queryParameters {
      *
      * @var int    $client_id only return contacts belonging to the client with the given ID
@@ -176,6 +180,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your estimate item categories. The estimate item categories are returned sorted by creation date, with the most recently created estimate item categories appearing first.
      *
+     * The response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return estimate item categories that have been updated since the given date and time
@@ -243,6 +249,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your estimates. The estimates are returned sorted by issue date, with the most recently issued estimates appearing first.
+     *
+     * The response contains an object with a estimates property that contains an array of up to per_page estimates. Each entry in the array is a separate estimate object. If no more estimates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimates.
      *
      * @param array $queryParameters {
      *
@@ -315,6 +323,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
      *
+     * The response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return estimate messages that have been updated since the given date and time
@@ -358,6 +368,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
+     *
+     * The response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories.
      *
      * @param array $queryParameters {
      *
@@ -427,6 +439,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your expenses. If accessing this endpoint as an Administrator, all expenses in the account will be returned. If accessing this endpoint as a Manager, all expenses for assigned teammates and managed projects will be returned. The expenses are returned sorted by the spent_at date, with the most recent expenses appearing first.
+     *
+     * The response contains an object with a expenses property that contains an array of up to per_page expenses. Each entry in the array is a separate expense object. If no more expenses are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expenses.
      *
      * @param array $queryParameters {
      *
@@ -501,6 +515,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
      *
+     * The response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return invoice item categories that have been updated since the given date and time
@@ -568,6 +584,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your invoices. The invoices are returned sorted by issue date, with the most recently issued invoices appearing first.
+     *
+     * The response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices.
      *
      * @param array $queryParameters {
      *
@@ -641,6 +659,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of messages associated with a given invoice. The invoice messages are returned sorted by creation date, with the most recently created messages appearing first.
      *
+     * The response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return invoice messages that have been updated since the given date and time
@@ -703,6 +723,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of payments associate with a given invoice. The payments are returned sorted by creation date, with the most recently created payments appearing first.
      *
+     * The response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return invoice payments that have been updated since the given date and time
@@ -747,6 +769,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
      *
+     * The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active projects and false to return inactive projects
@@ -780,6 +804,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Deletes a project and any time entries or expenses tracked to it.
+     * However, invoices associated with the project will not be deleted.
+     * If you don’t want the project’s time entries and expenses to be deleted, you should archive the project instead.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -816,6 +842,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
+     *
+     * The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
      *
      * @param array $queryParameters {
      *
@@ -884,6 +912,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of user assignments for the project identified by PROJECT_ID. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
+     *
+     * The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
      *
      * @param array $queryParameters {
      *
@@ -1117,6 +1147,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
      *
+     * Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
+     *
      * @param array $queryParameters {
      *
      * @var string $from only report on time entries and expenses with a spent_date on or after the given date
@@ -1136,6 +1168,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of roles in the account. The roles are returned sorted by creation date, with the most recently created roles appearing first.
+     *
+     * The response contains an object with a roles property that contains an array of up to per_page roles. Each entry in the array is a separate role object. If no more roles are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your roles.
      *
      * @param array $queryParameters {
      *
@@ -1204,6 +1238,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your task assignments. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
      *
+     * The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments
@@ -1224,6 +1260,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
+     *
+     * The response contains an object with a tasks property that contains an array of up to per_page tasks. Each entry in the array is a separate task object. If no more tasks are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your tasks.
      *
      * @param array $queryParameters {
      *
@@ -1294,6 +1332,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of time entries. The time entries are returned sorted by spent_date date. At this time, the sort option can’t be customized.
      *
+     * The response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries.
+     *
      * @param array $queryParameters {
      *
      * @var int    $user_id only return time entries belonging to the user with the given ID
@@ -1321,6 +1361,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new time entry object. Returns a time entry object and a 201 Created response code if the call succeeded.
+     *
+     * You should only use this method to create time entries when your account is configured to track time via duration. You can verify this by visiting the Settings page in your Harvest account or by checking if wants_timestamp_timers is false in the Company API.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1406,6 +1448,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of your projects user assignments, active and archived. The user assignments are returned sorted by creation date, with the most recently created user assignments appearing first.
      *
+     * The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
+     *
      * @param array $queryParameters {
      *
      * @var int    $user_id only return user assignments belonging to the user with the given ID
@@ -1427,6 +1471,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your users. The users are returned sorted by creation date, with the most recently created users appearing first.
+     *
+     * The response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users.
      *
      * @param array $queryParameters {
      *
@@ -1470,6 +1516,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Returns a list of your active project assignments for the currently authenticated user. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
+     *
+     * The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
      * @param array $queryParameters {
      *
@@ -1525,6 +1573,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of billable rates for the user identified by USER_ID. The billable rates are returned sorted by start_date, with the oldest starting billable rates appearing first.
      *
+     * The response contains an object with a billable_rates property that contains an array of up to per_page billable rates. Each entry in the array is a separate billable rate object. If no more billable rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your billable rates.
+     *
      * @param array $queryParameters {
      *
      * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
@@ -1543,6 +1593,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
+     *
+     * Creating a billable rate with no start_date will replace a user’s existing rate(s).
+     * Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1568,6 +1621,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of cost rates for the user identified by USER_ID. The cost rates are returned sorted by start_date, with the oldest starting cost rates appearing first.
      *
+     * The response contains an object with a cost_rates property that contains an array of up to per_page cost rates. Each entry in the array is a separate cost rate object. If no more cost rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your cost rates.
+     *
      * @param array $queryParameters {
      *
      * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
@@ -1586,6 +1641,9 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
+     *
+     * Creating a cost rate with no start_date will replace a user’s existing rate(s).
+     * Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1611,6 +1669,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of active project assignments for the user identified by USER_ID. The project assignments are returned sorted by creation date, with the most recently created project assignments appearing first.
      *
+     * The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return project assignments that have been updated since the given date and time
@@ -1631,6 +1691,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
     /**
      * Returns a list of assigned teammates for the user identified by USER_ID. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.
      *
+     * The response contains an object with a teammates property that contains an array of up to per_page teammates. Each entry in the array is a separate teammate object. If no more teammates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your teammates.
+     *
      * @param array $queryParameters {
      *
      * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
@@ -1649,6 +1711,8 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
 
     /**
      * Updates the the assigned teammates for a specific user. Returns list of assigned teammates and a 200 OK response code if the call succeeded. The USER_ID must belong to a user that is a Manager, if not, a 422 Unprocessable Entity status code will be returned.
+     *
+     * Adding teammates for the first time will add the people_manager access role to the Manager. Any IDs not included in the teammate_ids that are currently assigned will be unassigned from the Manager. Use an empty array to unassign all users. This will also remove the people_manager access role from the Manager.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *

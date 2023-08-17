@@ -101,4 +101,9 @@ class EstimateCreatorNormalizer implements DenormalizerInterface, NormalizerInte
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimateCreator' => false];
+    }
 }

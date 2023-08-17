@@ -137,4 +137,9 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' => false];
+    }
 }

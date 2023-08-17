@@ -18,6 +18,8 @@ class ListExpenseCategories extends \JoliCode\Harvest\Api\Runtime\Client\BaseEnd
     /**
      * Returns a list of your expense categories. The expense categories are returned sorted by creation date, with the most recently created expense categories appearing first.
      *
+     * The response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active expense categories and false to return inactive expense categories

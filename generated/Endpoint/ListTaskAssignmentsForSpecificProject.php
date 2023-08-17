@@ -19,6 +19,8 @@ class ListTaskAssignmentsForSpecificProject extends \JoliCode\Harvest\Api\Runtim
     /**
      * Returns a list of your task assignments for the project identified by PROJECT_ID. The task assignments are returned sorted by creation date, with the most recently created task assignments appearing first.
      *
+     * The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments

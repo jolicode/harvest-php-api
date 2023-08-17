@@ -18,6 +18,8 @@ class ListInvoiceItemCategories extends \JoliCode\Harvest\Api\Runtime\Client\Bas
     /**
      * Returns a list of your invoice item categories. The invoice item categories are returned sorted by creation date, with the most recently created invoice item categories appearing first.
      *
+     * The response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return invoice item categories that have been updated since the given date and time

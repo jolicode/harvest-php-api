@@ -19,6 +19,8 @@ class ListMessagesForEstimate extends \JoliCode\Harvest\Api\Runtime\Client\BaseE
     /**
      * Returns a list of messages associated with a given estimate. The estimate messages are returned sorted by creation date, with the most recently created messages appearing first.
      *
+     * The response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
+     *
      * @param array $queryParameters {
      *
      * @var string $updated_since only return estimate messages that have been updated since the given date and time

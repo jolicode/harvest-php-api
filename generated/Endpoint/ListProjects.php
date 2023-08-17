@@ -18,6 +18,8 @@ class ListProjects extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
      *
+     * The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
+     *
      * @param array $queryParameters {
      *
      * @var bool   $is_active pass true to only return active projects and false to return inactive projects

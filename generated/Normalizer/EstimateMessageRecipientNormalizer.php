@@ -101,4 +101,9 @@ class EstimateMessageRecipientNormalizer implements DenormalizerInterface, Norma
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' => false];
+    }
 }

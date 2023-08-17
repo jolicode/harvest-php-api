@@ -244,4 +244,9 @@ class InvoiceMessageNormalizer implements DenormalizerInterface, NormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoiceMessage' => false];
+    }
 }

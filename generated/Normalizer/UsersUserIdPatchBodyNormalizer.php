@@ -213,4 +213,9 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false];
+    }
 }

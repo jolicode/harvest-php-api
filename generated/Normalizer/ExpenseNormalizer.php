@@ -35,7 +35,7 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Expense' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Expense' === $data::class;
     }
 
     /**
@@ -254,5 +254,10 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Expense' => false];
     }
 }

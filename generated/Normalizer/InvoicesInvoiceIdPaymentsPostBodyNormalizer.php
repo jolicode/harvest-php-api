@@ -35,7 +35,7 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $data::class;
     }
 
     /**
@@ -119,5 +119,10 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => false];
     }
 }

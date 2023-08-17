@@ -35,7 +35,7 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $data::class;
     }
 
     /**
@@ -150,5 +150,10 @@ class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false];
     }
 }

@@ -102,6 +102,12 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
      */
     protected $paymentTerm;
     /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @var string[]|null
+     */
+    protected $paymentOptions;
+    /**
      * Array of line item parameters.
      *
      * @var InvoicesInvoiceIdPatchBodyLineItemsItem[]|null
@@ -375,6 +381,29 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     {
         $this->initialized['paymentTerm'] = true;
         $this->paymentTerm = $paymentTerm;
+
+        return $this;
+    }
+
+    /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @return string[]|null
+     */
+    public function getPaymentOptions(): ?array
+    {
+        return $this->paymentOptions;
+    }
+
+    /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @param string[]|null $paymentOptions
+     */
+    public function setPaymentOptions(?array $paymentOptions): self
+    {
+        $this->initialized['paymentOptions'] = true;
+        $this->paymentOptions = $paymentOptions;
 
         return $this;
     }

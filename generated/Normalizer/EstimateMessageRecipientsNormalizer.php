@@ -35,7 +35,7 @@ class EstimateMessageRecipientsNormalizer implements DenormalizerInterface, Norm
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' === $data::class;
     }
 
     /**
@@ -134,5 +134,10 @@ class EstimateMessageRecipientsNormalizer implements DenormalizerInterface, Norm
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' => false];
     }
 }

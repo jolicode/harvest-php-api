@@ -35,7 +35,7 @@ class TaskAssignmentTaskNormalizer implements DenormalizerInterface, NormalizerI
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' === $data::class;
     }
 
     /**
@@ -100,5 +100,10 @@ class TaskAssignmentTaskNormalizer implements DenormalizerInterface, NormalizerI
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => false];
     }
 }

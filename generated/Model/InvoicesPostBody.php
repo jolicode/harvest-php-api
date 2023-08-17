@@ -96,13 +96,19 @@ class InvoicesPostBody extends \ArrayObject
      */
     protected $paymentTerm;
     /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @var string[]|null
+     */
+    protected $paymentOptions;
+    /**
      * An line items import object.
      *
      * @var InvoicesPostBodyLineItemsImport|null
      */
     protected $lineItemsImport;
     /**
-     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only available action is to add funds.
      *
      * @var int|null
      */
@@ -367,6 +373,29 @@ class InvoicesPostBody extends \ArrayObject
     }
 
     /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @return string[]|null
+     */
+    public function getPaymentOptions(): ?array
+    {
+        return $this->paymentOptions;
+    }
+
+    /**
+     * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
+     *
+     * @param string[]|null $paymentOptions
+     */
+    public function setPaymentOptions(?array $paymentOptions): self
+    {
+        $this->initialized['paymentOptions'] = true;
+        $this->paymentOptions = $paymentOptions;
+
+        return $this;
+    }
+
+    /**
      * An line items import object.
      */
     public function getLineItemsImport(): ?InvoicesPostBodyLineItemsImport
@@ -386,7 +415,7 @@ class InvoicesPostBody extends \ArrayObject
     }
 
     /**
-     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only available action is to add funds.
      */
     public function getRetainerId(): ?int
     {
@@ -394,7 +423,7 @@ class InvoicesPostBody extends \ArrayObject
     }
 
     /**
-     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.
+     * The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only available action is to add funds.
      */
     public function setRetainerId(?int $retainerId): self
     {

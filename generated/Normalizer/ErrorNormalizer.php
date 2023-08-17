@@ -35,7 +35,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Error' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Error' === $data::class;
     }
 
     /**
@@ -96,5 +96,10 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Error' => false];
     }
 }

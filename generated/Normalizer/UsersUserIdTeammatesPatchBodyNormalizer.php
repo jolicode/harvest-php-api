@@ -35,7 +35,7 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' === $data::class;
     }
 
     /**
@@ -58,14 +58,18 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
             return $object;
         }
         if (\array_key_exists('teammate_ids', $data) && null !== $data['teammate_ids']) {
-            $object->setTeammateIds($data['teammate_ids']);
+            $values = [];
+            foreach ($data['teammate_ids'] as $value) {
+                $values[] = $value;
+            }
+            $object->setTeammateIds($values);
             unset($data['teammate_ids']);
         } elseif (\array_key_exists('teammate_ids', $data) && null === $data['teammate_ids']) {
             $object->setTeammateIds(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -81,13 +85,22 @@ class UsersUserIdTeammatesPatchBodyNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['teammate_ids'] = $object->getTeammateIds();
-        foreach ($object as $key => $value) {
+        $values = [];
+        foreach ($object->getTeammateIds() as $value) {
+            $values[] = $value;
+        }
+        $data['teammate_ids'] = $values;
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' => false];
     }
 }

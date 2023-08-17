@@ -17,16 +17,17 @@ class ListTasks extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implem
 
     /**
      * Returns a list of your tasks. The tasks are returned sorted by creation date, with the most recently created tasks appearing first.
-
+     *
+     * The response contains an object with a tasks property that contains an array of up to per_page tasks. Each entry in the array is a separate task object. If no more tasks are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your tasks.
      *
      * @param array $queryParameters {
      *
-     *     @var bool $is_active pass true to only return active tasks and false to return inactive tasks
-     *     @var string $updated_since only return tasks that have been updated since the given date and time
-     *     @var int $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     *     @var string $cursor Pagination cursor
-     *     @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * }
+     * @var bool   $is_active pass true to only return active tasks and false to return inactive tasks
+     * @var string $updated_since only return tasks that have been updated since the given date and time
+     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var string $cursor Pagination cursor
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -75,11 +76,9 @@ class ListTasks extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \JoliCode\Harvest\Api\Model\Tasks|\JoliCode\Harvest\Api\Model\Error|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

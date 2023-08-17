@@ -35,7 +35,7 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' === $data::class;
     }
 
     /**
@@ -144,6 +144,16 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('payment_term', $data) && null === $data['payment_term']) {
             $object->setPaymentTerm(null);
         }
+        if (\array_key_exists('payment_options', $data) && null !== $data['payment_options']) {
+            $values = [];
+            foreach ($data['payment_options'] as $value) {
+                $values[] = $value;
+            }
+            $object->setPaymentOptions($values);
+            unset($data['payment_options']);
+        } elseif (\array_key_exists('payment_options', $data) && null === $data['payment_options']) {
+            $object->setPaymentOptions(null);
+        }
         if (\array_key_exists('line_items_import', $data) && null !== $data['line_items_import']) {
             $object->setLineItemsImport($this->denormalizer->denormalize($data['line_items_import'], 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport', 'json', $context));
             unset($data['line_items_import']);
@@ -157,18 +167,18 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setRetainerId(null);
         }
         if (\array_key_exists('line_items', $data) && null !== $data['line_items']) {
-            $values = [];
-            foreach ($data['line_items'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem', 'json', $context);
+            $values_1 = [];
+            foreach ($data['line_items'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem', 'json', $context);
             }
-            $object->setLineItems($values);
+            $object->setLineItems($values_1);
             unset($data['line_items']);
         } elseif (\array_key_exists('line_items', $data) && null === $data['line_items']) {
             $object->setLineItems(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
 
@@ -221,6 +231,13 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if ($object->isInitialized('paymentTerm') && null !== $object->getPaymentTerm()) {
             $data['payment_term'] = $object->getPaymentTerm();
         }
+        if ($object->isInitialized('paymentOptions') && null !== $object->getPaymentOptions()) {
+            $values = [];
+            foreach ($object->getPaymentOptions() as $value) {
+                $values[] = $value;
+            }
+            $data['payment_options'] = $values;
+        }
         if ($object->isInitialized('lineItemsImport') && null !== $object->getLineItemsImport()) {
             $data['line_items_import'] = $this->normalizer->normalize($object->getLineItemsImport(), 'json', $context);
         }
@@ -228,18 +245,23 @@ class InvoicesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['retainer_id'] = $object->getRetainerId();
         }
         if ($object->isInitialized('lineItems') && null !== $object->getLineItems()) {
-            $values = [];
-            foreach ($object->getLineItems() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values_1 = [];
+            foreach ($object->getLineItems() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['line_items'] = $values;
+            $data['line_items'] = $values_1;
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value_2;
             }
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' => false];
     }
 }

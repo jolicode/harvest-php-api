@@ -35,7 +35,7 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Company' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Company' === $data::class;
     }
 
     /**
@@ -262,5 +262,10 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Company' => false];
     }
 }

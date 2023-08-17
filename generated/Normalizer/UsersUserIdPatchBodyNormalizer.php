@@ -35,7 +35,7 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === $data::class;
     }
 
     /**
@@ -212,5 +212,10 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false];
     }
 }

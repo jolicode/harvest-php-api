@@ -35,7 +35,7 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' === $data::class;
     }
 
     /**
@@ -133,5 +133,10 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' => false];
     }
 }

@@ -253,8 +253,9 @@ components:
           nullable: true
         include_link_to_client_invoice:
           type: boolean
-          description: 'Whether to include a link to the client invoice in the message body. Not used when thank_you is true.'
+          description: 'DEPRECATED This will be true when payment_options are assigned to the invoice and false when there are no payment_options.'
           nullable: true
+          deprecated: true
         attach_pdf:
           type: boolean
           description: 'Whether to attach the invoice PDF to the message email.'
@@ -515,6 +516,16 @@ components:
           type: string
           description: 'The timeframe in which the invoice should be paid. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.'
           nullable: true
+        payment_options:
+          type: array
+          description: 'The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal]'
+          nullable: true
+          items:
+            type: string
+            enum:
+              - ach
+              - credit_card
+              - paypal
         sent_at:
           type: string
           description: 'Date and time the invoice was sent.'
@@ -1152,7 +1163,6 @@ components:
           type: integer
           description: 'Unique ID for the time entry.'
           nullable: true
-          format: int32
         spent_date:
           type: string
           description: 'Date of the time entry.'
@@ -1619,7 +1629,7 @@ components:
         url: 'https://help.getharvest.com/api-v2/users-api/users/teammates/#the-teammate-object'
       properties:
         id:
-          type: int
+          type: integer
           description: 'Unique ID for the teammate'
           nullable: true
         first_name:
@@ -6130,6 +6140,8 @@ paths:
                     created_at: '2017-06-27T16:27:16Z'
                     updated_at: '2017-08-23T22:25:59Z'
                     currency: EUR
+                    payment_options:
+                      - credit_card
                     client:
                       id: 5735776
                       name: '123 Industries'
@@ -6338,6 +6350,8 @@ paths:
                 created_at: '2017-06-27T16:34:24Z'
                 updated_at: '2017-06-27T16:34:24Z'
                 currency: USD
+                payment_options:
+                  - credit_card
                 client:
                   id: 5735774
                   name: 'ABC Corp'
@@ -6430,6 +6444,16 @@ paths:
                   type: string
                   description: 'The timeframe in which the invoice should be paid. Defaults to custom. Options: upon receipt, net 15, net 30, net 45, net 60, or custom.'
                   nullable: true
+                payment_options:
+                  type: array
+                  description: 'The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal]'
+                  nullable: true
+                  items:
+                    type: string
+                    enum:
+                      - ach
+                      - credit_card
+                      - paypal
                 line_items_import:
                   type: object
                   description: 'An line items import object'
@@ -6481,7 +6505,7 @@ paths:
                           description: 'If set to true, a PDF containing an expense report with receipts will be attached to the invoice. Defaults to false.'
                 retainer_id:
                   type: integer
-                  description: 'The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only avaiable action is to add funds.'
+                  description: 'The ID of the retainer you want to add funds to with this invoice. Note: retainers cannot be fully used (created, drawn against, closed, etc.) via the API at this time. The only available action is to add funds.'
                   nullable: true
                   format: int32
                 line_items:
@@ -6595,6 +6619,8 @@ paths:
                 created_at: '2017-06-27T16:24:30Z'
                 updated_at: '2017-06-27T16:24:57Z'
                 currency: USD
+                payment_options:
+                  - credit_card
                 client:
                   id: 5735776
                   name: '123 Industries'
@@ -6678,6 +6704,8 @@ paths:
                 created_at: '2017-06-27T16:34:24Z'
                 updated_at: '2017-06-27T16:36:33Z'
                 currency: USD
+                payment_options:
+                  - credit_card
                 client:
                   id: 5735774
                   name: 'ABC Corp'
@@ -6782,6 +6810,16 @@ paths:
                   type: string
                   description: 'The timeframe in which the invoice should be paid. Options: upon receipt, net 15, net 30, net 45, or net 60.'
                   nullable: true
+                payment_options:
+                  type: array
+                  description: 'The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal]'
+                  nullable: true
+                  items:
+                    type: string
+                    enum:
+                      - ach
+                      - credit_card
+                      - paypal
                 line_items:
                   type: array
                   description: 'Array of line item parameters'
@@ -7029,8 +7067,9 @@ paths:
                   nullable: true
                 include_link_to_client_invoice:
                   type: boolean
-                  description: 'If set to true, a link to the client invoice URL will be included in the message email. Defaults to false. Ignored when thank_you is set to true.'
+                  description: 'DEPRECATED A link to the client invoice URL will be automatically included in the message email if payment_options have been assigned to the invoice. Setting to true will be ignored. Setting to false will clear all payment_options on the invoice.'
                   nullable: true
+                  deprecated: true
                 attach_pdf:
                   type: boolean
                   description: 'If set to true, a PDF of the invoice will be attached to the message email. Defaults to false.'
@@ -12800,8 +12839,10 @@ paths:
               type: object
               properties:
                 teammate_ids:
-                  type: 'array of user ids'
+                  type: array
                   description: 'Full list of user IDs to be assigned to the Manager.'
                   nullable: true
+                  items:
+                    type: string
               required:
                 - teammate_ids

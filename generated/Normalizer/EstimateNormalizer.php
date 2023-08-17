@@ -35,7 +35,7 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Estimate' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Estimate' === $data::class;
     }
 
     /**
@@ -327,5 +327,10 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Estimate' => false];
     }
 }

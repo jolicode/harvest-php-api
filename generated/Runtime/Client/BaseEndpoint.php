@@ -45,7 +45,7 @@ abstract class BaseEndpoint implements Endpoint
         return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
     }
 
-    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
+    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, string $contentType = null);
 
     protected function getExtraHeaders(): array
     {

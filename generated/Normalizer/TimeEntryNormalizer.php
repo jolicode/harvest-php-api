@@ -35,7 +35,7 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' === $data::class;
     }
 
     /**
@@ -345,5 +345,10 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\TimeEntry' => false];
     }
 }

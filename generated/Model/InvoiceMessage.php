@@ -66,7 +66,9 @@ class InvoiceMessage extends \ArrayObject
      */
     protected $body;
     /**
-     * Whether to include a link to the client invoice in the message body. Not used when thank_you is true.
+     * DEPRECATED This will be true when payment_options are assigned to the invoice and false when there are no payment_options.
+     *
+     * @deprecated
      *
      * @var bool|null
      */
@@ -282,7 +284,9 @@ class InvoiceMessage extends \ArrayObject
     }
 
     /**
-     * Whether to include a link to the client invoice in the message body. Not used when thank_you is true.
+     * DEPRECATED This will be true when payment_options are assigned to the invoice and false when there are no payment_options.
+     *
+     * @deprecated
      */
     public function getIncludeLinkToClientInvoice(): ?bool
     {
@@ -290,7 +294,9 @@ class InvoiceMessage extends \ArrayObject
     }
 
     /**
-     * Whether to include a link to the client invoice in the message body. Not used when thank_you is true.
+     * DEPRECATED This will be true when payment_options are assigned to the invoice and false when there are no payment_options.
+     *
+     * @deprecated
      */
     public function setIncludeLinkToClientInvoice(?bool $includeLinkToClientInvoice): self
     {

@@ -104,6 +104,7 @@ Instead of the `listClients()` method above, you can use all of these methods:
    * `updateInvoice()`
    * `listMessagesForInvoice()`
    * `createInvoiceMessage()`
+   * `retrieveInvoiceMessageSubjectAndBodyForSpecificInvoice()`
    * `deleteInvoiceMessage()`
    * `listPaymentsForInvoice()`
    * `createInvoicePayment()`
@@ -175,6 +176,8 @@ Instead of the `listClients()` method above, you can use all of these methods:
    * `createCostRate()`
    * `retrieveCostRate()`
    * `listActiveProjectAssignments()`
+   * `listAssignedTeammatesForSpecificUser()`
+   * `updateUserAssignedTeammates()`
 
 ## Examples
 

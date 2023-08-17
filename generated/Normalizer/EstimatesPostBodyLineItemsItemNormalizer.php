@@ -35,7 +35,7 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' === $data::class;
     }
 
     /**
@@ -123,5 +123,10 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => false];
     }
 }

@@ -35,7 +35,7 @@ class ClientsClientIdPatchBodyNormalizer implements DenormalizerInterface, Norma
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' === $data::class;
     }
 
     /**
@@ -118,5 +118,10 @@ class ClientsClientIdPatchBodyNormalizer implements DenormalizerInterface, Norma
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' => false];
     }
 }

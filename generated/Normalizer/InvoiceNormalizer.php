@@ -35,7 +35,7 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoice' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoice' === $data::class;
     }
 
     /**
@@ -241,6 +241,16 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('payment_term', $data) && null === $data['payment_term']) {
             $object->setPaymentTerm(null);
         }
+        if (\array_key_exists('payment_options', $data) && null !== $data['payment_options']) {
+            $values_1 = [];
+            foreach ($data['payment_options'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setPaymentOptions($values_1);
+            unset($data['payment_options']);
+        } elseif (\array_key_exists('payment_options', $data) && null === $data['payment_options']) {
+            $object->setPaymentOptions(null);
+        }
         if (\array_key_exists('sent_at', $data) && null !== $data['sent_at']) {
             $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
             unset($data['sent_at']);
@@ -283,9 +293,9 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
             $object->setUpdatedAt(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
 
@@ -383,6 +393,13 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($object->isInitialized('paymentTerm') && null !== $object->getPaymentTerm()) {
             $data['payment_term'] = $object->getPaymentTerm();
         }
+        if ($object->isInitialized('paymentOptions') && null !== $object->getPaymentOptions()) {
+            $values_1 = [];
+            foreach ($object->getPaymentOptions() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['payment_options'] = $values_1;
+        }
         if ($object->isInitialized('sentAt') && null !== $object->getSentAt()) {
             $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
         }
@@ -404,12 +421,17 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value_2;
             }
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Harvest\\Api\\Model\\Invoice' => false];
     }
 }

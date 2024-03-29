@@ -80,7 +80,7 @@ class ProjectAssignment extends \ArrayObject
     /**
      * Array of task assignment objects associated with the project.
      *
-     * @var TaskAssignment[]|null
+     * @var list<TaskAssignment>|null
      */
     protected $taskAssignments;
 
@@ -282,7 +282,7 @@ class ProjectAssignment extends \ArrayObject
     /**
      * Array of task assignment objects associated with the project.
      *
-     * @return TaskAssignment[]|null
+     * @return list<TaskAssignment>|null
      */
     public function getTaskAssignments(): ?array
     {
@@ -292,7 +292,7 @@ class ProjectAssignment extends \ArrayObject
     /**
      * Array of task assignment objects associated with the project.
      *
-     * @param TaskAssignment[]|null $taskAssignments
+     * @param list<TaskAssignment>|null $taskAssignments
      */
     public function setTaskAssignments(?array $taskAssignments): self
     {

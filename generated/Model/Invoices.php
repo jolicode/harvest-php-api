@@ -18,7 +18,7 @@ class Invoices extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Invoice[]
+     * @var list<Invoice>
      */
     protected $invoices;
     /**
@@ -56,7 +56,7 @@ class Invoices extends \ArrayObject
     }
 
     /**
-     * @return Invoice[]
+     * @return list<Invoice>
      */
     public function getInvoices(): array
     {
@@ -64,7 +64,7 @@ class Invoices extends \ArrayObject
     }
 
     /**
-     * @param Invoice[] $invoices
+     * @param list<Invoice> $invoices
      */
     public function setInvoices(array $invoices): self
     {

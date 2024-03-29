@@ -18,7 +18,7 @@ class TimeReportsResults extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var TimeReportsResult[]
+     * @var list<TimeReportsResult>
      */
     protected $results;
     /**
@@ -56,7 +56,7 @@ class TimeReportsResults extends \ArrayObject
     }
 
     /**
-     * @return TimeReportsResult[]
+     * @return list<TimeReportsResult>
      */
     public function getResults(): array
     {
@@ -64,7 +64,7 @@ class TimeReportsResults extends \ArrayObject
     }
 
     /**
-     * @param TimeReportsResult[] $results
+     * @param list<TimeReportsResult> $results
      */
     public function setResults(array $results): self
     {

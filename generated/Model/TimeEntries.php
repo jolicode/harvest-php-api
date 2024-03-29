@@ -18,7 +18,7 @@ class TimeEntries extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var TimeEntry[]
+     * @var list<TimeEntry>
      */
     protected $timeEntries;
     /**
@@ -56,7 +56,7 @@ class TimeEntries extends \ArrayObject
     }
 
     /**
-     * @return TimeEntry[]
+     * @return list<TimeEntry>
      */
     public function getTimeEntries(): array
     {
@@ -64,7 +64,7 @@ class TimeEntries extends \ArrayObject
     }
 
     /**
-     * @param TimeEntry[] $timeEntries
+     * @param list<TimeEntry> $timeEntries
      */
     public function setTimeEntries(array $timeEntries): self
     {

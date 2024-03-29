@@ -1,3 +1,6 @@
+# Castor
+/.castor.stub.php
+
 # Composer
 composer.lock
 composer.phar

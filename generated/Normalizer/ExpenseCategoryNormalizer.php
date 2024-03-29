@@ -14,6 +14,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,137 +22,256 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $data::class;
-    }
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $type;
+        }
 
-    /**
-     * @param mixed      $data
-     * @param mixed      $class
-     * @param mixed|null $format
-     *
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $data::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\ExpenseCategory();
-        if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
-            $data['unit_price'] = (float) $data['unit_price'];
-        }
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ExpenseCategory();
+            if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
+                $data['unit_price'] = (float) $data['unit_price'];
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data) && null !== $data['id']) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+                $object->setId(null);
+            }
+            if (\array_key_exists('name', $data) && null !== $data['name']) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+                $object->setName(null);
+            }
+            if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
+                $object->setUnitName($data['unit_name']);
+                unset($data['unit_name']);
+            } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
+                $object->setUnitName(null);
+            }
+            if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
+                $object->setUnitPrice($data['unit_price']);
+                unset($data['unit_price']);
+            } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
+                $object->setUnitPrice(null);
+            }
+            if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
+                $object->setIsActive($data['is_active']);
+                unset($data['is_active']);
+            } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
+                $object->setIsActive(null);
+            }
+            if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                unset($data['created_at']);
+            } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
+                $object->setCreatedAt(null);
+            }
+            if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                unset($data['updated_at']);
+            } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
+                $object->setUpdatedAt(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
-        }
-        if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-            unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
-        }
-        if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
-            $object->setUnitName($data['unit_name']);
-            unset($data['unit_name']);
-        } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
-            $object->setUnitName(null);
-        }
-        if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
-            $object->setUnitPrice($data['unit_price']);
-            unset($data['unit_price']);
-        } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
-            $object->setUnitPrice(null);
-        }
-        if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
-            $object->setIsActive($data['is_active']);
-            unset($data['is_active']);
-        } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
-            $object->setIsActive(null);
-        }
-        if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
-            unset($data['created_at']);
-        } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
-            $object->setCreatedAt(null);
-        }
-        if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
-            unset($data['updated_at']);
-        } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
-            $object->setUpdatedAt(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param mixed      $object
-     * @param mixed|null $format
-     *
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('id') && null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
-            $data['unit_name'] = $object->getUnitName();
-        }
-        if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
-            $data['unit_price'] = $object->getUnitPrice();
-        }
-        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
-            $data['is_active'] = $object->getIsActive();
-        }
-        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
-        }
-        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
             }
+            if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
+                $data['unit_name'] = $object->getUnitName();
+            }
+            if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
+                $data['unit_price'] = $object->getUnitPrice();
+            }
+            if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
+                $data['is_active'] = $object->getIsActive();
+            }
+            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+            }
+            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class ExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => false];
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $type;
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' === $data::class;
+        }
+
+        /**
+         * @param mixed|null $format
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ExpenseCategory();
+            if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
+                $data['unit_price'] = (float) $data['unit_price'];
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('id', $data) && null !== $data['id']) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+                $object->setId(null);
+            }
+            if (\array_key_exists('name', $data) && null !== $data['name']) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+                $object->setName(null);
+            }
+            if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
+                $object->setUnitName($data['unit_name']);
+                unset($data['unit_name']);
+            } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
+                $object->setUnitName(null);
+            }
+            if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
+                $object->setUnitPrice($data['unit_price']);
+                unset($data['unit_price']);
+            } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
+                $object->setUnitPrice(null);
+            }
+            if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
+                $object->setIsActive($data['is_active']);
+                unset($data['is_active']);
+            } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
+                $object->setIsActive(null);
+            }
+            if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                unset($data['created_at']);
+            } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
+                $object->setCreatedAt(null);
+            }
+            if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                unset($data['updated_at']);
+            } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
+                $object->setUpdatedAt(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @param mixed|null $format
+         *
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('id') && null !== $object->getId()) {
+                $data['id'] = $object->getId();
+            }
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
+                $data['unit_name'] = $object->getUnitName();
+            }
+            if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
+                $data['unit_price'] = $object->getUnitPrice();
+            }
+            if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
+                $data['is_active'] = $object->getIsActive();
+            }
+            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+            }
+            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => false];
+        }
     }
 }

@@ -19,16 +19,18 @@ jobs:
       - name: Setup
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: 8.3
           extensions: mbstring, fileinfo, json, intl, dom
+          tools: castor
 
       - name: Run composer install
         run: composer install -n --prefer-dist
 
-      - name: 'php-cs-fixer check'
-        run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: 1
+      - name: Install qa tooling
+        run: castor qa:update
+
+      - name: Check coding standards
+        run: castor qa:cs --dry-run
 
   tests:
     name: Run tests for PHP ${{ matrix.php-versions }}
@@ -36,7 +38,7 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['8.0', '8.1', '8.2']
+        php-versions:  ['8.1', '8.2', '8.3']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,9 +54,10 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
+          tools: castor
 
       - name: Run composer install
         run: composer install -n --prefer-dist
 
       - name: Run tests
-        run: make test
+        run: castor qa:test

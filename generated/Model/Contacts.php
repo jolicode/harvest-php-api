@@ -18,7 +18,7 @@ class Contacts extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Contact[]
+     * @var list<Contact>
      */
     protected $contacts;
     /**
@@ -56,7 +56,7 @@ class Contacts extends \ArrayObject
     }
 
     /**
-     * @return Contact[]
+     * @return list<Contact>
      */
     public function getContacts(): array
     {
@@ -64,7 +64,7 @@ class Contacts extends \ArrayObject
     }
 
     /**
-     * @param Contact[] $contacts
+     * @param list<Contact> $contacts
      */
     public function setContacts(array $contacts): self
     {

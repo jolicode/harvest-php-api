@@ -18,7 +18,7 @@ class Roles extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Role[]
+     * @var list<Role>
      */
     protected $roles;
     /**
@@ -56,7 +56,7 @@ class Roles extends \ArrayObject
     }
 
     /**
-     * @return Role[]
+     * @return list<Role>
      */
     public function getRoles(): array
     {
@@ -64,7 +64,7 @@ class Roles extends \ArrayObject
     }
 
     /**
-     * @param Role[] $roles
+     * @param list<Role> $roles
      */
     public function setRoles(array $roles): self
     {

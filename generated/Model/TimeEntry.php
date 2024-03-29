@@ -122,7 +122,7 @@ class TimeEntry extends \ArrayObject
      */
     protected $isBilled;
     /**
-     * Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.
+     * Date and time the running timer was started (if tracking by duration). Use the ISO 8601 Format. Returns null for stopped timers.
      *
      * @var \DateTime|null
      */
@@ -518,7 +518,7 @@ class TimeEntry extends \ArrayObject
     }
 
     /**
-     * Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.
+     * Date and time the running timer was started (if tracking by duration). Use the ISO 8601 Format. Returns null for stopped timers.
      */
     public function getTimerStartedAt(): ?\DateTime
     {
@@ -526,7 +526,7 @@ class TimeEntry extends \ArrayObject
     }
 
     /**
-     * Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.
+     * Date and time the running timer was started (if tracking by duration). Use the ISO 8601 Format. Returns null for stopped timers.
      */
     public function setTimerStartedAt(?\DateTime $timerStartedAt): self
     {

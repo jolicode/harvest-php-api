@@ -14,6 +14,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,107 +22,196 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $data::class;
-    }
-
-    /**
-     * @param mixed      $data
-     * @param mixed      $class
-     * @param mixed|null $format
-     *
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $data::class;
         }
-        $object = new \JoliCode\Harvest\Api\Model\ExpenseReceipt();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ExpenseReceipt();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data) && null !== $data['url']) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            } elseif (\array_key_exists('url', $data) && null === $data['url']) {
+                $object->setUrl(null);
+            }
+            if (\array_key_exists('file_name', $data) && null !== $data['file_name']) {
+                $object->setFileName($data['file_name']);
+                unset($data['file_name']);
+            } elseif (\array_key_exists('file_name', $data) && null === $data['file_name']) {
+                $object->setFileName(null);
+            }
+            if (\array_key_exists('file_size', $data) && null !== $data['file_size']) {
+                $object->setFileSize($data['file_size']);
+                unset($data['file_size']);
+            } elseif (\array_key_exists('file_size', $data) && null === $data['file_size']) {
+                $object->setFileSize(null);
+            }
+            if (\array_key_exists('content_type', $data) && null !== $data['content_type']) {
+                $object->setContentType($data['content_type']);
+                unset($data['content_type']);
+            } elseif (\array_key_exists('content_type', $data) && null === $data['content_type']) {
+                $object->setContentType(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('url', $data) && null !== $data['url']) {
-            $object->setUrl($data['url']);
-            unset($data['url']);
-        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
-            $object->setUrl(null);
-        }
-        if (\array_key_exists('file_name', $data) && null !== $data['file_name']) {
-            $object->setFileName($data['file_name']);
-            unset($data['file_name']);
-        } elseif (\array_key_exists('file_name', $data) && null === $data['file_name']) {
-            $object->setFileName(null);
-        }
-        if (\array_key_exists('file_size', $data) && null !== $data['file_size']) {
-            $object->setFileSize($data['file_size']);
-            unset($data['file_size']);
-        } elseif (\array_key_exists('file_size', $data) && null === $data['file_size']) {
-            $object->setFileSize(null);
-        }
-        if (\array_key_exists('content_type', $data) && null !== $data['content_type']) {
-            $object->setContentType($data['content_type']);
-            unset($data['content_type']);
-        } elseif (\array_key_exists('content_type', $data) && null === $data['content_type']) {
-            $object->setContentType(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('url') && null !== $object->getUrl()) {
+                $data['url'] = $object->getUrl();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param mixed      $object
-     * @param mixed|null $format
-     *
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('url') && null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
-            $data['file_name'] = $object->getFileName();
-        }
-        if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
-            $data['file_size'] = $object->getFileSize();
-        }
-        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
-            $data['content_type'] = $object->getContentType();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
+                $data['file_name'] = $object->getFileName();
             }
+            if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
+                $data['file_size'] = $object->getFileSize();
+            }
+            if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
+                $data['content_type'] = $object->getContentType();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => false];
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $type;
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' === $data::class;
+        }
+
+        /**
+         * @param mixed|null $format
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ExpenseReceipt();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data) && null !== $data['url']) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            } elseif (\array_key_exists('url', $data) && null === $data['url']) {
+                $object->setUrl(null);
+            }
+            if (\array_key_exists('file_name', $data) && null !== $data['file_name']) {
+                $object->setFileName($data['file_name']);
+                unset($data['file_name']);
+            } elseif (\array_key_exists('file_name', $data) && null === $data['file_name']) {
+                $object->setFileName(null);
+            }
+            if (\array_key_exists('file_size', $data) && null !== $data['file_size']) {
+                $object->setFileSize($data['file_size']);
+                unset($data['file_size']);
+            } elseif (\array_key_exists('file_size', $data) && null === $data['file_size']) {
+                $object->setFileSize(null);
+            }
+            if (\array_key_exists('content_type', $data) && null !== $data['content_type']) {
+                $object->setContentType($data['content_type']);
+                unset($data['content_type']);
+            } elseif (\array_key_exists('content_type', $data) && null === $data['content_type']) {
+                $object->setContentType(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @param mixed|null $format
+         *
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('url') && null !== $object->getUrl()) {
+                $data['url'] = $object->getUrl();
+            }
+            if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
+                $data['file_name'] = $object->getFileName();
+            }
+            if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
+                $data['file_size'] = $object->getFileSize();
+            }
+            if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
+                $data['content_type'] = $object->getContentType();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => false];
+        }
     }
 }

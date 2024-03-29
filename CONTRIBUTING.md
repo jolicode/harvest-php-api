@@ -48,7 +48,7 @@ Use [PHP CS fixer](http://cs.sensiolabs.org/) to make your code compliant with
 our coding standards:
 
 ```shell
-make cs
+castor qa:cs
 ```
 
 ## Keeping your fork up-to-date

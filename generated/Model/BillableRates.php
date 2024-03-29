@@ -18,7 +18,7 @@ class BillableRates extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var BillableRate[]
+     * @var list<BillableRate>
      */
     protected $billableRates;
     /**
@@ -56,7 +56,7 @@ class BillableRates extends \ArrayObject
     }
 
     /**
-     * @return BillableRate[]
+     * @return list<BillableRate>
      */
     public function getBillableRates(): array
     {
@@ -64,7 +64,7 @@ class BillableRates extends \ArrayObject
     }
 
     /**
-     * @param BillableRate[] $billableRates
+     * @param list<BillableRate> $billableRates
      */
     public function setBillableRates(array $billableRates): self
     {

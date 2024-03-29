@@ -88,7 +88,7 @@ class Expense extends \ArrayObject
      */
     protected $billable;
     /**
-     * Whether the expense has been approved or closed for some other reason.
+     * Whether the expense has been approved or not.
      *
      * @var bool|null
      */
@@ -358,7 +358,7 @@ class Expense extends \ArrayObject
     }
 
     /**
-     * Whether the expense has been approved or closed for some other reason.
+     * Whether the expense has been approved or not.
      */
     public function getIsClosed(): ?bool
     {
@@ -366,7 +366,7 @@ class Expense extends \ArrayObject
     }
 
     /**
-     * Whether the expense has been approved or closed for some other reason.
+     * Whether the expense has been approved or not.
      */
     public function setIsClosed(?bool $isClosed): self
     {

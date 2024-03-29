@@ -18,7 +18,7 @@ class Expenses extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Expense[]
+     * @var list<Expense>
      */
     protected $expenses;
     /**
@@ -56,7 +56,7 @@ class Expenses extends \ArrayObject
     }
 
     /**
-     * @return Expense[]
+     * @return list<Expense>
      */
     public function getExpenses(): array
     {
@@ -64,7 +64,7 @@ class Expenses extends \ArrayObject
     }
 
     /**
-     * @param Expense[] $expenses
+     * @param list<Expense> $expenses
      */
     public function setExpenses(array $expenses): self
     {

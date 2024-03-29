@@ -104,13 +104,13 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $paymentOptions;
     /**
      * Array of line item parameters.
      *
-     * @var InvoicesInvoiceIdPatchBodyLineItemsItem[]|null
+     * @var list<InvoicesInvoiceIdPatchBodyLineItemsItem>|null
      */
     protected $lineItems;
 
@@ -388,7 +388,7 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPaymentOptions(): ?array
     {
@@ -398,7 +398,7 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @param string[]|null $paymentOptions
+     * @param list<string>|null $paymentOptions
      */
     public function setPaymentOptions(?array $paymentOptions): self
     {
@@ -411,7 +411,7 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @return InvoicesInvoiceIdPatchBodyLineItemsItem[]|null
+     * @return list<InvoicesInvoiceIdPatchBodyLineItemsItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -421,7 +421,7 @@ class InvoicesInvoiceIdPatchBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @param InvoicesInvoiceIdPatchBodyLineItemsItem[]|null $lineItems
+     * @param list<InvoicesInvoiceIdPatchBodyLineItemsItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {

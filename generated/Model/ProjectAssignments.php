@@ -18,7 +18,7 @@ class ProjectAssignments extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var ProjectAssignment[]
+     * @var list<ProjectAssignment>
      */
     protected $projectAssignments;
     /**
@@ -56,7 +56,7 @@ class ProjectAssignments extends \ArrayObject
     }
 
     /**
-     * @return ProjectAssignment[]
+     * @return list<ProjectAssignment>
      */
     public function getProjectAssignments(): array
     {
@@ -64,7 +64,7 @@ class ProjectAssignments extends \ArrayObject
     }
 
     /**
-     * @param ProjectAssignment[] $projectAssignments
+     * @param list<ProjectAssignment> $projectAssignments
      */
     public function setProjectAssignments(array $projectAssignments): self
     {

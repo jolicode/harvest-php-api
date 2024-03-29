@@ -18,7 +18,7 @@ class Companies extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Company[]
+     * @var list<Company>
      */
     protected $companies;
     /**
@@ -56,7 +56,7 @@ class Companies extends \ArrayObject
     }
 
     /**
-     * @return Company[]
+     * @return list<Company>
      */
     public function getCompanies(): array
     {
@@ -64,7 +64,7 @@ class Companies extends \ArrayObject
     }
 
     /**
-     * @param Company[] $companies
+     * @param list<Company> $companies
      */
     public function setCompanies(array $companies): self
     {

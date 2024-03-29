@@ -18,7 +18,7 @@ class EstimateMessages extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var EstimateMessage[]
+     * @var list<EstimateMessage>
      */
     protected $estimateMessages;
     /**
@@ -56,7 +56,7 @@ class EstimateMessages extends \ArrayObject
     }
 
     /**
-     * @return EstimateMessage[]
+     * @return list<EstimateMessage>
      */
     public function getEstimateMessages(): array
     {
@@ -64,7 +64,7 @@ class EstimateMessages extends \ArrayObject
     }
 
     /**
-     * @param EstimateMessage[] $estimateMessages
+     * @param list<EstimateMessage> $estimateMessages
      */
     public function setEstimateMessages(array $estimateMessages): self
     {

@@ -18,7 +18,7 @@ class Tasks extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Task[]
+     * @var list<Task>
      */
     protected $tasks;
     /**
@@ -56,7 +56,7 @@ class Tasks extends \ArrayObject
     }
 
     /**
-     * @return Task[]
+     * @return list<Task>
      */
     public function getTasks(): array
     {
@@ -64,7 +64,7 @@ class Tasks extends \ArrayObject
     }
 
     /**
-     * @param Task[] $tasks
+     * @param list<Task> $tasks
      */
     public function setTasks(array $tasks): self
     {

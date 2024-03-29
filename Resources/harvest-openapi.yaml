@@ -1044,7 +1044,7 @@ components:
           nullable: true
         is_closed:
           type: boolean
-          description: 'Whether the expense has been approved or closed for some other reason.'
+          description: 'Whether the expense has been approved or not.'
           nullable: true
         is_locked:
           type: boolean
@@ -1293,7 +1293,7 @@ components:
           nullable: true
         timer_started_at:
           type: string
-          description: 'Date and time the timer was started (if tracking by duration). Use the ISO 8601 Format.'
+          description: 'Date and time the running timer was started (if tracking by duration). Use the ISO 8601 Format. Returns null for stopped timers.'
           nullable: true
           format: date-time
         started_time:
@@ -7330,6 +7330,10 @@ paths:
                   type: string
                   description: 'Any notes to be associated with the payment.'
                   nullable: true
+                send_thank_you:
+                  type: boolean
+                  description: 'Whether or not to send a thank you email (if enabled for your account in Invoices > Configure > Messages). Only sends an email if the invoice will be fully paid after creating this payment. Defaults to true.'
+                  nullable: true
               required:
                 - amount
   '/invoices/{invoiceId}/payments/{paymentId}':
@@ -9127,6 +9131,13 @@ paths:
           schema:
             type: string
         -
+          name: include_fixed_fee
+          description: 'When true, billable amounts will be calculated and included for fixed fee projects.'
+          required: false
+          in: query
+          schema:
+            type: string
+        -
           name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
@@ -9217,6 +9228,13 @@ paths:
           name: to
           description: 'Only report on time entries with a spent_date on or before the given date.'
           required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: include_fixed_fee
+          description: 'When true, billable amounts will be calculated and included for fixed fee projects.'
+          required: false
           in: query
           schema:
             type: string
@@ -9323,6 +9341,13 @@ paths:
           schema:
             type: string
         -
+          name: include_fixed_fee
+          description: 'When true, billable amounts will be calculated and included for fixed fee projects.'
+          required: false
+          in: query
+          schema:
+            type: string
+        -
           name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
@@ -9416,6 +9441,13 @@ paths:
           name: to
           description: 'Only report on time entries with a spent_date on or before the given date.'
           required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: include_fixed_fee
+          description: 'When true, billable amounts will be calculated and included for fixed fee projects.'
+          required: false
           in: query
           schema:
             type: string

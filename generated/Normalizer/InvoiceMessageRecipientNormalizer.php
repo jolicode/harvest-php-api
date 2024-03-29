@@ -14,6 +14,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,89 +22,160 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class InvoiceMessageRecipientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class InvoiceMessageRecipientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $data::class;
-    }
-
-    /**
-     * @param mixed      $data
-     * @param mixed      $class
-     * @param mixed|null $format
-     *
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $data::class;
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('name', $data) && null !== $data['name']) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+                $object->setName(null);
+            }
+            if (\array_key_exists('email', $data) && null !== $data['email']) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            } elseif (\array_key_exists('email', $data) && null === $data['email']) {
+                $object->setEmail(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-            unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
-        }
-        if (\array_key_exists('email', $data) && null !== $data['email']) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
-        } elseif (\array_key_exists('email', $data) && null === $data['email']) {
-            $object->setEmail(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param mixed      $object
-     * @param mixed|null $format
-     *
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
             }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class InvoiceMessageRecipientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => false];
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $type;
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' === $data::class;
+        }
+
+        /**
+         * @param mixed|null $format
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('name', $data) && null !== $data['name']) {
+                $object->setName($data['name']);
+                unset($data['name']);
+            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+                $object->setName(null);
+            }
+            if (\array_key_exists('email', $data) && null !== $data['email']) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            } elseif (\array_key_exists('email', $data) && null === $data['email']) {
+                $object->setEmail(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @param mixed|null $format
+         *
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['name'] = $object->getName();
+            }
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => false];
+        }
     }
 }

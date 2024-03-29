@@ -14,6 +14,7 @@ namespace JoliCode\Harvest\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,139 +22,260 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $data::class;
-    }
-
-    /**
-     * @param mixed      $data
-     * @param mixed      $class
-     * @param mixed|null $format
-     *
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $data::class;
         }
-        $object = new \JoliCode\Harvest\Api\Model\ContactsPostBody();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ContactsPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
+                $object->setClientId($data['client_id']);
+                unset($data['client_id']);
+            } elseif (\array_key_exists('client_id', $data) && null === $data['client_id']) {
+                $object->setClientId(null);
+            }
+            if (\array_key_exists('title', $data) && null !== $data['title']) {
+                $object->setTitle($data['title']);
+                unset($data['title']);
+            } elseif (\array_key_exists('title', $data) && null === $data['title']) {
+                $object->setTitle(null);
+            }
+            if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
+                $object->setFirstName($data['first_name']);
+                unset($data['first_name']);
+            } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
+                $object->setFirstName(null);
+            }
+            if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
+                $object->setLastName($data['last_name']);
+                unset($data['last_name']);
+            } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
+                $object->setLastName(null);
+            }
+            if (\array_key_exists('email', $data) && null !== $data['email']) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            } elseif (\array_key_exists('email', $data) && null === $data['email']) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('phone_office', $data) && null !== $data['phone_office']) {
+                $object->setPhoneOffice($data['phone_office']);
+                unset($data['phone_office']);
+            } elseif (\array_key_exists('phone_office', $data) && null === $data['phone_office']) {
+                $object->setPhoneOffice(null);
+            }
+            if (\array_key_exists('phone_mobile', $data) && null !== $data['phone_mobile']) {
+                $object->setPhoneMobile($data['phone_mobile']);
+                unset($data['phone_mobile']);
+            } elseif (\array_key_exists('phone_mobile', $data) && null === $data['phone_mobile']) {
+                $object->setPhoneMobile(null);
+            }
+            if (\array_key_exists('fax', $data) && null !== $data['fax']) {
+                $object->setFax($data['fax']);
+                unset($data['fax']);
+            } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
+                $object->setFax(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
-            $object->setClientId($data['client_id']);
-            unset($data['client_id']);
-        } elseif (\array_key_exists('client_id', $data) && null === $data['client_id']) {
-            $object->setClientId(null);
-        }
-        if (\array_key_exists('title', $data) && null !== $data['title']) {
-            $object->setTitle($data['title']);
-            unset($data['title']);
-        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
-            $object->setTitle(null);
-        }
-        if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
-            $object->setFirstName($data['first_name']);
-            unset($data['first_name']);
-        } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
-            $object->setFirstName(null);
-        }
-        if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
-            $object->setLastName($data['last_name']);
-            unset($data['last_name']);
-        } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
-            $object->setLastName(null);
-        }
-        if (\array_key_exists('email', $data) && null !== $data['email']) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
-        } elseif (\array_key_exists('email', $data) && null === $data['email']) {
-            $object->setEmail(null);
-        }
-        if (\array_key_exists('phone_office', $data) && null !== $data['phone_office']) {
-            $object->setPhoneOffice($data['phone_office']);
-            unset($data['phone_office']);
-        } elseif (\array_key_exists('phone_office', $data) && null === $data['phone_office']) {
-            $object->setPhoneOffice(null);
-        }
-        if (\array_key_exists('phone_mobile', $data) && null !== $data['phone_mobile']) {
-            $object->setPhoneMobile($data['phone_mobile']);
-            unset($data['phone_mobile']);
-        } elseif (\array_key_exists('phone_mobile', $data) && null === $data['phone_mobile']) {
-            $object->setPhoneMobile(null);
-        }
-        if (\array_key_exists('fax', $data) && null !== $data['fax']) {
-            $object->setFax($data['fax']);
-            unset($data['fax']);
-        } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
-            $object->setFax(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['client_id'] = $object->getClientId();
+            if ($object->isInitialized('title') && null !== $object->getTitle()) {
+                $data['title'] = $object->getTitle();
             }
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param mixed      $object
-     * @param mixed|null $format
-     *
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        $data['client_id'] = $object->getClientId();
-        if ($object->isInitialized('title') && null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        $data['first_name'] = $object->getFirstName();
-        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
-            $data['last_name'] = $object->getLastName();
-        }
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if ($object->isInitialized('phoneOffice') && null !== $object->getPhoneOffice()) {
-            $data['phone_office'] = $object->getPhoneOffice();
-        }
-        if ($object->isInitialized('phoneMobile') && null !== $object->getPhoneMobile()) {
-            $data['phone_mobile'] = $object->getPhoneMobile();
-        }
-        if ($object->isInitialized('fax') && null !== $object->getFax()) {
-            $data['fax'] = $object->getFax();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            $data['first_name'] = $object->getFirstName();
+            if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
+                $data['last_name'] = $object->getLastName();
             }
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
+            }
+            if ($object->isInitialized('phoneOffice') && null !== $object->getPhoneOffice()) {
+                $data['phone_office'] = $object->getPhoneOffice();
+            }
+            if ($object->isInitialized('phoneMobile') && null !== $object->getPhoneMobile()) {
+                $data['phone_mobile'] = $object->getPhoneMobile();
+            }
+            if ($object->isInitialized('fax') && null !== $object->getFax()) {
+                $data['fax'] = $object->getFax();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class ContactsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false];
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $type;
+        }
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' === $data::class;
+        }
+
+        /**
+         * @param mixed|null $format
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Harvest\Api\Model\ContactsPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
+                $object->setClientId($data['client_id']);
+                unset($data['client_id']);
+            } elseif (\array_key_exists('client_id', $data) && null === $data['client_id']) {
+                $object->setClientId(null);
+            }
+            if (\array_key_exists('title', $data) && null !== $data['title']) {
+                $object->setTitle($data['title']);
+                unset($data['title']);
+            } elseif (\array_key_exists('title', $data) && null === $data['title']) {
+                $object->setTitle(null);
+            }
+            if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
+                $object->setFirstName($data['first_name']);
+                unset($data['first_name']);
+            } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
+                $object->setFirstName(null);
+            }
+            if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
+                $object->setLastName($data['last_name']);
+                unset($data['last_name']);
+            } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
+                $object->setLastName(null);
+            }
+            if (\array_key_exists('email', $data) && null !== $data['email']) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            } elseif (\array_key_exists('email', $data) && null === $data['email']) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('phone_office', $data) && null !== $data['phone_office']) {
+                $object->setPhoneOffice($data['phone_office']);
+                unset($data['phone_office']);
+            } elseif (\array_key_exists('phone_office', $data) && null === $data['phone_office']) {
+                $object->setPhoneOffice(null);
+            }
+            if (\array_key_exists('phone_mobile', $data) && null !== $data['phone_mobile']) {
+                $object->setPhoneMobile($data['phone_mobile']);
+                unset($data['phone_mobile']);
+            } elseif (\array_key_exists('phone_mobile', $data) && null === $data['phone_mobile']) {
+                $object->setPhoneMobile(null);
+            }
+            if (\array_key_exists('fax', $data) && null !== $data['fax']) {
+                $object->setFax($data['fax']);
+                unset($data['fax']);
+            } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
+                $object->setFax(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @param mixed|null $format
+         *
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['client_id'] = $object->getClientId();
+            if ($object->isInitialized('title') && null !== $object->getTitle()) {
+                $data['title'] = $object->getTitle();
+            }
+            $data['first_name'] = $object->getFirstName();
+            if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
+                $data['last_name'] = $object->getLastName();
+            }
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
+            }
+            if ($object->isInitialized('phoneOffice') && null !== $object->getPhoneOffice()) {
+                $data['phone_office'] = $object->getPhoneOffice();
+            }
+            if ($object->isInitialized('phoneMobile') && null !== $object->getPhoneMobile()) {
+                $data['phone_mobile'] = $object->getPhoneMobile();
+            }
+            if ($object->isInitialized('fax') && null !== $object->getFax()) {
+                $data['fax'] = $object->getFax();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return ['JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false];
+        }
     }
 }

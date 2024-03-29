@@ -18,7 +18,7 @@ class UninvoicedReportResults extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var UninvoicedReportResult[]
+     * @var list<UninvoicedReportResult>
      */
     protected $results;
     /**
@@ -56,7 +56,7 @@ class UninvoicedReportResults extends \ArrayObject
     }
 
     /**
-     * @return UninvoicedReportResult[]
+     * @return list<UninvoicedReportResult>
      */
     public function getResults(): array
     {
@@ -64,7 +64,7 @@ class UninvoicedReportResults extends \ArrayObject
     }
 
     /**
-     * @param UninvoicedReportResult[] $results
+     * @param list<UninvoicedReportResult> $results
      */
     public function setResults(array $results): self
     {

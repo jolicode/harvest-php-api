@@ -32,7 +32,7 @@ class Invoice extends \ArrayObject
     /**
      * Array of invoice line items.
      *
-     * @var InvoiceLineItem[]|null
+     * @var list<InvoiceLineItem>|null
      */
     protected $lineItems;
     /**
@@ -176,7 +176,7 @@ class Invoice extends \ArrayObject
     /**
      * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $paymentOptions;
     /**
@@ -268,7 +268,7 @@ class Invoice extends \ArrayObject
     /**
      * Array of invoice line items.
      *
-     * @return InvoiceLineItem[]|null
+     * @return list<InvoiceLineItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -278,7 +278,7 @@ class Invoice extends \ArrayObject
     /**
      * Array of invoice line items.
      *
-     * @param InvoiceLineItem[]|null $lineItems
+     * @param list<InvoiceLineItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {
@@ -728,7 +728,7 @@ class Invoice extends \ArrayObject
     /**
      * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPaymentOptions(): ?array
     {
@@ -738,7 +738,7 @@ class Invoice extends \ArrayObject
     /**
      * The list of payment options enabled for the invoice. Options: [ach, credit_card, paypal].
      *
-     * @param string[]|null $paymentOptions
+     * @param list<string>|null $paymentOptions
      */
     public function setPaymentOptions(?array $paymentOptions): self
     {

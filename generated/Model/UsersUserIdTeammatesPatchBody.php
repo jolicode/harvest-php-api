@@ -20,7 +20,7 @@ class UsersUserIdTeammatesPatchBody extends \ArrayObject
     /**
      * Full list of user IDs to be assigned to the Manager.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $teammateIds;
 
@@ -32,7 +32,7 @@ class UsersUserIdTeammatesPatchBody extends \ArrayObject
     /**
      * Full list of user IDs to be assigned to the Manager.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTeammateIds(): ?array
     {
@@ -42,7 +42,7 @@ class UsersUserIdTeammatesPatchBody extends \ArrayObject
     /**
      * Full list of user IDs to be assigned to the Manager.
      *
-     * @param string[]|null $teammateIds
+     * @param list<string>|null $teammateIds
      */
     public function setTeammateIds(?array $teammateIds): self
     {

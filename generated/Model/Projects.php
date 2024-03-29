@@ -18,7 +18,7 @@ class Projects extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Project[]
+     * @var list<Project>
      */
     protected $projects;
     /**
@@ -56,7 +56,7 @@ class Projects extends \ArrayObject
     }
 
     /**
-     * @return Project[]
+     * @return list<Project>
      */
     public function getProjects(): array
     {
@@ -64,7 +64,7 @@ class Projects extends \ArrayObject
     }
 
     /**
-     * @param Project[] $projects
+     * @param list<Project> $projects
      */
     public function setProjects(array $projects): self
     {

@@ -11,7 +11,7 @@
 
 namespace JoliCode\Harvest\Api;
 
-class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
+class Client extends Runtime\Client\Client
 {
     /**
      * Returns a list of your clients. The clients are returned sorted by creation date, with the most recently created clients appearing first.
@@ -29,11 +29,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Clients|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Clients|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listClients(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListClients($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListClients($queryParameters), $fetch);
     }
 
     /**
@@ -41,11 +41,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createClient(Model\ClientsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateClient($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateClient($requestBody), $fetch);
     }
 
     /**
@@ -53,11 +53,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteClient($clientId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteClient($clientId), $fetch);
     }
 
     /**
@@ -65,11 +65,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveClient($clientId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveClient($clientId), $fetch);
     }
 
     /**
@@ -77,21 +77,21 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Client|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateClient(string $clientId, Model\ClientsClientIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateClient($clientId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateClient($clientId, $requestBody), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Company|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCompany(), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveCompany(), $fetch);
     }
 
     /**
@@ -99,11 +99,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Company|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Company|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateCompany(Model\CompanyPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateCompany($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateCompany($requestBody), $fetch);
     }
 
     /**
@@ -122,11 +122,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Contacts|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Contacts|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listContacts(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListContacts($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListContacts($queryParameters), $fetch);
     }
 
     /**
@@ -134,11 +134,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createContact(Model\ContactsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateContact($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateContact($requestBody), $fetch);
     }
 
     /**
@@ -146,11 +146,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteContact($contactId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteContact($contactId), $fetch);
     }
 
     /**
@@ -158,11 +158,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveContact($contactId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveContact($contactId), $fetch);
     }
 
     /**
@@ -170,11 +170,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Contact|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateContact(string $contactId, Model\ContactsContactIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateContact($contactId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateContact($contactId, $requestBody), $fetch);
     }
 
     /**
@@ -192,11 +192,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateItemCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listEstimateItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListEstimateItemCategories($queryParameters), $fetch);
     }
 
     /**
@@ -204,11 +204,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createEstimateItemCategory(Model\EstimateItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateItemCategory($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateEstimateItemCategory($requestBody), $fetch);
     }
 
     /**
@@ -216,11 +216,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
 
     /**
@@ -228,11 +228,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveEstimateItemCategory($estimateItemCategoryId), $fetch);
     }
 
     /**
@@ -240,11 +240,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateEstimateItemCategory(string $estimateItemCategoryId, Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateEstimateItemCategory($estimateItemCategoryId, $requestBody), $fetch);
     }
 
     /**
@@ -265,11 +265,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Estimates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Estimates|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listEstimates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListEstimates($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListEstimates($queryParameters), $fetch);
     }
 
     /**
@@ -277,11 +277,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createEstimate(Model\EstimatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimate($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateEstimate($requestBody), $fetch);
     }
 
     /**
@@ -289,11 +289,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimate($estimateId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteEstimate($estimateId), $fetch);
     }
 
     /**
@@ -301,11 +301,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveEstimate($estimateId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveEstimate($estimateId), $fetch);
     }
 
     /**
@@ -313,11 +313,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Estimate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateEstimate(string $estimateId, Model\EstimatesEstimateIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateEstimate($estimateId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateEstimate($estimateId, $requestBody), $fetch);
     }
 
     /**
@@ -335,11 +335,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateMessages|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listMessagesForEstimate(string $estimateId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListMessagesForEstimate($estimateId, $queryParameters), $fetch);
     }
 
     /**
@@ -347,11 +347,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\EstimateMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\EstimateMessage|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createEstimateMessage(string $estimateId, Model\EstimatesEstimateIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateEstimateMessage($estimateId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateEstimateMessage($estimateId, $requestBody), $fetch);
     }
 
     /**
@@ -359,11 +359,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteEstimateMessage($estimateId, $messageId), $fetch);
     }
 
     /**
@@ -382,11 +382,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listExpenseCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenseCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListExpenseCategories($queryParameters), $fetch);
     }
 
     /**
@@ -394,11 +394,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createExpenseCategory(Model\ExpenseCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpenseCategory($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateExpenseCategory($requestBody), $fetch);
     }
 
     /**
@@ -406,11 +406,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteExpenseCategory($expenseCategoryId), $fetch);
     }
 
     /**
@@ -418,11 +418,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveExpenseCategory($expenseCategoryId), $fetch);
     }
 
     /**
@@ -430,11 +430,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateExpenseCategory(string $expenseCategoryId, Model\ExpenseCategoriesExpenseCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpenseCategory($expenseCategoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateExpenseCategory($expenseCategoryId, $requestBody), $fetch);
     }
 
     /**
@@ -457,11 +457,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Expenses|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Expenses|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listExpenses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListExpenses($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListExpenses($queryParameters), $fetch);
     }
 
     /**
@@ -469,11 +469,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createExpense(Model\ExpensesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateExpense($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateExpense($requestBody), $fetch);
     }
 
     /**
@@ -481,11 +481,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteExpense($expenseId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteExpense($expenseId), $fetch);
     }
 
     /**
@@ -493,11 +493,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveExpense($expenseId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveExpense($expenseId), $fetch);
     }
 
     /**
@@ -505,11 +505,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Expense|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateExpense(string $expenseId, Model\ExpensesExpenseIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateExpense($expenseId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateExpense($expenseId, $requestBody), $fetch);
     }
 
     /**
@@ -527,11 +527,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategories|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceItemCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listInvoiceItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListInvoiceItemCategories($queryParameters), $fetch);
     }
 
     /**
@@ -539,11 +539,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoiceItemCategory(Model\InvoiceItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceItemCategory($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateInvoiceItemCategory($requestBody), $fetch);
     }
 
     /**
@@ -551,11 +551,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
 
     /**
@@ -563,11 +563,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveInvoiceItemCategory($invoiceItemCategoryId), $fetch);
     }
 
     /**
@@ -575,11 +575,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceItemCategory|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateInvoiceItemCategory(string $invoiceItemCategoryId, Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateInvoiceItemCategory($invoiceItemCategoryId, $requestBody), $fetch);
     }
 
     /**
@@ -601,11 +601,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Invoices|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Invoices|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listInvoices(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListInvoices($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListInvoices($queryParameters), $fetch);
     }
 
     /**
@@ -613,11 +613,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoice(Model\InvoicesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoice($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateInvoice($requestBody), $fetch);
     }
 
     /**
@@ -625,11 +625,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoice($invoiceId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteInvoice($invoiceId), $fetch);
     }
 
     /**
@@ -637,11 +637,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoice($invoiceId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveInvoice($invoiceId), $fetch);
     }
 
     /**
@@ -649,11 +649,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Invoice|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateInvoice(string $invoiceId, Model\InvoicesInvoiceIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateInvoice($invoiceId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateInvoice($invoiceId, $requestBody), $fetch);
     }
 
     /**
@@ -671,11 +671,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceMessages|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceMessages|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listMessagesForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListMessagesForInvoice($invoiceId, $queryParameters), $fetch);
     }
 
     /**
@@ -683,11 +683,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceMessage|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceMessage|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoiceMessage(string $invoiceId, Model\InvoicesInvoiceIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoiceMessage($invoiceId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateInvoiceMessage($invoiceId, $requestBody), $fetch);
     }
 
     /**
@@ -701,11 +701,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoiceMessageSubjectAndBody|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveInvoiceMessageSubjectAndBodyForSpecificInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice($invoiceId, $queryParameters), $fetch);
     }
 
     /**
@@ -713,11 +713,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteInvoiceMessage($invoiceId, $messageId), $fetch);
     }
 
     /**
@@ -735,11 +735,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoicePayments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoicePayments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListPaymentsForInvoice($invoiceId, $queryParameters), $fetch);
     }
 
     /**
@@ -747,11 +747,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\InvoicePayment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\InvoicePayment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createInvoicePayment(string $invoiceId, Model\InvoicesInvoiceIdPaymentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateInvoicePayment($invoiceId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateInvoicePayment($invoiceId, $requestBody), $fetch);
     }
 
     /**
@@ -759,11 +759,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteInvoicePayment($invoiceId, $paymentId), $fetch);
     }
 
     /**
@@ -783,11 +783,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Projects|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Projects|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listProjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListProjects($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListProjects($queryParameters), $fetch);
     }
 
     /**
@@ -795,11 +795,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createProject(Model\ProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateProject($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateProject($requestBody), $fetch);
     }
 
     /**
@@ -809,11 +809,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteProject($projectId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteProject($projectId), $fetch);
     }
 
     /**
@@ -821,11 +821,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveProject($projectId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveProject($projectId), $fetch);
     }
 
     /**
@@ -833,11 +833,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Project|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateProject(string $projectId, Model\ProjectsProjectIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateProject($projectId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateProject($projectId, $requestBody), $fetch);
     }
 
     /**
@@ -855,11 +855,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TaskAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListTaskAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
     }
 
     /**
@@ -867,11 +867,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTaskAssignment(string $projectId, Model\ProjectsProjectIdTaskAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTaskAssignment($projectId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateTaskAssignment($projectId, $requestBody), $fetch);
     }
 
     /**
@@ -879,11 +879,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteTaskAssignment($projectId, $taskAssignmentId), $fetch);
     }
 
     /**
@@ -891,11 +891,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveTaskAssignment($projectId, $taskAssignmentId), $fetch);
     }
 
     /**
@@ -903,11 +903,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TaskAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTaskAssignment(string $projectId, string $taskAssignmentId, Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateTaskAssignment($projectId, $taskAssignmentId, $requestBody), $fetch);
     }
 
     /**
@@ -926,11 +926,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UserAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListUserAssignmentsForSpecificProject($projectId, $queryParameters), $fetch);
     }
 
     /**
@@ -938,11 +938,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createUserAssignment(string $projectId, Model\ProjectsProjectIdUserAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUserAssignment($projectId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateUserAssignment($projectId, $requestBody), $fetch);
     }
 
     /**
@@ -950,11 +950,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteUserAssignment($projectId, $userAssignmentId), $fetch);
     }
 
     /**
@@ -962,11 +962,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveUserAssignment($projectId, $userAssignmentId), $fetch);
     }
 
     /**
@@ -974,11 +974,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UserAssignment|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateUserAssignment(string $projectId, string $userAssignmentId, Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateUserAssignment($projectId, $userAssignmentId, $requestBody), $fetch);
     }
 
     /**
@@ -992,11 +992,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function expenseCategoriesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ExpenseCategoriesReport($queryParameters), $fetch);
     }
 
     /**
@@ -1010,11 +1010,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function clientsExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ClientsExpensesReport($queryParameters), $fetch);
     }
 
     /**
@@ -1028,11 +1028,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function projectsExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ProjectsExpensesReport($queryParameters), $fetch);
     }
 
     /**
@@ -1046,11 +1046,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ExpenseReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TeamExpensesReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamExpensesReport($queryParameters), $fetch);
     }
 
     /**
@@ -1065,11 +1065,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ProjectBudgetReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ProjectBudgetReportResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function projectBudgetReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectBudgetReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ProjectBudgetReport($queryParameters), $fetch);
     }
 
     /**
@@ -1077,17 +1077,18 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @var string $from only report on time entries with a spent_date on or after the given date
      * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function clientsTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ClientsTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ClientsTimeReport($queryParameters), $fetch);
     }
 
     /**
@@ -1095,17 +1096,18 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @var string $from only report on time entries with a spent_date on or after the given date
      * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function projectsTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ProjectsTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ProjectsTimeReport($queryParameters), $fetch);
     }
 
     /**
@@ -1113,17 +1115,18 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @var string $from only report on time entries with a spent_date on or after the given date
      * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function tasksReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TasksReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TasksReport($queryParameters), $fetch);
     }
 
     /**
@@ -1131,17 +1134,18 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @var string $from only report on time entries with a spent_date on or after the given date
      * @var string $to only report on time entries with a spent_date on or before the given date
+     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeReportsResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\TeamTimeReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamTimeReport($queryParameters), $fetch);
     }
 
     /**
@@ -1159,11 +1163,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UninvoicedReportResults|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UninvoicedReportResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function uninvoicedReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UninvoicedReport($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UninvoicedReport($queryParameters), $fetch);
     }
 
     /**
@@ -1180,11 +1184,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Roles|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Roles|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listRoles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListRoles($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListRoles($queryParameters), $fetch);
     }
 
     /**
@@ -1192,11 +1196,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createRole(Model\RolesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateRole($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateRole($requestBody), $fetch);
     }
 
     /**
@@ -1204,11 +1208,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteRole($roleId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteRole($roleId), $fetch);
     }
 
     /**
@@ -1216,11 +1220,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveRole($roleId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveRole($roleId), $fetch);
     }
 
     /**
@@ -1228,11 +1232,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Role|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateRole(string $roleId, Model\RolesRoleIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateRole($roleId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateRole($roleId, $requestBody), $fetch);
     }
 
     /**
@@ -1251,11 +1255,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TaskAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TaskAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTaskAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTaskAssignments($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListTaskAssignments($queryParameters), $fetch);
     }
 
     /**
@@ -1274,11 +1278,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Tasks|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Tasks|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTasks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTasks($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListTasks($queryParameters), $fetch);
     }
 
     /**
@@ -1286,11 +1290,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTask(Model\TasksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTask($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateTask($requestBody), $fetch);
     }
 
     /**
@@ -1298,11 +1302,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTask($taskId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteTask($taskId), $fetch);
     }
 
     /**
@@ -1310,11 +1314,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTask($taskId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveTask($taskId), $fetch);
     }
 
     /**
@@ -1322,11 +1326,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Task|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTask(string $taskId, Model\TasksTaskIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTask($taskId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateTask($taskId, $requestBody), $fetch);
     }
 
     /**
@@ -1352,11 +1356,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntries|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntries|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listTimeEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListTimeEntries($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListTimeEntries($queryParameters), $fetch);
     }
 
     /**
@@ -1366,11 +1370,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createTimeEntry(Model\TimeEntriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateTimeEntry($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateTimeEntry($requestBody), $fetch);
     }
 
     /**
@@ -1378,11 +1382,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteTimeEntry($timeEntryId), $fetch);
     }
 
     /**
@@ -1390,11 +1394,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveTimeEntry($timeEntryId), $fetch);
     }
 
     /**
@@ -1402,11 +1406,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateTimeEntry(string $timeEntryId, Model\TimeEntriesTimeEntryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateTimeEntry($timeEntryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateTimeEntry($timeEntryId, $requestBody), $fetch);
     }
 
     /**
@@ -1414,11 +1418,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTimeEntryExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteTimeEntryExternalReference($timeEntryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteTimeEntryExternalReference($timeEntryId), $fetch);
     }
 
     /**
@@ -1426,11 +1430,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function restartStoppedTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RestartStoppedTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RestartStoppedTimeEntry($timeEntryId), $fetch);
     }
 
     /**
@@ -1438,11 +1442,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TimeEntry|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function stopRunningTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\StopRunningTimeEntry($timeEntryId), $fetch);
+        return $this->executeEndpoint(new Endpoint\StopRunningTimeEntry($timeEntryId), $fetch);
     }
 
     /**
@@ -1462,11 +1466,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\UserAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\UserAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUserAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUserAssignments($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListUserAssignments($queryParameters), $fetch);
     }
 
     /**
@@ -1485,11 +1489,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Users|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Users|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListUsers($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListUsers($queryParameters), $fetch);
     }
 
     /**
@@ -1497,21 +1501,21 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createUser(Model\UsersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateUser($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateUser($requestBody), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveTheCurrentlyAuthenticatedUser(), $fetch);
     }
 
     /**
@@ -1527,11 +1531,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ProjectAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser($queryParameters), $fetch);
     }
 
     /**
@@ -1539,11 +1543,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\DeleteUser($userId), $fetch);
+        return $this->executeEndpoint(new Endpoint\DeleteUser($userId), $fetch);
     }
 
     /**
@@ -1551,11 +1555,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveUser($userId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveUser($userId), $fetch);
     }
 
     /**
@@ -1563,11 +1567,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\User|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateUser(string $userId, Model\UsersUserIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUser($userId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateUser($userId, $requestBody), $fetch);
     }
 
     /**
@@ -1584,11 +1588,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\BillableRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\BillableRates|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listBillableRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListBillableRatesForSpecificUser($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListBillableRatesForSpecificUser($userId, $queryParameters), $fetch);
     }
 
     /**
@@ -1599,11 +1603,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\BillableRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createBillableRate(string $userId, Model\UsersUserIdBillableRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateBillableRate($userId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateBillableRate($userId, $requestBody), $fetch);
     }
 
     /**
@@ -1611,11 +1615,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\BillableRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\BillableRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveBillableRate(string $userId, string $billableRateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveBillableRate($userId, $billableRateId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveBillableRate($userId, $billableRateId), $fetch);
     }
 
     /**
@@ -1632,11 +1636,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\CostRates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CostRates|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listCostRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListCostRatesForSpecificUser($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListCostRatesForSpecificUser($userId, $queryParameters), $fetch);
     }
 
     /**
@@ -1647,11 +1651,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CostRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function createCostRate(string $userId, Model\UsersUserIdCostRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\CreateCostRate($userId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\CreateCostRate($userId, $requestBody), $fetch);
     }
 
     /**
@@ -1659,11 +1663,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\CostRate|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\CostRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function retrieveCostRate(string $userId, string $costRateId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\RetrieveCostRate($userId, $costRateId), $fetch);
+        return $this->executeEndpoint(new Endpoint\RetrieveCostRate($userId, $costRateId), $fetch);
     }
 
     /**
@@ -1681,11 +1685,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\ProjectAssignments|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ProjectAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listActiveProjectAssignments(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListActiveProjectAssignments($userId, $queryParameters), $fetch);
     }
 
     /**
@@ -1702,11 +1706,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\Teammates|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\Teammates|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function listAssignedTeammatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\ListAssignedTeammatesForSpecificUser($userId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ListAssignedTeammatesForSpecificUser($userId, $queryParameters), $fetch);
     }
 
     /**
@@ -1716,11 +1720,11 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Harvest\Api\Model\TeammatesPatchResponse|\JoliCode\Harvest\Api\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\TeammatesPatchResponse|Model\Error|\Psr\Http\Message\ResponseInterface|null
      */
     public function updateUserAssignedTeammates(string $userId, Model\UsersUserIdTeammatesPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Harvest\Api\Endpoint\UpdateUserAssignedTeammates($userId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\UpdateUserAssignedTeammates($userId, $requestBody), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
@@ -1728,7 +1732,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.harvestapp.com/v2');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.harvestapp.com/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (\count($additionalPlugins) > 0) {
@@ -1738,7 +1742,7 @@ class Client extends \JoliCode\Harvest\Api\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \JoliCode\Harvest\Api\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new Normalizer\JaneObjectNormalizer()];
         if (\count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

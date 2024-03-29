@@ -32,7 +32,7 @@ class Estimate extends \ArrayObject
     /**
      * Array of estimate line items.
      *
-     * @var EstimateLineItem[]|null
+     * @var list<EstimateLineItem>|null
      */
     protected $lineItems;
     /**
@@ -208,7 +208,7 @@ class Estimate extends \ArrayObject
     /**
      * Array of estimate line items.
      *
-     * @return EstimateLineItem[]|null
+     * @return list<EstimateLineItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -218,7 +218,7 @@ class Estimate extends \ArrayObject
     /**
      * Array of estimate line items.
      *
-     * @param EstimateLineItem[]|null $lineItems
+     * @param list<EstimateLineItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {

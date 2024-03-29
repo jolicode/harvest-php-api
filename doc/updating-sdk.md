@@ -1,5 +1,10 @@
 # Updating the SDK
 
+> [!NOTE]
+> The tooling for this project uses [Castor](https://castor.jolicode.com/),
+> a full-featured PHP task runner. In order to install Castor, see the
+> [installation instructions](https://castor.jolicode.com/getting-started/installation/).
+
 ## Fetch the latest OpenAPI specification version
 
 This library is generated using an OpenApi definition which is itself
@@ -8,23 +13,28 @@ generated. Therefore, you should not manually change the
 generated in the [jolicode/harvest-openapi-generator](https://github.com/jolicode/harvest-openapi-generator)
 repository.
 
-You can update the SDK to the last available specification version by running the following command:
+You can update the SDK to the last available specification version by
+running the following command:
 
 ```bash
-make update_sdk
+castor update
 ```
 
+This will both update the specification and re-generate the library code.
 Once done, you can run tests against the library:
 
 ```bash
-make tests
+castor qa:test
 ```
+
+If you wish to open a pull-request, please follow the [contribution guidelines](CONTRIBUTING.md).
 
 ### Detailed steps
 
-Updating the SDK "by hand" requires to download the last specification version and re-generate the library code (trhis is basically what `make update_sdk` does):
+Updating the SDK "by hand" requires to download the last specification version
+and re-generate the library code. This can be done with the following commands:
 
 ```bash
-curl https://raw.githubusercontent.com/jolicode/harvest-openapi-generator/master/generated/harvest-openapi.yaml -o Resources/harvest-openapi.yaml
-./vendor/bin/jane-openapi generate -c .jane-openapi.php
+castor sdk:update-specification
+castor sdk:generate
 ```

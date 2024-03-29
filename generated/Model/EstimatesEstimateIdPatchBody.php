@@ -80,7 +80,7 @@ class EstimatesEstimateIdPatchBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @var EstimatesEstimateIdPatchBodyLineItemsItem[]|null
+     * @var list<EstimatesEstimateIdPatchBodyLineItemsItem>|null
      */
     protected $lineItems;
 
@@ -282,7 +282,7 @@ class EstimatesEstimateIdPatchBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @return EstimatesEstimateIdPatchBodyLineItemsItem[]|null
+     * @return list<EstimatesEstimateIdPatchBodyLineItemsItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -292,7 +292,7 @@ class EstimatesEstimateIdPatchBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @param EstimatesEstimateIdPatchBodyLineItemsItem[]|null $lineItems
+     * @param list<EstimatesEstimateIdPatchBodyLineItemsItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {

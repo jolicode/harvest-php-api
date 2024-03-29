@@ -20,7 +20,7 @@ class InvoicesPostBodyLineItemsImport extends \ArrayObject
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $projectIds;
     /**
@@ -44,7 +44,7 @@ class InvoicesPostBodyLineItemsImport extends \ArrayObject
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getProjectIds(): array
     {
@@ -54,7 +54,7 @@ class InvoicesPostBodyLineItemsImport extends \ArrayObject
     /**
      * An array of the client’s project IDs you’d like to include time/expenses from.
      *
-     * @param int[] $projectIds
+     * @param list<int> $projectIds
      */
     public function setProjectIds(array $projectIds): self
     {

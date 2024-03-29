@@ -18,7 +18,7 @@ class EstimateMessageRecipients extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var EstimateMessageRecipient[]
+     * @var list<EstimateMessageRecipient>
      */
     protected $estimateMessageRecipients;
     /**
@@ -56,7 +56,7 @@ class EstimateMessageRecipients extends \ArrayObject
     }
 
     /**
-     * @return EstimateMessageRecipient[]
+     * @return list<EstimateMessageRecipient>
      */
     public function getEstimateMessageRecipients(): array
     {
@@ -64,7 +64,7 @@ class EstimateMessageRecipients extends \ArrayObject
     }
 
     /**
-     * @param EstimateMessageRecipient[] $estimateMessageRecipients
+     * @param list<EstimateMessageRecipient> $estimateMessageRecipients
      */
     public function setEstimateMessageRecipients(array $estimateMessageRecipients): self
     {

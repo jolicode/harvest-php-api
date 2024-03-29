@@ -18,7 +18,7 @@ class TaskAssignments extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var TaskAssignment[]
+     * @var list<TaskAssignment>
      */
     protected $taskAssignments;
     /**
@@ -56,7 +56,7 @@ class TaskAssignments extends \ArrayObject
     }
 
     /**
-     * @return TaskAssignment[]
+     * @return list<TaskAssignment>
      */
     public function getTaskAssignments(): array
     {
@@ -64,7 +64,7 @@ class TaskAssignments extends \ArrayObject
     }
 
     /**
-     * @param TaskAssignment[] $taskAssignments
+     * @param list<TaskAssignment> $taskAssignments
      */
     public function setTaskAssignments(array $taskAssignments): self
     {

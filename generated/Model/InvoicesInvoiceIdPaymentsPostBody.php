@@ -41,6 +41,12 @@ class InvoicesInvoiceIdPaymentsPostBody extends \ArrayObject
      * @var string|null
      */
     protected $notes;
+    /**
+     * Whether or not to send a thank you email (if enabled for your account in Invoices > Configure > Messages). Only sends an email if the invoice will be fully paid after creating this payment. Defaults to true.
+     *
+     * @var bool|null
+     */
+    protected $sendThankYou;
 
     public function isInitialized($property): bool
     {
@@ -119,6 +125,25 @@ class InvoicesInvoiceIdPaymentsPostBody extends \ArrayObject
     {
         $this->initialized['notes'] = true;
         $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Whether or not to send a thank you email (if enabled for your account in Invoices > Configure > Messages). Only sends an email if the invoice will be fully paid after creating this payment. Defaults to true.
+     */
+    public function getSendThankYou(): ?bool
+    {
+        return $this->sendThankYou;
+    }
+
+    /**
+     * Whether or not to send a thank you email (if enabled for your account in Invoices > Configure > Messages). Only sends an email if the invoice will be fully paid after creating this payment. Defaults to true.
+     */
+    public function setSendThankYou(?bool $sendThankYou): self
+    {
+        $this->initialized['sendThankYou'] = true;
+        $this->sendThankYou = $sendThankYou;
 
         return $this;
     }

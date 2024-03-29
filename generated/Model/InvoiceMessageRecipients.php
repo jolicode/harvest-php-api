@@ -18,7 +18,7 @@ class InvoiceMessageRecipients extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var InvoiceMessageRecipient[]
+     * @var list<InvoiceMessageRecipient>
      */
     protected $invoiceMessageRecipients;
     /**
@@ -56,7 +56,7 @@ class InvoiceMessageRecipients extends \ArrayObject
     }
 
     /**
-     * @return InvoiceMessageRecipient[]
+     * @return list<InvoiceMessageRecipient>
      */
     public function getInvoiceMessageRecipients(): array
     {
@@ -64,7 +64,7 @@ class InvoiceMessageRecipients extends \ArrayObject
     }
 
     /**
-     * @param InvoiceMessageRecipient[] $invoiceMessageRecipients
+     * @param list<InvoiceMessageRecipient> $invoiceMessageRecipients
      */
     public function setInvoiceMessageRecipients(array $invoiceMessageRecipients): self
     {

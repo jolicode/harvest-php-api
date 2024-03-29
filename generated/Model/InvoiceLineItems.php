@@ -18,7 +18,7 @@ class InvoiceLineItems extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var InvoiceLineItem[]
+     * @var list<InvoiceLineItem>
      */
     protected $invoiceLineItems;
     /**
@@ -56,7 +56,7 @@ class InvoiceLineItems extends \ArrayObject
     }
 
     /**
-     * @return InvoiceLineItem[]
+     * @return list<InvoiceLineItem>
      */
     public function getInvoiceLineItems(): array
     {
@@ -64,7 +64,7 @@ class InvoiceLineItems extends \ArrayObject
     }
 
     /**
-     * @param InvoiceLineItem[] $invoiceLineItems
+     * @param list<InvoiceLineItem> $invoiceLineItems
      */
     public function setInvoiceLineItems(array $invoiceLineItems): self
     {

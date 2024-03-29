@@ -26,7 +26,7 @@ class EstimatesEstimateIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @var EstimatesEstimateIdMessagesPostBodyRecipientsItem[]|null
+     * @var list<EstimatesEstimateIdMessagesPostBodyRecipientsItem>|null
      */
     protected $recipients;
     /**
@@ -75,7 +75,7 @@ class EstimatesEstimateIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @return EstimatesEstimateIdMessagesPostBodyRecipientsItem[]|null
+     * @return list<EstimatesEstimateIdMessagesPostBodyRecipientsItem>|null
      */
     public function getRecipients(): ?array
     {
@@ -85,7 +85,7 @@ class EstimatesEstimateIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @param EstimatesEstimateIdMessagesPostBodyRecipientsItem[]|null $recipients
+     * @param list<EstimatesEstimateIdMessagesPostBodyRecipientsItem>|null $recipients
      */
     public function setRecipients(?array $recipients): self
     {

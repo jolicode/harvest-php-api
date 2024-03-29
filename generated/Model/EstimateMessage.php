@@ -50,7 +50,7 @@ class EstimateMessage extends \ArrayObject
     /**
      * Array of estimate message recipients.
      *
-     * @var EstimateMessageRecipient[]|null
+     * @var list<EstimateMessageRecipient>|null
      */
     protected $recipients;
     /**
@@ -193,7 +193,7 @@ class EstimateMessage extends \ArrayObject
     /**
      * Array of estimate message recipients.
      *
-     * @return EstimateMessageRecipient[]|null
+     * @return list<EstimateMessageRecipient>|null
      */
     public function getRecipients(): ?array
     {
@@ -203,7 +203,7 @@ class EstimateMessage extends \ArrayObject
     /**
      * Array of estimate message recipients.
      *
-     * @param EstimateMessageRecipient[]|null $recipients
+     * @param list<EstimateMessageRecipient>|null $recipients
      */
     public function setRecipients(?array $recipients): self
     {

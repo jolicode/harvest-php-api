@@ -18,7 +18,7 @@ class EstimateLineItems extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var EstimateLineItem[]
+     * @var list<EstimateLineItem>
      */
     protected $estimateLineItems;
     /**
@@ -56,7 +56,7 @@ class EstimateLineItems extends \ArrayObject
     }
 
     /**
-     * @return EstimateLineItem[]
+     * @return list<EstimateLineItem>
      */
     public function getEstimateLineItems(): array
     {
@@ -64,7 +64,7 @@ class EstimateLineItems extends \ArrayObject
     }
 
     /**
-     * @param EstimateLineItem[] $estimateLineItems
+     * @param list<EstimateLineItem> $estimateLineItems
      */
     public function setEstimateLineItems(array $estimateLineItems): self
     {

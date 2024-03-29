@@ -98,7 +98,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $paymentOptions;
     /**
@@ -116,7 +116,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @var InvoicesPostBodyLineItemsItem[]|null
+     * @var list<InvoicesPostBodyLineItemsItem>|null
      */
     protected $lineItems;
 
@@ -375,7 +375,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPaymentOptions(): ?array
     {
@@ -385,7 +385,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * The payment options available to pay the invoice. Your account must be configured with the appropriate options under Settings > Integrations > Online payment to assign them. Options: [ach, credit_card, paypal].
      *
-     * @param string[]|null $paymentOptions
+     * @param list<string>|null $paymentOptions
      */
     public function setPaymentOptions(?array $paymentOptions): self
     {
@@ -436,7 +436,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @return InvoicesPostBodyLineItemsItem[]|null
+     * @return list<InvoicesPostBodyLineItemsItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -446,7 +446,7 @@ class InvoicesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @param InvoicesPostBodyLineItemsItem[]|null $lineItems
+     * @param list<InvoicesPostBodyLineItemsItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {

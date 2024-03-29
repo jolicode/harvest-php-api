@@ -18,7 +18,7 @@ class CostRates extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var CostRate[]
+     * @var list<CostRate>
      */
     protected $costRates;
     /**
@@ -56,7 +56,7 @@ class CostRates extends \ArrayObject
     }
 
     /**
-     * @return CostRate[]
+     * @return list<CostRate>
      */
     public function getCostRates(): array
     {
@@ -64,7 +64,7 @@ class CostRates extends \ArrayObject
     }
 
     /**
-     * @param CostRate[] $costRates
+     * @param list<CostRate> $costRates
      */
     public function setCostRates(array $costRates): self
     {

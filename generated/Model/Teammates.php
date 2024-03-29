@@ -18,7 +18,7 @@ class Teammates extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Teammate[]
+     * @var list<Teammate>
      */
     protected $teammates;
     /**
@@ -56,7 +56,7 @@ class Teammates extends \ArrayObject
     }
 
     /**
-     * @return Teammate[]
+     * @return list<Teammate>
      */
     public function getTeammates(): array
     {
@@ -64,7 +64,7 @@ class Teammates extends \ArrayObject
     }
 
     /**
-     * @param Teammate[] $teammates
+     * @param list<Teammate> $teammates
      */
     public function setTeammates(array $teammates): self
     {

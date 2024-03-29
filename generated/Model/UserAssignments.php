@@ -18,7 +18,7 @@ class UserAssignments extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var UserAssignment[]
+     * @var list<UserAssignment>
      */
     protected $userAssignments;
     /**
@@ -56,7 +56,7 @@ class UserAssignments extends \ArrayObject
     }
 
     /**
-     * @return UserAssignment[]
+     * @return list<UserAssignment>
      */
     public function getUserAssignments(): array
     {
@@ -64,7 +64,7 @@ class UserAssignments extends \ArrayObject
     }
 
     /**
-     * @param UserAssignment[] $userAssignments
+     * @param list<UserAssignment> $userAssignments
      */
     public function setUserAssignments(array $userAssignments): self
     {

@@ -18,7 +18,7 @@ class Users extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var User[]
+     * @var list<User>
      */
     protected $users;
     /**
@@ -56,7 +56,7 @@ class Users extends \ArrayObject
     }
 
     /**
-     * @return User[]
+     * @return list<User>
      */
     public function getUsers(): array
     {
@@ -64,7 +64,7 @@ class Users extends \ArrayObject
     }
 
     /**
-     * @param User[] $users
+     * @param list<User> $users
      */
     public function setUsers(array $users): self
     {

@@ -26,7 +26,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @var InvoicesInvoiceIdMessagesPostBodyRecipientsItem[]|null
+     * @var list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null
      */
     protected $recipients;
     /**
@@ -95,7 +95,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @return InvoicesInvoiceIdMessagesPostBodyRecipientsItem[]|null
+     * @return list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null
      */
     public function getRecipients(): ?array
     {
@@ -105,7 +105,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     /**
      * Array of recipient parameters. See below for details.
      *
-     * @param InvoicesInvoiceIdMessagesPostBodyRecipientsItem[]|null $recipients
+     * @param list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null $recipients
      */
     public function setRecipients(?array $recipients): self
     {

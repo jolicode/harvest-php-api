@@ -32,7 +32,7 @@ class Role extends \ArrayObject
     /**
      * The IDs of the users assigned to this role.
      *
-     * @var int[]|null
+     * @var list<int>|null
      */
     protected $userIds;
     /**
@@ -94,7 +94,7 @@ class Role extends \ArrayObject
     /**
      * The IDs of the users assigned to this role.
      *
-     * @return int[]|null
+     * @return list<int>|null
      */
     public function getUserIds(): ?array
     {
@@ -104,7 +104,7 @@ class Role extends \ArrayObject
     /**
      * The IDs of the users assigned to this role.
      *
-     * @param int[]|null $userIds
+     * @param list<int>|null $userIds
      */
     public function setUserIds(?array $userIds): self
     {

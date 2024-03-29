@@ -18,7 +18,7 @@ class ProjectBudgetReportResults extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var ProjectBudgetReportResult[]
+     * @var list<ProjectBudgetReportResult>
      */
     protected $results;
     /**
@@ -56,7 +56,7 @@ class ProjectBudgetReportResults extends \ArrayObject
     }
 
     /**
-     * @return ProjectBudgetReportResult[]
+     * @return list<ProjectBudgetReportResult>
      */
     public function getResults(): array
     {
@@ -64,7 +64,7 @@ class ProjectBudgetReportResults extends \ArrayObject
     }
 
     /**
-     * @param ProjectBudgetReportResult[] $results
+     * @param list<ProjectBudgetReportResult> $results
      */
     public function setResults(array $results): self
     {

@@ -80,7 +80,7 @@ class EstimatesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @var EstimatesPostBodyLineItemsItem[]|null
+     * @var list<EstimatesPostBodyLineItemsItem>|null
      */
     protected $lineItems;
 
@@ -282,7 +282,7 @@ class EstimatesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @return EstimatesPostBodyLineItemsItem[]|null
+     * @return list<EstimatesPostBodyLineItemsItem>|null
      */
     public function getLineItems(): ?array
     {
@@ -292,7 +292,7 @@ class EstimatesPostBody extends \ArrayObject
     /**
      * Array of line item parameters.
      *
-     * @param EstimatesPostBodyLineItemsItem[]|null $lineItems
+     * @param list<EstimatesPostBodyLineItemsItem>|null $lineItems
      */
     public function setLineItems(?array $lineItems): self
     {

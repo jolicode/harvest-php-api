@@ -18,7 +18,7 @@ class Clients extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var Client[]
+     * @var list<Client>
      */
     protected $clients;
     /**
@@ -56,7 +56,7 @@ class Clients extends \ArrayObject
     }
 
     /**
-     * @return Client[]
+     * @return list<Client>
      */
     public function getClients(): array
     {
@@ -64,7 +64,7 @@ class Clients extends \ArrayObject
     }
 
     /**
-     * @param Client[] $clients
+     * @param list<Client> $clients
      */
     public function setClients(array $clients): self
     {

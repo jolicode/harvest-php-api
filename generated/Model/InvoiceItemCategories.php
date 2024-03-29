@@ -18,7 +18,7 @@ class InvoiceItemCategories extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var InvoiceItemCategory[]
+     * @var list<InvoiceItemCategory>
      */
     protected $invoiceItemCategories;
     /**
@@ -56,7 +56,7 @@ class InvoiceItemCategories extends \ArrayObject
     }
 
     /**
-     * @return InvoiceItemCategory[]
+     * @return list<InvoiceItemCategory>
      */
     public function getInvoiceItemCategories(): array
     {
@@ -64,7 +64,7 @@ class InvoiceItemCategories extends \ArrayObject
     }
 
     /**
-     * @param InvoiceItemCategory[] $invoiceItemCategories
+     * @param list<InvoiceItemCategory> $invoiceItemCategories
      */
     public function setInvoiceItemCategories(array $invoiceItemCategories): self
     {

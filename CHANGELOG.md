@@ -1,5 +1,13 @@
 # Changes between versions
 
+## unreleased
+
+ * upgrade to `janephp/open-api` 7.6
+ * updated the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#28 in #47
+   * updated the spec according to the current documentation
+   * fixed the example emails parsing
+ * switch to [Castor](https://castor.jolicode.com/) for the project tooling
+
 ## 6.3.0 (2023-08-17)
 
  * updated the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#27 in #44

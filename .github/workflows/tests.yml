@@ -19,12 +19,15 @@ jobs:
       - name: Setup
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
           extensions: mbstring, fileinfo, json, intl, dom
           tools: castor
 
       - name: Run composer install
         run: composer install -n --prefer-dist
+
+      - name: Install qa tooling
+        run: castor qa:update
 
       - name: Check coding standards
         run: castor qa:cs --dry-run
@@ -35,7 +38,7 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['8.0', '8.1', '8.2']
+        php-versions:  ['8.1', '8.2', '8.3']
     steps:
       - name: Checkout
         uses: actions/checkout@v3

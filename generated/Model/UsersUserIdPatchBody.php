@@ -66,18 +66,6 @@ class UsersUserIdPatchBody extends \ArrayObject
      */
     protected $weeklyCapacity;
     /**
-     * The billable rate to use for this user when they are added to a project.
-     *
-     * @var float|null
-     */
-    protected $defaultHourlyRate;
-    /**
-     * The cost rate to use for this user when calculating a project’s costs vs billable amount.
-     *
-     * @var float|null
-     */
-    protected $costRate;
-    /**
      * Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.
      *
      * @var list<string>|null
@@ -243,44 +231,6 @@ class UsersUserIdPatchBody extends \ArrayObject
     {
         $this->initialized['weeklyCapacity'] = true;
         $this->weeklyCapacity = $weeklyCapacity;
-
-        return $this;
-    }
-
-    /**
-     * The billable rate to use for this user when they are added to a project.
-     */
-    public function getDefaultHourlyRate(): ?float
-    {
-        return $this->defaultHourlyRate;
-    }
-
-    /**
-     * The billable rate to use for this user when they are added to a project.
-     */
-    public function setDefaultHourlyRate(?float $defaultHourlyRate): self
-    {
-        $this->initialized['defaultHourlyRate'] = true;
-        $this->defaultHourlyRate = $defaultHourlyRate;
-
-        return $this;
-    }
-
-    /**
-     * The cost rate to use for this user when calculating a project’s costs vs billable amount.
-     */
-    public function getCostRate(): ?float
-    {
-        return $this->costRate;
-    }
-
-    /**
-     * The cost rate to use for this user when calculating a project’s costs vs billable amount.
-     */
-    public function setCostRate(?float $costRate): self
-    {
-        $this->initialized['costRate'] = true;
-        $this->costRate = $costRate;
 
         return $this;
     }

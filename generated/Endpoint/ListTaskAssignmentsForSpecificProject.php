@@ -83,10 +83,10 @@ class ListTaskAssignmentsForSpecificProject extends \JoliCode\Harvest\Api\Runtim
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\TaskAssignments', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

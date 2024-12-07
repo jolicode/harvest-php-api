@@ -18,6 +18,7 @@ running the following command:
 
 ```bash
 castor update
+castor qa:cs
 ```
 
 This will both update the specification and re-generate the library code.
@@ -37,4 +38,5 @@ and re-generate the library code. This can be done with the following commands:
 ```bash
 castor sdk:update-specification
 castor sdk:generate
+castor qa:cs
 ```

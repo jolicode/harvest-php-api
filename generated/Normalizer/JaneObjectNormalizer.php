@@ -28,7 +28,293 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
         use ValidatorTrait;
-        protected $normalizers = ['JoliCode\\Harvest\\Api\\Model\\Contact' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Client' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Company' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompanyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageRecipientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePayment' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentPaymentGatewayNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Invoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceEstimateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceRetainerNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceCreatorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageRecipientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Estimate' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateCreatorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateLineItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Expense' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseExpenseCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReceiptNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseInvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Task' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryTask' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryTaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryInvoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryInvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentTaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Project' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Role' => 'JoliCode\\Harvest\\Api\\Normalizer\\RoleNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Teammate' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\BillableRate' => 'JoliCode\\Harvest\\Api\\Normalizer\\BillableRateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CostRate' => 'JoliCode\\Harvest\\Api\\Normalizer\\CostRateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\User' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReportsResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\UninvoicedReportResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeReportsResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectBudgetReportResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Contacts' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Clients' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Companies' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompaniesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessages' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessagesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipients' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageRecipientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePayments' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Invoices' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItems' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessages' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessagesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageRecipientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Estimates' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItems' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateLineItemsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Expenses' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Tasks' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntries' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Projects' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Roles' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Teammates' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\BillableRates' => 'JoliCode\\Harvest\\Api\\Normalizer\\BillableRatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CostRates' => 'JoliCode\\Harvest\\Api\\Normalizer\\CostRatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Users' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReportsResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\UninvoicedReportResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeReportsResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectBudgetReportResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Error' => 'JoliCode\\Harvest\\Api\\Normalizer\\ErrorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageSubjectAndBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' => 'JoliCode\\Harvest\\Api\\Normalizer\\PaginationLinksNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TeammatesPatchResponse' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammatesPatchResponseNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ClientsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsClientIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CompanyPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompanyPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactsContactIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsContactIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesEstimateItemCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesEstimateItemCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesPostBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdPatchBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdMessagesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdMessagesPostBodyRecipientsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesExpenseCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpensesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesExpenseIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportTimeNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportExpensesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPatchBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdMessagesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPaymentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdTaskAssignmentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdUserAssignmentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesRoleIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TasksPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksTaskIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesPostBodyExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesTimeEntryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdBillableRatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdBillableRatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdCostRatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdTeammatesPatchBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\JoliCode\\Harvest\\Api\\Runtime\\Normalizer\\ReferenceNormalizer'];
+        protected $normalizers = [
+            \JoliCode\Harvest\Api\Model\Contact::class => ContactNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactClient::class => ContactClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Client::class => ClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Company::class => CompanyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessage::class => InvoiceMessageNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient::class => InvoiceMessageRecipientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePayment::class => InvoicePaymentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePaymentPaymentGateway::class => InvoicePaymentPaymentGatewayNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Invoice::class => InvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceClient::class => InvoiceClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceEstimate::class => InvoiceEstimateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceRetainer::class => InvoiceRetainerNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceCreator::class => InvoiceCreatorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItem::class => InvoiceLineItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class => InvoiceLineItemProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategory::class => InvoiceItemCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessage::class => EstimateMessageNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessageRecipient::class => EstimateMessageRecipientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Estimate::class => EstimateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateClient::class => EstimateClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateCreator::class => EstimateCreatorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateLineItem::class => EstimateLineItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategory::class => EstimateItemCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Expense::class => ExpenseNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseClient::class => ExpenseClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseProject::class => ExpenseProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => ExpenseExpenseCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseUser::class => ExpenseUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReceipt::class => ExpenseReceiptNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseInvoice::class => ExpenseInvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategory::class => ExpenseCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Task::class => TaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntry::class => TimeEntryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryUser::class => TimeEntryUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryClient::class => TimeEntryClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryProject::class => TimeEntryProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryTask::class => TimeEntryTaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class => TimeEntryExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryInvoice::class => TimeEntryInvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignment::class => UserAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignmentProject::class => UserAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignmentUser::class => UserAssignmentUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignment::class => TaskAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignmentProject::class => TaskAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignmentTask::class => TaskAssignmentTaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Project::class => ProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectClient::class => ProjectClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Role::class => RoleNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Teammate::class => TeammateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\BillableRate::class => BillableRateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CostRate::class => CostRateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignment::class => ProjectAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class => ProjectAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class => ProjectAssignmentClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\User::class => UserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReportsResult::class => ExpenseReportsResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UninvoicedReportResult::class => UninvoicedReportResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeReportsResult::class => TimeReportsResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult::class => ProjectBudgetReportResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Contacts::class => ContactsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Clients::class => ClientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Companies::class => CompaniesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessages::class => InvoiceMessagesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageRecipients::class => InvoiceMessageRecipientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePayments::class => InvoicePaymentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Invoices::class => InvoicesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItems::class => InvoiceLineItemsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategories::class => InvoiceItemCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessages::class => EstimateMessagesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessageRecipients::class => EstimateMessageRecipientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Estimates::class => EstimatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateLineItems::class => EstimateLineItemsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategories::class => EstimateItemCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Expenses::class => ExpensesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategories::class => ExpenseCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Tasks::class => TasksNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntries::class => TimeEntriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignments::class => UserAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignments::class => TaskAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Projects::class => ProjectsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Roles::class => RolesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Teammates::class => TeammatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\BillableRates::class => BillableRatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CostRates::class => CostRatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignments::class => ProjectAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Users::class => UsersNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReportsResults::class => ExpenseReportsResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UninvoicedReportResults::class => UninvoicedReportResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeReportsResults::class => TimeReportsResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectBudgetReportResults::class => ProjectBudgetReportResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Error::class => ErrorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody::class => InvoiceMessageSubjectAndBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\PaginationLinks::class => PaginationLinksNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TeammatesPatchResponse::class => TeammatesPatchResponseNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ClientsPostBody::class => ClientsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody::class => ClientsClientIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CompanyPatchBody::class => CompanyPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactsPostBody::class => ContactsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody::class => ContactsContactIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody::class => EstimateItemCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody::class => EstimateItemCategoriesEstimateItemCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesPostBody::class => EstimatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem::class => EstimatesPostBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody::class => EstimatesEstimateIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem::class => EstimatesEstimateIdPatchBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody::class => EstimatesEstimateIdMessagesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBodyRecipientsItem::class => EstimatesEstimateIdMessagesPostBodyRecipientsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody::class => ExpenseCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody::class => ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpensesPostBody::class => ExpensesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody::class => ExpensesExpenseIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody::class => InvoiceItemCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody::class => InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBody::class => InvoicesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImport::class => InvoicesPostBodyLineItemsImportNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => InvoicesPostBodyLineItemsImportTimeNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportExpenses::class => InvoicesPostBodyLineItemsImportExpensesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem::class => InvoicesPostBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody::class => InvoicesInvoiceIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBodyLineItemsItem::class => InvoicesInvoiceIdPatchBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => InvoicesInvoiceIdMessagesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class => InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => InvoicesInvoiceIdPaymentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsPostBody::class => ProjectsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody::class => ProjectsProjectIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody::class => ProjectsProjectIdTaskAssignmentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody::class => ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody::class => ProjectsProjectIdUserAssignmentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody::class => ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\RolesPostBody::class => RolesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody::class => RolesRoleIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TasksPostBody::class => TasksPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody::class => TasksTaskIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesPostBody::class => TimeEntriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference::class => TimeEntriesPostBodyExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody::class => TimeEntriesTimeEntryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBodyExternalReference::class => TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersPostBody::class => UsersPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => UsersUserIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody::class => UsersUserIdBillableRatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody::class => UsersUserIdCostRatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody::class => UsersUserIdTeammatesPatchBodyNormalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \JoliCode\Harvest\Api\Runtime\Normalizer\ReferenceNormalizer::class,
+        ];
         protected $normalizersCache = [];
 
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
@@ -59,7 +345,151 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Contact' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactClient' => false, 'JoliCode\\Harvest\\Api\\Model\\Client' => false, 'JoliCode\\Harvest\\Api\\Model\\Company' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePayment' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway' => false, 'JoliCode\\Harvest\\Api\\Model\\Invoice' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' => false, 'JoliCode\\Harvest\\Api\\Model\\Estimate' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateClient' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\Expense' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\Task' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryUser' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryProject' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryTask' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryInvoice' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => false, 'JoliCode\\Harvest\\Api\\Model\\Project' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectClient' => false, 'JoliCode\\Harvest\\Api\\Model\\Role' => false, 'JoliCode\\Harvest\\Api\\Model\\Teammate' => false, 'JoliCode\\Harvest\\Api\\Model\\BillableRate' => false, 'JoliCode\\Harvest\\Api\\Model\\CostRate' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' => false, 'JoliCode\\Harvest\\Api\\Model\\User' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' => false, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResult' => false, 'JoliCode\\Harvest\\Api\\Model\\Contacts' => false, 'JoliCode\\Harvest\\Api\\Model\\Clients' => false, 'JoliCode\\Harvest\\Api\\Model\\Companies' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessages' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipients' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePayments' => false, 'JoliCode\\Harvest\\Api\\Model\\Invoices' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItems' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessages' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' => false, 'JoliCode\\Harvest\\Api\\Model\\Estimates' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItems' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\Expenses' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\Tasks' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntries' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\Projects' => false, 'JoliCode\\Harvest\\Api\\Model\\Roles' => false, 'JoliCode\\Harvest\\Api\\Model\\Teammates' => false, 'JoliCode\\Harvest\\Api\\Model\\BillableRates' => false, 'JoliCode\\Harvest\\Api\\Model\\CostRates' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\Users' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults' => false, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResults' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResults' => false, 'JoliCode\\Harvest\\Api\\Model\\Error' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' => false, 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' => false, 'JoliCode\\Harvest\\Api\\Model\\TeammatesPatchResponse' => false, 'JoliCode\\Harvest\\Api\\Model\\ClientsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\CompanyPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactsContactIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesEstimateItemCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesExpenseCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpensesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TasksPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdBillableRatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [
+                \JoliCode\Harvest\Api\Model\Contact::class => false,
+                \JoliCode\Harvest\Api\Model\ContactClient::class => false,
+                \JoliCode\Harvest\Api\Model\Client::class => false,
+                \JoliCode\Harvest\Api\Model\Company::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessage::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePayment::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePaymentPaymentGateway::class => false,
+                \JoliCode\Harvest\Api\Model\Invoice::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceClient::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceEstimate::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceRetainer::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceCreator::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategory::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessage::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessageRecipient::class => false,
+                \JoliCode\Harvest\Api\Model\Estimate::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateClient::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateCreator::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateLineItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategory::class => false,
+                \JoliCode\Harvest\Api\Model\Expense::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseClient::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseProject::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseUser::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReceipt::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseInvoice::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategory::class => false,
+                \JoliCode\Harvest\Api\Model\Task::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntry::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryUser::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryClient::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryProject::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryTask::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryInvoice::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignmentUser::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignmentTask::class => false,
+                \JoliCode\Harvest\Api\Model\Project::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectClient::class => false,
+                \JoliCode\Harvest\Api\Model\Role::class => false,
+                \JoliCode\Harvest\Api\Model\Teammate::class => false,
+                \JoliCode\Harvest\Api\Model\BillableRate::class => false,
+                \JoliCode\Harvest\Api\Model\CostRate::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class => false,
+                \JoliCode\Harvest\Api\Model\User::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReportsResult::class => false,
+                \JoliCode\Harvest\Api\Model\UninvoicedReportResult::class => false,
+                \JoliCode\Harvest\Api\Model\TimeReportsResult::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult::class => false,
+                \JoliCode\Harvest\Api\Model\Contacts::class => false,
+                \JoliCode\Harvest\Api\Model\Clients::class => false,
+                \JoliCode\Harvest\Api\Model\Companies::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessages::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageRecipients::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePayments::class => false,
+                \JoliCode\Harvest\Api\Model\Invoices::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItems::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategories::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessages::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessageRecipients::class => false,
+                \JoliCode\Harvest\Api\Model\Estimates::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateLineItems::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategories::class => false,
+                \JoliCode\Harvest\Api\Model\Expenses::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategories::class => false,
+                \JoliCode\Harvest\Api\Model\Tasks::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntries::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\Projects::class => false,
+                \JoliCode\Harvest\Api\Model\Roles::class => false,
+                \JoliCode\Harvest\Api\Model\Teammates::class => false,
+                \JoliCode\Harvest\Api\Model\BillableRates::class => false,
+                \JoliCode\Harvest\Api\Model\CostRates::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\Users::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReportsResults::class => false,
+                \JoliCode\Harvest\Api\Model\UninvoicedReportResults::class => false,
+                \JoliCode\Harvest\Api\Model\TimeReportsResults::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectBudgetReportResults::class => false,
+                \JoliCode\Harvest\Api\Model\Error::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody::class => false,
+                \JoliCode\Harvest\Api\Model\PaginationLinks::class => false,
+                \JoliCode\Harvest\Api\Model\TeammatesPatchResponse::class => false,
+                \JoliCode\Harvest\Api\Model\ClientsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\CompanyPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ContactsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBodyRecipientsItem::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpensesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImport::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportExpenses::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\RolesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TasksPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBodyExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\UsersPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
 
         private function getNormalizer(string $normalizerClass)
@@ -84,7 +514,293 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
         use ValidatorTrait;
-        protected $normalizers = ['JoliCode\\Harvest\\Api\\Model\\Contact' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Client' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Company' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompanyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageRecipientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePayment' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentPaymentGatewayNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Invoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceEstimateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceRetainerNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceCreatorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageRecipientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Estimate' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateCreatorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateLineItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Expense' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseExpenseCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReceiptNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseInvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Task' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryTask' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryTaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntryInvoice' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntryInvoiceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentUserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentTaskNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Project' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Role' => 'JoliCode\\Harvest\\Api\\Normalizer\\RoleNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Teammate' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\BillableRate' => 'JoliCode\\Harvest\\Api\\Normalizer\\BillableRateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CostRate' => 'JoliCode\\Harvest\\Api\\Normalizer\\CostRateNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentProjectNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentClientNormalizer', 'JoliCode\\Harvest\\Api\\Model\\User' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReportsResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\UninvoicedReportResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeReportsResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResult' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectBudgetReportResultNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Contacts' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Clients' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Companies' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompaniesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessages' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessagesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipients' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageRecipientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicePayments' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicePaymentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Invoices' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItems' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceLineItemsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessages' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessagesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateMessageRecipientsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Estimates' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItems' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateLineItemsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Expenses' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Tasks' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntries' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\UserAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\TaskAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Projects' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Roles' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Teammates' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\BillableRates' => 'JoliCode\\Harvest\\Api\\Normalizer\\BillableRatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CostRates' => 'JoliCode\\Harvest\\Api\\Normalizer\\CostRatesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignments' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectAssignmentsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Users' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseReportsResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\UninvoicedReportResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeReportsResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResults' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectBudgetReportResultsNormalizer', 'JoliCode\\Harvest\\Api\\Model\\Error' => 'JoliCode\\Harvest\\Api\\Normalizer\\ErrorNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceMessageSubjectAndBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' => 'JoliCode\\Harvest\\Api\\Normalizer\\PaginationLinksNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TeammatesPatchResponse' => 'JoliCode\\Harvest\\Api\\Normalizer\\TeammatesPatchResponseNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ClientsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ClientsClientIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\CompanyPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\CompanyPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ContactsContactIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ContactsContactIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesEstimateItemCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimateItemCategoriesEstimateItemCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesPostBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdPatchBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdMessagesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\EstimatesEstimateIdMessagesPostBodyRecipientsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesExpenseCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpensesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ExpensesExpenseIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportTimeNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsImportExpensesNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesPostBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPatchBodyLineItemsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdMessagesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer', 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\InvoicesInvoiceIdPaymentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdTaskAssignmentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdUserAssignmentsPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\RolesRoleIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TasksPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TasksTaskIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesPostBodyExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesTimeEntryIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' => 'JoliCode\\Harvest\\Api\\Normalizer\\TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdPatchBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdBillableRatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdBillableRatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdCostRatesPostBodyNormalizer', 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' => 'JoliCode\\Harvest\\Api\\Normalizer\\UsersUserIdTeammatesPatchBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\JoliCode\\Harvest\\Api\\Runtime\\Normalizer\\ReferenceNormalizer'];
+        protected $normalizers = [
+            \JoliCode\Harvest\Api\Model\Contact::class => ContactNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactClient::class => ContactClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Client::class => ClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Company::class => CompanyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessage::class => InvoiceMessageNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient::class => InvoiceMessageRecipientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePayment::class => InvoicePaymentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePaymentPaymentGateway::class => InvoicePaymentPaymentGatewayNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Invoice::class => InvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceClient::class => InvoiceClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceEstimate::class => InvoiceEstimateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceRetainer::class => InvoiceRetainerNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceCreator::class => InvoiceCreatorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItem::class => InvoiceLineItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class => InvoiceLineItemProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategory::class => InvoiceItemCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessage::class => EstimateMessageNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessageRecipient::class => EstimateMessageRecipientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Estimate::class => EstimateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateClient::class => EstimateClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateCreator::class => EstimateCreatorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateLineItem::class => EstimateLineItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategory::class => EstimateItemCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Expense::class => ExpenseNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseClient::class => ExpenseClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseProject::class => ExpenseProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => ExpenseExpenseCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseUser::class => ExpenseUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReceipt::class => ExpenseReceiptNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseInvoice::class => ExpenseInvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategory::class => ExpenseCategoryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Task::class => TaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntry::class => TimeEntryNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryUser::class => TimeEntryUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryClient::class => TimeEntryClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryProject::class => TimeEntryProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryTask::class => TimeEntryTaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class => TimeEntryExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntryInvoice::class => TimeEntryInvoiceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignment::class => UserAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignmentProject::class => UserAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignmentUser::class => UserAssignmentUserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignment::class => TaskAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignmentProject::class => TaskAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignmentTask::class => TaskAssignmentTaskNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Project::class => ProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectClient::class => ProjectClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Role::class => RoleNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Teammate::class => TeammateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\BillableRate::class => BillableRateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CostRate::class => CostRateNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignment::class => ProjectAssignmentNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class => ProjectAssignmentProjectNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class => ProjectAssignmentClientNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\User::class => UserNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReportsResult::class => ExpenseReportsResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UninvoicedReportResult::class => UninvoicedReportResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeReportsResult::class => TimeReportsResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult::class => ProjectBudgetReportResultNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Contacts::class => ContactsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Clients::class => ClientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Companies::class => CompaniesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessages::class => InvoiceMessagesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageRecipients::class => InvoiceMessageRecipientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicePayments::class => InvoicePaymentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Invoices::class => InvoicesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceLineItems::class => InvoiceLineItemsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategories::class => InvoiceItemCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessages::class => EstimateMessagesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateMessageRecipients::class => EstimateMessageRecipientsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Estimates::class => EstimatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateLineItems::class => EstimateLineItemsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategories::class => EstimateItemCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Expenses::class => ExpensesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategories::class => ExpenseCategoriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Tasks::class => TasksNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntries::class => TimeEntriesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UserAssignments::class => UserAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TaskAssignments::class => TaskAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Projects::class => ProjectsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Roles::class => RolesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Teammates::class => TeammatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\BillableRates::class => BillableRatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CostRates::class => CostRatesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectAssignments::class => ProjectAssignmentsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Users::class => UsersNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseReportsResults::class => ExpenseReportsResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UninvoicedReportResults::class => UninvoicedReportResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeReportsResults::class => TimeReportsResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectBudgetReportResults::class => ProjectBudgetReportResultsNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\Error::class => ErrorNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody::class => InvoiceMessageSubjectAndBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\PaginationLinks::class => PaginationLinksNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TeammatesPatchResponse::class => TeammatesPatchResponseNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ClientsPostBody::class => ClientsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody::class => ClientsClientIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\CompanyPatchBody::class => CompanyPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactsPostBody::class => ContactsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody::class => ContactsContactIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody::class => EstimateItemCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody::class => EstimateItemCategoriesEstimateItemCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesPostBody::class => EstimatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem::class => EstimatesPostBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody::class => EstimatesEstimateIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem::class => EstimatesEstimateIdPatchBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody::class => EstimatesEstimateIdMessagesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBodyRecipientsItem::class => EstimatesEstimateIdMessagesPostBodyRecipientsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody::class => ExpenseCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody::class => ExpenseCategoriesExpenseCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpensesPostBody::class => ExpensesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody::class => ExpensesExpenseIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody::class => InvoiceItemCategoriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody::class => InvoiceItemCategoriesInvoiceItemCategoryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBody::class => InvoicesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImport::class => InvoicesPostBodyLineItemsImportNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => InvoicesPostBodyLineItemsImportTimeNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportExpenses::class => InvoicesPostBodyLineItemsImportExpensesNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem::class => InvoicesPostBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody::class => InvoicesInvoiceIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBodyLineItemsItem::class => InvoicesInvoiceIdPatchBodyLineItemsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => InvoicesInvoiceIdMessagesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class => InvoicesInvoiceIdMessagesPostBodyRecipientsItemNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => InvoicesInvoiceIdPaymentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsPostBody::class => ProjectsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody::class => ProjectsProjectIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody::class => ProjectsProjectIdTaskAssignmentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody::class => ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody::class => ProjectsProjectIdUserAssignmentsPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody::class => ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\RolesPostBody::class => RolesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody::class => RolesRoleIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TasksPostBody::class => TasksPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody::class => TasksTaskIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesPostBody::class => TimeEntriesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference::class => TimeEntriesPostBodyExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody::class => TimeEntriesTimeEntryIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBodyExternalReference::class => TimeEntriesTimeEntryIdPatchBodyExternalReferenceNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersPostBody::class => UsersPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => UsersUserIdPatchBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody::class => UsersUserIdBillableRatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody::class => UsersUserIdCostRatesPostBodyNormalizer::class,
+
+            \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody::class => UsersUserIdTeammatesPatchBodyNormalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \JoliCode\Harvest\Api\Runtime\Normalizer\ReferenceNormalizer::class,
+        ];
         protected $normalizersCache = [];
 
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
@@ -98,8 +814,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -110,9 +824,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $normalizer->normalize($object, $format, $context);
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             $denormalizerClass = $this->normalizers[$type];
@@ -123,7 +834,151 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Contact' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactClient' => false, 'JoliCode\\Harvest\\Api\\Model\\Client' => false, 'JoliCode\\Harvest\\Api\\Model\\Company' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipient' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePayment' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePaymentPaymentGateway' => false, 'JoliCode\\Harvest\\Api\\Model\\Invoice' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessage' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipient' => false, 'JoliCode\\Harvest\\Api\\Model\\Estimate' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateClient' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\Expense' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategory' => false, 'JoliCode\\Harvest\\Api\\Model\\Task' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntry' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryUser' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryClient' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryProject' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryTask' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntryInvoice' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignmentUser' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignmentTask' => false, 'JoliCode\\Harvest\\Api\\Model\\Project' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectClient' => false, 'JoliCode\\Harvest\\Api\\Model\\Role' => false, 'JoliCode\\Harvest\\Api\\Model\\Teammate' => false, 'JoliCode\\Harvest\\Api\\Model\\BillableRate' => false, 'JoliCode\\Harvest\\Api\\Model\\CostRate' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient' => false, 'JoliCode\\Harvest\\Api\\Model\\User' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResult' => false, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResult' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResult' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResult' => false, 'JoliCode\\Harvest\\Api\\Model\\Contacts' => false, 'JoliCode\\Harvest\\Api\\Model\\Clients' => false, 'JoliCode\\Harvest\\Api\\Model\\Companies' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessages' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageRecipients' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicePayments' => false, 'JoliCode\\Harvest\\Api\\Model\\Invoices' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItems' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessages' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateMessageRecipients' => false, 'JoliCode\\Harvest\\Api\\Model\\Estimates' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItems' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\Expenses' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategories' => false, 'JoliCode\\Harvest\\Api\\Model\\Tasks' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntries' => false, 'JoliCode\\Harvest\\Api\\Model\\UserAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\Projects' => false, 'JoliCode\\Harvest\\Api\\Model\\Roles' => false, 'JoliCode\\Harvest\\Api\\Model\\Teammates' => false, 'JoliCode\\Harvest\\Api\\Model\\BillableRates' => false, 'JoliCode\\Harvest\\Api\\Model\\CostRates' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignments' => false, 'JoliCode\\Harvest\\Api\\Model\\Users' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseReportsResults' => false, 'JoliCode\\Harvest\\Api\\Model\\UninvoicedReportResults' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeReportsResults' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectBudgetReportResults' => false, 'JoliCode\\Harvest\\Api\\Model\\Error' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessageSubjectAndBody' => false, 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks' => false, 'JoliCode\\Harvest\\Api\\Model\\TeammatesPatchResponse' => false, 'JoliCode\\Harvest\\Api\\Model\\ClientsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ClientsClientIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\CompanyPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ContactsContactIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimateItemCategoriesEstimateItemCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesPostBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdPatchBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\EstimatesEstimateIdMessagesPostBodyRecipientsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpenseCategoriesExpenseCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpensesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ExpensesExpenseIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImport' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportExpenses' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPatchBodyLineItemsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem' => false, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\RolesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\RolesRoleIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TasksPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TasksTaskIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesPostBodyExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\TimeEntriesTimeEntryIdPatchBodyExternalReference' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdBillableRatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdCostRatesPostBody' => false, 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdTeammatesPatchBody' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [
+                \JoliCode\Harvest\Api\Model\Contact::class => false,
+                \JoliCode\Harvest\Api\Model\ContactClient::class => false,
+                \JoliCode\Harvest\Api\Model\Client::class => false,
+                \JoliCode\Harvest\Api\Model\Company::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessage::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageRecipient::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePayment::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePaymentPaymentGateway::class => false,
+                \JoliCode\Harvest\Api\Model\Invoice::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceClient::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceEstimate::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceRetainer::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceCreator::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategory::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessage::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessageRecipient::class => false,
+                \JoliCode\Harvest\Api\Model\Estimate::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateClient::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateCreator::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateLineItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategory::class => false,
+                \JoliCode\Harvest\Api\Model\Expense::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseClient::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseProject::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseUser::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReceipt::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseInvoice::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategory::class => false,
+                \JoliCode\Harvest\Api\Model\Task::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntry::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryUser::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryClient::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryProject::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryTask::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntryInvoice::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignmentUser::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignmentTask::class => false,
+                \JoliCode\Harvest\Api\Model\Project::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectClient::class => false,
+                \JoliCode\Harvest\Api\Model\Role::class => false,
+                \JoliCode\Harvest\Api\Model\Teammate::class => false,
+                \JoliCode\Harvest\Api\Model\BillableRate::class => false,
+                \JoliCode\Harvest\Api\Model\CostRate::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignment::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class => false,
+                \JoliCode\Harvest\Api\Model\User::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReportsResult::class => false,
+                \JoliCode\Harvest\Api\Model\UninvoicedReportResult::class => false,
+                \JoliCode\Harvest\Api\Model\TimeReportsResult::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult::class => false,
+                \JoliCode\Harvest\Api\Model\Contacts::class => false,
+                \JoliCode\Harvest\Api\Model\Clients::class => false,
+                \JoliCode\Harvest\Api\Model\Companies::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessages::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageRecipients::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicePayments::class => false,
+                \JoliCode\Harvest\Api\Model\Invoices::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceLineItems::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategories::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessages::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateMessageRecipients::class => false,
+                \JoliCode\Harvest\Api\Model\Estimates::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateLineItems::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategories::class => false,
+                \JoliCode\Harvest\Api\Model\Expenses::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategories::class => false,
+                \JoliCode\Harvest\Api\Model\Tasks::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntries::class => false,
+                \JoliCode\Harvest\Api\Model\UserAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\TaskAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\Projects::class => false,
+                \JoliCode\Harvest\Api\Model\Roles::class => false,
+                \JoliCode\Harvest\Api\Model\Teammates::class => false,
+                \JoliCode\Harvest\Api\Model\BillableRates::class => false,
+                \JoliCode\Harvest\Api\Model\CostRates::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectAssignments::class => false,
+                \JoliCode\Harvest\Api\Model\Users::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseReportsResults::class => false,
+                \JoliCode\Harvest\Api\Model\UninvoicedReportResults::class => false,
+                \JoliCode\Harvest\Api\Model\TimeReportsResults::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectBudgetReportResults::class => false,
+                \JoliCode\Harvest\Api\Model\Error::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody::class => false,
+                \JoliCode\Harvest\Api\Model\PaginationLinks::class => false,
+                \JoliCode\Harvest\Api\Model\TeammatesPatchResponse::class => false,
+                \JoliCode\Harvest\Api\Model\ClientsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ClientsClientIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\CompanyPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ContactsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBodyRecipientsItem::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpenseCategoriesExpenseCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpensesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImport::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportExpenses::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBodyLineItemsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class => false,
+                \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\RolesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TasksPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\TasksTaskIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesPostBodyExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\TimeEntriesTimeEntryIdPatchBodyExternalReference::class => false,
+                \JoliCode\Harvest\Api\Model\UsersPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody::class => false,
+                \JoliCode\Harvest\Api\Model\UsersUserIdTeammatesPatchBody::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
 
         private function getNormalizer(string $normalizerClass)

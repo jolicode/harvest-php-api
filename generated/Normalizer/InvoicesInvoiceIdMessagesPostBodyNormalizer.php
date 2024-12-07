@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -61,7 +61,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('recipients', $data) && null !== $data['recipients']) {
                 $values = [];
                 foreach ($data['recipients'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class, 'json', $context);
                 }
                 $object->setRecipients($values);
                 unset($data['recipients']);
@@ -119,11 +119,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('eventType') && null !== $object->getEventType()) {
                 $data['event_type'] = $object->getEventType();
             }
-            $values = [];
-            foreach ($object->getRecipients() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            if ($object->isInitialized('recipients') && null !== $object->getRecipients()) {
+                $values = [];
+                foreach ($object->getRecipients() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['recipients'] = $values;
             }
-            $data['recipients'] = $values;
             if ($object->isInitialized('subject') && null !== $object->getSubject()) {
                 $data['subject'] = $object->getSubject();
             }
@@ -153,7 +155,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => false];
         }
     }
 } else {
@@ -166,17 +168,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -198,7 +197,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('recipients', $data) && null !== $data['recipients']) {
                 $values = [];
                 foreach ($data['recipients'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBodyRecipientsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBodyRecipientsItem::class, 'json', $context);
                 }
                 $object->setRecipients($values);
                 unset($data['recipients']);
@@ -251,8 +250,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -261,11 +258,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('eventType') && null !== $object->getEventType()) {
                 $data['event_type'] = $object->getEventType();
             }
-            $values = [];
-            foreach ($object->getRecipients() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            if ($object->isInitialized('recipients') && null !== $object->getRecipients()) {
+                $values = [];
+                foreach ($object->getRecipients() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['recipients'] = $values;
             }
-            $data['recipients'] = $values;
             if ($object->isInitialized('subject') && null !== $object->getSubject()) {
                 $data['subject'] = $object->getSubject();
             }
@@ -295,7 +294,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdMessagesPostBody' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody::class => false];
         }
     }
 }

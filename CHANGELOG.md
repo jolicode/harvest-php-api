@@ -1,5 +1,10 @@
 # Changes between versions
 
+## 7.1.0 (2024-12-07)
+
+ * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#29 in #48
+ * upgrade CS tooling
+
 ## 7.0.0 (2024-03-29)
 
  * upgrade to `janephp/open-api` 7.6

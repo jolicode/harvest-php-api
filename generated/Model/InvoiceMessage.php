@@ -92,7 +92,7 @@ class InvoiceMessage extends \ArrayObject
      */
     protected $thankYou;
     /**
-     * The type of invoice event that occurred with the message: send, close, draft, re-open, or view.
+     * The type of invoice event that occurred with the message: close, draft, re-open, or send (marked the invoice as sent). If event_type was omitted in the request, a null value is returned, meaning the invoice was sent.
      *
      * @var string|null
      */
@@ -364,7 +364,7 @@ class InvoiceMessage extends \ArrayObject
     }
 
     /**
-     * The type of invoice event that occurred with the message: send, close, draft, re-open, or view.
+     * The type of invoice event that occurred with the message: close, draft, re-open, or send (marked the invoice as sent). If event_type was omitted in the request, a null value is returned, meaning the invoice was sent.
      */
     public function getEventType(): ?string
     {
@@ -372,7 +372,7 @@ class InvoiceMessage extends \ArrayObject
     }
 
     /**
-     * The type of invoice event that occurred with the message: send, close, draft, re-open, or view.
+     * The type of invoice event that occurred with the message: close, draft, re-open, or send (marked the invoice as sent). If event_type was omitted in the request, a null value is returned, meaning the invoice was sent.
      */
     public function setEventType(?string $eventType): self
     {

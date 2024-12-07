@@ -54,7 +54,7 @@ class ModelTest extends TestCase
     public function provideExamples(): array
     {
         $examples = [];
-        $openapi = Yaml::parseFile(__DIR__.'/../Resources/harvest-openapi.yaml');
+        $openapi = Yaml::parseFile(__DIR__ . '/../Resources/harvest-openapi.yaml');
 
         $failedExpected = [
         ];
@@ -67,9 +67,7 @@ class ModelTest extends TestCase
                     foreach ($endpoint['responses'] as $statusCode => $response) {
                         if ('default' !== $statusCode) {
                             if (
-                                isset($response['content'])
-                                && isset($response['content']['application/json'])
-                                && isset($response['content']['application/json']['example'])
+                                isset($response['content'], $response['content']['application/json'], $response['content']['application/json']['example'])
                             ) {
                                 $modelName = $this->getFullClassName($response['content']['application/json']['schema']['$ref']);
                                 $example = json_encode($response['content']['application/json']['example']);
@@ -90,8 +88,8 @@ class ModelTest extends TestCase
 
     private function getFullClassName(string $name): string
     {
-        return sprintf(
-            'JoliCode\\Harvest\\Api\\Model\\%s',
+        return \sprintf(
+            'JoliCode\Harvest\Api\Model\%s',
             substr($name, \strlen('#/components/schemas/'))
         );
     }

@@ -22,9 +22,7 @@ class BearerAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\
 
     public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
     {
-        $request = $request->withHeader('Authorization', $this->{'apiKey'});
-
-        return $request;
+        return $request->withHeader('Authorization', $this->{'apiKey'});
     }
 
     public function getScope(): string

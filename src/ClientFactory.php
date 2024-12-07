@@ -29,7 +29,7 @@ class ClientFactory
             ]),
             new AuthenticationRegistry([
                 new AccountAuthAuthentication($accountId),
-                new BearerAuthAuthentication('Bearer '.$token),
+                new BearerAuthAuthentication('Bearer ' . $token),
             ]),
         ]);
     }

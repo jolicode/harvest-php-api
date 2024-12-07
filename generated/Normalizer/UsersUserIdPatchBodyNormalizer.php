@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === $type;
+            return \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -49,12 +49,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
-            if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
-                $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
-            }
-            if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
-                $data['cost_rate'] = (float) $data['cost_rate'];
-            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -105,18 +99,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['weekly_capacity']);
             } elseif (\array_key_exists('weekly_capacity', $data) && null === $data['weekly_capacity']) {
                 $object->setWeeklyCapacity(null);
-            }
-            if (\array_key_exists('default_hourly_rate', $data) && null !== $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate($data['default_hourly_rate']);
-                unset($data['default_hourly_rate']);
-            } elseif (\array_key_exists('default_hourly_rate', $data) && null === $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate(null);
-            }
-            if (\array_key_exists('cost_rate', $data) && null !== $data['cost_rate']) {
-                $object->setCostRate($data['cost_rate']);
-                unset($data['cost_rate']);
-            } elseif (\array_key_exists('cost_rate', $data) && null === $data['cost_rate']) {
-                $object->setCostRate(null);
             }
             if (\array_key_exists('roles', $data) && null !== $data['roles']) {
                 $values = [];
@@ -174,12 +156,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
                 $data['weekly_capacity'] = $object->getWeeklyCapacity();
             }
-            if ($object->isInitialized('defaultHourlyRate') && null !== $object->getDefaultHourlyRate()) {
-                $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
-            }
-            if ($object->isInitialized('costRate') && null !== $object->getCostRate()) {
-                $data['cost_rate'] = $object->getCostRate();
-            }
             if ($object->isInitialized('roles') && null !== $object->getRoles()) {
                 $values = [];
                 foreach ($object->getRoles() as $value) {
@@ -205,7 +181,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false];
+            return [\JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => false];
         }
     }
 } else {
@@ -218,17 +194,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === $type;
+            return \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -238,12 +211,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
-            if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
-                $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
-            }
-            if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
-                $data['cost_rate'] = (float) $data['cost_rate'];
-            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -295,18 +262,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('weekly_capacity', $data) && null === $data['weekly_capacity']) {
                 $object->setWeeklyCapacity(null);
             }
-            if (\array_key_exists('default_hourly_rate', $data) && null !== $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate($data['default_hourly_rate']);
-                unset($data['default_hourly_rate']);
-            } elseif (\array_key_exists('default_hourly_rate', $data) && null === $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate(null);
-            }
-            if (\array_key_exists('cost_rate', $data) && null !== $data['cost_rate']) {
-                $object->setCostRate($data['cost_rate']);
-                unset($data['cost_rate']);
-            } elseif (\array_key_exists('cost_rate', $data) && null === $data['cost_rate']) {
-                $object->setCostRate(null);
-            }
             if (\array_key_exists('roles', $data) && null !== $data['roles']) {
                 $values = [];
                 foreach ($data['roles'] as $value) {
@@ -337,8 +292,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -368,12 +321,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
                 $data['weekly_capacity'] = $object->getWeeklyCapacity();
             }
-            if ($object->isInitialized('defaultHourlyRate') && null !== $object->getDefaultHourlyRate()) {
-                $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
-            }
-            if ($object->isInitialized('costRate') && null !== $object->getCostRate()) {
-                $data['cost_rate'] = $object->getCostRate();
-            }
             if ($object->isInitialized('roles') && null !== $object->getRoles()) {
                 $values = [];
                 foreach ($object->getRoles() as $value) {
@@ -399,7 +346,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\UsersUserIdPatchBody' => false];
+            return [\JoliCode\Harvest\Api\Model\UsersUserIdPatchBody::class => false];
         }
     }
 }

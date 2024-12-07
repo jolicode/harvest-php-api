@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Expense' === $type;
+            return \JoliCode\Harvest\Api\Model\Expense::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Expense' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Expense::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -62,41 +62,41 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\ExpenseClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\ExpenseProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
             }
             if (\array_key_exists('expense_category', $data) && null !== $data['expense_category']) {
-                $object->setExpenseCategory($this->denormalizer->denormalize($data['expense_category'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory', 'json', $context));
+                $object->setExpenseCategory($this->denormalizer->denormalize($data['expense_category'], \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class, 'json', $context));
                 unset($data['expense_category']);
             } elseif (\array_key_exists('expense_category', $data) && null === $data['expense_category']) {
                 $object->setExpenseCategory(null);
             }
             if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($this->denormalizer->denormalize($data['user'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser', 'json', $context));
+                $object->setUser($this->denormalizer->denormalize($data['user'], \JoliCode\Harvest\Api\Model\ExpenseUser::class, 'json', $context));
                 unset($data['user']);
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
             if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context));
+                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
                 unset($data['user_assignment']);
             }
             if (\array_key_exists('receipt', $data) && null !== $data['receipt']) {
-                $object->setReceipt($this->denormalizer->denormalize($data['receipt'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt', 'json', $context));
+                $object->setReceipt($this->denormalizer->denormalize($data['receipt'], \JoliCode\Harvest\Api\Model\ExpenseReceipt::class, 'json', $context));
                 unset($data['receipt']);
             } elseif (\array_key_exists('receipt', $data) && null === $data['receipt']) {
                 $object->setReceipt(null);
             }
             if (\array_key_exists('invoice', $data) && null !== $data['invoice']) {
-                $object->setInvoice($this->denormalizer->denormalize($data['invoice'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice', 'json', $context));
+                $object->setInvoice($this->denormalizer->denormalize($data['invoice'], \JoliCode\Harvest\Api\Model\ExpenseInvoice::class, 'json', $context));
                 unset($data['invoice']);
             } elseif (\array_key_exists('invoice', $data) && null === $data['invoice']) {
                 $object->setInvoice(null);
@@ -156,13 +156,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setSpentDate(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -231,10 +231,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['spent_date'] = $object->getSpentDate()->format('Y-m-d');
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -247,7 +247,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Expense' => false];
+            return [\JoliCode\Harvest\Api\Model\Expense::class => false];
         }
     }
 } else {
@@ -260,17 +260,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Expense' === $type;
+            return \JoliCode\Harvest\Api\Model\Expense::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Expense' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Expense::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -293,41 +290,41 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\ExpenseClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\ExpenseProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
             }
             if (\array_key_exists('expense_category', $data) && null !== $data['expense_category']) {
-                $object->setExpenseCategory($this->denormalizer->denormalize($data['expense_category'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseExpenseCategory', 'json', $context));
+                $object->setExpenseCategory($this->denormalizer->denormalize($data['expense_category'], \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class, 'json', $context));
                 unset($data['expense_category']);
             } elseif (\array_key_exists('expense_category', $data) && null === $data['expense_category']) {
                 $object->setExpenseCategory(null);
             }
             if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($this->denormalizer->denormalize($data['user'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseUser', 'json', $context));
+                $object->setUser($this->denormalizer->denormalize($data['user'], \JoliCode\Harvest\Api\Model\ExpenseUser::class, 'json', $context));
                 unset($data['user']);
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
             if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], 'JoliCode\\Harvest\\Api\\Model\\UserAssignment', 'json', $context));
+                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
                 unset($data['user_assignment']);
             }
             if (\array_key_exists('receipt', $data) && null !== $data['receipt']) {
-                $object->setReceipt($this->denormalizer->denormalize($data['receipt'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseReceipt', 'json', $context));
+                $object->setReceipt($this->denormalizer->denormalize($data['receipt'], \JoliCode\Harvest\Api\Model\ExpenseReceipt::class, 'json', $context));
                 unset($data['receipt']);
             } elseif (\array_key_exists('receipt', $data) && null === $data['receipt']) {
                 $object->setReceipt(null);
             }
             if (\array_key_exists('invoice', $data) && null !== $data['invoice']) {
-                $object->setInvoice($this->denormalizer->denormalize($data['invoice'], 'JoliCode\\Harvest\\Api\\Model\\ExpenseInvoice', 'json', $context));
+                $object->setInvoice($this->denormalizer->denormalize($data['invoice'], \JoliCode\Harvest\Api\Model\ExpenseInvoice::class, 'json', $context));
                 unset($data['invoice']);
             } elseif (\array_key_exists('invoice', $data) && null === $data['invoice']) {
                 $object->setInvoice(null);
@@ -387,13 +384,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setSpentDate(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -408,8 +405,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -467,10 +462,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['spent_date'] = $object->getSpentDate()->format('Y-m-d');
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -483,7 +478,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Expense' => false];
+            return [\JoliCode\Harvest\Api\Model\Expense::class => false];
         }
     }
 }

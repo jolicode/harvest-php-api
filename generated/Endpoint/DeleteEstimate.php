@@ -60,7 +60,7 @@ class DeleteEstimate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
             return null;
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

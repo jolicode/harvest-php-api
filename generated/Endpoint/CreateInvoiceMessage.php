@@ -17,7 +17,9 @@ class CreateInvoiceMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
     protected $invoiceId;
 
     /**
-     * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     * Creates a new invoice message object and sends it. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     *
+     * A note about the optional event_type parameter: If event_type is omitted in a request, its default value of null means the message will be sent. In such a request, if the recipients array is omitted or empty and send_me_a_copy is also omitted or set to false, the request will fail because the message has no recipients. When omitting event_type to create and send a message, be sure to include a recipients array as a parameter or ensure the send_me_a_copy parameter is included and set to true.
      */
     public function __construct(string $invoiceId, \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody $requestBody)
     {
@@ -62,10 +64,10 @@ class CreateInvoiceMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\InvoiceMessage', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

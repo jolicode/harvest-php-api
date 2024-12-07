@@ -270,7 +270,7 @@ components:
           nullable: true
         event_type:
           type: string
-          description: 'The type of invoice event that occurred with the message: send, close, draft, re-open, or view.'
+          description: 'The type of invoice event that occurred with the message: close, draft, re-open, or send (marked the invoice as sent). If event_type was omitted in the request, a null value is returned, meaning the invoice was sent.'
           nullable: true
         reminder:
           type: boolean
@@ -6975,19 +6975,19 @@ paths:
           schema:
             type: integer
     post:
-      summary: 'Create an invoice message or change invoice status'
+      summary: 'Create and send an invoice message'
       operationId: createInvoiceMessage
-      description: 'Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.'
+      description: "Creates a new invoice message object and sends it. Returns an invoice message object and a 201 Created response code if the call succeeded.\n\nA note about the optional event_type parameter: If event_type is omitted in a request, its default value of null means the message will be sent. In such a request, if the recipients array is omitted or empty and send_me_a_copy is also omitted or set to false, the request will fail because the message has no recipients. When omitting event_type to create and send a message, be sure to include a recipients array as a parameter or ensure the send_me_a_copy parameter is included and set to true."
       externalDocs:
-        description: 'Create an invoice message'
-        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#create-an-invoice-message'
+        description: 'Create and send an invoice message'
+        url: 'https://help.getharvest.com/api-v2/invoices-api/invoices/invoice-messages/#create-and-send-an-invoice-message'
       security:
         -
           BearerAuth: []
           AccountAuth: []
       responses:
         201:
-          description: 'Create an invoice message or change invoice status'
+          description: 'Create and send an invoice message'
           content:
             application/json:
               schema:
@@ -7039,11 +7039,11 @@ paths:
               properties:
                 event_type:
                   type: string
-                  description: 'If provided, runs an event against the invoice. Options: close, draft, re-open, or send.'
+                  description: 'Omit when intending to create and send a message. If omitted, the default value is null and the message will be sent. See other sections below for including this parameter with the following options: close, draft, re-open, or send (which marks a draft invoice as sent, it does not send the message).'
                   nullable: true
                 recipients:
                   type: array
-                  description: 'Array of recipient parameters. See below for details.'
+                  description: 'Array of recipient parameters. See below for more details.'
                   nullable: true
                   items:
                     type: object
@@ -7082,8 +7082,6 @@ paths:
                   type: boolean
                   description: 'If set to true, a thank you message email will be sent. Defaults to false.'
                   nullable: true
-              required:
-                - recipients
   '/invoices/{invoiceId}/messages/new':
     get:
       summary: 'Retrieve invoice message subject and body for specific invoice'
@@ -9548,6 +9546,13 @@ paths:
           in: query
           schema:
             type: string
+        -
+          name: include_fixed_fee
+          description: 'Whether or not to include fixed-fee projects in the response. (Default: true)'
+          required: false
+          in: query
+          schema:
+            type: boolean
         -
           name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
@@ -12135,16 +12140,6 @@ paths:
                   description: 'The number of hours per week this person is available to work in seconds.'
                   nullable: true
                   format: int32
-                default_hourly_rate:
-                  type: number
-                  description: 'The billable rate to use for this user when they are added to a project.'
-                  nullable: true
-                  format: float
-                cost_rate:
-                  type: number
-                  description: 'The cost rate to use for this user when calculating a project’s costs vs billable amount.'
-                  nullable: true
-                  format: float
                 roles:
                   type: array
                   description: 'Descriptive names of the business roles assigned to this person. They can be used for filtering reports, and have no effect in their permissions in Harvest.'

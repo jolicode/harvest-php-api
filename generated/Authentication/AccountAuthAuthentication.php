@@ -22,9 +22,7 @@ class AccountAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client
 
     public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
     {
-        $request = $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
-
-        return $request;
+        return $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
     }
 
     public function getScope(): string

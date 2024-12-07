@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -62,7 +62,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setAmount(null);
             }
             if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
-                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
+                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['paid_at']));
                 unset($data['paid_at']);
             } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
                 $object->setPaidAt(null);
@@ -99,7 +99,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             $data = [];
             $data['amount'] = $object->getAmount();
             if ($object->isInitialized('paidAt') && null !== $object->getPaidAt()) {
-                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidDate') && null !== $object->getPaidDate()) {
                 $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
@@ -121,7 +121,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => false];
         }
     }
 } else {
@@ -134,17 +134,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -167,7 +164,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setAmount(null);
             }
             if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
-                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
+                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['paid_at']));
                 unset($data['paid_at']);
             } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
                 $object->setPaidAt(null);
@@ -200,8 +197,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -209,7 +204,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             $data = [];
             $data['amount'] = $object->getAmount();
             if ($object->isInitialized('paidAt') && null !== $object->getPaidAt()) {
-                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidDate') && null !== $object->getPaidDate()) {
                 $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
@@ -231,7 +226,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesInvoiceIdPaymentsPostBody' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody::class => false];
         }
     }
 }

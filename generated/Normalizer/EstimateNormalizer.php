@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Estimate' === $type;
+            return \JoliCode\Harvest\Api\Model\Estimate::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Estimate' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Estimate::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -80,7 +80,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\EstimateClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\EstimateClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -88,7 +88,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('line_items', $data) && null !== $data['line_items']) {
                 $values = [];
                 foreach ($data['line_items'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\EstimateLineItem::class, 'json', $context);
                 }
                 $object->setLineItems($values);
                 unset($data['line_items']);
@@ -96,7 +96,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLineItems(null);
             }
             if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator', 'json', $context));
+                $object->setCreator($this->denormalizer->denormalize($data['creator'], \JoliCode\Harvest\Api\Model\EstimateCreator::class, 'json', $context));
                 unset($data['creator']);
             } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
                 $object->setCreator(null);
@@ -192,31 +192,31 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setIssueDate(null);
             }
             if (\array_key_exists('sent_at', $data) && null !== $data['sent_at']) {
-                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
+                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['sent_at']));
                 unset($data['sent_at']);
             } elseif (\array_key_exists('sent_at', $data) && null === $data['sent_at']) {
                 $object->setSentAt(null);
             }
             if (\array_key_exists('accepted_at', $data) && null !== $data['accepted_at']) {
-                $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['accepted_at']));
+                $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['accepted_at']));
                 unset($data['accepted_at']);
             } elseif (\array_key_exists('accepted_at', $data) && null === $data['accepted_at']) {
                 $object->setAcceptedAt(null);
             }
             if (\array_key_exists('declined_at', $data) && null !== $data['declined_at']) {
-                $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['declined_at']));
+                $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['declined_at']));
                 unset($data['declined_at']);
             } elseif (\array_key_exists('declined_at', $data) && null === $data['declined_at']) {
                 $object->setDeclinedAt(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -295,19 +295,19 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['issue_date'] = $object->getIssueDate()->format('Y-m-d');
             }
             if ($object->isInitialized('sentAt') && null !== $object->getSentAt()) {
-                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('acceptedAt') && null !== $object->getAcceptedAt()) {
-                $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('declinedAt') && null !== $object->getDeclinedAt()) {
-                $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -320,7 +320,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Estimate' => false];
+            return [\JoliCode\Harvest\Api\Model\Estimate::class => false];
         }
     }
 } else {
@@ -333,17 +333,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Estimate' === $type;
+            return \JoliCode\Harvest\Api\Model\Estimate::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Estimate' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Estimate::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -384,7 +381,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\EstimateClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\EstimateClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -392,7 +389,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('line_items', $data) && null !== $data['line_items']) {
                 $values = [];
                 foreach ($data['line_items'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\EstimateLineItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\EstimateLineItem::class, 'json', $context);
                 }
                 $object->setLineItems($values);
                 unset($data['line_items']);
@@ -400,7 +397,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLineItems(null);
             }
             if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], 'JoliCode\\Harvest\\Api\\Model\\EstimateCreator', 'json', $context));
+                $object->setCreator($this->denormalizer->denormalize($data['creator'], \JoliCode\Harvest\Api\Model\EstimateCreator::class, 'json', $context));
                 unset($data['creator']);
             } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
                 $object->setCreator(null);
@@ -496,31 +493,31 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setIssueDate(null);
             }
             if (\array_key_exists('sent_at', $data) && null !== $data['sent_at']) {
-                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
+                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['sent_at']));
                 unset($data['sent_at']);
             } elseif (\array_key_exists('sent_at', $data) && null === $data['sent_at']) {
                 $object->setSentAt(null);
             }
             if (\array_key_exists('accepted_at', $data) && null !== $data['accepted_at']) {
-                $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['accepted_at']));
+                $object->setAcceptedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['accepted_at']));
                 unset($data['accepted_at']);
             } elseif (\array_key_exists('accepted_at', $data) && null === $data['accepted_at']) {
                 $object->setAcceptedAt(null);
             }
             if (\array_key_exists('declined_at', $data) && null !== $data['declined_at']) {
-                $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['declined_at']));
+                $object->setDeclinedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['declined_at']));
                 unset($data['declined_at']);
             } elseif (\array_key_exists('declined_at', $data) && null === $data['declined_at']) {
                 $object->setDeclinedAt(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -535,8 +532,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -604,19 +599,19 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['issue_date'] = $object->getIssueDate()->format('Y-m-d');
             }
             if ($object->isInitialized('sentAt') && null !== $object->getSentAt()) {
-                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('acceptedAt') && null !== $object->getAcceptedAt()) {
-                $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['accepted_at'] = $object->getAcceptedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('declinedAt') && null !== $object->getDeclinedAt()) {
-                $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['declined_at'] = $object->getDeclinedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -629,7 +624,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Estimate' => false];
+            return [\JoliCode\Harvest\Api\Model\Estimate::class => false];
         }
     }
 }

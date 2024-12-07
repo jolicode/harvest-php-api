@@ -64,10 +64,10 @@ class CreateInvoiceMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndp
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\InvoiceMessage', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\InvoiceMessage', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

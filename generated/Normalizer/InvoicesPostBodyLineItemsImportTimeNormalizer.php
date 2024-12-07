@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -78,10 +78,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             $data = [];
             $data['summary_type'] = $object->getSummaryType();
             if ($object->isInitialized('from') && null !== $object->getFrom()) {
-                $data['from'] = $object->getFrom()->format('Y-m-d');
+                $data['from'] = $object->getFrom()?->format('Y-m-d');
             }
             if ($object->isInitialized('to') && null !== $object->getTo()) {
-                $data['to'] = $object->getTo()->format('Y-m-d');
+                $data['to'] = $object->getTo()?->format('Y-m-d');
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -94,7 +94,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => false];
         }
     }
 } else {
@@ -107,17 +107,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -152,8 +149,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -161,10 +156,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             $data = [];
             $data['summary_type'] = $object->getSummaryType();
             if ($object->isInitialized('from') && null !== $object->getFrom()) {
-                $data['from'] = $object->getFrom()->format('Y-m-d');
+                $data['from'] = $object->getFrom()?->format('Y-m-d');
             }
             if ($object->isInitialized('to') && null !== $object->getTo()) {
-                $data['to'] = $object->getTo()->format('Y-m-d');
+                $data['to'] = $object->getTo()?->format('Y-m-d');
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -177,7 +172,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoicesPostBodyLineItemsImportTime' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime::class => false];
         }
     }
 }

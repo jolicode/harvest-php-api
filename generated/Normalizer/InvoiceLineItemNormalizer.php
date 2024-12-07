@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoiceLineItem::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoiceLineItem::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -68,7 +68,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
@@ -165,7 +165,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoiceLineItem::class => false];
         }
     }
 } else {
@@ -178,17 +178,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === $type;
+            return \JoliCode\Harvest\Api\Model\InvoiceLineItem::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\InvoiceLineItem::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -217,7 +214,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItemProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\InvoiceLineItemProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
@@ -274,8 +271,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -319,7 +314,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem' => false];
+            return [\JoliCode\Harvest\Api\Model\InvoiceLineItem::class => false];
         }
     }
 }

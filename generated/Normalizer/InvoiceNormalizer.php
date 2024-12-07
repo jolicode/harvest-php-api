@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Invoice' === $type;
+            return \JoliCode\Harvest\Api\Model\Invoice::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoice' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Invoice::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -83,7 +83,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\InvoiceClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -91,7 +91,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('line_items', $data) && null !== $data['line_items']) {
                 $values = [];
                 foreach ($data['line_items'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\InvoiceLineItem::class, 'json', $context);
                 }
                 $object->setLineItems($values);
                 unset($data['line_items']);
@@ -99,19 +99,19 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLineItems(null);
             }
             if (\array_key_exists('estimate', $data) && null !== $data['estimate']) {
-                $object->setEstimate($this->denormalizer->denormalize($data['estimate'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate', 'json', $context));
+                $object->setEstimate($this->denormalizer->denormalize($data['estimate'], \JoliCode\Harvest\Api\Model\InvoiceEstimate::class, 'json', $context));
                 unset($data['estimate']);
             } elseif (\array_key_exists('estimate', $data) && null === $data['estimate']) {
                 $object->setEstimate(null);
             }
             if (\array_key_exists('retainer', $data) && null !== $data['retainer']) {
-                $object->setRetainer($this->denormalizer->denormalize($data['retainer'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer', 'json', $context));
+                $object->setRetainer($this->denormalizer->denormalize($data['retainer'], \JoliCode\Harvest\Api\Model\InvoiceRetainer::class, 'json', $context));
                 unset($data['retainer']);
             } elseif (\array_key_exists('retainer', $data) && null === $data['retainer']) {
                 $object->setRetainer(null);
             }
             if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator', 'json', $context));
+                $object->setCreator($this->denormalizer->denormalize($data['creator'], \JoliCode\Harvest\Api\Model\InvoiceCreator::class, 'json', $context));
                 unset($data['creator']);
             } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
                 $object->setCreator(null);
@@ -247,13 +247,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPaymentOptions(null);
             }
             if (\array_key_exists('sent_at', $data) && null !== $data['sent_at']) {
-                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
+                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['sent_at']));
                 unset($data['sent_at']);
             } elseif (\array_key_exists('sent_at', $data) && null === $data['sent_at']) {
                 $object->setSentAt(null);
             }
             if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
-                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
+                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['paid_at']));
                 unset($data['paid_at']);
             } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
                 $object->setPaidAt(null);
@@ -265,7 +265,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPaidDate(null);
             }
             if (\array_key_exists('closed_at', $data) && null !== $data['closed_at']) {
-                $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['closed_at']));
+                $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['closed_at']));
                 unset($data['closed_at']);
             } elseif (\array_key_exists('closed_at', $data) && null === $data['closed_at']) {
                 $object->setClosedAt(null);
@@ -277,13 +277,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setRecurringInvoiceId(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -390,25 +390,25 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['payment_options'] = $values_1;
             }
             if ($object->isInitialized('sentAt') && null !== $object->getSentAt()) {
-                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidAt') && null !== $object->getPaidAt()) {
-                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidDate') && null !== $object->getPaidDate()) {
                 $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
             }
             if ($object->isInitialized('closedAt') && null !== $object->getClosedAt()) {
-                $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('recurringInvoiceId') && null !== $object->getRecurringInvoiceId()) {
                 $data['recurring_invoice_id'] = $object->getRecurringInvoiceId();
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -421,7 +421,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Invoice' => false];
+            return [\JoliCode\Harvest\Api\Model\Invoice::class => false];
         }
     }
 } else {
@@ -434,17 +434,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Invoice' === $type;
+            return \JoliCode\Harvest\Api\Model\Invoice::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoice' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Invoice::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -488,7 +485,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setId(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\InvoiceClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -496,7 +493,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('line_items', $data) && null !== $data['line_items']) {
                 $values = [];
                 foreach ($data['line_items'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\InvoiceLineItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\InvoiceLineItem::class, 'json', $context);
                 }
                 $object->setLineItems($values);
                 unset($data['line_items']);
@@ -504,19 +501,19 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLineItems(null);
             }
             if (\array_key_exists('estimate', $data) && null !== $data['estimate']) {
-                $object->setEstimate($this->denormalizer->denormalize($data['estimate'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceEstimate', 'json', $context));
+                $object->setEstimate($this->denormalizer->denormalize($data['estimate'], \JoliCode\Harvest\Api\Model\InvoiceEstimate::class, 'json', $context));
                 unset($data['estimate']);
             } elseif (\array_key_exists('estimate', $data) && null === $data['estimate']) {
                 $object->setEstimate(null);
             }
             if (\array_key_exists('retainer', $data) && null !== $data['retainer']) {
-                $object->setRetainer($this->denormalizer->denormalize($data['retainer'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceRetainer', 'json', $context));
+                $object->setRetainer($this->denormalizer->denormalize($data['retainer'], \JoliCode\Harvest\Api\Model\InvoiceRetainer::class, 'json', $context));
                 unset($data['retainer']);
             } elseif (\array_key_exists('retainer', $data) && null === $data['retainer']) {
                 $object->setRetainer(null);
             }
             if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], 'JoliCode\\Harvest\\Api\\Model\\InvoiceCreator', 'json', $context));
+                $object->setCreator($this->denormalizer->denormalize($data['creator'], \JoliCode\Harvest\Api\Model\InvoiceCreator::class, 'json', $context));
                 unset($data['creator']);
             } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
                 $object->setCreator(null);
@@ -652,13 +649,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPaymentOptions(null);
             }
             if (\array_key_exists('sent_at', $data) && null !== $data['sent_at']) {
-                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['sent_at']));
+                $object->setSentAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['sent_at']));
                 unset($data['sent_at']);
             } elseif (\array_key_exists('sent_at', $data) && null === $data['sent_at']) {
                 $object->setSentAt(null);
             }
             if (\array_key_exists('paid_at', $data) && null !== $data['paid_at']) {
-                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['paid_at']));
+                $object->setPaidAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['paid_at']));
                 unset($data['paid_at']);
             } elseif (\array_key_exists('paid_at', $data) && null === $data['paid_at']) {
                 $object->setPaidAt(null);
@@ -670,7 +667,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPaidDate(null);
             }
             if (\array_key_exists('closed_at', $data) && null !== $data['closed_at']) {
-                $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['closed_at']));
+                $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['closed_at']));
                 unset($data['closed_at']);
             } elseif (\array_key_exists('closed_at', $data) && null === $data['closed_at']) {
                 $object->setClosedAt(null);
@@ -682,13 +679,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setRecurringInvoiceId(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
@@ -703,8 +700,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -800,25 +795,25 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['payment_options'] = $values_1;
             }
             if ($object->isInitialized('sentAt') && null !== $object->getSentAt()) {
-                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['sent_at'] = $object->getSentAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidAt') && null !== $object->getPaidAt()) {
-                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['paid_at'] = $object->getPaidAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('paidDate') && null !== $object->getPaidDate()) {
                 $data['paid_date'] = $object->getPaidDate()->format('Y-m-d');
             }
             if ($object->isInitialized('closedAt') && null !== $object->getClosedAt()) {
-                $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('recurringInvoiceId') && null !== $object->getRecurringInvoiceId()) {
                 $data['recurring_invoice_id'] = $object->getRecurringInvoiceId();
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -831,7 +826,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Invoice' => false];
+            return [\JoliCode\Harvest\Api\Model\Invoice::class => false];
         }
     }
 }

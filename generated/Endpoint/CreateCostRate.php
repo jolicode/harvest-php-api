@@ -65,10 +65,10 @@ class CreateCostRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\CostRate', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\CostRate', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

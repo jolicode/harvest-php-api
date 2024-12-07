@@ -60,10 +60,10 @@ class CreateEstimate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Estimate', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Estimate', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

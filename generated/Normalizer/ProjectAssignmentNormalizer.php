@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' === $type;
+            return \JoliCode\Harvest\Api\Model\ProjectAssignment::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\ProjectAssignment::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -95,25 +95,25 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setBudget(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -121,7 +121,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('task_assignments', $data) && null !== $data['task_assignments']) {
                 $values = [];
                 foreach ($data['task_assignments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
                 }
                 $object->setTaskAssignments($values);
                 unset($data['task_assignments']);
@@ -159,10 +159,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['budget'] = $object->getBudget();
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('project') && null !== $object->getProject()) {
                 $data['project'] = $this->normalizer->normalize($object->getProject(), 'json', $context);
@@ -188,7 +188,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => false];
+            return [\JoliCode\Harvest\Api\Model\ProjectAssignment::class => false];
         }
     }
 } else {
@@ -201,17 +201,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' === $type;
+            return \JoliCode\Harvest\Api\Model\ProjectAssignment::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\ProjectAssignment::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -267,25 +264,25 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setBudget(null);
             }
             if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['created_at']));
+                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
                 unset($data['created_at']);
             } elseif (\array_key_exists('created_at', $data) && null === $data['created_at']) {
                 $object->setCreatedAt(null);
             }
             if (\array_key_exists('updated_at', $data) && null !== $data['updated_at']) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:s\\Z', $data['updated_at']));
+                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['updated_at']));
                 unset($data['updated_at']);
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
             if (\array_key_exists('project', $data) && null !== $data['project']) {
-                $object->setProject($this->denormalizer->denormalize($data['project'], 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentProject', 'json', $context));
+                $object->setProject($this->denormalizer->denormalize($data['project'], \JoliCode\Harvest\Api\Model\ProjectAssignmentProject::class, 'json', $context));
                 unset($data['project']);
             } elseif (\array_key_exists('project', $data) && null === $data['project']) {
                 $object->setProject(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
-                $object->setClient($this->denormalizer->denormalize($data['client'], 'JoliCode\\Harvest\\Api\\Model\\ProjectAssignmentClient', 'json', $context));
+                $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\ProjectAssignmentClient::class, 'json', $context));
                 unset($data['client']);
             } elseif (\array_key_exists('client', $data) && null === $data['client']) {
                 $object->setClient(null);
@@ -293,7 +290,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('task_assignments', $data) && null !== $data['task_assignments']) {
                 $values = [];
                 foreach ($data['task_assignments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
                 }
                 $object->setTaskAssignments($values);
                 unset($data['task_assignments']);
@@ -310,8 +307,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -336,10 +331,10 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['budget'] = $object->getBudget();
             }
             if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:s\\Z');
+                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
             if ($object->isInitialized('project') && null !== $object->getProject()) {
                 $data['project'] = $this->normalizer->normalize($object->getProject(), 'json', $context);
@@ -365,7 +360,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\ProjectAssignment' => false];
+            return [\JoliCode\Harvest\Api\Model\ProjectAssignment::class => false];
         }
     }
 }

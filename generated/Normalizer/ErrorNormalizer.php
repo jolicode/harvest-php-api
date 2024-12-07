@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Error' === $type;
+            return \JoliCode\Harvest\Api\Model\Error::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Error' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Error::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Error' => false];
+            return [\JoliCode\Harvest\Api\Model\Error::class => false];
         }
     }
 } else {
@@ -102,17 +102,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Error' === $type;
+            return \JoliCode\Harvest\Api\Model\Error::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Error' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Error::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -143,8 +140,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -167,7 +162,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Error' => false];
+            return [\JoliCode\Harvest\Api\Model\Error::class => false];
         }
     }
 }

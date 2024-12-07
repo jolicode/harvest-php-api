@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === $type;
+            return \JoliCode\Harvest\Api\Model\TaskAssignments::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\TaskAssignments::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -55,7 +55,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('task_assignments', $data)) {
                 $values = [];
                 foreach ($data['task_assignments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
                 }
                 $object->setTaskAssignments($values);
                 unset($data['task_assignments']);
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['page']);
             }
             if (\array_key_exists('links', $data)) {
-                $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+                $object->setLinks($this->denormalizer->denormalize($data['links'], \JoliCode\Harvest\Api\Model\PaginationLinks::class, 'json', $context));
                 unset($data['links']);
             }
             foreach ($data as $key => $value_1) {
@@ -127,7 +127,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => false];
+            return [\JoliCode\Harvest\Api\Model\TaskAssignments::class => false];
         }
     }
 } else {
@@ -140,17 +140,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === $type;
+            return \JoliCode\Harvest\Api\Model\TaskAssignments::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\TaskAssignments' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\TaskAssignments::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -166,7 +163,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('task_assignments', $data)) {
                 $values = [];
                 foreach ($data['task_assignments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\TaskAssignment', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
                 }
                 $object->setTaskAssignments($values);
                 unset($data['task_assignments']);
@@ -200,7 +197,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['page']);
             }
             if (\array_key_exists('links', $data)) {
-                $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+                $object->setLinks($this->denormalizer->denormalize($data['links'], \JoliCode\Harvest\Api\Model\PaginationLinks::class, 'json', $context));
                 unset($data['links']);
             }
             foreach ($data as $key => $value_1) {
@@ -213,8 +210,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -243,7 +238,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\TaskAssignments' => false];
+            return [\JoliCode\Harvest\Api\Model\TaskAssignments::class => false];
         }
     }
 }

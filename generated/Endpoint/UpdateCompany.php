@@ -60,10 +60,10 @@ class UpdateCompany extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Company', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Company', 'json');
         }
         if (false !== mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'JoliCode\\Harvest\\Api\\Model\\Error', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }
 }

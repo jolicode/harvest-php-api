@@ -32,12 +32,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Invoices' === $type;
+            return \JoliCode\Harvest\Api\Model\Invoices::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoices' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Invoices::class === $data::class;
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -55,7 +55,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('invoices', $data)) {
                 $values = [];
                 foreach ($data['invoices'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\Invoice', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\Invoice::class, 'json', $context);
                 }
                 $object->setInvoices($values);
                 unset($data['invoices']);
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['page']);
             }
             if (\array_key_exists('links', $data)) {
-                $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+                $object->setLinks($this->denormalizer->denormalize($data['links'], \JoliCode\Harvest\Api\Model\PaginationLinks::class, 'json', $context));
                 unset($data['links']);
             }
             foreach ($data as $key => $value_1) {
@@ -127,7 +127,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Invoices' => false];
+            return [\JoliCode\Harvest\Api\Model\Invoices::class => false];
         }
     }
 } else {
@@ -140,17 +140,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Harvest\\Api\\Model\\Invoices' === $type;
+            return \JoliCode\Harvest\Api\Model\Invoices::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Harvest\\Api\\Model\\Invoices' === $data::class;
+            return \is_object($data) && \JoliCode\Harvest\Api\Model\Invoices::class === $data::class;
         }
 
-        /**
-         * @param mixed|null $format
-         */
         public function denormalize($data, $type, $format = null, array $context = [])
         {
             if (isset($data['$ref'])) {
@@ -166,7 +163,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('invoices', $data)) {
                 $values = [];
                 foreach ($data['invoices'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Harvest\\Api\\Model\\Invoice', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Harvest\Api\Model\Invoice::class, 'json', $context);
                 }
                 $object->setInvoices($values);
                 unset($data['invoices']);
@@ -200,7 +197,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['page']);
             }
             if (\array_key_exists('links', $data)) {
-                $object->setLinks($this->denormalizer->denormalize($data['links'], 'JoliCode\\Harvest\\Api\\Model\\PaginationLinks', 'json', $context));
+                $object->setLinks($this->denormalizer->denormalize($data['links'], \JoliCode\Harvest\Api\Model\PaginationLinks::class, 'json', $context));
                 unset($data['links']);
             }
             foreach ($data as $key => $value_1) {
@@ -213,8 +210,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         }
 
         /**
-         * @param mixed|null $format
-         *
          * @return array|string|int|float|bool|\ArrayObject|null
          */
         public function normalize($object, $format = null, array $context = [])
@@ -243,7 +238,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Harvest\\Api\\Model\\Invoices' => false];
+            return [\JoliCode\Harvest\Api\Model\Invoices::class => false];
         }
     }
 }

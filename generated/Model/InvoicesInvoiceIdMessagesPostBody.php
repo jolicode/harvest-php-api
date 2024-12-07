@@ -18,13 +18,13 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * If provided, runs an event against the invoice. Options: close, draft, re-open, or send.
+     * Omit when intending to create and send a message. If omitted, the default value is null and the message will be sent. See other sections below for including this parameter with the following options: close, draft, re-open, or send (which marks a draft invoice as sent, it does not send the message).
      *
      * @var string|null
      */
     protected $eventType;
     /**
-     * Array of recipient parameters. See below for details.
+     * Array of recipient parameters. See below for more details.
      *
      * @var list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null
      */
@@ -74,7 +74,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * If provided, runs an event against the invoice. Options: close, draft, re-open, or send.
+     * Omit when intending to create and send a message. If omitted, the default value is null and the message will be sent. See other sections below for including this parameter with the following options: close, draft, re-open, or send (which marks a draft invoice as sent, it does not send the message).
      */
     public function getEventType(): ?string
     {
@@ -82,7 +82,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * If provided, runs an event against the invoice. Options: close, draft, re-open, or send.
+     * Omit when intending to create and send a message. If omitted, the default value is null and the message will be sent. See other sections below for including this parameter with the following options: close, draft, re-open, or send (which marks a draft invoice as sent, it does not send the message).
      */
     public function setEventType(?string $eventType): self
     {
@@ -93,7 +93,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * Array of recipient parameters. See below for details.
+     * Array of recipient parameters. See below for more details.
      *
      * @return list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null
      */
@@ -103,7 +103,7 @@ class InvoicesInvoiceIdMessagesPostBody extends \ArrayObject
     }
 
     /**
-     * Array of recipient parameters. See below for details.
+     * Array of recipient parameters. See below for more details.
      *
      * @param list<InvoicesInvoiceIdMessagesPostBodyRecipientsItem>|null $recipients
      */

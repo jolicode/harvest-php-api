@@ -119,11 +119,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('eventType') && null !== $object->getEventType()) {
                 $data['event_type'] = $object->getEventType();
             }
-            $values = [];
-            foreach ($object->getRecipients() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            if ($object->isInitialized('recipients') && null !== $object->getRecipients()) {
+                $values = [];
+                foreach ($object->getRecipients() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['recipients'] = $values;
             }
-            $data['recipients'] = $values;
             if ($object->isInitialized('subject') && null !== $object->getSubject()) {
                 $data['subject'] = $object->getSubject();
             }
@@ -261,11 +263,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('eventType') && null !== $object->getEventType()) {
                 $data['event_type'] = $object->getEventType();
             }
-            $values = [];
-            foreach ($object->getRecipients() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            if ($object->isInitialized('recipients') && null !== $object->getRecipients()) {
+                $values = [];
+                foreach ($object->getRecipients() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['recipients'] = $values;
             }
-            $data['recipients'] = $values;
             if ($object->isInitialized('subject') && null !== $object->getSubject()) {
                 $data['subject'] = $object->getSubject();
             }

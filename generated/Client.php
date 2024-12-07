@@ -679,7 +679,9 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Creates a new invoice message object. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     * Creates a new invoice message object and sends it. Returns an invoice message object and a 201 Created response code if the call succeeded.
+     *
+     * A note about the optional event_type parameter: If event_type is omitted in a request, its default value of null means the message will be sent. In such a request, if the recipients array is omitted or empty and send_me_a_copy is also omitted or set to false, the request will fail because the message has no recipients. When omitting event_type to create and send a message, be sure to include a recipients array as a parameter or ensure the send_me_a_copy parameter is included and set to true.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1157,6 +1159,7 @@ class Client extends Runtime\Client\Client
      *
      * @var string $from only report on time entries and expenses with a spent_date on or after the given date
      * @var string $to only report on time entries and expenses with a spent_date on or before the given date
+     * @var bool   $include_fixed_fee Whether or not to include fixed-fee projects in the response. (Default: true)
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }

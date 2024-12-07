@@ -49,12 +49,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
-            if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
-                $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
-            }
-            if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
-                $data['cost_rate'] = (float) $data['cost_rate'];
-            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -105,18 +99,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['weekly_capacity']);
             } elseif (\array_key_exists('weekly_capacity', $data) && null === $data['weekly_capacity']) {
                 $object->setWeeklyCapacity(null);
-            }
-            if (\array_key_exists('default_hourly_rate', $data) && null !== $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate($data['default_hourly_rate']);
-                unset($data['default_hourly_rate']);
-            } elseif (\array_key_exists('default_hourly_rate', $data) && null === $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate(null);
-            }
-            if (\array_key_exists('cost_rate', $data) && null !== $data['cost_rate']) {
-                $object->setCostRate($data['cost_rate']);
-                unset($data['cost_rate']);
-            } elseif (\array_key_exists('cost_rate', $data) && null === $data['cost_rate']) {
-                $object->setCostRate(null);
             }
             if (\array_key_exists('roles', $data) && null !== $data['roles']) {
                 $values = [];
@@ -173,12 +155,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             }
             if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
                 $data['weekly_capacity'] = $object->getWeeklyCapacity();
-            }
-            if ($object->isInitialized('defaultHourlyRate') && null !== $object->getDefaultHourlyRate()) {
-                $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
-            }
-            if ($object->isInitialized('costRate') && null !== $object->getCostRate()) {
-                $data['cost_rate'] = $object->getCostRate();
             }
             if ($object->isInitialized('roles') && null !== $object->getRoles()) {
                 $values = [];
@@ -238,12 +214,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
-            if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
-                $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
-            }
-            if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
-                $data['cost_rate'] = (float) $data['cost_rate'];
-            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -294,18 +264,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 unset($data['weekly_capacity']);
             } elseif (\array_key_exists('weekly_capacity', $data) && null === $data['weekly_capacity']) {
                 $object->setWeeklyCapacity(null);
-            }
-            if (\array_key_exists('default_hourly_rate', $data) && null !== $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate($data['default_hourly_rate']);
-                unset($data['default_hourly_rate']);
-            } elseif (\array_key_exists('default_hourly_rate', $data) && null === $data['default_hourly_rate']) {
-                $object->setDefaultHourlyRate(null);
-            }
-            if (\array_key_exists('cost_rate', $data) && null !== $data['cost_rate']) {
-                $object->setCostRate($data['cost_rate']);
-                unset($data['cost_rate']);
-            } elseif (\array_key_exists('cost_rate', $data) && null === $data['cost_rate']) {
-                $object->setCostRate(null);
             }
             if (\array_key_exists('roles', $data) && null !== $data['roles']) {
                 $values = [];
@@ -367,12 +325,6 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             }
             if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
                 $data['weekly_capacity'] = $object->getWeeklyCapacity();
-            }
-            if ($object->isInitialized('defaultHourlyRate') && null !== $object->getDefaultHourlyRate()) {
-                $data['default_hourly_rate'] = $object->getDefaultHourlyRate();
-            }
-            if ($object->isInitialized('costRate') && null !== $object->getCostRate()) {
-                $data['cost_rate'] = $object->getCostRate();
             }
             if ($object->isInitialized('roles') && null !== $object->getRoles()) {
                 $values = [];

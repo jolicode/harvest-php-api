@@ -210,6 +210,10 @@ components:
           type: boolean
           description: 'Whether the approval module is enabled.'
           nullable: true
+        team_feature:
+          type: boolean
+          description: 'Whether the team module is enabled.'
+          nullable: true
     InvoiceMessage:
       type: object
       externalDocs:
@@ -991,10 +995,14 @@ components:
               type: string
               nullable: true
         user_assignment:
-          type: object
           description: 'A user assignment object of the user that recorded the expense.'
           nullable: true
-          $ref: '#/components/schemas/UserAssignment'
+          anyOf:
+            -
+              type: object
+              $ref: '#/components/schemas/UserAssignment'
+            -
+              type: 'null'
         receipt:
           type: object
           description: 'An object containing the expense’s receipt URL and file name.'
@@ -1180,10 +1188,14 @@ components:
               type: string
               nullable: true
         user_assignment:
-          type: object
           description: 'A user assignment object of the associated user.'
           nullable: true
-          $ref: '#/components/schemas/UserAssignment'
+          anyOf:
+            -
+              type: object
+              $ref: '#/components/schemas/UserAssignment'
+            -
+              type: 'null'
         client:
           type: object
           description: 'An object containing the id and name of the associated client.'
@@ -1218,10 +1230,14 @@ components:
               type: string
               nullable: true
         task_assignment:
-          type: object
           description: 'A task assignment object of the associated task.'
           nullable: true
-          $ref: '#/components/schemas/TaskAssignment'
+          anyOf:
+            -
+              type: object
+              $ref: '#/components/schemas/TaskAssignment'
+            -
+              type: 'null'
         external_reference:
           type: object
           description: 'An object containing the id, group_id, account_id, permalink, service, and service_icon_url of the associated external reference.'
@@ -5727,7 +5743,7 @@ paths:
     patch:
       summary: 'Update an expense'
       operationId: updateExpense
-      description: 'Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.'
+      description: "Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.\n\nNote that changes to project_id and expense_category_id will be silently dropped if the expense is locked. Users with sufficient permissions are able to update the rest of a locked expense’s attributes."
       externalDocs:
         description: 'Update an expense'
         url: 'https://help.getharvest.com/api-v2/expenses-api/expenses/expenses/#update-an-expense'
@@ -6229,17 +6245,17 @@ paths:
                           id: 14308069
                           name: 'Online Store - Phase 1'
                           code: OS1
-                per_page: 2000
+                per_page: 100
                 total_pages: 1
                 total_entries: 2
                 next_page: null
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=2000'
+                  first: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=100'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=2000'
+                  last: 'https://api.harvestapp.com/v2/invoices?page=1&per_page=100'
         default:
           description: 'error payload'
           content:
@@ -6291,14 +6307,14 @@ paths:
             type: string
         -
           name: page
-          description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
+          description: 'The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
           required: false
           in: query
           schema:
             type: integer
         -
           name: per_page
-          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 2000)'
+          description: 'The number of records to return per page. Can range between 1 and 2000. (Default: 100)'
           required: false
           in: query
           schema:
@@ -9548,7 +9564,7 @@ paths:
             type: string
         -
           name: include_fixed_fee
-          description: 'Whether or not to include fixed-fee projects in the response. (Default: true)'
+          description: 'Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)'
           required: false
           in: query
           schema:

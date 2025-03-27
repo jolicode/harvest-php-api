@@ -85,9 +85,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
-            if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
+            if (\array_key_exists('user_assignment', $data) && null !== $data['user_assignment']) {
+                $value = $data['user_assignment'];
+                if (\is_array($data['user_assignment'])) {
+                    $value = $this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context);
+                } elseif (null === $data['user_assignment']) {
+                    $value = $data['user_assignment'];
+                }
+                $object->setUserAssignment($value);
                 unset($data['user_assignment']);
+            } elseif (\array_key_exists('user_assignment', $data) && null === $data['user_assignment']) {
+                $object->setUserAssignment(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
                 $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\TimeEntryClient::class, 'json', $context));
@@ -107,9 +115,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('task', $data) && null === $data['task']) {
                 $object->setTask(null);
             }
-            if (\array_key_exists('task_assignment', $data)) {
-                $object->setTaskAssignment($this->denormalizer->denormalize($data['task_assignment'], \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context));
+            if (\array_key_exists('task_assignment', $data) && null !== $data['task_assignment']) {
+                $value_1 = $data['task_assignment'];
+                if (\is_array($data['task_assignment'])) {
+                    $value_1 = $this->denormalizer->denormalize($data['task_assignment'], \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
+                } elseif (null === $data['task_assignment']) {
+                    $value_1 = $data['task_assignment'];
+                }
+                $object->setTaskAssignment($value_1);
                 unset($data['task_assignment']);
+            } elseif (\array_key_exists('task_assignment', $data) && null === $data['task_assignment']) {
+                $object->setTaskAssignment(null);
             }
             if (\array_key_exists('external_reference', $data) && null !== $data['external_reference']) {
                 $object->setExternalReference($this->denormalizer->denormalize($data['external_reference'], \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class, 'json', $context));
@@ -231,9 +247,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_2;
                 }
             }
 
@@ -253,7 +269,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
             }
             if ($object->isInitialized('userAssignment') && null !== $object->getUserAssignment()) {
-                $data['user_assignment'] = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                $value = $object->getUserAssignment();
+                if (\is_object($object->getUserAssignment())) {
+                    $value = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                } elseif (null === $object->getUserAssignment()) {
+                    $value = $object->getUserAssignment();
+                }
+                $data['user_assignment'] = $value;
             }
             if ($object->isInitialized('client') && null !== $object->getClient()) {
                 $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
@@ -265,7 +287,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
             }
             if ($object->isInitialized('taskAssignment') && null !== $object->getTaskAssignment()) {
-                $data['task_assignment'] = $this->normalizer->normalize($object->getTaskAssignment(), 'json', $context);
+                $value_1 = $object->getTaskAssignment();
+                if (\is_object($object->getTaskAssignment())) {
+                    $value_1 = $this->normalizer->normalize($object->getTaskAssignment(), 'json', $context);
+                } elseif (null === $object->getTaskAssignment()) {
+                    $value_1 = $object->getTaskAssignment();
+                }
+                $data['task_assignment'] = $value_1;
             }
             if ($object->isInitialized('externalReference') && null !== $object->getExternalReference()) {
                 $data['external_reference'] = $this->normalizer->normalize($object->getExternalReference(), 'json', $context);
@@ -327,9 +355,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
                 $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_2;
                 }
             }
 
@@ -404,9 +432,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
-            if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
+            if (\array_key_exists('user_assignment', $data) && null !== $data['user_assignment']) {
+                $value = $data['user_assignment'];
+                if (\is_array($data['user_assignment'])) {
+                    $value = $this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context);
+                } elseif (null === $data['user_assignment']) {
+                    $value = $data['user_assignment'];
+                }
+                $object->setUserAssignment($value);
                 unset($data['user_assignment']);
+            } elseif (\array_key_exists('user_assignment', $data) && null === $data['user_assignment']) {
+                $object->setUserAssignment(null);
             }
             if (\array_key_exists('client', $data) && null !== $data['client']) {
                 $object->setClient($this->denormalizer->denormalize($data['client'], \JoliCode\Harvest\Api\Model\TimeEntryClient::class, 'json', $context));
@@ -426,9 +462,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('task', $data) && null === $data['task']) {
                 $object->setTask(null);
             }
-            if (\array_key_exists('task_assignment', $data)) {
-                $object->setTaskAssignment($this->denormalizer->denormalize($data['task_assignment'], \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context));
+            if (\array_key_exists('task_assignment', $data) && null !== $data['task_assignment']) {
+                $value_1 = $data['task_assignment'];
+                if (\is_array($data['task_assignment'])) {
+                    $value_1 = $this->denormalizer->denormalize($data['task_assignment'], \JoliCode\Harvest\Api\Model\TaskAssignment::class, 'json', $context);
+                } elseif (null === $data['task_assignment']) {
+                    $value_1 = $data['task_assignment'];
+                }
+                $object->setTaskAssignment($value_1);
                 unset($data['task_assignment']);
+            } elseif (\array_key_exists('task_assignment', $data) && null === $data['task_assignment']) {
+                $object->setTaskAssignment(null);
             }
             if (\array_key_exists('external_reference', $data) && null !== $data['external_reference']) {
                 $object->setExternalReference($this->denormalizer->denormalize($data['external_reference'], \JoliCode\Harvest\Api\Model\TimeEntryExternalReference::class, 'json', $context));
@@ -550,9 +594,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_2;
                 }
             }
 
@@ -575,7 +619,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
             }
             if ($object->isInitialized('userAssignment') && null !== $object->getUserAssignment()) {
-                $data['user_assignment'] = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                $value = $object->getUserAssignment();
+                if (\is_object($object->getUserAssignment())) {
+                    $value = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                } elseif (null === $object->getUserAssignment()) {
+                    $value = $object->getUserAssignment();
+                }
+                $data['user_assignment'] = $value;
             }
             if ($object->isInitialized('client') && null !== $object->getClient()) {
                 $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
@@ -587,7 +637,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['task'] = $this->normalizer->normalize($object->getTask(), 'json', $context);
             }
             if ($object->isInitialized('taskAssignment') && null !== $object->getTaskAssignment()) {
-                $data['task_assignment'] = $this->normalizer->normalize($object->getTaskAssignment(), 'json', $context);
+                $value_1 = $object->getTaskAssignment();
+                if (\is_object($object->getTaskAssignment())) {
+                    $value_1 = $this->normalizer->normalize($object->getTaskAssignment(), 'json', $context);
+                } elseif (null === $object->getTaskAssignment()) {
+                    $value_1 = $object->getTaskAssignment();
+                }
+                $data['task_assignment'] = $value_1;
             }
             if ($object->isInitialized('externalReference') && null !== $object->getExternalReference()) {
                 $data['external_reference'] = $this->normalizer->normalize($object->getExternalReference(), 'json', $context);
@@ -649,9 +705,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
                 $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_2) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_2;
                 }
             }
 

@@ -1,5 +1,12 @@
 # Changes between versions
 
+## 8.0.0 (2025-03-27)
+
+ * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#30 in #50
+ * correctly allow for nullable `UserAssignment` and `TaskAssignment` entries under `Expense` and `TimeEntry`
+ * drop support for PHP <8.2
+ * upgrade CS tooling
+
 ## 7.1.0 (2024-12-07)
 
  * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#29 in #48

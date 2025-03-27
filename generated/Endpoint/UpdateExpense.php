@@ -18,6 +18,8 @@ class UpdateExpense extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
 
     /**
      * Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.
+     *
+     * Note that changes to project_id and expense_category_id will be silently dropped if the expense is locked. Users with sufficient permissions are able to update the rest of a locked expense’s attributes.
      */
     public function __construct(string $expenseId, \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody $requestBody)
     {

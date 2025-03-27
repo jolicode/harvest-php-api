@@ -503,6 +503,8 @@ class Client extends Runtime\Client\Client
     /**
      * Updates the specific expense by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns an expense object and a 200 OK response code if the call succeeded.
      *
+     * Note that changes to project_id and expense_category_id will be silently dropped if the expense is locked. Users with sufficient permissions are able to update the rest of a locked expense’s attributes.
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
@@ -595,8 +597,8 @@ class Client extends Runtime\Client\Client
      * @var string $from only return invoices with an issue_date on or after the given date
      * @var string $to only return invoices with an issue_date on or before the given date
      * @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1159,7 +1161,7 @@ class Client extends Runtime\Client\Client
      *
      * @var string $from only report on time entries and expenses with a spent_date on or after the given date
      * @var string $to only report on time entries and expenses with a spent_date on or before the given date
-     * @var bool   $include_fixed_fee Whether or not to include fixed-fee projects in the response. (Default: true)
+     * @var bool   $include_fixed_fee Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)
      * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      *             }

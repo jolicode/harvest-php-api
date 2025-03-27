@@ -48,7 +48,9 @@ class Expense extends \ArrayObject
      */
     protected $user;
     /**
-     * @var UserAssignment
+     * A user assignment object of the user that recorded the expense.
+     *
+     * @var UserAssignment|null
      */
     protected $userAssignment;
     /**
@@ -230,12 +232,18 @@ class Expense extends \ArrayObject
         return $this;
     }
 
-    public function getUserAssignment(): UserAssignment
+    /**
+     * A user assignment object of the user that recorded the expense.
+     */
+    public function getUserAssignment(): ?UserAssignment
     {
         return $this->userAssignment;
     }
 
-    public function setUserAssignment(UserAssignment $userAssignment): self
+    /**
+     * A user assignment object of the user that recorded the expense.
+     */
+    public function setUserAssignment(?UserAssignment $userAssignment): self
     {
         $this->initialized['userAssignment'] = true;
         $this->userAssignment = $userAssignment;

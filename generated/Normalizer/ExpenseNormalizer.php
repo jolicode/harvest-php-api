@@ -85,9 +85,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
-            if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
+            if (\array_key_exists('user_assignment', $data) && null !== $data['user_assignment']) {
+                $value = $data['user_assignment'];
+                if (\is_array($data['user_assignment'])) {
+                    $value = $this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context);
+                } elseif (null === $data['user_assignment']) {
+                    $value = $data['user_assignment'];
+                }
+                $object->setUserAssignment($value);
                 unset($data['user_assignment']);
+            } elseif (\array_key_exists('user_assignment', $data) && null === $data['user_assignment']) {
+                $object->setUserAssignment(null);
             }
             if (\array_key_exists('receipt', $data) && null !== $data['receipt']) {
                 $object->setReceipt($this->denormalizer->denormalize($data['receipt'], \JoliCode\Harvest\Api\Model\ExpenseReceipt::class, 'json', $context));
@@ -167,9 +175,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
@@ -195,7 +203,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
             }
             if ($object->isInitialized('userAssignment') && null !== $object->getUserAssignment()) {
-                $data['user_assignment'] = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                $value = $object->getUserAssignment();
+                if (\is_object($object->getUserAssignment())) {
+                    $value = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                } elseif (null === $object->getUserAssignment()) {
+                    $value = $object->getUserAssignment();
+                }
+                $data['user_assignment'] = $value;
             }
             if ($object->isInitialized('receipt') && null !== $object->getReceipt()) {
                 $data['receipt'] = $this->normalizer->normalize($object->getReceipt(), 'json', $context);
@@ -236,9 +250,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
                 $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 
@@ -313,9 +327,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('user', $data) && null === $data['user']) {
                 $object->setUser(null);
             }
-            if (\array_key_exists('user_assignment', $data)) {
-                $object->setUserAssignment($this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context));
+            if (\array_key_exists('user_assignment', $data) && null !== $data['user_assignment']) {
+                $value = $data['user_assignment'];
+                if (\is_array($data['user_assignment'])) {
+                    $value = $this->denormalizer->denormalize($data['user_assignment'], \JoliCode\Harvest\Api\Model\UserAssignment::class, 'json', $context);
+                } elseif (null === $data['user_assignment']) {
+                    $value = $data['user_assignment'];
+                }
+                $object->setUserAssignment($value);
                 unset($data['user_assignment']);
+            } elseif (\array_key_exists('user_assignment', $data) && null === $data['user_assignment']) {
+                $object->setUserAssignment(null);
             }
             if (\array_key_exists('receipt', $data) && null !== $data['receipt']) {
                 $object->setReceipt($this->denormalizer->denormalize($data['receipt'], \JoliCode\Harvest\Api\Model\ExpenseReceipt::class, 'json', $context));
@@ -395,9 +417,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('updated_at', $data) && null === $data['updated_at']) {
                 $object->setUpdatedAt(null);
             }
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
+                    $object[$key] = $value_1;
                 }
             }
 
@@ -426,7 +448,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
             }
             if ($object->isInitialized('userAssignment') && null !== $object->getUserAssignment()) {
-                $data['user_assignment'] = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                $value = $object->getUserAssignment();
+                if (\is_object($object->getUserAssignment())) {
+                    $value = $this->normalizer->normalize($object->getUserAssignment(), 'json', $context);
+                } elseif (null === $object->getUserAssignment()) {
+                    $value = $object->getUserAssignment();
+                }
+                $data['user_assignment'] = $value;
             }
             if ($object->isInitialized('receipt') && null !== $object->getReceipt()) {
                 $data['receipt'] = $this->normalizer->normalize($object->getReceipt(), 'json', $context);
@@ -467,9 +495,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
                 $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
             }
-            foreach ($object as $key => $value) {
+            foreach ($object as $key => $value_1) {
                 if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
+                    $data[$key] = $value_1;
                 }
             }
 

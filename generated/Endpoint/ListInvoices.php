@@ -28,8 +28,8 @@ class ListInvoices extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
      * @var string $from only return invoices with an issue_date on or after the given date
      * @var string $to only return invoices with an issue_date on or before the given date
      * @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
      *             }
      */
     public function __construct(array $queryParameters = [])

@@ -172,6 +172,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('approval_feature', $data) && null === $data['approval_feature']) {
                 $object->setApprovalFeature(null);
             }
+            if (\array_key_exists('team_feature', $data) && null !== $data['team_feature']) {
+                $object->setTeamFeature($data['team_feature']);
+                unset($data['team_feature']);
+            } elseif (\array_key_exists('team_feature', $data) && null === $data['team_feature']) {
+                $object->setTeamFeature(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -243,6 +249,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             }
             if ($object->isInitialized('approvalFeature') && null !== $object->getApprovalFeature()) {
                 $data['approval_feature'] = $object->getApprovalFeature();
+            }
+            if ($object->isInitialized('teamFeature') && null !== $object->getTeamFeature()) {
+                $data['team_feature'] = $object->getTeamFeature();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -408,6 +417,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             } elseif (\array_key_exists('approval_feature', $data) && null === $data['approval_feature']) {
                 $object->setApprovalFeature(null);
             }
+            if (\array_key_exists('team_feature', $data) && null !== $data['team_feature']) {
+                $object->setTeamFeature($data['team_feature']);
+                unset($data['team_feature']);
+            } elseif (\array_key_exists('team_feature', $data) && null === $data['team_feature']) {
+                $object->setTeamFeature(null);
+            }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $object[$key] = $value;
@@ -482,6 +497,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             }
             if ($object->isInitialized('approvalFeature') && null !== $object->getApprovalFeature()) {
                 $data['approval_feature'] = $object->getApprovalFeature();
+            }
+            if ($object->isInitialized('teamFeature') && null !== $object->getTeamFeature()) {
+                $data['team_feature'] = $object->getTeamFeature();
             }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {

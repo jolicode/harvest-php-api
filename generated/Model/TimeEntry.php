@@ -36,7 +36,9 @@ class TimeEntry extends \ArrayObject
      */
     protected $user;
     /**
-     * @var UserAssignment
+     * A user assignment object of the associated user.
+     *
+     * @var UserAssignment|null
      */
     protected $userAssignment;
     /**
@@ -58,7 +60,9 @@ class TimeEntry extends \ArrayObject
      */
     protected $task;
     /**
-     * @var TaskAssignment
+     * A task assignment object of the associated task.
+     *
+     * @var TaskAssignment|null
      */
     protected $taskAssignment;
     /**
@@ -244,12 +248,18 @@ class TimeEntry extends \ArrayObject
         return $this;
     }
 
-    public function getUserAssignment(): UserAssignment
+    /**
+     * A user assignment object of the associated user.
+     */
+    public function getUserAssignment(): ?UserAssignment
     {
         return $this->userAssignment;
     }
 
-    public function setUserAssignment(UserAssignment $userAssignment): self
+    /**
+     * A user assignment object of the associated user.
+     */
+    public function setUserAssignment(?UserAssignment $userAssignment): self
     {
         $this->initialized['userAssignment'] = true;
         $this->userAssignment = $userAssignment;
@@ -314,12 +324,18 @@ class TimeEntry extends \ArrayObject
         return $this;
     }
 
-    public function getTaskAssignment(): TaskAssignment
+    /**
+     * A task assignment object of the associated task.
+     */
+    public function getTaskAssignment(): ?TaskAssignment
     {
         return $this->taskAssignment;
     }
 
-    public function setTaskAssignment(TaskAssignment $taskAssignment): self
+    /**
+     * A task assignment object of the associated task.
+     */
+    public function setTaskAssignment(?TaskAssignment $taskAssignment): self
     {
         $this->initialized['taskAssignment'] = true;
         $this->taskAssignment = $taskAssignment;

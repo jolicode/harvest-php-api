@@ -137,6 +137,12 @@ class Company extends \ArrayObject
      * @var bool|null
      */
     protected $approvalFeature;
+    /**
+     * Whether the team module is enabled.
+     *
+     * @var bool|null
+     */
+    protected $teamFeature;
 
     public function isInitialized($property): bool
     {
@@ -519,6 +525,25 @@ class Company extends \ArrayObject
     {
         $this->initialized['approvalFeature'] = true;
         $this->approvalFeature = $approvalFeature;
+
+        return $this;
+    }
+
+    /**
+     * Whether the team module is enabled.
+     */
+    public function getTeamFeature(): ?bool
+    {
+        return $this->teamFeature;
+    }
+
+    /**
+     * Whether the team module is enabled.
+     */
+    public function setTeamFeature(?bool $teamFeature): self
+    {
+        $this->initialized['teamFeature'] = true;
+        $this->teamFeature = $teamFeature;
 
         return $this;
     }

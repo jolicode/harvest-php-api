@@ -1,5 +1,11 @@
 # Changes between versions
 
+## 8.1.0 (2025-03-27)
+
+ * upgrade to `janephp/open-api` 7.9
+ * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#31 in #51
+   * add the `approval_status` in the Expense and Time Entry objects
+
 ## 8.0.0 (2025-03-27)
 
  * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#30 in #50

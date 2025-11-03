@@ -29,6 +29,7 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
      * @var string $external_reference_id only return time entries with the given external_reference ID
      * @var bool   $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
      * @var bool   $is_running pass true to only return running time entries and false to return non-running time entries
+     * @var string $approval_status Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
      * @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
      * @var string $from only return time entries with a spent_date on or after the given date
      * @var string $to only return time entries with a spent_date on or before the given date
@@ -69,7 +70,7 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['user_id', 'client_id', 'project_id', 'task_id', 'external_reference_id', 'is_billed', 'is_running', 'updated_since', 'from', 'to', 'page', 'per_page']);
+        $optionsResolver->setDefined(['user_id', 'client_id', 'project_id', 'task_id', 'external_reference_id', 'is_billed', 'is_running', 'approval_status', 'updated_since', 'from', 'to', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('user_id', ['int']);
@@ -81,6 +82,7 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setNormalizer('is_billed', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
         $optionsResolver->addAllowedTypes('is_running', ['bool']);
         $optionsResolver->setNormalizer('is_running', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
+        $optionsResolver->addAllowedTypes('approval_status', ['string']);
         $optionsResolver->addAllowedTypes('updated_since', ['string']);
         $optionsResolver->addAllowedTypes('from', ['string']);
         $optionsResolver->addAllowedTypes('to', ['string']);

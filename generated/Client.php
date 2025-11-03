@@ -448,6 +448,7 @@ class Client extends Runtime\Client\Client
      * @var int    $client_id only return expenses belonging to the client with the given ID
      * @var int    $project_id only return expenses belonging to the project with the given ID
      * @var bool   $is_billed pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced
+     * @var string $approval_status Only return expenses with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
      * @var string $updated_since only return expenses that have been updated since the given date and time
      * @var string $from only return expenses with a spent_date on or after the given date
      * @var string $to only return expenses with a spent_date on or before the given date
@@ -1352,6 +1353,7 @@ class Client extends Runtime\Client\Client
      * @var string $external_reference_id only return time entries with the given external_reference ID
      * @var bool   $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
      * @var bool   $is_running pass true to only return running time entries and false to return non-running time entries
+     * @var string $approval_status Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
      * @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
      * @var string $from only return time entries with a spent_date on or after the given date
      * @var string $to only return time entries with a spent_date on or before the given date

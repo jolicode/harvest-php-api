@@ -66,12 +66,6 @@ class ProjectsPostBody extends \ArrayObject
      */
     protected $hourlyRate;
     /**
-     * The budget in hours for the project when budgeting by time.
-     *
-     * @var float|null
-     */
-    protected $budget;
-    /**
      * The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).
      *
      * @var string|null
@@ -83,6 +77,24 @@ class ProjectsPostBody extends \ArrayObject
      * @var bool|null
      */
     protected $budgetIsMonthly;
+    /**
+     * The budget in hours for the project when budgeting by time.
+     *
+     * @var float|null
+     */
+    protected $budget;
+    /**
+     * The monetary budget for the project when budgeting by money.
+     *
+     * @var float|null
+     */
+    protected $costBudget;
+    /**
+     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
+     *
+     * @var bool|null
+     */
+    protected $costBudgetIncludeExpenses;
     /**
      * Whether Project Managers should be notified when the project goes over budget. Defaults to false.
      *
@@ -101,18 +113,6 @@ class ProjectsPostBody extends \ArrayObject
      * @var bool|null
      */
     protected $showBudgetToAll;
-    /**
-     * The monetary budget for the project when budgeting by money.
-     *
-     * @var float|null
-     */
-    protected $costBudget;
-    /**
-     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
-     *
-     * @var bool|null
-     */
-    protected $costBudgetIncludeExpenses;
     /**
      * The amount you plan to invoice for the project. Only used by fixed-fee projects.
      *
@@ -296,25 +296,6 @@ class ProjectsPostBody extends \ArrayObject
     }
 
     /**
-     * The budget in hours for the project when budgeting by time.
-     */
-    public function getBudget(): ?float
-    {
-        return $this->budget;
-    }
-
-    /**
-     * The budget in hours for the project when budgeting by time.
-     */
-    public function setBudget(?float $budget): self
-    {
-        $this->initialized['budget'] = true;
-        $this->budget = $budget;
-
-        return $this;
-    }
-
-    /**
      * The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).
      */
     public function getBudgetBy(): ?string
@@ -348,6 +329,63 @@ class ProjectsPostBody extends \ArrayObject
     {
         $this->initialized['budgetIsMonthly'] = true;
         $this->budgetIsMonthly = $budgetIsMonthly;
+
+        return $this;
+    }
+
+    /**
+     * The budget in hours for the project when budgeting by time.
+     */
+    public function getBudget(): ?float
+    {
+        return $this->budget;
+    }
+
+    /**
+     * The budget in hours for the project when budgeting by time.
+     */
+    public function setBudget(?float $budget): self
+    {
+        $this->initialized['budget'] = true;
+        $this->budget = $budget;
+
+        return $this;
+    }
+
+    /**
+     * The monetary budget for the project when budgeting by money.
+     */
+    public function getCostBudget(): ?float
+    {
+        return $this->costBudget;
+    }
+
+    /**
+     * The monetary budget for the project when budgeting by money.
+     */
+    public function setCostBudget(?float $costBudget): self
+    {
+        $this->initialized['costBudget'] = true;
+        $this->costBudget = $costBudget;
+
+        return $this;
+    }
+
+    /**
+     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
+     */
+    public function getCostBudgetIncludeExpenses(): ?bool
+    {
+        return $this->costBudgetIncludeExpenses;
+    }
+
+    /**
+     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
+     */
+    public function setCostBudgetIncludeExpenses(?bool $costBudgetIncludeExpenses): self
+    {
+        $this->initialized['costBudgetIncludeExpenses'] = true;
+        $this->costBudgetIncludeExpenses = $costBudgetIncludeExpenses;
 
         return $this;
     }
@@ -405,44 +443,6 @@ class ProjectsPostBody extends \ArrayObject
     {
         $this->initialized['showBudgetToAll'] = true;
         $this->showBudgetToAll = $showBudgetToAll;
-
-        return $this;
-    }
-
-    /**
-     * The monetary budget for the project when budgeting by money.
-     */
-    public function getCostBudget(): ?float
-    {
-        return $this->costBudget;
-    }
-
-    /**
-     * The monetary budget for the project when budgeting by money.
-     */
-    public function setCostBudget(?float $costBudget): self
-    {
-        $this->initialized['costBudget'] = true;
-        $this->costBudget = $costBudget;
-
-        return $this;
-    }
-
-    /**
-     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
-     */
-    public function getCostBudgetIncludeExpenses(): ?bool
-    {
-        return $this->costBudgetIncludeExpenses;
-    }
-
-    /**
-     * Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.
-     */
-    public function setCostBudgetIncludeExpenses(?bool $costBudgetIncludeExpenses): self
-    {
-        $this->initialized['costBudgetIncludeExpenses'] = true;
-        $this->costBudgetIncludeExpenses = $costBudgetIncludeExpenses;
 
         return $this;
     }

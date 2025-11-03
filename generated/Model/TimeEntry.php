@@ -114,11 +114,17 @@ class TimeEntry extends \ArrayObject
      */
     protected $lockedReason;
     /**
-     * Whether or not the time entry has been approved via Timesheet Approval.
+     * Whether or not the time entry has been approved via Timesheet Approval. Deprecated, use approval_status instead.
      *
      * @var bool|null
      */
     protected $isClosed;
+    /**
+     * The approval status of the time entry. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     *
+     * @var string|null
+     */
+    protected $approvalStatus;
     /**
      * Whether or not the time entry has been marked as invoiced.
      *
@@ -496,7 +502,7 @@ class TimeEntry extends \ArrayObject
     }
 
     /**
-     * Whether or not the time entry has been approved via Timesheet Approval.
+     * Whether or not the time entry has been approved via Timesheet Approval. Deprecated, use approval_status instead.
      */
     public function getIsClosed(): ?bool
     {
@@ -504,12 +510,31 @@ class TimeEntry extends \ArrayObject
     }
 
     /**
-     * Whether or not the time entry has been approved via Timesheet Approval.
+     * Whether or not the time entry has been approved via Timesheet Approval. Deprecated, use approval_status instead.
      */
     public function setIsClosed(?bool $isClosed): self
     {
         $this->initialized['isClosed'] = true;
         $this->isClosed = $isClosed;
+
+        return $this;
+    }
+
+    /**
+     * The approval status of the time entry. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     */
+    public function getApprovalStatus(): ?string
+    {
+        return $this->approvalStatus;
+    }
+
+    /**
+     * The approval status of the time entry. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     */
+    public function setApprovalStatus(?string $approvalStatus): self
+    {
+        $this->initialized['approvalStatus'] = true;
+        $this->approvalStatus = $approvalStatus;
 
         return $this;
     }

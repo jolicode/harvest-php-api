@@ -14,7 +14,6 @@ namespace JoliCode\Harvest\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Harvest\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Harvest\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,191 +21,94 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $data::class;
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('name', $data) && null !== $data['name']) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-                $object->setName(null);
-            }
-            if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
-                $object->setUnitPrice($data['unit_price']);
-                unset($data['unit_price']);
-            } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
-                $object->setUnitPrice(null);
-            }
-            if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
-                $object->setUnitName($data['unit_name']);
-                unset($data['unit_name']);
-            } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
-                $object->setUnitName(null);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('id') && null !== $object->getId()) {
-                $data['id'] = $object->getId();
-            }
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
-                $data['unit_price'] = $object->getUnitPrice();
-            }
-            if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
-                $data['unit_name'] = $object->getUnitName();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => false];
-        }
+        return \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $type;
     }
-} else {
-    class ExpenseExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $data::class;
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class === $data::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('name', $data) && null !== $data['name']) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-                $object->setName(null);
-            }
-            if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
-                $object->setUnitPrice($data['unit_price']);
-                unset($data['unit_price']);
-            } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
-                $object->setUnitPrice(null);
-            }
-            if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
-                $object->setUnitName($data['unit_name']);
-                unset($data['unit_name']);
-            } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
-                $object->setUnitName(null);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-
+        $object = new \JoliCode\Harvest\Api\Model\ExpenseExpenseCategory();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('id') && null !== $object->getId()) {
-                $data['id'] = $object->getId();
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+            unset($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('unit_price', $data) && null !== $data['unit_price']) {
+            $object->setUnitPrice($data['unit_price']);
+            unset($data['unit_price']);
+        } elseif (\array_key_exists('unit_price', $data) && null === $data['unit_price']) {
+            $object->setUnitPrice(null);
+        }
+        if (\array_key_exists('unit_name', $data) && null !== $data['unit_name']) {
+            $object->setUnitName($data['unit_name']);
+            unset($data['unit_name']);
+        } elseif (\array_key_exists('unit_name', $data) && null === $data['unit_name']) {
+            $object->setUnitName(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('unitPrice') && null !== $object->getUnitPrice()) {
-                $data['unit_price'] = $object->getUnitPrice();
-            }
-            if ($object->isInitialized('unitName') && null !== $object->getUnitName()) {
-                $data['unit_name'] = $object->getUnitName();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-
-            return $data;
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('id') && null !== $data->getId()) {
+            $dataArray['id'] = $data->getId();
         }
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
+        }
+        if ($data->isInitialized('unitPrice') && null !== $data->getUnitPrice()) {
+            $dataArray['unit_price'] = $data->getUnitPrice();
+        }
+        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
+            $dataArray['unit_name'] = $data->getUnitName();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Harvest\Api\Model\ExpenseExpenseCategory::class => false];
     }
 }

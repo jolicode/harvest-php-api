@@ -149,6 +149,12 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('is_closed', $data) && null === $data['is_closed']) {
             $object->setIsClosed(null);
         }
+        if (\array_key_exists('approval_status', $data) && null !== $data['approval_status']) {
+            $object->setApprovalStatus($data['approval_status']);
+            unset($data['approval_status']);
+        } elseif (\array_key_exists('approval_status', $data) && null === $data['approval_status']) {
+            $object->setApprovalStatus(null);
+        }
         if (\array_key_exists('is_locked', $data) && null !== $data['is_locked']) {
             $object->setIsLocked($data['is_locked']);
             unset($data['is_locked']);
@@ -241,6 +247,9 @@ class ExpenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($data->isInitialized('isClosed') && null !== $data->getIsClosed()) {
             $dataArray['is_closed'] = $data->getIsClosed();
+        }
+        if ($data->isInitialized('approvalStatus') && null !== $data->getApprovalStatus()) {
+            $dataArray['approval_status'] = $data->getApprovalStatus();
         }
         if ($data->isInitialized('isLocked') && null !== $data->getIsLocked()) {
             $dataArray['is_locked'] = $data->getIsLocked();

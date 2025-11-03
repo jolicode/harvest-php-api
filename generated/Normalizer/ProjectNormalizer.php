@@ -53,11 +53,11 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
             $data['budget'] = (float) $data['budget'];
         }
-        if (\array_key_exists('over_budget_notification_percentage', $data) && \is_int($data['over_budget_notification_percentage'])) {
-            $data['over_budget_notification_percentage'] = (float) $data['over_budget_notification_percentage'];
-        }
         if (\array_key_exists('cost_budget', $data) && \is_int($data['cost_budget'])) {
             $data['cost_budget'] = (float) $data['cost_budget'];
+        }
+        if (\array_key_exists('over_budget_notification_percentage', $data) && \is_int($data['over_budget_notification_percentage'])) {
+            $data['over_budget_notification_percentage'] = (float) $data['over_budget_notification_percentage'];
         }
         if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
             $data['fee'] = (float) $data['fee'];
@@ -74,14 +74,14 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('budget_is_monthly', $data) && \is_int($data['budget_is_monthly'])) {
             $data['budget_is_monthly'] = (bool) $data['budget_is_monthly'];
         }
+        if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
+            $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
+        }
         if (\array_key_exists('notify_when_over_budget', $data) && \is_int($data['notify_when_over_budget'])) {
             $data['notify_when_over_budget'] = (bool) $data['notify_when_over_budget'];
         }
         if (\array_key_exists('show_budget_to_all', $data) && \is_int($data['show_budget_to_all'])) {
             $data['show_budget_to_all'] = (bool) $data['show_budget_to_all'];
-        }
-        if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
-            $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -140,12 +140,6 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('hourly_rate', $data) && null === $data['hourly_rate']) {
             $object->setHourlyRate(null);
         }
-        if (\array_key_exists('budget', $data) && null !== $data['budget']) {
-            $object->setBudget($data['budget']);
-            unset($data['budget']);
-        } elseif (\array_key_exists('budget', $data) && null === $data['budget']) {
-            $object->setBudget(null);
-        }
         if (\array_key_exists('budget_by', $data) && null !== $data['budget_by']) {
             $object->setBudgetBy($data['budget_by']);
             unset($data['budget_by']);
@@ -157,6 +151,24 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['budget_is_monthly']);
         } elseif (\array_key_exists('budget_is_monthly', $data) && null === $data['budget_is_monthly']) {
             $object->setBudgetIsMonthly(null);
+        }
+        if (\array_key_exists('budget', $data) && null !== $data['budget']) {
+            $object->setBudget($data['budget']);
+            unset($data['budget']);
+        } elseif (\array_key_exists('budget', $data) && null === $data['budget']) {
+            $object->setBudget(null);
+        }
+        if (\array_key_exists('cost_budget', $data) && null !== $data['cost_budget']) {
+            $object->setCostBudget($data['cost_budget']);
+            unset($data['cost_budget']);
+        } elseif (\array_key_exists('cost_budget', $data) && null === $data['cost_budget']) {
+            $object->setCostBudget(null);
+        }
+        if (\array_key_exists('cost_budget_include_expenses', $data) && null !== $data['cost_budget_include_expenses']) {
+            $object->setCostBudgetIncludeExpenses($data['cost_budget_include_expenses']);
+            unset($data['cost_budget_include_expenses']);
+        } elseif (\array_key_exists('cost_budget_include_expenses', $data) && null === $data['cost_budget_include_expenses']) {
+            $object->setCostBudgetIncludeExpenses(null);
         }
         if (\array_key_exists('notify_when_over_budget', $data) && null !== $data['notify_when_over_budget']) {
             $object->setNotifyWhenOverBudget($data['notify_when_over_budget']);
@@ -181,18 +193,6 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['show_budget_to_all']);
         } elseif (\array_key_exists('show_budget_to_all', $data) && null === $data['show_budget_to_all']) {
             $object->setShowBudgetToAll(null);
-        }
-        if (\array_key_exists('cost_budget', $data) && null !== $data['cost_budget']) {
-            $object->setCostBudget($data['cost_budget']);
-            unset($data['cost_budget']);
-        } elseif (\array_key_exists('cost_budget', $data) && null === $data['cost_budget']) {
-            $object->setCostBudget(null);
-        }
-        if (\array_key_exists('cost_budget_include_expenses', $data) && null !== $data['cost_budget_include_expenses']) {
-            $object->setCostBudgetIncludeExpenses($data['cost_budget_include_expenses']);
-            unset($data['cost_budget_include_expenses']);
-        } elseif (\array_key_exists('cost_budget_include_expenses', $data) && null === $data['cost_budget_include_expenses']) {
-            $object->setCostBudgetIncludeExpenses(null);
         }
         if (\array_key_exists('fee', $data) && null !== $data['fee']) {
             $object->setFee($data['fee']);
@@ -269,14 +269,20 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
             $dataArray['hourly_rate'] = $data->getHourlyRate();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
-            $dataArray['budget'] = $data->getBudget();
-        }
         if ($data->isInitialized('budgetBy') && null !== $data->getBudgetBy()) {
             $dataArray['budget_by'] = $data->getBudgetBy();
         }
         if ($data->isInitialized('budgetIsMonthly') && null !== $data->getBudgetIsMonthly()) {
             $dataArray['budget_is_monthly'] = $data->getBudgetIsMonthly();
+        }
+        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+            $dataArray['budget'] = $data->getBudget();
+        }
+        if ($data->isInitialized('costBudget') && null !== $data->getCostBudget()) {
+            $dataArray['cost_budget'] = $data->getCostBudget();
+        }
+        if ($data->isInitialized('costBudgetIncludeExpenses') && null !== $data->getCostBudgetIncludeExpenses()) {
+            $dataArray['cost_budget_include_expenses'] = $data->getCostBudgetIncludeExpenses();
         }
         if ($data->isInitialized('notifyWhenOverBudget') && null !== $data->getNotifyWhenOverBudget()) {
             $dataArray['notify_when_over_budget'] = $data->getNotifyWhenOverBudget();
@@ -289,12 +295,6 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($data->isInitialized('showBudgetToAll') && null !== $data->getShowBudgetToAll()) {
             $dataArray['show_budget_to_all'] = $data->getShowBudgetToAll();
-        }
-        if ($data->isInitialized('costBudget') && null !== $data->getCostBudget()) {
-            $dataArray['cost_budget'] = $data->getCostBudget();
-        }
-        if ($data->isInitialized('costBudgetIncludeExpenses') && null !== $data->getCostBudgetIncludeExpenses()) {
-            $dataArray['cost_budget_include_expenses'] = $data->getCostBudgetIncludeExpenses();
         }
         if ($data->isInitialized('fee') && null !== $data->getFee()) {
             $dataArray['fee'] = $data->getFee();

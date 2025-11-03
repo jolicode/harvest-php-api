@@ -197,6 +197,12 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         } elseif (\array_key_exists('is_closed', $data) && null === $data['is_closed']) {
             $object->setIsClosed(null);
         }
+        if (\array_key_exists('approval_status', $data) && null !== $data['approval_status']) {
+            $object->setApprovalStatus($data['approval_status']);
+            unset($data['approval_status']);
+        } elseif (\array_key_exists('approval_status', $data) && null === $data['approval_status']) {
+            $object->setApprovalStatus(null);
+        }
         if (\array_key_exists('is_billed', $data) && null !== $data['is_billed']) {
             $object->setIsBilled($data['is_billed']);
             unset($data['is_billed']);
@@ -337,6 +343,9 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if ($data->isInitialized('isClosed') && null !== $data->getIsClosed()) {
             $dataArray['is_closed'] = $data->getIsClosed();
+        }
+        if ($data->isInitialized('approvalStatus') && null !== $data->getApprovalStatus()) {
+            $dataArray['approval_status'] = $data->getApprovalStatus();
         }
         if ($data->isInitialized('isBilled') && null !== $data->getIsBilled()) {
             $dataArray['is_billed'] = $data->getIsBilled();

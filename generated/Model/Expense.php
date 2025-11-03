@@ -90,11 +90,17 @@ class Expense extends \ArrayObject
      */
     protected $billable;
     /**
-     * Whether the expense has been approved or not.
+     * Whether the expense has been approved or not. Deprecated, use approval_status instead.
      *
      * @var bool|null
      */
     protected $isClosed;
+    /**
+     * The approval status of the expense. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     *
+     * @var string|null
+     */
+    protected $approvalStatus;
     /**
      * Whether the expense has been been invoiced, approved, or the project or person related to the expense is archived.
      *
@@ -366,7 +372,7 @@ class Expense extends \ArrayObject
     }
 
     /**
-     * Whether the expense has been approved or not.
+     * Whether the expense has been approved or not. Deprecated, use approval_status instead.
      */
     public function getIsClosed(): ?bool
     {
@@ -374,12 +380,31 @@ class Expense extends \ArrayObject
     }
 
     /**
-     * Whether the expense has been approved or not.
+     * Whether the expense has been approved or not. Deprecated, use approval_status instead.
      */
     public function setIsClosed(?bool $isClosed): self
     {
         $this->initialized['isClosed'] = true;
         $this->isClosed = $isClosed;
+
+        return $this;
+    }
+
+    /**
+     * The approval status of the expense. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     */
+    public function getApprovalStatus(): ?string
+    {
+        return $this->approvalStatus;
+    }
+
+    /**
+     * The approval status of the expense. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     */
+    public function setApprovalStatus(?string $approvalStatus): self
+    {
+        $this->initialized['approvalStatus'] = true;
+        $this->approvalStatus = $approvalStatus;
 
         return $this;
     }

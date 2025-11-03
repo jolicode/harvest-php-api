@@ -1052,7 +1052,11 @@ components:
           nullable: true
         is_closed:
           type: boolean
-          description: 'Whether the expense has been approved or not.'
+          description: 'Whether the expense has been approved or not. Deprecated, use approval_status instead.'
+          nullable: true
+        approval_status:
+          type: string
+          description: 'The approval status of the expense. Possible values: “unsubmitted”, “submitted”, or “approved”.'
           nullable: true
         is_locked:
           type: boolean
@@ -1301,7 +1305,11 @@ components:
           nullable: true
         is_closed:
           type: boolean
-          description: 'Whether or not the time entry has been approved via Timesheet Approval.'
+          description: 'Whether or not the time entry has been approved via Timesheet Approval. Deprecated, use approval_status instead.'
+          nullable: true
+        approval_status:
+          type: string
+          description: 'The approval status of the time entry. Possible values: “unsubmitted”, “submitted”, or “approved”.'
           nullable: true
         is_billed:
           type: boolean
@@ -1538,11 +1546,6 @@ components:
           description: 'Rate for projects billed by Project Hourly Rate.'
           nullable: true
           format: float
-        budget:
-          type: number
-          description: 'The budget in hours for the project when budgeting by time.'
-          nullable: true
-          format: float
         budget_by:
           type: string
           description: 'The method by which the project is budgeted.'
@@ -1550,6 +1553,20 @@ components:
         budget_is_monthly:
           type: boolean
           description: 'Option to have the budget reset every month.'
+          nullable: true
+        budget:
+          type: number
+          description: 'The budget in hours for the project when budgeting by time.'
+          nullable: true
+          format: float
+        cost_budget:
+          type: number
+          description: 'The monetary budget for the project when budgeting by money.'
+          nullable: true
+          format: float
+        cost_budget_include_expenses:
+          type: boolean
+          description: 'Option for budget of Total Project Fees projects to include tracked expenses.'
           nullable: true
         notify_when_over_budget:
           type: boolean
@@ -1568,15 +1585,6 @@ components:
         show_budget_to_all:
           type: boolean
           description: 'Option to show project budget to all employees. Does not apply to Total Project Fee projects.'
-          nullable: true
-        cost_budget:
-          type: number
-          description: 'The monetary budget for the project when budgeting by money.'
-          nullable: true
-          format: float
-        cost_budget_include_expenses:
-          type: boolean
-          description: 'Option for budget of Total Project Fees projects to include tracked expenses.'
           nullable: true
         fee:
           type: number
@@ -5360,6 +5368,7 @@ paths:
                     total_cost: 33.35
                     units: 1.0
                     is_closed: false
+                    approval_status: unsubmitted
                     is_locked: true
                     is_billed: true
                     locked_reason: 'Expense is invoiced.'
@@ -5405,6 +5414,7 @@ paths:
                     total_cost: 100.0
                     units: 1.0
                     is_closed: true
+                    approval_status: approved
                     is_locked: true
                     is_billed: false
                     locked_reason: 'The project is locked for this time period.'
@@ -5485,6 +5495,13 @@ paths:
           schema:
             type: boolean
         -
+          name: approval_status
+          description: 'Only return expenses with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.'
+          required: false
+          in: query
+          schema:
+            type: string
+        -
           name: updated_since
           description: 'Only return expenses that have been updated since the given date and time.'
           required: false
@@ -5543,6 +5560,7 @@ paths:
                 total_cost: 13.59
                 units: 1.0
                 is_closed: false
+                approval_status: unsubmitted
                 is_locked: false
                 is_billed: false
                 locked_reason: null
@@ -5688,6 +5706,7 @@ paths:
                 total_cost: 33.35
                 units: 1.0
                 is_closed: false
+                approval_status: unsubmitted
                 is_locked: true
                 is_billed: true
                 locked_reason: 'Expense is invoiced.'
@@ -5764,6 +5783,7 @@ paths:
                 total_cost: 13.59
                 units: 1.0
                 is_closed: false
+                approval_status: unsubmitted
                 is_locked: false
                 is_billed: false
                 locked_reason: null
@@ -7616,11 +7636,6 @@ paths:
                   description: 'Rate for projects billed by Project Hourly Rate.'
                   nullable: true
                   format: float
-                budget:
-                  type: number
-                  description: 'The budget in hours for the project when budgeting by time.'
-                  nullable: true
-                  format: float
                 budget_by:
                   type: string
                   description: 'The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).'
@@ -7628,6 +7643,20 @@ paths:
                 budget_is_monthly:
                   type: boolean
                   description: 'Option to have the budget reset every month. Defaults to false.'
+                  nullable: true
+                budget:
+                  type: number
+                  description: 'The budget in hours for the project when budgeting by time.'
+                  nullable: true
+                  format: float
+                cost_budget:
+                  type: number
+                  description: 'The monetary budget for the project when budgeting by money.'
+                  nullable: true
+                  format: float
+                cost_budget_include_expenses:
+                  type: boolean
+                  description: 'Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.'
                   nullable: true
                 notify_when_over_budget:
                   type: boolean
@@ -7641,15 +7670,6 @@ paths:
                 show_budget_to_all:
                   type: boolean
                   description: 'Option to show project budget to all employees. Does not apply to Total Project Fee projects. Defaults to false.'
-                  nullable: true
-                cost_budget:
-                  type: number
-                  description: 'The monetary budget for the project when budgeting by money.'
-                  nullable: true
-                  format: float
-                cost_budget_include_expenses:
-                  type: boolean
-                  description: 'Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.'
                   nullable: true
                 fee:
                   type: number
@@ -7864,11 +7884,6 @@ paths:
                   description: 'Rate for projects billed by Project Hourly Rate.'
                   nullable: true
                   format: float
-                budget:
-                  type: number
-                  description: 'The budget in hours for the project when budgeting by time.'
-                  nullable: true
-                  format: float
                 budget_by:
                   type: string
                   description: 'The method by which the project is budgeted. Options: project (Hours Per Project), project_cost (Total Project Fees), task (Hours Per Task), task_fees (Fees Per Task), person (Hours Per Person), none (No Budget).'
@@ -7876,6 +7891,20 @@ paths:
                 budget_is_monthly:
                   type: boolean
                   description: 'Option to have the budget reset every month. Defaults to false.'
+                  nullable: true
+                budget:
+                  type: number
+                  description: 'The budget in hours for the project when budgeting by time.'
+                  nullable: true
+                  format: float
+                cost_budget:
+                  type: number
+                  description: 'The monetary budget for the project when budgeting by money.'
+                  nullable: true
+                  format: float
+                cost_budget_include_expenses:
+                  type: boolean
+                  description: 'Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.'
                   nullable: true
                 notify_when_over_budget:
                   type: boolean
@@ -7889,15 +7918,6 @@ paths:
                 show_budget_to_all:
                   type: boolean
                   description: 'Option to show project budget to all employees. Does not apply to Total Project Fee projects. Defaults to false.'
-                  nullable: true
-                cost_budget:
-                  type: number
-                  description: 'The monetary budget for the project when budgeting by money.'
-                  nullable: true
-                  format: float
-                cost_budget_include_expenses:
-                  type: boolean
-                  description: 'Option for budget of Total Project Fees projects to include tracked expenses. Defaults to false.'
                   nullable: true
                 fee:
                   type: number
@@ -10479,6 +10499,7 @@ paths:
                     is_locked: true
                     locked_reason: 'Item Approved and Locked for this Time Period'
                     is_closed: true
+                    approval_status: approved
                     is_billed: false
                     timer_started_at: null
                     started_time: '3:00pm'
@@ -10530,6 +10551,7 @@ paths:
                     is_locked: true
                     locked_reason: 'Item Invoiced and Approved and Locked for this Time Period'
                     is_closed: true
+                    approval_status: approved
                     is_billed: true
                     timer_started_at: null
                     started_time: '1:00pm'
@@ -10583,6 +10605,7 @@ paths:
                     is_locked: true
                     locked_reason: 'Item Approved and Locked for this Time Period'
                     is_closed: true
+                    approval_status: approved
                     is_billed: false
                     timer_started_at: null
                     started_time: '11:00am'
@@ -10634,6 +10657,7 @@ paths:
                     is_locked: true
                     locked_reason: 'Item Invoiced and Approved and Locked for this Time Period'
                     is_closed: true
+                    approval_status: approved
                     is_billed: true
                     timer_started_at: null
                     started_time: '9:00am'
@@ -10714,6 +10738,13 @@ paths:
           in: query
           schema:
             type: boolean
+        -
+          name: approval_status
+          description: 'Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.'
+          required: false
+          in: query
+          schema:
+            type: string
         -
           name: updated_since
           description: 'Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.'
@@ -10806,6 +10837,7 @@ paths:
                 is_locked: false
                 locked_reason: null
                 is_closed: false
+                approval_status: unsubmitted
                 is_billed: false
                 timer_started_at: null
                 started_time: null
@@ -10975,6 +11007,7 @@ paths:
                 is_locked: true
                 locked_reason: 'Item Invoiced and Approved and Locked for this Time Period'
                 is_closed: true
+                approval_status: approved
                 is_billed: true
                 timer_started_at: null
                 started_time: '1:00pm'
@@ -11059,6 +11092,7 @@ paths:
                 is_locked: false
                 locked_reason: null
                 is_closed: false
+                approval_status: unsubmitted
                 is_billed: false
                 timer_started_at: null
                 started_time: null
@@ -11227,6 +11261,7 @@ paths:
                 is_locked: false
                 locked_reason: null
                 is_closed: false
+                approval_status: unsubmitted
                 is_billed: false
                 timer_started_at: '2017-08-22T17:40:24Z'
                 started_time: '11:40am'
@@ -11310,6 +11345,7 @@ paths:
                 is_locked: false
                 locked_reason: null
                 is_closed: false
+                approval_status: unsubmitted
                 is_billed: false
                 timer_started_at: null
                 started_time: '11:37am'

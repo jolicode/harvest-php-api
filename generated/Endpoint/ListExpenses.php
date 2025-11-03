@@ -26,6 +26,7 @@ class ListExpenses extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
      * @var int    $client_id only return expenses belonging to the client with the given ID
      * @var int    $project_id only return expenses belonging to the project with the given ID
      * @var bool   $is_billed pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced
+     * @var string $approval_status Only return expenses with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
      * @var string $updated_since only return expenses that have been updated since the given date and time
      * @var string $from only return expenses with a spent_date on or after the given date
      * @var string $to only return expenses with a spent_date on or before the given date
@@ -66,7 +67,7 @@ class ListExpenses extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['user_id', 'client_id', 'project_id', 'is_billed', 'updated_since', 'from', 'to', 'page', 'per_page']);
+        $optionsResolver->setDefined(['user_id', 'client_id', 'project_id', 'is_billed', 'approval_status', 'updated_since', 'from', 'to', 'page', 'per_page']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('user_id', ['int']);
@@ -74,6 +75,7 @@ class ListExpenses extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->addAllowedTypes('project_id', ['int']);
         $optionsResolver->addAllowedTypes('is_billed', ['bool']);
         $optionsResolver->setNormalizer('is_billed', \Closure::fromCallable([new \JoliCode\Harvest\BooleanCustomQueryResolver(), '__invoke']));
+        $optionsResolver->addAllowedTypes('approval_status', ['string']);
         $optionsResolver->addAllowedTypes('updated_since', ['string']);
         $optionsResolver->addAllowedTypes('from', ['string']);
         $optionsResolver->addAllowedTypes('to', ['string']);

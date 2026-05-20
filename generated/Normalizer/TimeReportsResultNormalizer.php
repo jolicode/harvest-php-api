@@ -59,6 +59,9 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('billable_amount', $data) && \is_int($data['billable_amount'])) {
             $data['billable_amount'] = (float) $data['billable_amount'];
         }
+        if (\array_key_exists('scheduled_hours', $data) && \is_int($data['scheduled_hours'])) {
+            $data['scheduled_hours'] = (float) $data['scheduled_hours'];
+        }
         if (\array_key_exists('is_contractor', $data) && \is_int($data['is_contractor'])) {
             $data['is_contractor'] = (bool) $data['is_contractor'];
         }
@@ -152,6 +155,12 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
         } elseif (\array_key_exists('billable_amount', $data) && null === $data['billable_amount']) {
             $object->setBillableAmount(null);
         }
+        if (\array_key_exists('scheduled_hours', $data) && null !== $data['scheduled_hours']) {
+            $object->setScheduledHours($data['scheduled_hours']);
+            unset($data['scheduled_hours']);
+        } elseif (\array_key_exists('scheduled_hours', $data) && null === $data['scheduled_hours']) {
+            $object->setScheduledHours(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -208,6 +217,9 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if ($data->isInitialized('billableAmount')) {
             $dataArray['billable_amount'] = $data->getBillableAmount();
+        }
+        if ($data->isInitialized('scheduledHours')) {
+            $dataArray['scheduled_hours'] = $data->getScheduledHours();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

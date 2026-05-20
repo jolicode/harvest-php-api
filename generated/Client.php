@@ -1059,6 +1059,7 @@ class Client extends Runtime\Client\Client
      *    "from": string, //Only report on time entries with a spent_date on or after the given date.
      *    "to": string, //Only report on time entries with a spent_date on or before the given date.
      *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "include_forecast"?: bool, //When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.
      *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * } $queryParameters
@@ -1093,6 +1094,7 @@ class Client extends Runtime\Client\Client
      *    "from": string, //Only report on time entries with a spent_date on or after the given date.
      *    "to": string, //Only report on time entries with a spent_date on or before the given date.
      *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "include_forecast"?: bool, //When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.
      *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
      * } $queryParameters

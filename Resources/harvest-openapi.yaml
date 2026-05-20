@@ -72,6 +72,10 @@ components:
           type: string
           description: 'The contact’s fax number.'
           nullable: true
+        invoice_recipient_status:
+          type: string
+          description: 'The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.'
+          nullable: true
         created_at:
           type: string
           description: 'Date and time the contact was created.'
@@ -2082,6 +2086,11 @@ components:
           description: 'The totaled billable amount for the billable hours above. Only visible to Administrators and Project Managers with the View billable rates and amounts permission.'
           nullable: true
           format: float
+        scheduled_hours:
+          type: number
+          description: 'The total scheduled hours from Forecast for the given timeframe. Only present when include_forecast=true is passed and the account is connected to Forecast. null if the project or user has no Forecast assignments. Only returned in the Project and Team reports.'
+          nullable: true
+          format: float
     ProjectBudgetReportResult:
       type: object
       externalDocs:
@@ -3896,6 +3905,10 @@ paths:
                   type: string
                   description: 'The contact’s fax number.'
                   nullable: true
+                invoice_recipient_status:
+                  type: string
+                  description: 'The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.'
+                  nullable: true
               required:
                 - client_id
                 - first_name
@@ -4030,6 +4043,10 @@ paths:
                 fax:
                   type: string
                   description: 'The contact’s fax number.'
+                  nullable: true
+                invoice_recipient_status:
+                  type: string
+                  description: 'The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.'
                   nullable: true
   /estimate_item_categories:
     get:
@@ -9215,6 +9232,7 @@ paths:
                     billable_hours: 2
                     currency: USD
                     billable_amount: 200
+                    scheduled_hours: 40.0
                   -
                     project_id: 14308069
                     project_name: '[OS1] Online Store - Phase 1'
@@ -9224,6 +9242,7 @@ paths:
                     billable_hours: 3
                     currency: EUR
                     billable_amount: 300
+                    scheduled_hours: 60.0
                   -
                     project_id: 14808188
                     project_name: '[TF] Task Force'
@@ -9233,6 +9252,7 @@ paths:
                     billable_hours: 0.5
                     currency: EUR
                     billable_amount: 50
+                    scheduled_hours: null
                 per_page: 2000
                 total_pages: 1
                 total_entries: 3
@@ -9240,10 +9260,10 @@ paths:
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=2000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&include_forecast=true&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&page=1&per_page=2000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/projects?from=20170101&include_forecast=true&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -9272,6 +9292,13 @@ paths:
           in: query
           schema:
             type: string
+        -
+          name: include_forecast
+          description: 'When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.'
+          required: false
+          in: query
+          schema:
+            type: boolean
         -
           name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'
@@ -9426,6 +9453,7 @@ paths:
                     billable_amount: 50
                     weekly_capacity: 126000
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/abraj_albait_towers.png?1498516481'
+                    scheduled_hours: 35.0
                   -
                     user_id: 1782959
                     user_name: 'Kim Allen'
@@ -9436,6 +9464,7 @@ paths:
                     billable_amount: 300
                     weekly_capacity: 126000
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/cornell_clock_tower.png?1498515345'
+                    scheduled_hours: 70.0
                   -
                     user_id: 1782959
                     user_name: 'Kim Allen'
@@ -9446,6 +9475,7 @@ paths:
                     billable_amount: 200
                     weekly_capacity: 126000
                     avatar_url: 'https://cache.harvestapp.com/assets/profile_images/allen_bradley_clock_tower.png?1498509661'
+                    scheduled_hours: null
                 per_page: 2000
                 total_pages: 1
                 total_entries: 3
@@ -9453,10 +9483,10 @@ paths:
                 previous_page: null
                 page: 1
                 links:
-                  first: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=2000&to=20171231'
+                  first: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&include_forecast=true&page=1&per_page=2000&to=20171231'
                   next: null
                   previous: null
-                  last: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&page=1&per_page=2000&to=20171231'
+                  last: 'https://api.harvestapp.com/v2/reports/time/team?from=20170101&include_forecast=true&page=1&per_page=2000&to=20171231'
         default:
           description: 'error payload'
           content:
@@ -9485,6 +9515,13 @@ paths:
           in: query
           schema:
             type: string
+        -
+          name: include_forecast
+          description: 'When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.'
+          required: false
+          in: query
+          schema:
+            type: boolean
         -
           name: page
           description: 'The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)'

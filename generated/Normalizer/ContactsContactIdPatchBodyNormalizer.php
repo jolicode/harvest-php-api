@@ -98,6 +98,12 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
             $object->setFax(null);
         }
+        if (\array_key_exists('invoice_recipient_status', $data) && null !== $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus($data['invoice_recipient_status']);
+            unset($data['invoice_recipient_status']);
+        } elseif (\array_key_exists('invoice_recipient_status', $data) && null === $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -133,6 +139,9 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if ($data->isInitialized('fax')) {
             $dataArray['fax'] = $data->getFax();
+        }
+        if ($data->isInitialized('invoiceRecipientStatus')) {
+            $dataArray['invoice_recipient_status'] = $data->getInvoiceRecipientStatus();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

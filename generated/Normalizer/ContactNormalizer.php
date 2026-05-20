@@ -104,6 +104,12 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
             $object->setFax(null);
         }
+        if (\array_key_exists('invoice_recipient_status', $data) && null !== $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus($data['invoice_recipient_status']);
+            unset($data['invoice_recipient_status']);
+        } elseif (\array_key_exists('invoice_recipient_status', $data) && null === $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus(null);
+        }
         if (\array_key_exists('created_at', $data) && null !== $data['created_at']) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $data['created_at']));
             unset($data['created_at']);
@@ -154,6 +160,9 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($data->isInitialized('fax')) {
             $dataArray['fax'] = $data->getFax();
+        }
+        if ($data->isInitialized('invoiceRecipientStatus')) {
+            $dataArray['invoice_recipient_status'] = $data->getInvoiceRecipientStatus();
         }
         if ($data->isInitialized('createdAt')) {
             $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');

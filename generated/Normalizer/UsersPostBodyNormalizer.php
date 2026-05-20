@@ -40,13 +40,16 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\UsersPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\UsersPostBody();
         if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
             $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
         }
@@ -61,9 +64,6 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
             $object->setFirstName($data['first_name']);
@@ -160,35 +160,35 @@ class UsersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['first_name'] = $data->getFirstName();
         $dataArray['last_name'] = $data->getLastName();
         $dataArray['email'] = $data->getEmail();
-        if ($data->isInitialized('timezone') && null !== $data->getTimezone()) {
+        if ($data->isInitialized('timezone')) {
             $dataArray['timezone'] = $data->getTimezone();
         }
-        if ($data->isInitialized('hasAccessToAllFutureProjects') && null !== $data->getHasAccessToAllFutureProjects()) {
+        if ($data->isInitialized('hasAccessToAllFutureProjects')) {
             $dataArray['has_access_to_all_future_projects'] = $data->getHasAccessToAllFutureProjects();
         }
-        if ($data->isInitialized('isContractor') && null !== $data->getIsContractor()) {
+        if ($data->isInitialized('isContractor')) {
             $dataArray['is_contractor'] = $data->getIsContractor();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
+        if ($data->isInitialized('weeklyCapacity')) {
             $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
         }
-        if ($data->isInitialized('defaultHourlyRate') && null !== $data->getDefaultHourlyRate()) {
+        if ($data->isInitialized('defaultHourlyRate')) {
             $dataArray['default_hourly_rate'] = $data->getDefaultHourlyRate();
         }
-        if ($data->isInitialized('costRate') && null !== $data->getCostRate()) {
+        if ($data->isInitialized('costRate')) {
             $dataArray['cost_rate'] = $data->getCostRate();
         }
-        if ($data->isInitialized('roles') && null !== $data->getRoles()) {
+        if ($data->isInitialized('roles')) {
             $values = [];
             foreach ($data->getRoles() as $value) {
                 $values[] = $value;
             }
             $dataArray['roles'] = $values;
         }
-        if ($data->isInitialized('accessRoles') && null !== $data->getAccessRoles()) {
+        if ($data->isInitialized('accessRoles')) {
             $values_1 = [];
             foreach ($data->getAccessRoles() as $value_1) {
                 $values_1[] = $value_1;

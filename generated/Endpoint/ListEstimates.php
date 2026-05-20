@@ -20,16 +20,15 @@ class ListEstimates extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
      *
      * The response contains an object with a estimates property that contains an array of up to per_page estimates. Each entry in the array is a separate estimate object. If no more estimates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimates.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $client_id only return estimates belonging to the client with the given ID
-     * @var string $updated_since only return estimates that have been updated since the given date and time
-     * @var string $from only return estimates with an issue_date on or after the given date
-     * @var string $to only return estimates with an issue_date on or before the given date
-     * @var string $state Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
+     * @param array{
+     *    "client_id"?: int, //Only return estimates belonging to the client with the given ID.
+     *    "updated_since"?: string, //Only return estimates that have been updated since the given date and time.
+     *    "from"?: string, //Only return estimates with an issue_date on or after the given date.
+     *    "to"?: string, //Only return estimates with an issue_date on or before the given date.
+     *    "state"?: string, //Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -85,10 +84,10 @@ class ListEstimates extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint im
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Estimates', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

@@ -40,13 +40,16 @@ class InvoicesInvoiceIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPatchBody();
         if (\array_key_exists('tax', $data) && \is_int($data['tax'])) {
             $data['tax'] = (float) $data['tax'];
         }
@@ -55,9 +58,6 @@ class InvoicesInvoiceIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('discount', $data) && \is_int($data['discount'])) {
             $data['discount'] = (float) $data['discount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -175,56 +175,56 @@ class InvoicesInvoiceIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('retainerId') && null !== $data->getRetainerId()) {
+        if ($data->isInitialized('retainerId')) {
             $dataArray['retainer_id'] = $data->getRetainerId();
         }
-        if ($data->isInitialized('estimateId') && null !== $data->getEstimateId()) {
+        if ($data->isInitialized('estimateId')) {
             $dataArray['estimate_id'] = $data->getEstimateId();
         }
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
+        if ($data->isInitialized('number')) {
             $dataArray['number'] = $data->getNumber();
         }
-        if ($data->isInitialized('purchaseOrder') && null !== $data->getPurchaseOrder()) {
+        if ($data->isInitialized('purchaseOrder')) {
             $dataArray['purchase_order'] = $data->getPurchaseOrder();
         }
-        if ($data->isInitialized('tax') && null !== $data->getTax()) {
+        if ($data->isInitialized('tax')) {
             $dataArray['tax'] = $data->getTax();
         }
-        if ($data->isInitialized('tax2') && null !== $data->getTax2()) {
+        if ($data->isInitialized('tax2')) {
             $dataArray['tax2'] = $data->getTax2();
         }
-        if ($data->isInitialized('discount') && null !== $data->getDiscount()) {
+        if ($data->isInitialized('discount')) {
             $dataArray['discount'] = $data->getDiscount();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
-        if ($data->isInitialized('issueDate') && null !== $data->getIssueDate()) {
-            $dataArray['issue_date'] = $data->getIssueDate()->format('Y-m-d');
+        if ($data->isInitialized('issueDate')) {
+            $dataArray['issue_date'] = $data->getIssueDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('dueDate') && null !== $data->getDueDate()) {
-            $dataArray['due_date'] = $data->getDueDate()->format('Y-m-d');
+        if ($data->isInitialized('dueDate')) {
+            $dataArray['due_date'] = $data->getDueDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('paymentTerm') && null !== $data->getPaymentTerm()) {
+        if ($data->isInitialized('paymentTerm')) {
             $dataArray['payment_term'] = $data->getPaymentTerm();
         }
-        if ($data->isInitialized('paymentOptions') && null !== $data->getPaymentOptions()) {
+        if ($data->isInitialized('paymentOptions')) {
             $values = [];
             foreach ($data->getPaymentOptions() as $value) {
                 $values[] = $value;
             }
             $dataArray['payment_options'] = $values;
         }
-        if ($data->isInitialized('lineItems') && null !== $data->getLineItems()) {
+        if ($data->isInitialized('lineItems')) {
             $values_1 = [];
             foreach ($data->getLineItems() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

@@ -40,21 +40,21 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdPaymentsPostBody();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (float) $data['amount'];
         }
         if (\array_key_exists('send_thank_you', $data) && \is_int($data['send_thank_you'])) {
             $data['send_thank_you'] = (bool) $data['send_thank_you'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('amount', $data) && null !== $data['amount']) {
             $object->setAmount($data['amount']);
@@ -99,16 +99,16 @@ class InvoicesInvoiceIdPaymentsPostBodyNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $dataArray['amount'] = $data->getAmount();
-        if ($data->isInitialized('paidAt') && null !== $data->getPaidAt()) {
-            $dataArray['paid_at'] = $data->getPaidAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('paidAt')) {
+            $dataArray['paid_at'] = $data->getPaidAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('paidDate') && null !== $data->getPaidDate()) {
-            $dataArray['paid_date'] = $data->getPaidDate()->format('Y-m-d');
+        if ($data->isInitialized('paidDate')) {
+            $dataArray['paid_date'] = $data->getPaidDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('sendThankYou') && null !== $data->getSendThankYou()) {
+        if ($data->isInitialized('sendThankYou')) {
             $dataArray['send_thank_you'] = $data->getSendThankYou();
         }
         foreach ($data as $key => $value) {

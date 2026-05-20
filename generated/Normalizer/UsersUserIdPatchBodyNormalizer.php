@@ -40,13 +40,16 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\UsersUserIdPatchBody();
         if (\array_key_exists('has_access_to_all_future_projects', $data) && \is_int($data['has_access_to_all_future_projects'])) {
             $data['has_access_to_all_future_projects'] = (bool) $data['has_access_to_all_future_projects'];
         }
@@ -55,9 +58,6 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
             $object->setFirstName($data['first_name']);
@@ -139,38 +139,38 @@ class UsersUserIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['first_name'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['last_name'] = $data->getLastName();
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email')) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('timezone') && null !== $data->getTimezone()) {
+        if ($data->isInitialized('timezone')) {
             $dataArray['timezone'] = $data->getTimezone();
         }
-        if ($data->isInitialized('hasAccessToAllFutureProjects') && null !== $data->getHasAccessToAllFutureProjects()) {
+        if ($data->isInitialized('hasAccessToAllFutureProjects')) {
             $dataArray['has_access_to_all_future_projects'] = $data->getHasAccessToAllFutureProjects();
         }
-        if ($data->isInitialized('isContractor') && null !== $data->getIsContractor()) {
+        if ($data->isInitialized('isContractor')) {
             $dataArray['is_contractor'] = $data->getIsContractor();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
+        if ($data->isInitialized('weeklyCapacity')) {
             $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
         }
-        if ($data->isInitialized('roles') && null !== $data->getRoles()) {
+        if ($data->isInitialized('roles')) {
             $values = [];
             foreach ($data->getRoles() as $value) {
                 $values[] = $value;
             }
             $dataArray['roles'] = $values;
         }
-        if ($data->isInitialized('accessRoles') && null !== $data->getAccessRoles()) {
+        if ($data->isInitialized('accessRoles')) {
             $values_1 = [];
             foreach ($data->getAccessRoles() as $value_1) {
                 $values_1[] = $value_1;

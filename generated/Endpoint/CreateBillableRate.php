@@ -19,8 +19,8 @@ class CreateBillableRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoi
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
      *
-     * Creating a billable rate with no start_date will replace a user’s existing rate(s).
-     * Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
+     *   Creating a billable rate with no start_date will replace a user’s existing rate(s).
+     *   Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
      */
     public function __construct(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdBillableRatesPostBody $requestBody)
     {
@@ -64,10 +64,10 @@ class CreateBillableRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\BillableRate', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

@@ -40,13 +40,16 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicesInvoiceIdMessagesPostBody();
         if (\array_key_exists('include_link_to_client_invoice', $data) && \is_int($data['include_link_to_client_invoice'])) {
             $data['include_link_to_client_invoice'] = (bool) $data['include_link_to_client_invoice'];
         }
@@ -58,9 +61,6 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('thank_you', $data) && \is_int($data['thank_you'])) {
             $data['thank_you'] = (bool) $data['thank_you'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
             $object->setEventType($data['event_type']);
@@ -126,32 +126,32 @@ class InvoicesInvoiceIdMessagesPostBodyNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eventType') && null !== $data->getEventType()) {
+        if ($data->isInitialized('eventType')) {
             $dataArray['event_type'] = $data->getEventType();
         }
-        if ($data->isInitialized('recipients') && null !== $data->getRecipients()) {
+        if ($data->isInitialized('recipients')) {
             $values = [];
             foreach ($data->getRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['recipients'] = $values;
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
+        if ($data->isInitialized('body')) {
             $dataArray['body'] = $data->getBody();
         }
-        if ($data->isInitialized('includeLinkToClientInvoice') && null !== $data->getIncludeLinkToClientInvoice()) {
+        if ($data->isInitialized('includeLinkToClientInvoice')) {
             $dataArray['include_link_to_client_invoice'] = $data->getIncludeLinkToClientInvoice();
         }
-        if ($data->isInitialized('attachPdf') && null !== $data->getAttachPdf()) {
+        if ($data->isInitialized('attachPdf')) {
             $dataArray['attach_pdf'] = $data->getAttachPdf();
         }
-        if ($data->isInitialized('sendMeACopy') && null !== $data->getSendMeACopy()) {
+        if ($data->isInitialized('sendMeACopy')) {
             $dataArray['send_me_a_copy'] = $data->getSendMeACopy();
         }
-        if ($data->isInitialized('thankYou') && null !== $data->getThankYou()) {
+        if ($data->isInitialized('thankYou')) {
             $dataArray['thank_you'] = $data->getThankYou();
         }
         foreach ($data as $key => $value_1) {

@@ -16,13 +16,12 @@ class ExpenseCategoriesReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseE
     use \JoliCode\Harvest\Api\Runtime\Client\EndpointTrait;
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on expenses with a spent_date on or after the given date
-     * @var string $to only report on expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
+     * @param array{
+     *    "from": string, //Only report on expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -75,10 +74,10 @@ class ExpenseCategoriesReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseE
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\ExpenseReportsResults', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

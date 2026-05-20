@@ -59,7 +59,7 @@ class DeleteUser extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint imple
         if (200 === $status) {
             return null;
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

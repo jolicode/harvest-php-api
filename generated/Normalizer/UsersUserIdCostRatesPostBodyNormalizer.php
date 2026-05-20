@@ -40,18 +40,18 @@ class UsersUserIdCostRatesPostBodyNormalizer implements DenormalizerInterface, N
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (float) $data['amount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('amount', $data) && null !== $data['amount']) {
             $object->setAmount($data['amount']);
@@ -78,8 +78,8 @@ class UsersUserIdCostRatesPostBodyNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['amount'] = $data->getAmount();
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
-            $dataArray['start_date'] = $data->getStartDate()->format('Y-m-d');
+        if ($data->isInitialized('startDate')) {
+            $dataArray['start_date'] = $data->getStartDate()?->format('Y-m-d');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

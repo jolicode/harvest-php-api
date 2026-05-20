@@ -40,13 +40,16 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoiceLineItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoiceLineItem();
         if (\array_key_exists('quantity', $data) && \is_int($data['quantity'])) {
             $data['quantity'] = (float) $data['quantity'];
         }
@@ -61,9 +64,6 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('taxed2', $data) && \is_int($data['taxed2'])) {
             $data['taxed2'] = (bool) $data['taxed2'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -131,31 +131,31 @@ class InvoiceLineItemNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('project') && null !== $data->getProject()) {
+        if ($data->isInitialized('project')) {
             $dataArray['project'] = $this->normalizer->normalize($data->getProject(), 'json', $context);
         }
-        if ($data->isInitialized('kind') && null !== $data->getKind()) {
+        if ($data->isInitialized('kind')) {
             $dataArray['kind'] = $data->getKind();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity')) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('unitPrice') && null !== $data->getUnitPrice()) {
+        if ($data->isInitialized('unitPrice')) {
             $dataArray['unit_price'] = $data->getUnitPrice();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount')) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('taxed') && null !== $data->getTaxed()) {
+        if ($data->isInitialized('taxed')) {
             $dataArray['taxed'] = $data->getTaxed();
         }
-        if ($data->isInitialized('taxed2') && null !== $data->getTaxed2()) {
+        if ($data->isInitialized('taxed2')) {
             $dataArray['taxed2'] = $data->getTaxed2();
         }
         foreach ($data as $key => $value) {

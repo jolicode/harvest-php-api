@@ -40,13 +40,16 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ExpensesExpenseIdPatchBody();
         if (\array_key_exists('total_cost', $data) && \is_int($data['total_cost'])) {
             $data['total_cost'] = (float) $data['total_cost'];
         }
@@ -55,9 +58,6 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('delete_receipt', $data) && \is_int($data['delete_receipt'])) {
             $data['delete_receipt'] = (bool) $data['delete_receipt'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('project_id', $data) && null !== $data['project_id']) {
             $object->setProjectId($data['project_id']);
@@ -125,31 +125,31 @@ class ExpensesExpenseIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
+        if ($data->isInitialized('projectId')) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        if ($data->isInitialized('expenseCategoryId') && null !== $data->getExpenseCategoryId()) {
+        if ($data->isInitialized('expenseCategoryId')) {
             $dataArray['expense_category_id'] = $data->getExpenseCategoryId();
         }
-        if ($data->isInitialized('spentDate') && null !== $data->getSpentDate()) {
-            $dataArray['spent_date'] = $data->getSpentDate()->format('Y-m-d');
+        if ($data->isInitialized('spentDate')) {
+            $dataArray['spent_date'] = $data->getSpentDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('units') && null !== $data->getUnits()) {
+        if ($data->isInitialized('units')) {
             $dataArray['units'] = $data->getUnits();
         }
-        if ($data->isInitialized('totalCost') && null !== $data->getTotalCost()) {
+        if ($data->isInitialized('totalCost')) {
             $dataArray['total_cost'] = $data->getTotalCost();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable')) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('receipt') && null !== $data->getReceipt()) {
+        if ($data->isInitialized('receipt')) {
             $dataArray['receipt'] = $data->getReceipt();
         }
-        if ($data->isInitialized('deleteReceipt') && null !== $data->getDeleteReceipt()) {
+        if ($data->isInitialized('deleteReceipt')) {
             $dataArray['delete_receipt'] = $data->getDeleteReceipt();
         }
         foreach ($data as $key => $value) {

@@ -40,13 +40,16 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdUserAssignmentsPostBody();
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
             $data['hourly_rate'] = (float) $data['hourly_rate'];
         }
@@ -61,9 +64,6 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
         }
         if (\array_key_exists('use_default_rates', $data) && \is_int($data['use_default_rates'])) {
             $data['use_default_rates'] = (bool) $data['use_default_rates'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
             $object->setUserId($data['user_id']);
@@ -114,19 +114,19 @@ class ProjectsProjectIdUserAssignmentsPostBodyNormalizer implements Denormalizer
     {
         $dataArray = [];
         $dataArray['user_id'] = $data->getUserId();
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('isProjectManager') && null !== $data->getIsProjectManager()) {
+        if ($data->isInitialized('isProjectManager')) {
             $dataArray['is_project_manager'] = $data->getIsProjectManager();
         }
-        if ($data->isInitialized('useDefaultRates') && null !== $data->getUseDefaultRates()) {
+        if ($data->isInitialized('useDefaultRates')) {
             $dataArray['use_default_rates'] = $data->getUseDefaultRates();
         }
-        if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
+        if ($data->isInitialized('hourlyRate')) {
             $dataArray['hourly_rate'] = $data->getHourlyRate();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+        if ($data->isInitialized('budget')) {
             $dataArray['budget'] = $data->getBudget();
         }
         foreach ($data as $key => $value) {

@@ -40,18 +40,18 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\CompanyPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\CompanyPatchBody();
         if (\array_key_exists('wants_timestamp_timers', $data) && \is_int($data['wants_timestamp_timers'])) {
             $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('wants_timestamp_timers', $data) && null !== $data['wants_timestamp_timers']) {
             $object->setWantsTimestampTimers($data['wants_timestamp_timers']);
@@ -77,10 +77,10 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wantsTimestampTimers') && null !== $data->getWantsTimestampTimers()) {
+        if ($data->isInitialized('wantsTimestampTimers')) {
             $dataArray['wants_timestamp_timers'] = $data->getWantsTimestampTimers();
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
+        if ($data->isInitialized('weeklyCapacity')) {
             $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
         }
         foreach ($data as $key => $value) {

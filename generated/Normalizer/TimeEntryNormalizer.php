@@ -40,13 +40,16 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\TimeEntry();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\TimeEntry();
         if (\array_key_exists('hours', $data) && \is_int($data['hours'])) {
             $data['hours'] = (float) $data['hours'];
         }
@@ -79,9 +82,6 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('budgeted', $data) && \is_int($data['budgeted'])) {
             $data['budgeted'] = (bool) $data['budgeted'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -281,16 +281,16 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('spentDate') && null !== $data->getSpentDate()) {
-            $dataArray['spent_date'] = $data->getSpentDate()->format('Y-m-d');
+        if ($data->isInitialized('spentDate')) {
+            $dataArray['spent_date'] = $data->getSpentDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if ($data->isInitialized('user')) {
             $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         }
-        if ($data->isInitialized('userAssignment') && null !== $data->getUserAssignment()) {
+        if ($data->isInitialized('userAssignment')) {
             $value = $data->getUserAssignment();
             if (\is_object($data->getUserAssignment())) {
                 $value = $this->normalizer->normalize($data->getUserAssignment(), 'json', $context);
@@ -299,16 +299,16 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $dataArray['user_assignment'] = $value;
         }
-        if ($data->isInitialized('client') && null !== $data->getClient()) {
+        if ($data->isInitialized('client')) {
             $dataArray['client'] = $this->normalizer->normalize($data->getClient(), 'json', $context);
         }
-        if ($data->isInitialized('project') && null !== $data->getProject()) {
+        if ($data->isInitialized('project')) {
             $dataArray['project'] = $this->normalizer->normalize($data->getProject(), 'json', $context);
         }
-        if ($data->isInitialized('task') && null !== $data->getTask()) {
+        if ($data->isInitialized('task')) {
             $dataArray['task'] = $this->normalizer->normalize($data->getTask(), 'json', $context);
         }
-        if ($data->isInitialized('taskAssignment') && null !== $data->getTaskAssignment()) {
+        if ($data->isInitialized('taskAssignment')) {
             $value_1 = $data->getTaskAssignment();
             if (\is_object($data->getTaskAssignment())) {
                 $value_1 = $this->normalizer->normalize($data->getTaskAssignment(), 'json', $context);
@@ -317,68 +317,68 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $dataArray['task_assignment'] = $value_1;
         }
-        if ($data->isInitialized('externalReference') && null !== $data->getExternalReference()) {
+        if ($data->isInitialized('externalReference')) {
             $dataArray['external_reference'] = $this->normalizer->normalize($data->getExternalReference(), 'json', $context);
         }
-        if ($data->isInitialized('invoice') && null !== $data->getInvoice()) {
+        if ($data->isInitialized('invoice')) {
             $dataArray['invoice'] = $this->normalizer->normalize($data->getInvoice(), 'json', $context);
         }
-        if ($data->isInitialized('hours') && null !== $data->getHours()) {
+        if ($data->isInitialized('hours')) {
             $dataArray['hours'] = $data->getHours();
         }
-        if ($data->isInitialized('hoursWithoutTimer') && null !== $data->getHoursWithoutTimer()) {
+        if ($data->isInitialized('hoursWithoutTimer')) {
             $dataArray['hours_without_timer'] = $data->getHoursWithoutTimer();
         }
-        if ($data->isInitialized('roundedHours') && null !== $data->getRoundedHours()) {
+        if ($data->isInitialized('roundedHours')) {
             $dataArray['rounded_hours'] = $data->getRoundedHours();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('isLocked') && null !== $data->getIsLocked()) {
+        if ($data->isInitialized('isLocked')) {
             $dataArray['is_locked'] = $data->getIsLocked();
         }
-        if ($data->isInitialized('lockedReason') && null !== $data->getLockedReason()) {
+        if ($data->isInitialized('lockedReason')) {
             $dataArray['locked_reason'] = $data->getLockedReason();
         }
-        if ($data->isInitialized('isClosed') && null !== $data->getIsClosed()) {
+        if ($data->isInitialized('isClosed')) {
             $dataArray['is_closed'] = $data->getIsClosed();
         }
-        if ($data->isInitialized('approvalStatus') && null !== $data->getApprovalStatus()) {
+        if ($data->isInitialized('approvalStatus')) {
             $dataArray['approval_status'] = $data->getApprovalStatus();
         }
-        if ($data->isInitialized('isBilled') && null !== $data->getIsBilled()) {
+        if ($data->isInitialized('isBilled')) {
             $dataArray['is_billed'] = $data->getIsBilled();
         }
-        if ($data->isInitialized('timerStartedAt') && null !== $data->getTimerStartedAt()) {
-            $dataArray['timer_started_at'] = $data->getTimerStartedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('timerStartedAt')) {
+            $dataArray['timer_started_at'] = $data->getTimerStartedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('startedTime') && null !== $data->getStartedTime()) {
+        if ($data->isInitialized('startedTime')) {
             $dataArray['started_time'] = $data->getStartedTime();
         }
-        if ($data->isInitialized('endedTime') && null !== $data->getEndedTime()) {
+        if ($data->isInitialized('endedTime')) {
             $dataArray['ended_time'] = $data->getEndedTime();
         }
-        if ($data->isInitialized('isRunning') && null !== $data->getIsRunning()) {
+        if ($data->isInitialized('isRunning')) {
             $dataArray['is_running'] = $data->getIsRunning();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable')) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('budgeted') && null !== $data->getBudgeted()) {
+        if ($data->isInitialized('budgeted')) {
             $dataArray['budgeted'] = $data->getBudgeted();
         }
-        if ($data->isInitialized('billableRate') && null !== $data->getBillableRate()) {
+        if ($data->isInitialized('billableRate')) {
             $dataArray['billable_rate'] = $data->getBillableRate();
         }
-        if ($data->isInitialized('costRate') && null !== $data->getCostRate()) {
+        if ($data->isInitialized('costRate')) {
             $dataArray['cost_rate'] = $data->getCostRate();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

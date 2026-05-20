@@ -40,15 +40,15 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\TimeEntryExternalReference();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\TimeEntryExternalReference();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -98,22 +98,22 @@ class TimeEntryExternalReferenceNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('groupId') && null !== $data->getGroupId()) {
+        if ($data->isInitialized('groupId')) {
             $dataArray['group_id'] = $data->getGroupId();
         }
-        if ($data->isInitialized('accountId') && null !== $data->getAccountId()) {
+        if ($data->isInitialized('accountId')) {
             $dataArray['account_id'] = $data->getAccountId();
         }
-        if ($data->isInitialized('permalink') && null !== $data->getPermalink()) {
+        if ($data->isInitialized('permalink')) {
             $dataArray['permalink'] = $data->getPermalink();
         }
-        if ($data->isInitialized('service') && null !== $data->getService()) {
+        if ($data->isInitialized('service')) {
             $dataArray['service'] = $data->getService();
         }
-        if ($data->isInitialized('serviceIconUrl') && null !== $data->getServiceIconUrl()) {
+        if ($data->isInitialized('serviceIconUrl')) {
             $dataArray['service_icon_url'] = $data->getServiceIconUrl();
         }
         foreach ($data as $key => $value) {

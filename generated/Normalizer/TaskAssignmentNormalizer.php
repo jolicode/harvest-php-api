@@ -40,13 +40,16 @@ class TaskAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\TaskAssignment();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\TaskAssignment();
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
             $data['hourly_rate'] = (float) $data['hourly_rate'];
         }
@@ -58,9 +61,6 @@ class TaskAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('billable', $data) && \is_int($data['billable'])) {
             $data['billable'] = (bool) $data['billable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -128,32 +128,32 @@ class TaskAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('project') && null !== $data->getProject()) {
+        if ($data->isInitialized('project')) {
             $dataArray['project'] = $this->normalizer->normalize($data->getProject(), 'json', $context);
         }
-        if ($data->isInitialized('task') && null !== $data->getTask()) {
+        if ($data->isInitialized('task')) {
             $dataArray['task'] = $this->normalizer->normalize($data->getTask(), 'json', $context);
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable')) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
+        if ($data->isInitialized('hourlyRate')) {
             $dataArray['hourly_rate'] = $data->getHourlyRate();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+        if ($data->isInitialized('budget')) {
             $dataArray['budget'] = $data->getBudget();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

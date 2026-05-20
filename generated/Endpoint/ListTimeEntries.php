@@ -20,22 +20,21 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
      *
      * The response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $user_id only return time entries belonging to the user with the given ID
-     * @var int    $client_id only return time entries belonging to the client with the given ID
-     * @var int    $project_id only return time entries belonging to the project with the given ID
-     * @var int    $task_id only return time entries belonging to the task with the given ID
-     * @var string $external_reference_id only return time entries with the given external_reference ID
-     * @var bool   $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
-     * @var bool   $is_running pass true to only return running time entries and false to return non-running time entries
-     * @var string $approval_status Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
-     * @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
-     * @var string $from only return time entries with a spent_date on or after the given date
-     * @var string $to only return time entries with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
+     * @param array{
+     *    "user_id"?: int, //Only return time entries belonging to the user with the given ID.
+     *    "client_id"?: int, //Only return time entries belonging to the client with the given ID.
+     *    "project_id"?: int, //Only return time entries belonging to the project with the given ID.
+     *    "task_id"?: int, //Only return time entries belonging to the task with the given ID.
+     *    "external_reference_id"?: string, //Only return time entries with the given external_reference ID.
+     *    "is_billed"?: bool, //Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.
+     *    "is_running"?: bool, //Pass true to only return running time entries and false to return non-running time entries.
+     *    "approval_status"?: string, //Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     *    "updated_since"?: string, //Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
+     *    "from"?: string, //Only return time entries with a spent_date on or after the given date.
+     *    "to"?: string, //Only return time entries with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -99,10 +98,10 @@ class ListTimeEntries extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\TimeEntries', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

@@ -40,18 +40,18 @@ class TimeEntriesPostBodyNormalizer implements DenormalizerInterface, Normalizer
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\TimeEntriesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\TimeEntriesPostBody();
         if (\array_key_exists('hours', $data) && \is_int($data['hours'])) {
             $data['hours'] = (float) $data['hours'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
             $object->setUserId($data['user_id']);
@@ -119,25 +119,25 @@ class TimeEntriesPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId')) {
             $dataArray['user_id'] = $data->getUserId();
         }
         $dataArray['project_id'] = $data->getProjectId();
         $dataArray['task_id'] = $data->getTaskId();
-        $dataArray['spent_date'] = $data->getSpentDate()->format('Y-m-d');
-        if ($data->isInitialized('startedTime') && null !== $data->getStartedTime()) {
+        $dataArray['spent_date'] = $data->getSpentDate()?->format('Y-m-d');
+        if ($data->isInitialized('startedTime')) {
             $dataArray['started_time'] = $data->getStartedTime();
         }
-        if ($data->isInitialized('endedTime') && null !== $data->getEndedTime()) {
+        if ($data->isInitialized('endedTime')) {
             $dataArray['ended_time'] = $data->getEndedTime();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('externalReference') && null !== $data->getExternalReference()) {
+        if ($data->isInitialized('externalReference')) {
             $dataArray['external_reference'] = $this->normalizer->normalize($data->getExternalReference(), 'json', $context);
         }
-        if ($data->isInitialized('hours') && null !== $data->getHours()) {
+        if ($data->isInitialized('hours')) {
             $dataArray['hours'] = $data->getHours();
         }
         foreach ($data as $key => $value) {

@@ -40,13 +40,16 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ExpenseReportsResult();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ExpenseReportsResult();
         if (\array_key_exists('total_amount', $data) && \is_int($data['total_amount'])) {
             $data['total_amount'] = (float) $data['total_amount'];
         }
@@ -55,9 +58,6 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('is_contractor', $data) && \is_int($data['is_contractor'])) {
             $data['is_contractor'] = (bool) $data['is_contractor'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -143,40 +143,40 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('clientName') && null !== $data->getClientName()) {
+        if ($data->isInitialized('clientName')) {
             $dataArray['client_name'] = $data->getClientName();
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
+        if ($data->isInitialized('projectId')) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        if ($data->isInitialized('projectName') && null !== $data->getProjectName()) {
+        if ($data->isInitialized('projectName')) {
             $dataArray['project_name'] = $data->getProjectName();
         }
-        if ($data->isInitialized('expenseCategoryId') && null !== $data->getExpenseCategoryId()) {
+        if ($data->isInitialized('expenseCategoryId')) {
             $dataArray['expense_category_id'] = $data->getExpenseCategoryId();
         }
-        if ($data->isInitialized('expenseCategoryName') && null !== $data->getExpenseCategoryName()) {
+        if ($data->isInitialized('expenseCategoryName')) {
             $dataArray['expense_category_name'] = $data->getExpenseCategoryName();
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId')) {
             $dataArray['user_id'] = $data->getUserId();
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
+        if ($data->isInitialized('userName')) {
             $dataArray['user_name'] = $data->getUserName();
         }
-        if ($data->isInitialized('isContractor') && null !== $data->getIsContractor()) {
+        if ($data->isInitialized('isContractor')) {
             $dataArray['is_contractor'] = $data->getIsContractor();
         }
-        if ($data->isInitialized('totalAmount') && null !== $data->getTotalAmount()) {
+        if ($data->isInitialized('totalAmount')) {
             $dataArray['total_amount'] = $data->getTotalAmount();
         }
-        if ($data->isInitialized('billableAmount') && null !== $data->getBillableAmount()) {
+        if ($data->isInitialized('billableAmount')) {
             $dataArray['billable_amount'] = $data->getBillableAmount();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
         foreach ($data as $key => $value) {

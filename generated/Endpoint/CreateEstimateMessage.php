@@ -61,10 +61,10 @@ class CreateEstimateMessage extends \JoliCode\Harvest\Api\Runtime\Client\BaseEnd
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\EstimateMessage', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

@@ -107,6 +107,12 @@ class TimeReportsResult extends \ArrayObject
      * @var float|null
      */
     protected $billableAmount;
+    /**
+     * The total scheduled hours from Forecast for the given timeframe. Only present when include_forecast=true is passed and the account is connected to Forecast. null if the project or user has no Forecast assignments. Only returned in the Project and Team reports.
+     *
+     * @var float|null
+     */
+    protected $scheduledHours;
 
     public function isInitialized($property): bool
     {
@@ -394,6 +400,25 @@ class TimeReportsResult extends \ArrayObject
     {
         $this->initialized['billableAmount'] = true;
         $this->billableAmount = $billableAmount;
+
+        return $this;
+    }
+
+    /**
+     * The total scheduled hours from Forecast for the given timeframe. Only present when include_forecast=true is passed and the account is connected to Forecast. null if the project or user has no Forecast assignments. Only returned in the Project and Team reports.
+     */
+    public function getScheduledHours(): ?float
+    {
+        return $this->scheduledHours;
+    }
+
+    /**
+     * The total scheduled hours from Forecast for the given timeframe. Only present when include_forecast=true is passed and the account is connected to Forecast. null if the project or user has no Forecast assignments. Only returned in the Project and Team reports.
+     */
+    public function setScheduledHours(?float $scheduledHours): self
+    {
+        $this->initialized['scheduledHours'] = true;
+        $this->scheduledHours = $scheduledHours;
 
         return $this;
     }

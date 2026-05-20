@@ -40,15 +40,15 @@ class RolesRoleIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\RolesRoleIdPatchBody();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
@@ -78,10 +78,10 @@ class RolesRoleIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('userIds') && null !== $data->getUserIds()) {
+        if ($data->isInitialized('userIds')) {
             $values = [];
             foreach ($data->getUserIds() as $value) {
                 $values[] = $value;

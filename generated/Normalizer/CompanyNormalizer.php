@@ -40,13 +40,16 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\Company();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\Company();
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
         }
@@ -67,9 +70,6 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('team_feature', $data) && \is_int($data['team_feature'])) {
             $data['team_feature'] = (bool) $data['team_feature'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('base_uri', $data) && null !== $data['base_uri']) {
             $object->setBaseUri($data['base_uri']);
@@ -209,67 +209,67 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('baseUri') && null !== $data->getBaseUri()) {
+        if ($data->isInitialized('baseUri')) {
             $dataArray['base_uri'] = $data->getBaseUri();
         }
-        if ($data->isInitialized('fullDomain') && null !== $data->getFullDomain()) {
+        if ($data->isInitialized('fullDomain')) {
             $dataArray['full_domain'] = $data->getFullDomain();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('weekStartDay') && null !== $data->getWeekStartDay()) {
+        if ($data->isInitialized('weekStartDay')) {
             $dataArray['week_start_day'] = $data->getWeekStartDay();
         }
-        if ($data->isInitialized('wantsTimestampTimers') && null !== $data->getWantsTimestampTimers()) {
+        if ($data->isInitialized('wantsTimestampTimers')) {
             $dataArray['wants_timestamp_timers'] = $data->getWantsTimestampTimers();
         }
-        if ($data->isInitialized('timeFormat') && null !== $data->getTimeFormat()) {
+        if ($data->isInitialized('timeFormat')) {
             $dataArray['time_format'] = $data->getTimeFormat();
         }
-        if ($data->isInitialized('dateFormat') && null !== $data->getDateFormat()) {
+        if ($data->isInitialized('dateFormat')) {
             $dataArray['date_format'] = $data->getDateFormat();
         }
-        if ($data->isInitialized('planType') && null !== $data->getPlanType()) {
+        if ($data->isInitialized('planType')) {
             $dataArray['plan_type'] = $data->getPlanType();
         }
-        if ($data->isInitialized('clock') && null !== $data->getClock()) {
+        if ($data->isInitialized('clock')) {
             $dataArray['clock'] = $data->getClock();
         }
-        if ($data->isInitialized('currencyCodeDisplay') && null !== $data->getCurrencyCodeDisplay()) {
+        if ($data->isInitialized('currencyCodeDisplay')) {
             $dataArray['currency_code_display'] = $data->getCurrencyCodeDisplay();
         }
-        if ($data->isInitialized('currencySymbolDisplay') && null !== $data->getCurrencySymbolDisplay()) {
+        if ($data->isInitialized('currencySymbolDisplay')) {
             $dataArray['currency_symbol_display'] = $data->getCurrencySymbolDisplay();
         }
-        if ($data->isInitialized('decimalSymbol') && null !== $data->getDecimalSymbol()) {
+        if ($data->isInitialized('decimalSymbol')) {
             $dataArray['decimal_symbol'] = $data->getDecimalSymbol();
         }
-        if ($data->isInitialized('thousandsSeparator') && null !== $data->getThousandsSeparator()) {
+        if ($data->isInitialized('thousandsSeparator')) {
             $dataArray['thousands_separator'] = $data->getThousandsSeparator();
         }
-        if ($data->isInitialized('colorScheme') && null !== $data->getColorScheme()) {
+        if ($data->isInitialized('colorScheme')) {
             $dataArray['color_scheme'] = $data->getColorScheme();
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
+        if ($data->isInitialized('weeklyCapacity')) {
             $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
         }
-        if ($data->isInitialized('expenseFeature') && null !== $data->getExpenseFeature()) {
+        if ($data->isInitialized('expenseFeature')) {
             $dataArray['expense_feature'] = $data->getExpenseFeature();
         }
-        if ($data->isInitialized('invoiceFeature') && null !== $data->getInvoiceFeature()) {
+        if ($data->isInitialized('invoiceFeature')) {
             $dataArray['invoice_feature'] = $data->getInvoiceFeature();
         }
-        if ($data->isInitialized('estimateFeature') && null !== $data->getEstimateFeature()) {
+        if ($data->isInitialized('estimateFeature')) {
             $dataArray['estimate_feature'] = $data->getEstimateFeature();
         }
-        if ($data->isInitialized('approvalFeature') && null !== $data->getApprovalFeature()) {
+        if ($data->isInitialized('approvalFeature')) {
             $dataArray['approval_feature'] = $data->getApprovalFeature();
         }
-        if ($data->isInitialized('teamFeature') && null !== $data->getTeamFeature()) {
+        if ($data->isInitialized('teamFeature')) {
             $dataArray['team_feature'] = $data->getTeamFeature();
         }
         foreach ($data as $key => $value) {

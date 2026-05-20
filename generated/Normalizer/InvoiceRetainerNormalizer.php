@@ -40,15 +40,15 @@ class InvoiceRetainerNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoiceRetainer();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\InvoiceRetainer();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -68,7 +68,7 @@ class InvoiceRetainerNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         foreach ($data as $key => $value) {

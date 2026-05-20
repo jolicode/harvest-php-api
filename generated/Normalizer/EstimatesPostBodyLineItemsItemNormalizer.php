@@ -40,13 +40,16 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesPostBodyLineItemsItem();
         if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
             $data['unit_price'] = (float) $data['unit_price'];
         }
@@ -55,9 +58,6 @@ class EstimatesPostBodyLineItemsItemNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('taxed2', $data) && \is_int($data['taxed2'])) {
             $data['taxed2'] = (bool) $data['taxed2'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

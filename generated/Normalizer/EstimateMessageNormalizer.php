@@ -40,18 +40,18 @@ class EstimateMessageNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\EstimateMessage();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimateMessage();
         if (\array_key_exists('send_me_a_copy', $data) && \is_int($data['send_me_a_copy'])) {
             $data['send_me_a_copy'] = (bool) $data['send_me_a_copy'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -141,45 +141,45 @@ class EstimateMessageNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('sentBy') && null !== $data->getSentBy()) {
+        if ($data->isInitialized('sentBy')) {
             $dataArray['sent_by'] = $data->getSentBy();
         }
-        if ($data->isInitialized('sentByEmail') && null !== $data->getSentByEmail()) {
+        if ($data->isInitialized('sentByEmail')) {
             $dataArray['sent_by_email'] = $data->getSentByEmail();
         }
-        if ($data->isInitialized('sentFrom') && null !== $data->getSentFrom()) {
+        if ($data->isInitialized('sentFrom')) {
             $dataArray['sent_from'] = $data->getSentFrom();
         }
-        if ($data->isInitialized('sentFromEmail') && null !== $data->getSentFromEmail()) {
+        if ($data->isInitialized('sentFromEmail')) {
             $dataArray['sent_from_email'] = $data->getSentFromEmail();
         }
-        if ($data->isInitialized('recipients') && null !== $data->getRecipients()) {
+        if ($data->isInitialized('recipients')) {
             $values = [];
             foreach ($data->getRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['recipients'] = $values;
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
+        if ($data->isInitialized('body')) {
             $dataArray['body'] = $data->getBody();
         }
-        if ($data->isInitialized('sendMeACopy') && null !== $data->getSendMeACopy()) {
+        if ($data->isInitialized('sendMeACopy')) {
             $dataArray['send_me_a_copy'] = $data->getSendMeACopy();
         }
-        if ($data->isInitialized('eventType') && null !== $data->getEventType()) {
+        if ($data->isInitialized('eventType')) {
             $dataArray['event_type'] = $data->getEventType();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

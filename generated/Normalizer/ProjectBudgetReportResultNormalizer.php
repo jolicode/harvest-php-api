@@ -40,13 +40,16 @@ class ProjectBudgetReportResultNormalizer implements DenormalizerInterface, Norm
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ProjectBudgetReportResult();
         if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
             $data['budget'] = (float) $data['budget'];
         }
@@ -61,9 +64,6 @@ class ProjectBudgetReportResultNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -137,34 +137,34 @@ class ProjectBudgetReportResultNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('clientName') && null !== $data->getClientName()) {
+        if ($data->isInitialized('clientName')) {
             $dataArray['client_name'] = $data->getClientName();
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
+        if ($data->isInitialized('projectId')) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        if ($data->isInitialized('projectName') && null !== $data->getProjectName()) {
+        if ($data->isInitialized('projectName')) {
             $dataArray['project_name'] = $data->getProjectName();
         }
-        if ($data->isInitialized('budgetIsMonthly') && null !== $data->getBudgetIsMonthly()) {
+        if ($data->isInitialized('budgetIsMonthly')) {
             $dataArray['budget_is_monthly'] = $data->getBudgetIsMonthly();
         }
-        if ($data->isInitialized('budgetBy') && null !== $data->getBudgetBy()) {
+        if ($data->isInitialized('budgetBy')) {
             $dataArray['budget_by'] = $data->getBudgetBy();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+        if ($data->isInitialized('budget')) {
             $dataArray['budget'] = $data->getBudget();
         }
-        if ($data->isInitialized('budgetSpent') && null !== $data->getBudgetSpent()) {
+        if ($data->isInitialized('budgetSpent')) {
             $dataArray['budget_spent'] = $data->getBudgetSpent();
         }
-        if ($data->isInitialized('budgetRemaining') && null !== $data->getBudgetRemaining()) {
+        if ($data->isInitialized('budgetRemaining')) {
             $dataArray['budget_remaining'] = $data->getBudgetRemaining();
         }
         foreach ($data as $key => $value) {

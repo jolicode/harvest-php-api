@@ -40,13 +40,16 @@ class TasksPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\TasksPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\TasksPostBody();
         if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
             $data['default_hourly_rate'] = (float) $data['default_hourly_rate'];
         }
@@ -58,9 +61,6 @@ class TasksPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
@@ -105,16 +105,16 @@ class TasksPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('billableByDefault') && null !== $data->getBillableByDefault()) {
+        if ($data->isInitialized('billableByDefault')) {
             $dataArray['billable_by_default'] = $data->getBillableByDefault();
         }
-        if ($data->isInitialized('defaultHourlyRate') && null !== $data->getDefaultHourlyRate()) {
+        if ($data->isInitialized('defaultHourlyRate')) {
             $dataArray['default_hourly_rate'] = $data->getDefaultHourlyRate();
         }
-        if ($data->isInitialized('isDefault') && null !== $data->getIsDefault()) {
+        if ($data->isInitialized('isDefault')) {
             $dataArray['is_default'] = $data->getIsDefault();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
         foreach ($data as $key => $value) {

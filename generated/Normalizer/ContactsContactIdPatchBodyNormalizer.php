@@ -40,15 +40,15 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\ContactsContactIdPatchBody();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -98,6 +98,12 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('fax', $data) && null === $data['fax']) {
             $object->setFax(null);
         }
+        if (\array_key_exists('invoice_recipient_status', $data) && null !== $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus($data['invoice_recipient_status']);
+            unset($data['invoice_recipient_status']);
+        } elseif (\array_key_exists('invoice_recipient_status', $data) && null === $data['invoice_recipient_status']) {
+            $object->setInvoiceRecipientStatus(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -110,29 +116,32 @@ class ContactsContactIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['first_name'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['last_name'] = $data->getLastName();
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email')) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('phoneOffice') && null !== $data->getPhoneOffice()) {
+        if ($data->isInitialized('phoneOffice')) {
             $dataArray['phone_office'] = $data->getPhoneOffice();
         }
-        if ($data->isInitialized('phoneMobile') && null !== $data->getPhoneMobile()) {
+        if ($data->isInitialized('phoneMobile')) {
             $dataArray['phone_mobile'] = $data->getPhoneMobile();
         }
-        if ($data->isInitialized('fax') && null !== $data->getFax()) {
+        if ($data->isInitialized('fax')) {
             $dataArray['fax'] = $data->getFax();
+        }
+        if ($data->isInitialized('invoiceRecipientStatus')) {
+            $dataArray['invoice_recipient_status'] = $data->getInvoiceRecipientStatus();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

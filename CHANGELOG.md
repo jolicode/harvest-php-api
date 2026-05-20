@@ -1,6 +1,16 @@
 # Changes between versions
 
-## 8.1.0 (2025-03-27)
+## 9.0.0 (2026-05-20)
+
+ * upgrade to `janephp/open-api` 7.11
+ * drop support for PHP <8.4
+ * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#32 in #53
+   * added `Contact.invoice_recipient_status`
+   * added `TimeReportsResult.scheduled_hours`
+   * added the `include_forecast` query parameter on some report endpoints
+ * upgrade CS tooling
+
+## 8.1.0 (2025-11-03)
 
  * upgrade to `janephp/open-api` 7.9
  * update the SDK based on the latest spec updates - see jolicode/harvest-openapi-generator#31 in #51

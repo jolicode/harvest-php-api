@@ -19,11 +19,10 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
     /**
      * Returns the subject and body text as configured in Harvest of an invoice message for a specific invoice and a 200 OK response code if the call succeeded. Does not create the invoice message. If no parameters are passed, will return the subject and body of a general invoice message for the specific invoice.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
-     * @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
-     *           }
+     * @param array{
+     *    "thank_you"?: bool, //Set to true to return the subject and body of a thank-you invoice message for the specific invoice.
+     *    "reminder"?: bool, //Set to true to return the subject and body of a reminder invoice message for the specific invoice.
+     * } $queryParameters
      */
     public function __construct(string $invoiceId, array $queryParameters = [])
     {
@@ -77,10 +76,10 @@ class RetrieveInvoiceMessageSubjectAndBodyForSpecificInvoice extends \JoliCode\H
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

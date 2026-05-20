@@ -40,21 +40,21 @@ class ExpensesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ExpensesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ExpensesPostBody();
         if (\array_key_exists('total_cost', $data) && \is_int($data['total_cost'])) {
             $data['total_cost'] = (float) $data['total_cost'];
         }
         if (\array_key_exists('billable', $data) && \is_int($data['billable'])) {
             $data['billable'] = (bool) $data['billable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
             $object->setUserId($data['user_id']);
@@ -122,25 +122,25 @@ class ExpensesPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId')) {
             $dataArray['user_id'] = $data->getUserId();
         }
         $dataArray['project_id'] = $data->getProjectId();
         $dataArray['expense_category_id'] = $data->getExpenseCategoryId();
-        $dataArray['spent_date'] = $data->getSpentDate()->format('Y-m-d');
-        if ($data->isInitialized('units') && null !== $data->getUnits()) {
+        $dataArray['spent_date'] = $data->getSpentDate()?->format('Y-m-d');
+        if ($data->isInitialized('units')) {
             $dataArray['units'] = $data->getUnits();
         }
-        if ($data->isInitialized('totalCost') && null !== $data->getTotalCost()) {
+        if ($data->isInitialized('totalCost')) {
             $dataArray['total_cost'] = $data->getTotalCost();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable')) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('receipt') && null !== $data->getReceipt()) {
+        if ($data->isInitialized('receipt')) {
             $dataArray['receipt'] = $data->getReceipt();
         }
         foreach ($data as $key => $value) {

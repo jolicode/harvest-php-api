@@ -40,18 +40,18 @@ class BillableRateNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\BillableRate();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\BillableRate();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (float) $data['amount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -101,23 +101,23 @@ class BillableRateNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount')) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
-            $dataArray['start_date'] = $data->getStartDate()->format('Y-m-d');
+        if ($data->isInitialized('startDate')) {
+            $dataArray['start_date'] = $data->getStartDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
-            $dataArray['end_date'] = $data->getEndDate()->format('Y-m-d');
+        if ($data->isInitialized('endDate')) {
+            $dataArray['end_date'] = $data->getEndDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

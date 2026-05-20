@@ -40,13 +40,16 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer implem
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody();
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
             $data['hourly_rate'] = (float) $data['hourly_rate'];
         }
@@ -58,9 +61,6 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer implem
         }
         if (\array_key_exists('billable', $data) && \is_int($data['billable'])) {
             $data['billable'] = (bool) $data['billable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
             $object->setIsActive($data['is_active']);
@@ -98,16 +98,16 @@ class ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBodyNormalizer implem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable')) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
+        if ($data->isInitialized('hourlyRate')) {
             $dataArray['hourly_rate'] = $data->getHourlyRate();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+        if ($data->isInitialized('budget')) {
             $dataArray['budget'] = $data->getBudget();
         }
         foreach ($data as $key => $value) {

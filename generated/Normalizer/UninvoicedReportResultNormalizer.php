@@ -40,13 +40,16 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\UninvoicedReportResult();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\UninvoicedReportResult();
         if (\array_key_exists('total_hours', $data) && \is_int($data['total_hours'])) {
             $data['total_hours'] = (float) $data['total_hours'];
         }
@@ -58,9 +61,6 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('uninvoiced_amount', $data) && \is_int($data['uninvoiced_amount'])) {
             $data['uninvoiced_amount'] = (float) $data['uninvoiced_amount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -128,31 +128,31 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('clientName') && null !== $data->getClientName()) {
+        if ($data->isInitialized('clientName')) {
             $dataArray['client_name'] = $data->getClientName();
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
+        if ($data->isInitialized('projectId')) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        if ($data->isInitialized('projectName') && null !== $data->getProjectName()) {
+        if ($data->isInitialized('projectName')) {
             $dataArray['project_name'] = $data->getProjectName();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
-        if ($data->isInitialized('totalHours') && null !== $data->getTotalHours()) {
+        if ($data->isInitialized('totalHours')) {
             $dataArray['total_hours'] = $data->getTotalHours();
         }
-        if ($data->isInitialized('uninvoicedHours') && null !== $data->getUninvoicedHours()) {
+        if ($data->isInitialized('uninvoicedHours')) {
             $dataArray['uninvoiced_hours'] = $data->getUninvoicedHours();
         }
-        if ($data->isInitialized('uninvoicedExpenses') && null !== $data->getUninvoicedExpenses()) {
+        if ($data->isInitialized('uninvoicedExpenses')) {
             $dataArray['uninvoiced_expenses'] = $data->getUninvoicedExpenses();
         }
-        if ($data->isInitialized('uninvoicedAmount') && null !== $data->getUninvoicedAmount()) {
+        if ($data->isInitialized('uninvoicedAmount')) {
             $dataArray['uninvoiced_amount'] = $data->getUninvoicedAmount();
         }
         foreach ($data as $key => $value) {

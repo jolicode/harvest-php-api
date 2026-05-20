@@ -40,13 +40,16 @@ class EstimatesEstimateIdPatchBodyNormalizer implements DenormalizerInterface, N
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdPatchBody();
         if (\array_key_exists('tax', $data) && \is_int($data['tax'])) {
             $data['tax'] = (float) $data['tax'];
         }
@@ -55,9 +58,6 @@ class EstimatesEstimateIdPatchBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('discount', $data) && \is_int($data['discount'])) {
             $data['discount'] = (float) $data['discount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -141,37 +141,37 @@ class EstimatesEstimateIdPatchBodyNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
+        if ($data->isInitialized('number')) {
             $dataArray['number'] = $data->getNumber();
         }
-        if ($data->isInitialized('purchaseOrder') && null !== $data->getPurchaseOrder()) {
+        if ($data->isInitialized('purchaseOrder')) {
             $dataArray['purchase_order'] = $data->getPurchaseOrder();
         }
-        if ($data->isInitialized('tax') && null !== $data->getTax()) {
+        if ($data->isInitialized('tax')) {
             $dataArray['tax'] = $data->getTax();
         }
-        if ($data->isInitialized('tax2') && null !== $data->getTax2()) {
+        if ($data->isInitialized('tax2')) {
             $dataArray['tax2'] = $data->getTax2();
         }
-        if ($data->isInitialized('discount') && null !== $data->getDiscount()) {
+        if ($data->isInitialized('discount')) {
             $dataArray['discount'] = $data->getDiscount();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
-        if ($data->isInitialized('issueDate') && null !== $data->getIssueDate()) {
-            $dataArray['issue_date'] = $data->getIssueDate()->format('Y-m-d');
+        if ($data->isInitialized('issueDate')) {
+            $dataArray['issue_date'] = $data->getIssueDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('lineItems') && null !== $data->getLineItems()) {
+        if ($data->isInitialized('lineItems')) {
             $values = [];
             foreach ($data->getLineItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

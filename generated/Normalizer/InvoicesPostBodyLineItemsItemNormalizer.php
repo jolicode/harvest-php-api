@@ -40,13 +40,16 @@ class InvoicesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, 
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsItem();
         if (\array_key_exists('quantity', $data) && \is_int($data['quantity'])) {
             $data['quantity'] = (float) $data['quantity'];
         }
@@ -58,9 +61,6 @@ class InvoicesPostBodyLineItemsItemNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('taxed2', $data) && \is_int($data['taxed2'])) {
             $data['taxed2'] = (bool) $data['taxed2'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('project_id', $data)) {
             $object->setProjectId($data['project_id']);

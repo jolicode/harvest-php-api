@@ -40,18 +40,18 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\Client();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\Client();
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -113,29 +113,29 @@ class ClientNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
+        if ($data->isInitialized('address')) {
             $dataArray['address'] = $data->getAddress();
         }
-        if ($data->isInitialized('statementKey') && null !== $data->getStatementKey()) {
+        if ($data->isInitialized('statementKey')) {
             $dataArray['statement_key'] = $data->getStatementKey();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -35,7 +35,7 @@ class ModelTest extends TestCase
     /**
      * @dataProvider provideExamples
      */
-    public function testModel(string $modelName, string $body, bool $shouldNotPass)
+    public function testModel(string $modelName, string $body, bool $shouldNotPass): void
     {
         $model = $this->serializer->deserialize($body, $modelName, 'json');
         $this->assertInstanceOf($modelName, $model);
@@ -56,8 +56,7 @@ class ModelTest extends TestCase
         $examples = [];
         $openapi = Yaml::parseFile(__DIR__ . '/../Resources/harvest-openapi.yaml');
 
-        $failedExpected = [
-        ];
+        $failedExpected = [];
 
         foreach ($openapi['paths'] as $pathName => $path) {
             foreach ($path as $method => $endpoint) {

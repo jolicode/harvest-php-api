@@ -40,18 +40,18 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\EstimatesEstimateIdMessagesPostBody();
         if (\array_key_exists('send_me_a_copy', $data) && \is_int($data['send_me_a_copy'])) {
             $data['send_me_a_copy'] = (bool) $data['send_me_a_copy'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
             $object->setEventType($data['event_type']);
@@ -99,7 +99,7 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eventType') && null !== $data->getEventType()) {
+        if ($data->isInitialized('eventType')) {
             $dataArray['event_type'] = $data->getEventType();
         }
         $values = [];
@@ -107,13 +107,13 @@ class EstimatesEstimateIdMessagesPostBodyNormalizer implements DenormalizerInter
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['recipients'] = $values;
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
+        if ($data->isInitialized('body')) {
             $dataArray['body'] = $data->getBody();
         }
-        if ($data->isInitialized('sendMeACopy') && null !== $data->getSendMeACopy()) {
+        if ($data->isInitialized('sendMeACopy')) {
             $dataArray['send_me_a_copy'] = $data->getSendMeACopy();
         }
         foreach ($data as $key => $value_1) {

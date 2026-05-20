@@ -40,13 +40,16 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\ProjectsProjectIdPatchBody();
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
             $data['hourly_rate'] = (float) $data['hourly_rate'];
         }
@@ -82,9 +85,6 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('show_budget_to_all', $data) && \is_int($data['show_budget_to_all'])) {
             $data['show_budget_to_all'] = (bool) $data['show_budget_to_all'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data) && null !== $data['client_id']) {
             $object->setClientId($data['client_id']);
@@ -218,65 +218,65 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientId') && null !== $data->getClientId()) {
+        if ($data->isInitialized('clientId')) {
             $dataArray['client_id'] = $data->getClientId();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
+        if ($data->isInitialized('code')) {
             $dataArray['code'] = $data->getCode();
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
+        if ($data->isInitialized('isActive')) {
             $dataArray['is_active'] = $data->getIsActive();
         }
-        if ($data->isInitialized('isBillable') && null !== $data->getIsBillable()) {
+        if ($data->isInitialized('isBillable')) {
             $dataArray['is_billable'] = $data->getIsBillable();
         }
-        if ($data->isInitialized('isFixedFee') && null !== $data->getIsFixedFee()) {
+        if ($data->isInitialized('isFixedFee')) {
             $dataArray['is_fixed_fee'] = $data->getIsFixedFee();
         }
-        if ($data->isInitialized('billBy') && null !== $data->getBillBy()) {
+        if ($data->isInitialized('billBy')) {
             $dataArray['bill_by'] = $data->getBillBy();
         }
-        if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
+        if ($data->isInitialized('hourlyRate')) {
             $dataArray['hourly_rate'] = $data->getHourlyRate();
         }
-        if ($data->isInitialized('budgetBy') && null !== $data->getBudgetBy()) {
+        if ($data->isInitialized('budgetBy')) {
             $dataArray['budget_by'] = $data->getBudgetBy();
         }
-        if ($data->isInitialized('budgetIsMonthly') && null !== $data->getBudgetIsMonthly()) {
+        if ($data->isInitialized('budgetIsMonthly')) {
             $dataArray['budget_is_monthly'] = $data->getBudgetIsMonthly();
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
+        if ($data->isInitialized('budget')) {
             $dataArray['budget'] = $data->getBudget();
         }
-        if ($data->isInitialized('costBudget') && null !== $data->getCostBudget()) {
+        if ($data->isInitialized('costBudget')) {
             $dataArray['cost_budget'] = $data->getCostBudget();
         }
-        if ($data->isInitialized('costBudgetIncludeExpenses') && null !== $data->getCostBudgetIncludeExpenses()) {
+        if ($data->isInitialized('costBudgetIncludeExpenses')) {
             $dataArray['cost_budget_include_expenses'] = $data->getCostBudgetIncludeExpenses();
         }
-        if ($data->isInitialized('notifyWhenOverBudget') && null !== $data->getNotifyWhenOverBudget()) {
+        if ($data->isInitialized('notifyWhenOverBudget')) {
             $dataArray['notify_when_over_budget'] = $data->getNotifyWhenOverBudget();
         }
-        if ($data->isInitialized('overBudgetNotificationPercentage') && null !== $data->getOverBudgetNotificationPercentage()) {
+        if ($data->isInitialized('overBudgetNotificationPercentage')) {
             $dataArray['over_budget_notification_percentage'] = $data->getOverBudgetNotificationPercentage();
         }
-        if ($data->isInitialized('showBudgetToAll') && null !== $data->getShowBudgetToAll()) {
+        if ($data->isInitialized('showBudgetToAll')) {
             $dataArray['show_budget_to_all'] = $data->getShowBudgetToAll();
         }
-        if ($data->isInitialized('fee') && null !== $data->getFee()) {
+        if ($data->isInitialized('fee')) {
             $dataArray['fee'] = $data->getFee();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('startsOn') && null !== $data->getStartsOn()) {
-            $dataArray['starts_on'] = $data->getStartsOn()->format('Y-m-d');
+        if ($data->isInitialized('startsOn')) {
+            $dataArray['starts_on'] = $data->getStartsOn()?->format('Y-m-d');
         }
-        if ($data->isInitialized('endsOn') && null !== $data->getEndsOn()) {
-            $dataArray['ends_on'] = $data->getEndsOn()->format('Y-m-d');
+        if ($data->isInitialized('endsOn')) {
+            $dataArray['ends_on'] = $data->getEndsOn()?->format('Y-m-d');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

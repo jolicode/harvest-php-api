@@ -19,8 +19,8 @@ class CreateCostRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
      *
-     * Creating a cost rate with no start_date will replace a user’s existing rate(s).
-     * Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
+     *   Creating a cost rate with no start_date will replace a user’s existing rate(s).
+     *   Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
      */
     public function __construct(string $userId, \JoliCode\Harvest\Api\Model\UsersUserIdCostRatesPostBody $requestBody)
     {
@@ -64,10 +64,10 @@ class CreateCostRate extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint i
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (201 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\CostRate', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

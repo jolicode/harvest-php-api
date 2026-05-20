@@ -40,21 +40,21 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoiceItemCategory();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoiceItemCategory();
         if (\array_key_exists('use_as_service', $data) && \is_int($data['use_as_service'])) {
             $data['use_as_service'] = (bool) $data['use_as_service'];
         }
         if (\array_key_exists('use_as_expense', $data) && \is_int($data['use_as_expense'])) {
             $data['use_as_expense'] = (bool) $data['use_as_expense'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -104,23 +104,23 @@ class InvoiceItemCategoryNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('useAsService') && null !== $data->getUseAsService()) {
+        if ($data->isInitialized('useAsService')) {
             $dataArray['use_as_service'] = $data->getUseAsService();
         }
-        if ($data->isInitialized('useAsExpense') && null !== $data->getUseAsExpense()) {
+        if ($data->isInitialized('useAsExpense')) {
             $dataArray['use_as_expense'] = $data->getUseAsExpense();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -65,6 +65,12 @@ class ContactsPostBody extends \ArrayObject
      * @var string|null
      */
     protected $fax;
+    /**
+     * The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.
+     *
+     * @var string|null
+     */
+    protected $invoiceRecipientStatus;
 
     public function isInitialized($property): bool
     {
@@ -219,6 +225,25 @@ class ContactsPostBody extends \ArrayObject
     {
         $this->initialized['fax'] = true;
         $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.
+     */
+    public function getInvoiceRecipientStatus(): ?string
+    {
+        return $this->invoiceRecipientStatus;
+    }
+
+    /**
+     * The contact’s default role on the client’s invoices (Invoice email default in the web UI). One of none, recipient, cc, or bcc. Defaults to none.
+     */
+    public function setInvoiceRecipientStatus(?string $invoiceRecipientStatus): self
+    {
+        $this->initialized['invoiceRecipientStatus'] = true;
+        $this->invoiceRecipientStatus = $invoiceRecipientStatus;
 
         return $this;
     }

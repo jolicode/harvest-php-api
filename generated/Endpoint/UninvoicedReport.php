@@ -20,14 +20,13 @@ class UninvoicedReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint
      *
      * Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
      *
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries and expenses with a spent_date on or after the given date
-     * @var string $to only report on time entries and expenses with a spent_date on or before the given date
-     * @var bool   $include_fixed_fee Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
+     * @param array{
+     *    "from": string, //Only report on time entries and expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries and expenses with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: bool, //Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -82,10 +81,10 @@ class UninvoicedReport extends \JoliCode\Harvest\Api\Runtime\Client\BaseEndpoint
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos(strtolower($contentType), 'application/json'))) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\UninvoicedReportResults', 'json');
         }
-        if (false !== mb_strpos($contentType, 'application/json')) {
+        if (false !== mb_strpos(strtolower($contentType), 'application/json')) {
             return $serializer->deserialize($body, 'JoliCode\Harvest\Api\Model\Error', 'json');
         }
     }

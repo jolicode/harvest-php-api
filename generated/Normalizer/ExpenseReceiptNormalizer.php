@@ -40,15 +40,15 @@ class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\ExpenseReceipt();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\ExpenseReceipt();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('url', $data) && null !== $data['url']) {
             $object->setUrl($data['url']);
@@ -86,16 +86,16 @@ class ExpenseReceiptNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
+        if ($data->isInitialized('url')) {
             $dataArray['url'] = $data->getUrl();
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
+        if ($data->isInitialized('fileName')) {
             $dataArray['file_name'] = $data->getFileName();
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
+        if ($data->isInitialized('fileSize')) {
             $dataArray['file_size'] = $data->getFileSize();
         }
-        if ($data->isInitialized('contentType') && null !== $data->getContentType()) {
+        if ($data->isInitialized('contentType')) {
             $dataArray['content_type'] = $data->getContentType();
         }
         foreach ($data as $key => $value) {

@@ -40,15 +40,15 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicesPostBodyLineItemsImportTime();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('summary_type', $data)) {
             $object->setSummaryType($data['summary_type']);
@@ -76,10 +76,10 @@ class InvoicesPostBodyLineItemsImportTimeNormalizer implements DenormalizerInter
         $dataArray = [];
         $dataArray['summary_type'] = $data->getSummaryType();
         if ($data->isInitialized('from') && null !== $data->getFrom()) {
-            $dataArray['from'] = $data->getFrom()?->format('Y-m-d');
+            $dataArray['from'] = $data->getFrom()->format('Y-m-d');
         }
         if ($data->isInitialized('to') && null !== $data->getTo()) {
-            $dataArray['to'] = $data->getTo()?->format('Y-m-d');
+            $dataArray['to'] = $data->getTo()->format('Y-m-d');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

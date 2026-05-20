@@ -40,18 +40,18 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoicePayment();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoicePayment();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (float) $data['amount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -131,38 +131,38 @@ class InvoicePaymentNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount')) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('paidAt') && null !== $data->getPaidAt()) {
-            $dataArray['paid_at'] = $data->getPaidAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('paidAt')) {
+            $dataArray['paid_at'] = $data->getPaidAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('paidDate') && null !== $data->getPaidDate()) {
-            $dataArray['paid_date'] = $data->getPaidDate()->format('Y-m-d');
+        if ($data->isInitialized('paidDate')) {
+            $dataArray['paid_date'] = $data->getPaidDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('recordedBy') && null !== $data->getRecordedBy()) {
+        if ($data->isInitialized('recordedBy')) {
             $dataArray['recorded_by'] = $data->getRecordedBy();
         }
-        if ($data->isInitialized('recordedByEmail') && null !== $data->getRecordedByEmail()) {
+        if ($data->isInitialized('recordedByEmail')) {
             $dataArray['recorded_by_email'] = $data->getRecordedByEmail();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('transactionId') && null !== $data->getTransactionId()) {
+        if ($data->isInitialized('transactionId')) {
             $dataArray['transaction_id'] = $data->getTransactionId();
         }
-        if ($data->isInitialized('paymentGateway') && null !== $data->getPaymentGateway()) {
+        if ($data->isInitialized('paymentGateway')) {
             $dataArray['payment_gateway'] = $this->normalizer->normalize($data->getPaymentGateway(), 'json', $context);
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -10,13 +10,13 @@
  */
 
 $header = <<<'EOF'
-This file is part of JoliCode's Harvest PHP API project.
+    This file is part of JoliCode's Harvest PHP API project.
 
-(c) JoliCode <coucou@jolicode.com>
+    (c) JoliCode <coucou@jolicode.com>
 
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-EOF;
+    For the full copyright and license information, please view the LICENSE
+    file that was distributed with this source code.
+    EOF;
 
 $finder = PhpCsFixer\Finder::create()
     ->ignoreVCSIgnored(true)
@@ -27,10 +27,11 @@ $finder = PhpCsFixer\Finder::create()
     ])
 ;
 
-return (new PhpCsFixer\Config())
+return new PhpCsFixer\Config()
     ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
+        '@PHP84Migration' => true,
         '@PhpCsFixer' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,

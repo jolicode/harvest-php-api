@@ -40,21 +40,21 @@ class InvoiceMessageSubjectAndBodyNormalizer implements DenormalizerInterface, N
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\InvoiceMessageSubjectAndBody();
         if (\array_key_exists('reminder', $data) && \is_int($data['reminder'])) {
             $data['reminder'] = (bool) $data['reminder'];
         }
         if (\array_key_exists('thank_you', $data) && \is_int($data['thank_you'])) {
             $data['thank_you'] = (bool) $data['thank_you'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('invoice_id', $data)) {
             $object->setInvoiceId($data['invoice_id']);

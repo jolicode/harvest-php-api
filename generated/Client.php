@@ -18,18 +18,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a clients property that contains an array of up to per_page clients. Each entry in the array is a separate client object. If no more clients are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your clients.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active clients and false to return inactive clients
-     * @var string $updated_since only return clients that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active clients and false to return inactive clients.
+     *    "updated_since"?: string, //Only return clients that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Clients|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Clients|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listClients(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -41,7 +39,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Client|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createClient(Model\ClientsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -53,7 +51,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
@@ -65,7 +63,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Client|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
@@ -77,7 +75,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Client|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Client|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateClient(string $clientId, Model\ClientsClientIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -87,7 +85,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Company|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Company|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
@@ -99,7 +97,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Company|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Company|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateCompany(Model\CompanyPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -111,18 +109,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a contacts property that contains an array of up to per_page contacts. Each entry in the array is a separate contact object. If no more contacts are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your contacts.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $client_id only return contacts belonging to the client with the given ID
-     * @var string $updated_since only return contacts that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "client_id"?: int, //Only return contacts belonging to the client with the given ID.
+     *    "updated_since"?: string, //Only return contacts that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Contacts|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Contacts|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listContacts(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -134,7 +130,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Contact|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createContact(Model\ContactsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -146,7 +142,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -158,7 +154,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Contact|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveContact(string $contactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -170,7 +166,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Contact|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Contact|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateContact(string $contactId, Model\ContactsContactIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -182,17 +178,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a estimate_item_categories property that contains an array of up to per_page estimate item categories. Each entry in the array is a separate estimate item category object. If no more estimate item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimate item categories.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return estimate item categories that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return estimate item categories that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateItemCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateItemCategories|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listEstimateItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -204,7 +198,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createEstimateItemCategory(Model\EstimateItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -216,7 +210,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -228,7 +222,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveEstimateItemCategory(string $estimateItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -240,7 +234,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateEstimateItemCategory(string $estimateItemCategoryId, Model\EstimateItemCategoriesEstimateItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -252,20 +246,18 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a estimates property that contains an array of up to per_page estimates. Each entry in the array is a separate estimate object. If no more estimates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your estimates.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $client_id only return estimates belonging to the client with the given ID
-     * @var string $updated_since only return estimates that have been updated since the given date and time
-     * @var string $from only return estimates with an issue_date on or after the given date
-     * @var string $to only return estimates with an issue_date on or before the given date
-     * @var string $state Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "client_id"?: int, //Only return estimates belonging to the client with the given ID.
+     *    "updated_since"?: string, //Only return estimates that have been updated since the given date and time.
+     *    "from"?: string, //Only return estimates with an issue_date on or after the given date.
+     *    "to"?: string, //Only return estimates with an issue_date on or before the given date.
+     *    "state"?: string, //Only return estimates with a state matching the value provided. Options: draft, sent, accepted, or declined.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Estimates|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Estimates|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listEstimates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -277,7 +269,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Estimate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createEstimate(Model\EstimatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -289,7 +281,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -301,7 +293,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Estimate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveEstimate(string $estimateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -313,7 +305,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Estimate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Estimate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateEstimate(string $estimateId, Model\EstimatesEstimateIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -325,17 +317,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with an estimate_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return estimate messages that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return estimate messages that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateMessages|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateMessages|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listMessagesForEstimate(string $estimateId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -347,7 +337,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EstimateMessage|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EstimateMessage|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createEstimateMessage(string $estimateId, Model\EstimatesEstimateIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -359,7 +349,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteEstimateMessage(string $estimateId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -371,18 +361,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a expense_categories property that contains an array of up to per_page expense categories. Each entry in the array is a separate expense category object. If no more expense categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expense categories.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active expense categories and false to return inactive expense categories
-     * @var string $updated_since only return expense categories that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active expense categories and false to return inactive expense categories.
+     *    "updated_since"?: string, //Only return expense categories that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseCategories|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listExpenseCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -394,7 +382,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createExpenseCategory(Model\ExpenseCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -406,7 +394,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -418,7 +406,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveExpenseCategory(string $expenseCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -430,7 +418,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateExpenseCategory(string $expenseCategoryId, Model\ExpenseCategoriesExpenseCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -442,23 +430,21 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a expenses property that contains an array of up to per_page expenses. Each entry in the array is a separate expense object. If no more expenses are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your expenses.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $user_id only return expenses belonging to the user with the given ID
-     * @var int    $client_id only return expenses belonging to the client with the given ID
-     * @var int    $project_id only return expenses belonging to the project with the given ID
-     * @var bool   $is_billed pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced
-     * @var string $approval_status Only return expenses with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
-     * @var string $updated_since only return expenses that have been updated since the given date and time
-     * @var string $from only return expenses with a spent_date on or after the given date
-     * @var string $to only return expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "user_id"?: int, //Only return expenses belonging to the user with the given ID.
+     *    "client_id"?: int, //Only return expenses belonging to the client with the given ID.
+     *    "project_id"?: int, //Only return expenses belonging to the project with the given ID.
+     *    "is_billed"?: bool, //Pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced.
+     *    "approval_status"?: string, //Only return expenses with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     *    "updated_since"?: string, //Only return expenses that have been updated since the given date and time.
+     *    "from"?: string, //Only return expenses with a spent_date on or after the given date.
+     *    "to"?: string, //Only return expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Expenses|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Expenses|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listExpenses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -470,7 +456,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Expense|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createExpense(Model\ExpensesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -482,7 +468,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -494,7 +480,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Expense|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveExpense(string $expenseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -508,7 +494,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Expense|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Expense|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateExpense(string $expenseId, Model\ExpensesExpenseIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -520,17 +506,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a invoice_item_categories property that contains an array of up to per_page invoice item categories. Each entry in the array is a separate invoice item category object. If no more invoice item categories are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoice item categories.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return invoice item categories that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return invoice item categories that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceItemCategories|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceItemCategories|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listInvoiceItemCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -542,7 +526,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createInvoiceItemCategory(Model\InvoiceItemCategoriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -554,7 +538,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -566,7 +550,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveInvoiceItemCategory(string $invoiceItemCategoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -578,7 +562,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceItemCategory|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceItemCategory|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateInvoiceItemCategory(string $invoiceItemCategoryId, Model\InvoiceItemCategoriesInvoiceItemCategoryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -590,21 +574,19 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a invoices property that contains an array of up to per_page invoices. Each entry in the array is a separate invoice object. If no more invoices are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your invoices.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $client_id only return invoices belonging to the client with the given ID
-     * @var int    $project_id only return invoices associated with the project with the given ID
-     * @var string $updated_since only return invoices that have been updated since the given date and time
-     * @var string $from only return invoices with an issue_date on or after the given date
-     * @var string $to only return invoices with an issue_date on or before the given date
-     * @var string $state Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 100)
-     *             }
-     *
+     * @param array{
+     *    "client_id"?: int, //Only return invoices belonging to the client with the given ID.
+     *    "project_id"?: int, //Only return invoices associated with the project with the given ID.
+     *    "updated_since"?: string, //Only return invoices that have been updated since the given date and time.
+     *    "from"?: string, //Only return invoices with an issue_date on or after the given date.
+     *    "to"?: string, //Only return invoices with an issue_date on or before the given date.
+     *    "state"?: string, //Only return invoices with a state matching the value provided. Options: draft, open, paid, or closed.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 100)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Invoices|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Invoices|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listInvoices(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -616,7 +598,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Invoice|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createInvoice(Model\InvoicesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -628,7 +610,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -640,7 +622,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Invoice|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveInvoice(string $invoiceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -652,7 +634,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Invoice|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Invoice|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateInvoice(string $invoiceId, Model\InvoicesInvoiceIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -664,17 +646,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with an invoice_messages property that contains an array of up to per_page messages. Each entry in the array is a separate message object. If no more messages are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your messages.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return invoice messages that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return invoice messages that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceMessages|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceMessages|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listMessagesForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -688,7 +668,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceMessage|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceMessage|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createInvoiceMessage(string $invoiceId, Model\InvoicesInvoiceIdMessagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -698,15 +678,13 @@ class Client extends Runtime\Client\Client
     /**
      * Returns the subject and body text as configured in Harvest of an invoice message for a specific invoice and a 200 OK response code if the call succeeded. Does not create the invoice message. If no parameters are passed, will return the subject and body of a general invoice message for the specific invoice.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool $thank_you set to true to return the subject and body of a thank-you invoice message for the specific invoice
-     * @var bool $reminder Set to true to return the subject and body of a reminder invoice message for the specific invoice.
-     *           }
-     *
+     * @param array{
+     *    "thank_you"?: bool, //Set to true to return the subject and body of a thank-you invoice message for the specific invoice.
+     *    "reminder"?: bool, //Set to true to return the subject and body of a reminder invoice message for the specific invoice.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoiceMessageSubjectAndBody|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoiceMessageSubjectAndBody|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveInvoiceMessageSubjectAndBodyForSpecificInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -718,7 +696,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteInvoiceMessage(string $invoiceId, string $messageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -730,17 +708,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with an invoice_payments property that contains an array of up to per_page payments. Each entry in the array is a separate payment object. If no more payments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your payments.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return invoice payments that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return invoice payments that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoicePayments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoicePayments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listPaymentsForInvoice(string $invoiceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -752,7 +728,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\InvoicePayment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\InvoicePayment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createInvoicePayment(string $invoiceId, Model\InvoicesInvoiceIdPaymentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -764,7 +740,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteInvoicePayment(string $invoiceId, string $paymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -776,19 +752,17 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active projects and false to return inactive projects
-     * @var int    $client_id only return projects belonging to the client with the given ID
-     * @var string $updated_since only return projects that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active projects and false to return inactive projects.
+     *    "client_id"?: int, //Only return projects belonging to the client with the given ID.
+     *    "updated_since"?: string, //Only return projects that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Projects|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Projects|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listProjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -800,7 +774,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Project|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createProject(Model\ProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -814,7 +788,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -826,7 +800,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Project|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveProject(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -838,7 +812,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Project|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Project|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateProject(string $projectId, Model\ProjectsProjectIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -850,17 +824,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments
-     * @var string $updated_since only return task assignments that have been updated since the given date and time
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active task assignments and false to return inactive task assignments.
+     *    "updated_since"?: string, //Only return task assignments that have been updated since the given date and time.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TaskAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TaskAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listTaskAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -872,7 +844,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TaskAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createTaskAssignment(string $projectId, Model\ProjectsProjectIdTaskAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -884,7 +856,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -896,7 +868,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TaskAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveTaskAssignment(string $projectId, string $taskAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -908,7 +880,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TaskAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TaskAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateTaskAssignment(string $projectId, string $taskAssignmentId, Model\ProjectsProjectIdTaskAssignmentsTaskAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -920,18 +892,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $user_id only return user assignments belonging to the user with the given ID
-     * @var bool   $is_active pass true to only return active user assignments and false to return inactive user assignments
-     * @var string $updated_since only return user assignments that have been updated since the given date and time
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "user_id"?: int, //Only return user assignments belonging to the user with the given ID.
+     *    "is_active"?: bool, //Pass true to only return active user assignments and false to return inactive user assignments.
+     *    "updated_since"?: string, //Only return user assignments that have been updated since the given date and time.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UserAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UserAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listUserAssignmentsForSpecificProject(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -943,7 +913,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UserAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createUserAssignment(string $projectId, Model\ProjectsProjectIdUserAssignmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -955,7 +925,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -967,7 +937,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UserAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveUserAssignment(string $projectId, string $userAssignmentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -979,7 +949,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UserAssignment|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UserAssignment|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateUserAssignment(string $projectId, string $userAssignmentId, Model\ProjectsProjectIdUserAssignmentsUserAssignmentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -987,17 +957,15 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on expenses with a spent_date on or after the given date
-     * @var string $to only report on expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function expenseCategoriesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1005,17 +973,15 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on expenses with a spent_date on or after the given date
-     * @var string $to only report on expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function clientsExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1023,17 +989,15 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on expenses with a spent_date on or after the given date
-     * @var string $to only report on expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1041,17 +1005,15 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on expenses with a spent_date on or after the given date
-     * @var string $to only report on expenses with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on expenses with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ExpenseReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ExpenseReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamExpensesReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1061,16 +1023,14 @@ class Client extends Runtime\Client\Client
     /**
      * The response contains an object with a results property that contains an array of up to per_page results. Each entry in the array is a separate result object. If no more results are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your results.
      *
-     * @param array $queryParameters {
-     *
-     * @var int  $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int  $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     * @var bool $is_active Pass true to only return active projects and false to return inactive projects.
-     *           }
-     *
+     * @param array{
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     *    "is_active"?: bool, //Pass true to only return active projects and false to return inactive projects.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ProjectBudgetReportResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ProjectBudgetReportResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectBudgetReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1078,18 +1038,16 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries with a spent_date on or after the given date
-     * @var string $to only report on time entries with a spent_date on or before the given date
-     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on time entries with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function clientsTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1097,18 +1055,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries with a spent_date on or after the given date
-     * @var string $to only report on time entries with a spent_date on or before the given date
-     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on time entries with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "include_forecast"?: bool, //When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1116,18 +1073,16 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries with a spent_date on or after the given date
-     * @var string $to only report on time entries with a spent_date on or before the given date
-     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on time entries with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function tasksReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1135,18 +1090,17 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries with a spent_date on or after the given date
-     * @var string $to only report on time entries with a spent_date on or before the given date
-     * @var string $include_fixed_fee when true, billable amounts will be calculated and included for fixed fee projects
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on time entries with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: string, //When true, billable amounts will be calculated and included for fixed fee projects.
+     *    "include_forecast"?: bool, //When true, scheduled hours from Forecast will be included in the response. Requires the account to be connected to Forecast.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeReportsResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeReportsResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamTimeReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1158,18 +1112,16 @@ class Client extends Runtime\Client\Client
      *
      * Note: Each request requires both the from and to parameters to be supplied in the URL’s query string. The timeframe supplied cannot exceed 1 year (365 days).
      *
-     * @param array $queryParameters {
-     *
-     * @var string $from only report on time entries and expenses with a spent_date on or after the given date
-     * @var string $to only report on time entries and expenses with a spent_date on or before the given date
-     * @var bool   $include_fixed_fee Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "from": string, //Only report on time entries and expenses with a spent_date on or after the given date.
+     *    "to": string, //Only report on time entries and expenses with a spent_date on or before the given date.
+     *    "include_fixed_fee"?: bool, //Whether or not to include fixed-fee projects in the response. Fixed-fee uninvoiced fee amount will show as long as the selected date range is on or after the project start date (If project start date is not specified, it is project creation date). Otherwise, it will be 0. (Default: true)
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UninvoicedReportResults|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UninvoicedReportResults|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function uninvoicedReport(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1181,16 +1133,14 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a roles property that contains an array of up to per_page roles. Each entry in the array is a separate role object. If no more roles are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your roles.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Roles|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Roles|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listRoles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1202,7 +1152,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Role|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createRole(Model\RolesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1214,7 +1164,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1226,7 +1176,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Role|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveRole(string $roleId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1238,7 +1188,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Role|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Role|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRole(string $roleId, Model\RolesRoleIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1250,18 +1200,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a task_assignments property that contains an array of up to per_page task assignments. Each entry in the array is a separate task assignment object. If no more task assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your task assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active task assignments and false to return inactive task assignments
-     * @var string $updated_since only return task assignments that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active task assignments and false to return inactive task assignments.
+     *    "updated_since"?: string, //Only return task assignments that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TaskAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TaskAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listTaskAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1273,18 +1221,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a tasks property that contains an array of up to per_page tasks. Each entry in the array is a separate task object. If no more tasks are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your tasks.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active tasks and false to return inactive tasks
-     * @var string $updated_since only return tasks that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active tasks and false to return inactive tasks.
+     *    "updated_since"?: string, //Only return tasks that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Tasks|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Tasks|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listTasks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1296,7 +1242,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Task|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createTask(Model\TasksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1308,7 +1254,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1320,7 +1266,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Task|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveTask(string $taskId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1332,7 +1278,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Task|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Task|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateTask(string $taskId, Model\TasksTaskIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1344,26 +1290,24 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a time_entries property that contains an array of up to per_page time entries. Each entry in the array is a separate time entry object. If no more time entries are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your time entries.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $user_id only return time entries belonging to the user with the given ID
-     * @var int    $client_id only return time entries belonging to the client with the given ID
-     * @var int    $project_id only return time entries belonging to the project with the given ID
-     * @var int    $task_id only return time entries belonging to the task with the given ID
-     * @var string $external_reference_id only return time entries with the given external_reference ID
-     * @var bool   $is_billed pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced
-     * @var bool   $is_running pass true to only return running time entries and false to return non-running time entries
-     * @var string $approval_status Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
-     * @var string $updated_since Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
-     * @var string $from only return time entries with a spent_date on or after the given date
-     * @var string $to only return time entries with a spent_date on or before the given date
-     * @var int    $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "user_id"?: int, //Only return time entries belonging to the user with the given ID.
+     *    "client_id"?: int, //Only return time entries belonging to the client with the given ID.
+     *    "project_id"?: int, //Only return time entries belonging to the project with the given ID.
+     *    "task_id"?: int, //Only return time entries belonging to the task with the given ID.
+     *    "external_reference_id"?: string, //Only return time entries with the given external_reference ID.
+     *    "is_billed"?: bool, //Pass true to only return time entries that have been invoiced and false to return time entries that have not been invoiced.
+     *    "is_running"?: bool, //Pass true to only return running time entries and false to return non-running time entries.
+     *    "approval_status"?: string, //Only return time entries with the given approval status. Possible values: “unsubmitted”, “submitted”, or “approved”.
+     *    "updated_since"?: string, //Only return time entries that have been updated since the given date and time. Use the ISO 8601 Format.
+     *    "from"?: string, //Only return time entries with a spent_date on or after the given date.
+     *    "to"?: string, //Only return time entries with a spent_date on or before the given date.
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntries|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntries|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listTimeEntries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1377,7 +1321,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntry|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createTimeEntry(Model\TimeEntriesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1389,7 +1333,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1401,7 +1345,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntry|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1413,7 +1357,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntry|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateTimeEntry(string $timeEntryId, Model\TimeEntriesTimeEntryIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1425,7 +1369,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteTimeEntryExternalReference(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1437,7 +1381,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntry|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function restartStoppedTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1449,7 +1393,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TimeEntry|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TimeEntry|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function stopRunningTimeEntry(string $timeEntryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1461,19 +1405,17 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a user_assignments property that contains an array of up to per_page user assignments. Each entry in the array is a separate user assignment object. If no more user assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your user assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $user_id only return user assignments belonging to the user with the given ID
-     * @var bool   $is_active pass true to only return active user assignments and false to return inactive user assignments
-     * @var string $updated_since only return user assignments that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "user_id"?: int, //Only return user assignments belonging to the user with the given ID.
+     *    "is_active"?: bool, //Pass true to only return active user assignments and false to return inactive user assignments.
+     *    "updated_since"?: string, //Only return user assignments that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UserAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UserAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listUserAssignments(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1485,18 +1427,16 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a users property that contains an array of up to per_page users. Each entry in the array is a separate user object. If no more users are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your users.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $is_active pass true to only return active users and false to return inactive users
-     * @var string $updated_since only return users that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "is_active"?: bool, //Pass true to only return active users and false to return inactive users.
+     *    "updated_since"?: string, //Only return users that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Users|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Users|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1508,7 +1448,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\User|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createUser(Model\UsersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1518,7 +1458,7 @@ class Client extends Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\User|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveTheCurrentlyAuthenticatedUser(string $fetch = self::FETCH_OBJECT)
     {
@@ -1530,15 +1470,13 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var int $page The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var int $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *          }
-     *
+     * @param array{
+     *    "page"?: int, //The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ProjectAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ProjectAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listActiveProjectAssignmentsForTheCurrentlyAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1550,7 +1488,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1562,7 +1500,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\User|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveUser(string $userId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1574,7 +1512,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\User|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\User|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateUser(string $userId, Model\UsersUserIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1586,16 +1524,14 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a billable_rates property that contains an array of up to per_page billable rates. Each entry in the array is a separate billable rate object. If no more billable rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your billable rates.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\BillableRates|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\BillableRates|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listBillableRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1605,12 +1541,12 @@ class Client extends Runtime\Client\Client
     /**
      * Creates a new billable rate object. Returns a billable rate object and a 201 Created response code if the call succeeded.
      *
-     * Creating a billable rate with no start_date will replace a user’s existing rate(s).
-     * Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
+     *   Creating a billable rate with no start_date will replace a user’s existing rate(s).
+     *   Creating a billable rate with a start_date that is before a user’s existing rate(s) will replace those billable rates with the new one.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\BillableRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\BillableRate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createBillableRate(string $userId, Model\UsersUserIdBillableRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1622,7 +1558,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\BillableRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\BillableRate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveBillableRate(string $userId, string $billableRateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1634,16 +1570,14 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a cost_rates property that contains an array of up to per_page cost rates. Each entry in the array is a separate cost rate object. If no more cost rates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your cost rates.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CostRates|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CostRates|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listCostRatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1653,12 +1587,12 @@ class Client extends Runtime\Client\Client
     /**
      * Creates a new cost rate object. Returns a cost rate object and a 201 Created response code if the call succeeded.
      *
-     * Creating a cost rate with no start_date will replace a user’s existing rate(s).
-     * Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
+     *   Creating a cost rate with no start_date will replace a user’s existing rate(s).
+     *   Creating a cost rate with a start_date that is before a user’s existing rate(s) will replace those cost rates with the new one.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CostRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CostRate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function createCostRate(string $userId, Model\UsersUserIdCostRatesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1670,7 +1604,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CostRate|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CostRate|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveCostRate(string $userId, string $costRateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1682,17 +1616,15 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a project_assignments property that contains an array of up to per_page project assignments. Each entry in the array is a separate project assignment object. If no more project assignments are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your project assignments.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $updated_since only return project assignments that have been updated since the given date and time
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "updated_since"?: string, //Only return project assignments that have been updated since the given date and time.
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 2000 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ProjectAssignments|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ProjectAssignments|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listActiveProjectAssignments(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1704,16 +1636,14 @@ class Client extends Runtime\Client\Client
      *
      * The response contains an object with a teammates property that contains an array of up to per_page teammates. Each entry in the array is a separate teammate object. If no more teammates are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your teammates.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $page DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-     * @var string $cursor Pagination cursor
-     * @var int    $per_page The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
-     *             }
-     *
+     * @param array{
+     *    "page"?: int, //DEPRECATED The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *    "cursor"?: string, //Pagination cursor
+     *    "per_page"?: int, //The number of records to return per page. Can range between 1 and 2000. (Default: 2000)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\Teammates|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\Teammates|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function listAssignedTeammatesForSpecificUser(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1727,7 +1657,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeammatesPatchResponse|Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeammatesPatchResponse|Model\Error|null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateUserAssignedTeammates(string $userId, Model\UsersUserIdTeammatesPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {

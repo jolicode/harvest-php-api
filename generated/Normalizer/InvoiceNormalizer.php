@@ -40,13 +40,16 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\Invoice();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Harvest\Api\Model\Invoice();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (float) $data['amount'];
         }
@@ -70,9 +73,6 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('discount_amount', $data) && \is_int($data['discount_amount'])) {
             $data['discount_amount'] = (float) $data['discount_amount'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
@@ -298,115 +298,115 @@ class InvoiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('client') && null !== $data->getClient()) {
+        if ($data->isInitialized('client')) {
             $dataArray['client'] = $this->normalizer->normalize($data->getClient(), 'json', $context);
         }
-        if ($data->isInitialized('lineItems') && null !== $data->getLineItems()) {
+        if ($data->isInitialized('lineItems')) {
             $values = [];
             foreach ($data->getLineItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['line_items'] = $values;
         }
-        if ($data->isInitialized('estimate') && null !== $data->getEstimate()) {
+        if ($data->isInitialized('estimate')) {
             $dataArray['estimate'] = $this->normalizer->normalize($data->getEstimate(), 'json', $context);
         }
-        if ($data->isInitialized('retainer') && null !== $data->getRetainer()) {
+        if ($data->isInitialized('retainer')) {
             $dataArray['retainer'] = $this->normalizer->normalize($data->getRetainer(), 'json', $context);
         }
-        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
+        if ($data->isInitialized('creator')) {
             $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
         }
-        if ($data->isInitialized('clientKey') && null !== $data->getClientKey()) {
+        if ($data->isInitialized('clientKey')) {
             $dataArray['client_key'] = $data->getClientKey();
         }
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
+        if ($data->isInitialized('number')) {
             $dataArray['number'] = $data->getNumber();
         }
-        if ($data->isInitialized('purchaseOrder') && null !== $data->getPurchaseOrder()) {
+        if ($data->isInitialized('purchaseOrder')) {
             $dataArray['purchase_order'] = $data->getPurchaseOrder();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount')) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('dueAmount') && null !== $data->getDueAmount()) {
+        if ($data->isInitialized('dueAmount')) {
             $dataArray['due_amount'] = $data->getDueAmount();
         }
-        if ($data->isInitialized('tax') && null !== $data->getTax()) {
+        if ($data->isInitialized('tax')) {
             $dataArray['tax'] = $data->getTax();
         }
-        if ($data->isInitialized('taxAmount') && null !== $data->getTaxAmount()) {
+        if ($data->isInitialized('taxAmount')) {
             $dataArray['tax_amount'] = $data->getTaxAmount();
         }
-        if ($data->isInitialized('tax2') && null !== $data->getTax2()) {
+        if ($data->isInitialized('tax2')) {
             $dataArray['tax2'] = $data->getTax2();
         }
-        if ($data->isInitialized('tax2Amount') && null !== $data->getTax2Amount()) {
+        if ($data->isInitialized('tax2Amount')) {
             $dataArray['tax2_amount'] = $data->getTax2Amount();
         }
-        if ($data->isInitialized('discount') && null !== $data->getDiscount()) {
+        if ($data->isInitialized('discount')) {
             $dataArray['discount'] = $data->getDiscount();
         }
-        if ($data->isInitialized('discountAmount') && null !== $data->getDiscountAmount()) {
+        if ($data->isInitialized('discountAmount')) {
             $dataArray['discount_amount'] = $data->getDiscountAmount();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject')) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
+        if ($data->isInitialized('notes')) {
             $dataArray['notes'] = $data->getNotes();
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
+        if ($data->isInitialized('currency')) {
             $dataArray['currency'] = $data->getCurrency();
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
+        if ($data->isInitialized('state')) {
             $dataArray['state'] = $data->getState();
         }
-        if ($data->isInitialized('periodStart') && null !== $data->getPeriodStart()) {
-            $dataArray['period_start'] = $data->getPeriodStart()->format('Y-m-d');
+        if ($data->isInitialized('periodStart')) {
+            $dataArray['period_start'] = $data->getPeriodStart()?->format('Y-m-d');
         }
-        if ($data->isInitialized('periodEnd') && null !== $data->getPeriodEnd()) {
-            $dataArray['period_end'] = $data->getPeriodEnd()->format('Y-m-d');
+        if ($data->isInitialized('periodEnd')) {
+            $dataArray['period_end'] = $data->getPeriodEnd()?->format('Y-m-d');
         }
-        if ($data->isInitialized('issueDate') && null !== $data->getIssueDate()) {
-            $dataArray['issue_date'] = $data->getIssueDate()->format('Y-m-d');
+        if ($data->isInitialized('issueDate')) {
+            $dataArray['issue_date'] = $data->getIssueDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('dueDate') && null !== $data->getDueDate()) {
-            $dataArray['due_date'] = $data->getDueDate()->format('Y-m-d');
+        if ($data->isInitialized('dueDate')) {
+            $dataArray['due_date'] = $data->getDueDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('paymentTerm') && null !== $data->getPaymentTerm()) {
+        if ($data->isInitialized('paymentTerm')) {
             $dataArray['payment_term'] = $data->getPaymentTerm();
         }
-        if ($data->isInitialized('paymentOptions') && null !== $data->getPaymentOptions()) {
+        if ($data->isInitialized('paymentOptions')) {
             $values_1 = [];
             foreach ($data->getPaymentOptions() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['payment_options'] = $values_1;
         }
-        if ($data->isInitialized('sentAt') && null !== $data->getSentAt()) {
-            $dataArray['sent_at'] = $data->getSentAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('sentAt')) {
+            $dataArray['sent_at'] = $data->getSentAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('paidAt') && null !== $data->getPaidAt()) {
-            $dataArray['paid_at'] = $data->getPaidAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('paidAt')) {
+            $dataArray['paid_at'] = $data->getPaidAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('paidDate') && null !== $data->getPaidDate()) {
-            $dataArray['paid_date'] = $data->getPaidDate()->format('Y-m-d');
+        if ($data->isInitialized('paidDate')) {
+            $dataArray['paid_date'] = $data->getPaidDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('closedAt') && null !== $data->getClosedAt()) {
-            $dataArray['closed_at'] = $data->getClosedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('closedAt')) {
+            $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('recurringInvoiceId') && null !== $data->getRecurringInvoiceId()) {
+        if ($data->isInitialized('recurringInvoiceId')) {
             $dataArray['recurring_invoice_id'] = $data->getRecurringInvoiceId();
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:s\Z');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:s\Z');
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

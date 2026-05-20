@@ -40,15 +40,15 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Harvest\Api\Model\PaginationLinks();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Harvest\Api\Model\PaginationLinks();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('first', $data)) {
             $object->setFirst($data['first']);
@@ -84,10 +84,10 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['first'] = $data->getFirst();
         $dataArray['last'] = $data->getLast();
-        if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
+        if ($data->isInitialized('previous')) {
             $dataArray['previous'] = $data->getPrevious();
         }
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
+        if ($data->isInitialized('next')) {
             $dataArray['next'] = $data->getNext();
         }
         foreach ($data as $key => $value) {

@@ -1,5 +1,10 @@
 # Contributing
 
+> [!CAUTION]
+> This project is deprecated and no longer maintained: contributions are no
+> longer accepted. See [why](README.md#why-this-project-is-no-longer-maintained).
+> The instructions below are kept for reference only.
+
 First of all, **thank you** for contributing, **you are awesome**!
 
 Everybody should be able to help. Here's how you can do it:

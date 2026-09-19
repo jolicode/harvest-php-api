@@ -1,5 +1,9 @@
 # Harvest PHP API documentation
 
+> [!CAUTION]
+> This project is deprecated and no longer maintained. See [why](../README.md#why-this-project-is-no-longer-maintained).
+> This documentation is kept for reference only.
+
 ## Hunder the hood
 
 This library mostly contains code which is automatically generated from

@@ -1,5 +1,9 @@
 # Updating the SDK
 
+> [!CAUTION]
+> This project is deprecated and no longer maintained. See [why](../README.md#why-this-project-is-no-longer-maintained).
+> These instructions are kept for reference only, for instance if you maintain a fork.
+
 > [!NOTE]
 > The tooling for this project uses [Castor](https://castor.jolicode.com/),
 > a full-featured PHP task runner. In order to install Castor, see the
